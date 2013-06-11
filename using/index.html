@@ -66,7 +66,11 @@ href="http://www.cambridgesemantics.com/2008/09/sparql-by-example">SPARQL</a
 	  <a href="http://www.w3.org/TR/2012/CR-sparql11-entailment-20121108/">OWL 2 Direct Semantics entailment regime</a>.
 		  </p>
 
-	<p>To execute a SPARQL query against a Stardog database, use the <tt>query</tt> subcommand.  Detailed information on using the query command in
+	<p>To execute a SPARQL query against a Stardog database, use the <tt>query</tt> subcommand:</p>
+
+<pre><code>$ stardog query myDb "select * where { ?s ?p ?o }"</code></pre>
+	
+	<p></p>Detailed information on using the query command in
     Stardog can be found on its <a href="/docs/man/query-execute.html">manpage</a></p>
 
       </section>
