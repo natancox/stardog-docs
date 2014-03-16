@@ -18,6 +18,8 @@ Github.
 
 Binary releases are available on the [Github release page](https://github.com/clarkparsia/stardog-groovy/releases).
 
+As of version 2.1.2, Stardog-Groovy can be included via "com.complexible.stardog:stardog-groovy:2.1.2" after installing the local jars in your M2 repo.  Using the embedded server with Stardog Groovy is not supported in 2.1.2, due to conflicts of the asm library for various third party dependencies.  If you wish to use the embedded server with similar convenience APIs, please try [Stardog Spring](http://docs.stardog.com/spring/). 
+
 ## Overview
 
 Groovy for Stardog <t>springVersion</t> provides a set of Groovy API
@@ -53,8 +55,7 @@ other Groovy environments, such as [Grails](http://www.grails.org).
 To build Groovy for Stardog, you need a release of Stardog; we use
 [Gradle](http://www.gradle.org/) to build Stardog for Groovy. Then,
 
-1.   edit `build.gradle` to point `stardogLocation` at a Stardog release
-    directory;
+1.   Download and run a Stardog server with a "testdb", used for testing.
 1.   run `gradlew build`, which eventually results in a
     `stardog-groovy.jar` in `build/libs`; finally,
 1.   `gradlew install` does a build, generates a POM, and installs the
@@ -66,7 +67,7 @@ To build Groovy for Stardog, you need a release of Stardog; we use
 mvn install:install-file
     -DgroupId=com.clarkparsia.stardog
     -DartifactId=stardog-groovy
-    -Dversion=1.1.1
+    -Dversion=2.1.2
     -Dfile=stardog-groovy.jar
     -Dpackaging=jar
     -DpomFile=pom.xml```
