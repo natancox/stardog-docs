@@ -471,21 +471,21 @@ still be included.
 The following table summarizes the type of client to be built and its
 associated stardog dependency.  The stardog dependency list below follows
 the [Gradle](http://www.gradle.org) convention, and is of the form:
-`groupId:artifactId:version`.
+`groupId:artifactId:version`.  Versions 2.1 and higher supported.
 
 Type of Client               | Stardog Dependency
 :--------------------------  | :------------------
-snarl client                 | com.complexible.stardog.protocols.snarl:client:2.1
-http client                  | com.complexible.stardog.protocols.http:client:2.1
-reasoning snarl client       | com.complexible.stardog.reasoning.snarl:client:2.1
-reasoning http client        | com.complexible.stardog.reasoning.http:client:2.1
-search snarl client          | com.complexible.stardog.search.snarl:client:2.1
-search http client           | com.complexible.stardog.search.http:client:2.1
-icv snarl client             | com.complexible.stardog.icv.snarl:client:2.1
-icv http client              | com.complexible.stardog.icv.http:client:2.1
-empire client                | com.complexible.stardog:empire:2.1
-jena snarl client            | com.complexible.stardog:jena:2.1 com.complexible.stardog.protocols.snarl:client:2.1
-jena http client             | com.complexible.stardog:jena:2.1 com.complexible.stardog.protocols.http:client:2.1
-sesame snarl client          | com.complexible.stardog:sesame:2.1 com.complexible.stardog.protocols.snarl:client:2.1
-sesame http client           | com.complexible.stardog:sesame:2.1 com.complexible.stardog.protocols.http:client:2.1
+snarl client                 | com.complexible.stardog.protocols.snarl:client:@@VERSION@@
+http client                  | com.complexible.stardog.protocols.http:client:@@VERSION@@
+reasoning snarl client       | com.complexible.stardog.reasoning.snarl:client:@@VERSION@@
+reasoning http client        | com.complexible.stardog.reasoning.http:client:@@VERSION@@
+search snarl client          | com.complexible.stardog.search.snarl:client:@@VERSION@@
+search http client           | com.complexible.stardog.search.http:client:@@VERSION@@
+icv snarl client             | com.complexible.stardog.icv.snarl:client:@@VERSION@@
+icv http client              | com.complexible.stardog.icv.http:client:@@VERSION@@
+empire client                | com.complexible.stardog:empire:@@VERSION@@
+jena snarl client            | com.complexible.stardog:jena:@@VERSION@@   com.complexible.stardog.protocols.snarl:client:@@VERSION@@
+jena http client             | com.complexible.stardog:jena:@@VERSION@@   com.complexible.stardog.protocols.http:client:@@VERSION@@
+sesame snarl client          | com.complexible.stardog:sesame:@@VERSION@@ com.complexible.stardog.protocols.snarl:client:@@VERSION@@
+sesame http client           | com.complexible.stardog:sesame:@@VERSION@@ com.complexible.stardog.protocols.http:client:@@VERSION@@
 
