@@ -310,17 +310,17 @@ The following twiddly knobs for Stardog Server are available in
     `text` (the default) or `binary`. **To state the obvious explicitly,
     a `logging.slow_query.time` that exceeds the value of
     `query.timeout` will result in null logs.**
-8.  `database.connection.timeout.ms`: Controls how long, in
+6.  `database.connection.timeout.ms`: Controls how long, in
     milliseconds,connections may idle before being automatically closed
     by the server.
-9.  `http.max.connections`: The next two parameters control the maximum
+7.  `http.max.connections`: The next two parameters control the maximum
     number of simultaneous connections that the Stardog client will use; for more
     information, see the [relevant Apache
     docs](http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html).
-10. `http.max.get.query.length`: The length in characters of the longest
+8. `http.max.get.query.length`: The length in characters of the longest
     SPARQL query that will be serialized via HTTP `GET`; queries longer
     are serialized via `POST`.
-11. `bnode.preserve.id`: Determines how the Stardog parser handles bnode
+9. `bnode.preserve.id`: Determines how the Stardog parser handles bnode
     identifiers that may be present in (some) RDF input. If this
     property is enabled (i.e., `TRUE`), parsing and data loading
     performance are improved; but the other effect is that if distinct
@@ -331,7 +331,7 @@ The following twiddly knobs for Stardog Server are available in
     and you don't want those bnodes to be smushed into a single node in
     the database, then this configuration option should be disabled (set
     to `FALSE`).
-12. `load.parser.count`, `load.processor.count`: Determines the number of parser and
+10. `load.parser.count`, `load.processor.count`: Determines the number of parser and
      processor threads, respectively, to be used during bulk loading
      of data at database creation time. The default values are `3`
      and `4` respectively, but they may be set higher, to good effect,
@@ -342,6 +342,13 @@ The following twiddly knobs for Stardog Server are available in
      * the value of `load.parser.count` + `load.processor.count` should neither exceed `20` nor be equal to or greater than the number of available cores
      * the two values should be roughly equal
      * the values don't have much effect unless or until you're loading billions of triples
+11. `password.length.min`: Sets the password policy for the minimum length of 
+    user passwords, the value can't be lower than 1 or greater than `password.length.max`. 
+    Default: `4`.
+12. `password.length.max`: Sets the password policy for the maximum length of 
+    user passwords, the value can't be greater than 20 or lower than 1. Default: `20`.
+13. `password.regex`: Sets the password policy of accepted chars in user passwords, via a 
+    Java regular expression. Default: `[\\w@#$%]+`
 
 ### Starting & Stopping the Server
 

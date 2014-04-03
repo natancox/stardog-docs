@@ -96,6 +96,18 @@ Out of the box, the Stardog security setup is minimal and *most importantly* **i
 -   `user:anonymous` with password "anonymous" has the "reader" role.
 -   `role:reader` allows to `read` from any resource.
 
+### Setting Password Constraints
+
+To setup the constraints used to validate passwords when adding new users, configure the following settings in the `stardog.properties` configuration file.
+
+- `password.length.min`: Sets the password policy for the minimum length of 
+  user passwords, the value can't be lower than 1 or greater than `password.length.max`. 
+  Default: `4`.
+- `password.length.max`: Sets the password policy for the maximum length of 
+  user passwords, the value can't be greater than 20 or lower than 1. Default: `20`.
+- `password.regex`: Sets the password policy of accepted chars in user passwords, via a 
+  Java regular expression. Default: `[\\w@#$%]+`
+
 ## Managing Stardog Securely
 
 Stardog resources can be managed securely by using the tools included in the admin CLI or by programming against Stardog APIs. In this section we describe the permissions required to manage various Stardog resources either by CLI or API.
