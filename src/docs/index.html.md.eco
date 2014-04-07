@@ -18,7 +18,7 @@ Stardog is a graph database--fast, lightweight, pure Java storage for mission-cr
 - HTTP and SNARL protocols for remote access and control
 - [OWL 2](http://www.w3.org/TR/owl2-overview/) and rules for inference and data
 analytics
-- Java, JavaScript, Ruby, Python, .Net, Groovy, Spring, etc.
+- Java, JavaScript, Ruby, Python, .Net, Groovy, Spring, Clojure etc.
 
 ### Downloading Stardog
 
@@ -92,6 +92,9 @@ Everything from reasoning, data validation, and SPARQL to programming Stardog wi
 
 ### [Programming with .Net](/dotnet/)
 <%- @partial("dotnet.html")%>
+
+### [Programming with Clojure](/clojure/)
+<%- @partial("clojure.html")%>
 
 ### [Programming with Javascript](http://clarkparsia.github.io/stardog.js/)
 
