@@ -43,6 +43,7 @@
 
 2.1.2 Changes
 ----------------------------------------------------------------------------
+
 * ADDED: Auto-complete feature in Web console's query panel
 
 * ADDED: Load query from file in Web console's query panel
