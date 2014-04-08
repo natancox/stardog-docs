@@ -46,8 +46,6 @@ The API provides a natural progression of functions for interacting with Stardog
 <dd>Creates a data source, i.e. ConnectionPool, using the database spec.  Best used within the `with-connection-pool` macro.</dd>
 <dt>`(with-transaction [connection...] body)`</dt>
 <dd>Executes the body with a transaction on each of the connections.</dd>
-<dt>`(with-transaction [connection...] body)`</dt>
-<dd>Executes the body with a transaction on each of the connections.</dd>
 <dt>`(with-connection-tx binding-forms body)`</dt>
 <dd>Establishes a connection and a transaction to execute the body within.</dd>
 <dt>`(with-connection-pool [con pool] .. con, body ..)`</dt>
