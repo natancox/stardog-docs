@@ -6,7 +6,7 @@ layout: default
 toc: true
 ---
 
-[Clojure](http:/clojure.org) is a Lisp for the JVM. Stardog's Clojure suppoort makes life easier for developers who need to work with RDF, SPARQL, and OWL by way of Stardog from Clojure. The Stardog-clj [source
+[Clojure](http://clojure.org) is a Lisp for the JVM. Stardog's Clojure support makes life easier for developers who need to work with RDF, SPARQL, and OWL by way of Stardog from Clojure. The Stardog-clj [source
 code](http://github.com/clarkparsia/stardog-clj) is available on
 Github and licensed under the Apache 2.0 license.
 
