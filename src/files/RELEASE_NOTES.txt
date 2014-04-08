@@ -1,3 +1,96 @@
+2.1.3 Changes
+----------------------------------------------------------------------------
+
+* ADDED: Support for configuration of password requirements
+
+* FIXED: Override of default URL server does not work
+
+* FIXED: Incorrect error message when failing to connect over HTTP to server w/ HTTP disabled
+
+* FIXED: When custom bind address is used, server start output does not correctly reflect address server is listening on
+
+* FIXED: BNodes declared in head of insert/delete queries are static
+
+* FIXED: Need more graceful handling of query bindings header when it's the empty string
+
+* FIXED: Doubled-typed literal values which are .equals, could canonicalize to different identifiers
+
+* FIXED: Incomplete reasoning with property chains
+
+* FIXED: Non-deterministic connection failures over SNARL protocol in a server under high load
+
+* FIXED: SPARQL count optimization can rewrite count expressions to things which are not semantically equivalent
+
+* FIXED: Commits which contain the removal of an empty named graph yield an NPE during commit to search index
+
+* FIXED: Update queries via Sesame bindings throw exceptions
+
+* FIXED: Setting query properties on a Sesame query, such as includedInferred, does not work as expected
+
+* FIXED: Repository.getContextIDs returns a non-unique list of contexts
+
+* FIXED: Getting the size of a specific named graph via StardogRepositoryConnection yields an UnsupportedOperationException
+
+* FIXED: Shells scripts do not quote paths which fails in the presence of paths with spaces and the like
+
+* FIXED: Memory mapped tx log files on Windows can get mangled when mem-mapped contents are flushed to disk
+
+* FIXED: Computation of very large query result sets slows down due to cache thrashing
+
+* MODIFIED: Starting server with --no-web-console should print a message
+
+* MODIFIED: CLI export help needs some clarification
+
+2.1.2 Changes
+----------------------------------------------------------------------------
+* ADDED: Auto-complete feature in Web console's query panel
+
+* ADDED: Load query from file in Web console's query panel
+
+* ADDED: SNARL API support for performing an export
+
+* ADDED: Server side export support
+
+* ADDED: Arithmetic operations for date/time values
+
+* FIXED: Incorrectly handling filter inlining when variable in OPTIONAL side of join
+
+* FIXED: Most recent version of chrome breaks the webconsole layout
+
+* FIXED: CORS method `OPTION` is missing
+
+* FIXED: DISTINCT operator could return only a REDUCED result set in some cases with reasoning
+
+* FIXED: Correctly verify property paths during optimization when both start & end point are unbound
+
+* FIXED: Rewritten plans might incorrectly share variables which can lead to empty results
+
+* FIXED: In the Web console, prefixes included in the query panel seem to be irrelevant
+
+* FIXED: Corrected rendering of accented characters in welcome screen
+
+* FIXED: Export cli function does not use RDF format aliases
+
+* FIXED: Unexpected result for HAVING (bound(...)) expression
+
+* FIXED: Incorrect handling of function expressions within a bind
+
+* FIXED: Do not create superfluous temp files which are not used or deleted
+
+* FIXED: Be less aggressive about moving intermediate results off heap
+
+* FIXED: Failure of termination condition in an outer join which resulted in an infinite join
+
+* MODIFIED: Improved error message using using non-existent file to query command on CLI
+
+* MODIFIED: Updated to Sesame 2.7.10
+
+* MODIFIED: Updated to Protobuf 2.5.0
+
+* MODIFIED: Updated to Netty 4.0.17
+
+* MODIFIED: Updated to Lucene 4.7.0
+
 2.1.1 Changes
 ----------------------------------------------------------------------------
 

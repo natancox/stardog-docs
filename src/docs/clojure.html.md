@@ -6,18 +6,11 @@ layout: default
 toc: true
 ---
 
-[Clojure](http:/clojure.org) isClojure is a dialect of Lisp, and shares with Lisp the code-as-data philosophy and
-a powerful macro system. Clojure is predominantly a functional programming language, and features a rich set of immutable,
-persistent data structures. Stardog's Clojure suppoort makes life easier for developers who need to work with RDF, SPARQL, and
-OWL by way of Stardog using the facilities of Clojure.
-
-The Stardog-clj [source
+[Clojure](http:/clojure.org) is a Lisp for the JVM. Stardog's Clojure suppoort makes life easier for developers who need to work with RDF, SPARQL, and OWL by way of Stardog from Clojure. The Stardog-clj [source
 code](http://github.com/clarkparsia/stardog-clj) is available on
 Github and licensed under the Apache 2.0 license.
 
 For version 0.1.0, installation is done by building and running a local "lein install" or the artifact.  Future versions will be available in Clojars.
-
-
 
 ## Overview
 
@@ -28,11 +21,10 @@ of the API, such as executing a SPARQL query or adding and removing RDF from
 the Stardog database.  Over time, other parts of the Stardog API will be appropriately
 wrapped with Clojure functions and idiomatic Clojure data structures.
 
-
-For the first release, Stardog-clj provides the following features:
+Stardog-clj provides the following features:
 
 1.  Specification based descriptions for connections, and corresponding "connection" and "with-connection-pool" functions and macros
-2.  Functions for query, ask, graph, and update to execute SELECT< ASK, CONSTRUCT, and SPARQL-Update queries respectively
+2.  Functions for query, ask, graph, and update to execute SELECT, ASK, CONSTRUCT, and SPARQL-Update queries respectively
 3.  Functions for insert and remove, for orchestrating the Adder and Remover APIs in SNARL
 4.  Macros for resource handling, including with-connection-tx, with-connnection-pool, and with-transaction
 5.  Support for programming Stardog applications with either the connection pool or direct handling of the connection
