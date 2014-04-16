@@ -53,10 +53,10 @@ and
 [`disk`](../java/snarl/com/complexible/stardog/api/admin/AdminConnection.html#disk())
 functions to configure and create a database in any way you prefer.
 These methods return
-[`DatabaseBuilder`](../java/snarl/com/complexible/stardog/DatabaseBuilder.html)
+[`DatabaseBuilder`](../java/snarl/com/complexible/stardog/api/admin/DatabaseBuilder.html)
 objects which you can use to configure the options of the database you'd
 like to create. Finally, the
-[`create`](../java/snarl/com/complexible/stardog/DatabaseBuilder.html#create())
+[`create`](../java/snarl/com/complexible/stardog/api/admin/DatabaseBuilder.html#create())
 method takes the list of files to bulk load into the database when you
 create it and returns a valid
 [`ConnectionConfiguration`](../java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html)
