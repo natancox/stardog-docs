@@ -962,7 +962,7 @@ creation time, last modification time, etc.) by running the following
 command:
 
 ```bash
-$ stardog-admin get my_db_name
+$ stardog-admin metadata get my_db_name
 ```
 
 This will return all the metadata stored about the database, including
@@ -971,7 +971,7 @@ you want to get the value for a specific option then you can run the
 following command:
 
 ```bash
-$ stardog-admin get -o index.named.graphs my_db_name
+$ stardog-admin metadata get -o index.named.graphs my_db_name
 ```
 
 ### Managing Queries
