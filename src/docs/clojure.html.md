@@ -108,4 +108,16 @@ Here are some examples of using stardog-clj
 <gist>10041003?file=StardogPool.clj</gist>
 
 
+### SPARQL Update Example
+
+<gist>11130645?file=StardogUpdate.clj</gist>
+
+
+### Graph function for Construct queries
+
+<gist>11130603?file=StardogGraph.clj</gist>
+
+### Ask function for ASK queries
+
+<gist>11130618?file=StardogAsk.clj</gist>
 
