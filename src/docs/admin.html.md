@@ -748,7 +748,7 @@ $ stardog-admin db repair system
 
 Stardog includes both physical and logical backup utilities; logical backups are accomplished using the `export` CLI command. Physical backups and restores are accomplished using `stardog-admin db backup` and `stardog-admin db restore` respectively. These tools perform physical backups, including database metadata, rather than logical backups via some RDF serialization. They are *native* Stardog backups and can only be restored with Stardog tools. Backup may be accomplished while a database is online; backup is performed in a read transaction: reads and writes may continue, but writes performed during the backup are not reflected in the backup.
 
-See the man pages for (`backup`)[/man/db-backup.html] and (`restore`)[/man/db-restore.html] for details.
+See the man pages for [`backup`](/man/db-backup.html) and [`restore`](/man/db-restore.html) for details.
 
 #### Backup
 
