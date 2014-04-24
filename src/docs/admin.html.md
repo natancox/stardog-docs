@@ -90,7 +90,7 @@ The command groups and their subcommands include
 - metadata: get, set;
 - user: add, drop, edit, grant, list, permission, revoke, passwd;
 - role: add, drop, grant, list, permission, revoke;
-- db: copy, create, drop, migrate, optimize, list, online, offline.
+- db: backup, copy, create, drop, migrate, optimize, list, online, offline, repair, restore, status.
 
 The main help command for either CLI tool will print a listing of the
 command groups:
