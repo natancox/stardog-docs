@@ -1058,7 +1058,7 @@ You can add typing information to the query in order to resolve ambiguities by u
 ```sparql
     SELECT ?o 
     WHERE { 
-        ?s ?p ?o. 
+        :i1 ?p ?o. 
         ?p a owl:ObjectProperty.
     }.
 ```
