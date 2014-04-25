@@ -53,10 +53,10 @@ and
 [`disk`](../java/snarl/com/complexible/stardog/api/admin/AdminConnection.html#disk())
 functions to configure and create a database in any way you prefer.
 These methods return
-[`DatabaseBuilder`](../java/snarl/com/complexible/stardog/DatabaseBuilder.html)
+[`DatabaseBuilder`](../java/snarl/com/complexible/stardog/api/admin/DatabaseBuilder.html)
 objects which you can use to configure the options of the database you'd
 like to create. Finally, the
-[`create`](../java/snarl/com/complexible/stardog/DatabaseBuilder.html#create())
+[`create`](../java/snarl/com/complexible/stardog/api/admin/DatabaseBuilder.html#create())
 method takes the list of files to bulk load into the database when you
 create it and returns a valid
 [`ConnectionConfiguration`](../java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html)
@@ -475,17 +475,17 @@ the [Gradle](http://www.gradle.org) convention, and is of the form:
 
 Type of Client               | Stardog Dependency
 :--------------------------  | :------------------
-snarl client                 | com.complexible.stardog.protocols.snarl:client:@@VERSION@@
-http client                  | com.complexible.stardog.protocols.http:client:@@VERSION@@
-reasoning snarl client       | com.complexible.stardog.reasoning.snarl:client:@@VERSION@@
-reasoning http client        | com.complexible.stardog.reasoning.http:client:@@VERSION@@
-search snarl client          | com.complexible.stardog.search.snarl:client:@@VERSION@@
-search http client           | com.complexible.stardog.search.http:client:@@VERSION@@
-icv snarl client             | com.complexible.stardog.icv.snarl:client:@@VERSION@@
-icv http client              | com.complexible.stardog.icv.http:client:@@VERSION@@
-empire client                | com.complexible.stardog:empire:@@VERSION@@
-jena snarl client            | com.complexible.stardog:jena:@@VERSION@@   com.complexible.stardog.protocols.snarl:client:@@VERSION@@
-jena http client             | com.complexible.stardog:jena:@@VERSION@@   com.complexible.stardog.protocols.http:client:@@VERSION@@
-sesame snarl client          | com.complexible.stardog:sesame:@@VERSION@@ com.complexible.stardog.protocols.snarl:client:@@VERSION@@
-sesame http client           | com.complexible.stardog:sesame:@@VERSION@@ com.complexible.stardog.protocols.http:client:@@VERSION@@
+snarl client                 | com.complexible.stardog.protocols.snarl:client:version
+http client                  | com.complexible.stardog.protocols.http:client:version
+reasoning snarl client       | com.complexible.stardog.reasoning.snarl:client:version
+reasoning http client        | com.complexible.stardog.reasoning.http:client:version
+search snarl client          | com.complexible.stardog.search.snarl:client:version
+search http client           | com.complexible.stardog.search.http:client:version
+icv snarl client             | com.complexible.stardog.icv.snarl:client:version
+icv http client              | com.complexible.stardog.icv.http:client:version
+empire client                | com.complexible.stardog:empire:version
+jena snarl client            | com.complexible.stardog:jena:version   com.complexible.stardog.protocols.snarl:client:version
+jena http client             | com.complexible.stardog:jena:version   com.complexible.stardog.protocols.http:client:version
+sesame snarl client          | com.complexible.stardog:sesame:version com.complexible.stardog.protocols.snarl:client:version
+sesame http client           | com.complexible.stardog:sesame:version com.complexible.stardog.protocols.http:client:version
 

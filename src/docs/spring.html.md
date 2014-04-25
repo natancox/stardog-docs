@@ -16,9 +16,9 @@ Spring for Stardog makes it possible to rapidly build Stardog-backed application
 integration uses the template design pattern for abstracting standard
 boilerplate away from application developers.
 
-Stardog Spring can be included via Maven with "com.complexible.stardog:stardog-spring:2.1.2", 
-after running the local Maven install.  Embedded server is still supported, but via providing an implementatino of the Provider interface.  
-This enables users of the embedded server to have full control over how to use the embedded server.   
+Stardog Spring can be included via Maven with "com.complexible.stardog:stardog-spring:version",
+after running the local Maven install.  Embedded server is still supported, but via providing an implementatino of the Provider interface.
+This enables users of the embedded server to have full control over how to use the embedded server.
 
 At the lowest level, Spring for Stardog includes
 
