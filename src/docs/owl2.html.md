@@ -256,9 +256,6 @@ so its alternatives get ids `2.1` and `2.2`.
 Again, a tree widget in a GUI can show this proof tree in a more
 user-friendly way.
 
-
-
-
 ## User-defined Rule Reasoning
 
 Many reasoning problems may be solved with OWL's axiom-based approach;
@@ -300,12 +297,14 @@ standard RDF/XML syntax for SWRL. It has the advantage of being supported
 in many tools; but it's not fun to read or to write. You probably
 don't want to use it. Better: don't use this syntax!
 
-Stardog Rules Syntax is basically SPARQL "basic graph patterns" (BGPs)
-plus some very explicit new bits (`IF-THEN`) to denote the head
-and the body of a rule.<fn>Quick refresher: the `IF` clause defines the conditions to match in the data; if they match, then the contents of the `THEN` clause "fire", that is, they are inferred and, thus, available for other queries, rules, or axioms, etc.</fn> You define URI prefixes in the normal way  (examples below) and
-use regular SPARQL variables for rule variables.
-As you can see, some SPARQL 1.1 syntactic sugar--property
-paths, especially, but also bnode syntax--make complex
+Stardog Rules Syntax is basically SPARQL "basic graph patterns" (BGPs) plus some
+very explicit new bits (`IF-THEN`) to denote the head and the body of a
+rule.<fn>Quick refresher: the `IF` clause defines the conditions to match in the
+data; if they match, then the contents of the `THEN` clause "fire", that is,
+they are inferred and, thus, available for other queries, rules, or axioms,
+etc.</fn> You define URI prefixes in the normal way  (examples below) and use
+regular SPARQL variables for rule variables. As you can see, some SPARQL 1.1
+syntactic sugar--property paths, especially, but also bnode syntax--make complex
 Stardog Rules quite concise and elegant.
 
 #### How to Use Stardog Rules
@@ -849,6 +848,81 @@ then the EQ would collapse to:
 
 which is considerably cheaper to evaluate.
 
+## Not Seeing Expected Results?
+
+Here's a few things that you might want to know about.
+
+### Are variable types ambiguous?
+
+When a SPARQL query gets executed, each variable is bound to a URI, blank node,
+or literal to form a particular result (a collection of these results is known
+as a result set). In the context of reasoning, URIs might represent different
+entities: individuals, classes, properties, etc. According to the [relevant standard](http://www.w3.org/TR/sparql11-entailment/#OWLDSEnRegime), **every variable in a SPARQL query must bind to at most one of these types of entity**.
+
+Stardog can often figure out the right entity type from the query itself (e.g., given the
+triple pattern `?i ?p "a literal"`, we know `?p` is supposed to bind to a data
+property); however, some times this isn't possible (e.g., `?s ?p ?o`). In case
+the types can't be determined automatically, **Stardog logs a message and evaluates the
+query without any reasoning**.
+
+You can add one or more type triples to the query to resolve these ambiguities.<fn>These are harmless and won't otherwise affect query evaluation; they can also be added to the data, instead of to queries, if that fits yr use case better.</fn> 
+
+These "type triples" have the orm `?var a TYPE`, where `TYPE` is a
+URI representing the type of entity to which the variable `?var` is supposed to
+bind: the most common are `owl:ObjectProperty` or `owl:DatatypeProperty`; in some cases, you might want `owl:NamedIndividual`, or `owl:Class`. For instance, if you are interested in all the
+object properties of `:i1`, you can use the following
+query:
+
+```sparql
+    SELECT ?o 
+    WHERE { 
+        :i1 ?p ?o. 
+        ?p a owl:ObjectProperty.
+    }.
+```
+
+Since Stardog now knows that `?p` should bind to an object property, we can now infer that `?o` binds to an individual, so there are no ambiguities and reasoning can be performed as requested.
+
+### Is the schema where you think it is?
+
+Stardog might be extracting the wrong schema. You have to tell Stardog where to find the schema. See [Schema Extraction](#tbox_extraction) for details.
+
+### Are you using the right reasoning level?
+
+Perhaps some of the modeling constructs (a.k.a. axioms) in your database are being ignored. You can find out which axioms are being ignored due to the reasoning level used by simply including the following line in the logging.properties file in `STARDOG_HOME`:
+
+```java
+        com.clarkparsia.blackout.level = ALL
+```
+
+### Are you using DL?
+
+Stardog supports schema-only reasoning for OWL 2 DL, which effectively means that only TBox queries—queries that contain [TBox BGPs](#query_types) only—will return complete query results.
+
+### Are you using SWRL?
+
+As from version 2.0, SWRL rules are only taken into account using the **SL** reasoning level.
+
+### Do you know what to expect?
+
+The [OWL 2 primer](http://www.w3.org/TR/owl2-primer/) is always a good place to start.
+
+## Known Issues
+
+Stardog <t>version</t> does not
+
+-   Follow ontology `owl:imports` statements automatically; any imported
+    OWL ontologies that are required for reasoning must be loaded into a
+    Stardog database in the normal way.
+-   Handle recursive queries. If recursion is necessary to answer the
+    query with respect to the schema, results will be sound (no wrong
+    answers) but potentially incomplete (some correct answers not
+    returned) with respect to the requested reasoning type.
+-   Perform equality reasoning. Only *explicit* `owl:sameAs` and
+    `owl:differentFrom` data assertions will be taken into account for
+    query answering.
+-   Perform datatype reasoning or respect user-defined datatypes.
+
 ## Terminology
 
 This chapter uses the following terms of art.
@@ -1042,64 +1116,3 @@ expressive than any other as they provide incomparable sets of
 constructs.
 
 Stardog supports the three profiles of OWL 2. Notably, since TBox BGPs are handled completely by Pellet, Stardog supports reasoning for the whole of OWL 2 for queries containing TBox BGPs only.
-
-## Not Seeing Expected Answers?
-
-Here's a few things that you might want to know about.
-
-### Are variable types ambiguous?
-
-When a SPARQL query gets executed, each variable is bound to a URI, blank node, or literal to form a particular result (a collection of these results is known as a result set). In the context of reasoning, URIs might represent different entities: individuals, classes, properties, etc. According to the [OWL 2 Direct Semantics Entailment Regime for SPARQL 1.1](http://www.w3.org/TR/sparql11-entailment/#OWLDSEnRegime), **every variable in a SPARQL query must bind to at most one of these types of entity**.
-
-The entity types can usually be inferred from the query itself (e.g., given the triple pattern `?i ?p "literal"`, we know `?p` is supposed to bind to a data property); however, some times this is not possible (e.g., `?s ?p ?o`). In case the types can't be determined automatically, we will print a suitable log message and **not perform any reasoning**.
-
-You can add typing information to the query in order to resolve ambiguities by using declaration triple patterns of the form `?var a TYPE`, where `TYPE` is a URI representing the type of entity to which the variable `?var` is supposed to bind (i.e., `owl:NamedIndividual`, `owl:Class`, `owl:ObjectProperty`, `owl:DatatypeProperty`, etc). For instance, if you are interested in all the object-property successors of the individual `:i1`, you can use the following query: 
-
-```sparql
-    SELECT ?o 
-    WHERE { 
-        :i1 ?p ?o. 
-        ?p a owl:ObjectProperty.
-    }.
-```
-Since we know `?p` binds to an object property, we can now infer that both `?s` and `?o` bind to individuals, so there are no ambiguities and reasoning can be performed.
-
-### Is the schema where you think it is?
-
-Stardog might be extracting the wrong schema. You have to tell Stardog where to find the schema. See [Schema Extraction](#tbox_extraction) for details.
-
-### Are you using the right reasoning level?
-
-Perhaps some of the modeling constructs (a.k.a. axioms) in your database are being ignored. You can find out which axioms are being ignored due to the reasoning level used by simply including the following line in the logging.properties file in `STARDOG_HOME`:
-
-```java
-        com.clarkparsia.blackout.level = ALL
-```
-
-### Are you using DL?
-
-Stardog supports schema-only reasoning for OWL 2 DL, which effectively means that only TBox queries—queries that contain [TBox BGPs](#query_types) only—will return complete query results.
-
-### Are you using SWRL?
-
-As from version 2.0, SWRL rules are only taken into account using the **SL** reasoning level.
-
-### Do you know what to expect?
-
-The [OWL 2 primer](http://www.w3.org/TR/owl2-primer/) is always a good place to start.
-
-## Known Issues
-
-Stardog <t>version</t> does not
-
--   Follow ontology `owl:imports` statements automatically; any imported
-    OWL ontologies that are required for reasoning must be loaded into a
-    Stardog database in the normal way.
--   Handle recursive queries. If recursion is necessary to answer the
-    query with respect to the schema, results will be sound (no wrong
-    answers) but potentially incomplete (some correct answers not
-    returned) with respect to the requested reasoning type.
--   Perform equality reasoning. Only *explicit* `owl:sameAs` and
-    `owl:differentFrom` data assertions will be taken into account for
-    query answering.
--   Perform datatype reasoning or respect user-defined datatypes.
