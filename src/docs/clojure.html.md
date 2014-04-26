@@ -10,7 +10,13 @@ toc: true
 code](http://github.com/clarkparsia/stardog-clj) is available on
 Github and licensed under the Apache 2.0 license.
 
-For version 0.1.0, installation is done by building and running a local "lein install" or the artifact.  Future versions will be available in Clojars.
+## Installation
+
+Stardog-clj is available from Clojars.  To use, just include the following dependency:
+
+    [stardog-clj "0.3.0"]
+
+
 
 ## Overview
 

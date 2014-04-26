@@ -16,8 +16,8 @@ Spring for Stardog makes it possible to rapidly build Stardog-backed application
 integration uses the template design pattern for abstracting standard
 boilerplate away from application developers.
 
-Stardog Spring can be included via Maven with "com.complexible.stardog:stardog-spring:version",
-after running the local Maven install.  Embedded server is still supported, but via providing an implementatino of the Provider interface.
+Stardog Spring can be included via Maven with "com.complexible.stardog:stardog-spring:version" and "com.complexible.stardog:stardog-spring-batch" for Spring Batch support.  Both of these dependencies require the local "mavenInstall" script be run,
+and the Stardog Spring packages installed in Maven.  Embedded server is still supported, but via providing an implementatino of the Provider interface.
 This enables users of the embedded server to have full control over how to use the embedded server.
 
 At the lowest level, Spring for Stardog includes
@@ -61,7 +61,7 @@ To build Spring for Stardog, you need a release of Stardog; we use
               -Dpackaging=jar
               -DpomFile=pom.xml
 
-Note: The stardogLocation and "fileTree" dependency is included in development of Stardog Spring, as a local embedded server is used for automated testing.
+Note: The stardogLocation and "fileTree" dependency is included in development of Stardog Spring, as a local embedded server is used for automated testing.  Before running the build, you should edit the "CHANGE" areas in teh build file to point to your local Stardog instance.  See the README on the respective Github projects for more details.
 
 
 ## Basic Spring
