@@ -10,6 +10,13 @@ The Spring for Stardog [source code](http://github.com/clarkparsia/stardog-sprin
 
 Binary releases are available on the [Github release page](https://github.com/clarkparsia/stardog-spring/releases).
 
+As of 2.1.3, Stardog-Spring and Stardog-Spring-Batch can both be retrieved from Maven central:
+
+*   `com.complexible.stardog:stardog-spring:2.1.3`
+*   `com.complexible.stardog:stardog-spring-batch:2.1.3`
+
+
+
 ## Overview
 
 Spring for Stardog makes it possible to rapidly build Stardog-backed applications with the Spring Framework. As with many other parts of Spring, Stardog's Spring
