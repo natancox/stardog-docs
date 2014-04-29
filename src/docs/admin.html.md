@@ -926,7 +926,7 @@ Stardog supports integrity constraint validation as a data quality
 mechanism via closed world reasoning. Constraints can be specified in
 OWL, SWRL, and SPARQL.
 
-Please see the [ICV chapter](../sdp) for more about using ICV in Stardog
+Please see the [ICV chapter](../icv) for more about using ICV in Stardog
 programmatically.
 
 The CLI `icv` subcommand can be used to add, delete, or drop all
