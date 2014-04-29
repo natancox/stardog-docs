@@ -12,13 +12,11 @@ such as closures available to Java developers. Stardog's Groovy support
 makes life easier for developers who need to work with RDF, SPARQL, and
 OWL by way of Stardog.
 
-The Groovy for Stardog [source
-code](http://github.com/clarkparsia/stardog-groovy) is available on
-Github.
+The Groovy for Stardog [source code](http://github.com/clarkparsia/stardog-groovy) is available on Github.
 
-Binary releases are available on the [Github release page](https://github.com/clarkparsia/stardog-groovy/releases).
+Binary releases are available on the [Github release page](https://github.com/clarkparsia/stardog-groovy/releases) and via Maven central as of version 2.1.3 and beyond using the following dependency declaration (Gradle style) `com.complexible.stardog:stardog-groovy:2.1.3`.
 
-As of version 2.1.2, Stardog-Groovy can be included via "com.complexible.stardog:stardog-groovy:2.1.2" after installing the local jars in your M2 repo.  Using the embedded server with Stardog Groovy is not supported in 2.1.2, due to conflicts of the asm library for various third party dependencies.  If you wish to use the embedded server with similar convenience APIs, please try [Stardog Spring](http://docs.stardog.com/spring/). 
+As of version 2.1.3, Stardog-Groovy can be included via "com.complexible.stardog:stardog-groovy:2.1.3" from Maven central.  Note that you must run "mavenInstall" to get the Stardog client dependencies into your local repository.  Using the embedded server with Stardog Groovy is not supported in 2.1.2, due to conflicts of the asm library for various third party dependencies.  If you wish to use the embedded server with similar convenience APIs, please try [Stardog Spring](http://docs.stardog.com/spring/). Also 2.1.3 and beyond of Stardog-Groovy no longer requires the use of the Spring framework.
 
 ## Overview
 
@@ -45,10 +43,6 @@ For the first release, Groovy for Stardog includes
     instance of
     [Connection](http://stardog.com/docs/java/snarl/com/clarkparsia/stardog/api/Connection.html)
 
-In addition to the core capabilities, Groovy for Stardog also integrates
-with the Spring bindings and can use a `DataSource` to initialize the
-constructor. Combining both together creates an easy to use solution for
-other Groovy environments, such as [Grails](http://www.grails.org).
 
 ## Building Groovy for Stardog
 
@@ -56,9 +50,9 @@ To build Groovy for Stardog, you need a release of Stardog; we use
 [Gradle](http://www.gradle.org/) to build Stardog for Groovy. Then,
 
 1.   Download and run a Stardog server with a "testdb", used for testing.
-1.   run `gradlew build`, which eventually results in a
+2.   run `gradlew build`, which eventually results in a
     `stardog-groovy.jar` in `build/libs`; finally,
-1.   `gradlew install` does a build, generates a POM, and installs the
+3.   `gradlew install` does a build, generates a POM, and installs the
     POM in local Maven repo; alternately,
 
 `mvn install` will work, too:
@@ -67,7 +61,7 @@ To build Groovy for Stardog, you need a release of Stardog; we use
 mvn install:install-file
     -DgroupId=com.clarkparsia.stardog
     -DartifactId=stardog-groovy
-    -Dversion=2.1.2
+    -Dversion=VERSION
     -Dfile=stardog-groovy.jar
     -Dpackaging=jar
     -DpomFile=pom.xml```
