@@ -1,0 +1,30 @@
+{
+  "name": "docpad-plugin-footnotes",
+  "version": "2.0.1",
+  "description": "A plugin for Docpad to build footnotes in web pages.",
+  "main": "./src/footnotes.plugin.coffee",
+  "engines" : {
+        "node": ">=0.8",
+        "docpad": ">=6"
+    },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/kendall/docpad-plugin-fn"
+  },
+  "author": "Kendall Clark",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/kendall/docpad-plugin-fn/issues"
+  },
+  "dependencies": {
+    "cheerio": "~0.12.0"
+  },
+  "devDependencies": {
+    "cheerio": "~0.12.0"
+  },
+  "_id": "docpad-plugin-footnotes@2.0.1",
+  "_from": "docpad-plugin-footnotes@"
+}

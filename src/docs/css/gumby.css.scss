@@ -1,0 +1,53 @@
+
+/*!
+* Gumby Framework Version 2.0
+* ---------------------------
+* Follow @gumbycss on twitter and spread the love.
+* We worked super hard on making this awesome and released it to the web.
+* All we ask is you leave this intact. #gumbyisawesome
+*
+* http://www.gumbyframework.com/
+*/
+
+@import 'modular-scale';
+
+$sd-lime: #C0D732;
+$top-border-thickness: 6px;
+$footer-height: 167px;
+
+html, body {height: 100%;}
+
+#page-wrap {min-height: 100%;}
+
+#the-content {overflow:auto;
+	padding-bottom: $footer-height;}  /* must be same height as the footer */
+
+#subfoot {position: relative;
+	margin-top: -$footer-height; /* negative value of footer height */
+	height: $footer-height;
+	clear:both;
+	border-top: $top-border-thickness / 2 solid $sd-lime;} 
+
+/*Opera Fix*/
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;}
+
+@import "var/settings";
+@import "var/lists";
+
+@import "compass";
+@import "compass/reset";
+
+@import "functions/all";
+@import "base";
+@import "fonts";
+@import "typography";
+@import "grid";
+@import "highlightjs";
+@import "ui/all";
+
+@import "custom"; 

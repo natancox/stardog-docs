@@ -1,0 +1,275 @@
+// Your custom SCSS should be written here...
+
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700);
+code,tt,pre,kbd,samp,var, pre span {font-family: "Ubuntu Mono"; font-weight: $font-weight-bold;}
+
+a {
+  text-decoration: none;
+  padding-bottom: 0px;
+  color: $sd-med-blue;
+  border-bottom: 1px solid $sd-med-blue;
+}
+
+a:hover {
+  background: $sd-gray;
+}
+
+a:visited {
+  color: $sd-med-blue;
+  border: 0;
+  text-decoration: none;
+  }
+
+h2 a,h3 a,h4 a,h5 a,h6 a, p#tocnav a, .sidebar-nav a, i a, a img#thelogo, .fn-marker {
+  text-decoration: none;
+  background: none;
+  border: 0;
+}
+
+a#a52:hover {
+  text-decoration: none;
+  background: none;
+  border: 0;
+}
+
+pre {
+       margin-bottom: $base-line-height;
+       margin-left: $base-line-height / 2;
+}
+
+dd {
+  margin-left: $base-line-height / 2;
+}
+
+dl {  margin-bottom: $base-line-height; }
+
+#title-subhead {
+  color: $sd-lime;
+  font-size: $prettybig;
+  font-weight: $font-weight-thin;
+}
+
+ #tochead {
+  font-weight: $font-weight-medium;
+  color: $sd-med-blue;
+  padding-top: 5px;
+ }
+
+#footer-subhead {
+  color: $sd-med-blue;
+  font-weight: $font-weight-thin;
+}
+
+#social {
+  @include padding-leader($rhythm-spacing);
+  @include adjust-leading-to($rhythm-height);
+  @include padding-trailer($rhythm-spacing);
+}
+
+#title {
+  margin-bottom: $base-line-height / 1.5;
+
+}
+
+h2 {
+  color: $sd-med-blue;
+}
+
+ul {
+
+  list-style: square inside;
+  margin-bottom: $base-line-height;
+  margin-left: 22px;
+}
+
+thead,tfoot {
+  font-weight: $font-weight-bold
+}
+
+table{
+  border: 1px solid #F0F8FF;
+  margin-bottom: $base-line-height;
+}
+
+th, td{
+  padding: 4px;
+}
+
+th{
+ color: #fff;
+ background-color: #aaa
+}
+
+tr:nth-of-type(odd) td
+{
+ background-color:#F0F8FF;
+ color: black;
+}
+
+
+.container + .container {
+  padding: 75px 20px 70px 20px;
+}
+
+.container + .container.nopad {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.container.shaded {
+  background-color: $shaded-container-color !important;
+}
+
+  .container {
+    min-width: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+.nlm {
+  margin-left: 0px;
+  padding: 0px;
+  border: 0;
+  }
+
+#upaway {
+  @include padding-leader($rhythm-spacing);
+  @include adjust-leading-to($rhythm-height);
+  @include padding-trailer($rhythm-spacing);
+  font-size: $med;
+}
+
+.copywood {
+  font-size: $norm;
+}
+
+.copywood a {
+  text-decoration: none;
+  border: 0px;
+}
+
+p#social a {
+  text-decoration: none;
+}
+
+#inner-doc #inner-nav {
+  margin-bottom: 40px;
+}
+
+.sidebar-nav-holder.end {
+  position: absolute;
+}
+
+.sidebar-nav {
+  list-style: none;
+  margin-bottom: 8px;
+  margin-left: 0px;
+}
+
+.sidebar-nav {
+  text-align: left;
+}
+@media only screen and (max-width: 767px) {
+  #sidebar-nav {
+  }
+}
+
+.sidebar-nav li {
+  margin-left: 0px;
+}
+
+.sidebar-nav li a {
+  background: none;
+  -o-transition: .4s;
+  -ms-transition: .4s;
+  -moz-transition: .4s;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.sidebar-nav li.active a {
+  color: #fff;
+  background: #3085d6;
+}
+
+.sidebar-nav li.active a:hover {
+  background: #3085d6;
+}
+
+.sidebar-nav a {
+  color: #555555;
+  display: block;
+  padding: 8px 14px;
+  padding-left: 0px;
+}
+
+.sidebar-nav a:hover {
+  background: #E9E9E9;
+}
+
+/* a#a52 a:hover {
+  background: white;
+}
+*/
+
+cite {  border-bottom: 1px solid $black;}
+
+.wrapper + .wrapper {
+  padding: 75px 20px 70px 20px;
+}
+
+.wrapper + .wrapper.nopad {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.wrapper.shaded {
+  background-color: #e9e9e9 !important;
+  /*background-size: cover;*/
+}
+
+.iconlinks {
+  text-decoration: none;
+  color:$body-font-color;
+  background-color: $global-bg-color;
+}
+
+.iconlinks:hover {
+  background-color: $global-bg-color;
+  text-decoration: none;
+}
+
+#quote {  
+  @include padding-leader($rhythm-spacing);
+  font-size: $norm;
+}
+
+#theborder {
+  border-top: $top-border-thickness $sd-lime solid;
+  padding-bottom: 16px;
+}
+
+#thelogo {
+  padding-top: 6px;
+}
+
+#footnote-container{
+  display: none;
+}
+
+sup {
+    vertical-align: baseline;
+    position: relative;
+    top: -0.45em;
+    font-size: $small;
+    font-weight: $font-weight-bold;
+}
+
+sub {
+    vertical-align: baseline;
+    position: relative;
+    top: 0.45em;
+    font-size: $small;
+    font-weight: $font-weight-bold; 
+
+}

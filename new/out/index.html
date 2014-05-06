@@ -1,0 +1,250 @@
+<p><a href="/"><img src="/_/img/sdog-bare.png" alt="" /></a></p>
+
+<blockquote>
+<p><strong>Functions delay binding; data structures induce binding. Moral:
+Structure data late in the programming process.</strong>—Alan Perlis,
+Epigrams in Programming</p>
+</blockquote>
+
+<h1 id="stardogdocstitle">Stardog Docs {#title}</h1>
+
+<h1 id="shortcutstoc-title">Shortcuts {#toc-title}</h1>
+
+<ol>
+<li><a href="http://stardog.com/dl/">Download</a> Stardog</li>
+<li><a href="quick-start">Quick Start Guide</a></li>
+<li><a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Support
+Forum</a></li>
+</ol>
+
+<h1 id="introductionchapter">Introduction {#chapter}</h1>
+
+<p>Stardog is a <a href="../docs/performance">fast</a>, lightweight, commercial RDF
+database for mission-critical apps: it supports <a href="http://www.w3.org/TR/2012/WD-sparql11-query-20120105/">SPARQL
+1.1</a>;As of
+@@VERSION@@, Stardog&#8217;s SPARQL 1.1 support does not include: UPDATE query
+language; federation; UPDATE protocol; no entailment regimes other than
+OWL 2 Direct Semantics. We will address these in upcoming releases. HTTP
+and the SNARL protocol for remote access and control;
+<a href="http://www.w3.org/RDF/">RDF</a> as a data model; and <a href="http://www.w3.org/TR/owl2-overview/">OWL
+2</a> for inference and data
+analytics.</p>
+
+<h2 id="acquiringstardogsupport">Acquiring Stardog &amp; Support</h2>
+
+<p><a href="http://stardog.com/dl/">Download</a> Stardog to get started. The <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog
+support
+forum</a>,
+<a href="&#x6d;&#x61;&#x69;&#108;&#116;&#111;&#58;&#115;&#x74;&#x61;&#114;&#x64;&#111;&#103;&#x40;&#x63;&#x6c;&#x61;&#114;&#107;&#x70;&#x61;&#x72;&#x73;&#105;&#x61;&#x2e;&#99;&#111;&#x6d;">&#x73;&#116;&#97;&#x72;&#100;&#x6f;&#x67;&#x40;&#x63;&#x6c;&#x61;&#114;&#x6b;&#112;&#x61;&#x72;&#115;&#x69;&#97;&#x2e;&#x63;&#x6f;&#109;</a>, is the place
+to report bugs, ask questions, etc. You can also ask questions on <a href="http://stackoverflow.com/">Stack
+Overflow</a> using the tag <em>stardog</em>.</p>
+
+<h2 id="contributing">Contributing</h2>
+
+<p>There are several open source components of Stardog; feel free to submit
+pull requests!</p>
+
+<ul>
+<li><a href="https://github.com/clarkparsia/stardog-docs">stardog-docs</a></li>
+<li><a href="https://github.com/clarkparsia/stardog.js">stardog.js</a></li>
+<li><a href="https://github.com/clarkparsia/stardog-groovy">stardog-groovy</a></li>
+<li><a href="https://github.com/clarkparsia/stardog-spring">stardog-spring</a></li>
+<li><a href="https://github.com/antoniogarrote/stardog-rb">stardog.rb</a></li>
+</ul>
+
+<h3 id="acknowledgments">Acknowledgments</h3>
+
+<p>Thanks to all the Stardog testers, especially Robert Butler, Al Baker,
+Marko A. Rodriguez, Brian Sletten, Alin Dreghiciu, Rob Vesse, Stephane
+Fallah, John &#8220;New Model Army&#8221; Goodwin, José Devezas, Chris
+Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl, Morton
+Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron
+Zettlemoyer, Jim Rhyne. Andrea Westerinen, Huy Phan.</p>
+
+<h1 id="theessentialdocumentationchapter">The Essential Documentation {#chapter}</h1>
+
+<p>This is documentation for Stardog <strong>@@VERSION@@</strong> (<strong>@@DATE@@</strong>). Check
+out the <a href="../docs/RELEASE_NOTES.txt">release notes</a> and the
+<a href="../docs/faq/">FAQ</a>.</p>
+
+<h2 id="quickstartguide"><a href="../docs/quick-start">Quick Start Guide</a></h2>
+
+<p>Instructions to get up-and-running very quickly with Stardog.</p>
+
+<h2 id="terminology"><a href="../docs/term/">Terminology</a></h2>
+
+<p>A <a href="../docs/term/">glossary</a> of technical terms used throughout the
+Stardog docs.</p>
+
+<h2 id="stardogcompatibilitypolicies:thefutureofqueriesdataandprograms"><a href="../docs/compatibility/">Stardog Compatibility Policies: The Future of Queries, Data, and Programs</a></h2>
+
+<p>A statement of the policies we will pursue in evolving Stardog beyond
+the 1.0 release.</p>
+
+<h2 id="administration"><a href="../docs/admin/">Administration</a></h2>
+
+<ol>
+<li><a href="../docs/admin/#cli">CLI Overview</a></li>
+<li><a href="../docs/admin/#admin-server">Administering a Stardog Server</a></li>
+<li><a href="../docs/admin/#admin-db">Administering a Stardog Database</a></li>
+<li><a href="../docs/admin/#security">Configuring Security</a></li>
+<li><a href="../docs/admin/#search">Managing Search Indexes</a></li>
+<li><a href="../docs/admin/#optimizing-bulk-load">Optimizing Bulk Data Loading</a></li>
+<li><a href="../docs/admin/#resource-requirements">Resource Requirements for
+Stardog</a></li>
+<li><a href="../docs/admin/#using-windows">Using Stardog on Windows</a></li>
+</ol>
+
+<h2 id="usingstardog"><a href="../docs/using/">Using Stardog</a></h2>
+
+<ol>
+<li><a href="../docs/using/#using-stardog">Using Stardog</a></li>
+<li><a href="../docs/using/#query">Querying a Database</a></li>
+<li><a href="../docs/using/#add-remove">Adding and Removing</a></li>
+<li><a href="../docs/using/#export">Exporting a Database</a></li>
+<li><a href="../docs/using/#search">Searching</a></li>
+</ol>
+
+<h2 id="security"><a href="../docs/security">Security</a></h2>
+
+<ol>
+<li><a href="../docs/security/#model">The User &amp; Security Model</a></li>
+<li><a href="../docs/security/#cli">Command-line Interface</a></li>
+<li><a href="../docs/security/#api">Programmatic Access</a></li>
+<li><a href="../docs/security/#deployment">Deploying Stardog Securely</a></li>
+</ol>
+
+<h2 id="integrityconstraintvalidation"><a href="../docs/sdp">Integrity Constraint Validation</a></h2>
+
+<ol>
+<li><a href="../docs/sdp/#intro">Background &amp; Terminology</a></li>
+<li><a href="../docs/sdp/#validation">Validating RDF with Closed World Integrity
+Constraints</a></li>
+</ol>
+
+<h2 id="owl2reasoning"><a href="../docs/owl2">OWL 2 Reasoning</a></h2>
+
+<ol>
+<li><a href="../docs/owl2/#reasoning">Using Stardog&#8217;s Reasoning Capabilities</a></li>
+<li><a href="../docs/owl2/#trouble">Not Getting Expected Answers?</a></li>
+<li><a href="../docs/owl2/#issues">Known Issues</a></li>
+<li><a href="../docs/owl2/#guidelines">Guidelines</a></li>
+<li><a href="../docs/owl2/#query">Technical Background</a></li>
+</ol>
+
+<h2 id="programmingwithjava"><a href="../docs/java/">Programming with Java</a></h2>
+
+<ol>
+<li><a href="../docs/java/#intro">Introduction</a></li>
+<li><a href="../docs/java/#admin">Creating and Administering Databases</a></li>
+<li><a href="../docs/java/#connection">Creating a Connection String</a></li>
+<li><a href="../docs/java/#security">Security in Stardog</a></li>
+<li><a href="../docs/java/#snarl">Using SNARL</a></li>
+<li><a href="../docs/java/#sesame">Using Sesame</a></li>
+<li><a href="../docs/java/#jena">Using Jena</a></li>
+<li><a href="../docs/java/#client-server">Client-Server Stardog</a></li>
+<li><a href="../docs/java/#embed">Embedded Stardog</a></li>
+<li><a href="../docs/java/#pool">Connection Pooling</a></li>
+<li><a href="../docs/java/#deprecation">Deprecation &amp; Backward Compatibility</a></li>
+</ol>
+
+<h2 id="networkprogramming"><a href="../docs/network/">Network Programming</a></h2>
+
+<ol>
+<li><a href="../docs/network/#http">SPARQL Protocol: HTTP</a></li>
+<li><a href="../docs/network/#extended-http">Extended HTTP Protocol</a></li>
+<li><a href="../docs/network/#snarl">SNARL: The Native Stardog Remote API</a></li>
+</ol>
+
+<h2 id="programmingwithspring"><a href="../docs/spring">Programming with Spring</a></h2>
+
+<ol>
+<li><a href="../docs/spring/#intro">Introduction</a></li>
+<li><a href="../docs/spring/#building">Building Spring for Stardog</a></li>
+<li><a href="../docs/spring/#overview">Overview</a></li>
+<li><a href="../docs/spring/#basic">Basic Spring</a></li>
+<li><a href="../docs/spring/#batch">Spring Batch</a></li>
+<li><a href="../docs/spring/#examples">Examples</a></li>
+</ol>
+
+<h2 id="programmingwithgroovy"><a href="../docs/groovy/">Programming with Groovy</a></h2>
+
+<ol>
+<li><a href="../docs/groovy/#intro">Introduction</a></li>
+<li><a href="../docs/groovy/#building">Building Groovy for Stardog</a></li>
+<li><a href="../docs/groovy/#overview">Overview</a></li>
+<li><a href="../docs/groovy/#examples">Examples</a></li>
+</ol>
+
+<h2 id="themanpages">The Man Pages</h2>
+
+<p><code>stardog-admin</code></p>
+
+<blockquote>
+<p><code>db copy, db create, db drop, db list, db migrate, db offline, db online, db optimize, db status.</code></p>
+
+<p><code>icv add, icv drop, icv remove.</code></p>
+
+<p><code>metadata get, metadata set.</code></p>
+
+<p><code>query kill, query list, query status.</code></p>
+
+<p><code>role add, role grant, role list, role permission, role remove, role revoke.</code></p>
+
+<p><code>server start, server stop.</code></p>
+
+<p><code>user add, user disable, user enable, user addrole, user removerole, user grant, user list, user passwd, user permission, user remove, user revoke.</code></p>
+</blockquote>
+
+<p><code>stardog</code></p>
+
+<blockquote>
+<p><code>data add, data export, data remove, data size.</code></p>
+
+<p><code>icv convert, icv validate.</code></p>
+
+<p><code>namespace add, namespace list, namespace remove.</code></p>
+
+<p><code>query execute, query explain, query search.</code></p>
+
+<p><code>reasoning consistency, reasoning explain.</code></p>
+</blockquote>
+
+<h1 id="knownissueschapter">Known Issues {#chapter}</h1>
+
+<p>As of <strong>@@VERSION@@</strong>, the known issues include:</p>
+
+<ol>
+<li>Asking for all individuals with reasoning via the query
+<code>{?s a owl:Thing}</code> might also retrieve some classes and properties.
+<strong>WILLFIX</strong></li>
+<li>Schema queries do not bind graph variables.</li>
+<li>Dropping a database with the CLI will also delete all the data files
+on your Stardog home directory associated with that database. If you
+want to keep the data files but only remove the database from the
+system catalog, then you need to manually copy these files to
+another location before deleting the database.</li>
+<li>If relative URIs exist in the data files passed to create, add, or
+remove commands, then they will be resolved using the constant base
+URI <code>http://api.stardog.com/</code> iff the format of the file allows base
+URIs. Turtle and RDF/XML formats allows base URIs but N-Triples
+format doesn&#8217;t allow base URIs and relative URIs in N-Triples data
+will cause errors.</li>
+<li>queries with <code>FROM NAMED</code> with a named graph that is <em>not</em> in
+Stardog will <strong>not</strong> cause Stardog to believe that it is, in fact,
+Maven, i.e., to automagically download the data from an arbitrary
+HTTP URL and include it in the query. Stardog will <em>only</em> evaluate
+queries over data that has been loaded into it.</li>
+<li>SPARQL queries without a context or named graph are executed against
+the default, unnamed graph. In Stardog, the default graph is <em>not</em>
+the union of all the named graphs and the default graph. Note: this
+behavior is configurable via the <code>query.all.graphs</code> configuration
+parameter.</li>
+<li>RDF literals are limited to 8MB (after compression) in Stardog.
+Input data with literals larger than 8MB (after compression) will
+raise an exception.</li>
+</ol>
+
+<h1 id="notes.fn">Notes {.fn}</h1>
+
+<p><a href="#" title="Back to top">⌂</a></p>

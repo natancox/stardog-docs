@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <title><%- @getPreparedTitle() %></title>
+  <script src="/js/libs/modernizr-2.6.2.min.js"></script>
+  <meta charset='utf-8'>
+  <%- @getBlock("meta").toHTML() %>
+  <%- @getBlock("styles").add(@site.styles).toHTML() %>
+  <!--     //a block for ipad, etc... might should go in meta -->
+  </head>
+
+<body>
+<!--
+  <div class="" id="the-content">
+    <div class="wrapper shaded" id="topblock">
+    <div class="row">
+      <div class="four columns">
+        <a href="/"><img class="resrc" src="http://app.resrc.it/S=H55/R=L/http://docs.stardog.com/img/logotype.png"/></a>
+      </div>
+      <div class="eight columns">
+        
+      </div>
+    </div>
+  </div>
+-->
+<div id="page-wrap">
+ <div id="the-content">
+  <div id="theborder" class="wrapper">
+    <!-- full bleed top border styling.... -->
+      <div class="twelve columns"></div>
+  </div>
+
+    <div class="row">
+        <div class="four columns stretch-container" id="sidebar1">
+          <nav id="sidebar-nav-holder" class="fixed vertical-nav stretch-y" gumby-fixed="top">
+            <div id="sidebar-logo">
+              <a id="a52" style="text-decoration: none; background-color: none; border: none; color: none;" href="http://stardog.com/">
+                <img id="thelogo" src="http://docs.stardog.com/img/sd.png"/>       
+              </a>
+            </div>
+            <% if @document.toc: %>
+              <%- @partial("toc.html.eco", @, {tocItems: @document.tableOfContents})%>
+              <p id="tocnav">
+              <% if not @document.root: %>
+                <a  class="iconlinks" href="/"><i style="padding-left:0px; margin-left:0px;" class="icon-home iconlinks"></i></a>&nbsp;
+              <% end %>
+              <a href="#" id="" class="skip iconlinks" gumby-easing="easeInOutQuad" gumby-goto="top" gumby-duration="2000">
+                <i style="padding-left:0px; margin-left:0px;" class="icon-publish iconlinks"></i>
+              </a> &nbsp;
+              <a href="https://twitter.com/stardog_db" class="iconlinks">
+                <i style="padding-left:0px; margin-left:0px;" class="icon-twitter iconlinks"></i>
+              </a>
+              </p>
+            <% end %>
+          </nav>
+        </div>
+
+        <div class="eight columns">
+          <!-- woof! -->
+            <div class="row">
+              <p id="quote"><em><strong><%- @document.quote %></strong></em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
+              <div class="pull_left"><h1 id="title-subhead"><%- @document.title %></h1></div>
+            </div>
+          <!-- summary -->
+          <% if @document.summary: %>
+            <p id="summary"><em><%- @document.summary %></em></p>
+          <% end %>
+          <div id="mdblock">
+            <%- @content %>
+          </div>
+          <div class="hidden" id="footnote-container">
+            <h2>Notes</h2>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="wrapper shaded" id="subfoot">
+      <section class="row">
+        <div class="twelve columns">
+            <div class="four columns">
+              <a style="text-decoration: none; border-bottom: 0;" href="http://clarkparsia.com/"><img id="footer-logo" style="max-width: 50%;" src="/img/cp.png"></a>
+              <div> </div>
+              <!-- follow us on Twitter -->
+            </div>
+            <div class="eight columns">
+              <% if not @document.root: %>
+                <h4>This is <span id="footer-subhead"><%- @document.title %></span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> <t>version</t>.</h4>
+              <%end%>
+              <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
+              <p class="copywood">&copy;2010&ndash;<%- new Date().getFullYear() %> Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+            </div>
+        </div>
+      </section>
+</div>
+
+<%- @getBlock("scripts").add(@site.scripts).toHTML() %>
+
+</body>
+
+</html>

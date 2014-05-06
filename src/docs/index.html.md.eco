@@ -1,0 +1,127 @@
+---
+quote: "Functions delay binding; data structures induce binding. Moral: Structure data late in the programming process."
+layout: "default"
+title: "Stardog Docs"
+root: true
+toc: true
+summary:
+---
+
+This is **Stardog <t>version</t>** (<t>reldate</t>--[release notes](/RELEASE_NOTES.txt) and [timeline](/timeline)) documentation. Check out the [Quick Start Guide](/quick-start/) to get Stardog installed and running in *five easy steps*.
+
+## Introducing Stardog
+
+Stardog is a graph database--fast, lightweight, pure Java storage for mission-critical apps--that supports:
+
+- the [RDF](http://www.w3.org/RDF/) data model
+- [SPARQL 1.1](http://www.w3.org/TR/2012/WD-sparql11-query-20120105/) query language
+- HTTP and SNARL protocols for remote access and control
+- [OWL 2](http://www.w3.org/TR/owl2-overview/) and rules for inference and data
+analytics
+- Java, JavaScript, Ruby, Python, .Net, Groovy, Spring, Clojure etc.
+
+### Downloading Stardog
+
+[Download](http://stardog.com/#download) Stardog to get started. The [Stardog support forum](https://groups.google.com/a/clarkparsia.com/group/stardog/about),
+[stardog@clarkparsia.com](mailto:stardog@clarkparsia.com), is the place
+to report bugs, ask questions, etc. You can also ask questions on [Stack
+Overflow](http://stackoverflow.com/) using the tag *stardog*.
+
+### Commercial Licensing & Support
+
+**For information about [Stardog commercial licensing](http://stardog.com/#plans), please [email](mailto:sales@clarkparsia.com) for more details.**
+
+### Contributing
+
+There are several open source components of Stardog; feel free to submit
+pull requests: [stardog-docs](https://github.com/clarkparsia/stardog-docs), [stardog.js](https://github.com/clarkparsia/stardog.js),
+[stardog-groovy](https://github.com/clarkparsia/stardog-groovy), [stardog-spring](https://github.com/clarkparsia/stardog-spring),
+[stardog.rb](https://github.com/antoniogarrote/stardog-rb), and [stardog-clj](https://github.com/clarkparsia/stardog-clj). Many thanks to everyone who's
+contributed<fn>Thanks to all Stardog users, contributors, testers, etc., especially Robert Butler, Al Baker, Marko A. Rodriguez, Brian Sletten, Alin Dreghiciu, Rob Vesse, Stephane
+Fallah, John "New Model Army" Goodwin, José Devezas, Chris
+Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl, Morton
+Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron
+Zettlemoyer, Jim Rhyne, Andrea Westerinen, Huy Phan, Zach Whitley, Maurice Rabb.</fn> so far.
+
+## Using Stardog
+
+Covers basic installation and starting a Stardog Server in *five easy steps*.
+
+### [The Basics: Query, Write, Search](/using/)
+<%- @partial("using.html") %>
+
+### [Stardog (Web) Console](/console/)
+<%- @partial("console.html") %>
+
+## Administering Stardog
+
+Administering Stardog Server, databases, including configuration and deployment information.
+
+### [Administration](/admin/)
+<%- @partial("admin.html") %>
+
+### [Security](/security)
+<%- @partial("security.html")%>
+
+<!--
+### [High Availability](/ha)
+<%- @partial("ha.html")%>
+-->
+
+## Programming Stardog
+
+Everything from reasoning, data validation, and SPARQL to programming Stardog with Java, JavaScript, and many other languages, as well as the documentation for Stardog Web.
+
+### [Programming with Java](/java/)
+<%- @partial("java.html")%>
+
+### [Integrity Constraint Validation](/icv)
+<%- @partial("icv.html")%>
+
+### [OWL 2 Reasoning](/owl2)
+<%- @partial("owl2.html")%>
+
+### [HTTP Programming](/http/)
+<%- @partial("http.html")%>
+
+### [Programming with Spring](/spring)
+<%- @partial("spring.html")%>
+
+### [Programming with Groovy](/groovy/)
+<%- @partial("groovy.html")%>
+
+### [Programming with .Net](/dotnet/)
+<%- @partial("dotnet.html")%>
+
+### [Programming with Clojure](/clojure/)
+<%- @partial("clojure.html")%>
+
+### [Programming with Javascript](http://clarkparsia.github.io/stardog.js/)
+
+The documentation for [stardog.js](http://clarkparsia.github.io/stardog.js), which is available on [Github](https://github.com/clarkparsia/stardog.js) and [npm](https://npmjs.org/package/stardog).
+
+### [SNARL Migration Guide](/migration)
+<%- @partial("migration.html") %>
+
+## Understanding Stardog
+
+Background information on tuning, terminology, known issues, compatibility policies, etc.
+
+### [The Man Pages](/manpages)
+<%- @partial("manpages.html") %>
+
+### [Stardog Performance: Benchmarks, Tuning, Tips](/performance)
+<%- @partial("performance.html")%>
+
+### [Frequently Asked Questions](/faq)
+<%- @partial("faq.html")%>
+
+### [Stardog Compatibility Policies](/compatibility/)
+A statement of the policies we will pursue in evolving Stardog beyond
+the 1.0 release.
+
+### [Known Issues](/known-issues)
+Check here first before reporting an issue or bug.
+
+### [Terminology](/terms/)
+A glossary of technical terms used in these docs.

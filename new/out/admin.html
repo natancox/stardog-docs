@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Stardog 1.2.3 Docs: Administration</title><script src="js/libs/modernizr-2.6.2.min.js"></script><meta http-equiv="X-Powered-By" content="DocPad v6.42.2"/><link  rel="stylesheet" href="css/gumby.css" />
+    <!--add fonts to styles & meta?-->
+    <!--!= getBlock("fonts").toHTML()-->
+    <!--footnote processor (could put that into scripts...)-->
+    <!--a block for ipad, etc... might should go in meta-->
+  </head>
+  <body><div class="navbar" id="nav1">
+    <div class="row">
+      <a class="toggle" gumby-trigger="#nav1 &gt; .row &gt; ul" href="#"><i class="icon-menu"></i></a>
+      <h3 class="five columns logo">
+        <a href="http://stardog.com/">
+          <img style="max-width: 40%;" src="/img/logotype.png" gumby-retina="">
+        </a>
+      </h3>
+      <ul class="seven columns">
+        <li><a href="#">Chapters</a></li>
+        <li>
+          <a href="#">Related</a>
+          <div class="dropdown">
+            <ul>
+              <li><a href="#">Item</a></li>
+              <li><a href="#">Item</a></li>
+              <li><a href="#">Item</a></li>
+              <li>
+                <a href="#">I HAVE STUFF NESTED UNDER ME</a>
+                <div class="dropdown">
+                  <ul>
+                    <li><a href="">nested</a></li>
+                    <li><a href="">nested</a></li>
+                    <li><a href="">nested</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li><a href="#">Item</a></li>
+              <li><a href="#">Item</a></li>
+              <li><a href="#">Item</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="#">Java API</a></li>
+        <li class="field"><input class="search input" type="search" placeholder="Search"></li>
+      </ul>
+    </div>
+  </div>
+    <!--header partial or include (img, quote, masthead/title, <something>)-->
+    <div id="the-header">
+      <div class="row valign">
+        <div class="twelve columns">
+          <div id="header-quote">
+            <p><strong>In man-machine symbiosis, it is man who must adjust: The machines can't.</strong>&mdash;Alan Perlis,
+              <cite>Epigrams in Programming</cite>
+            </p>
+          </div>
+          <div id="title">
+            <h1 class="nlm"><span id="title-masthead"><img src="/img/stardog-FLAT.png" style="max-width: 25%;"></span><span id="title-subhead">Administration</span></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="the-content">
+      <div class="row">
+        <div class="twelve columns"><p>In this chapter we describe the administration of Stardog Server and
+Stardog databases, including how to use the various
+Stardog command-line programs and how to configure a Stardog Server and
+its databases. An important part of Stardog administration is security,
+which is discussed in a separate <a href="../security">chapter</a>.</p>
+
+<h2 id="commandlineinterface">Command Line Interface</h2>
+
+<p>Stardog&#8217;s command-line interface (CLI) comes in two parts:</p>
+
+<ol>
+<li><code>stardog-admin</code>: admininstrative client (uses HTTP or SNARL)</li>
+<li><code>stardog</code>: a user&#8217;s client (uses HTTP or SNARL)</li>
+</ol>
+
+<p>The admin and user&#8217;s tools operate on local or remote databases, using
+either HTTP or SNARL Protocols. Both of these CLI tools are Unix-only,
+are self-documenting, and the help output of these tools is their
+canonical documentation.</p>
+
+<p>The CLI tools were completely rewritten for Stardog 1.2: online
+documentation, including examples, is much more extensive; and the
+commands and their arguments are rationalized and consistent. The
+documentation of these tools in this chapter goes into more detail,
+offers background, etc. But if there is a conflict between this
+documentation and the output of the CLI tools&#8217; <code>help</code> command, the CLI
+tools&#8217; output is correct.</p>
+
+<h3 id="help">Help</h3>
+
+<p>To use the Stardog CLI tools, you can start by asking them to display
+help:</p>
+
+<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>stardog help
+</code></pre>
+
+<p>Or:</p>
+
+<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>stardog-admin help
+</code></pre>
+
+<p>And for the very laziest among us, these work too:</p>
+
+<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>stardog
+
+<span class="variable">$ </span>stardog-admin
+</code></pre>
+
+<h3 id="securityconsiderations">Security Considerations</h3>
+
+<p>The rationale for separating functionality into two CLI programs is
+largely based on security, since <code>stardog-admin</code> will need, in
+production environments, to have considerably tighter access
+restrictions than <code>stardog</code>.</p>
+
+<div class="metro danger large label">Security Notice</div>
+
+<p>For usability, Stardog 1.2.3 provides a
+default user &#8220;admin&#8221; and password &#8220;admin&#8221; in <code>stardog-admin</code> commands
+if no user or password are given. This is obviously <strong>not secure</strong>;
+before any serious use of Stardog is contemplated, read the
+<a href="../security">security</a> chapter at least twice, and
+then&#8212;minimally&#8212;change the administrative password to something we
+haven&#8217;t published on the interwebs!</p>
+
+<h3 id="commandgroups">Command Groups</h3>
+
+<p>The CLI tools both contain a lot of functionality; we&#8217;ve introduced
+&#8220;command groups&#8221; to make CLI subcommands easier to find. To print help
+for a particular command group, just ask for help:</p>
+
+<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>stardog help [command_group_name]
+</code></pre>
+
+<p>The command groups and their subcommands include</p>
+
+<ul>
+<li>data: add, remove, export;</li>
+<li>query: search, execute, explain, status;</li>
+<li>reasoning: explain, consistency; namespace: add, list, remove;</li>
+<li>server: start, stop;</li>
+<li>metadata: get, set;</li>
+<li>user: add, drop, edit, grant, list, permission, revoke, passwd;</li>
+<li>role: add, drop, grant, list, permission, revoke;</li>
+<li>db: copy, create, drop, migrate, optimize, list, online, offline.</li>
+</ul>
+
+<p>The main help command for either CLI tool will print a listing of the
+command groups:</p>
+
+<pre class="highlighted"><code class="http"><span class="attribute">usage</span>: <span class="string">stardog  []</span>
+
+<span class="vala">The most commonly used stardog commands are:
+    data        Commands which can modify or dump the contents of a database
+    help        Display help information
+    icv         Commands <span class="keyword">for</span> working with Stardog Integrity Constraint support
+    <span class="class"><span class="keyword">namespace</span>   <span class="title">Commands</span> <span class="title">which</span> <span class="title">work</span> <span class="title">with</span> <span class="title">the</span> <span class="title">namespaces</span> <span class="title">defined</span> <span class="title">for</span> <span class="title">a</span> <span class="title">database</span>
+    <span class="title">query</span>       <span class="title">Commands</span> <span class="title">which</span> <span class="title">query</span> <span class="title">a</span> <span class="title">Stardog</span> <span class="title">database</span>
+    <span class="title">reasoning</span>   <span class="title">Commands</span> <span class="title">which</span> <span class="title">use</span> <span class="title">the</span> <span class="title">reasoning</span> <span class="title">capabilities</span> <span class="title">of</span> <span class="title">a</span> <span class="title">Stardog</span> <span class="title">database</span>
+    <span class="title">version</span>     <span class="title">Prints</span> <span class="title">information</span> <span class="title">about</span> <span class="title">this</span> <span class="title">version</span> <span class="title">of</span> <span class="title">Stardog</span>
+
+<span class="title">See</span> '<span class="title">stardog</span> <span class="title">help</span> ' <span class="title">for</span> <span class="title">more</span> <span class="title">information</span> <span class="title">on</span> <span class="title">a</span> <span class="title">specific</span> <span class="title">command</span>.
+</span></code></pre>
+
+<p>To get more information about a particular command, simply issue the
+help command for it including its command group:</p>
+
+<pre class="highlighted"><code class="erlang">$ stardog help <span class="keyword">query</span> execute
+</code></pre>
+
+<p>Finally, everything here about command groups, commands, and online help
+works equally well for <code>stardog-admin</code>.</p>
+
+<p>The result of all these changes is a better user experience:</p>
+
+<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">stardog</span> <span class="comment">reasoning</span> <span class="comment">consistency</span> <span class="literal">-</span><span class="comment">u</span> <span class="comment">myUsername</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">myPassword</span> <span class="literal">-</span><span class="comment">r</span> <span class="comment">QL</span> <span class="comment">myDB</span>
+
+<span class="comment">$</span> <span class="comment">stardog</span>-<span class="comment">admin</span> <span class="comment">db</span> <span class="comment">migrate</span> <span class="literal">-</span><span class="comment">u</span> <span class="comment">myUsername</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">myPassword</span> <span class="comment">myDb</span>
+</code></pre>
+
+<h3 id="autocomplete">Autocomplete</h3>
+
+<p>Stardog 1.2 also includes support for CLI autocomplete via the bash
+autocomplete feature. To install autocomplete for bash shell, you&#8217;ll
+first want to make sure bash completion is installed:</p>
+
+<h4 id="homebrew">Homebrew</h4>
+
+<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>brew install bash-completion
+</code></pre>
+
+<p>Then enable it in .bash_profile:</p>
+
+<pre class="highlighted"><code class="brainfuck"><span class="comment">if</span> <span class="title">[</span> <span class="literal">-</span><span class="comment">f</span> <span class="comment">`brew</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">prefix`/etc/bash_completion</span> <span class="title">]</span><span class="comment">;</span> <span class="comment">then</span>
+<span class="string">.</span> <span class="comment">`brew</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">prefix`/etc/bash_completion</span>
+<span class="comment">fi</span>
+</code></pre>
+
+<h4 id="macports">MacPorts</h4>
+
+<p>First, you really should be using Homebrew; you feel me?</p>
+
+<p>If not, then:</p>
+
+<pre class="highlighted"><code class="sql">$ su<span class="operator"><span class="keyword">do</span> port install bash-completion
+</code></pre>
+
+<p>Enable it in .bash_profile:</p>
+
+<pre class="highlighted"><code class="ruby"><span class="keyword">if</span> [ -f /opt/local/etc/bash_completion ]; <span class="keyword">then</span>
+    . <span class="regexp">/opt/local</span><span class="regexp">/etc/bash</span>_completion
+fi
+</code></pre>
+
+<p>Finally, an example for our Linux friends:</p>
+
+<h4 id="ubuntu">Ubuntu</h4>
+
+<pre class="highlighted"><code class="sql">$ su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> install bash-completion
+</code></pre>
+
+<h4 id="fedora">Fedora</h4>
+
+<pre class="highlighted"><code class="sql">$ su<span class="operator"><span class="keyword">do</span> yum install bash-completion
+</code></pre>
+
+<h4 id="allplatforms">All Platforms</h4>
+
+<p>Now put the Stardog autocomplete script—<code>stardog-completion.sh</code>—into yr
+bash_completion.d directory, typically one of
+<code>/etc/bash_completion.d, /usr/local/etc/bash_completion.d or ~/bash_completion.d.</code></p>
+
+<p>Alternately you can put it anywhere you want, but tell <code>.bash_profile</code>
+about it:</p>
+
+<pre class="highlighted"><code class="objectivec">source ~/<span class="variable">.stardog</span>-completion<span class="variable">.sh</span>
+</code></pre>
+
+<h3 id="howtomakeaconnectionstring">How to Make a Connection String</h3>
+
+<p>We&#8217;ve simplified connection strings in Stardog 1.2 to improve usability.
+A connection string may consist solely of the database name in cases
+where (a) Stardog is running on the standard ports; (b) SNARL is
+enabled; and &copy; the command is invoked on the same machine where the
+server is running. In any other cases, a &#8220;fully qualified&#8221; connection
+string, as described below, is required.</p>
+
+<p>Additionally, we&#8217;ve rationalized the method of specifying the connection
+string: instead of using the <code>-c</code> option in a command, the connection
+string is now assumed to be the first argument of the command.</p>
+
+<p>Some CLI subcommands require a Stardog connection string as an argument
+to identify the server and database upon which operations are to be
+performed. Connection strings are URLs and may either be local to the
+machine where the CLI is run or they may be on some other remote
+machine. There are two URL schemes recognized by Stardog: <code>http://</code> and
+<code>snarl://</code>. The former uses Stardog&#8217;s (extended) version of SPARQL
+Protocol; the latter uses Stardog&#8217;s native data access protocol, called
+SNARL, which is based on Google&#8217;s Protocol Buffers.</p>
+
+<p>As of Stardog 1.2, in <code>stardog-admin</code> the <code>--server</code> option for setting
+the default server is a global arg.</p>
+
+<p>Note: <code>stardog-admin</code> and <code>stardog</code> user&#8217;s client works with HTTP or
+SNARL Protocol, interchangeably.SNARL is faster than HTTP in cases where
+payloads to and from the server are relatively <em>small</em>; for payloads
+that are large, raw transfer time dominates and there isn&#8217;t much or any
+difference in performance.</p>
+
+<h3 id="exampleconnectionstrings">Example Connection Strings</h3>
+
+<p>To make a connection string, you need to know the URL scheme; the
+machine name and port the Stardog Server is running on; any (optional)
+URL path to the database (it&#8217;s very unlikely you&#8217;ll need this); and the
+name of the database:</p>
+
+<pre class="highlighted"><code class="haskell">{scheme}{machineName}:{port}/{<span class="typedef">databaseName};<span class="container">{<span class="title">connectionOptions</span>}</span></span>
+<span class="title">snarl</span>://server/billion-triples-punk
+<span class="title">http</span>://localhost:<span class="number">5000</span>/myDatabase
+<span class="title">http</span>://<span class="number">169.175</span><span class="number">.100</span><span class="number">.5</span>:<span class="number">1111</span>/myOtherDatabase;reasoning=<span class="type">QL</span>
+<span class="title">snarl</span>://stardog:<span class="number">8888</span>/the_database
+<span class="title">snarl</span>://localhost:<span class="number">1024</span>/db1;reasoning=<span class="type">NONE</span>
+</code></pre>
+
+<p>Using the default ports for SNARL and HTTP protocols simplifies
+connection strings. <code>connectionOptions</code> are a series of <code>;</code> delimited
+key-value pairs which themselves are <code>=</code> delimited. Key names must be
+<strong>lowercase</strong> and their values are case-sensitive.</p>
+
+<p>Finally, in the case where the scheme is SNARL, the machine is
+&#8220;localhost&#8221;, and the port is the default SNARL port, a connection string
+may consist of the &#8220;databaseName&#8221; only.</p>
+
+<h2 id="stardogserveradministration">Stardog Server Administration</h2>
+
+<p>Stardog Server is multi-protocol beast: it supports both SNARL and HTTP
+protocols. The default port for SNARL is <strong>5820</strong>; the default port for
+HTTP is <strong>5822</strong>. <strong>All administrative functions work over SNARL or HTTP
+protocols.</strong></p>
+
+<p>To use any of these commands against a remote server, pass a global
+<code>--server</code> argument with an HTTP or SNARL URL.</p>
+
+<p><strong>Note</strong>: If you are running <code>stardog-admin</code> on the same machine where
+Stardog Server is running, and you&#8217;re using the default protocol ports,
+then you can omit the <code>--server</code> argument and simply pass a database
+name via <code>-n</code> option. Most of the following commands assume this case
+for ease of exposition.</p>
+
+<h3 id="serversecurity">Server Security</h3>
+
+<p>See the <a href="../security">Security Chapter</a> for information about Stardog&#8217;s
+security system, secure deployment patterns, and more.</p>
+
+<h3 id="configuringstardogserver">Configuring Stardog Server</h3>
+
+<p><strong>Note</strong>: the properties described in this section control the behavior
+of the Stardog Server (whether HTTP or SNARL protocols are in use); to
+set properties or other metadata on individual Stardog <em>databases</em>, see
+<a href="#admin-database">Administering a Database</a>.</p>
+
+<p>Stardog Server&#8217;s behavior can be configured via the JVM arg
+<code>stardog.home</code>, which sets Stardog Home, overriding the value of
+<code>STARDOG_HOME</code> set as an environment variable. Stardog Server&#8217;s behavior
+can also be configured via a <code>stardog.properties</code>—which is a Java
+Properties file—file in <code>STARDOG_HOME</code>. To change the behavior of a
+running Stardog Server, it is necessary to restart it.</p>
+
+<p>The following twiddly knobs for Stardog Server are available in
+<code>stardog.properties</code>:</p>
+
+<ol>
+<li><code>strict.parsing</code>: Controls whether Stardog parses RDF strictly
+(<code>true</code>, the default) or laxly (<code>false</code>)</li>
+<li><code>query.all.graphs</code>: Controls what Stardog Server queries over; if
+<code>true</code>, it will query over the default graph and the union of all
+named graphs; if <code>false</code> (the default), it will query only over the
+default graph.</li>
+<li><code>query.timeout</code>: Sets the upper bound for query execution time
+that&#8217;s inherited by all databases unless explicitly overriden. See
+<a href="#manage-queries">Query Management</a> section below for details.</li>
+<li><code>logging.[access,audit].[enabled,type,file]</code>: Controls whether and
+how Stardog logs server events; described in detail below.</li>
+<li><code>logging.slow_query.enabled</code></li>
+<li><code>logging.slow_query.time</code></li>
+<li><code>logging.slow_query.type</code>: The three slow query logging options are
+used in the following way. To enable logging of slow queries, set
+<code>enabled</code> to <code>true</code>. To define what counts as a &#8220;slow&#8221; query, set
+<code>time</code> to a time duration value (positive integer plus &#8220;h&#8221;, &#8220;m&#8221;,
+&#8220;s&#8221;, or &#8220;ms&#8221; for hours, minutes, seconds, or milliseconds
+respectively). To determine the type of logging, set <code>type</code> to
+<code>text</code> (the default) or <code>binary</code>. <strong>To state the obvious explicitly,
+a <code>logging.slow_query.time</code> that exceeds the value of
+<code>query.timeout</code> will result in null logs.</strong></li>
+<li><code>database.connection.timeout.ms</code>: Controls how long, in
+milliseconds,connections may idle before being automatically closed
+by the server.</li>
+<li><code>http.max.connections</code>: The next two parameters control the maximum
+number of simultaneous connections for a client; for more
+information, see the <a href="%20http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html">relevant Apache
+docs</a>.</li>
+<li><code>http.max.get.query.length</code>: The length in characters of the longest
+SPARQL query that will be serialized via HTTP <code>GET</code>; queries longer
+are serialized via <code>POST</code>.</li>
+<li><code>bnode.preserve.id</code>: Determines how the Stardog parser handles bnode
+identifiers that may be present in (some) RDF input. If this
+property is enabled (i.e., <code>TRUE</code>), parsing and data loading
+performance are improved; but the other effect is that if distinct
+input files use (randomly or intentionally) the same bnode
+identifier, that bnode will point to one and the same node in the
+database. If you have input files that use explicit bnode
+identifiers, and multiple files may use the asame bnode idenitifers,
+and you don&#8217;t want those bnodes to be smushed into a single node in
+the database, then this configuration option should be disabled (set
+to <code>FALSE</code>).</li>
+</ol>
+
+<h3 id="startingstoppingtheserver">Starting &amp; Stopping the Server</h3>
+
+<p><strong>Note</strong>: Unlike the other <code>stardog-admin</code> subcommands, starting and
+stopping the server may only be run locally, i.e., on the same machine
+as Stardog Server will run on.</p>
+
+<p>The simplest way to start the server—running on the default ports,
+detaching to run as a daemon, and writing <code>stardog.pid</code> and
+<code>stardog.log</code> to the current working directory— is</p>
+
+<pre class="highlighted"><code class="sql">$ stardog-admin server <span class="operator"><span class="keyword">start</span>
+</code></pre>
+
+<p>To specify parameters:</p>
+
+<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">stardog</span>-<span class="comment">admin</span> <span class="comment">server</span> <span class="comment">start</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">logfile=stardog</span>.<span class="comment">log</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">no</span>-<span class="comment">docs</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">http=8080</span>
+</code></pre>
+
+<p><code>--no-docs</code> will tell Stardog not to serve its documentation over HTTP
+at <code>http://SERVER/docs</code>, which it will otherwise do by default.</p>
+
+<p>Note: ports can be specified using the properties <code>--snarl</code> and
+<code>--http</code>. The HTTP interface can be disabled by using the flag
+<code>--no-http</code>; the SNARL interface may not be disabled.</p>
+
+<p>To shut down the server:</p>
+
+<pre class="highlighted"><code class="vbscript">$ stardog-admin <span class="built_in">server</span> <span class="keyword">stop</span>
+</code></pre>
+
+<p>If you started stardog on a port other than the default, or want to shut
+down a remote server, you can simply use the <code>--server</code> option to
+specify the location of the server you wish to shut down</p>
+
+<h3 id="servingstardogdocumentation">Serving Stardog Documentation</h3>
+
+<p>By default, if you start Stardog Server with HTTP enabled, then Stardog
+will serve the system documentation at <code>http://SERVER/docs</code> (which is
+why &#8220;docs&#8221; is an invalid database name).</p>
+
+<p>In a production deployment, you might want to disable documentation
+serving, which you can do by passing <code>--no-docs</code> on server startup or by
+disabling HTTP altogether.</p>
+
+<h3 id="lockingstardoghome">Locking Stardog Home</h3>
+
+<p>Stardog Server will lock <code>STARDOG_HOME</code> when it starts to prevent
+synchronization errors and other nasties if you start more than one
+Stardog Server with the same <code>STARDOG_HOME</code>. If you need to run more
+than one Stardog Server instance, choose a different <code>STARDOG_HOME</code> or
+pass a different value to <code>--home</code>.</p>
+
+<h3 id="accessauditlogging">Access &amp; Audit Logging</h3>
+
+<p>See <code>stardog.properties</code> for a complete discussion of how access and
+audit logging work in Stardog Server. Basically, audit logging is a
+superset of the events in access logging. Access logging covers the most
+commonly required logging events; you should consider enabling audit
+logging if you really need to log <em>every</em> every server event. Logging
+generally doesn&#8217;t have a statistically significant impact on
+performance; but the safest way to insure that is the case is to log to
+a separate disk (or to a centralized logging server altogether, etc.).</p>
+
+<p>The important configuration choices are whether logs should be binary or
+plain text (both based on ProtocolBuffer message formats); the type of
+logging (audit or access); the logging location (which may be &#8220;off disk&#8221;
+or even &#8220;off machine&#8221;) Logging to a centralized logging facility
+requires a Java plugin that implements the Stardog Server logging
+interface; see the <a href="../java/">Java Chapter</a> for more information; and
+the log rotation policy (file size or time).</p>
+
+<p>Slow query logging is also available. See the &#8220;Managing Queries&#8221; section
+below.</p>
+
+<h2 id="administeringdatabases">Administering Databases</h2>
+
+<p>Stardog is a multi-tenancacy system and will happily provide access to
+multiple, distinct, disjoint databases.</p>
+
+<h3 id="configuringadatabase">Configuring a Database</h3>
+
+<p>To administer a Stardog database, some config options must be set at
+creation time; others may be changed subsequently and some may never be
+changed. All of the config options have sensible defaults (except,
+obviously, for database name), so you don&#8217;t have to twiddle any of the
+knobs till you really need to.</p>
+
+<h3 id="configurationoptions">Configuration Options</h3>
+
+<p>The following are the legal configuration options for a Stardog
+database:</p>
+
+<ul>
+<li><code>database.name</code>: A legal database name.</li>
+<li><code>database.online</code>: The status of the database: online or offline. It may be set so that the database is created initially in online or offline status; subsequently, it can&#8217;t be set directly but only by using the relevant admin commands.</li>
+<li><code>icv.active.graphs</code>: Specifies which part of the database, in terms of named graphs, is checked with IC validation. Set to <code>tag:stardog:api:context:all</code> to validate all the named graphs in the database.</li>
+<li><code>icv.enabled</code>: Determines whether ICV is active for the database; if true, all database mutations are subject to IC validation (i.e., &#8220;guard mode&#8221;).</li>
+<li><code>icv.reasoning-type</code>: Determines what kind of reasoning is used during IC validation.</li>
+<li><code>index.differential.enable.limit</code>: Sets the minimum size of the Stardog database before differential indexes are used.</li>
+<li><code>index.differential.merge.limit</code>: Sets the size in number of RDF triples before the differential indexes are merged to the main indexes.</li>
+<li><code>index.literals.canonical</code>: Enables RDF literal canonicalization. See <a href="../java/snarl/com/clarkparsia/stardog/index/IndexOptions.html#CANONICAL_LITERALS">literal canonicalization</a> for details.</li>
+<li><code>index.named.graphs</code>: Enables optimized index support for named graphs; speeds SPARQL query evaluation with named graphs at the cost of some overhead for database loading and index maintenance.</li>
+<li><code>index.persist</code>: Enables persistent indexes.</li>
+<li><code>index.persist.sync</code>: Enables whether memory indexes are synchronously or asynchronously persisted to disk with respect to a transaction.</li>
+<li><code>index.statistics.update.automatic</code>: Sets whether statistics are maintained automatically.</li>
+<li><code>index.type</code>: Sets the index type (memory or disk).</li>
+<li><code>reasoning.consistency.automatic</code>: Enables automatic consistency checking with respect to a transaction.</li>
+<li><code>reasoning.punning.enabled</code>: Enables punning.</li>
+<li><code>reasoning.schema.graphs</code>: Determines which, if any, named graph or graphs contains the &#8220;tbox&#8221;, i.e., the schema part of the data.</li>
+<li><code>search.enabled</code>: Enables semantic search on the database.</li>
+<li><code>search.reindex.mode</code>: Sets how search indexes are maintained.</li>
+<li><code>transactions.durable</code>: Enables durable transactions.</li>
+</ul>
+
+<h4 id="anoteaboutdatabasestatus">A Note About Database Status</h4>
+
+<p>A database must be set to <code>offline</code> status before most configuration
+parameters may be changed. Hence, the normal routine is to set the database
+offline, change the parameters, and then set the database to online. All
+of these operations may be done programmatically from CLI tools, such
+that they can be scripted in advance to minimize downtime. In a future
+version, we will allow some properties to be set while the database
+remains online.</p>
+
+<h4 id="summaryofconfigurationoptions">Summary of Configuration Options</h4>
+
+<p>The following table summarizes the options:</p>
+
+<table>
+      <thead>
+        <tr>
+        <th>Config Option</th>
+        <th>Mutability</th>
+        <th>Default</th>
+        <th>API</th>
+      </tr>
+    </thead>
+    <tfoot>
+       <tr>
+        <th>Config Option</th>
+        <th>Mutability</th>
+        <th>Default</th>
+        <th>API</th>
+      </tr>
+    </tfoot>
+    <tbody>
+      <tr>
+        <td>database.name</td>
+        <td>false</td>
+        <td></td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/DatabaseOptions.html#NAME">DatabaseOptions.NAME</a></td>
+      </tr>
+      <tr>
+        <td>database.online</td>
+        <td>false</td>
+        <td>true</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/DatabaseOptions.html#ONLINE">DatabaseOptions.ONLINE</a></td>
+      </tr>
+      <tr>
+        <td>icv.active.graphs</td>
+        <td>false</td>
+        <td>default</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/DatabaseOptions.html#ICV_ACTIVE_GRAPHS">DatabaseOptions.ICV_ACTIVE_GRAPHS</a></td>
+      </tr>
+      <tr>
+        <td>icv.enabled</td>
+        <td>true</td>
+        <td>false</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/DatabaseOptions.html#ICV_ENABLED">DatabaseOptions.ICV_ENABLED</a></td>
+      </tr>
+      <tr>
+        <td>icv.reasoning.type</td>
+        <td>true</td>
+        <td>NONE</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/DatabaseOptions.html#ICV_REASONING_TYPE">DatabaseOptions.ICV_REASONING_TYPE</a></td>
+      </tr>
+      <tr>
+        <td>index.differential.enable.limit</td>
+        <td>true</td>
+        <td>1000000</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/index/IndexOptions.html#DIFF_INDEX_MIN_LIMIT">IndexOptions.DIFF_INDEX_MIN_LIMIT</a></td>
+      </tr>
+      <tr>
+        <td>index.differential.merge.limit</td>
+        <td>true</td>
+        <td>10000</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/index/IndexOptions.html#DIFF_INDEX_MAX_LIMIT">IndexOptions.DIFF_INDEX_MAX_LIMIT</a></td>
+      </tr>
+      <tr>
+        <td>index.literals.canonical</td>
+        <td>false</td>
+        <td>true</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/index/IndexOptions.html#CANONICAL_LITERALS">IndexOptions.CANONICAL_LITERALS</a></td>
+      </tr>
+      <tr>
+        <td>index.named.graphs</td>
+        <td>false</td>
+        <td>true</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/index/IndexOptions.html#INDEX_NAMED_GRAPHS">IndexOptions.INDEX_NAMED_GRAPHS</a></td>
+      </tr>
+      <tr>
+        <td>index.persist</td>
+        <td>true</td>
+        <td>false</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/index/IndexOptions.html#PERSIST">IndexOptions.PERSIST</a></td>
+      </tr>
+      <tr>
+        <td>index.persist.sync</td>
+        <td>true</td>
+        <td>true</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/index/IndexOptions.html#SYNC">IndexOptions.SYNC</a></td>
+      </tr>
+      <tr>
+        <td>index.statistics.update.automatic</td>
+        <td>true</td>
+        <td>true</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/index/IndexOptions.html#AUTO_STATS_UPDATE">IndexOptions.AUTO_STATS_UPDATE</a></td>
+      </tr>
+      <tr>
+        <td>index.type</td>
+        <td>false</td>
+        <td>Disk</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/index/IndexOptions.html#INDEX_TYPE">IndexOptions.INDEX_TYPE</a></td>
+      </tr>
+      <tr>
+        <td>reasoning.consistency.automatic</td>
+        <td>true</td>
+        <td>false</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/DatabaseOptions.html#CONSISTENCY_AUTOMATIC">DatabaseOptions.CONSISTENCY_AUTOMATIC</a></td>
+      </tr>
+      <tr>
+        <td>reasoning.punning.enabled</td>
+        <td>false</td>
+        <td>false</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/DatabaseOptions.html#PUNNING_ENABLED">DatabaseOptions.PUNNING_ENABLED</a></td>
+      </tr>
+      <tr>
+        <td>reasoning.schema.graphs</td>
+        <td>true</td>
+        <td>default</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/DatabaseOptions.html#SCHEMA_GRAPHS">DatabaseOptions.SCHEMA_GRAPHS</a></td>
+      </tr>
+      <tr>
+        <td>search.enabled</td>
+        <td>false</td>
+        <td>false</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/DatabaseOptions.html#SEARCHABLE">DatabaseOptions.SEARCHABLE</a></td>
+      </tr>
+      <tr>
+        <td>search.reindex.mode</td>
+        <td>false</td>
+        <td>wait</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/DatabaseOptions.html#SEARCH_REINDEX_MODE">DatabaseOptions.SEARCH_REINDEX_MODE</a></td>
+      </tr>
+      <tr>
+        <td>transactions.durable</td>
+        <td>true</td>
+        <td>false</td>
+        <td><a href="../java/snarl/com/clarkparsia/stardog/DatabaseOptions.html#TRANSACTIONS_DURABLE">DatabaseOptions.TRANSACTIONS_DURABLE</a></td>
+      </tr>
+    </tbody>
+</table>
+
+<h4 id="legalvaluesofconfigurationoptions">Legal Values of Configuration Options</h4>
+
+<p>The following options take a boolean value:
+<code>database.online, icv.enabled, index.literals.canonical, index.named.graphs, index.persist, index.sync, index.statistics.update.automatic, reasoning.consistency.automatic, reasoning.punning.enabled, search.enabled, transactions.durable</code>.</p>
+
+<p>The legal value of <code>database.name</code> is given by the regular expression
+<code>[A-Za-z]{1}[A-Za-z0-9_-]</code>.</p>
+
+<p>The legal value of <code>icv.active.graphs</code> is a list of named graph
+identifiers. See <code>reasoning.schema.graphs</code> below for syntactic sugar
+URIs for default graph and all named graphs.</p>
+
+<p>The legal value of <code>icv.reasoning.type</code> is one of the reasoning levels
+(i.e, one of the following strings): <code>NONE, RDFS, QL, RL, EL, DL</code>.</p>
+
+<p>The legal value of <code>index.differential.*</code> is an integer.</p>
+
+<p>The legal value of <code>index.type</code> is the string &#8220;disk&#8221; or &#8220;memory&#8221;
+(case-insensitive).</p>
+
+<p>The legal value of <code>reasoning.schema.graphs</code> is a list of named graph
+identifiers, including (optionally) the special names,
+<code>tag:stardog:api:context:default</code> and <code>tag:stardog:api:context:all</code>,
+which represent the default graph and the union of all named graphs and
+the default graph, respectively. In the context of database
+configurations only, Stardog will recognize <code>default</code> and <code>*</code> as shorter
+forms of those URIs, respectively.</p>
+
+<p>The legal value of <code>search.reindex.mode</code> is one of the strings <code>sync</code> or
+<code>async</code> (case insensitive) or a legal <a href="http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger">Quartz cron
+expression</a>.</p>
+
+<h3 id="managingdatabasestatus">Managing Database Status</h3>
+
+<p>Databases are either online or offline; this allows database maintenance
+to be decoupled from server maintenance.</p>
+
+<h4 id="onlineandoffline">Online and Offline</h4>
+
+<p>Databases are put online or offline synchronously: these operations
+block until other database activity is completed or terminated. See
+<code>stardog-admin help db</code> for details.</p>
+
+<h4 id="examples">Examples</h4>
+
+<p>To set a database from offline to online:</p>
+
+<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>stardog-admin db offline myDatabase
+</code></pre>
+
+<p>To set the database online:</p>
+
+<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>stardog-admin db online myDatabase
+</code></pre>
+
+<p>If Stardog Server is shutdown while a database is offline, the database
+will be offline the next time the server starts.</p>
+
+<h3 id="creatingadatabase">Creating a Database</h3>
+
+<p>Stardog databases may be created locally or remotely; but, of course,
+performance is better if data files don&#8217;t have to be transferred over a
+network during creation and initial loading.See the section below about
+loading compressed data. All data files, indexes, and server metadata
+for the new database will be stored in Stardog Home. Stardog won&#8217;t
+create a database with the same name as an existing database.Stardog
+database names must conform to the regular expression,
+<code>[A-Za-z]{1}[A-Za-z0-9_-]</code>.</p>
+
+<p><strong>Note: there are three reserved words that may not be used for the
+names of Stardog databases:</strong> <code>system</code>, <code>admin</code>, and <code>docs</code>.</p>
+
+<p>Minimally, the only thing you must know to create a Stardog database is
+a database <em>name</em>; alternately, you may customize some other database
+parameters and options depending on anticipated workloads, data
+modeling, and other factors.</p>
+
+<p>See <code>stardog-admin help db create</code> for all the details including
+examples.</p>
+
+<h3 id="namespaceprefixbindings">Namespace Prefix Bindings</h3>
+
+<p>SPARQL queries can become verbose because of the (often redundant)
+<code>PREFIX</code> declarations in the prologue of each query. Stardog allows
+database administrators to persist and manage custom namespace prefix
+bindings, which works in the following way:</p>
+
+<ol>
+<li><p>At database creation time, if data is loaded to the database that
+contains namespace prefixes, then those are persisted for the life
+of the database. Any subsequent queries to the database may simply
+omit the <code>PREFIX</code> declarations:</p>
+
+<pre class="highlighted"><code class="sql">$ stardog query myDB "<span class="operator"><span class="keyword">select</span> * {?s rdf:type owl:Class}<span class="string">"
+</code></pre></li>
+<li><p>To add new bindings, use the <code>namespace</code> subcommand in the CLI:</p>
+
+<pre class="highlighted"><code class="vala">$ stardog <span class="class"><span class="keyword">namespace</span> <span class="title">add</span> <span class="title">myDb</span> --<span class="title">prefix</span> <span class="title">ex</span> --<span class="title">uri</span> '<span class="title">http</span>://<span class="title">example</span>.<span class="title">org</span>/<span class="title">test</span>#'
+</code></pre></li>
+<li><p>To modify an existing binding, delete the existing one and then add
+a new one:</p></li>
+<li><p>Finally, to see all of the existing namespace prefix bindings:</p>
+
+<pre class="highlighted"><code class="vala">$ stardog <span class="class"><span class="keyword">namespace</span> <span class="title">list</span> <span class="title">myDB</span>
+</code></pre></li>
+</ol>
+
+<p>If no files are used during database creation, or if the files do not
+define any prefixes (e.g. NTriples), then the &#8220;Big Four&#8221; default
+prefixes are stored: RDF, RDFS, XSD, and OWL.</p>
+
+<p>When executing queries in the CLI, the default table format for SPARQL
+<code>SELECT</code> results will use the bindings as qnames. SPARQL <code>CONSTRUCT</code>
+query output (including export) will also use the stored prefixes.</p>
+
+<p>To reiterate, namespace prefix bindings are <em>per database</em>, not global.</p>
+
+<h3 id="databasecreationtemplates">Database Creation Templates</h3>
+
+<p>As a boon to the overworked admin or devops peeps, Stardog Server
+supports a feature we call &#8220;database creation templates&#8221;, which is to
+say that you can pass a Java Properties file with config values set and
+with the values (typically just the database name) that are unique to a
+specific database passed in CLI parameters.</p>
+
+<h4 id="examples">Examples</h4>
+
+<p>To create a new database with the default options by simply providing a
+name and a set of initial datasets to load:</p>
+
+<pre class="highlighted"><code class="objectivec">$ stardog-admin db create -n myDb input<span class="variable">.ttl</span> another_file<span class="variable">.rdf</span> moredata<span class="variable">.rdf</span><span class="variable">.gz</span>
+</code></pre>
+
+<p>Datasets can be loaded later as well, though bulk loading at creation
+time is the fastest way to load data.</p>
+
+<p>To create (in this case, an empty) database from a template file:</p>
+
+<pre class="highlighted"><code class="sql">$ stardog-admin db <span class="operator"><span class="keyword">create</span> -c database.properties
+</code></pre>
+
+<p>At a minimum, the configuration file must have a value for
+<code>database.name</code> option.</p>
+
+<p>Finally, if you only want to change only a few configuration options you
+can directly provide the values for these options in the CLI args as
+follows:</p>
+
+<pre class="highlighted"><code class="objectivec">$ stardog-admin db create -n db -o icv<span class="variable">.enabled</span>=<span class="literal">true</span> icv<span class="variable">.reasoning</span><span class="variable">.type</span>=QL -- input<span class="variable">.ttl</span>
+</code></pre>
+
+<p>Note that &#8216;&#8211;&#8217; is used in this case when -o is the last option to
+delimit the value for -o from the files to be bulk loaded.</p>
+
+<p>Please refer to the CLI help for more details of the <code>db create</code>
+command.</p>
+
+<h3 id="databasecreateoptions">Database Create Options</h3>
+
+<table dir="ltr" border="1" cellspacing="0" cellpadding="2" width="100%" summary="Options for the Stardog create command">
+      <thead>
+        <tr>
+          <th width="15%">Name</th>
+          <th>Description</th>
+          <th width="10%">Arg values</th>
+          <th width="10%">Default</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th width="15%">Name</th>
+          <th>Description</th>
+          <th width="10%">Arg values</th>
+          <th width="10%">Default</th>
+        </tr>
+      </tfoot>
+      <tbody><!-- add a colgroup -->
+
+        <tr>
+          <td><tt>&ndash;durable</tt>, <tt>-d</tt></td>
+
+          <td>If present, sets all mutation operations to database as transactionally durable; durability increases the cost of all mutation operations.</td>
+          <td></td>
+
+          <td><tt>False</tt></td>
+        </tr>
+        <tr>
+          <td><tt>&ndash;guard</tt>, <tt>-g <i>arg</i></tt></td>
+          <td>Specifies that ICV guard mode should enabled for this database. Transactional writes to database that are invalid with respect to constraints will fail.</td>
+          <td><tt>OFF</tt> disables guard mode; a reasoning type enables it.</td>
+          <td>Disabled</td>
+        </tr>
+        <tr>
+          <td><tt>&ndash;type</tt>, <tt>-t</tt></td>
+          <td>Specifies the kind of database to be created: Memory or Disk.</td>
+          <td><tt>M</tt>,<tt>D</tt></td>
+          <td>Disk</td>
+        </tr>
+        <tr>
+          <td><tt>&ndash;searchable</tt>, <tt>-s</tt></td>
+          <td>Specifies this database should be searchable.</td>
+          <td></td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td><tt>&ndash;index-triples-only</tt>, <tt>-i</tt></td>
+          <td>Specifies this database&rsquo;s indexes should be optimized for RDF triples (as opposed to quads) only</td>
+          <td>None</td>
+          <td></td>
+        </tr>
+      </tbody>
+      <caption>Options for the Stardog <tt>create</tt> command.</caption>
+
+    </table>
+
+<h3 id="indexstrategies">Index Strategies</h3>
+
+<p>By default Stardog builds extra indexes for named graphs. These
+additional indexes are used when SPARQL queries specify datasets using
+<code>FROM</code> and <code>FROM NAMED</code>. With these additional indexes, better
+statistics about named graphs are also computed.</p>
+
+<p>Stardog may also be configured to create and to use fewer indexes, if
+the database is only going to be used to store RDF triples, that is,
+will not be used to store named graph information. In this mode, Stardog
+will maintain fewer indexes, which will result in faster database
+creation and faster updates without compromising query answering
+performance. In such databases, quads (that is: triples with named
+graphs or contexts specified) may still be added to these database at
+any time, but query performance may degrade in such cases.</p>
+
+<p>To create a database which indexes only RDF triples, set the option
+<code>index.named.graphs</code> to <code>false</code> at database creation time. The CLI
+provides a shorthand option&mdash;<code>-i</code> or <code>--index-triples-only</code>&mdash;which is
+equivalent.</p>
+
+<p>Please note that this option can only be set at database creation time
+and cannot be changed later without rebuilding the database, so use this
+option with caution.</p>
+
+<h3 id="differentialindexes">Differential Indexes</h3>
+
+<p>While Stardog is generally biased in favor of read (i.e., query)
+performance, write performance is also important in many applications.
+In order to increase write performance, Stardog may be used, optionally,
+with a <em>differential index</em>.</p>
+
+<p>Stardog&#8217;s differential index is used to persist additions and removals
+separately from the main indexes, such that updates to the database can
+be performed faster. Query answering takes into consideration all the
+data stored in the main indexes and the differential index; hence, query
+answers are computed as if all the data is stored in the main indexes.</p>
+
+<p>There is a slight overhead for query answering with differential indexes
+if the differential index size gets too large. For this reason, the
+differential index is merged into the main indexes when its size reaches
+the <code>DIFF_INDEX_MAX_LIMIT</code>. There is no benefit of differential indexes
+if the main index itself is small. For this reason, the differential
+index is not used until the main index size reaches
+<code>DIFF_INDEX_MAX_LIMIT</code>.</p>
+
+<p>In most cases, the default value of the <code>DIFF_INDEX_MAX_LIMIT</code> parameter
+will work fine and doesn&#8217;t need to be changed. The corollary of this
+claim is that you shouldn&#8217;t change this value in a production system
+till you&#8217;ve tested the effects of a change in a non-production system.</p>
+
+<h3 id="usingcompresseddata">Using Compressed Data</h3>
+
+<p>Stardog supports loading data from compressed files directly so there is
+no need to uncompress files before loading. Compressed input is actually
+typically faster to load since it minimizes disk access so the
+recommended way to load large input files is to load them in compressed
+format.</p>
+
+<p>Stardog supports GZIP and ZIP compressions natively. If a file name
+passed to create or add commands (through CLI or API) will be
+interpreted to be a gzip file if the file name ends with &#8216;.gz&#8217;. The RDF
+format of the file is determined by the extension that comes before
+&#8216;.gz&#8217;. So, if a file named &#8216;test.ttl.gz&#8217; is used as input, Stardog will
+perform gzip decompression during loading and parse the file with Turtle
+parser. All the formats supported by Stardog (RDF/XML, Turtle, Trig,
+etc.) can be used with gzip compression.</p>
+
+<p>The zip support works differently since zipped files can contain
+multiple files inside. When an input file name ends with &#8216;.zip&#8217;, Stardog
+performs zip decompression and tries to load all the files inside the
+zip file. The RDF format of the files inside the zip file is determined
+by their file names as usual. If there is an unrecognized file extension
+(e.g. &#8216;.txt&#8217;) that file will be skipped.</p>
+
+<h3 id="droppingadatabase">Dropping a Database</h3>
+
+<p>This command removes a database and all associated files and metadata.
+This means all files on disk pertaining to the database will be deleted,
+so only use <code>drop</code> when you&#8217;re certain! Databases must be offline in
+order to be dropped.</p>
+
+<p>It takes as its only argument a valid database name. For example,</p>
+
+<pre class="highlighted"><code class="sql">$ stardog-admin db <span class="operator"><span class="keyword">drop</span> my_db
+</code></pre>
+
+<h3 id="usingintegrityconstraintvalidation">Using Integrity Constraint Validation</h3>
+
+<p>Stardog supports integrity constraint validation as a data quality
+mechanism via closed world reasoning. Constraints can be specified in
+OWL, SWRL, and SPARQL.</p>
+
+<p>Please see the <a href="../sdp">ICV chapter</a> for more about using ICV in Stardog
+programmatically.</p>
+
+<p>The CLI <code>icv</code> subcommand can be used to add, delete, or drop all
+constraints from an existing database. It may also be used to validate
+an existing database with constraints that are passed into the <code>icv</code>
+subcommand; that is, using different constraints than the ones already
+associated with the database.</p>
+
+<p>For details of ICV usage, see <code>stardog help icv</code> and
+<code>stardog-admin help icv</code>.</p>
+
+<p>For ICV in transacted mutations of Stardog databases, see the database
+creation section above.</p>
+
+<h3 id="migratingadatabase">Migrating a Database</h3>
+
+<p>The <code>migrate</code> subcommand migrates an older Stardog database to the
+latest version of Stardog. Its only argument is the name of the database
+to migrate. <code>migrate</code> won&#8217;t necessarily work between arbitrary Stardog
+version, so before upgrading check the release notes for a new version
+carefully to see whether migration is required or possible.</p>
+
+<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>stardog-admin db migrate myDatabase
+</code></pre>
+
+<p>will update <code>myDatabase</code> to the latest database format.</p>
+
+<h3 id="gettingdatabaseinformation">Getting Database Information</h3>
+
+<p>You can get some information about a database (online/offline status,
+creation time, last modification time, etc.) by running the following
+command:</p>
+
+<pre class="highlighted"><code class="cs">$ stardog-admin <span class="keyword">get</span> my_db_name
+</code></pre>
+
+<p>This will return all the metadata stored about the database, including
+the values of configuration options used for this database instance. If
+you want to get the value for a specific option then you can run the
+following command:</p>
+
+<pre class="highlighted"><code class="objectivec">$ stardog-admin get -o index<span class="variable">.named</span><span class="variable">.graphs</span> my_db_name
+</code></pre>
+
+<h3 id="managingqueries">Managing Queries</h3>
+
+<p>Stardog includes the capability to manage running queries according to
+configurable policies set at run-time; this capability includes support
+for</p>
+
+<ul>
+<li><strong>listing</strong> running queries;</li>
+<li><strong>deleting</strong> running queries;</li>
+<li><strong>reading</strong> the status of a running query;</li>
+<li><strong>killing</strong> running queries that exceed a time threshold
+automatically;</li>
+<li><strong>logging</strong> slow queries for analysis.</li>
+</ul>
+
+<p>Stardog is pre-configured with sensible <em>server-wide</em> defaults for query
+management parameters; these defaults may be overridden or disabled per
+database.</p>
+
+<h4 id="configuringquerymanagement">Configuring Query Management</h4>
+
+<p>For many uses cases the default configuration will be sufficient. But
+you may need to tweak the timeout parameter to be longer or shorter,
+depending on the hardware, data load, queries, throughput, etc. The
+default configuration has a server-wide query timeout value of
+<code>query.timeout</code>, which is inherited by all the databases in the server.
+You can customize the server-wide timeout value and then set
+per-database custom values, too. Any database without a custom value
+inherits the server-wide value. To disable query timeout, set
+<code>query.timeout</code> to <code>0</code>.</p>
+
+<h4 id="command-linetools">Command-line Tools</h4>
+
+<p>The query management command-line tools are simple and easy to use.</p>
+
+<h5 id="listingqueries">Listing Queries</h5>
+
+<p>To see all running queries, use the <code>query list</code> subcommand:</p>
+
+<pre class="highlighted"><code class="erlang">$ stardog-admin <span class="keyword">query</span> list
+</code></pre>
+
+<p>The results are formatted tabularly:</p>
+
+<pre class="highlighted"><code class="brainfuck"><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|</span> <span class="comment">ID</span> <span class="comment">|</span> <span class="comment">Database</span> <span class="comment">|</span> <span class="comment">User</span>  <span class="comment">|</span> <span class="comment">Elapsed</span> <span class="comment">time</span> <span class="comment">|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|</span> <span class="comment">2</span>  <span class="comment">|</span> <span class="comment">test</span>     <span class="comment">|</span> <span class="comment">admin</span> <span class="comment">|</span> <span class="comment">00:00:20</span>.<span class="comment">165</span> <span class="comment">|</span>
+<span class="comment">|</span> <span class="comment">3</span>  <span class="comment">|</span> <span class="comment">test</span>     <span class="comment">|</span> <span class="comment">admin</span> <span class="comment">|</span> <span class="comment">00:00:16</span>.<span class="comment">223</span> <span class="comment">|</span>
+<span class="comment">|</span> <span class="comment">4</span>  <span class="comment">|</span> <span class="comment">test</span>     <span class="comment">|</span> <span class="comment">admin</span> <span class="comment">|</span> <span class="comment">00:00:08</span>.<span class="comment">769</span> <span class="comment">|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+
+<span class="comment">3</span> <span class="comment">queries</span> <span class="comment">running</span>
+</code></pre>
+
+<p>You can see the user who owns the query (superuser&#8217;s can see all running
+queries), as well as the elapsed time and the database against which the
+query is running. The ID column is the key to deleting queries.</p>
+
+<h5 id="deletingqueries">Deleting Queries</h5>
+
+<p>To delete a running query, simply pass its ID to the <code>query kill</code>
+subcommand:</p>
+
+<pre class="highlighted"><code class="erlang">$ stardog-admin <span class="keyword">query</span> kill <span class="number">3</span>
+</code></pre>
+
+<p>The output confirms the query kill completing successfully:</p>
+
+<pre class="highlighted"><code class="nginx"><span class="title">Query</span> <span class="number">3</span> killed successfully
+</code></pre>
+
+<h5 id="automaticallykillingqueries">Automatically Killing Queries</h5>
+
+<p>For production use, especially when a Stardog database is exposed to
+arbitrary query input, some of which may not execute in an acceptable
+time period, the automatic query killing feature is useful. It will
+protect a Stardog Server from queries consuming too many resources.</p>
+
+<p>Once the execution time of a query exceeds the value of <code>query.timeout</code>,
+the query will be killed automatically. The client that submitted the
+query will receive an error message. The value of <code>query.timeout</code> may be
+overriden by setting a different value (smaller or longer) in database
+options. To disable, set to <code>query.timeout</code> to <code>0</code>.</p>
+
+<p>The value of <code>query.timeout</code> is a positive integer concated with a
+letter, all of which is interpreted as a time duration: &#8216;h&#8217; (for hours),
+&#8216;m&#8217; (for minutes), &#8216;s&#8217; (for seconds, )or &#8216;ms&#8217; (for milliseconds). For
+example, &#8216;1h&#8217; for 1 hour, &#8216;5m&#8217; for 5 minutes, &#8216;90s&#8217; for 90 seconds, and
+&#8216;500ms&#8217; for 500 milliseconds.</p>
+
+<p>The default, out-of-the-box value of <code>query.timeout</code> is five minutes.</p>
+
+<h5 id="querystatus">Query Status</h5>
+
+<p>To see more detail about one running query, use the <code>query status</code>
+subcommand:</p>
+
+<pre class="highlighted"><code class="erlang">$ stardog-admin <span class="keyword">query</span> status <span class="number">1</span>
+</code></pre>
+
+<p>The resulting output includes query metadata, including the query
+itself:</p>
+
+<pre class="highlighted"><code class="ruby"><span class="constant">Username</span><span class="symbol">:</span> admin
+<span class="constant">Database</span><span class="symbol">:</span> test
+<span class="constant">Started</span> <span class="symbol">:</span> <span class="number">2013</span>-<span class="number">02</span>-<span class="number">06</span> 09<span class="symbol">:</span><span class="number">10</span><span class="symbol">:</span><span class="number">45</span> <span class="constant">AM</span>
+<span class="constant">Elapsed</span> <span class="symbol">:</span> <span class="number">00</span><span class="symbol">:</span><span class="number">01</span><span class="symbol">:</span><span class="number">19.187</span>
+<span class="constant">Query</span>   <span class="symbol">:</span>
+select <span class="number">?x</span> <span class="number">?p</span> <span class="number">?o</span>1 <span class="number">?y</span> <span class="number">?o</span>2
+where {
+  <span class="number">?x</span> <span class="number">?p</span> <span class="number">?o</span>1.
+  <span class="number">?y</span> <span class="number">?p</span> <span class="number">?o</span>2.
+  filter (<span class="number">?o</span>1 &gt; <span class="number">?o</span>2).
+}
+order by <span class="number">?o</span>1
+limit <span class="number">5</span>
+</code></pre>
+
+<h4 id="slowquerylogging">Slow Query Logging</h4>
+
+<p>Stardog does not log slow queries in the default configuration,
+primarily because there isn&#8217;t a sensible default meaning of &#8220;slow
+query&#8221;, which is entirely relative to queries, access patterns, dataset
+sizes, etc. While slow query logging has very minimal overhead, what
+counts as a slow query in some context may be quite acceptable in
+another. To enable slow query logging, see the Stardog Server Properties
+discussion above.</p>
+
+<h4 id="protocolsandjavaapi">Protocols and Java API</h4>
+
+<p>For HTTP protocol support, see <a href="http://docs.stardog.apiary.io/">Stardog&#8217;s Apiary</a> docs.</p>
+
+<p>For Java, see <a href="http://stardog.com/docs/java/snarl/">Stardog Javadocs</a>.</p>
+
+<h4 id="securityandquerymanagement">Security and Query Management</h4>
+
+<p>The security model for query management is very simple: any user can
+kill any running query submitted by that user; a superuser can kill any
+running query. The same general restriction is applied to query status;
+you cannot see query status for a query you do not own, either as a
+non-superuser or as superuser.</p>
+
+<h3 id="managingsearchindexes">Managing Search Indexes</h3>
+
+<p>Stardog&#8217;s search service is described in the <a href="../using">Using Stardog</a>
+chapter.</p>
+
+<p>But managing the reindexing of search indexes is an administrative task.</p>
+
+<p>There are three modes for rebuilding indexes:</p>
+
+<ol>
+<li><code>sync</code>: Recompute the search index synchronously with a transacted
+write.</li>
+<li><code>async</code>: Recompute the search index asynchronously as soon as
+possible with respect to a transacted write.</li>
+<li>Scheduled: Use a <a href="http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger">cron
+expression</a>
+to specify when the search index should be updated.</li>
+</ol>
+
+<p>This is specified when creating a database by setting the property
+<code>search.reindex.mode</code> to &#8220;sync&#8221;, &#8220;async&#8221;, or to a valid cron expression.
+The default is &#8220;sync&#8221;.</p>
+
+<h3 id="recoveringfromtransactionfailures">Recovering From Transaction Failures</h3>
+
+<p>In Stardog 1.2 we introduced a new transaction subsystem written from
+scratch for use in Stardog. This transaction framework—which we call
+&#8220;erg&#8221;—is mostly maintenance free; but there are some rare conditions in
+which manual intervention may be needed.</p>
+
+<h4 id="commitfailureautorecovery">Commit Failure Autorecovery</h4>
+
+<p>Stardog&#8217;s strategy for recovering automatically from (the very unlikely
+event of) commit failure is as follows:</p>
+
+<ul>
+<li>Stardog will automatically roll back the transaction upon a commit
+failure;</li>
+<li>Stardog automatically takes the affected database offline for
+maintenance;The probability of recovering from a catastrophic
+transaction failure is inversely proportional to the number of
+subsequent write attempts; hence, Stardog offlines the database to
+prevent subsequent write attempts and, hence, to increase the
+likelihood of recovery. then</li>
+<li>Stardog will then begin recovery automatically, bringing the
+recovered database back online once that task is successful so that
+it can resume operations.</li>
+</ul>
+
+<p>With an appropriate logging configuration for production usage (at least
+error-level logging), log messages for the preceding recovery operations
+will occur. If for whatever reason the database fails to be returned
+automatically to online status, an administrator may use the CLI tools
+(i.e., <code>stardog-admin db online</code>) to attempt to online the database.</p>
+
+<h3 id="optimizingbulkdataloading">Optimizing Bulk Data Loading</h3>
+
+<p>Stardog tries hard to do bulk loading at database creation time in the
+most efficient and scalable way possible. But data loading time can vary
+widely, depending on factors in the data to be loaded, including the
+number of unique resources, etc. Here are some tuning tips that may work
+for you:</p>
+
+<ol>
+<li>Load <a href="#compressed">compressed data files</a> since compression
+minimizes disk access</li>
+<li>Use a multicore machine since bulk loading is highly parallelized
+and indexes are built concurrently.</li>
+<li>Load multiple files together at creation time since different files
+will be parsed and processed concurrently improving the load speed</li>
+<li>Turn off <a href="#jvm-arg"><code>strict.parsing</code></a>.</li>
+<li>If you are not using named graphs, use <a href="#index-strategies">triples only indexing
+strategy</a></li>
+</ol>
+
+<h3 id="resourcerequirementsforstardog">Resource Requirements for Stardog</h3>
+
+<p>The three system resources used by Stardog are CPU, memory, and disk. In
+what follows we primarily discuss memory and disk. Stardog will take
+advantage of multiple CPUs, cores, and core-based threads in data
+loading and in throughput-heavy or multi-user loads. And obviously
+Stardog performance is influenced by the speed of CPUs and cores. But
+some workloads are bound by main memory or by disk I/O (or both) more
+than by CPU. In general, use the fastest CPUs you can afford with the
+largest secondary caches and the most number of cores and core-based
+threads of execution, especially in multi-user workloads.</p>
+
+<p>The following subsections provides more detailed guidance for the memory
+and disk resource requirements of Stardog.</p>
+
+<h4 id="memoryusage">Memory usage</h4>
+
+<p>Stardog uses system memory aggressively and the total system memory
+available to Stardog is typically the most important factor in
+performance. Stardog uses both JVM memory (known as heap memory) and
+also the operating system memory outside the JVM (known as non-heap
+memory). Having more system memory available is always good; however,
+increasing JVM memory too close to total system memory is not usually
+prudent as it will tend to increase Garbage Collection (GC) time in the
+JVM.</p>
+
+<p>The following table shows minimum recommended JVM memory and system
+memory requirements for Stardog:</p>
+
+<p>[table]</p>
+
+<p>By default, Stardog CLI sets the maximum JVM memory to 2GB. This setting
+works fine for most small to medium database sizes (up to 100 million
+triples). As the database size increases, we recommend increasing JVM
+memory. You can increase the JVM memory for Stardog by setting the
+system property <code>STARDOG_JAVA_ARGS</code> using the standard JVM options. For
+example, you can set this property to <code>&quot;-Xms4g -Xmx4g&quot;</code> to increase the
+JVM memory to 4GB. We recommend setting the minimum heap size (<code>-Xms</code>
+option) as close to the max heap size (<code>-Xmx</code> option) as possible.</p>
+
+<h4 id="diskusage">Disk usage</h4>
+
+<p>Stardog stores data on disk in a compressed format. The disk space
+needed for a database depends on many factors besides the number of
+triples, including the number of unique resources and literals in the
+data, average length of resource identifiers and literals, and how much
+the data is compressed. The following table shows average disk space
+used by a Stardog database:</p>
+
+<p>[table]</p>
+
+<p>These numbers are given for information purposes and the actual disk
+usage for a database may be significantly different in practice. Also it
+is important to note that the amount of disk space needed at creation
+time for bulk loading data is higher as several temporary files will be
+created. The additional disk space needed at bulk loading time can be
+40% to 70% of the final database size.</p>
+
+<p>Disk space used by a database is non-trivially smaller if <a href="#index-strategies">triples only
+indexing strategy</a> is used. Triples-only indexing
+reduces overall disk space used by 25% in average; however, please note
+the tradeoff: SPARQL queries involving named graphs perform
+significantly better with quads indexing.</p>
+
+<p>The disk space used by Stardog is additive for multiple databases and
+there is very little disk space used outside the databases. To calculate
+the total disk space needed for multiple databases, one can simply sum
+up the disk space needed by each database.</p>
+
+<h3 id="usingstardogonwindows">Using Stardog on Windows</h3>
+
+<p>Stardog provides Windows batch (<code>.bat</code>) files for use on Windows; they
+provide roughly the same set of functionality provided by the Bash
+scripts which are used on *nix systems. There are however, a few small
+differences between the two. You cannot change the logfile with the
+global <code>--logfile</code> option using the .bat scripts, it will always just
+log to the console. Additionally, when you start a server with
+<code>server start</code>, this does not detach to the background, it will run in
+the current console.</p>
+
+<p>To shut down the server correctly, you should either issue a
+<code>server stop</code> command from another window, or press CTRL-C (and then
+response &#8216;Y&#8217; when asked to &#8220;Terminate batch job&#8221;). Do not under any
+circumstance close the window without shutting down the server. This
+will simply kill the process without shutting down Stardog which could
+cause your database to be corrupted.</p>
+
+<p>The .bat scripts for windows support our standard <code>STARDOG_HOME</code> and
+<code>STARDOG_JAVA_ARGS</code> environment variables which can be used to control
+where Stardog&#8217;s database is stored and usually, how much memory is given
+to Stardog&#8217;s JVM when it starts. By default, the script will use the JVM
+that is available in the directory from which Stardog is run via the
+<code>JAVA_HOME</code> environment variable. If this is not set, it will simply
+execute <code>java</code> from within that directory.</p>
+
+<h4 id="runningstardogasawindowsservice">Running Stardog as a Windows Service</h4>
+
+<p>You can run Stardog as a Windows Service using the following
+configuration. Please, note, that the following assumes commands are
+executed from a Command Prompt with administrative privileges:</p>
+
+<h5 id="installingtheservice">Installing the Service</h5>
+
+<p>Change the directory to the Stardog installation directory:</p>
+
+<pre class="highlighted"><code class="nginx"><span class="title">cd</span> c:\stardog-<span class="variable">$VERSION</span>
+</code></pre>
+
+<h4 id="configuringtheservice">Configuring the Service</h4>
+
+<p>The default settings with which the service will be installed are</p>
+
+<ul>
+<li>2048 MB of RAM</li>
+<li><code>STARDOG_HOME</code> is the same as the installation directory</li>
+<li>the name of the installed service will be &#8220;Stardog Service&#8221;</li>
+<li>Stardog service will write logs to the &#8220;logs&#8221; directory within the
+installation directory</li>
+</ul>
+
+<p>To change these settings, set appropriate environment variables:</p>
+
+<ul>
+<li><code>STARDOG_MEMORY</code>: the amount of memory in MB (e.g., set
+<code>STARDOG_MEMORY</code>=4096)</li>
+<li><code>STARDOG_HOME</code>: the path to <code>STARDOG_HOME</code> (e.g., set
+<code>STARDOG_HOME</code>=c:\stardog-home)</li>
+<li><code>STARDOG_SERVICE_DISPLAY_NAME</code>: a different name to be displayed in
+the list of services (e.g., set
+<code>STARDOG_SERVICE_DISPLAY_NAME</code>=Stardog Service)</li>
+<li><code>STARDOG_LOG_PATH</code>: a path to a directory where the log files should
+be written (e.g., set <code>STARDOG_LOG_PATH</code>=c:\stardog-logs)</li>
+</ul>
+
+<p>Note: if you have changed the default administrator password, you also
+need to modify <code>stop-service.bat</code> and specify the new username and
+password there (by passing <code>-u</code> and <code>-p</code> parameters in the line that
+invokes <code>stardog-admin server stop</code>). In one of the future releases, an
+alternative solution will be provided that avoids the need to encode the
+administrator&#8217;s password in the file.</p>
+
+<h4 id="installingstardogasaservice">Installing Stardog as a Service</h4>
+
+<p>Run the <code>install-service.bat</code> script.</p>
+
+<p>At this point the service has been installed, but it is not running. To
+run it, see the next section or use any Windows mechanism for
+controlling the services (e.g., type <code>services.msc</code> on the command
+line).</p>
+
+<h4 id="startingstoppingchangingserviceconfiguration">Starting, Stopping, &amp; Changing Service Configuration</h4>
+
+<p>Once the service has been installed, execute <code>stardog-serverw.exe</code>,
+which will allow you to configure the service (e.g., set whether the
+service is started automatically or manually), manually start and stop
+the service, as well as to configure most of the service parameters.</p>
+
+<h4 id="uninstallingthestardogservice">Uninstalling the Stardog Service</h4>
+
+<p>The service can be uninstalled by running <code>uninstall-service.bat</code>
+script.</p>
+</div>
+      </div>
+    </div>
+    <!--footer-->
+    <!--footer.jade-->
+    <div class="row"><a href="#" id="upaway" class="skip" gumby-easing="easeInOutQuad" gumby-goto="top" gumby-duration="2000">&uarr;</a>
+      <!--p.skiplink.metro.primary-->
+      <!--  <a href="" gumby-goto="top">Top</a>-->
+    </div>
+    <div class="container shaded">
+      <div class="row">
+        <div class="twelve columns">
+          <h3>This is&nbsp;<span id="title-masthead">Stardog&nbsp;</span><span id="subfoot-subhead">Administration</span>, part of Stardog Docs 1.2.3.</h3>
+          <p>For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
+          <p>&copy;2010&ndash;2013 Clark & Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.</p>
+        </div>
+      </div>
+    </div><script >(function(){
+	/* Did we just livereload? */
+var log = true && localStorage && console && console.log && true;
+if ( log && localStorage.getItem('/docpad-livereload/reloaded') === 'yes' ) {
+	localStorage.removeItem('/docpad-livereload/reloaded');
+	console.log('LiveReloaded at', new Date())
+}
+
+/* Listen for the regenerated event and perform a reload of the page when the event occurs */
+var listen = function(){
+	var socket = io.connect('/docpad-livereload');
+	socket.on('regenerated',function(){
+		if ( log ) {
+	localStorage.setItem('/docpad-livereload/reloaded', 'yes');
+}
+document.location.reload();
+	});
+};
+	if ( typeof io !== 'undefined' ) {
+		listen();
+	} else {
+		/* Inject socket.io into our page then listen once loaded */
+var inject = function(){
+	var t = document.createElement('script');
+	t.type = 'text/javascript';
+	t.async = true;
+	t.src = '/socket.io/socket.io.js';
+	t.onload = listen;
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(t,s);
+};
+		var readyStateCheckInterval = setInterval(function() {
+  if (document.readyState === "complete") {
+    inject();
+    clearInterval(readyStateCheckInterval);
+  }
+}, 10);
+	}
+})();</script><script defer="defer"  src="js/libs/jquery-1.9.1.min.js"></script><script defer="defer"  src="js/libs/gumby.fixed.js"></script><script defer="defer"  src="js/libs/gumby.navbar.js"></script><script defer="defer"  src="js/libs/gumby.retina.js"></script><script defer="defer"  src="js/libs/gumby.skiplink.js"></script><script defer="defer"  src="js/libs/gumby.tabs.js"></script><script defer="defer"  src="js/libs/gumby.toggleswitch.js"></script><script defer="defer"  src="js/libs/gumby.init.js"></script>
+  </body>
+</html>

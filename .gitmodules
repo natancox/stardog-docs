@@ -1,0 +1,3 @@
+[submodule "published"]
+	path = published
+	url = https://github.com/stardocs/stardocs.github.io.git
