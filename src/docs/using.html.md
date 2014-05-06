@@ -236,7 +236,7 @@ with labels, and query over the revision history of the database using SPARQL.
 
 ### Tagging Revisions
 
-### Reverting
+### Reverting Revisions
 
 ### Querying the Revision History
 
