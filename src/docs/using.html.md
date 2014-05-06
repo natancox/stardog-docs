@@ -35,7 +35,7 @@ on its [`man` page](/man/query-execute.html).
 
 Stardog supports all of the functions in SPARQL, as well as some others from XPath and SWRL. Any of these functions can be used in queries or rules. Some functions appear in multiple namespaces, but all of the namespaces will work:
 
-Prefix     | Namespace                               
+Prefix     | Namespace
 ---------- | ----------------------------------------
 stardog    | [tag:stardog:api:functions:](#)
 fn         | [http://www.w3.org/2005/xpath-functions#](http://www.w3.org/2005/xpath-functions#)
@@ -45,8 +45,8 @@ afn        | [http://jena.hpl.hp.com/ARQ/function#](http://jena.hpl.hp.com/ARQ/f
 
 The function names and URIs supported by Stardog are included below. Some of these functions exist in SPARQL natively, which just means they can be used without an explicit namespace.
 
-Function name             | Recognized URIs          
-:-----------------------  | :----------------------- 
+Function name             | Recognized URIs
+:-----------------------  | :-----------------------
 abs                       | [fn:numeric-abs](http://www.w3.org/2005/xpath-functions#numeric-abs), [swrlb:abs](http://www.w3.org/2003/11/swrlb#abs)
 acos                      | [math:acos](http://www.w3.org/2005/xpath-functions/math#acos)
 add                       | [fn:numeric-add](http://www.w3.org/2005/xpath-functions#numeric-add)
@@ -150,7 +150,7 @@ WITH <http://example/addresses>
 DELETE { ?person foaf:givenName 'Bill' }
 INSERT { ?person foaf:givenName 'William' }
 WHERE
-  { ?person foaf:givenName 'Bill' } 
+  { ?person foaf:givenName 'Bill' }
 ```
 
 ### Adding Data with the CLI
@@ -224,6 +224,22 @@ lax mode may lead to unexpected SPARQL query results. For example,
 malformed literals (`"2.5"^^xsd:int`) used in filter evaluation may lead
 to undesired results.
 
+## Versioning <t>new22</t>
+
+Stardog supports database change management capability similar to popular version
+controls systems for source code. This capability lets users track changes between
+revisions of a Stardog database, add comments and other metadata to the revisions,
+extract diffs between those revisions, tag revisions
+with labels, and query over the revision history of the database using SPARQL.
+
+### Committing Changes
+
+### Tagging Revisions
+
+### Reverting
+
+### Querying the Revision History
+
 ## Exporting
 
 To export data from a Stardog database back to RDF,
@@ -245,7 +261,7 @@ $ stardog data export --format TURTLE myDatabase myDatabase_output.ttl
 $ stardog data export --graph-uri http://example.org/context myDatabase myDatabase_output.nt
 ```
 
-## Searching 
+## Searching
 Stardog includes an RDF-aware semantic search capability: it will index
 RDF literals and supports information retrieval-style queries over
 indexed data.
@@ -264,10 +280,10 @@ access the search index in a SPARQL query.
 For example,
 
 ```bash
-SELECT DISTINCT ?s ?score 
+SELECT DISTINCT ?s ?score
 WHERE {
 ?s ?p ?l.
-( ?l ?score ) <http://jena.hpl.hp.com/ARQ/property#textMatch> ( 'mac' 0.5 50 ). 
+( ?l ?score ) <http://jena.hpl.hp.com/ARQ/property#textMatch> ( 'mac' 0.5 50 ).
 }
 ```
 This query selects the top 50 literals, and their scores, which match
@@ -338,7 +354,7 @@ Data obfuscation works much the same way as the `export` command and supports th
 $ stardog data obfuscate myDatabase obfDatabase.ttl
 ```
 
-By default, all URIs, bnodes, and string literals in the database will be obfuscated using the SHA256 message digest algorithm. Non-string typed literals (numbers, dates, etc.) are left unchanged as well as URIs from built-in namespaces RDF, RDFS, and OWL. It is possible to customize obfuscation by providing a configuration file. 
+By default, all URIs, bnodes, and string literals in the database will be obfuscated using the SHA256 message digest algorithm. Non-string typed literals (numbers, dates, etc.) are left unchanged as well as URIs from built-in namespaces RDF, RDFS, and OWL. It is possible to customize obfuscation by providing a configuration file.
 
 ```bash
 $ stardog data obfuscate --config obfConfig.ttl myDatabase  obfDatabase.ttl
