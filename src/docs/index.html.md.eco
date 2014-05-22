@@ -110,8 +110,7 @@ Background information on tuning, terminology, known issues, compatibility polic
 ### [The Man Pages](/manpages)
 <%- @partial("manpages.html") %>
 
-### [Stardog Performance: Benchmarks, Tuning, Tips](/performance)
-<%- @partial("performance.html")%>
+### [Stardog Performance: Benchmarks, Tuning, Tips](https://docs.google.com/spreadsheets/d/1oHSWX_0ChZ61ofipZ1CMsW7OhyujioR28AfHzU9d56k/pubhtml)
 
 ### [Frequently Asked Questions](/faq)
 <%- @partial("faq.html")%>
