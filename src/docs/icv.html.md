@@ -44,15 +44,15 @@ And, finally, the [full Gist with links to everything](https://gist.github.com/e
 ## ICV & OWL 2 Reasoning
 
 **An integrity constraint may be satisfied or violated in either of two
-ways: by an explicit statement in a Stardog database or by a statement that's been legally inferred by Stardog (because a user requested reasoning).** 
+ways: by an explicit statement in a Stardog database or by a statement that's been legally inferred by Stardog (because a user requested reasoning).**
 
 This means that when ICV is enabled for a Stardog database, it has to be enabled with respect to a reasoning type (which we sometimes call in the Stardog Docs a "reasoning level"). The valid choices of reasoning type are any type or kind of reasoning supported by Stardog. See [Stardog's reasoning & inference chapter](/owl2#reasoning-levels) for more.
 
-The implication is that ICV is performed with three inputs: 
+The implication is that ICV is performed with three inputs:
 
-1. a Stardog database, 
-2. a set of constraints, and 
-3. a reasoning type (which may be, of course, no reasoning). 
+1. a Stardog database,
+2. a set of constraints, and
+3. a reasoning type (which may be, of course, no reasoning).
 
 This is the case because domain modelers, ontology developers, or integrity constraint authors must consider the interactions between explicit and inferred statements and how these are accounted for in integrity constraints.
 
@@ -96,7 +96,7 @@ This kind of constraint guarantees certain subclass and superclass
 :Alice a :Manager , :Employee .
 ```
 This constraint says that if an RDF individual is an instance of
-`Manager`, then it must also be an instance of `Employee`. In 
+`Manager`, then it must also be an instance of `Employee`. In
 A, the only instance of `Manager`, namely `Alice`, is not an instance of
 `Employee`; therefore, A is invalid. In B, `Alice` is an instance of
 Database both `Manager` and `Employee`; therefore, B is valid.
@@ -130,7 +130,7 @@ properties.
 
 :MyProject a :Project .
 ```
-This constraint says that if two RDF instances are related to each other via the property `is_responsible_for`, then 
+This constraint says that if two RDF instances are related to each other via the property `is_responsible_for`, then
 the range instance must be an instance of `Project_Leader` and the domain instance must be an instance of
 `Project`. In Database A, there is only one pair of individuals related
 via `is_responsible_for`, namely `(Alice, MyProject)`, and `MyProject`
@@ -223,7 +223,7 @@ in some specified relationship.
 ```
 This constraint says that if an RDF instance `i` is of type
 `Supervisor`, then `i` must be related to an individual `j` via the
-property `supervises` and also that `j` must be an instance of `Employee`. 
+property `supervises` and also that `j` must be an instance of `Employee`.
 In A, `Supervisor` has no instances; therefore, A is trivially
 valid. In B, the only instance of `Supervisor`, namely `Alice`, is
 related to no individual; therefore, B is invalid. In C, `Alice` is
@@ -302,7 +302,7 @@ property values.
               [ a owl:Restriction ;
                 owl:onProperty :works_on;
                 owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-                owl:onClass :Project 
+                owl:onClass :Project
               ] .
 ```
 ##### Database A <t>v</t>
@@ -351,7 +351,7 @@ Now, pay attention, because this is important. Stardog ICV implements a weak for
               [ a owl:Restriction ;
                 owl:onProperty [owl:inverseOf :works_in] ;
                 owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-                owl:onClass :Employee 
+                owl:onClass :Employee
               ] .
 ```
 ##### Database A <t>v</t>
@@ -378,13 +378,13 @@ Now, pay attention, because this is important. Stardog ICV implements a weak for
 This constraint says that if an RDF instance `i` is a `Department`, then
 there should exist at least 2 instances `j` and `k` of class `Employee`
 which are related to `i` via the property `works_in` (or, equivalently,
-`i` should be related to them via the inverse of `works_in`). In A, 
+`i` should be related to them via the inverse of `works_in`). In A,
 `MyDepartment` is not known to be an instance
-of `Department` so the constraint does not apply. In B, `MyDepartment` 
+of `Department` so the constraint does not apply. In B, `MyDepartment`
 is an instance of `Department` but only one
 instance of `Employee`, namely `Bob`, is known to work in it, so the
 B is invalid. In C, `MyDepartment` is related to the individuals
-`Bob` and `Alice`, which are both instances of `Employee` and 
+`Bob` and `Alice`, which are both instances of `Employee` and
 (again, due to weak Unique Name Assumption in Stardog  ICV), are
 assumed to be distinct, so C is valid.
 
@@ -399,7 +399,7 @@ assumed to be distinct, so C is valid.
               [ a owl:Restriction ;
                 owl:onProperty :manages ;
                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                owl:onClass :Department 
+                owl:onClass :Department
               ] .
 ```
 ##### Database A <t>v</t>
@@ -484,7 +484,7 @@ properties.
 ```
 ##### Database A <t>i</t>
 ```sparql
-:Bob :manages :MyDepartment 
+:Bob :manages :MyDepartment
 ```
 ##### Database B <t>v</t>
 ```sparql
@@ -551,17 +551,17 @@ department.
               [ a owl:Restriction ;
                 owl:onProperty :works_on ;
                 owl:someValuesFrom
-                        [ owl:unionOf (:Project 
+                        [ owl:unionOf (:Project
                                       [ a owl:Restriction ;
                                         owl:onProperty :supervises ;
                                         owl:someValuesFrom
-                                              [ owl:intersectionOf (:Employee 
+                                              [ owl:intersectionOf (:Employee
                                                                     [ a owl:Restriction ;
                                                                       owl:onProperty :works_on ;
                                                                       owl:someValuesFrom :Project
                                                                     ])
                                               ]
-                                      ] 
+                                      ]
                                       [ a owl:Restriction ;
                                         owl:onProperty :manages ;
                                         owl:someValuesFrom :Department
@@ -610,7 +610,7 @@ department.
 :MyProject a :Project .
 ```
 This constraint says that if an individual `i` is an instance of
-`Employee`, then at least one of three conditions must be met: 
+`Employee`, then at least one of three conditions must be met:
 
 * it is related to an instance of `Project` via the property `works_on`
 * it is related to an instance `j` via the property `supervises` and `j` is an instance of `Employee` and is also related to some instance of `Project` via the property `works_on`
@@ -636,7 +636,7 @@ receives funds from a US government agency.
 # Constraint in Terp syntax:
 # :Project and (:receives_funds_from some :US_Government_Agency)) rdfs:subClassOf (inverse :works_on only (:Employee and (:nationality value "US")))
 
-[ owl:intersectionOf (:Project 
+[ owl:intersectionOf (:Project
                        [ a owl:Restriction ;
                          owl:onProperty :receives_funds_from ;
                          owl:someValuesFrom :US_Government_Agency
@@ -644,12 +644,12 @@ receives funds from a US government agency.
 ] rdfs:subClassOf
               [ a owl:Restriction ;
                 owl:onProperty [owl:inverseOf :works_on] ;
-                owl:allValuesFrom [ owl:intersectionOf (:Employee 
+                owl:allValuesFrom [ owl:intersectionOf (:Employee
                                                         [ a owl:Restriction ;
                                                           owl:hasValue "US" ;
                                                           owl:onProperty :nationality
                                                         ])
-                                  ] 
+                                  ]
               ] .
 
 ```
@@ -658,7 +658,7 @@ receives funds from a US government agency.
 :MyProject a :Project ;
 	:receives_funds_from :NASA .
 
-:NASA a :US_Government_Agency 
+:NASA a :US_Government_Agency
 ```
 ##### Database B <t>i</t>
 ```sparql
@@ -731,9 +731,9 @@ an instance of `US_Government_Agency`, that is, `NASA`, via
 assertions. C is valid because both conditions are met. D is not valid
 because `Heidi` violated the first condition: she is related to
 `MyProject` via `works_on` but is not known to be an instance of
-`Employee`. Finally, this is fixed in E--by way of a handy OWL 
-axiom--which states that every instance of `Supervisor` is an 
-instance of `Employee`, so `Heidi` is inferred to be an 
+`Employee`. Finally, this is fixed in E--by way of a handy OWL
+axiom--which states that every instance of `Supervisor` is an
+instance of `Employee`, so `Heidi` is inferred to be an
 instance of `Employee` and, consequently, E is valid.
 
 If you made it this far, you deserve a drink!
@@ -746,7 +746,7 @@ similar to inferences. The following command will explain the IC violations
 for constraints stored in the database:
 
 ```bash
-$ stardog icv explain --reasoning EL "myDB" 
+$ stardog icv explain --reasoning EL "myDB"
 ```
 
 It is possible to explain violations for external constraints by passing the
@@ -758,7 +758,7 @@ $ stardog icv explain --reasoning EL "myDB" constraints.ttl
 
 ## Using ICV Programmatically
 
-This section will describe how to use Stardog ICV via the SNARL APIs. For 
+This section will describe how to use Stardog ICV via the SNARL APIs. For
 more information on using SNARL in general, please refer to the
 section on [programming with Stardog in Java](../java).
 
@@ -773,14 +773,14 @@ To use ICV in Stardog, one must:
 
 ### Creating Constraints
 
-[`Constraints`](../java/snarl/com/clarkparsia/stardog/icv/Constraint.html)
+[`Constraints`](../java/snarl/com/complexible/stardog/icv/Constraint.html)
 can be created using the
-[`ConstraintFactory`](../java/snarl/com/clarkparsia/stardog/icv/ConstraintFactory.html)
+[`ConstraintFactory`](../java/snarl/com/complexible/stardog/icv/ConstraintFactory.html)
 which provides methods for creating integrity constraints from OWL
 axioms or from SPARQL select queries. `ConstraintFactory` expects your
 constraints, if they are defined as OWL axioms, as an RDF triple (or
 graph). To aid in authoring constraints in OWL,
-[`ExpressionFactory`](../java/snarl/com/clarkparsia/openrdf/util/ExpressionFactory.html)
+[`ExpressionFactory`](../java/snarl/com/complexible/openrdf/util/ExpressionFactory.html)
 is provided for building the [RDF
 equivalent](http://www.w3.org/TR/owl2-mapping-to-rdf/) of the OWL axioms
 of your constraint.
@@ -799,7 +799,7 @@ An example of creating a simple constraint using `ExpressionFactory`:
 
 ### Adding Constraints to Stardog
 
-The [ICVConnection](../java/snarl/com/clarkparsia/stardog/icv/api/ICVConnection.html) interface provides programmatic access to the ICV support in Stardog.
+The [ICVConnection](../java/snarl/com/complexible/stardog/icv/api/ICVConnection.html) interface provides programmatic access to the ICV support in Stardog.
 It provides support for adding, removing and clearing integrity constraints in
 your database as well as methods for checking whether or not the data is
 valid; and when it's not, retrieving the list of violations.
@@ -808,7 +808,7 @@ This example shows how to add an integrity constraint to a Stardog
 database.
 
 <gist>1333767?file=AddConstraint.java</gist>
-         
+
 Here we show how to add a set of constraints as defined in a local OWL
 ontology.
 
@@ -818,13 +818,13 @@ ontology.
 ### IC Validation
 
 Checking whether or not the contents of a database are valid is easy. Once you have an
-[`ICVConnection`](../java/snarl/com/clarkparsia/stardog/icv/api/ICVConnection.html)
+[`ICVConnection`](../java/snarl/com/complexible/stardog/icv/api/ICVConnection.html)
 you can simply call its
-[`isValid()`](../java/snarl/com/clarkparsia/stardog/icv/api/ICVConnection.html#isValid())
+[`isValid()`](../java/snarl/com/complexible/stardog/icv/api/ICVConnection.html#isValid())
 method which will return whether or not the contents of the database are
 valid with respect to the constraints associated with that database.
 Similarly, you can provide some
-[`constraints`](../java/snarl/com/clarkparsia/stardog/icv/Constraint.html)
+[`constraints`](../java/snarl/com/complexible/stardog/icv/Constraint.html)
 to the `isValid()` method to see if the data in the database is invalid
 for those ``specific`` constraints; which can be a subset of the
 constraints associated with the database, or they can be new constraints
@@ -834,12 +834,12 @@ If the data is invalid for some constraints—either the explicit
 constraints in your database or a new set of constraints you have
 authored—you can get some information about what the violation was from
 the SNARL IC Connection.
-[`ICVConnection.getViolationBindings()`](../java/snarl/com/clarkparsia/stardog/icv/api/ICVConnection.html#getViolationBindings())
+[`ICVConnection.getViolationBindings()`](../java/snarl/com/complexible/stardog/icv/api/ICVConnection.html#getViolationBindings())
 will return the constraints which are violated, and for each constraint,
 you can get the violations as the set of bindings that satisfied the
 constraint query. You can turn the bindings into the individuals which
 are in the violation using
-[`ICV.asIndividuals`](../java/snarl/com/clarkparsia/stardog/icv/ICV.html#asIndividuals()).
+[`ICV.asIndividuals`](../java/snarl/com/complexible/stardog/icv/ICV.html#asIndividuals()).
 
 ### ICV and Transactions
 
