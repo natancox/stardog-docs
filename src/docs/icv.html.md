@@ -780,7 +780,7 @@ which provides methods for creating integrity constraints from OWL
 axioms or from SPARQL select queries. `ConstraintFactory` expects your
 constraints, if they are defined as OWL axioms, as an RDF triple (or
 graph). To aid in authoring constraints in OWL,
-[`ExpressionFactory`](../java/snarl/com/complexible/openrdf/util/ExpressionFactory.html)
+[`ExpressionFactory`](../java/snarl/com/complexible/common/openrdf/util/ExpressionFactory.html)
 is provided for building the [RDF
 equivalent](http://www.w3.org/TR/owl2-mapping-to-rdf/) of the OWL axioms
 of your constraint.
@@ -820,7 +820,7 @@ ontology.
 Checking whether or not the contents of a database are valid is easy. Once you have an
 [`ICVConnection`](../java/snarl/com/complexible/stardog/icv/api/ICVConnection.html)
 you can simply call its
-[`isValid()`](../java/snarl/com/complexible/stardog/icv/api/ICVConnection.html#isValid())
+[`isValid()`](../java/snarl/com/complexible/stardog/icv/api/ICVConnection.html#isValid(&#41;)
 method which will return whether or not the contents of the database are
 valid with respect to the constraints associated with that database.
 Similarly, you can provide some
@@ -834,12 +834,12 @@ If the data is invalid for some constraints—either the explicit
 constraints in your database or a new set of constraints you have
 authored—you can get some information about what the violation was from
 the SNARL IC Connection.
-[`ICVConnection.getViolationBindings()`](../java/snarl/com/complexible/stardog/icv/api/ICVConnection.html#getViolationBindings())
+[`ICVConnection.getViolationBindings()`](../java/snarl/com/complexible/stardog/icv/api/ICVConnection.html#getViolationBindings(&#41;)
 will return the constraints which are violated, and for each constraint,
 you can get the violations as the set of bindings that satisfied the
 constraint query. You can turn the bindings into the individuals which
 are in the violation using
-[`ICV.asIndividuals`](../java/snarl/com/complexible/stardog/icv/ICV.html#asIndividuals()).
+[`ICV.asIndividuals()`](../java/snarl/com/complexible/stardog/icv/ICV.html#asIndividuals(&#41;).
 
 ### ICV and Transactions
 

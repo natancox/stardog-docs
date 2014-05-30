@@ -8,10 +8,10 @@ toc: true
 
 Stardog command-line interface is comprehensively documented in `man` pages that ship with Stardog. Those `man` pages are reproduced here in HTML as a convenience to the reader.  To install the man pages locally in your environment:
 
-1.   $ cp docs/man/Man1/* /usr/local/share/man1
-2.   $ cp docs/man/Man8/* /usr/local/share/man8
-3.   $ mandb
-4.   $ man stardog-admin-server-start
+    $ cp docs/man/Man1/* /usr/local/share/man1
+    $ cp docs/man/Man8/* /usr/local/share/man8
+    $ mandb
+    $ man stardog-admin-server-start
 
 
 ## `stardog` CLI
