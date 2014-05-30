@@ -225,7 +225,7 @@ malformed literals (`"2.5"^^xsd:int`) used in filter evaluation may lead
 to undesired results.
 
 <!--
-needs two octothorpes Versioning <t>new22</t>
+needs two octothorpes  Versioning <t>new22</t>
 
 Stardog supports database change management capability similar to popular version
 controls systems for source code. This capability lets users track changes between
