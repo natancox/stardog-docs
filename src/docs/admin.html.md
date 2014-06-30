@@ -342,12 +342,12 @@ The following twiddly knobs for Stardog Server are available in
      * the value of `load.parser.count` + `load.processor.count` should neither exceed `20` nor be equal to or greater than the number of available cores
      * the two values should be roughly equal
      * the values don't have much effect unless or until you're loading billions of triples
-11. `password.length.min`: Sets the password policy for the minimum length of 
-    user passwords, the value can't be lower than 1 or greater than `password.length.max`. 
+11. `password.length.min`: Sets the password policy for the minimum length of
+    user passwords, the value can't be lower than 1 or greater than `password.length.max`.
     Default: `4`.
-12. `password.length.max`: Sets the password policy for the maximum length of 
+12. `password.length.max`: Sets the password policy for the maximum length of
     user passwords, the value can't be greater than 20 or lower than 1. Default: `20`.
-13. `password.regex`: Sets the password policy of accepted chars in user passwords, via a 
+13. `password.regex`: Sets the password policy of accepted chars in user passwords, via a
     Java regular expression. Default: `[\\w@#$%]+`
 
 ### Starting & Stopping the Server
@@ -441,7 +441,7 @@ requires a Java plugin that implements the Stardog Server logging
 interface; see the [Java Chapter](/java/) for more information; and
 the log rotation policy (file size or time).
 
-Slow query logging is also available. See the [Managing Queries]() section
+Slow query logging is also available. See the [Managing Queries](#managing-queries) section
 below.
 
 ## Database Admin
@@ -974,6 +974,7 @@ following command:
 $ stardog-admin metadata get -o index.named.graphs my_db_name
 ```
 
+<div id="managing-queries"></div>
 ### Managing Queries
 
 Stardog includes the capability to manage running queries according to
