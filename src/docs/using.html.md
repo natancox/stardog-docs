@@ -247,8 +247,8 @@ $ stardog vcs commit --add add_file1.ttl add_file2.ttl --remove remove_file.ttl 
 To see all revision (commits) in a database:
 
 ```bash
-$ stardog version list myDb
-$ stardog version list --committer userName myDb
+$ stardog vcs list myDb
+$ stardog vcs list --committer userName myDb
 ```
 
 The output can be tweaked using `--after`, `--before`, and `--committer`.
@@ -258,8 +258,8 @@ The output can be tweaked using `--after`, `--before`, and `--committer`.
 You can revert specific revisions, ranges, etc.
 
 ```bash
-$ stardog version revert myDb
-$ stardog version revert myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
+$ stardog vcs revert myDb
+$ stardog vcs revert myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
 ```
 
 ### Viewing Diffs
@@ -267,8 +267,8 @@ $ stardog version revert myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
 You can also see the differences between revisions; by default, between the head version and its previous versions or the changes in a specific commit, respectively: 
 
 ```bash
-$ stardog version diff myDb
-$ stardog version diff myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
+$ stardog vcs diff myDb
+$ stardog vcs diff myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
 ```
 
 ### Using Tags
@@ -276,7 +276,7 @@ $ stardog version diff myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
 You can also create, drop, list tags, i.e., named revisions:
 
 ```bash
-$ stardog version tag --list myDb
+$ stardog vcs tag --list myDb
 ```
 
 ### Querying the Revision History
@@ -284,7 +284,7 @@ $ stardog version tag --list myDb
 All of the revision history of the database is represented as RDF using the W3C PROV vocabulary and can be queries using SPARQL:
 
 ```bash
-$ stardog versioning query myDb 'SELECT...'
+$ stardog vcs query myDb 'SELECT...'
 ```
 
 ## Exporting
