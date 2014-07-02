@@ -1,3 +1,150 @@
+2.2 Changes
+----------------------------------------------------------------------------
+
+* ADDED: Support for RDF versioning
+
+* ADDED: Admin support for webconsole
+
+* ADDED: Password file similar to postgres for the CLI
+
+* ADDED: Support compressed database exports
+
+* MODIFIED: Support acceptable hostnames via CORS
+
+* MODIFIED: Improved recognition of data properties during schema extraction
+
+* MODIFIED: Updated to Sesame 2.7.12
+
+* MODIFIED: Increase default password max length to 1024 characters
+
+* MODIFIED: Dropped support for SD-Connection-String header
+
+* MODIFIED: Dropped support for SD-Query-Bindings header
+
+* MODIFIED: Clickable elements in schema browser made more obvious
+
+* MODIFIED: Updated to Netty 4.0.20
+
+* MODIFIED: Improved performance of distinct operator for unsorted results
+
+* MODIFIED: Updated to Lucene 4.8.1
+
+* MODIFIED: Updated to Guava 17.0
+
+* MODIFIED: Improved filter selectivity estimations
+
+* MODIFIED: Improved error message when searching over non-searchable database
+
+* MODIFIED: Improved error message when reasoning consistency check CLI command is incorrectly formatted
+
+* MODIFIED: Disabled non-strict parsing when using durable transactions
+
+* MODIFIED: Strict parsing now a database option
+
+* MODIFIED: Check literals on insert is folded into strict parsing
+
+* MODIFIED: Significant reduction in memory usage and increased performance for transferring RDF over the wire
+
+* MODIFIED: StardogDatasetGraph implements the Jena Transactional interface
+
+* MODIFIED: Deprecate usage of Jena BulkUpdateHandler
+
+* MODIFIED: Do not wrap StardogDatasetGraph in DatasetGraphMap, use internal cache instead
+
+* MODIFIED: Reduce default Lucene write buffer size from 1G to 256M
+
+* FIXED: 'value already present' error when querying using reasoning
+
+* FIXED: Expressions in a projection which are used in an order by are incorrectly parsed
+
+* FIXED: Direct type does not return results when there are equivalent classes
+
+* FIXED: "No authenticated user" error when iterating over IC violations
+
+* FIXED: Constraints using max cardinality does not produce expected violations
+
+* FIXED: Exception thrown due to invalid restrictions during schema extraction
+
+* FIXED: Web console is not working for IE 8/9
+
+* FIXED: Interactions between join optimizers can produce suboptimal joins for patterns with unbound predicates
+
+* FIXED: INSERT DATA with language-tagged literal results in exception
+
+* FIXED: Inserting a triple/quad with a BNode ID that consists of a single character (e.g., :b)
+duplicates this character (:bb)
+
+* FIXED: Database exports don't use stored namespaces
+
+* FIXED: "NQUADS" is not recognized as a valid RDF format
+
+* FIXED: Transitive properties in PROV are not recognized
+
+* FIXED: Schema queries do not return distinct results
+
+* FIXED: "NTriples" is not recognized as a valid RDF format
+
+* FIXED: Counter of allocated off-heap memory does not take into account allocations via ByteBuffer.allocateDirect
+
+* FIXED: Filter exists expressions in an optional join cannot be translated into a plan
+
+* FIXED: Rules containing NOT IN expressions in FILTERs might produce incomplete results
+
+* FIXED: NPE in schema operator
+
+* FIXED: ICV guard mode used incorrect reasoning type
+
+* FIXED: Describe queries return no results when query.all.graphs is enabled
+
+* FIXED: Query plan explanations when obtained via SNARL protocol do not reflect reasoning level
+
+* FIXED: CSV and TSV are not recognized as valid HTTP result formats
+
+* FIXED: Aggregate functions are incorrectly canonicalized
+
+* FIXED: Temp files created during data uploads for stream storage are not deleted when transaction is complete
+
+* FIXED: Getting namespaces for db over HTTP returns duplicated mappings
+
+* FIXED: Batch file to run Stardog fails on Windows when path has spaces in it
+
+* FIXED: Running search queries without a search index yields an NPE
+
+* FIXED: Failure of termination condition in an outer join which resulted in an infinite join
+
+* FIXED: Cannot migrate large databases
+
+* FIXED: Large files cannot be added via HTTP protocol
+
+* FIXED: Service loader does not ignore comments
+
+* FIXED: Parse error for xsd:gyear typed literals with the value `1`
+
+* FIXED: Persistant databases show "Index Persist: No" in webconsole
+
+* FIXED: Incorrect status code for query not found in HTTP API
+
+* FIXED: NPE during data obfuscation over SNARL protocol
+
+* FIXED: Cannot export large databases to client
+
+* FIXED: Losing results with order by & limit from incorrect solution modifier optimization
+
+* FIXED: Starting server without web console only half works
+
+* FIXED: Can return incorrect results from index scan when an active graph is explicitly specified
+
+* FIXED: ArrayIndexOutOfBoundsException can occur when multiple projections appear in a plan
+
+* FIXED: Find method of StardogDatasetGraph is incorrect
+
+* FIXED: Implement all update functions in StardogDatasetGraph
+
+* FIXED: A implies {o} is a valid EL axiom, but not accepted by SL profile
+
+* FIXED: Keys are not recognized as valid EL axioms
+
+
 2.1.3 Changes
 ----------------------------------------------------------------------------
 
@@ -43,7 +190,6 @@
 
 2.1.2 Changes
 ----------------------------------------------------------------------------
-
 * ADDED: Auto-complete feature in Web console's query panel
 
 * ADDED: Load query from file in Web console's query panel
