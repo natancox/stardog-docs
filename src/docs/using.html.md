@@ -224,18 +224,19 @@ lax mode may lead to unexpected SPARQL query results. For example,
 malformed literals (`"2.5"^^xsd:int`) used in filter evaluation may lead
 to undesired results.
 
-<!--
-needs two octothorpes  Versioning <t>new22</t>
+## Versioning
 
-Stardog supports database change management capability similar to popular version
-controls systems for source code. This capability lets users track changes between
+Stardog supports graph change management capability that lets users track changes between
 revisions of a Stardog database, add comments and other metadata to the revisions,
-extract diffs between those revisions, tag revisions
-with labels, and query over the revision history of the database using SPARQL.
+extract diffs between those revisions, tag revisions with labels, and query over the revision history of the database using SPARQL.
+
+The following examples give a very brief overview of this capability; see the [VCS man pages](/manpages/) for all the details.
 
 ### Committing Changes
 
-stardog vcs commit —Commits a new version by adding and removing triples specified in files. Different from the 'data add/remove' commands, this command allows one to add and remove triples in one commit and associate a commit message. Removals are performed before additions.
+Commit a new version by adding and removing triples specified in files. Different from the 'data add/remove' commands, commit allows one to add and remove triples in one commit and associate a commit message. Removals are performed before additions.
+
+To commit changes:
 
 ```bash
 $ stardog vcs commit --add add_file1.ttl add_file2.ttl --remove remove_file.ttl -m "This is an example commit" myDb
@@ -243,87 +244,48 @@ $ stardog vcs commit --add add_file1.ttl add_file2.ttl --remove remove_file.ttl 
 
 ### Viewing Revisions
 
-Lists all the versions (commits) in a database
+To see all revision (commits) in a database:
 
-    $ stardog version list myDb
+```bash
+$ stardog version list myDb
 $ stardog version list --committer userName myDb
+```
 
-* Lists all the versions committed bin a time range user
-
---after <after>
-Limits the versions displayed to only those committed after this date. The date should be a valid xsd:date (YYYY-MM-DD) or xsd:dateTime (YYYY-MM-DDTHH:MM:SS) value.
---before <before>
-Limits the versions displayed to only those committed before this date. The date should be a valid xsd:date (YYYY-MM-DD) or xsd:dateTime (YYYY-MM-DDTHH:MM:SS) value.
---committer <committer>
-Limits the versions displayed to only those committed by this user.
--l <limit>, --limit <limit>
-Limits the number of versions to show.
-
-### Viewing Diffs
-
-Prints the differences between the head version and its previous versions; i.e. the changes in last commit
-
-    $ stardog version diff myDb
-$ stardog version diff myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
-
-* Prints the differences between two versions, i.e. all the changes committed after the first version until the second version (inclusive)
-Prints the difference between the given version and its previous version, i.e. the changes committed in a specific version
-
-    $ stardog version revert --single myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
-
-### Using Tags
-
---create
-Creates a new tags.
---drop
-Drop a tag.
---list
-Lists tags.
--p <password>, --passwd <password>
-Password.
--P, --ask-password
-Prompt for password.
--t <version>, --tag <version>
-Tag name that will be created or removed.
--u <username>, --username <username>
-User name.
--v <version>, --version <version>
-The version that will be tagged.
---verbose
-Print detailed information about each tag.
---
-This option can be used to separate command-line options from the list of argument, (useful when arguments might be mistaken for command-line options
-<database>
-The name of the database or the full connection string of the database to connect to. If only the name is provided, the default server URL will be pre-pended to the name of the database in order to construct the connection string. Connection parameters such as ';reasoning=QL' can be included in the provided database name. Connection parameters specified like this can be overridden by specific options on the command. The default server URL will be read from the JVM argument 'stardog.default.cli.server'. If the JVM argument is not set, the default value 'snarl://localhost:5820' is used. If the server URL has no explicit port value, the default port value '5820' is used. To use a secure connection, you should specify the full connection string and postfix 's' to the protocol, e.g. snarls or https.
-
-EXAMPLES
-
-
-Lists the tags in a database
-
-    $ stardog version tag --list myDb
-
-
+The output can be tweaked using `--after`, `--before`, and `--committer`.
 
 ### Reverting Revisions
 
-Reverts the last commit and restores the database to the previous version
+You can revert specific revisions, ranges, etc.
 
-    $ stardog version revert myDb
+```bash
+$ stardog version revert myDb
 $ stardog version revert myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
+```
 
-* Reverts all the changes committed in a specific version and everything else until the second version
-Reverts the changes committed in one specific version.
+### Viewing Diffs
 
-    $ stardog version revert --single myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
+You can also see the differences between revisions; by default, between the head version and its previous versions or the changes in a specific commit, respectively: 
+
+```bash
+$ stardog version diff myDb
+$ stardog version diff myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
+```
+
+### Using Tags
+
+You can also create, drop, list tags, i.e., named revisions:
+
+```bash
+$ stardog version tag --list myDb
+```
 
 ### Querying the Revision History
 
-Query the versions in a database
+All of the revision history of the database is represented as RDF using the W3C PROV vocabulary and can be queries using SPARQL:
 
-    $ stardog versioning query myDb ''
-
--->
+```bash
+$ stardog versioning query myDb 'SELECT...'
+```
 
 ## Exporting
 

@@ -8,6 +8,18 @@ toc: true
 
 In this chapter we explain how to configure, use, and administer Stardog Cluster for uninterrupted operations.
 
+## An Introduction to High Availability
+
+## Configuring Stardog HA
+
+### Starman Cluster Deployment
+
+## Administering Stardog HA
+
+## Using Stardog HA
+
+## Stardog HA Guarantees
+
 # Deploying Stardog Pack
 
 This is a step-by-step guide to deploy Stardog Pack onto a collection of virtual machines using Starman. This procedure 
@@ -427,14 +439,3 @@ script provided in the Starman distribution.
 
 [9]: http://docs.stardog.com/admin/#sd-Command-Line-Interface
 
-## An Introduction to High Availability
-
-## Configuring Stardog HA
-
-### Starman Cluster Deployment
-
-## Administering Stardog HA
-
-## Using Stardog HA
-
-## Stardog HA Guarantees

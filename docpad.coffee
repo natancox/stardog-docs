@@ -51,12 +51,12 @@ docpadConfig = {
     # Complete listing of default values can be found here: http://docpad.org/docs/template-data
     templateData:
         # Specify some site properties
-        version: "2.1.3" #update me on new release
+        version: "2.2" #update me on new release
         springVersion: "2.1.2"
-        reldate: "8 April 2014"
+        reldate: "2 July 2014"
         secnote: '<div class="metro danger label">Security Notice</div>'
         shout: '<div class="metro warning btn">NOTE</div>'
-        new2: "<div class='metro label warning'>New in 2.0</div>"
+        new2: ""
         FIXME: "<div class='metro large btn warning'>@FIXME</div>"
         v: "<div class='metro success label'>VALID</div>"
         i: "<div class='metro danger label'>INVALID</div>"

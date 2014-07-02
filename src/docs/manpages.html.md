@@ -21,6 +21,7 @@ Stardog command-line interface is comprehensively documented in `man` pages that
 3. [`namespace add`](/man/namespace-add.html), [`namespace list`](/man/namespace-list.html), [`namespace remove`](/man/namespace-remove.html)
 4. [`query execute`](/man/query-execute.html), [`query explain`](/man/query-explain.html), [`query obfuscate`](/man/query-obfuscate.html), [`query search`](/man/query-search.html)
 5. [`reasoning consistency`](/man/reasoning-consistency.html), [`reasoning explain`](/man/reasoning-explain.html)
+6. [`vcs commit`](/man/vcs-commit.html), [`vcs diff`](/man/vcs-diff.html), [`vcs list`](/man/vcs-list.html), [`vcs query`](/man/vcs-query.html), [`vcs revert`](/man/vcs-revert.html), [`vcs tag`](/man/vcs-tag.html).
 
 ## `stardog-admin` CLI
 
