@@ -530,7 +530,7 @@ The following options take a boolean value:
 The legal value of `database.name` is given by the regular expression
 `[A-Za-z]{1}[A-Za-z0-9_-]`.
 
-The legal value of `icv.active.graphs` is a list of named graph
+The legal value of `icv.active.graphs` is a comma-separated list of named graph
 identifiers. See `reasoning.schema.graphs` below for syntactic sugar
 URIs for default graph and all named graphs.
 
@@ -542,7 +542,7 @@ The legal value of `index.differential.*` is an integer.
 The legal value of `index.type` is the string "disk" or "memory"
 (case-insensitive).
 
-The legal value of `reasoning.schema.graphs` is a list of named graph
+The legal value of `reasoning.schema.graphs` is a comma-separated list of named graph
 identifiers, including (optionally) the special names,
 `tag:stardog:api:context:default` and `tag:stardog:api:context:all`,
 which represent the default graph and the union of all named graphs and
