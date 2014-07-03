@@ -50,7 +50,7 @@ Covers basic installation and starting a Stardog Server in *five easy steps*.
 ### [The Basics: Query, Write, Search](/using/)
 <%- @partial("using.html") %>
 
-### [Stardog (Web) Console](/console/)
+### [Stardog Web Console](/console/)
 <%- @partial("console.html") %>
 
 ## Administering Stardog
