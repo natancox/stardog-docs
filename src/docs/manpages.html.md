@@ -17,7 +17,7 @@ Stardog command-line interface is comprehensively documented in `man` pages that
 ## `stardog` CLI
 
 1. [`data add`](/man/data-add.html), [`data export`](/man/data-export.html), [`data obfuscate`](/man/data-obfuscate.html), [`data remove`](/man/data-remove.html), [`data size`](/man/data-size.html)
-2. [`icv convert`](/man/icv-convert.html), [`icv export`](/man/icv-export.html), [`icv validate`](/man/icv-validate.html)
+2. [`icv convert`](/man/icv-convert.html), [`icv explain`](/man/icv-explain.html), [`icv export`](/man/icv-export.html), [`icv validate`](/man/icv-validate.html)
 3. [`namespace add`](/man/namespace-add.html), [`namespace list`](/man/namespace-list.html), [`namespace remove`](/man/namespace-remove.html)
 4. [`query execute`](/man/query-execute.html), [`query explain`](/man/query-explain.html), [`query obfuscate`](/man/query-obfuscate.html), [`query search`](/man/query-search.html)
 5. [`reasoning consistency`](/man/reasoning-consistency.html), [`reasoning explain`](/man/reasoning-explain.html)
