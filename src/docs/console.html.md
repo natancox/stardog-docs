@@ -12,7 +12,7 @@ The Stardog Web Console is a responsive web app for the Stardog Server and for e
 
 ## A Screenshot Tour...
 
-Seriously, this is a lot more fun if you just [download](http://stardog.com/) the damn thing and hit it with yr browser!
+Seriously, this is a lot more fun if you just [download](http://stardog.com/) the damn thing and hit it with a browser!
 
 ### Login
 

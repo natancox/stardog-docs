@@ -20,7 +20,7 @@ In this chapter we explain how to configure, use, and administer Stardog Cluster
 
 ## Stardog HA Guarantees
 
-# Deploying Stardog Pack
+## Deploying Stardog Cluster
 
 This is a step-by-step guide to deploy Stardog Pack onto a collection of virtual machines using Starman. This procedure 
 has been tested on Linux and OS X.
@@ -35,8 +35,6 @@ has been tested on Linux and OS X.
 * stardog-license-key.bin – A valid Stardog license
 
 ## Setup
-
-
 
 1. Bootstrap your Stardog Pack image with Starman:
 
