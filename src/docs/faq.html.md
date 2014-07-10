@@ -55,10 +55,9 @@ information?
 
 **Answer:** We don't necessarily recommend this, but it's possible.
 Simply pass `--disable-security` to `stardog-admin` when you start the
-Stardog Server; while this may be the worst possible name for an
-argument, since it doesn't actually disable security, it will use the
-built-in anonymous user (given the default configuration and user
-accounts) in a way that makes Stardog usable for a public endpoint.
+Stardog Server.  This *completely* disables security in Stardog which
+will let users access the SPARQL endpoint, and all other functionality, 
+without needing authorization.
 
 ## Remote Bulk Loading
 
