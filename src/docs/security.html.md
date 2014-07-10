@@ -101,12 +101,34 @@ Out of the box, the Stardog security setup is minimal and *most importantly* **i
 To setup the constraints used to validate passwords when adding new users, configure the following settings in the `stardog.properties` configuration file.
 
 - `password.length.min`: Sets the password policy for the minimum length of 
-  user passwords, the value can't be lower than 1 or greater than `password.length.max`. 
+  user passwords, the value can't be less than 1 or greater than `password.length.max`. 
   Default: `4`.
 - `password.length.max`: Sets the password policy for the maximum length of 
-  user passwords, the value can't be greater than 20 or lower than 1. Default: `20`.
+  user passwords, the value can't be greater than 1024 or less than 1. Default: `20`.
 - `password.regex`: Sets the password policy of accepted chars in user passwords, via a 
   Java regular expression. Default: `[\\w@#$%]+`
+
+### Using a Password File
+
+To avoid putting passwords into scripts or environment variables, you can put them into a suitable secured password file. If no credentials are passed explicitly in CLI invocations or you do not ask Stardog to prompt you for credentials interactively, then it will look for credentials in a password file. On a Unix system, Stardog will look for a file called `.sdpass` the home directory of the user Stardog is running as; on a Windows system, it will look for `sdpass.conf` in `Application Data\stardog` in the home directory of the user Stardog is running as. If the file is not found in this location, Stardog will look in the location provided by the `stardog.passwd.file` system property.
+
+#### Password File Format
+
+The format of the password file is as follows:
+
+- any line that starts with a `#` is ignored
+- each line contains a single password in the format: `hostname:port:database:username:password`.
+- wildcards, `*`, are permitted for any field but the password field; colons and backslashes in fields are escaped with `\`.
+
+For example,
+
+```bash
+  #this is my password file; there are no others like it and this one is mine anyway...
+  *:*:*:flannery:aNahthu8
+  *:*:summercamp:jemima:foh9Moaz
+```
+  
+Of course you should secure this file carefully, making sure that only the user that Stardog runs as can read it.
 
 ## Managing Stardog Securely
 

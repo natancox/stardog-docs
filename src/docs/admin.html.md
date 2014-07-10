@@ -459,8 +459,7 @@ knobs till you really need to.
 
 ### Configuration Options
 
-The following are the legal configuration options for a Stardog
-database:
+The following are the legal configuration options for a Stardog database:
 
 - `database.name`: A legal database name.
 - `database.online`: The status of the database: online or offline. It may be set so that the database is created initially in online or offline status; subsequently, it can't be set directly but only by using the relevant admin commands.
