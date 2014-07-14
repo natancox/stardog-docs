@@ -76,11 +76,10 @@ $ ./stardog query "myDB;reasoning=QL" "SELECT ?s { ?s a :C } LIMIT 10"
 ### HTTP
 
 For HTTP, the reasoning level is specified with the other connection
-parameters in the request header `SD-Connection-String`:
+parameters:
 
 ```bash
-$ curl -u admin:admin -X GET -H "SD-Connection-String: reasoning=QL" \
-      "http://localhost:5822/myDB/query?query=..."
+$ curl -u admin:admin -X GET "http://localhost:5822/myDB/query?reasoning=ql&query=..."
 ```
 
 ### `ReasoningConnection` API
