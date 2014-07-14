@@ -75,7 +75,7 @@ $ ./stardog query "myDB;reasoning=QL" "SELECT ?s { ?s a :C } LIMIT 10"
 
 ### HTTP
 
-For HTTP, the reasoning level is specified with the other connection
+For HTTP, the reasoning level is specified with the other HTTP request
 parameters:
 
 ```bash
