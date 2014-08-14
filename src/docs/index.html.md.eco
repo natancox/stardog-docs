@@ -34,14 +34,14 @@ Overflow](http://stackoverflow.com/) using the tag *stardog*.
 ### Contributing
 
 There are several open source components of Stardog; feel free to submit
-pull requests: [stardog-docs](https://github.com/clarkparsia/stardog-docs), [stardog.js](https://github.com/clarkparsia/stardog.js),
+pull requests: [Starman](https://github.com/clarkparsia/starman), [stardog-docs](https://github.com/clarkparsia/stardog-docs), [stardog.js](https://github.com/clarkparsia/stardog.js),
 [stardog-groovy](https://github.com/clarkparsia/stardog-groovy), [stardog-spring](https://github.com/clarkparsia/stardog-spring),
 [stardog.rb](https://github.com/antoniogarrote/stardog-rb), and [stardog-clj](https://github.com/clarkparsia/stardog-clj). Many thanks to everyone who's
 contributed<fn>Thanks to all Stardog users, contributors, testers, etc., especially Robert Butler, Al Baker, Marko A. Rodriguez, Brian Sletten, Alin Dreghiciu, Rob Vesse, Stephane
 Fallah, John "New Model Army" Goodwin, José Devezas, Chris
 Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl, Morton
 Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron
-Zettlemoyer, Jim Rhyne, Andrea Westerinen, Huy Phan, Zach Whitley, Maurice Rabb.</fn> so far.
+Zettlemoyer, Jim Rhyne, Andrea Westerinen, Huy Phan, Zach Whitley, Maurice Rabb, and all the crew at XSB.</fn> so far.
 
 ## Using Stardog
 

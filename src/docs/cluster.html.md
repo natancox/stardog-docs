@@ -95,7 +95,7 @@ stardog-cli-opts = --disable-security
 zookeeper-properties-tickTime=2000
 ```
 
-As of Stardog 2.2.1, Starman is only tested with Ubuntu 14.04 AMIs. It may or may not work with other AMIs. You can find a comprehensive list of available Ubuntu 14.04 AMIs and the instance types compatible with each of them [here][https://cloud-images.ubuntu.com/locator/ec2/].
+As of Stardog 2.2.1, Starman is only tested with Ubuntu 14.04 AMIs. It may or may not work with other AMIs. You can find a comprehensive list of available Ubuntu 14.04 AMIs and the instance types compatible with each of them [here](https://cloud-images.ubuntu.com/locator/ec2/).
 
 ## Setting Up Stardog Cluster with Starman
 
