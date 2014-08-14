@@ -14,26 +14,13 @@ Let's start with a few big picture points about Stardog Cluster and deployment s
 
 ### What is Stardog Cluster?
 
-First, Stardog Cluster is a collection of Stardog Server instances running on one or more virtual or physical machines that, *from the client's perspective*, behave like a single (that is, non-distributed, non-clustered) Stardog. That's important because it's important from the perspective of a client of Stardog's various services that Stardog Cluster act like Stardog (non-cluster); of course Stardog Cluster should have some different operational properties, the main one of which is high availability. But from the client's perspective Cluster should be indistinguishable from non-cluster.
+Stardog Cluster is a collection of Stardog Server instances running on one or more virtual or physical machines that, *from the client's perspective*, behave like a single Stardog Server instance.<fn>To fully achieve this effect requires, as noted above, DNS or HaProxy or similar environment configuration that's left as an exercise for the user.</fn> Of course Stardog Cluster should have some different operational properties, the main one of which is high availability. But from the client's perspective Stardog Cluster should be indistinguishable from non-clustered Stardog.<fn>The client here means the client of Stardog APIs, not necessarily people, administrators, etc.</fn>
 
 ### What about Deployment?
 
-Third, clustered database deployment is notable for a few reasons:
+Clustered database deployment is notable for being a complete pain in the ass and different in every computing environment on earth. We've made Stardog Cluster deployment easier for you, but we haven't solved the problem of universal devops or deployment of distributed databases. It may be painful to deploy Stardog Cluster, and that will likely depend on details of yr computing environment about which we probably know very little.
 
-2. it's a complete pain in the ass
-3. it's different in every computing environment on earth
-
-We've made Stardog Cluster deployment easier for you, but we haven't solved the
-problem of universal devops or deployment of distributed databases. It may be painful to deploy Stardog Cluster, and that will likely depend 
-on details of yr computing environment about which we probably know very little.
-
-Three additional points ameliorate this pain:
-
-1. we've built a deployment tool, called [Starman](http://github.com/clarkparsia/starman), that will work for many cases; and we've open sourced it
-2. we've fully documented what is required to configure and deploy a Stardog Cluster
-3. Stardog Cluster's dependencies are few and ubiquitous:
-	- ssh
-	- JVM 1.6 or greater
+Three additional points ameliorate this pain. We've built a deployment tool, called [Starman](http://github.com/clarkparsia/starman), that will work for many cases; and we've open sourced it. We've fully documented what is required to configure and deploy a Stardog Cluster. The dependencies are few and ubiquitous (SSH, JVM 1.6 or newer).
 
 Okay, so a quick deployment overview:
 
@@ -42,7 +29,7 @@ Okay, so a quick deployment overview:
 	- sharing configurations based on other systems so we can put them in Starman's repo would be cool
 	- pull requests to make Starman (which is based on [Pallet](http://palletops.com/)) work with other targets are even cooler
 
-Finally, here's the overview of what you'll have to do to deploy with Starman:
+Finally, here's the very high-level overview of how to deploy with Starman:
 
 1. configure Stardog Cluster
 2. bootstrap and locally install Stardog Cluster images
@@ -228,15 +215,14 @@ where the property `default-nodes` is a colon-separated list of IP addresses tha
 [ssh-auth]: http://www.howtogeek.com/168147/add-public-ssh-key-to-remote-server-in-a-single-command/
 [ubuntu-sudoers]: http://askubuntu.com/a/192062
 
-
 ## Deploying Stardog Cluster
 
 When using any of the following commands make sure to replace the `--provider` option argument with any of these: `vmfest` for
 VirtualBox, `ec2` for Amazon EC2, or `default` for existing servers.
 
-The last bit of information here is the *cluster size*. As of 2.2.1, Stardog Cluster only supports the cluster topology "one coordinator, many followers", but we need to determine the size of the cluster, which should be a multiple of 3. We pass that to Starman deploy using the `--numvms`<fn>This will be renamed `--clustersize` in a future release.</fn> argument.
+The last bit of information here is the *cluster size*. As of 2.2.1, Stardog Cluster only supports the cluster topology "one coordinator, many followers", but we need to determine the size of the cluster, which should be a multiple of 3. We pass that to Starman deploy using the `--numvms`<fn>This will be renamed in a future release.</fn> argument.
 
-First, deploy Stardog Cluster:
+Now we're ready to deploy Stardog Cluster:
 
 ``` bash
 ./starman cluster deploy --id <cluster_id> --numvms <num_nodes> --provider <provider>
@@ -246,8 +232,10 @@ Starman will create the Cluster, and then perform the required setup on the requ
 while depending on the network, since Starman is copying Stardog Cluster images to *n* machines.
 
 Detailed output can be seen in the log file `./logs/pallet.log`.
-	
-Second, start Stardog Cluster:
+
+## Cluster Management
+
+To start the Cluster:
 
 ``` bash
 ./starman cluster start --id <cluster_id> --provider <provider>
@@ -255,7 +243,7 @@ Second, start Stardog Cluster:
 
 The output of cluster startup is a list of IP addresses; to meld these into a single symbolic name for the database is left as an exercise for the reader but we recommend suitable configuration of DNS or HaProxy or similar. The nodes of the Stardog Cluster, as of Stardog 2.2.1, implement a simple round robin strategy for distributing read operations over the cluster; write operations are directed to the Coordinator exclusively.
 
-Third, for stopping the cluster you can execute:
+To stop the Cluster:
 
 ``` bash
 ./starman cluster stop --id <cluster_id> --provider <provider>
@@ -286,7 +274,7 @@ The other option is to specify a comma-separated list of IP addresses that corre
 ./starman cluster removenodes --id <cluster_id> --provider <provider> --nodes 10.11.12.13,10.11.12.14,10.11.12.15
 ```
 
-## Interacting with the Cluster via Starman
+### Listing Nodes
 
 We can verify that Stardog Cluster was deployed successfully using
 
@@ -300,7 +288,37 @@ You should see a list of the created nodes. Since Starman adds a password-less l
 ssh <ipaddress>
 ```
 
-### Interacting with the Cluster via Stardog Client
+### Undeploying
+
+In order to undeploy a Cluster:
+
+``` bash
+./starman cluster undeploy --id <cluster_id> --provider <provider>
+```
+
+This will destroy all the virtual or remote machines part of cluster.
+
+### Managing local Starman Repo
+
+If you wish to uninstall a Stardog Cluster image from your local Starman system use:
+
+``` bash
+./starman svm uninstall --id <cluster_id>
+```
+		
+If you wish to remove a Stardog Cluster image tag from your local Starman system use:
+
+``` bash
+./starman svm remove --tag <version>
+```
+		
+To list bootstrapped and installed Stardog Pack versions:
+
+``` bash
+./starman svm list
+```
+
+## Stardog Client
 
 In order to interact with the Stardog Cluster using Stardog CLI tools in the ordinary way---`stardog-admin` and `stardog`---you must install Stardog locally as you usually do by unzipping the contents of `stardog-*.zip`, for example (for `v2.2.1`).
 
@@ -327,34 +345,6 @@ You can use Starman to copy files remotely for bulk loading files to your cluste
 
 `<origin>` is the path in your local machine and `<destination>` is the path in the remote machines. This command 
 will copy the local files to all the servers in the cluster in the specified path.
-
-## Cluster Admin
-
-In order to undeploy a Stardog Pack cluster use
-
-``` bash
-./starman cluster undeploy --id <cluster_id> --provider <provider>
-```
-
-This will destroy all the virtual or remote machines part of cluster.
-
-If you wish to uninstall a Stardog Cluster image from your local Starman system use:
-
-``` bash
-./starman svm uninstall --id <cluster_id>
-```
-		
-If you wish to remove a Stardog Cluster image tag from your local Starman system use:
-
-``` bash
-./starman svm remove --tag <version>
-```
-		
-To list bootstrapped and installed Stardog Pack versions:
-
-``` bash
-./starman svm list
-```
 
 <!--	
 

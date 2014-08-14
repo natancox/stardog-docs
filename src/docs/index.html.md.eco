@@ -60,13 +60,11 @@ Administering Stardog Server, databases, including configuration and deployment 
 ### [Administration](/admin/)
 <%- @partial("admin.html") %>
 
+### [Highly Available Cluster](/cluster)
+<%- @partial("cluster.html")%>
+
 ### [Security](/security)
 <%- @partial("security.html")%>
-
-<!--
-### [High Availability](/ha)
-<%- @partial("ha.html")%>
--->
 
 ## Programming Stardog
 
