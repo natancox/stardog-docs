@@ -269,8 +269,8 @@ To add nodes to an existing cluster:
 ```
 
 It will add `num_vms` to a cluster. Please note that if a node is added to a cluster, it will only start a Stardog server
-in the new nodes; if you want to also replicate the Zookeeper servers, you will have to stop the cluster and start it
-again. This limitation is due to the fact that Zookeeper is not capable of hot reconfiguration as of `v3.4.x`.
+in the new nodes; if you want to also replicate the ZooKeeper servers, you will have to stop the cluster and start it
+again. This limitation is due to the fact that ZooKeeper is not capable of hot reconfiguration as of `v3.4.x`.
 
 To remove nodes from an existing cluster there are two options:
 
@@ -279,7 +279,7 @@ To remove nodes from an existing cluster there are two options:
 ```
 
 It will remove `num_vms` from a cluster. Note that this will remove an entire VM from the cluster, which may or not also
-remove a Zookeeper server. Zookeeper is able to account for node failures, but this may not be the behavior the user intended.
+remove a ZooKeeper server. ZooKeeper is able to account for node failures, but this may not be the behavior the user intended.
 The other option is to specify a comma-separated list of IP addresses that correspond to the IPs of nodes to be removed:
 
 ``` bash
@@ -362,9 +362,9 @@ To list bootstrapped and installed Stardog Pack versions:
 ## Deploying a Stardog Cluster manually
 
 In addition to Starman, in this release we provide the ability to create a cluster manually using the `stardog-admin`
-commands and some additional configuration. Multiple Stardog and Zookeeper servers can be launched within the same
+commands and some additional configuration. Multiple Stardog and ZooKeeper servers can be launched within the same
 machine or on multiple machines. In order to deploy a cluster in a single machine you must ensure that each Stardog and
-Zookeeper server have different home folders.
+ZooKeeper server have different home folders.
 
 For the following deployment example, we will assume two servers each with a different `$STARDOG_HOME`.
 
@@ -407,13 +407,13 @@ pack.cluster.password=admin
 ```
 
 `pack.node.address` will be the port in which Stardog will be listening to when communicating with other nodes, whereas
-`pack.cluster.address` is a Zookeeper connection string where the Stardog cluster stores its cluster state.
+`pack.cluster.address` is a ZooKeeper connection string where the Stardog cluster stores its cluster state.
 `pack.cluster.username` and `pack.cluster.password` are just user and password tokens for node inter-communication and
 can be different from actual Stardog users and passwords, however you must make sure that all nodes use the same user 
 and password combination.
 
-Next, you will create the Zookeeper configuration for each node. For convenience, Stardog just forwards the start command
-to Zookeeper via the Stardog CLI, thus the configuration file for Zookeeper is a standard Zookeeper configuration file.
+Next, you will create the ZooKeeper configuration for each node. For convenience, Stardog just forwards the start command
+to ZooKeeper via the Stardog CLI, thus the configuration file for ZooKeeper is a standard ZooKeeper configuration file.
 For this example we will use the following `zookeeper.properties` file in `node1`:
 
 ``` bash
@@ -440,7 +440,7 @@ server.2=127.0.0.1:6888:7888
 
 Note that the `clientPort` specified in `zookeeper.properties` and the ports used in `pack.cluster.address` in
 `stardog.properties` are the same. The ports used in lines `server.1` and `server.2` must not be the same if creating
-a cluster in a single machine. `dataDir` is a directory where Zookeeper keeps track of the cluster state and where it
+a cluster in a single machine. `dataDir` is a directory where ZooKeeper keeps track of the cluster state and where it
 dumps log information about the cluster. You will need to create such folders as needed:
 
 ``` bash
@@ -448,7 +448,7 @@ mkdir /tmp/zookeeperdata1
 mkdir /tmp/zookeeperdata2
 ```
 
-Next, Zookeeper requires a `myid` file in the `dataDir` folder to identify itself, you will create that file as follows
+Next, ZooKeeper requires a `myid` file in the `dataDir` folder to identify itself, you will create that file as follows
 for `node1` and `node2`, respectively:
 
 ``` bash
@@ -456,12 +456,12 @@ echo 1 > /tmp/zookeeperdata1/myid
 echo 2 > /tmp/zookeeperdata2/myid
 ```
 
-For more information on how to configure Zookeeper please refer to the official [docs][zk-admin].
+For more information on how to configure ZooKeeper please refer to the official [docs][zk-admin].
 
-In the next few steps you will use the Stardog Admin CLI commands to deploy Zookeeper, Stardog and the Proxy.
+In the next few steps you will use the Stardog Admin CLI commands to deploy ZooKeeper, Stardog and the Proxy.
 
-To start the Zookeeper cluster you will use the `stadog-admin` command in the [distribution](#installing-stardog-cluster-locally).
-You will start Zookeeper as follows:
+To start the ZooKeeper cluster you will use the `stadog-admin` command in the [distribution](#installing-stardog-cluster-locally).
+You will start ZooKeeper as follows:
 
 ``` bash
 ./stardog-admin cluster zkstart --home ~/node1
@@ -475,7 +475,7 @@ This will use the `zookeeper.properties` config file in `~/node1` and `~/node2`,
 ./stardog-admin help pack zkstart
 ```
 
-Once Zookeeper is started, you will start Stardog in cluster mode you will use the `server start` command with the
+Once ZooKeeper is started, you will start Stardog in cluster mode you will use the `server start` command with the
 following options:
 
 ``` bash
@@ -506,9 +506,9 @@ use port `5820` you can execute standard Stardog CLI commands in cluster mode su
 ./stardog query myDb "select * { ?s ?p ?o } limit 5"
 ```
 
-To add more Stardog Cluster nodes, simply repeat the steps for Stardog. Zookeeper nodes run independently, so configurations
-such as two Zookeeper servers and three Stardog servers are possible – simply point Stardog to the corresponding 
-Zookeeper cluster.
+To add more Stardog Cluster nodes, simply repeat the steps for Stardog. ZooKeeper nodes run independently, so configurations
+such as two ZooKeeper servers and three Stardog servers are possible – simply point Stardog to the corresponding 
+ZooKeeper cluster.
 
 
 [zk-admin]: http://zookeeper.apache.org/doc/r3.3.3/zookeeperAdmin.html#ch_administration
@@ -536,21 +536,21 @@ script provided in the Starman distribution.
 
 ## Troubleshooting
 
-### Zookeeper
+### ZooKeeper
 
-By default, Zookeeper uses [majority quorums][zk-quorums] for leader election which means that, at any given time,
-Zookeeper requires that there are at least *n/2 + 1* nodes when leader election is happening. In the unfortunate event
-that a Stardog Cluster is stuck in this phase, you can use Starman to recover a Zookeeper node using:
+By default, ZooKeeper uses [majority quorums][zk-quorums] for leader election which means that, at any given time,
+ZooKeeper requires that there are at least *n/2 + 1* nodes when leader election is happening. In the unfortunate event
+that a Stardog Cluster is stuck in this phase, you can use Starman to recover a ZooKeeper node using:
 
 ``` bash
 ./starman cluster addnodes --provider <provider> --id <cluster id> --zk-node
 ```
      
-Starman will attempt to guess which of the Zookeeper server(s) was lost and try to bring a Zookeeper server back---one at
+Starman will attempt to guess which of the ZooKeeper server(s) was lost and try to bring a ZooKeeper server back---one at
 a time---with the same hostname.
 
 Starman creates a list of hostnames when nodes are deployed to a cluster and uses that list to communicate between
-nodes in the Zookeeper cluster. This way whenever a Zookeeper server is lost, a new one can be brought back without
+nodes in the ZooKeeper cluster. This way whenever a ZooKeeper server is lost, a new one can be brought back without
 having to use the same IP address, which may not be possible or expensive for some cloud providers.
 
 [zk-quorums]: http://zookeeper.apache.org/doc/r3.3.5/zookeeperInternals.html#sc_quorum
