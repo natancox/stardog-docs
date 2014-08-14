@@ -8,6 +8,8 @@ toc: true
 
 In this chapter we explain how to configure, use, and administer Stardog Cluster for uninterrupted operations.
 
+<u>Stardog Cluster 2.2.1 is **BETA** software and should be used accordingly. Please help us test it and report bugs!</u>
+
 ## The Big Picture
 
 Let's start with a few big picture points about Stardog Cluster and deployment strategies.
