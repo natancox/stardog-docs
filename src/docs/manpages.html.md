@@ -29,6 +29,6 @@ Stardog command-line interface is comprehensively documented in `man` pages that
 2. [`icv add`](/man/icv-add.html), [`icv drop`](/man/icv-drop.html),  [`icv remove`](/man/icv-remove.html)
 2. [`metadata get`](/man/metadata-get.html), [`metadata set`](/man/metadata-set.html)
 3. [`role add`](/man/role-add.html), [`role grant`](/man/role-grant.html), [`role list`](/man/role-list.html), [`role permission`](/man/role-permission.html), [`role remove`](/man/role-remove.html), [`role revoke`](/man/role-revoke.html)
-4. [`server start`](/man/server-start.html), [`server stop`](/man/server-stop.html)
+4. [`server start`](/man/server-start.html), [`server status`](/man/server-status.html), [`server stop`](/man/server-stop.html)
 4. [`query kill`](/man/query-kill.html), [`query list`](/man/query-list.html), [`query status`](/man/query-status.html)
 5. [`user add`](/man/user-add.html), [`user addrole`](/man/user-addrole.html), [`user disable`](/man/user-disable.html), [`user enable`](/man/user-enable.html), [`user grant`](/man/user-grant.html), [`user list`](/man/user-list.html), [`user passwd`](/man/user-passwd.html), [`user permission`](/man/user-permission.html), [`user remove`](/man/user-remove.html), [`user removerole`](/man/user-removerole.html), [`user revoke`](/man/user-revoke.html)
