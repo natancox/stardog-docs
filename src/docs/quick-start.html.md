@@ -6,22 +6,21 @@ related: ""
 toc: false
 ---
 
-## Prerequisites
+## Prerequisites and Notes
 
 Stardog runs on Java 6, Java 7, and is entirely untested on Java 8 (YMMV). Stardog runs best on, but does not require, a 64-bit JVM and one that supports `sun.misc.Unsafe`.
 
-## Linux/Unix/OS X
+Note: <u>Stardog ships with an *insecure* but usable default setting: the super user is `admin` and the `admin` password is "admin". This is fine until it isn't, at which point you should read the</u> [security chapter](/security).
 
-First, tell Stardog where its home directory (where databases and other
-files will be stored) is:
+## Linux and OSX
+
+First, tell Stardog where its home directory (where databases and other files will be stored) is:
 
 ```bash
 $ export STARDOG_HOME=/data/stardog
 ```
 
-If you're using some weird Unix shell that doesn't create environment variables in this way, adjust accordingly.
-
-<t>shout</t> Stardog requires `STARDOG_HOME` to be defined.
+If you're using some weird Unix shell that doesn't create environment variables in this way, adjust accordingly. **If `STARDOG_HOME` isn't defined, Stardog will use the Java `user.dir` property value.**
 
 Second, copy the `stardog-license-key.bin` into the right place:
 
@@ -29,10 +28,9 @@ Second, copy the `stardog-license-key.bin` into the right place:
 $ cp stardog-license-key.bin $STARDOG_HOME
 ```
 
-Of course `stardog-license-key.bin` has to be readable by the Stardog
-process.
+Of course `stardog-license-key.bin` has to be readable by the Stardog process.
 
-<t>shout</t> Stardog won't run without a valid `stardog-license-key.bin` in `STARDOG_HOME`.
+**Stardog won't run without a valid `stardog-license-key.bin` in `STARDOG_HOME`.**
 
 Third, start the Stardog server. By default the server will expose SNARL
 and HTTP interfaces on port 5820.<n>That is, the server listens to one port (5820) and handles both protocols.</n>
@@ -69,20 +67,17 @@ files will be stored) is:
 > set STARDOG_HOME=C:\data\stardog
 ```
 
-<t>shout</t> Stardog requires `STARDOG_HOME` to be defined.
-
 Second, copy the `stardog-license-key.bin` into the right place:
 
 ```
 > COPY /B stardog-license-key.bin %STARDOG_HOME%
 ```
 
-<t>shout</t> The `/B` is required to perform a binary copy or the license file may get corrupted.
+**The `/B` is required to perform a binary copy or the license file may get corrupted.**
 
-Of course `stardog-license-key.bin` has to be readable by the Stardog
-process.
+Of course `stardog-license-key.bin` has to be readable by the Stardog process.
 
-<t>shout</t> Stardog won't run without a valid `stardog-license-key.bin` in `STARDOG_HOME`.
+**Stardog won't run without a valid `stardog-license-key.bin` in `STARDOG_HOME`.**
 
 Third, start the Stardog server. By default the server will expose SNARL
 and HTTP interfaces on port 5820.<n>That is, the server listens to one port (5820) and handles both protocols.</n>
