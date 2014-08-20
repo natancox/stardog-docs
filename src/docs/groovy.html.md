@@ -47,7 +47,7 @@ For the first release, Groovy for Stardog includes
 ## Building Groovy for Stardog
 
 To build Groovy for Stardog, you need a release of Stardog; we use
-[Gradle](http://www.gradle.org/) to build Stardog for Groovy. Then,
+[Gradle](http://www.gradle.org/) to build Stardog for Groovy.  Gradle 1.9 is the preferred version to use. Then,
 
 1.   Download and run a Stardog server with a "testdb", used for testing.
 2.   run `gradlew build`, which eventually results in a
