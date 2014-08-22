@@ -48,7 +48,7 @@ enterprise capabilities: Spring Integration, Spring Data, etc.
 ## Building Spring for Stardog
 
 To build Spring for Stardog, you need a release of Stardog; we use
-[Gradle](http://www.gradle.org/) to build Stardog for Spring. Then,
+[Gradle](http://www.gradle.org/) to build Stardog for Spring.  Gradle 1.9 is the preferred version. Then,
 
 -   edit `build.gradle` to point `stardogLocation` at a Stardog release
     directory;
