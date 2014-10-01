@@ -230,6 +230,14 @@ Stardog supports graph change management capability that lets users track change
 revisions of a Stardog database, add comments and other metadata to the revisions,
 extract diffs between those revisions, tag revisions with labels, and query over the revision history of the database using SPARQL.
 
+Versioning support for a database is disabled by default but can be enabled at any time by setting the configuration option `versioning.enabled` to true. For example, you can create a database with versioning support as follows:
+
+```bash
+$ stardog-admin db create -o versioning.enabled=true -n myDb
+```
+
+This option can also be set after database creation using the `stardog-admin metadata set` command.
+
 The following examples give a very brief overview of this capability; see the [VCS man pages](/manpages/) for all the details.
 
 ### Committing Changes
