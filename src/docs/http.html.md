@@ -30,7 +30,7 @@ if you want details.
 
 The Stardog HTTP Protocol supports SPARQL Protocol 1.1 and additional resource representations and capabilities.
 
-The Stardog HTTP API v3 is also available on Apiary:
+The Stardog HTTP API v4 is also available on Apiary:
 [http://docs.stardog.apiary.io/](http://docs.stardog.apiary.io/).
 
 The Stardog Linked Data API (aka "Annex") is also documented on Apiary: [http://docs.annex.apiary.io/](http://docs.annex.apiary.io/).
