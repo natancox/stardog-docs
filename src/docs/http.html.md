@@ -839,3 +839,65 @@ POST /admin/shutdown
 Shuts down the Stardog Server. If successful, returns a `202` to
 indicate that the request was recieved and that the server will be shut
 down shortly.
+
+### Query Version Metadata
+```httpstardog
+GET | POST /{db}/vcs/query
+```
+
+Issue a query over the version history metadata using SPARQL.  Method has the same arguments and outputs as the normal query method of a database.
+
+### Versioned Commit
+```httpstardog
+POST /{db}/vcs/{tid}/commit
+```
+
+Input example:
+
+```
+This is the commit message
+```
+
+Accepts a commit message in the body of the request and performs a VCS commit of the specified transaction
+
+### Create Tag
+
+```httpstardog
+POST /{db}/vcs/tags/create
+```
+
+Input example:
+
+```csv
+"f09c0e02350627480839da4661b8e9cbd70f6372", "This is the commit message"
+```
+
+Create a tag from the given revision id with the specified commit message.
+
+### Delete Tag
+
+```httpstardog
+POST /{db}/vcs/tags/delete
+```
+
+Input example:
+
+```csv
+"f09c0e02350627480839da4661b8e9cbd70f6372"
+```
+
+Delete the tag with the given revision.
+
+### Revert to Tag
+
+```httpstardog
+POST /{db}/vcs/revert
+```
+
+Input example:
+
+```csv
+"f09c0e02350627480839da4661b8e9cbd70f6372", "893220fba7910792084dd85207db94292886c4d7", "This is the revert message"
+```
+
+Perform a revert of a revision to the specified revision with the given commit message.
