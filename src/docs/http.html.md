@@ -119,15 +119,19 @@ The enumeration of `SD-Error-Code` values and their meanings are as follows:
 - `0`: Authentication error
 - `1`: Authorization error
 - `2`: Query evaluation error
-- `3`: Unknown transaction
-- `4`: Unknown database
-- `5`: Database already exists
-- `6`: Invalid database name
-- `7`: Resource (user, role, etc) already exists
-- `8`: Invalid connection parameter(s)
-- `9`: Invalid database state for the request
-- `10`: Resource in use
-- `11`: Resource not found
+- `3`: Query contained parse errors
+- `4`: Query is unknown
+- `5`: Transaction not found
+- `6`: Database not found
+- `7`: Database already exists
+- `8`: Database name is invalid
+- `9`: Resource (user, role, etc) already exists
+- `10`: Invalid connection parameter(s)
+- `11`: Invalid database state for the request
+- `12`: Resource in use
+- `13`: Resource not found
+- `14`: Operation not supported by the server
+- `15`: Password specified in the request was invalid
 
 In cases of error, the message body of the result will include any error
 information provided by the server to indicate the cause of the error.
