@@ -407,7 +407,7 @@ Expected input (`application/json`):
         "search.enabled" : true,
         ...
       },
-      "files" : [{ "name":"fileX.ttl", "context":"some:context" }, ...]
+      "files" : [{ "filename":"fileX.ttl", "context":"some:context" }, ...]
     }
 ```
 
