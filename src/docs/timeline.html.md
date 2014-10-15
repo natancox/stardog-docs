@@ -8,6 +8,11 @@ toc: true
 
 This page briefly lists major features and other notable changes to Stardog from 1.0 to 2.0; it will be updated for each new release. For a complete list of changes, including notable bug fixes, see the [Release Notes](/docs/RELEASE_NOTES.txt).
 
+## 2.2
+
+- Support for RDF versioning
+- Admin support for Web Console
+
 ## 2.1
 
 - Database repair, backup & restore utilities
