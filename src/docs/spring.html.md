@@ -15,7 +15,7 @@ As of 2.1.3, Stardog-Spring and Stardog-Spring-Batch can both be retrieved from 
 *   `com.complexible.stardog:stardog-spring:2.1.3`
 *   `com.complexible.stardog:stardog-spring-batch:2.1.3`
 
-
+The corresponding Stardog Spring version will match the Stardog release, e.g. stardog-spring-2.2.2 for Stardog 2.2.2.
 
 ## Overview
 
@@ -57,16 +57,7 @@ To build Spring for Stardog, you need a release of Stardog; we use
 -   then run `gradlew build`, which eventually results in a
     `stardog-spring.jar` in `build/libs`; finally,
 -   `gradlew install` does a build, generates a POM, and installs the
-    POM in local Maven repo; alternately,
--   `mvn install` will work, too:
-
-        mvn install:install-file
-              -DgroupId=com.clarkparsia.stardog
-              -DartifactId=stardog-spring
-              -Dversion=2.1.2
-              -Dfile=stardog-spring.jar
-              -Dpackaging=jar
-              -DpomFile=pom.xml
+    POM in local Maven repo; alternately, though generally you should use the latest from Maven Central.
 
 Note: The stardogLocation and "fileTree" dependency is included in development of Stardog Spring, as a local embedded server is used for automated testing.  Before running the build, you should edit the "CHANGE" areas in teh build file to point to your local Stardog instance.  See the README on the respective Github projects for more details.
 

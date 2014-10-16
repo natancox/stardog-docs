@@ -14,9 +14,9 @@ Github and licensed under the Apache 2.0 license.
 
 Stardog-clj is available from Clojars.  To use, just include the following dependency:
 
-    [stardog-clj "0.6"]
+    [stardog-clj "2.2.2"]
 
-
+Starting with Stardog version 2.2.2, the stardog-clj version always matches the latest release of Stardog.
 
 ## Overview
 
