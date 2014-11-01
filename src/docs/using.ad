@@ -1,0 +1,649 @@
+= Using Stardog
+
+[quote, Alan Perlis, Epigrams in Programming]
+""
+The string is a stark data structure and everywhere it is passed there is much
+duplication of process. It is a perfect vehicle for hiding information.
+""
+
+[.lead]
+Stardog is a full-featured RDF database: its primary purpose is to
+execute queries against RDF data which it has under direct
+management.footnote:[Stardog will not retrieve data from the Web
+or from any other network via HTTP URLs in order to query that data. If
+you want to query data using Stardog, you must add that data to a new or
+existing Stardog database.] Stardog supports http://www.cambridgesemantics.com/2008/09/sparql-by-example[SPARQL],
+the W3C standard for querying RDF graphs.
+
+== Querying
+
+Stardog supports SPARQL 1.1 footnote:[Stardog does not support SPARQL 1.1 federation (the
+`SERVICE` keyword)] and also the http://www.w3.org/TR/2012/CR-sparql11-entailment-20121108/[OWL 2 Direct Semantics
+entailment regime].
+
+To execute a SPARQL query against a Stardog database, use the `query`
+subcommand:
+
+[source,shell]
+----
+$ stardog query myDb "select * where { ?s ?p ?o }"
+----
+
+Detailed information on using the query command in Stardog can be found
+on its [`man` page](/man/query-execute.html).
+
+=== Functions
+
+Stardog supports all of the functions in SPARQL, as well as some others from
+XPath and SWRL. Any of these functions can be used in queries or rules. Some
+functions appear in multiple namespaces, but all of the namespaces will work:
+
+.Table of Stardog Function Namespaces
+|===
+|Prefix    |Namespace
+
+|`stardog`
+|`tag:stardog:api:functions:`
+
+|`fn`
+|`\http://www.w3.org/2005/xpath-functions#`
+
+|`math`
+|`\http://www.w3.org/2005/xpath-functions/math#`
+
+|`swrlb`
+|`\http://www.w3.org/2003/11/swrlb#`
+
+|`afn`
+|`\http://jena.hpl.hp.com/ARQ/function#`
+|===
+
+The function names and URIs supported by Stardog are included below.
+Some of these functions exist in SPARQL natively, which just means they can be
+used without an explicit namespace.
+
+.Table of Stardog Function Names & URIs
+|===
+|Function name |Recognized URI(s)
+
+|`abs`
+|`fn:numeric-abs` +
+`swrlb:abs`
+
+|`acos`
+|`math:acos`
+
+|`add`
+|`fn:numeric-add`
+
+|`asin`
+|`math:asin`
+
+|`atan`
+|`math:atan`
+
+|`ceil`
+|`fn:numeric-ceil` +
+`swrlb:ceiling`
+
+|`concat`
+|`fn:concat` +
+`swrlb:stringConcat`
+
+|`contains`
+|`fn:contains` +
+`swrlb:contains`
+
+|`containsIgnoreCase`
+|`swrlb:containsIgnoreCase`
+
+|`cos`
+|`math:cos` +
+`swrlb:cos`
+
+|`cosh`
+|`stardog:cosh`
+
+|`date`
+|`swrlb:date`
+
+|`dateTime`
+|`swrlb:dateTime`
+
+|`day`
+|`fn:day-from-dateTime`
+
+|`dayTimeDuration`
+|`swrlb:dayTimeDuration`
+
+|`divide`
+|`fn:numeric-divide` +
+`swrlb:divide`
+
+|`encode_for_uri`
+|`fn:encode_for_uri`
+
+|`exp`
+|`math:exp` +
+`afn:e`
+
+|`floor`
+|`fn:numeric-floor` +
+`swrlb:floor`
+
+|`hours`
+|`fn:hours-from-dateTime`
+
+|`integerDivide`
+|`fn:numeric-integer-divide` +
+`swlrb:integerDivide`
+
+|`lcase`
+|`fn:lower-case` +
+`swlrb:lowerCase`
+
+|`log`
+|`math:log`
+
+|`log10`
+|`math:log10`
+
+|`max`
+|`fn:max` +
+`afn:max`
+
+|`min`
+|`fn:min` +
+`afn:min`
+
+|`minutes`
+|`fn:minutes-from-dateTime`
+
+|`mod`
+|`swrlb:mod`
+
+|`month`
+|`fn:month-from-dateTime`
+
+|`multiply`
+|`fn:numeric-multiply`
+
+|`normalizeSpace`
+|`fn:normalize-space` +
+`swrlb:normalizeSpace`
+
+|`pi`
+|`math:pi` +
+`afn:pi`
+
+|`pow`
+|`math:pow` +
+`swrlb:pow`
+
+|`replace`
+|`fn:replace`
+
+|`round`
+|`fn:numeric-round` +
+`swrlb:round`
+
+|`roundHalfToEven`
+|`fn:numeric-round-half-to-even` +
+`swrlb:roundHalfToEven`
+
+|`seconds`
+|`fn:seconds-from-dateTime`
+
+|`sin`
+|`math:sin` +
+`swrlb:sin`
+
+|`sinh`
+|`stardog:sinh`
+
+|`sqrt`
+|`math:sqrt` +
+`afn:sqrt`
+
+|`strafter`
+|`fn:substring-after` +
+`swrlb:substringAfter`
+
+|`strbefore`
+|`fn:substring-before` +
+`swrlb:substringBefore`
+
+|`strends`
+|`fn:ends-with` +
+`swrlb:endsWith`
+
+|`stringEqualIgnoreCase`
+|`swrlb:stringEqualIgnoreCase`
+
+|`strlen`
+|`fn:string-length` +
+`swrlb:stringLength`
+
+|`strstarts`
+|`fn:starts-with` +
+`swrlb:startsWith`
+
+|`substring`
+|`fn:substring` +
+`swrlb:substring`
+
+|`subtract`
+|`fn:numeric-subtract` +
+`swrlb:subtract`
+
+|`tan`
+|`math:tan` +
+`swrlb:tan`
+
+|`tanh`
+|`stardog:tanh`
+
+|`time`
+|`swrlb:time`
+
+|`timezone`
+|`fn:timezone-from-dateTime`
+
+|`toDegrees`
+|`stardog:toDegrees`
+
+|`toRadians`
+|`stardog:toRadians`
+
+|`translate`
+|`fn:translate` +
+`swrlb:translate`
+
+|`ucase`
+|`fn:upper-case` +
+`swrlb:upperCase`
+
+|`unaryMinus`
+|`fn:numeric-unary-minus` +
+`swrlb:unaryMinus`
+
+|`unaryPlus`
+|`fn:numeric-unary-plus` +
+`swrlb:unaryPlus`
+
+|`year`
+|`fn:year-from-dateTime`
+
+|`yearMonthDuration`
+|`swrlb:yearMonthDuration`
+|===
+
+
+=== DESCRIBE
+
+SPARQL's `DESCRIBE` keyword is deliberately underspecified;
+vendors are free to do, for good or bad, whatever they want.
+In Stardog a `DESCRIBE <theResource>` query retrieves the predicates and
+objects for all the triples for which `<theResource>` is the subject.
+There are, of course, about seventeen thousand other ways to implement
+`DESCRIBE`; we've implemented four or five of them and may expose them to
+users in a future release of Stardog _based on user feedback and requests_.
+
+Now you know and knowing is one-quarter of the fun.
+
+== Updating
+
+There are many ways to update the data in a Stardog database; the most commonly used methods are the CLI and SPARQL Update queries, both of which we discuss below.
+
+=== SPARQL Update
+
+SPARQL 1.1 Update can be used to insert RDF into or delete RDF from a Stardog
+database using SPARQL query forms `INSERT` and `DELETE`, respectively.
+
+[source,SPARQL]
+----
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX ns: <http://example.org/ns#>
+INSERT DATA
+{ GRAPH <http://example/bookStore> { <http://example/book1>  ns:price  42 } }
+----
+
+An example of deleting RDF:
+
+[source,SPARQL]
+----
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+
+DELETE DATA
+{
+  <http://example/book2> dc:title "David Copperfield" ;
+                         dc:creator "Edmund Wells" .
+}
+----
+
+Or they can be combined with `WHERE` clauses:
+
+[source,SPARQL]
+----
+PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
+
+WITH <http://example/addresses>
+DELETE { ?person foaf:givenName 'Bill' }
+INSERT { ?person foaf:givenName 'William' }
+WHERE
+  { ?person foaf:givenName 'Bill' }
+----
+
+=== Adding Data with the CLI
+
+The most efficient way to load data into Stardog is at database creation
+time. See the [Creating a Database](../admin/#create) section for bulk
+loading data at database creation time. To add data to an existing
+Stardog database, use the [add](/docs/man/data-add.html) command:
+
+[source,shell]
+----
+$ stardog data add myDatabase 1.rdf 2.rdf 3.rdf
+----
+
+The optional arguments are `-f` (or `--format`) to specify the RDF
+serialization type of the files to be loaded; if you specify the wrong
+type, `add` will fail. If you don't specify a type, Stardog will try to
+determine the type on its own based on the file extension. For example,
+the files that have names ending with '.ttl' will be parsed with Turtle
+syntax. If you specify a type, then all the files being loaded must of
+that same type.
+
+If you want to add data to a named graph, specify it via the
+`--graph-uri` or `-g` options.
+
+=== Removing Data with the CLI
+
+To remove data from a Stardog database, link:/docs/man/data-remove.html[`remove`]
+is used by specifying
+
+1.  one Named Graph, _or_
+2.  one or more files containing RDF (in some recognized serialization
+    format, i.e., RDF/XML, Turtle, Trig), _or_
+3.  one Named Graph and one or more RDF files.
+
+For example,
+
+[source,shell]
+----
+$ stardog data remove -g http://foo myDatabase
+----
+
+will remove the named graph `\http://foo` and all its triples from
+`myDatabase`.
+
+[source,shell]
+----
+$ stardog data remove myDatabase 1.rdf
+----
+
+will remove the triples in `1.rdf` from (the default graph of)
+`myDatabase`.
+
+[source,shell]
+----
+$ stardog data remove -g http://foo -f TURTLE myDatabase 2.rdf 3.rdf
+----
+
+will remove the triples in the Turtle files `2.rdf` and `3.rdf` from the
+named graph `\http://foo` of `myDatabase`.
+
+Strict or loose parsing may be set for the input payload by using
+`--strict-parsing=TRUE|FALSE`.
+
+=== How Stardog Handles RDF Parsing
+
+RDF parsing in Stardog is strict: it requires typed RDF literals to
+match their explicit datatypes, URIs to be well-formed, etc. In some
+cases, strict parsing isn't ideal—it may be disabled using the
+`--strict-parsing=FALSE`.
+
+However, even with strict parsing disabled, Stardog's RDF parser may
+encounter parse errors from which it cannot recover. And loading data in
+lax mode may lead to unexpected SPARQL query results. For example,
+malformed literals (`"2.5"^^xsd:int`) used in filter evaluation may lead
+to undesired results.
+
+== Versioning
+
+Stardog supports graph change management capability that lets users track changes between
+revisions of a Stardog database, add comments and other metadata to the revisions,
+extract diffs between those revisions, tag revisions with labels, and query over the revision history of the database using SPARQL.
+
+Versioning support for a database is disabled by default but can be enabled at any time by setting the configuration option `versioning.enabled` to true. For example, you can create a database with versioning support as follows:
+
+[source,shell]
+----
+$ stardog-admin db create -o versioning.enabled=true -n myDb
+----
+
+This option can also be set after database creation using the `stardog-admin metadata set` command.
+
+The following examples give a *very brief overview* of this capability;
+see the link:/manpages/[VCS man pages] for all the details.
+
+=== Committing Changes
+
+Commit a new version by adding and removing triples specified in files.
+Different from the `data add/remove` commands, `commit` allows one to add and
+remove triples in one commit and to associate a commit message.
+
+NOTE: Removals are performed before additions.
+
+To commit changes:
+
+[source,shell]
+----
+$ stardog vcs commit --add add_file1.ttl add_file2.ttl --remove remove_file.ttl -m "This is an example commit" myDb
+----
+
+=== Viewing Revisions
+
+To see all revisions (commits) in a database:
+
+[source,shell]
+----
+$ stardog vcs list myDb
+$ stardog vcs list --committer userName myDb
+----
+
+The output can be tweaked using `--after`, `--before`, and `--committer`.
+
+=== Reverting Revisions
+
+You can revert specific revisions, ranges, etc.
+
+[source,shell]
+----
+$ stardog vcs revert myDb
+$ stardog vcs revert myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
+----
+
+=== Viewing Diffs
+
+You can also see the differences between revisions; by default, between the
+head version and its previous versions or the changes in a specific commit,
+respectively:
+
+[source,shell]
+----$ stardog vcs diff myDb
+$ stardog vcs diff myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
+----
+
+NOTE: Diffs are represented as SPARQL Update queries so that they may be used as
+a kind of graph patch.
+
+=== Using Tags
+
+You can also create, drop, list tags, i.e., named revisions:
+
+[source,shell]
+----
+$ stardog vcs tag --list myDb
+----
+
+=== Querying the Revision History
+
+The revision history of the database is represented as RDF using the W3C PROV
+vocabulary and can be queried using SPARQL:footnote:[Find another database that can
+do that!]
+
+[source,shell]
+----
+$ stardog vcs query myDb 'SELECT...'
+----
+
+== Exporting
+
+To export data from a Stardog database back to RDF,
+link:/docs/man/data-export.html[`export`] is used by specifying
+
+1. the connection string of the database to export
+2. the export format: `N-TRIPLES, RDF/XML, TURTLE, TRIG`. The default is
+    `N-TRIPLES`. `TRIG` must be used when exporting the entire database
+    if the database contains triples inside named graphs
+3. optionally, the URI of the named graph to export if you wish to
+    export a single named graph only
+4. a file to export to
+
+For example,
+
+[source,shell]
+----
+$ stardog data export --format TURTLE myDatabase myDatabase_output.ttl
+
+$ stardog data export --graph-uri http://example.org/context myDatabase myDatabase_output.nt
+----
+
+== Searching
+
+Stardog includes an RDF-aware semantic search capability: it will index
+RDF literals and supports information retrieval-style queries over
+indexed data.
+
+=== Indexing Strategy
+
+The indexing strategy creates a "search document" per RDF literal. Each
+document consists of the following fields: literal ID; literal value;
+and contexts.
+
+=== Search in SPARQL
+
+We use the predicate `\http://jena.hpl.hp.com/ARQ/property#textMatch` to
+access the search index in a SPARQL query.
+
+For example,
+
+[source,SPARQL]
+----
+SELECT DISTINCT ?s ?score
+WHERE {
+?s ?p ?l.
+( ?l ?score ) <http://jena.hpl.hp.com/ARQ/property#textMatch> ( 'mac' 0.5 50 ).
+}
+----
+
+This query selects the top 50 literals, and their scores, which match
+'mac' and whose scores are above a threshold of 0.5. These literals are
+then joined with the generic BGP `?s ?p ?l` to get the resources (?s)
+that have those literals. Alternatively, you could use
+`?s rdf:type ex:Book` if you only wanted to select the books which
+reference the search criteria; you can include as many other BGPs as
+you like to enhance your initial search results.
+
+=== Searching with the Command Line
+
+First, check out the
+link:/docs/man/query-search.html[`search` man page]:
+
+[source,shell]
+----
+$ stardog help query search
+----
+
+Okay, now let's do a search over the O'Reilly book catalog in RDF for
+everything mentioning "html":
+
+[source,shell]
+----
+$ stardog query search -q "html" -l 10 catalog
+----
+
+The results?
+
+[source]
+----
+Index    Score    Hit
+====================
+0    6.422    urn:x-domain:oreilly.com:product:9780596527402.IP
+1    6.422    urn:x-domain:oreilly.com:product:9780596003166.IP
+2    6.422    urn:x-domain:oreilly.com:product:9781565924949.IP
+3    6.422    urn:x-domain:oreilly.com:product:9780596002251.IP
+4    6.422    urn:x-domain:oreilly.com:product:9780596101978.IP
+5    6.422    urn:x-domain:oreilly.com:product:9780596154066.IP
+6    6.422    urn:x-domain:oreilly.com:product:9780596157616.IP
+7    6.422    urn:x-domain:oreilly.com:product:9780596805876.IP
+8    6.422    urn:x-domain:oreilly.com:product:9780596527273.IP
+9    6.422    urn:x-domain:oreilly.com:product:9780596002961.IP
+----
+
+=== Query Syntax
+
+Stardog search is based on Lucene 4.2.0: we support all of the
+http://lucene.apache.org/java/3_4_0/queryparsersyntax.html[search modifiers]
+that Lucene supports, with the exception of fields.
+
+- wildcards: `?` and `*`
+- fuzzy: `~` and `~` with similarity weights (e.g. `foo~0.8`)
+- proximities: `"semantic web"~5`
+- term boosting
+- booleans: `OR`, `AND`, `NOT`, +`, and `-`.
+- grouping
+
+For a more detailed discussion, see the http://lucene.apache.org/java/3_3_0/queryparsersyntax.html[Lucene docs].
+
+
+== Obfuscating
+
+When sharing sensitive RDF data with others, you might
+want to (selectively) obfuscate it so that sensitive bits are not present,
+but non-sensitive bits remain. For example, this feature can be used to
+submit Stardog bug reports using sensitive data.
+
+Data obfuscation works much the same way as the `export` command and supports
+the same set of arguments:
+
+[source,shell]
+----
+$ stardog data obfuscate myDatabase obfDatabase.ttl
+----
+
+By default, all URIs, bnodes, and string literals in the database will be
+obfuscated using the SHA256 message digest algorithm. Non-string typed literals
+(numbers, dates, etc.) are left unchanged as well as URIs from built-in
+namespaces (`RDF`, `RDFS`, and `OWL`). It's possible to customize obfuscation by providing a configuration file.
+
+[source,shell]
+----
+$ stardog data obfuscate --config obfConfig.ttl myDatabase  obfDatabase.ttl
+----
+
+The configuration specifies which URIs and strings will be obfuscated by
+defining inclusion and exclusion filters. See the example configuration file
+provided in the distribution for details.
+
+Once the data is obfuscated, queries written against the original data will
+no longer work. Stardog provides query obfuscation capability, too, so that
+queries can be executed against the obfuscated data. If a custom configuration
+file is used to obfuscate the data, then the same configuration should be used
+for obfuscating the queries as well:
+
+[source,shell]
+----
+$ stardog query obfuscate --config obfConfig.ttl myDatabase myQuery.sparql > obfQuery.ttl
+----
