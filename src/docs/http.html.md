@@ -849,7 +849,7 @@ Issue a query over the version history metadata using SPARQL.  Method has the sa
 
 ### Versioned Commit
 ```httpstardog
-POST /{db}/vcs/{tid}/commit
+POST /{db}/vcs/{tid}/commit_msg
 ```
 
 Input example:
