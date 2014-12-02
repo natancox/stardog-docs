@@ -1,4 +1,6 @@
 = Using Stardog
+:source-highlighter: prettify
+:experimental:
 
 [quote, Alan Perlis, Epigrams in Programming]
 ""

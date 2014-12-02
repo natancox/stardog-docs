@@ -1,5 +1,6 @@
 = OWL & Rule Reasoning
 :experimental:
+:source-highlighter: prettify
 
 [quote, Alan Perlis, Epigrams in Programming]
 ""
