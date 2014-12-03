@@ -1,13 +1,5 @@
 = Administration
-:experimental:
-:source-highlighter: prettify
 
-[quote, Alan Perlis, Epigrams in Programming]
-""
-In man-machine symbiosis, it is man who must adjust: The machines can't.
-""
-
-[.lead]
 In this chapter we describe the administration of Stardog Server and
 Stardog databases, including the various
 command-line programs, configuration options, etc. Security is an
@@ -1476,7 +1468,7 @@ workloads.
 The following subsections provides more detailed guidance for the memory
 and disk resource requirements of Stardog.
 
-==== Memory usage
+=== Memory usage
 
 Stardog uses system memory aggressively and the total system memory
 available to Stardog is often the most important factor in
@@ -1527,7 +1519,7 @@ to increase the JVM memory to 4GB and off-heap to 8GB. We recommend
 setting the minimum heap size (`-Xms` option) as close to
 the max heap size (`-Xmx` option) as possible.
 
-===== System Memory and JVM Memory
+==== System Memory and JVM Memory
 
 Stardog uses an off-heap, custom memory allocation scheme. Please note
 that the memory provisioning recommendations above are for two kinds of memory
@@ -1539,7 +1531,7 @@ the JVM heap, but for which the JVM should be notified via the
 the total memory available to the underlying operating system as requirements
 dictate.
 
-==== Disk usage
+=== Disk usage
 
 Stardog stores data on disk in a compressed format. The disk space
 needed for a database depends on many factors besides the number of

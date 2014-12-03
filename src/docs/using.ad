@@ -1,27 +1,19 @@
 = Using Stardog
-:source-highlighter: prettify
-:experimental:
 
-[quote, Alan Perlis, Epigrams in Programming]
-""
-The string is a stark data structure and everywhere it is passed there is much
-duplication of process. It is a perfect vehicle for hiding information.
-""
-
-[.lead]
-Stardog is a full-featured RDF database: its primary purpose is to
-execute queries against RDF data which it has under direct
-management.footnote:[Stardog will not retrieve data from the Web
-or from any other network via HTTP URLs in order to query that data. If
-you want to query data using Stardog, you must add that data to a new or
-existing Stardog database.] Stardog supports http://www.cambridgesemantics.com/2008/09/sparql-by-example[SPARQL],
-the W3C standard for querying RDF graphs.
+Stardog is a full-featured RDF database: its primary purpose is to execute
+queries against RDF data which it has under direct management.footnote:[Stardog
+will not retrieve data from the Web or from any other network via HTTP URLs in
+order to query that data. If you want to query data using Stardog, you must add
+that data to a new or existing Stardog database.] Stardog supports
+http://www.cambridgesemantics.com/2008/09/sparql-by-example[SPARQL], the W3C
+standard for querying RDF graphs.
 
 == Querying
 
-Stardog supports SPARQL 1.1 footnote:[Stardog does not support SPARQL 1.1 federation (the
-`SERVICE` keyword)] and also the http://www.w3.org/TR/2012/CR-sparql11-entailment-20121108/[OWL 2 Direct Semantics
-entailment regime].
+Stardog supports SPARQL 1.1 footnote:[Stardog does not support SPARQL 1.1
+federation (the `SERVICE` keyword)] and also the
+http://www.w3.org/TR/2012/CR-sparql11-entailment-20121108/[OWL 2 Direct
+Semantics entailment regime].
 
 To execute a SPARQL query against a Stardog database, use the `query`
 subcommand:

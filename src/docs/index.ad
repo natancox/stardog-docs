@@ -1,0 +1,104 @@
+:toc: right
+:experimental:
+:source-highlighter: pygments
+:page-layout: base
+:page-javascripts: [view-result]
+:description: blah blah blah Stardog graph blah
+:compat-mode!:
+//:imagesdir: ../images
+//:includedir: _includes
+//:toc:
+//:toc-placement!:
+:table-caption!:
+:example-caption!:
+:figure-caption!:
+ifndef::awestruct[]
+:idprefix:
+:idseparator: -
+endif::awestruct[]
+:linkattrs:
+:version: 2.2.3
+:release-date: 25 November 2014
+// URLs
+:docs: http://asciidoctor.org/docs
+:user: {docs}/user-manual
+:uri-config: https://github.com/asciidoctor/asciidoctor/blob/master/compat/asciidoc.conf
+:uri-fontawesome: http://fortawesome.github.io/Font-Awesome/
+:uri-icon-in: {user}/#inline-icons
+:uri-icon-attrs: {user}/#size-rotate-and-flip
+:uri-video: {user}/#video
+:uri-checklist: {user}/#checklist
+:uri-marker: {user}/#custom-markers
+:uri-list-num: {user}/#numbering-styles
+:uri-imagesdir: {user}/#set-the-images-directory
+:uri-image-attrs: {user}/#put-images-in-their-place
+:uri-toc: {user}/#user-toc
+:uri-para: {user}/#paragraph
+:uri-literal: {user}/#literal-text-and-blocks
+:uri-admon: {user}/#admonition
+:uri-bold: {user}/#bold-and-italic
+:uri-quote: {user}/#curved
+:uri-sub: {user}/#subscript-and-superscript
+:uri-mono: {user}/#mono
+:uri-css: {user}/#custom-styling-with-attributes
+:uri-pass: {user}/#pass-mac
+:uri-mailinglist: http://discuss.asciidoctor.org
+:uri-char-xml: https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
+:uri-data-uri: https://developer.mozilla.org/en-US/docs/data_URIs
+
+[quote, Mother Love Bone]
+""
+I'm a Stardog Champion. I'm a Stardog, that's right
+""
+
+= Stardog Manual
+
+include::preamble.ad[]
+
+include::qsg.ad[]
+
+include::using.ad[]
+
+include::console.ad[]
+
+include::admin.ad[]
+
+include::cluster.ad[]
+
+include::security.ad[]
+
+include::programming.ad[]
+
+include::java.ad[]
+
+include::http.ad[]
+
+include::js.ad[]
+
+include::owl2.ad[]
+
+include::icv.ad[]
+
+include::spring.ad[]
+
+include::groovy.ad[]
+
+include::dotnet.ad[]
+
+include::clojure.ad[]
+
+include::migration.ad[]
+
+include::understanding.ad[]
+
+include::manpages.ad[]
+
+include::bench.ad[]
+
+include::faq.ad[]
+
+include::compatibility.ad[]
+
+include::known-issues.ad[]
+
+include::glossary.ad[]

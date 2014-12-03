@@ -1,18 +1,11 @@
 = OWL & Rule Reasoning
-:experimental:
-:source-highlighter: prettify
 
-[quote, Alan Perlis, Epigrams in Programming]
-""
-The proof of a system's value is its existence.
-""
-
-[.lead]
-In this chapter we describe how to use Stardog's reasoning capabilities;
-we address some common problems and known issues. We also describe Stardog's
+In this chapter we describe how to use Stardog's reasoning capabilities; we
+address some common problems and known issues. We also describe Stardog's
 approach to query answering with reasoning in some detail, as well as a set of
 guidelines that contribute to efficient query answering with reasoning. If you
-are not familiar with the terminology, you can peruse the section on terminology.
+are not familiar with the terminology, you can peruse the section on
+terminology.
 
 
 == Introduction

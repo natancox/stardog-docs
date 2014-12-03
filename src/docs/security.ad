@@ -1,21 +1,8 @@
 = Security
-:experimental:
-:source-highlighter: prettify
-
-[quote, Alan Perlis, Epigrams in Programming]
-
-""
-Every program has (at least) two purposes: the one for which it was written, and
-another for which it wasn't.
-""
-
-== Stardog Security Model
 
 Stardog's security model is based on standard role-based access control: users
 have *permissions* over *resources* during *sessions*; permissions can be
 grouped into *roles*; and roles can be assigned to *users*.
-
-=== Implementation
 
 Stardog uses http://shiro.apache.org/[Apache Shiro] for authentication,
 authorization, and session management and

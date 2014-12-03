@@ -1,0 +1,36 @@
+Stardog is a graph database—fast, lightweight, pure Java storage for
+mission-critical apps—that supports:
+
+- the RDF graph data model
+- SPARQL 1.1 query language
+- HTTP and SNARL protocols for remote access and control
+- OWL 2 and rules for inference and data analytics
+- Java, JavaScript, Ruby, Python, .Net, Groovy, Spring, Clojure etc.
+
+This is Stardog *{version}* ({release-date}—release notes and timeline)
+documentation. Check out the <<Quick Start Guide>> to get Stardog installed and
+running in five easy steps.
+
+== Downloading Stardog
+
+Download Stardog to get started. The Stardog support forum,
+stardog@clarkparsia.com, is the place to report bugs, ask questions, etc. You
+can also ask questions on Stack Overflow using the tag stardog.
+
+== Commercial Licensing & Support
+
+For information about Stardog commercial licensing, please
+mailto:sales@clarkparsia.com[email] for more details.
+
+== Contributing
+
+There are several open source components of Stardog; feel free to submit pull
+requests: Starman, stardog-docs, stardog.js, stardog-groovy, stardog-spring,
+stardog.rb, and stardog-clj. Many thanks to everyone who's contributed so
+far.footnote:[ Thanks to all Stardog users, contributors, testers, etc.,
+especially Robert Butler, Al Baker, Marko A. Rodriguez, Brian Sletten, Alin
+Dreghiciu, Rob Vesse, Stephane Fallah, John Goodwin, José Devezas, Chris
+Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl, Morton Swimmer,
+Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron Zettlemoyer, Jim Rhyne,
+Andrea Westerinen, Huy Phan, Zach Whitley, Maurice Rabb, the crew at
+XSB, and the nice people at El Rinconcito Cafe in DC.]
