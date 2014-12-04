@@ -1,13 +1,4 @@
 = Integrity Constraint Validation
-:experimental:
-:allow-uri-read:
-:source-highlighter: prettify
-
-[quote, Alan Perlis, Epigrams in Programming]
-""
-It is easier to write an incorrect program than understand a correct one.
-""
-== What is Integrity Constraint Validation?
 
 Stardog Integrity Constraint Validation ("ICV") validates RDF data stored in a
 Stardog database according to data rules (i.e., "constraints") described by

@@ -1,57 +1,34 @@
-:toc: right
+:version: 2.2.3
+:release-date: 25 November 2014
+:release-name: They Call Me, Dr Love
+:toc: left
+:toc-title: Contents
+:toclevels: 3
+:icons: font
 :experimental:
-:source-highlighter: pygments
+:source-highlighter: prettify
 :page-layout: base
 :page-javascripts: [view-result]
 :description: blah blah blah Stardog graph blah
 :compat-mode!:
-//:imagesdir: ../images
-//:includedir: _includes
-//:toc:
-//:toc-placement!:
-:table-caption!:
-:example-caption!:
-:figure-caption!:
-ifndef::awestruct[]
-:idprefix:
-:idseparator: -
-endif::awestruct[]
+:table-caption:
+:example-caption:
+:figure-caption:
+:imagesdir: img/
 :linkattrs:
-:version: 2.2.3
-:release-date: 25 November 2014
-// URLs
-:docs: http://asciidoctor.org/docs
-:user: {docs}/user-manual
-:uri-config: https://github.com/asciidoctor/asciidoctor/blob/master/compat/asciidoc.conf
-:uri-fontawesome: http://fortawesome.github.io/Font-Awesome/
-:uri-icon-in: {user}/#inline-icons
-:uri-icon-attrs: {user}/#size-rotate-and-flip
-:uri-video: {user}/#video
-:uri-checklist: {user}/#checklist
-:uri-marker: {user}/#custom-markers
-:uri-list-num: {user}/#numbering-styles
-:uri-imagesdir: {user}/#set-the-images-directory
-:uri-image-attrs: {user}/#put-images-in-their-place
-:uri-toc: {user}/#user-toc
-:uri-para: {user}/#paragraph
-:uri-literal: {user}/#literal-text-and-blocks
-:uri-admon: {user}/#admonition
-:uri-bold: {user}/#bold-and-italic
-:uri-quote: {user}/#curved
-:uri-sub: {user}/#subscript-and-superscript
-:uri-mono: {user}/#mono
-:uri-css: {user}/#custom-styling-with-attributes
-:uri-pass: {user}/#pass-mac
-:uri-mailinglist: http://discuss.asciidoctor.org
-:uri-char-xml: https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
-:uri-data-uri: https://developer.mozilla.org/en-US/docs/data_URIs
+:base-url: http://docs.stardog.com/
+:slug: http://docs.stardog.com/{version}
+:release-notes: {base-url}/RELEASE_NOTES.txt
+:img: {slug}/img
+:css: {slug}/css
+:sectanchors:
 
 [quote, Mother Love Bone]
 ""
 I'm a Stardog Champion. I'm a Stardog, that's right
 ""
 
-= Stardog Manual
+= Stardog {version} Manual
 
 include::preamble.ad[]
 
@@ -88,8 +65,6 @@ include::dotnet.ad[]
 include::clojure.ad[]
 
 include::migration.ad[]
-
-include::understanding.ad[]
 
 include::manpages.ad[]
 

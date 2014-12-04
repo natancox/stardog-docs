@@ -465,7 +465,8 @@ head version and its previous versions or the changes in a specific commit,
 respectively:
 
 [source,shell]
-----$ stardog vcs diff myDb
+----
+$ stardog vcs diff myDb
 $ stardog vcs diff myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
 ----
 

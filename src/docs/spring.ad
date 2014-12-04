@@ -1,10 +1,4 @@
----
-quote: "It goes against the grain of modern education to teach children to program. What fun is there in making plans, acquiring discipline in organizing thoughts, devoting attention to detail and learning to be self-critical?"
-title: Programming with Spring
-shortTitle: Spring
-layout: default
-toc: true
----
+= Spring Programming
 
 The Spring for Stardog [source code](http://github.com/clarkparsia/stardog-spring) is available on Github.
 
@@ -192,6 +186,3 @@ example:
 ### ask()
 
 <gist>7846198?file=StardogSpringAsk.java</gist>
-
-
-

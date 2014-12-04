@@ -1,10 +1,12 @@
-= Administration
+= Server & Database Administration
 
 In this chapter we describe the administration of Stardog Server and
 Stardog databases, including the various
-command-line programs, configuration options, etc. Security is an
+command-line programs, configuration options, etc.
+
+Security is an
 important part of Stardog administration; it's
-discussed in a separate link:/security[chapter].
+discussed separately (<<Security>>).
 
 == Command Line Interface
 

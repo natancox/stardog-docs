@@ -1,34 +1,49 @@
----
-quote: "In programming, as in everything else, to be in error is to be reborn."
-title: "Man Pages"
-layout: default
-related: ""
-toc: true
----
+= Understanding Stardog
 
-Stardog command-line interface is comprehensively documented in `man` pages that ship with Stardog. Those `man` pages are reproduced here in HTML as a convenience to the reader.  To install the man pages locally in your environment:
+Background information on tuning, terminology, known issues, compatibility
+policies, etc.
 
-    $ cp docs/man/Man1/* /usr/local/share/man1
-    $ cp docs/man/Man8/* /usr/local/share/man8
-    $ mandb
-    $ man stardog-admin-server-start
+== Man Pages
 
+Stardog command-line interface is comprehensively documented in `man` pages that
+ship with Stardog. Those `man` pages are reproduced here in HTML as a
+convenience to the reader.  To install the man pages locally in your
+environment:
 
-## `stardog` CLI
+[source,shell]
+----
+$ cp docs{slug}/man{slug}/man1/* /usr/local/share{slug}/man1
+$ cp docs{slug}/man{slug}/man8/* /usr/local/share{slug}/man8
+$ mandb
+$ man stardog-admin-server-start
+----
 
-1. [`data add`](/man/data-add.html), [`data export`](/man/data-export.html), [`data obfuscate`](/man/data-obfuscate.html), [`data remove`](/man/data-remove.html), [`data size`](/man/data-size.html)
-2. [`icv convert`](/man/icv-convert.html), [`icv explain`](/man/icv-explain.html), [`icv export`](/man/icv-export.html), [`icv validate`](/man/icv-validate.html)
-3. [`namespace add`](/man/namespace-add.html), [`namespace list`](/man/namespace-list.html), [`namespace remove`](/man/namespace-remove.html)
-4. [`query execute`](/man/query-execute.html), [`query explain`](/man/query-explain.html), [`query obfuscate`](/man/query-obfuscate.html), [`query search`](/man/query-search.html)
-5. [`reasoning consistency`](/man/reasoning-consistency.html), [`reasoning explain`](/man/reasoning-explain.html)
-6. [`vcs commit`](/man/vcs-commit.html), [`vcs diff`](/man/vcs-diff.html), [`vcs list`](/man/vcs-list.html), [`vcs query`](/man/vcs-query.html), [`vcs revert`](/man/vcs-revert.html), [`vcs tag`](/man/vcs-tag.html).
+=== Stardog CLI
 
-## `stardog-admin` CLI
+. {slug}/man/data-add.html[`data add`], {slug}/man/data-export.html[`data export`], {slug}/man/data-obfuscate.html[`data obfuscate`], {slug}/man/data-remove.html[`data remove`], {slug}/man/data-size.html[`data size`]
+. {slug}/man/icv-convert.html[`icv convert`], {slug}/man/icv-explain.html[`icv explain`], {slug}/man/icv-export.html[`icv export`], {slug}/man/icv-validate.html[`icv export`]
+. {slug}/man/namespace-add.html[`namespace add`], {slug}/man/namespace-list.html[`namespace list`], {slug}/man/namespace-remove.html[`namespace remove`]
+. {slug}/man/query-execute.html[`query execute`], {slug}/man/query-explain.html[`query explain`], {slug}/man/query-obfuscate.html[`query obfuscate`], {slug}/man/query-search.html[`query search`]
+. {slug}/man/reasoning-consistency.html[`reasoning consistency`], {slug}/man/reasoning-explain.html[`reasoning explain`]
+. {slug}/man/vcs-commit.html[`vcs commit`], {slug}/man/vcs-diff.html[`vcs diff`], {slug}/man/vcs-list.html[`vcs list`], {slug}/man/vcs-query.html[`vcs query`], {slug}/man/vcs-revert.html[`vcs revert`], {slug}/man/vcs-tag.html[`vcs tag`]
 
-1. [`db backup`](/man/db-backup.html), [`db copy`](/man/db-copy.html), [`db create`](/man/db-create.html), [`db drop`](/man/db-drop.html), [`db list`](/man/db-list.html), [`db migrate`](/man/db-migrate.html), [`db offline`](/man/db-offline.html), [`db online`](/man/db-online.html), [`db optimize`](/man/db-optimize.html), [`db restore`](/man/db-restore.html), [`db status`](/man/db-status.html)
-2. [`icv add`](/man/icv-add.html), [`icv drop`](/man/icv-drop.html),  [`icv remove`](/man/icv-remove.html)
-2. [`metadata get`](/man/metadata-get.html), [`metadata set`](/man/metadata-set.html)
-3. [`role add`](/man/role-add.html), [`role grant`](/man/role-grant.html), [`role list`](/man/role-list.html), [`role permission`](/man/role-permission.html), [`role remove`](/man/role-remove.html), [`role revoke`](/man/role-revoke.html)
-4. [`server start`](/man/server-start.html), [`server status`](/man/server-status.html), [`server stop`](/man/server-stop.html)
-4. [`query kill`](/man/query-kill.html), [`query list`](/man/query-list.html), [`query status`](/man/query-status.html)
-5. [`user add`](/man/user-add.html), [`user addrole`](/man/user-addrole.html), [`user disable`](/man/user-disable.html), [`user enable`](/man/user-enable.html), [`user grant`](/man/user-grant.html), [`user list`](/man/user-list.html), [`user passwd`](/man/user-passwd.html), [`user permission`](/man/user-permission.html), [`user remove`](/man/user-remove.html), [`user removerole`](/man/user-removerole.html), [`user revoke`](/man/user-revoke.html)
+=== Stardog Admin CLI
+
+. {slug}/man/db-backup.html[`db backup`], {slug}/man/db-copy.html[`db copy`],
+{slug}/man/db-create.html[`db create`], {slug}/man/db-drop.html[`db drop`],
+{slug}/man/db-list.html[`db list`], {slug}/man/db-migrate.html[`db migrate`],
+{slug}/man/db-offline.html[`db offline`], {slug}/man/db-online.html[`db online`], {slug}/man/db-optimize.html[`db optimize`],
+{slug}/man/db-restore.html[`db restore`], {slug}/man/db-status.html[`db status`]
+. {slug}/man/icv-add.html[`icv add`], {slug}/man/icv-drop.html[`icv drop`],  {slug}/man/icv-remove.html[`icv remove`]
+. {slug}/man/metadata-get.html[`metadata get`], {slug}/man/metadata-set.html[`metadata set`]
+. {slug}/man/role-add.html[`role add`], {slug}/man/role-grant.html[`role grant`], {slug}/man/role-list.html[`role list`],
+{slug}/man/role-permission.html[`role permission`], {slug}/man/role-remove.html[`role remove`], {slug}/man/role-revoke.html[`role revoke`]
+. {slug}/man/server-start.html[`server start`], {slug}/man/server-status.html[`server status`], {slug}/man/server-stop.html[`server stop`]
+. {slug}/man/query-kill.html[`query kill`], {slug}/man/query-list.html[`query list`], {slug}/man/query-status.html[`query status`]
+. {slug}/man/user-add.html[`user add`], {slug}/man/user-addrole.html[`user addrole`],
+{slug}/man/user-disable.html[`user disable`], {slug}/man/user-enable.html[`user enable`],
+{slug}/man/user-grant.html[`user grant`],
+{slug}/man/user-list.html[`user list`],
+{slug}/man/user-passwd.html[`user passwd`], {slug}/man/user-permission.html[`user permission`],
+{slug}/man/user-remove.html[`user remove`], {slug}/man/user-removerole.html[`user removerole`],
+{slug}/man/user-revoke.html[`user revoke`]

@@ -1,22 +1,18 @@
----
-quote: 'If you can imagine a society in which the computer-robot is the only menial, you can imagine anything.'
-title: HTTP Programming
-layout: default
-related: ""
-shortTitle: HTTP
-toc: true
-summary: 'This chapter describes how to interact with Stardog over a network using HTTP.'
----
+= Network Programming
 
-In the [Programming with Java](../java/) chapter, we consider
-interacting with Stardog programatically from a Java program. In this
-chapter we consider interacting with Stardog over HTTP. In some use
-cases or deployment scenarios, it may be necessary to interact with or
-control Stardog remotely over an IP-based network. For those purposes,
-Stardog supports [SPARQL 1.0 HTTP Protocol](http://www.w3.org/TR/rdf-sparql-protocol/); the [SPARQL 1.1 Graph Store HTTP Protocol](http://www.w3.org/TR/sparql11-http-rdf-update/); the Stardog HTTP Protocol; and SNARL, an RPC-style protocol
-based on [Google Protocol Buffers](http://code.google.com/apis/protocolbuffers/).
+In the <<Java Programming>> section, we consider interacting with Stardog
+programatically from a Java program. In this section we consider interacting
+with Stardog over HTTP. In some use cases or deployment scenarios, it may be
+necessary to interact with or control Stardog remotely over an IP-based network.
 
-## SPARQL Protocol
+
+Stardog supports http://www.w3.org/TR/rdf-sparql-protocol/[SPARQL 1.0 HTTP
+Protocol]; the http://www.w3.org/TR/sparql11-http-rdf-update/[SPARQL 1.1 Graph
+Store HTTP Protocol]; the Stardog HTTP Protocol; and SNARL, an RPC-style
+protocol based on http://code.google.com/apis/protocolbuffers/[Google Protocol
+Buffers].
+
+== SPARQL Protocol
 
 Stardog supports the standard SPARQL Protocol HTTP bindings in a very
 obvious way. Since the Stardog HTTP Protocol is a superset of SPARQL
@@ -26,7 +22,7 @@ Stardog supports SPARQL 1.1's Service Description format. See the
 [spec](http://www.w3.org/TR/2013/REC-sparql11-service-description-20130321/)
 if you want details.
 
-## Stardog HTTP Protocol
+=== Stardog HTTP Protocol
 
 The Stardog HTTP Protocol supports SPARQL Protocol 1.1 and additional resource representations and capabilities.
 
@@ -35,7 +31,7 @@ The Stardog HTTP API v4 is also available on Apiary:
 
 The Stardog Linked Data API (aka "Annex") is also documented on Apiary: [http://docs.annex.apiary.io/](http://docs.annex.apiary.io/).
 
-### Generating URLs
+==== Generating URLs
 
 If you are running the HTTP server at the following URL
 

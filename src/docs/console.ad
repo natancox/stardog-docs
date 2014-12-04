@@ -1,153 +1,184 @@
----
-title: Web Console
-shortTitle: Console
-layout: default
-toc: true
-quote: Interfaces keep things tidy, but don't accelerate growth: Functions do.
----
+== Stardog Web Console
 
-## Introduction 
+The Stardog Web Console is a responsive web app for the Stardog Server and for
+every Stardog database that makes administration and interaction with data quick
+and easy; you can access it at `http://foo:5820` where `foo` is the name of the
+machine where Stardog is running.
 
-The Stardog Web Console is a responsive web app for the Stardog Server and for every Stardog database that makes administration and interaction with data quick and easy; you can access it at `http://foo:5820` where `foo` is the name of the machine where Stardog is running.
+=== A Screenshot Tour...
 
-## A Screenshot Tour...
+Seriously, this is a lot more fun if you just [download](http://stardog.com/)
+the damn thing and hit it with a browser!
 
-Seriously, this is a lot more fun if you just [download](http://stardog.com/) the damn thing and hit it with a browser!
+==== Login
 
-### Login
+To login into the Stardog Web Console, provide your username and password. If
+you're an administrative user, you'll have all the operations available,
+otherwise the functionality will be limited by your permissions.
 
-To login into the Stardog Web Console, provide your username and password. If you're an administrative user, you'll have all the operations available, otherwise the functionality will be limited by your permissions.
+image::screen_login.png[]
 
-![Stardog Web Console - Login](/img/console/screen_login.png)
+==== Homepage
 
-### Homepage
+image::screen_home.png[]
 
-![Stardog Web Console - Homepage](/img/console/screen_home.png)
+==== Databases
 
-### Databases
+image::screen_dbs.png[]
 
-![Stardog Web Console - Databases](/img/console/screen_dbs.png)
+==== View a database settings
 
-#### View a database settings
+image::screen_db_view.png[]
 
-![Stardog Web Console - DB View](/img/console/screen_db_view.png)
+==== Database Status
 
-#### Database Status
+You can set the database online/offline with the switch included in the top
+right of the action bar. Setting the switch to `on` will set the database
+`online`, switching it `off` will set the database `offline`.
 
-You can set the database online/offline with the switch included in the top right of the action bar. Setting the switch to `on` will set the database `online`, switching it `off` will set the database `offline`.
+NOTE: Setting a database offline will result in downtime on all the services
+provided by the database, e.g. querying, searching, modifying, etc.
 
-__NOTE__: Setting a database offline will result in downtime on all the services provided by the database, e.g. querying, searching, modifying, etc.
+==== DB Actions
 
-### DB Actions
+Within the database view, a bar with actions available on the database is
+included. Depending on the database status, the actions available are:
 
-Within the database view, a bar with actions available on the database is included. Depending on the database status, the actions available are:
+[horizontal]
+menu:Online[Query]:: Takes you to the Query Panel of the database, letting you query the DB with SPARQL queries
+menu:Online[Browse]:: Takes you to the Schema Browser of the database
 
-Status: __Online__
+[horizontal]
+menu:Offline[Edit]:: Will render the database view in edit mode, letting you modify the database settings
+menu:Offline[Migrate]:: Migrates the existing content of a legacy database to new format
+menu:Offline[Optimize]:: Optimize an existing database
 
-- Query - Takes you to the Query Panel of the database, letting you query the DB with SPARQL queries
-- Browse - Takes you to the Schema Browser of the database
+==== Drop a database
 
-Status: __Offline__
+To drop a database click on btn:[Drop], a confirmation will appear to verify the removal.
 
-- Edit - Will render the database view in edit mode, letting you modify the database settings
-- Migrate - Migrates the existing content of a legacy database to new format
-- Optimize - Optimize an existing database
+image::screen_delete_confirm.png[]
 
-#### Drop a database
+==== Creating a new database
 
-To drop a database click on the `Drop` button, a confirmation will appear to verify the removal. 
+To create a new database click btn:[New DB] in the database listing
+screen. A wizard will be shown to select and customize the settings of the DB.
+All values are optional except the database name, and all of them are pre-filled
+with the default values. You can finish the wizard to create a DB since the
+first step, just typing the database name and finish.
 
-![Stardog Web Console - Drop a Database](/img/console/screen_delete_confirm.png)
+image::screen_new_db.png[]
 
-#### Creating a new database
+You can go through the wizard with btn:[Next] and btn:[Back], setting up
+every section of the database options. Every option contains help as a tooltip
+that is shown having the cursor over the option label.
 
-To create a new database click the `New DB` button in the database listing screen. A wizard will be shown to select and customize the settings of the DB.
-All values are optional except the database name, and all of them are pre-filled with the default values. You can finish the wizard to create a DB since the first step, just typing the database name and finish.
+Once you're done setting the database options, at any step of the wizard, just
+click btn:[Finish] to create the database. You'll be redirected to the database view
+once it has been created in Stardog.
 
-![Stardog Web Console - New DB](/img/console/screen_new_db.png)
-
-You can go through the wizard with the `Next` and `Back` buttons, setting up every section of the database options. Every option contains help as a tooltip that is shown having the cursor over the option label.
-
-Once you're done setting the database options, at any step of the wizard, just click finish to create the database. You'll be redirected to the database view once it has been created in Stardog.
-
-#### Browsing the database as Linked Data
+==== Browsing the database as Linked Data
 
 You can browse the database as Linked Data graph, too.
 
-![Stardog Web Console - Browse](/img/console/screen_instance_browsing.png)
+image::screen_instance_browsing.png[]
 
-#### Browsing the Schema
+==== Browsing the Schema
 
 You can browse the schema (the class and property trees).
 
-![Stardog Web Console - Schema Browsing](/img/console/screen_schema_browsing.png)
+image::screen_schema_browsing.png[]
 
-#### Querying a database
+==== Querying a database
 
-Stardog Web Console includes a SPARQL query editor for executing queries against the database; the editor includes some canned exploration queries, too.
+Stardog Web Console includes a SPARQL query editor for executing queries against
+the database; the editor includes some canned exploration queries, too.
 
-![Stardog Web Console - SPARQL Query](/img/console/screen_sparql_query.png)
+image::screen_sparql_query.png[]
 
-![Stardog Web Console - Exploration Queries](/img/console/screen_exploration_queries.png)
+image::screen_exploration_queries.png[]
 
-### Searching a database
+==== Searching a database
 
 You can search the contents of the database using Stardog's search capability.
 
-![Stardog Web Console - Searching](/img/console/screen_semantic_search.png)
+image::screen_semantic_search.png[]
 
-#### Editing data in a database
+==== Editing data in a database
 
 You can edit any statements in the database (with the requisite permissions).
 
-![Stardog Web Console - Editing](/img/console/screen_editing.png)
+image::screen_editing.png[]
 
-#### Listing running queries
+==== Listing in-flight queries
 
-To list the current running queries on the system click on `Query Management` in the top navbar, you'll be redirected to an accordion style listing of running queries. This listing is refreshed constantly to reflect the running queries in real time, if you have a query that has been running for a while it will be shown here. 
+To list the current running queries on the system click btn:[Query Management]
+in the top navbar, you'll be redirected to an accordion style listing of running
+queries. This listing is refreshed constantly to reflect the running queries in
+real time, if you have a query that has been running for a while it will be
+shown here.
 
-![Stardog Web Console - Query List](/img/console/screen_query_list.png)
+image::screen_query_list.png[]
 
-#### View a running query
+==== View an in-flight query
 
-Clicking on the query entry in the listing will show the running query related information, such as the user who posted the query, the database it is running on, the reasoning level used for the query and the related timestamps. The query will be shown at the bottom.
+Clicking on the query entry in the listing will show the in-flight query's related
+information, such as the user who posted the query, the database it is running
+on, the reasoning level used for the query and the related timestamps. The query
+will be shown at the bottom.
 
-![Stardog Web Console - Query Info](/img/console/screen_query_info.png)
+image::screen_query_info.png[]
 
-To kill a running query, click on the query element in the listing to expand it and show its related information, a `Kill` button will be show, you can click on that button to terminate the query.
+To kill a query in-flight, click on the query element in the listing to expand
+it and show its related information, a btn:[Kill] button will be shown, you can click
+on that button to terminate the query.
 
-### Users, Roles, Permissions
+==== Listing users
 
-#### Listing users
+On the navbar, menu:Security[Users] will give a listing of the existent users in the system.
 
-On the navbar click on `Security > Users`, a listing of the existent users in the system will be shown.
+image::screen_users.png[]
 
-![Stardog Web Admin Console - Users](/img/console/screen_users.png)
+==== View user permissions & roles
 
-#### View user permissions & roles
+The user's view lets you administer a user's permissions and the roles it has
+been assigned to. To add permissions to a new resource for the user, click
+btn:[Add Permission] and provide the information for the resource; once
+it has been added to the list, click on the specific allowed actions. To add
+permissions to a resource already in the permissions table, just click on the
+permission actions to add/remove.
 
-The user's view lets you administer a user's permissions and the roles it has been assigned to. To add permissions to a new resource for the user, click on the `Add Permission` button and provide the information for the resource, once it has been added to the list, click on the specific allowed actions. To add permissions to a resource already in the permissions table, just click on the permission actions to add/remove.
+To assign the user to a role, just type the role name in the `Add role` input
+and click btn:[Add]. The role names will be autocompleted to the ones already
+existing in the system.
 
-To assign the user to a role, just type the role name in the `Add role` input and click on `Add`. The role names will be autocompleted to the ones already existing in the system.
+image::screen_user_view.png[]
 
-![Stardog Web Console - User View](/img/console/screen_user_view.png)
+==== Create a new user
 
-#### Create a new user
+To create a new user click btn:[New User] and provide the required
+information on the new User popup modal. You'll be redirected to the user's view
+once it has been created in Stardog.
 
-To create a new user click on the `New User` button and provide the required information on the new User popup modal. You'll be redirected to the user's view once it has been created in Stardog.
+image::screen_new_user.png[]
 
-![Stardog Web Admin Console - New User](/img/console/screen_new_user.png)
+==== Listing roles
 
-#### Listing roles
+On the navbar, menu:Security[Roles] for a listing of the extant roles.
 
-On the navbar click on `Security > Roles`, a listing of the existent roles in the system will be shown.
+image::screen_roles.png[]
 
-![Stardog Web Console - Roles](/img/console/screen_roles.png)
+==== View role permissions & users assigned to it
 
-#### View role permissions & users assigned to it
+The roles's view lets you administer a role's permissions and the users it has
+been assigned to. To add permissions to a new resource for the role, click
+btn:[Add Permission] and provide the information for the resource, once it has
+been added to the list, click on the specific allowed actions. To add
+permissions to a resource already in the permissions table, just click on the
+permission actions to add/remove.
 
-The roles's view lets you administer a role's permissions and the users it has been assigned to. To add permissions to a new resource for the role, click on the `Add Permission` button and provide the information for the resource, once it has been added to the list, click on the specific allowed actions. To add permissions to a resource already in the permissions table, just click on the permission actions to add/remove.
+To assign a user to the role, just type the username in the `Add user` input and
+click btn:[Add]. The usernames will be autocompleted to the ones already existing
+in the system.
 
-To assign a user to the role, just type the username in the `Add user` input and click on `Add`. The usernames will be autocompleted to the ones already existing in the system.
-
-![Stardog Web Console - Role View](/img/console/screen_role_view.png)
+image::screen_role_view.png[]

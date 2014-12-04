@@ -1,5 +1,5 @@
-Stardog is a graph database—fast, lightweight, pure Java storage for
-mission-critical apps—that supports:
+Stardog is a graph database—fast, lightweight, pure Java for
+mission-critical, enterprise apps—that supports:
 
 - the RDF graph data model
 - SPARQL 1.1 query language
@@ -7,7 +7,7 @@ mission-critical apps—that supports:
 - OWL 2 and rules for inference and data analytics
 - Java, JavaScript, Ruby, Python, .Net, Groovy, Spring, Clojure etc.
 
-This is Stardog *{version}* ({release-date}—release notes and timeline)
+This is Stardog *{version}* ({release-notes}[release notes] and [timeline])
 documentation. Check out the <<Quick Start Guide>> to get Stardog installed and
 running in five easy steps.
 

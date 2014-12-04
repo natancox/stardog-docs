@@ -7,9 +7,6 @@ guidelines that contribute to efficient query answering with reasoning. If you
 are not familiar with the terminology, you can peruse the section on
 terminology.
 
-
-== Introduction
-
 The semantics of Stardog's reasoning is based in part on the
 http://www.w3.org/TR/2010/WD-sparql11-entailment-20100126/#id45013[OWL 2
 Direct Semantics Entailment Regime]. However, the **implementation** of
