@@ -1,4 +1,4 @@
-= Programming with Clojure
+= Clojure Programming
 
 Clojure is a Lisp for the JVM. Stardog's Clojure support makes life easier for
 developers who need to work with RDF, SPARQL, and OWL by way of Stardog from

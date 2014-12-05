@@ -7,7 +7,7 @@ mission-critical, enterprise apps—that supports:
 - OWL 2 and rules for inference and data analytics
 - Java, JavaScript, Ruby, Python, .Net, Groovy, Spring, Clojure etc.
 
-This is Stardog *{version}* ({release-notes}[release notes] and [timeline])
+This is Stardog *{version}* ({release-notes}[release notes] and <<Stardog Timeline,timeline>>)
 documentation. Check out the <<Quick Start Guide>> to get Stardog installed and
 running in five easy steps.
 

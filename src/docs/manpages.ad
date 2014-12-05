@@ -21,7 +21,7 @@ $ man stardog-admin-server-start
 === Stardog CLI
 
 . {slug}/man/data-add.html[`data add`], {slug}/man/data-export.html[`data export`], {slug}/man/data-obfuscate.html[`data obfuscate`], {slug}/man/data-remove.html[`data remove`], {slug}/man/data-size.html[`data size`]
-. {slug}/man/icv-convert.html[`icv convert`], {slug}/man/icv-explain.html[`icv explain`], {slug}/man/icv-export.html[`icv export`], {slug}/man/icv-validate.html[`icv export`]
+. {slug}/man/icv-convert.html[`icv convert`], {slug}/man/icv-explain.html[`icv explain`], {slug}/man/icv-export.html[`icv export`], {slug}/man/icv-validate.html[`icv validate`]
 . {slug}/man/namespace-add.html[`namespace add`], {slug}/man/namespace-list.html[`namespace list`], {slug}/man/namespace-remove.html[`namespace remove`]
 . {slug}/man/query-execute.html[`query execute`], {slug}/man/query-explain.html[`query explain`], {slug}/man/query-obfuscate.html[`query obfuscate`], {slug}/man/query-search.html[`query search`]
 . {slug}/man/reasoning-consistency.html[`reasoning consistency`], {slug}/man/reasoning-explain.html[`reasoning explain`]

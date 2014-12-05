@@ -67,6 +67,97 @@ This is the case because domain modelers, ontology developers, or integrity
 constraint authors must consider the interactions between explicit and inferred
 statements and how these are accounted for in integrity constraints.
 
+== Using ICV from CLI
+
+To add constraints to a database:
+
+[source,shell]
+----
+$ stardog-admin icv add myDb constraints.rdf
+----
+
+To drop all constraints from a database:
+
+[source,shell]
+----
+$ stardog-admin icv drop myDb
+----
+
+To remove one or more specific constraints from a database:
+
+[source,shell]
+----
+$ stardog-admin icv remove myDb constraints.rdf
+----
+
+To convert new or existing constraints into SPARQL queries for export:
+
+[source,shell]
+----
+$ stardog icv convert myDb out.rdf
+----
+
+To explain a constraint violation:
+
+[source,shell]
+----
+$ stardog explain --contexts http://example.org/context1 http://example.org/context2
+----
+
+To export constraints:
+
+[source,shell]
+----
+$ stardog icv export myDb constraints.rdf
+----
+
+To validate a database (or some named graphs) with respect to constraints:
+
+[source,shell]
+----
+$ stardog validate --contexts http://example.org/context1 http://example.org/context2
+----
+
+== ICV Guard Mode
+
+Stardog will also apply constraints as part of its transactional cycle and fail
+transactions that violate constraints. We call this "guard mode". It must be enabled
+explicitly in the database configuration options. Using the command line,
+these steps are as follows:
+
+[source,shell]
+----
+$ ./stardog-admin db offline --timeout 0 myDb #take the database offline
+$ ./stardog-admin db metadata set icv.enabled=true myDb #enable ICV
+$ ./stardog-admin db online myDb #put the database online
+----
+
+In the Web Console you can set the database offline, click btn:[Edit],
+change the "ICV Enable" value, click btn:[Save] and set the database online
+again.
+
+Once guard mode is enabled, modifications of the database (via SPARQL Update or
+any other method), whether adds or deletes, that violate the integrity
+constraints will cause the transaction to fail.
+
+== Explaining ICV Violations
+
+ICV violations can be explained using Stardog's <<Proof Trees>>. The following
+command will explain the IC violations for constraints stored in the database:
+
+[source,shell]
+----
+$ stardog icv explain --reasoning EL "myDB"
+----
+
+It is possible to explain violations for external constraints by passing the
+file with constraints as an additional argument:
+
+[source,shell]
+----
+$ stardog icv explain --reasoning EL "myDB" constraints.ttl
+----
+
 === Security Note
 
 WARNING: There is a security implication in this design choice that may not be
@@ -227,8 +318,8 @@ in some specified relationship.
 ===== Constraint
 [source,sparql]
 ----
-# this constraint is very concise in Terp syntax:
-# :Supervisor rdfs:subClassOf (:supervises some :Employee)
+#this constraint is very concise in Terp syntax:
+#:Supervisor rdfs:subClassOf (:supervises some :Employee)
 
 :Supervisor rdfs:subClassOf
               [ a owl:Restriction ;
@@ -279,8 +370,8 @@ therefore, C is invalid. In D, `Alice` is related to `Bob` via `supervises`, and
 ===== Constraint
 [source,sparql]
 ----
-# Again, this constraint in Terp syntax rocks the hizzous:
-# :Project rdfs:subClassOf (:number some xsd:integer[>= 0, < 5000])
+#Again, this constraint in Terp syntax rocks the hizzous:
+#:Project rdfs:subClassOf (:number some xsd:integer[>= 0, < 5000])
 
 :Project rdfs:subClassOf
               [ a owl:Restriction ;
@@ -344,8 +435,8 @@ property values.
 
 [source,sparql]
 ----
-# Constraint in Terp syntax:
-# :Employee rdfs:subClassOf (:works_on max 3 :Project)
+#Constraint in Terp syntax:
+#:Employee rdfs:subClassOf (:works_on max 3 :Project)
 
 :Employee rdfs:subClassOf
               [ a owl:Restriction ;
@@ -420,8 +511,8 @@ makes C invalid.
 ===== Constraint
 [source,sparql]
 ----
-# Constraint in Terp syntax:
-# :Department rdfs:subClassOf (inverse :works_in min 2 :Employee)
+#Constraint in Terp syntax:
+#:Department rdfs:subClassOf (inverse :works_in min 2 :Employee)
 
 :Department rdfs:subClassOf
               [ a owl:Restriction ;
@@ -471,8 +562,8 @@ Stardog ICV), are assumed to be distinct, so C is valid.
 ===== Constraint
 [source,sparql]
 ----
-# Constraint in Terp syntax:
-# :Manager rdfs:subClassOf (:manages exactly 1 :Department)
+#Constraint in Terp syntax:
+#:Manager rdfs:subClassOf (:manages exactly 1 :Department)
 
 :Manager rdfs:subClassOf
               [ a owl:Restriction ;
@@ -637,10 +728,10 @@ department.
 ===== Constraint
 [source,sparql]
 ----
-# Constraint in Terp syntax:
-# how are you not loving Terp by now?!
-# :Employee rdfs:subClassOf (:works_on some (:Project or
-   (:supervises some (:Employee and (:works_on some :Project))) or (:manages some :Department)))
+#Constraint in Terp syntax:
+#how are you not loving Terp by now?!
+#:Employee rdfs:subClassOf (:works_on some (:Project or
+#(:supervises some (:Employee and (:works_on some :Project))) or (:manages some :Department)))
 
 :Employee rdfs:subClassOf
               [ a owl:Restriction ;
@@ -742,9 +833,9 @@ receives funds from a US government agency.
 ===== Constraint
 [source,sparql]
 ----
-# Constraint in Terp syntax:
-# :Project and (:receives_funds_from some :US_Government_Agency))
-               rdfs:subClassOf (inverse :works_on only (:Employee and (:nationality value "US")))
+#Constraint in Terp syntax:
+#:Project and (:receives_funds_from some :US_Government_Agency)) rdfs:subClassOf
+#(inverse :works_on only (:Employee and (:nationality value "US")))
 
 [ owl:intersectionOf (:Project
                        [ a owl:Restriction ;
@@ -855,26 +946,6 @@ and, consequently, E is valid.footnote:[This is a good example of open world and
 closed world reasoning interacting for the win.]
 
 If you made it this far, you deserve a drink!
-
-
-== Explaining ICV Violations
-
-ICV violations can be explained using Stardog's link:/owl2#sd-Proof-Trees[proof
-trees]. The following command will explain the IC violations for constraints
-stored in the database:
-
-[source,shell]
-----
-$ stardog icv explain --reasoning EL "myDB"
-----
-
-It is possible to explain violations for external constraints by passing the
-file with constraints as an additional argument:
-
-[source,shell]
-----
-$ stardog icv explain --reasoning EL "myDB" constraints.ttl
-----
 
 == Using ICV Programmatically
 

@@ -1,4 +1,4 @@
-= Server & Database Administration
+= Adminstering Stardog
 
 In this chapter we describe the administration of Stardog Server and
 Stardog databases, including the various
@@ -58,7 +58,7 @@ CAUTION: For usability, Stardog provides a
 default user "admin" and password "admin" in `stardog-admin` commands
 if no user or password are given. This is obviously **insecure**;
 before any serious use of Stardog is contemplated, read the
-link:/security[Security] chapter at least twice, and
+<<Security>> section at least twice, and
 then--minimally--change the administrative password to something we
 haven't published on the interwebs!
 
@@ -269,6 +269,21 @@ for SNARL is **5820**; the default port for HTTP is **5822**.
 
 **All administrative functions work over SNARL or HTTP protocols.**
 
+=== Upgrading Stardog Server
+
+The process of installation is pretty simple; see the <<Quick Start Guide>> for
+details.
+
+But how do we easily upgrade between versions? The key is judicious use of
+`STARDOG_HOME`. Best practice is to keep installation directories for different
+versions separate and use a `STARDOG_HOME` in another location for storing
+databases.footnote:[We're big fans of /opt/stardog/{$version} and setting
+`STARDOG_HOME` to /var/stardog` but YMMV.] One you set your `STARDOG_HOME` environment
+variable to point to this directory, you can simply stop the old version and
+start the new version without copying or moving any files. You can
+also specify the home directory using the --home` argument when starting the
+server.
+
 === HTTP & SNARL Server Unification
 
 To use any of these commands against a remote server, pass a global
@@ -282,7 +297,7 @@ for the sake of exposition.
 
 === Server Security
 
-See the link:/security[Security chapter] for information about Stardog's
+See the <<Security>> section for information about Stardog's
 security system, secure deployment patterns, and more.
 
 === Configuring Stardog Server
@@ -290,7 +305,7 @@ security system, secure deployment patterns, and more.
 NOTE: The properties described in this section control the behavior
 of the Stardog Server (whether HTTP or SNARL protocols are in use); to
 set properties or other metadata on individual Stardog *databases*, see
-link:#admin-database[Administering a Database].
+<<Administering a Database>>.
 
 Stardog Server's behavior can be configured via the JVM arg
 `stardog.home`, which sets Stardog Home, overriding the value of
@@ -311,7 +326,7 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
     default graph.
 .  `query.timeout`: Sets the upper bound for query execution time
     that's inherited by all databases unless explicitly overriden. See
-    link:#manage-queries[Query Management] section below for details.
+    <<Query Management>> section below for details.
 .  `logging.[access,audit].[enabled,type,file]`: Controls whether and
     how Stardog logs server events; described in detail below.
 .  `logging.slow_query.enabled`, `logging.slow_query.time`, `logging.slow_query.type`:
@@ -456,8 +471,7 @@ requires a Java plugin that implements the Stardog Server logging
 interface; see the [Java Chapter](/java/) for more information; and
 the log rotation policy (file size or time).
 
-Slow query logging is also available. See the link:#managing-queries[Managing Queries]
-section below.
+Slow query logging is also available. See the <<Managing Queries>> section below.
 
 == Database Admin
 
@@ -484,7 +498,7 @@ The following are the legal configuration options for a Stardog database:
 - `index.differential.enable.limit`: Sets the minimum size of the Stardog database before differential indexes are used.
 - `index.differential.merge.limit`: Sets the size in number of RDF triples before the differential indexes are merged to the main indexes.
 - `index.literals.canonical`: Enables RDF literal canonicalization.
-See link:../java/snarl/com/clarkparsia/stardog/index/IndexOptions.html#CANONICAL_LITERALS[literal canonicalization]
+See link:/java/snarl/com/clarkparsia/stardog/index/IndexOptions.html#CANONICAL_LITERALS[literal canonicalization]
 for details.
 - `index.named.graphs`: Enables optimized index support for named graphs; speeds SPARQL query evaluation with named graphs at the cost of some overhead for database loading and index maintenance.
 - `index.persist`: Enables persistent indexes.
@@ -1083,7 +1097,7 @@ $ stardog-admin db drop my_db
 
 Stardog supports integrity constraint validation as a data quality
 mechanism via closed world reasoning. Constraints can be specified in
-OWL, SWRL, and SPARQL. Please see the link:/icv[ICV chapter] for more about
+OWL, SWRL, and SPARQL. Please see the <<Integrity Constraint Validation>> section for more about
 using ICV in Stardog.
 
 The CLI `icv` subcommand can be used to add, delete, or drop all
@@ -1259,8 +1273,8 @@ Stardog does not log slow queries in the default configuration because there
 isn't a single value for what counts as a "slow query", which is entirely
 relative to queries, access patterns, dataset sizes, etc. While slow query
 logging has very minimal overhead, what counts as a slow query in some context
-may be quite acceptable in another. To enable slow query logging, see the
-link:/#slowquery[discussion above].
+may be quite acceptable in another. See <<Configuring Stardog Server>> above
+for the details.
 
 ==== Protocols and Java API
 
@@ -1278,9 +1292,8 @@ see the status of every query.
 
 === Managing Search Indexes
 
-Stardog's search service is described in the link:/using[Using Stardog]
-chapter. However, managing search indexes is an administrative task and, thus,
-is described here.
+Stardog's search service is described in <<Using Stardog>> section. However, managing
+search indexes is an administrative task and, thus, is described here.
 
 There are three modes for rebuilding indexes:
 
@@ -1313,8 +1326,8 @@ are guaranteed not to violate integrity constraints during execution. A
 transaction that would leave a database in an inconsistent or invalid state is
 aborted.
 
-See the link:/icv[ICV chapter] for a more detailed consideration of Stardog's
-integrity constraint mechanism.
+See the <<Integrity Constraint Validation>> section for a more detailed
+consideration of Stardog's integrity constraint mechanism.
 
 ==== Isolation
 
@@ -1445,14 +1458,14 @@ widely, depending on factors in the data to be loaded, including the
 number of unique resources, etc. Here are some tuning tips that may work
 for you:
 
-.  Load link:#compressed[compressed data files] since compression
+.  Load <<Loading Compressed Data,compressed data>> since compression
     minimizes disk access
 .  Use a multicore machine since bulk loading is highly parallelized
     and indexes are built concurrently
 .  Load multiple files together at creation time since different files
     will be parsed and processed concurrently improving the load speed
-.  Turn off link:#jvm-arg[strict parsing]
-.  If you are not using named graphs, use link:#index-strategies[triples only indexing]
+.  Turn off strict parsing (see <<Configuring Stardog Database>> for the details).
+.  If you are not using named graphs, use <<Database Create Options, triples only indexing>>>.
 
 == Capacity Planning
 
@@ -1561,7 +1574,7 @@ created. The additional disk space needed at bulk loading time can be
 40% to 70% of the final database size.
 
 Disk space used by a database is non-trivially smaller if
-link:#index-strategies[triples only indexing] is used. Triples-only indexing
+<<Database Create Options, triples-only indexing>> is used. Triples-only indexing
 reduces overall disk space used by 25% on average; however, note
 the tradeoff: SPARQL queries involving named graphs perform
 significantly better with quads indexing.
