@@ -1,0 +1,7 @@
+source "https://rubygems.org"
+
+gem "asciidoctor"
+gem "coderay"
+gem "pygments.rb"
+gem "compass"
+gem "modular-scale"
