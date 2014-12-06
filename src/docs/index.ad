@@ -5,15 +5,19 @@
 :toc-title: Contents
 :toclevels: 2
 :icons: font
+:title: Stardog {version}: The Complete Manual
 :experimental:
 :source-highlighter: coderay
 :page-layout: base
 :page-javascripts: [view-result]
 :description: blah blah blah Stardog graph blah
 :compat-mode!:
+:last-update-label!:
+:docinfo:
 :table-caption:
 :example-caption:
 :figure-caption:
+:idprefix: -
 :imagesdir: img/
 :linkattrs:
 :base-url: http://docs.stardog.com/
@@ -22,13 +26,11 @@
 :img: {slug}/img
 :css: {slug}/css
 :sectanchors:
+//--end header
 
-[quote, Mother Love Bone]
-""
-I'm a Stardog Champion. I'm a Stardog, that's right
-""
+image::stardog-docs.png[217, 157, align="left"]
 
-= Stardog {version} Manual
+= {title}
 
 include::preamble.ad[]
 
