@@ -7,7 +7,7 @@
 :icons: font
 :title: Stardog {version}: The Complete Manual
 :experimental:
-:source-highlighter: coderay
+:source-highlighter: pygments 
 :page-layout: base
 :page-javascripts: [view-result]
 :description: blah blah blah Stardog graph blah

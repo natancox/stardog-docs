@@ -234,8 +234,9 @@ To ensure the confidentiality of user authentication credentials when using
 remote connections, the Stardog server should only accept connections that are
 encrypted with SSL. This section describes how Stardog can be configured to use
 SSL for data confidentiality and server authentication. It does not address
-using SSL for client authentication.footnote:[Stardog does not support
-client authentication using X.509 certificates instead of passphrases.]
+using SSL for client authentication.footnote:[Stardog {version} does not support
+client authentication using X.509 certificates instead of passphrases; user feedback
+about this issue would be helpful.]
 
 === Configuring Stardog to use SSL
 
