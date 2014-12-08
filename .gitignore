@@ -1,1 +1,5 @@
 src/style/.sass-cache
+docs/asciidoctor.css
+docs/foundation
+docs/foundation/foundation.css
+docs/foundation/normalize.css
