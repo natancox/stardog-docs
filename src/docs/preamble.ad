@@ -1,33 +1,35 @@
+== Introducing Stardog
+
 Stardog is a graph database—fast, lightweight, pure Java for
-mission-critical, enterprise apps—that supports the [RDF graph data
-model]; [SPARQL 1.1] query language; HTTP and SNARL protocols for remote
-access and control; [OWL 2] and rules for inference and data analytics; and
+mission-critical, enterprise apps—that supports the http://www.w3.org/RDF/[RDF graph data
+model]; http://www.w3.org/TR/sparql11-overview/[SPARQL 1.1] query language; HTTP and SNARL protocols for remote
+access and control; http://www.w3.org/TR/owl2-overview/[OWL 2] and rules for inference and data analytics; and
 programmatic interaction via Java, JavaScript, Ruby, Python, .Net,
 Groovy, Spring, Clojure etc.
 
-This is the Complete Manual for Stardog *{version}*, {release-date}, __{release-name}__. Consult the
-{release-notes}[release notes] and <<Stardog Timeline,timeline>>.
-Check out the <<Quick Start Guide>> to get Stardog
+=== Stardog {version}, {release-date}
+
+Consult the {release-notes}[release notes] and <<Stardog Timeline,timeline>>. Check out the <<Quick Start Guide>> to get Stardog
 installed and running in five easy steps.
 
-== Downloading Stardog
+=== Downloading Stardog
 
 http://stardog.com/#download[Download Stardog] to get started. The
 mailto:stardog@clarkparsia.com[Stardog support forum] is the place to
 report bugs, ask questions, etc. You can also ask questions on Stack
 Overflow using the tag `stardog`.
 
-== Commercial Licensing & Support
+=== Commercial Licensing & Support
 
 For information about Stardog commercial licensing, please
 mailto:sales@clarkparsia.com[email] for more details.
 
-== Contributing
+=== Contributing
 
 There are several open source components of Stardog; feel free to submit pull
 requests: Starman, stardog-docs, stardog.js, stardog-groovy, stardog-spring,
 stardog.rb, and stardog-clj. Many thanks to everyone who's contributed so
-far.footnote:[ Thanks to all Stardog users, contributors, testers, etc.,
+far.footnote:[Thanks to all Stardog users, contributors, testers, etc.,
 especially Robert Butler, Al Baker, Marko A. Rodriguez, Brian Sletten, Alin
 Dreghiciu, Rob Vesse, Stephane Fallah, John Goodwin, José Devezas, Chris
 Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl, Morton Swimmer,
