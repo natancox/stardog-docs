@@ -4,8 +4,10 @@
 
 // Your custom SCSS should be written here...
 
-@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,500,600,700);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700);
+//@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,500,600,700);
+@import url(http://fonts.googleapis.com/css?family=Anonymous+Pro:400,700);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,400italic);
+//@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700);
 
 html * {
    @include box-sizing(border-box);
@@ -27,7 +29,7 @@ html, body {
 
 .sect0 {
    color: $sd-lime;
-   font-weight: 300;
+   font-weight: 200;
    font-size: 70px;
 }
 
@@ -56,7 +58,7 @@ html, body {
    text-align: right;
 }
 
-code,tt,pre,kbd,samp,var, pre span {font-family: "Ubuntu Mono"; font-weight: 500 /*$font-weight-bold*/;}
+code,tt,pre,kbd,samp,var, pre span {font-family: "Anonymous Pro"; font-weight: 400 /*$font-weight-bold*/;}
 
 a {
    text-decoration: none;
@@ -191,7 +193,7 @@ sub {
 /* Fonts */
 
 // Import Google Web Fonts
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700);
+//@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700);
 //@import url(http://fonts.googleapis.com/css?family=Ubuntu:300,300italic,regular,italic,500,500italic,700,700italic&subsets=latin-ext,greek,cyrillic-ext,cyrillic,latin,greek-ext);
 
 // Set local icon font

@@ -20,7 +20,7 @@
 
 $body-bg: white;
 $body-font-color: rgba(0,0,0,0.8);
-$body-font-family: "Open Sans", serif;
+$body-font-family: "Source Sans Pro", "Open Sans", serif;
 
 @import "defaults";
 
@@ -50,7 +50,7 @@ $max-device-width: 2880px;
 $nav-distance: 0px;
 
 // Typography
-$font-family: "Open Sans";
+$font-family: "Source Sans Pro";
 $font-style-italic: italic;
 $icons: entypo;
 $font-smoothing: antialiased;
@@ -138,7 +138,7 @@ $panel-font-color: rgba(0,0,0,0.75);
 
 // Headings
 
-$header-font-family: "Open Sans", "DejaVu Sans", sans-serif;
+$header-font-family: "Source Sans Pro", sans-serif;
 $header-font-weight: 300;
 $header-font-color: $sd-med-blue;
 $header-line-height: 1.2;
@@ -166,7 +166,7 @@ $hr-border-color: #ddddd8;
 
 // Inline Code
 
-$code-font-family: "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+$code-font-family: "Anonymous Pro", "Droid Sans Mono", "DejaVu Sans Mono", monospace;
 // NOTE will need to adjust code-font-size if we bump p font-size to 1.125em
 //$code-font-size: 0.95em;
 $code-font-size: emCalc(15px);
@@ -177,12 +177,12 @@ $code-color: rgba(0,0,0,0.9);
 $code-bg-color: #f7f7f8;
 $code-padding: 0.1em 0.5ex;
 $code-word-spacing: -0.15em;
-$code-text-rendering: optimizeSpeed;
+$code-text-rendering: optimizeLegibility;
 
 // Code Blocks
 // *Recommended highlight.js themes: magula, default, docco
 
-$pre-font-family: "Droid Sans Mono", "DejaVu Sans Mono", "Monospace", monospace;
+$pre-font-family: "Anonymous Pro", "Droid Sans Mono", "DejaVu Sans Mono", "Monospace", monospace;
 $pre-font-color: rgba(0,0,0,0.9);
 $pre-border-size: null;
 $pre-bg: #f7f7f8;
