@@ -1,5 +1,5 @@
 convert:
-	asciidoctor -v -t -d book -a allow-uri-read -a data-uri docs/index.ad -o docs/index.html
+	asciidoctor -v -t -d book -a allow-uri-read -a data-uri -a stylesheet=stardog.css docs/index.ad -o docs/index.html
 
-stage:
-	open http://localhost:8001/ 
+clean:
+	rm -r docs/foundation
