@@ -3,3 +3,6 @@ docs/asciidoctor.css
 docs/foundation
 docs/foundation/foundation.css
 docs/foundation/normalize.css
+src/docs/foundation
+src/docs/index.html
+src/docs/stardog.css
