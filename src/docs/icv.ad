@@ -1,4 +1,4 @@
-= Integrity Constraint Validation
+= Validating Constraints
 
 Stardog Integrity Constraint Validation ("ICV") validates RDF data stored in a
 Stardog database according to data rules (i.e., "constraints") described by
