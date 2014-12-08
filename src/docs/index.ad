@@ -1,34 +1,35 @@
 :version: 2.2.3
 :release-date: 25 November 2014
-:release-name: They Call Me, Dr Love
+:release-name:
 :toc: left
 :toc-title: Contents
 :toclevels: 2
-:icons: font
-:title: Stardog {version}: The Complete Manual
+//:icons: font
+:title: The Stardog Docs
 :experimental:
-:source-highlighter: pygments 
+:source-highlighter: highlightjs
 :page-layout: base
 :page-javascripts: [view-result]
-:description: blah blah blah Stardog graph blah
+:description: Stardog is a fast, lightweight graph database that supports SPARQL, RDF, OWL, rules.
 :compat-mode!:
 :last-update-label!:
 :docinfo:
 :table-caption:
 :example-caption:
 :figure-caption:
-:idprefix: -
+:idprefix!:
 :imagesdir: img/
 :linkattrs:
 :base-url: http://docs.stardog.com/
 :slug: http://docs.stardog.com/{version}
 :release-notes: {base-url}/RELEASE_NOTES.txt
 :img: {slug}/img
-:css: {slug}/css
+//:css: {slug}/css
 :sectanchors:
 //--end header
 
-image::stardog-docs.png[217, 157, align="left"]
+//217,157
+image::stardog-docs.png[align="left"]
 
 = {title}
 
