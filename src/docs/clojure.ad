@@ -120,16 +120,6 @@ Positional arguments are in order:
 ////
 
 
-== Building Stardog-clj
-
-To build Stardog-clj, you need a release of Stardog and Leiningen.
-
-. Run "mavenInstall" from the stardog-{version}/bin folder
-. Run "stardog-admin server start"
-. Run "stardog-admin db create -n testdb data/University0_0.owl"
-. You can now run `lein compile`, use the lein repl, and run `lein midje` to perform the tests
-. Run `lein install`, which will install stardog-clj into ~/.m2/repository/stardog-clj/stardog-clj
-
 
 == Examples
 

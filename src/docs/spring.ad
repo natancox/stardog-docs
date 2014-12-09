@@ -45,27 +45,6 @@ implemented with a separate callback writing records using the SNARL
 Adder API.
 
 
-== Building Spring for Stardog
-
-To build Spring for Stardog, you need a release of Stardog; we use
-http://www.gradle.org/ to build Stardog for Spring.  Gradle 1.9 is the preferred
-version. Then,
-
--   edit `build.gradle` to point `stardogLocation` at a Stardog release
-    directory;
--   run `gradlew`, which will download and bootstrap a gradle build
-    environment;
--   then run `gradlew build`, which eventually results in a
-    `stardog-spring.jar` in `build/libs`; finally,
--   `gradlew install` does a build, generates a POM, and installs the
-    POM in local Maven repo; alternately, though generally you should use the latest from Maven Central.
-
-The `stardogLocation` and `fileTree` dependency are included in development
-of Stardog Spring, as a local embedded server is used for automated testing.
-Before running the build, you should edit the "CHANGE" areas in the build file
-to point to your local Stardog instance.  See the README on the respective
-Github projects for more details.
-
 == Basic Spring
 
 There are three Beans to add to a Spring application context:
