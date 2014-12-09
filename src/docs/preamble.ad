@@ -46,20 +46,19 @@ and the nice people at El Rinconcito Cafe in DC.]
 
 Want to know where we're headed over the next 12 to 15 months?
 
-=== 3.0 release (Q1 2015)
+=== 3.0 release (February 2015)
 - [x] Equality reasoning
 - [x] Improved write performance
 - [ ] HA Cluster out of beta
-- [x] Native support for Property Graph model
 - [x] Java 7 & Sesame 2.8/RDF 1.1
 - [x] Repair plans
-- [ ] Pluggable search indexers
 - [x] Improved query performance
 
-=== 3.x release cycle (2015)
+=== 3.1 release (Q2 2015)
+- [ ] Native support for Property Graph model
+- [ ] Pluggable search indexers
 - [ ] Named Graph security
-- [ ] Unified RDF and Property Graph models
 
 === 4.0 release (Q2 2016)
-- [ ] Data-center scale Stardog queries, traversals, graph algorithms, and reasoning
+- [ ] Data-center scale Stardog
 - [ ] Declarative mappings to treat Enterprise Data Lakes as Enterprise Knowledge Graphs
