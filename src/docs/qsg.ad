@@ -1,7 +1,6 @@
 = Quick Start Guide
 
-Stardog runs on Java 6, Java 7, and is entirely untested on Java 8 (YMMV).
-Stardog runs best on, but does not require a 64-bit JVM that supports
+Stardog runs on Java 7 and should run fine on Java 8. Stardog runs best on, but does not require a 64-bit JVM that supports
 `sun.misc.Unsafe`.
 
 WARNING: Stardog ships with an *insecure* but usable default setting: the
