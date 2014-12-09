@@ -4,7 +4,9 @@ Stardog is a full-featured RDF database: its primary purpose is to execute
 queries against RDF data which it has under direct management.footnote:[Stardog
 will not retrieve data from the Web or from any other network via HTTP URLs in
 order to query that data. If you want to query data using Stardog, you must add
-that data to a new or existing Stardog database.] Stardog supports
+that data to a new or existing Stardog database.]
+
+Stardog supports
 http://www.cambridgesemantics.com/2008/09/sparql-by-example[SPARQL], the W3C
 standard for querying RDF graphs.
 
@@ -24,7 +26,7 @@ $ stardog query myDb "select * where { ?s ?p ?o }"
 ----
 
 Detailed information on using the query command in Stardog can be found
-on its [`man` page](/man/query-execute.html).
+on its link:man/query-execute.html[`man` page].
 
 === Functions
 
@@ -287,7 +289,9 @@ Now you know and knowing is one-quarter of the fun.
 
 == Updating
 
-There are many ways to update the data in a Stardog database; the most commonly used methods are the CLI and SPARQL Update queries, both of which we discuss below.
+There are many ways to update the data in a Stardog database; the most commonly
+used methods are the CLI and SPARQL Update queries, both of which we discuss
+below.
 
 === SPARQL Update
 
@@ -330,10 +334,10 @@ WHERE
 
 === Adding Data with the CLI
 
-The most efficient way to load data into Stardog is at database creation
-time. See the [Creating a Database](../admin/#create) section for bulk
+As of Stardog {version}, the most efficient way to load data into Stardog is at database creation
+time. See the <<Creating a Database>> section for bulk
 loading data at database creation time. To add data to an existing
-Stardog database, use the [add](/docs/man/data-add.html) command:
+Stardog database, use the link:man/data-add.html[`add`] command:
 
 [source,shell]
 ----

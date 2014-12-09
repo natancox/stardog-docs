@@ -65,7 +65,7 @@ Spring-specific capabilities (e.g. `spring-tx` support in the future)
 without directly requiring Spring in Stardog.
 
 `SnarlTemplate` provides a template abstraction over much of Stardog's
-native API, [SNARL](/java), and follows the same approach of other
+native API, <<Java Programming,SNARL>>, and follows the same approach of other
 Spring template, i.e., `JdbcTemplate`, `JmsTemplate`, and so on.
 
 Spring for Stardog also comes with convenience mappers, for

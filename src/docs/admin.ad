@@ -305,7 +305,7 @@ security system, secure deployment patterns, and more.
 NOTE: The properties described in this section control the behavior
 of the Stardog Server (whether HTTP or SNARL protocols are in use); to
 set properties or other metadata on individual Stardog *databases*, see
-<<Administering a Database>>.
+<<Database Admin>>.
 
 Stardog Server's behavior can be configured via the JVM arg
 `stardog.home`, which sets Stardog Home, overriding the value of
@@ -326,7 +326,7 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
     default graph.
 .  `query.timeout`: Sets the upper bound for query execution time
     that's inherited by all databases unless explicitly overriden. See
-    <<Query Management>> section below for details.
+    <<Managing Queries>> section below for details.
 .  `logging.[access,audit].[enabled,type,file]`: Controls whether and
     how Stardog logs server events; described in detail below.
 .  `logging.slow_query.enabled`, `logging.slow_query.time`, `logging.slow_query.type`:
@@ -468,7 +468,7 @@ plain text (both based on ProtocolBuffer message formats); the type of
 logging (audit or access); the logging location (which may be "off disk"
 or even "off machine") Logging to a centralized logging facility
 requires a Java plugin that implements the Stardog Server logging
-interface; see the [Java Chapter](/java/) for more information; and
+interface; see <<Java Programming>> for more information; and
 the log rotation policy (file size or time).
 
 Slow query logging is also available. See the <<Managing Queries>> section below.
@@ -676,8 +676,8 @@ configurations only, Stardog will recognize `default` and `*` as shorter
 forms of those URIs, respectively.
 
 The legal value of `search.reindex.mode` is one of the strings `sync` or
-`async` (case insensitive) or a legal [Quartz cron
-expression](http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger).
+`async` (case insensitive) or a legal http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger[Quartz cron
+expression].
 
 === Managing Database Status
 
@@ -1097,7 +1097,7 @@ $ stardog-admin db drop my_db
 
 Stardog supports integrity constraint validation as a data quality
 mechanism via closed world reasoning. Constraints can be specified in
-OWL, SWRL, and SPARQL. Please see the <<Integrity Constraint Validation>> section for more about
+OWL, SWRL, and SPARQL. Please see the <<Validating Constraints>> section for more about
 using ICV in Stardog.
 
 The CLI `icv` subcommand can be used to add, delete, or drop all
@@ -1280,7 +1280,7 @@ for the details.
 
 For HTTP protocol support, see http://docs.stardog.apiary.io/[Stardog's Apiary] docs.
 
-For Java, see http://docs.stardog.com/java/snarl/)[the Javadocs]
+For Java, see the http://docs.stardog.com/java/snarl/[Javadocs].
 
 ==== Security and Query Management
 
@@ -1312,7 +1312,6 @@ The default is `sync`.
 
 ==== Atomicity
 
-Atoms in ancient Greece were thought to be uncuttable bits of simple stuff.
 Databases may provide a guarantee of atomicity--groups of database actions
 (i.e., mutations) are irreducible and indivisible: either all of the changes
 happen or none of them happens. Stardog's transacted writes are atomic.
@@ -1326,7 +1325,7 @@ are guaranteed not to violate integrity constraints during execution. A
 transaction that would leave a database in an inconsistent or invalid state is
 aborted.
 
-See the <<Integrity Constraint Validation>> section for a more detailed
+See the <<Validating Constraints>> section for a more detailed
 consideration of Stardog's integrity constraint mechanism.
 
 ==== Isolation
@@ -1464,7 +1463,7 @@ for you:
     and indexes are built concurrently
 .  Load multiple files together at creation time since different files
     will be parsed and processed concurrently improving the load speed
-.  Turn off strict parsing (see <<Configuring Stardog Database>> for the details).
+.  Turn off strict parsing (see <<Configuring a Database>> for the details).
 .  If you are not using named graphs, use <<Database Create Options, triples only indexing>>>.
 
 == Capacity Planning

@@ -4,9 +4,9 @@ In this section we explain how to configure, use, and administer Stardog Cluster
 for uninterrupted operations.
 
 NOTE: Stardog Cluster {version} is **BETA** software and should be used
-accordingly. Please help us test it and report bugs!
+accordingly. Please help us test it and report bugs.
 
-== What is Stardog Cluster?
+== Stardog Cluster
 
 Stardog Cluster is a collection of Stardog Server instances running on one or
 more virtual or physical machines that, *from the client's perspective*, behave
@@ -18,7 +18,7 @@ client's perspective Stardog Cluster should be indistinguishable from
 non-clustered Stardog.footnote:[The client here means the client of Stardog
 APIs, not necessarily people, administrators, etc.]
 
-== What about Deployment?
+== Deployment
 
 Clustered database deployment is notable for being a complete pain in the ass
 and different in every computing environment on earth. We've made Stardog
@@ -32,6 +32,10 @@ called http://github.com/clarkparsia/starman[Starman], that will work for many
 cases; and we've open sourced it. We've fully documented what is required to
 configure and deploy a Stardog Cluster. The dependencies are few and ubiquitous
 (SSH, JVM 1.6 or newer).
+
+NOTE: If Starman won't work for you, check out the
+https://github.com/clarkparsia/starman/wiki/How-to-deploy-Stardog-Cluster-manually[manual
+deployment instructions] on Github.
 
 Okay, so a quick deployment overview:
 
@@ -265,8 +269,7 @@ EC2, or `default` for existing servers.
 The last bit of information here is the *cluster size*. As of 2.2.1, Stardog
 Cluster only supports the cluster topology "one coordinator, many followers",
 but we need to determine the size of the cluster, which should be a multiple of
-3. We pass that to Starman deploy using the `--numvms`footnote:[This will be renamed
-in a future release.] argument.
+3. We pass that to Starman deploy using the `--numvms` argument.
 
 Now we're ready to deploy Stardog Cluster:
 

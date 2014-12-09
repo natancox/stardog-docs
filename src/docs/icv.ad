@@ -18,8 +18,8 @@ languages for RDF and Linked Data has several advantages:
     integration model, mapping rules, etc with SPARQL
 -   Being able to use automated reasoning about all of these things to insure logical consistency, explain errors and problems, etc.
 
-If you are also interested in theory and background, please see the [ICV
-specification](/icv/icv-specification.html), which has all the formal details.
+If you are also interested in theory and background, please see the link:icv/icv-specification.html[ICV
+specification], which has all the formal details.
 
 == Getting Started with ICV
 
@@ -887,8 +887,8 @@ receives funds from a US government agency.
 	:nationality "US" .
 ----
 ===== Database D (invalid)
-----
 [source,sparql]
+----
 :MyProject a :Project ;
 	:receives_funds_from :NASA .
 
@@ -1068,7 +1068,7 @@ include::https://gist.githubusercontent.com/mhgrove/1333782/raw/CreateDiskAndICV
 
 This illustrates how to create a persistent disk database with ICV guard
 mode enabled at the QL reasoning type. Guard mode can also be enabled
-when the database is created on the [command line](../admin)
+when the database is created on the <<Command Line Interface, CLI>>.
 
 == Terminology
 

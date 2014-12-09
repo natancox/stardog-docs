@@ -62,7 +62,7 @@ MIME types in the following way: `REQ | REQ /resource/identifier → mime_type |
 mime_type`. In a few cases, we use `void` as short hand for the case where there
 is a response code but the response body may be empty.
 
-=== HTTP Headers: `Content-Type` & `Accept`
+=== HTTP Headers: Content-Type & Accept
 
 All HTTP requests that are mutative (add or remove) must include a valid
 `Content-Type` header set to the MIME type of the request body, where
@@ -167,10 +167,9 @@ GET | POST /{db}/query
 ----
 
 The SPARQL endpoint for the database. The valid Accept types are listed
-above in the <<HTTP Headers>> section.
+above in the <<HTTP Headers: Content-Type & Accept,HTTP Headers>> section.
 
-To issue SPARQL queries with reasoning over HTTP, see <<Using
-Reasoning>> section.
+To issue SPARQL queries with reasoning over HTTP, see <<Using Reasoning>>.
 
 === SPARQL update
 
@@ -508,8 +507,7 @@ POST /admin/databases/{kb}/options
 ----
 
 Set options in the database passed through a JSON object specification,
-i.e. JSON Request for option values. Database options can be found
-[here](../admin/#admin-db).
+i.e. JSON Request for option values. Database options can be found <<Configuring a Database,here>>.
 
 Expected input (`application/json`):
 

@@ -7,7 +7,7 @@ access and control; http://www.w3.org/TR/owl2-overview/[OWL 2] and rules for inf
 programmatic interaction via Java, JavaScript, Ruby, Python, .Net,
 Groovy, Spring, Clojure etc.
 
-=== Stardog {version}, {release-date}
+=== Stardog {version} ({release-date})
 
 Consult the {release-notes}[release notes] and <<Stardog Timeline,timeline>>. Check out the <<Quick Start Guide>> to get Stardog
 installed and running in five easy steps.
@@ -21,18 +21,45 @@ Overflow using the tag `stardog`.
 
 === Commercial Licensing & Support
 
-For information about Stardog commercial licensing, please
-mailto:sales@clarkparsia.com[email] for more details.
+**For information about http://stardog.com/#plans[Stardog commercial licensing], please
+mailto:sales@clarkparsia.com[email] for more details.**
 
 === Contributing
 
 There are several open source components of Stardog; feel free to submit pull
-requests: Starman, stardog-docs, stardog.js, stardog-groovy, stardog-spring,
-stardog.rb, and stardog-clj. Many thanks to everyone who's contributed so
-far.footnote:[Thanks to all Stardog users, contributors, testers, etc.,
-especially Robert Butler, Al Baker, Marko A. Rodriguez, Brian Sletten, Alin
-Dreghiciu, Rob Vesse, Stephane Fallah, John Goodwin, José Devezas, Chris
-Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl, Morton Swimmer,
-Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron Zettlemoyer, Jim Rhyne,
-Andrea Westerinen, Huy Phan, Zach Whitley, Maurice Rabb, the crew at
-XSB, and the nice people at El Rinconcito Cafe in DC.]
+requests: https://github.com/clarkparsia/starman[Starman],
+https://github.com/clarkparsia/stardog-docs[stardog-docs],
+https://github.com/clarkparsia/stardog.js[stardog.js],
+https://github.com/clarkparsia/stardog-groovy[stardog-groovy],
+https://github.com/clarkparsia/stardog-spring[stardog-spring],
+https://github.com/antoniogarrote/stardog-rb[stardog.rb], and
+https://github.com/clarkparsia/stardog-clj[stardog-clj]. Many thanks to everyone
+who's contributed so far.footnote:[Thanks to all Stardog users, contributors,
+testers, etc., especially Robert Butler, Al Baker, Marko A. Rodriguez, Brian
+Sletten, Alin Dreghiciu, Rob Vesse, Stephane Fallah, John Goodwin, José Devezas,
+Chris Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl, Morton
+Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron Zettlemoyer, Jim
+Rhyne, Andrea Westerinen, Huy Phan, Zach Whitley, Maurice Rabb, the crew at XSB,
+and the nice people at El Rinconcito Cafe in DC.]
+
+== Stardog Roadmap
+
+Want to know where we're headed over the next 12 to 15 months?
+
+=== 3.0 release (Q1 2015)
+- [x] Equality reasoning
+- [x] Improved write performance
+- [ ] HA Cluster out of beta
+- [x] Native support for Property Graph model
+- [x] Java 7 & Sesame 2.8/RDF 1.1
+- [x] Repair plans
+- [ ] Pluggable search indexers
+- [x] Improved query performance
+
+=== 3.x release cycle (2015)
+- [ ] Named Graph security
+- [ ] Unified RDF and Property Graph models
+
+=== 4.0 release (Q2 2016)
+- [ ] Data-center scale Stardog queries, traversals, graph algorithms, and reasoning
+- [ ] Declarative mappings to treat Enterprise Data Lakes as Enterprise Knowledge Graphs
