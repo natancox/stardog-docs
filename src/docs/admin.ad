@@ -1464,7 +1464,7 @@ for you:
 .  Load multiple files together at creation time since different files
     will be parsed and processed concurrently improving the load speed
 .  Turn off strict parsing (see <<Configuring a Database>> for the details).
-.  If you are not using named graphs, use <<Database Create Options, triples only indexing>>>.
+.  If you are not using named graphs, use <<Database Create Options, triples only indexing>>.
 
 == Capacity Planning
 
