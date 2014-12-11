@@ -162,10 +162,14 @@ Once ZooKeeper is started, you can start Stardog Cluster:
 +
 [source,bash]
 ----
-$ ./stardog-admin server start --home ˜/stardog --port 5820 # on node 1
-$ ./stardog-admin server start --home ˜/stardog --port 5820 # on node 2
-$ ./stardog-admin server start --home ˜/stardog --port 5820 # on node 3
+$ ./stardog-admin server start --home ˜/stardog --port 5821 # on node 1
+$ ./stardog-admin server start --home ˜/stardog --port 5821 # on node 2
+$ ./stardog-admin server start --home ˜/stardog --port 5821 # on node 3
 ----
+NOTE: We start Stardog here on the non-default port (`5821`) so that the Proxy
+can run on the default port (`5820`), which means that Stardog clients can act
+normally (i.e., use the default port, `5820`) since they need to interact with
+the Proxy.
 +
 . Start the Stardog Cluster Proxy:
 +
