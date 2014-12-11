@@ -92,11 +92,12 @@ On node 2:
 ----
 tickTime=2000
 dataDir=/tmp/zookeeperdata/
-clientPort=2181
+clientPort=2180
 initLimit=5
 syncLimit=2
-server.1=196.69.68.1:2180
-server.2=196.69.68.3:2180
+server.1=196.69.68.1:2888:3888
+server.2=196.69.68.2:2888:3888
+server.3=196.69.68.3:2888:3888
 ----
 +
 Finally, on node 3:
