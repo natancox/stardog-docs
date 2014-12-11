@@ -134,7 +134,7 @@ The format of the password file is as follows:
 
 For example,
 
-[source,shell]
+[source,bash]
 ----
   #this is my password file; there are no others like it and this one is mine anyway...
   *:*:*:flannery:aNahthu8
@@ -314,7 +314,7 @@ is a complete example that lets clients use HTTPS connections with the
 lighttpd proxy to communicate with a Stardog HTTP server listening on
 port 12345 of the lighttpd host.
 
-[source,shell]
+[source,bash]
 ----
 server.port = 443
 ssl.engine = "enable"
@@ -343,7 +343,7 @@ necessary to enable SSL and reverse proxying.] allows clients to use
 HTTPS connections with the Apache proxy, which communicates with a
 Stardog HTTP server listening on port 12345 of the Apache host.
 
-[source,shell]
+[source,bash]
 ----
 SSLEngine                 On
 SSLCertificateFile        server.pem
@@ -388,7 +388,7 @@ string uses the `snarls:` scheme. For example, the following invocation of the
 Stardog command line utility will initiate an SSL connection to a remote
 database:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog status -c https://stardog.example.org/sp2b_10k
 ----
@@ -396,7 +396,7 @@ $ stardog status -c https://stardog.example.org/sp2b_10k
 If the client is unable to authenticate to the server, then the connection
 will fail and an error message like the following will be generated.
 
-[source,shell]
+[source,bash]
 ----
 Error during connect.  Cause was SSLPeerUnverifiedException: peer not authenticated
 ----
@@ -422,7 +422,7 @@ ensure its integrity.footnote:[See the `javax.net.ssl.trustStorePassword` system
 property docs:
 http://docs.oracle.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html#X509TrustManager.]
 
-[source,shell]
+[source,bash]
 ----
 $ keytool -importcert  -keystore my-truststore.jks -alias stardog-server -file my-trusted-server.crt
 ----
@@ -430,7 +430,7 @@ $ keytool -importcert  -keystore my-truststore.jks -alias stardog-server -file m
 The following Stardog command line invocation uses the newly created
 truststore.
 
-[source,shell]
+[source,bash]
 ----
 $ STARDOG_JAVA_ARGS=”-Djavax.net.ssl.trustStore=my-truststore.jks” stardog \
 status -c https://stardog.example.org/sp2b_10k
@@ -454,7 +454,7 @@ described--http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.
 in the Apache docs about `BrowserCompatHostnameVerifier`.]
 
 This will cause an error message like the following
-[source,shell]
+[source,bash]
 ----
 Error during connect.  Cause was SSLException: hostname in certificate didn't match
 ----
@@ -492,7 +492,7 @@ a permanent location in the host system--we're big fans of the
 a common location and uses a versioning string to facilitate parallel installs
 of different Stardog releases. An administrator may choose any location.
 
-[source,shell]
+[source,bash]
 ----
 $ export STARDOG_VERSION={replace_me_with_stardog_version}
 $ export STARDOG_LIBDIR=/opt/stardog-${STARDOG_VERSION}/lib
@@ -507,7 +507,7 @@ directory into a location that places them into most users’ execution
 `PATH`. Execution permissions to the tools are *not* limited because
 access to the data directory will be **strictly limited**.
 
-[source,shell]
+[source,bash]
 ----
 $ install -c -m a=rx ./stardog /usr/bin/stardog
 $ install -c -m a=rx ./stardog-admin /usr/sbin/stardog-admin
@@ -518,7 +518,7 @@ configuration data, **including access control information**. The location
 selected for the data directory should be reliable, large enough to meet
 data requirements, and secured from unauthorized access.
 
-[source,shell]
+[source,bash]
 ----
 $ export STARDOG_HOME=/var/db/stardog
 ----
@@ -531,7 +531,7 @@ network server to run as a user other than `stardog`; or it may
 facilitate other processes other than Stardog, i.e., data backup. The
 snippet below creates that user and group.
 
-[source,shell]
+[source,bash]
 ----
 $ groupadd stardog
 $ useradd -d ${STARDOG_HOME} -g stardog -s /sbin/nologin stardog
@@ -540,7 +540,7 @@ $ useradd -d ${STARDOG_HOME} -g stardog -s /sbin/nologin stardog
 This snippet creates the data directory and limits its access to the
 newly created group.
 
-[source,shell]
+[source,bash]
 ----
 $ install -d -o stardog -g stardog -m ug=rwx,o=${STARDOG_HOME}
 ----
@@ -555,7 +555,7 @@ For example, the following snippet adding the `tomcat` user to the
 `stardog` group may be needed in an environment where a Stardog HTTP
 server is run as an application within Tomcat.
 
-[source,shell]
+[source,bash]
 ----
 $ usermod --add-to-group stardog tomcat
 ----

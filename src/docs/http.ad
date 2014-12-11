@@ -31,7 +31,7 @@ Apiary: http://docs.stardog.apiary.io/. The Stardog Linked Data API (aka
 
 If you are running the HTTP server at
 
-[source,shell]
+[source,bash]
 ----
 http://localhost:12345/
 ----
@@ -41,7 +41,7 @@ Name is the first URL path segment appended to the deployment URI. For
 example, for the Database called `cytwombly`, deployed in the above
 example HTTP server, the Database Network Name might be
 
-[source,shell]
+[source,bash]
 ----
 http://localhost:12345/cytwombly
 ----
@@ -49,7 +49,7 @@ http://localhost:12345/cytwombly
 All the resources related to this database are identified by URL path
 segments relative to the Database Network Name; hence:
 
-[source,shell]
+[source,bash]
 ----
 http://localhost:12345/cytwombly/size
 ----

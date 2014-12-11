@@ -27,7 +27,7 @@ This log of a CLI session gives a full example of how to validate data using a
 mix of integrity constraints expressed in OWL and SPARQL. It uses data and
 constraints linked below.
 
-[source,shell]
+[source,bash]
 ----
 include::https://gist.githubusercontent.com/evren/5612900/raw/aab0cfaec053a05bf89c07adf67c322fd9d92055/commands.log[]
 ----
@@ -71,49 +71,49 @@ statements and how these are accounted for in integrity constraints.
 
 To add constraints to a database:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin icv add myDb constraints.rdf
 ----
 
 To drop all constraints from a database:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin icv drop myDb
 ----
 
 To remove one or more specific constraints from a database:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin icv remove myDb constraints.rdf
 ----
 
 To convert new or existing constraints into SPARQL queries for export:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog icv convert myDb out.rdf
 ----
 
 To explain a constraint violation:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog explain --contexts http://example.org/context1 http://example.org/context2
 ----
 
 To export constraints:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog icv export myDb constraints.rdf
 ----
 
 To validate a database (or some named graphs) with respect to constraints:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog validate --contexts http://example.org/context1 http://example.org/context2
 ----
@@ -125,7 +125,7 @@ transactions that violate constraints. We call this "guard mode". It must be ena
 explicitly in the database configuration options. Using the command line,
 these steps are as follows:
 
-[source,shell]
+[source,bash]
 ----
 $ ./stardog-admin db offline --timeout 0 myDb #take the database offline
 $ ./stardog-admin db metadata set icv.enabled=true myDb #enable ICV
@@ -145,7 +145,7 @@ constraints will cause the transaction to fail.
 ICV violations can be explained using Stardog's <<Proof Trees>>. The following
 command will explain the IC violations for constraints stored in the database:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog icv explain --reasoning EL "myDB"
 ----
@@ -153,7 +153,7 @@ $ stardog icv explain --reasoning EL "myDB"
 It is possible to explain violations for external constraints by passing the
 file with constraints as an additional argument:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog icv explain --reasoning EL "myDB" constraints.ttl
 ----

@@ -27,21 +27,21 @@ tools' output is correct.
 To use the Stardog CLI tools, you can start by asking them to display
 help:
 
-[source,shell]
+[source,bash]
 ----
 stardog help
 ----
 
 Or:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin help
 ----
 
 And for the very laziest among us, these work too:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog
 $ stardog-admin
@@ -67,7 +67,7 @@ haven't published on the interwebs!
 The CLI tools use "command groups" to make CLI subcommands easier to find.
 To print help for a particular command group, just ask for help:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog help [command_group_name]
 ----
@@ -105,7 +105,7 @@ See 'stardog help' for more information on a specific command.
 To get more information about a particular command, simply issue the
 help command for it including its command group:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog help query execute
 ----
@@ -114,7 +114,7 @@ Finally, everything here about command groups, commands, and online help
 works for `stardog-admin`, too. The result of all these changes is a
 better user experience:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog reasoning consistency -u myUsername -p myPassword -r QL myDB
 
@@ -131,14 +131,14 @@ first want to make sure bash completion is installed:
 
 To install:
 
-[source,shell]
+[source,bash]
 ----
 $ brew install bash-completion
 ----
 
 To enable, edit ``.bash\_profile`:
 
-[source,shell]
+[source,bash]
 ----
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
@@ -151,14 +151,14 @@ First, you really should be using Homebrew...ya heard?
 
 If not, then:
 
-[source,shell]
+[source,bash]
 ----
 $ sudo port install bash-completion
 ----
 
 Then, edit `.bash\_profile`:
 
-[source,shell]
+[source,bash]
 ----
 if [ -f /opt/local/etc/bash_completion ]; then
    . /opt/local/etc/bash_completion
@@ -169,14 +169,14 @@ fi
 
 And for our Linux friends:
 
-[source,shell]
+[source,bash]
 ----
 $ sudo apt-get install bash-completion
 ----
 
 ==== Fedora
 
-[source,shell]
+[source,bash]
 ----
 $ sudo yum install bash-completion
 ----
@@ -190,7 +190,7 @@ Now put the Stardog autocomplete script—`stardog-completion.sh`—into yr
 Alternately you can put it anywhere you want, but tell `.bash_profile`
 about it:
 
-[source,shell]
+[source,bash]
 ----
 source ~/.stardog-completion.sh
 ----
@@ -388,14 +388,14 @@ The simplest way to start the server—running on the default port,
 detaching to run as a daemon, and writing `stardog.log` to the current
 working directory— is
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin server start
 ----
 
 To specify parameters:
 
-[source,shell]
+[source,bash]
 -----
 $ stardog-admin server start --logfile mystardog.log --port=8080
 -----
@@ -406,7 +406,7 @@ The HTTP interface can be disabled by using the flag
 
 To shut the server down:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin server stop
 ----
@@ -694,14 +694,14 @@ block until other database activity is completed or terminated. See
 
 To set a database from offline to online:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin db offline myDatabase
 ----
 
 To set the database online:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin db online myDatabase
 ----
@@ -784,7 +784,7 @@ unique to a specific database passed in CLI parameters.
 To create a new database with the default options by simply providing a
 name and a set of initial datasets to load:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin db create -n myDb input.ttl another_file.rdf moredata.rdf.gz
 ----
@@ -792,7 +792,7 @@ $ stardog-admin db create -n myDb input.ttl another_file.rdf moredata.rdf.gz
 Datasets can be loaded later as well. To create (in this case, an empty)
 database from a template file:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin db create -c database.properties
 ----
@@ -804,7 +804,7 @@ If you only want to change only a few configuration options you
 can directly provide the values for these options in the CLI args as
 follows:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin db create -n db -o icv.enabled=true icv.reasoning.type=QL -- input.ttl
 ----
@@ -864,14 +864,14 @@ If the built-in Stardog system database is corrupted, then you
 can use the database name `system` as the repair argument.
 To repair the database myDB:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin db repair myDB
 ----
 
 To repair the system database:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin db repair system
 ----
@@ -905,7 +905,7 @@ exercise for the admin.
 
 To backup a Stardog database called `foobar`:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin db backup foobar
 ----
@@ -913,7 +913,7 @@ $ stardog-admin db backup foobar
 To perform a remote backup, for example, pass in a specific directory that
 may be mounted in the current OS namespace via some network protocol, thus:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin db backup --to /my/network/share/stardog-backups foobar
 ----
@@ -931,7 +931,7 @@ the database to restore.
 
 To restore a database from its backup:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin db restore $STARDOG_HOME/.backups/myDb/2012-06-21
 ----
@@ -943,7 +943,7 @@ databases created in versions before 2.1. These databases must be explicitly
 migrated in order to use the new backup system; this is a one-time operation per
 database and is accomplished by running
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin db migrate foobar
 ----
@@ -964,7 +964,7 @@ administrators to persist and manage custom namespace prefix bindings:
     of the database. Any subsequent queries to the database may simply
     omit the `PREFIX` declarations:
 +
-[source,shell]
+[source,bash]
 ----
 $ stardog query myDB "select * {?s rdf:type owl:Class}"
 ----
@@ -972,7 +972,7 @@ $ stardog query myDB "select * {?s rdf:type owl:Class}"
 
 . To add new bindings, use the `namespace` subcommand in the CLI:
 +
-[source,shell]
+[source,bash]
 ----
 $ stardog namespace add myDb --prefix ex --uri 'http://example.org/test#'
 ----
@@ -981,14 +981,14 @@ $ stardog namespace add myDb --prefix ex --uri 'http://example.org/test#'
 .  To modify an existing binding, delete the existing one and then add
     a new one:
 +
-[source,shell]
+[source,bash]
 ----
 $ stardog namespace remove myDb --prefix ex
 ----
 +
 . Finally, to see all of the existing namespace prefix bindings:
 +
-[source,shell]
+[source,bash]
 ----
 $ stardog namespace list myDB
 ----
@@ -1088,7 +1088,7 @@ order to be dropped.
 
 It takes as its only argument a valid database name. For example,
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin db drop my_db
 ----
@@ -1118,7 +1118,7 @@ to migrate. `migrate` won't necessarily work between arbitrary Stardog
 version, so before upgrading check the release notes for a new version
 carefully to see whether migration is required or possible.
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin db migrate myDatabase
 ----
@@ -1130,7 +1130,7 @@ will update `myDatabase` to the latest database format.
 You can get some information about a database by running the following
 command:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin metadata get my_db_name
 ----
@@ -1140,7 +1140,7 @@ the values of configuration options used for this database instance. If
 you want to get the value for a specific option then you can run the
 following command:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin metadata get -o index.named.graphs my_db_name
 ----
@@ -1173,14 +1173,14 @@ inherits the server-wide value. To disable query timeout, set
 
 To see all running queries, use the `query list` subcommand:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin query list
 ----
 
 The results are formatted tabularly:
 
-[source,shell]
+[source,bash]
 ----
 +----+----------+-------+--------------+
 | ID | Database | User  | Elapsed time |
@@ -1202,14 +1202,14 @@ query is running. The ID column is the key to deleting queries.
 To delete a running query, simply pass its ID to the `query kill`
 subcommand:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin query kill 3
 ----
 
 The output confirms the query kill completing successfully:
 
-[source,shell]
+[source,bash]
 ----
 Query 3 killed successfully
 ----
@@ -1242,7 +1242,7 @@ The default value of `query.timeout` is five minutes.
 To see more detail about query in-flight, use the `query status`
 subcommand:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin query status 1
 ----
@@ -1250,7 +1250,7 @@ $ stardog-admin query status 1
 The resulting output includes query metadata, including the query
 itself:
 
-[source,shell]
+[source,bash]
 ----
 Username: admin
 Database: test

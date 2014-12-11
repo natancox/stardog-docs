@@ -20,7 +20,7 @@ Semantics entailment regime].
 To execute a SPARQL query against a Stardog database, use the `query`
 subcommand:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog query myDb "select * where { ?s ?p ?o }"
 ----
@@ -339,7 +339,7 @@ time. See the <<Creating a Database>> section for bulk
 loading data at database creation time. To add data to an existing
 Stardog database, use the link:man/data-add.html[`add`] command:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog data add myDatabase 1.rdf 2.rdf 3.rdf
 ----
@@ -367,7 +367,7 @@ is used by specifying
 
 For example,
 
-[source,shell]
+[source,bash]
 ----
 $ stardog data remove -g http://foo myDatabase
 ----
@@ -375,7 +375,7 @@ $ stardog data remove -g http://foo myDatabase
 will remove the named graph `\http://foo` and all its triples from
 `myDatabase`.
 
-[source,shell]
+[source,bash]
 ----
 $ stardog data remove myDatabase 1.rdf
 ----
@@ -383,7 +383,7 @@ $ stardog data remove myDatabase 1.rdf
 will remove the triples in `1.rdf` from (the default graph of)
 `myDatabase`.
 
-[source,shell]
+[source,bash]
 ----
 $ stardog data remove -g http://foo -f TURTLE myDatabase 2.rdf 3.rdf
 ----
@@ -415,7 +415,7 @@ extract diffs between those revisions, tag revisions with labels, and query over
 
 Versioning support for a database is disabled by default but can be enabled at any time by setting the configuration option `versioning.enabled` to true. For example, you can create a database with versioning support as follows:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog-admin db create -o versioning.enabled=true -n myDb
 ----
@@ -435,7 +435,7 @@ NOTE: Removals are performed before additions.
 
 To commit changes:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog vcs commit --add add_file1.ttl add_file2.ttl --remove remove_file.ttl -m "This is an example commit" myDb
 ----
@@ -444,7 +444,7 @@ $ stardog vcs commit --add add_file1.ttl add_file2.ttl --remove remove_file.ttl 
 
 To see all revisions (commits) in a database:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog vcs list myDb
 $ stardog vcs list --committer userName myDb
@@ -456,7 +456,7 @@ The output can be tweaked using `--after`, `--before`, and `--committer`.
 
 You can revert specific revisions, ranges, etc.
 
-[source,shell]
+[source,bash]
 ----
 $ stardog vcs revert myDb
 $ stardog vcs revert myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
@@ -468,7 +468,7 @@ You can also see the differences between revisions; by default, between the
 head version and its previous versions or the changes in a specific commit,
 respectively:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog vcs diff myDb
 $ stardog vcs diff myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
@@ -481,7 +481,7 @@ a kind of graph patch.
 
 You can also create, drop, list tags, i.e., named revisions:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog vcs tag --list myDb
 ----
@@ -492,7 +492,7 @@ The revision history of the database is represented as RDF using the W3C PROV
 vocabulary and can be queried using SPARQL:footnote:[Find another database that can
 do that!]
 
-[source,shell]
+[source,bash]
 ----
 $ stardog vcs query myDb 'SELECT...'
 ----
@@ -512,7 +512,7 @@ link:/docs/man/data-export.html[`export`] is used by specifying
 
 For example,
 
-[source,shell]
+[source,bash]
 ----
 $ stardog data export --format TURTLE myDatabase myDatabase_output.ttl
 
@@ -560,7 +560,7 @@ you like to enhance your initial search results.
 First, check out the
 link:/docs/man/query-search.html[`search` man page]:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog help query search
 ----
@@ -568,7 +568,7 @@ $ stardog help query search
 Okay, now let's do a search over the O'Reilly book catalog in RDF for
 everything mentioning "html":
 
-[source,shell]
+[source,bash]
 ----
 $ stardog query search -q "html" -l 10 catalog
 ----
@@ -617,7 +617,7 @@ submit Stardog bug reports using sensitive data.
 Data obfuscation works much the same way as the `export` command and supports
 the same set of arguments:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog data obfuscate myDatabase obfDatabase.ttl
 ----
@@ -627,7 +627,7 @@ obfuscated using the SHA256 message digest algorithm. Non-string typed literals
 (numbers, dates, etc.) are left unchanged as well as URIs from built-in
 namespaces (`RDF`, `RDFS`, and `OWL`). It's possible to customize obfuscation by providing a configuration file.
 
-[source,shell]
+[source,bash]
 ----
 $ stardog data obfuscate --config obfConfig.ttl myDatabase  obfDatabase.ttl
 ----
@@ -642,7 +642,7 @@ queries can be executed against the obfuscated data. If a custom configuration
 file is used to obfuscate the data, then the same configuration should be used
 for obfuscating the queries as well:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog query obfuscate --config obfConfig.ttl myDatabase myQuery.sparql > obfQuery.ttl
 ----

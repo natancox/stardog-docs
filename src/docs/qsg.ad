@@ -12,7 +12,7 @@ This is fine until it isn't, at which point you should read the <<Security>> sec
 
 . Tell Stardog where its home directory (where databases and other files will be stored) is:
 +
-[source,shell]
+[source,bash]
 ----
 $ export STARDOG_HOME=/data/stardog
 ----
@@ -23,7 +23,7 @@ use the Java `user.dir` property value.**
 +
 . Copy the `stardog-license-key.bin` into the right place:
 +
-[source,shell]
+[source,bash]
 ----
 $ cp stardog-license-key.bin $STARDOG_HOME
 ----
@@ -36,21 +36,21 @@ Of course `stardog-license-key.bin` has to be readable by the Stardog process.
 HTTP interfaces on port 5820.footnote:[That is, the server listens to one port
 (5820) and handles both protocols.]
 +
-[source,shell]
+[source,bash]
 ----
 $ ./stardog-admin server start
 ----
 +
 . Create a database with an input file:
 +
-[source,shell]
+[source,bash]
 ----
 $ ./stardog-admin db create -n myDB examples/data/University0_0.owl
 ----
 +
 . Query the database:
 +
-[source,shell]
+[source,bash]
 ----
 $ ./stardog query myDB "SELECT DISTINCT ?s WHERE { ?s ?p ?o } LIMIT 10"
 ----
@@ -69,14 +69,14 @@ menu:Start[Programs > Accessories > Command Prompts] or menu:Start[Run > `cmd`].
 First, tell Stardog where its home directory (where databases and other
 files will be stored) is:
 
-[source,shell]
+[source,bash]
 ----
 > set STARDOG_HOME=C:\data\stardog
 ----
 
 Second, copy the `stardog-license-key.bin` into the right place:
 
-[source,shell]
+[source,bash]
 ----
 > COPY /B stardog-license-key.bin %STARDOG_HOME%
 ----
@@ -90,7 +90,7 @@ Third, start the Stardog server. By default the server will expose SNARL and
 HTTP interfaces on port 5820.footnote:[That is, the server listens to one port (5820)
 and handles both protocols.]
 
-[source,shell]
+[source,bash]
 ----
 > stardog-admin.bat server start
 ----
@@ -100,14 +100,14 @@ window open and open a new command prompt window to continue.
 
 Fourth, create a database with an input file:
 
-[source,shell]
+[source,bash]
 ----
 > stardog-admin.bat db create -n myDB examples/data/University0_0.owl
 ----
 
 Fifth, query the database:
 
-[source,shell]
+[source,bash]
 ----
 > stardog.bat query myDB "SELECT DISTINCT ?s WHERE { ?s ?p ?o } LIMIT 10"
 ----

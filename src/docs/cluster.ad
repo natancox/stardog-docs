@@ -47,7 +47,7 @@ reader.
 `STARDOG_HOME`. You must also have a `stardog.properties` file with the following
 information **for each node in the cluster**:
 +
-[source,shell]
+[source,bash]
 ----
 # Flag to enable the cluster, without this flag set, the rest of the properties have no effect
 pack.enabled=true
@@ -69,7 +69,7 @@ config file should be sufficient for most cases.
 +
 On node 1:
 +
-[source,shell]
+[source,bash]
 ----
 tickTime=2000
 # Make sure this directory exists and
@@ -88,7 +88,7 @@ server.3=196.69.68.3:2888:3888
 +
 On node 2:
 +
-[source,shell]
+[source,bash]
 ----
 tickTime=2000
 dataDir=/tmp/zookeeperdata/
@@ -101,7 +101,7 @@ server.2=196.69.68.3:2180
 +
 Finally, on node 3:
 +
-[source,shell]
+[source,bash]
 ----
 tickTime=2000
 dataDir=/tmp/zookeeperdata/
@@ -119,7 +119,7 @@ NOTE: The `clientPort` specified in `zookeeper.properties` and the ports used in
 . `dataDir` is where ZooKeeper persists cluster state and where it
 writes log information about the cluster.
 +
-[source,shell]
+[source,bash]
 ----
 $ mkdir /tmp/zookeeperdata # on node 1
 $ mkdir /tmp/zookeeperdata # on node 2
@@ -129,7 +129,7 @@ $ mkdir /tmp/zookeeperdata # on node 3
 . ZooKeeper requires a `myid` file in the `dataDir` folder to identify itself, you will create that file as follows
 for `node1` and `node2`, respectively:
 +
-[source,shell]
+[source,bash]
 ----
 $ echo 1 > /tmp/zookeeperdata/myid # on node 1
 $ echo 2 > /tmp/zookeeperdata/myid # on node 2
@@ -143,7 +143,7 @@ Stardog Cluster: that is, ZooKeeper, the Proxy, and Stardog itself.
 
 . To start ZooKeeper's part of Cluster, use the `stadog-admin cluster` subcommand:
 +
-[source,shell]
+[source,bash]
 ----
 $ ./stardog-admin cluster zkstart --home ~/stardog # on node 1
 $ ./stardog-admin cluster zkstart --home ~/stardog # on node 2
@@ -153,14 +153,14 @@ $ ./stardog-admin cluster zkstart --home ~/stardog # on node 3
 Which uses the `zookeeper.properties` config file in `~/stardog` and log its
 output to `~/stardog/zookeeper.log`. For more info about the command:
 +
-[source,shell]
+[source,bash]
 ----
 $ ./stardog-admin help cluster zkstart
 ----
 +
 Once ZooKeeper is started, you can start Stardog Cluster:
 +
-[source,shell]
+[source,bash]
 ----
 $ ./stardog-admin server start --home ˜/stardog --port 5820 # on node 1
 $ ./stardog-admin server start --home ˜/stardog --port 5820 # on node 2
@@ -169,7 +169,7 @@ $ ./stardog-admin server start --home ˜/stardog --port 5820 # on node 3
 +
 . Start the Stardog Cluster Proxy:
 +
-[source,shell]
+[source,bash]
 ----
 $ ./stardog-admin cluster proxystart --zkconnstr 196.69.68.1:2180,196.69.68.2:2180,196.69.68.3:2180 \
 	--user pack --password admin --port 5820 # on node 1
@@ -184,7 +184,7 @@ Note that the `zkconnstr` option is the same connection string as
 the same as `pack.cluster.username` and `pack.cluster.password`, respectively.
 For more information on the proxy configuration execute:
 +
-[source,shell]
+[source,bash]
 ----
 $ ./stardog-admin help cluster proxystart
 ----
@@ -193,7 +193,7 @@ Now Stardog Cluster is running on 3 nodes, one each on 3 machines. Since
 the proxy was conveniently configured to use port `5820` you can execute
 standard Stardog CLI commands to the Cluster:
 
-[source,shell]
+[source,bash]
 ----
 $ ./stardog-admin db create -n myDb
 $ ./stardog data add myDb /path/to/my/data
@@ -226,7 +226,7 @@ you can query the state of Cluster:footnote:[In 3.x we will integrate Netflix's
 Exhibitor for Stardog Cluster management. Ping us if this is a priority for
 you.]
 
-[source,shell]
+[source,bash]
 ----
 $ ./stardog-admin --server snarl://<ipaddress>:5820/ cluster info
 ----
@@ -252,7 +252,7 @@ requires that there are at least *n/2 + 1* nodes when leader election is
 happening. In the event that a Stardog Cluster is stuck in this
 phase, you can use Starman to recover a ZooKeeper node using:
 
-[source,shell]
+[source,bash]
 ----
 $ ./starman cluster addnodes ==provider <provider> ==id <cluster id> ==zk-node
 ----

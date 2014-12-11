@@ -73,7 +73,7 @@ In order to evaluate queries in Stardog using reasoning via the command
 line, a specific reasoning level must be specified in the connection
 string:
 
-[source,shell]
+[source,bash]
 ----
 $ ./stardog query "myDB;reasoning=QL" "SELECT ?s { ?s a :C } LIMIT 10"
 ----
@@ -83,7 +83,7 @@ $ ./stardog query "myDB;reasoning=QL" "SELECT ?s { ?s a :C } LIMIT 10"
 For HTTP, the reasoning level is specified with the other HTTP request
 parameters:
 
-[source,shell]
+[source,bash]
 ----
 $ curl -u admin:admin -X GET "http://localhost:5822/myDB/query?reasoning=ql&query=..."
 ----
@@ -116,7 +116,7 @@ of statements interact with each other to infer new statements.
 Explanations can be retrieved using the CLI
 by providing an input file that contains the inferences to be explained:
 
-[source,shell]
+[source,bash]
 ----
 $ stardog reasoning explain "myDB;reasoning=EL" inference_to_explain.ttl
 ----

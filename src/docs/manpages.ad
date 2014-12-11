@@ -10,7 +10,7 @@ ship with Stardog. Those `man` pages are reproduced here in HTML as a
 convenience to the reader.  To install the man pages locally in your
 environment:
 
-[source,shell]
+[source,bash]
 ----
 $ cp docs{slug}/man{slug}/man1/* /usr/local/share{slug}/man1
 $ cp docs{slug}/man{slug}/man8/* /usr/local/share{slug}/man8
