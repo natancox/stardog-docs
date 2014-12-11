@@ -27,8 +27,7 @@ mailto:sales@clarkparsia.com[email] for more details.**
 === Contributing
 
 There are several open source components of Stardog; feel free to submit pull
-requests: https://github.com/clarkparsia/starman[Starman],
-https://github.com/clarkparsia/stardog-docs[stardog-docs],
+requests: https://github.com/clarkparsia/stardog-docs[stardog-docs],
 https://github.com/clarkparsia/stardog.js[stardog.js],
 https://github.com/clarkparsia/stardog-groovy[stardog-groovy],
 https://github.com/clarkparsia/stardog-spring[stardog-spring],
