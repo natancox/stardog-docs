@@ -3,3 +3,6 @@ convert:
 
 clean:
 	rm -r docs/foundation
+
+v:
+	open http://localhost:8001/
