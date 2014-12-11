@@ -242,6 +242,7 @@ the `stardog query` command. All the `stardog-admin` features are also available
 in Cluster, which means you can use any of the commands to create
 databases, adminster users, and the rest of the functionality.
 
+////
 == Troubleshooting ZooKeeper
 
 ZooKeeper uses
@@ -264,6 +265,7 @@ uses that list to communicate between nodes in the ZooKeeper cluster. Whenever a
 ZooKeeper server is lost, a new one can be brought back without having to use
 the same IP address, which may not be possible or expensive for some cloud
 providers.
+////
 
 == Stardog Cluster Guarantees
 

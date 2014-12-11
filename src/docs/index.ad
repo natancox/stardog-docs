@@ -9,7 +9,7 @@
 :source-highlighter: highlightjs
 :page-layout: base
 :page-javascripts: [view-result]
-:description: Stardog is a fast, lightweight graph database that supports SPARQL, RDF, OWL, rules.
+:description: Stardog is a fast, lightweight graph database that supports SPARQL, RDF, OWL, and user-defined rules.
 :compat-mode!:
 :last-update-label!:
 :docinfo:
@@ -21,7 +21,7 @@
 :linkattrs:
 :base-url: http://docs.stardog.com/
 :slug: http://docs.stardog.com/{version}
-:release-notes: {base-url}/RELEASE_NOTES.txt
+:release-notes: {base-url}RELEASE_NOTES.txt
 :img: {slug}/img
 //:css: {slug}/css
 :sectanchors:

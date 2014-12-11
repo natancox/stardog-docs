@@ -2,7 +2,11 @@
 
 This page briefly lists major features and other notable changes to Stardog from
 1.0 to 2.x; it will be updated for each notable new release. For a complete list of
-changes, including notable bug fixes, see the {release-notes}[RELEASE_NOTES.txt].
+changes, including notable bug fixes, see the {release-notes}[release notes].
+
+=== 2.2.1
+
+- Stardog HA Cluster (beta)
 
 === 2.2
 
