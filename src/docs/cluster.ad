@@ -3,9 +3,6 @@
 In this section we explain how to configure, use, and administer Stardog Cluster
 for uninterrupted operations.
 
-NOTE: Stardog Cluster {version} is **BETA** software and should be used
-accordingly. Please help us test it and report bugs.
-
 == Stardog Cluster
 
 Stardog Cluster is a collection of Stardog Server instances running on one or
@@ -18,389 +15,216 @@ client's perspective Stardog Cluster should be indistinguishable from
 non-clustered Stardog.footnote:[The client here means the client of Stardog
 APIs, not necessarily people, administrators, etc.]
 
-== Deployment
+NOTE: High Availability requires *at least* three nodes in the Cluster. Stardog
+Cluster works best with an odd-number greater than or equal to three cluster
+size with respect to fault resiliency: 3, 5, 7, etc.footnote:["Because Zookeeper
+requires a majority, it is best to use an odd number of machines. For example,
+with four machines ZooKeeper can only handle the failure of a single machine; if
+two machines fail, the remaining two machines do not constitute a majority.
+However, with five machines ZooKeeper can handle the failure of two machines."
+See https://zookeeper.apache.org/doc/r3.1.2/zookeeperAdmin.html[Zk Admin] for
+more.] With respect to performance, larger cluster sizes
+perform better than smaller ones.
 
-Clustered database deployment is notable for being a complete pain in the ass
-and different in every computing environment on earth. We've made Stardog
-Cluster deployment easier for you, but we haven't solved the problem of
-universal devops or deployment of distributed databases. It may be painful to
-deploy Stardog Cluster, and that will likely depend on details of yr computing
-environment about which we probably know very little.
+== Configuration
 
-Three additional points ameliorate this pain. We've built a deployment tool,
-called http://github.com/clarkparsia/starman[Starman], that will work for many
-cases; and we've open sourced it. We've fully documented what is required to
-configure and deploy a Stardog Cluster. The dependencies are few and ubiquitous
-(SSH, JVM 1.6 or newer).
+To deploy Stardog Cluster you use `stardog-admin` commands and some additional
+configuration. Stardog Cluster depends on Apache ZooKeeper. In the following
+installation notes, we install Stardog Cluster in a 3-node configuration on a
+LAN. If you need larger cluster, adjust accordingly.footnote:[In order to deploy
+a cluster to a single machine--for example, for testing or development--you must
+ensure that each Stardog and ZooKeeper servers has a different home location.]
 
-NOTE: If Starman won't work for you, check out the
-https://github.com/clarkparsia/starman/wiki/How-to-deploy-Stardog-Cluster-manually[manual
-deployment instructions] on Github.
+. <<Quick Start Guide,Install>> Stardog {version} on each machine in the cluster.
++
+NOTE: The smart thing to do here, of course, is to use whatever infrastructure
+you have in place to automate software installation. Adapting Stardog
+installation to Chef, Puppet, cfengine, etc. is left as an exercise for the
+reader.
++
+. Make sure a valid Stardog license key (whether Developer, Enterprise, or a
+30-day eval key) for the size of cluster you're creating exists and is each
+`STARDOG_HOME`. You must also have a `stardog.properties` file with the following
+information **for each node in the cluster**:
++
+[source,shell]
+----
+# Flag to enable the cluster, without this flag set, the rest of the properties have no effect
+pack.enabled=true
+# the connection string for ZooKeeper where cluster state is stored
+pack.cluster.address=196.69.68.1:2180,196.69.68.2:2180,196.69.68.3:2180
+# credentials used for securing ZooKeeper state
+pack.cluster.username=pack
+pack.cluster.password=admin
+----
++
+`pack.cluster.address` is a ZooKeeper connection string where cluster stores its
+state. `pack.cluster.username` and `pack.cluster.password` are user and password
+tokens for cluster communications and may be different from actual Stardog users
+and passwords; however, **all nodes must use the same user and password
+combination.**
++
+. Create the ZooKeeper configuration for each node. This config file is just a standard ZooKeeper configuration file. The following
+config file should be sufficient for most cases.
++
+On node 1:
++
+[source,shell]
+----
+tickTime=2000
+# Make sure this directory exists and
+# ZK can write and read to and from it.
+dataDir=/tmp/zookeeperdata/
+clientPort=2180
+initLimit=5
+syncLimit=2
+# This is an enumeration of all nodes in
+# the cluster and must be identical in
+# each node's config.
+server.1=196.69.68.1:2888:3888
+server.2=196.69.68.2:2888:3888
+server.3=196.69.68.3:2888:3888
+----
++
+On node 2:
++
+[source,shell]
+----
+tickTime=2000
+dataDir=/tmp/zookeeperdata/
+clientPort=2181
+initLimit=5
+syncLimit=2
+server.1=196.69.68.1:2180
+server.2=196.69.68.3:2180
+----
++
+Finally, on node 3:
++
+[source,shell]
+----
+tickTime=2000
+dataDir=/tmp/zookeeperdata/
+clientPort=2180
+initLimit=5
+syncLimit=2
+server.1=196.69.68.1:2888:3888
+server.2=196.69.68.2:2888:3888
+server.3=196.69.68.3:2888:3888
+----
++
+NOTE: The `clientPort` specified in `zookeeper.properties` and the ports used in `pack.cluster.address` in
+`stardog.properties` must be the same.
++
+. `dataDir` is where ZooKeeper persists cluster state and where it
+writes log information about the cluster.
++
+[source,shell]
+----
+$ mkdir /tmp/zookeeperdata # on node 1
+$ mkdir /tmp/zookeeperdata # on node 2
+$ mkdir /tmp/zookeeperdata # on node 3
+----
++
+. ZooKeeper requires a `myid` file in the `dataDir` folder to identify itself, you will create that file as follows
+for `node1` and `node2`, respectively:
++
+[source,shell]
+----
+$ echo 1 > /tmp/zookeeperdata/myid # on node 1
+$ echo 2 > /tmp/zookeeperdata/myid # on node 2
+$ echo 3 > /tmp/zookeeperdata/myid # on node 3
+----
 
-Okay, so a quick deployment overview:
+== Installation
 
-- if you're deploying to EC2, yr own (Ubuntu, for now) servers, or to Oracle's
-VirtualBox, Starman will very likely just work
-- if you're deploying to something else,
-https://github.com/clarkparsia/starman/wiki/How-to-deploy-Stardog-Cluster-manually[read
-the deployment recipe] and adapt it to yr infrastructure
-- sharing configurations based on other systems so we can put them in Starman's repo would be cool
-- pull requests to make Starman (which is based on http://palletops.com/) work with other targets are even cooler
+In the next few steps you will use the Stardog Admin CLI commands to deploy
+Stardog Cluster: that is, ZooKeeper, the Proxy, and Stardog itself.
 
-Finally, here's the very high-level overview of how to deploy with Starman:
+. To start ZooKeeper's part of Cluster, use the `stadog-admin cluster` subcommand:
++
+[source,shell]
+----
+$ ./stardog-admin cluster zkstart --home ~/stardog # on node 1
+$ ./stardog-admin cluster zkstart --home ~/stardog # on node 2
+$ ./stardog-admin cluster zkstart --home ~/stardog # on node 3
+----
++
+Which uses the `zookeeper.properties` config file in `~/stardog` and log its
+output to `~/stardog/zookeeper.log`. For more info about the command:
++
+[source,shell]
+----
+$ ./stardog-admin help cluster zkstart
+----
++
+Once ZooKeeper is started, you can start Stardog Cluster:
++
+[source,shell]
+----
+$ ./stardog-admin server start --home ˜/stardog --port 5820 # on node 1
+$ ./stardog-admin server start --home ˜/stardog --port 5820 # on node 2
+$ ./stardog-admin server start --home ˜/stardog --port 5820 # on node 3
+----
++
+. Start the Stardog Cluster Proxy:
++
+[source,shell]
+----
+$ ./stardog-admin cluster proxystart --zkconnstr 196.69.68.1:2180,196.69.68.2:2180,196.69.68.3:2180 \
+	--user pack --password admin --port 5820 # on node 1
+$ ./stardog-admin cluster proxystart --zkconnstr 196.69.68.1:2180,196.69.68.2:2180,196.69.68.3:2180 \
+   --user pack --password admin --port 5820 # on node 2
+$ ./stardog-admin cluster proxystart --zkconnstr 196.69.68.1:2180,196.69.68.2:2180,196.69.68.3:2180 \
+	--user pack --password admin --port 5820 # on node 3
+----
++
+Note that the `zkconnstr` option is the same connection string as
+`pack.cluster.address` in `stardog.properties`, and `user` and `password` are
+the same as `pack.cluster.username` and `pack.cluster.password`, respectively.
+For more information on the proxy configuration execute:
++
+[source,shell]
+----
+$ ./stardog-admin help cluster proxystart
+----
 
-. configure Stardog Cluster
-. bootstrap and locally install Stardog Cluster images
-. depending on yr deployment target, do some deploy target specific stuff...
-. deploy Stardog Cluster to the chosen deployment target
-
-== Configuring Stardog Cluster
-
-First, make sure that you have the Stardog Cluster software and dependencies:
-
-. stardog-x.x.zip: Stardog >= 2.2.1
-. starman and starman-*-standalone.jar: the Starman distribution
-. stardog-license-key.bin: a valid Stardog license
-
-In fact this is pretty easy since we distribute Starman with Stardog starting
-with 2.2.1; but you may at some point start using a custom Starman separately,
-etc. so just remember that it is a Stardog Cluster dependency unless yr using
-some other deployment system.
-
-By default Starman creates a configuration file in `~/.starmanconfig` and all
-installed Stardog Cluster images will be stored under `~/.starman`. If you wish
-to change the location where Starman stores Stardog Cluster images, simply set
-the environment variable `$STARMAN_HOME` to some other location. This will
-change the location of `~/.starman` to `$STARMAN_HOME/starman`, and
-`~/.starmanconfig` to `$STARMAN_HOME/starmanconfig`.
-
-The following properties can be configured in `starmanconfig`, depending on
-which deploy targets (EC2, VirtualBox, or other servers you choose):
+Now Stardog Cluster is running on 3 nodes, one each on 3 machines. Since
+the proxy was conveniently configured to use port `5820` you can execute
+standard Stardog CLI commands to the Cluster:
 
 [source,shell]
 ----
-# for deploying on some machines you have access to over an IP network...
-# the list of IPs for deploying on existing machines
-default-nodes = 10.11.12.13:10.11.12.14:10.11.12.15
-
-# for deploying on EC2...
-# EC2 credentials
-ec2-access-id = myaccessid
-ec2-secret-key = secret
-# EC2 instance type
-ec2-instance-type = m1.medium
-# EC2 AMI ID - Ubuntu 14.04 AMIs are supported*
-ec2-ami-id = ami-c8cf3ba0
-ec2-region-id = us-east-1d
-
-# if you're using VirtualBox...
-# Minimum RAM assigned for VM in VirtualBox deployments
-vmfest-node-min-ram = 3500
-# Minimum cores assigned for VM in VirtualBox deployments
-vmfest-node-min-cores = 2
-
-# JVM options for Stardog instances – they will override the default JVM options specified in stardog-admin
-stardog-java-args = -Xmx3g -Xms3g -Dapple.awt.UIElement=true -Dfile.encoding=UTF-8
-
-# Stardog additional properties – these will be appended to stardog.properties
-# in addition to the properties used for Stardog cluster configuration.
-# Simply use the same property names that Stardog already uses prefixed with 'stardog-properties-'.
-# E.g.:
-stardog-properties-stardog.default.cli.server = snarl://localhost:6000
-
-# Additional CLI options for ./stardog-admin server start – these will be added at the end of the command.
-# Note that Starman already sets values for the options ==home, ==port, and ==bind in order to run Stardog in
-# cluster mode
-stardog-cli-opts = ==disable-security
-
-# Additional properties for zookeeper – these will be appended at the end of zookeeper.properties.
-# Use the prefix 'zookeeper-properties-'
-zookeeper-properties-tickTime=2000
+$ ./stardog-admin db create -n myDb
+$ ./stardog data add myDb /path/to/my/data
+$ ./stardog query myDb "select * { ?s ?p ?o } limit 5"
 ----
 
-As of Stardog 2.2.1, Starman is only tested with Ubuntu 14.04 AMIs. It may or
-may not work with other AMIs. You can find a comprehensive list of available
-Ubuntu 14.04 AMIs and the instance types compatible with each of them
-https://cloud-images.ubuntu.com/locator/ec2/[here].
-
-== Setting Up Stardog Cluster with Starman
-
-Second, you have to do some general setup for Stardog Cluster.
-
-First, bootstrap your Stardog Cluster image with Starman:
-
-[source,shell]
-----
-./starman svm bootstrap --tag <tag_name> \
-					--stardog /path/to/stardog-<version>.zip \
-					--license /path/to/stardog-license-key.bin
-----
-where `<tag_name>` is a custom name for the Stardog Cluster image to install, e.g. myImage.
-
-Second, locally install a cluster image:
-[source,shell]
-----
-./starman svm install --id <cluster_id> --tag <tag_name>
-----
-where `<cluster_id>` should be a positive integer larger than 0.
-
-You can list yr bootstrapped and locally installed Stardog Cluster images using:
-
-[source,shell]
-----
-./starman svm list
-----
-
-Third, now that Stardog Cluster is bootstrapped and its images are localled
-prepared, we can deploy them to one of the deployment targets; now you have
-to decide what yr deployment target is: EC2, VirtualBox, or other servers. Then
-follow the instructions in the appropriate subsection below.
-
-=== Virtual Machine
-
-Requirement: Oracle VirtualBox v4.2.x if deploying to VirtualBox servers
-
-Before deploying Stardog Cluster image nodes to VirtualBox--we refer to this
-provider as `vmfest`--make sure to follow these steps.
-
-Open a terminal and start VirtualBox's webservice:
-
-[source,shell]
-----
-$ VBoxManage setproperty websrvauthlibrary null # needs to be done only once
-
-$ vboxwebsrv -t0
-----
-
-In a new terminal add the identities stored in your public ssh key:
-
-OS X:
-[source,shell]
-----
-$ ssh-add -K /path/to/your/public/SSH/key
-----
-
-Linux:
-[source,shell]
-----
-$ ssh-add /path/to/your/public/SSH/key
-----
-
-Adding your public key to the ssh agent allows interacting with the vitual
-machine, and also lets you log in to the virtual machine using `ssh <ip
-address>`.
-
-=== Amazon EC2
-
-Requirements: An EC2 account on Amazon Web Services for EC2 deployments, along
-with your key pair and Access ID and Secret Key.
-
-Make sure to have a
-http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html[key pair]
-and add it via the ssh agent using:
-
-OS X:
-[source,shell]
-----
-$ ssh-add -K /path/to/your/pem
-----
-
-Linux:
-[source,shell]
-----
-$ ssh-add /path/to/your/pem
-----
-
-Adding your public key to the ssh agent allows interacting with the remote
-machine, and also lets you log in to the virtual machine using `ssh <ip
-address>`.
-
-Make sure to have an
-http://docs.aws.amazon.com/AWSSecurityCredentials/1.0/AboutAWSCredentials.html#AccessKeys[*Access
-Key ID* and a *Secret Access Key*] and then add them to your configuration file
-located in `~/.starmanconfig`:
-
-[source,shell]
-----
-ec2-access-id = <your Access Key ID>
-ec2-secret-key = <your Access Key ID>
-----
-
-Optionally, specify the instance type. Starman by default creates `m1.medium`
-EC2 instances, but you can specify in .starmanconfig` some other EC2 instance
-types:
-
-[source,shell]
-----
-ec2-instance-type = <some instance type>
-----
-
-Note that the only instance types allowed are the ones in the https://github.com/aws/aws-sdk-java/blob/1.8.2/src%2Fmain%2Fjava%2Fcom%2Famazonaws%2Fservices%2Fec2%2Fmodel%2FInstanceType.java#L22-L56[AWS SDK]. Compare those values with the most current EC2 http://aws.amazon.com/ec2/instance-types/[instance
-types] for more info.
-
-=== Other Servers
-
-In order to simplify the process we assume that the remote machines are running
-Ubuntu, and that the user has
-http://www.howtogeek.com/168147/add-public-ssh-key-to-remote-server-in-a-single-command/[password-less]
-SSH access and is able to execute http://askubuntu.com/a/192062[password-less]
-sudo in the remote machines.
-
-As of Stardog 2.2.1, the only cluster commands supported for deploying to
-existing servers are `cluster deploy`, `cluster start` and `cluster stop`.
-Before using Starman with existing servers, you will need to edit the Starman
-configuration file located in `~/.starmanconfig` and make sure to add the list
-of default nodes as follows:
-
-[source,shell]
-----
-default-nodes=10.11.12.13:10.11.12.14:10.11.12.15
-----
-
-where the property `default-nodes` is a colon-separated list of IP addresses
-that correspond to the existing servers.
-
-== Deploying Stardog Cluster
-
-When using any of the following commands make sure to replace the `--provider`
-option argument with any of these: `vmfest` for VirtualBox, `ec2` for Amazon
-EC2, or `default` for existing servers.
-
-The last bit of information here is the *cluster size*. As of 2.2.1, Stardog
-Cluster only supports the cluster topology "one coordinator, many followers",
-but we need to determine the size of the cluster, which should be a multiple of
-3. We pass that to Starman deploy using the `--numvms` argument.
-
-Now we're ready to deploy Stardog Cluster:
-
-[source,shell]
-----
-./starman cluster deploy --id <cluster_id> --numvms <num_nodes> --provider <provider>
-----
-
-Starman will create the Cluster, and then perform the required setup on the
-required nodes. This step will take a while depending on the network, since
-Starman is copying Stardog Cluster images to *N* machines.
-
-Detailed output can be seen in the log file `./logs/pallet.log`.
-
-== Cluster Management
-
-Now that the Cluster has been deployed, we hav to start it:
-
-[source,shell]
-----
-./starman cluster start --id <cluster_id> --provider <provider>
-----
-
-The output of cluster startup is a list of IP addresses; to meld these into a
-single symbolic name for the database is left as an exercise for the reader but
-we recommend suitable configuration of DNS or HaProxy or similar. The nodes of
-the Stardog Cluster, as of Stardog 2.2.1, implement a simple round robin
-strategy for distributing read operations over the cluster; write operations are
-directed to the Coordinator exclusively.
-
-To stop the Cluster:
-
-[source,shell]
-----
-$ ./starman cluster stop --id <cluster_id> --provider <provider>
-----
-
-=== Adding or removing nodes
-
-To add nodes to an existing cluster:
-
-[source,shell]
-----
-$ ./starman cluster addnodes --id <cluster_id> --numvms <num_vms> --provider <provider>
-----
-
-It will add `num_vms` to a cluster. Please note that if a node is added to a
-cluster, it will only start a Stardog server in the new nodes; if you want to
-also replicate the ZooKeeper servers, you will have to stop the cluster and
-start it again. This limitation is due to the fact that ZooKeeper is not capable
-of hot reconfiguration as of `v3.4.x`.
-
-To remove nodes from an existing cluster there are two options:
-
-[source,shell]
-----
-$ ./starman cluster removenodes --id <cluster_id> --provider <provider> --numvms <num_vms>
-----
-
-It will remove `num_vms` from a cluster. Note that this will remove an entire VM
-from the cluster, which may or not also remove a ZooKeeper server. ZooKeeper is
-able to account for node failures, but this may not be the behavior the user
-intended. The other option is to specify a comma-separated list of IP addresses
-that correspond to the IPs of nodes to be removed:
-
-[source,shell]
-----
-$ ./starman cluster removenodes --id <cluster_id> --provider <provider> --nodes 10.11.12.13,10.11.12.14,10.11.12.15
-----
-
-=== Listing Nodes
-
-We can verify that Stardog Cluster was deployed successfully using
-
-[source,shell]
-----
-$ ./starman cluster list --provider
-----
-
-You should see a list of the created nodes. Since Starman adds a password-less
-login with SSH authentication on the remote machines, you can also log in via
-SSH:
-
-[source,shell]
-----
-$ ssh <ipaddress>
-----
-
-=== Undeploying
-
-In order to undeploy a Cluster:
-
-[source,shell]
-----
-$ ./starman cluster undeploy --id <cluster_id> --provider <provider>
-----
-
-This will destroy all the virtual or remote machines part of cluster.
-
-=== Managing local Starman Repo
-
-If you wish to uninstall a Stardog Cluster image from your local Starman system use:
-
-[source,shell]
-----
-$ ./starman svm uninstall --id <cluster_id>
-----
-
-If you wish to remove a Stardog Cluster image tag from your local Starman system use:
-
-[source,shell]
-----
-./starman svm remove --tag <version>
-----
-
-To list bootstrapped and installed Stardog Pack versions:
-
-[source,shell]
-----
-./starman svm list
-----
-
-== Stardog Client
-
-In order to interact with the Stardog Cluster using Stardog CLI tools in the
-ordinary way--`stardog-admin` and `stardog`--you must install Stardog locally
-as you usually do by unzipping the contents of `stardog-*.zip`, for example (for
-`v2.2.1`).
-
-With the provided Stardog binaries in the Stardog Cluster distribution you can
-query the state of the cluster using
+== Cluster Topologies & Cluster Size
+
+In the configuration instructions above, we assume a particular Cluster
+typology, which is to say, for each node `n` of a cluster, we run Stardog,
+ZooKeeper, and a Proxy. But this is not the only typology supported by Stardog
+Cluster.
+
+ZooKeeper nodes run independently, so other typologies--three ZooKeeper servers
+and five Stardog servers are possible--you just have to point Stardog to the
+corresponding ZooKeeper cluster.
+
+To add more Stardog Cluster nodes, simply repeat the steps for Stardog on
+additional machines. Generally, as mentioned above, Stardog Cluster size should
+be an odd number greater or equal to 3.
+
+//<<Cluster Performance>>
+
+== Stardog Cluster Client
+
+To use Stardog Cluster with standard Stardog clients and CLI tools in the
+ordinary way--`stardog-admin` and `stardog`--you must have Stardog installed
+locally. With the provided Stardog binaries in the Stardog Cluster distribution
+you can query the state of Cluster:footnote:[In 3.x we will integrate Netflix's
+Exhibitor for Stardog Cluster management. Ping us if this is a priority for
+you.]
 
 [source,shell]
 ----
@@ -412,25 +236,11 @@ will print the available nodes in the cluster, as well as the roles (participant
 or coordinator). You can also input the proxy IP address and port to get the
 same information.
 
-=== Adding/Removing data
-
-To add or remove data, simply use the `stardog data add` or `remove` commands to
+To add or remove data, issue `stardog data add` or `remove` commands to
 any node in the cluster. Queries can be issued to any node in the cluster using
 the `stardog query` command. All the `stardog-admin` features are also available
-in cluster mode, which means you can use any of the commands to create
-databases, adminster users, and the rest of the functionality available in
-single server mode.
-
-You can use Starman to copy files remotely for bulk loading files to your cluster:
-
-[source,shell]
-----
-$ ./starman cluster copyfile --id <cluster id> --provider <provider> <origin> <destination>
-----
-
-`<origin>` is the path in your local machine and `<destination>` is the path in
-the remote machines. This command will copy the local files to all the servers
-in the cluster in the specified path.
+in Cluster, which means you can use any of the commands to create
+databases, adminster users, and the rest of the functionality.
 
 == Troubleshooting ZooKeeper
 
@@ -471,8 +281,6 @@ transparently forwarded to and handled by the Coordinator. In some future
 release we may change the protocol implemented by the Cluster and thus change
 some of the allowable topologies, including multiple-writers and
 multiple-readers.
-
-=== Consistency Guarantees
 
 When a client commits a transaction (containing a list of `write` requests), it
 will be acknowledged by the Coordinator only **after every non-failing Participant
