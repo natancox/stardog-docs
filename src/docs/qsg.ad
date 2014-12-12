@@ -24,7 +24,7 @@ use the Java `user.dir` property value.**
 NOTE: You should consider the <<Upgrading Stardog Server,upgrade process>> when
 setting `STARDOG_HOME` for production or other serious usage. In particular, you
 probably don't want to set the directory where you install Stardog as
-`STARDOG_HOME` since that makes upgrading less easy. Set `STARDOG_HOME` to some
+`STARDOG_HOME` as that makes upgrading less easy. Set `STARDOG_HOME` to some
 other location.
 +
 . Copy the `stardog-license-key.bin` into the right place:
