@@ -281,7 +281,7 @@ databases.footnote:[We're big fans of /opt/stardog/{$version} and setting
 `STARDOG_HOME` to /var/stardog` but YMMV.] One you set your `STARDOG_HOME` environment
 variable to point to this directory, you can simply stop the old version and
 start the new version without copying or moving any files. You can
-also specify the home directory using the --home` argument when starting the
+also specify the home directory using the `--home` argument when starting the
 server.
 
 === HTTP & SNARL Server Unification
