@@ -10,7 +10,7 @@ This is fine until it isn't, at which point you should read the <<Security>> sec
 
 == Linux and OSX
 
-. Tell Stardog where its home directory (where databases and other files will be stored) is:
+. Tell Stardog where its home directory (where databases and other files will be stored) is
 +
 [source,bash]
 ----
@@ -20,6 +20,12 @@ $ export STARDOG_HOME=/data/stardog
 If you're using some weird Unix shell that doesn't create environment variables
 in this way, adjust accordingly. **If `STARDOG_HOME` isn't defined, Stardog will
 use the Java `user.dir` property value.**
++
+NOTE: You should consider the <<Upgrading Stardog Server,upgrade process>> when
+setting `STARDOG_HOME` for production or other serious usage. In particular, you
+probably don't want to set the directory where you install Stardog as
+`STARDOG_HOME` since that makes upgrading less easy. Set `STARDOG_HOME` to some
+other location.
 +
 . Copy the `stardog-license-key.bin` into the right place:
 +
