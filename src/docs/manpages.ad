@@ -12,38 +12,38 @@ environment:
 
 [source,bash]
 ----
-$ cp docs{slug}/man{slug}/man1/* /usr/local/share{slug}/man1
-$ cp docs{slug}/man{slug}/man8/* /usr/local/share{slug}/man8
+$ cp docs/man/man1/* /usr/local/share/man1
+$ cp docs/man/man8/* /usr/local/share/man8
 $ mandb
 $ man stardog-admin-server-start
 ----
 
 === Stardog CLI
 
-. {slug}/man/data-add.html[`data add`], {slug}/man/data-export.html[`data export`], {slug}/man/data-obfuscate.html[`data obfuscate`], {slug}/man/data-remove.html[`data remove`], {slug}/man/data-size.html[`data size`]
-. {slug}/man/icv-convert.html[`icv convert`], {slug}/man/icv-explain.html[`icv explain`], {slug}/man/icv-export.html[`icv export`], {slug}/man/icv-validate.html[`icv validate`]
-. {slug}/man/namespace-add.html[`namespace add`], {slug}/man/namespace-list.html[`namespace list`], {slug}/man/namespace-remove.html[`namespace remove`]
-. {slug}/man/query-execute.html[`query execute`], {slug}/man/query-explain.html[`query explain`], {slug}/man/query-obfuscate.html[`query obfuscate`], {slug}/man/query-search.html[`query search`]
-. {slug}/man/reasoning-consistency.html[`reasoning consistency`], {slug}/man/reasoning-explain.html[`reasoning explain`]
-. {slug}/man/vcs-commit.html[`vcs commit`], {slug}/man/vcs-diff.html[`vcs diff`], {slug}/man/vcs-list.html[`vcs list`], {slug}/man/vcs-query.html[`vcs query`], {slug}/man/vcs-revert.html[`vcs revert`], {slug}/man/vcs-tag.html[`vcs tag`]
+. {base-url}man/data-add.html[`data add`], {base-url}man/data-export.html[`data export`], {base-url}man/data-obfuscate.html[`data obfuscate`], {base-url}man/data-remove.html[`data remove`], {base-url}man/data-size.html[`data size`]
+. {base-url}man/icv-convert.html[`icv convert`], {base-url}man/icv-explain.html[`icv explain`], {base-url}man/icv-export.html[`icv export`], {base-url}man/icv-validate.html[`icv validate`]
+. {base-url}man/namespace-add.html[`namespace add`], {base-url}man/namespace-list.html[`namespace list`], {base-url}man/namespace-remove.html[`namespace remove`]
+. {base-url}man/query-execute.html[`query execute`], {base-url}man/query-explain.html[`query explain`], {base-url}man/query-obfuscate.html[`query obfuscate`], {base-url}man/query-search.html[`query search`]
+. {base-url}man/reasoning-consistency.html[`reasoning consistency`], {base-url}man/reasoning-explain.html[`reasoning explain`]
+. {base-url}man/vcs-commit.html[`vcs commit`], {base-url}man/vcs-diff.html[`vcs diff`], {base-url}man/vcs-list.html[`vcs list`], {base-url}man/vcs-query.html[`vcs query`], {base-url}man/vcs-revert.html[`vcs revert`], {base-url}man/vcs-tag.html[`vcs tag`]
 
 === Stardog Admin CLI
 
-. {slug}/man/db-backup.html[`db backup`], {slug}/man/db-copy.html[`db copy`],
-{slug}/man/db-create.html[`db create`], {slug}/man/db-drop.html[`db drop`],
-{slug}/man/db-list.html[`db list`], {slug}/man/db-migrate.html[`db migrate`],
-{slug}/man/db-offline.html[`db offline`], {slug}/man/db-online.html[`db online`], {slug}/man/db-optimize.html[`db optimize`],
-{slug}/man/db-restore.html[`db restore`], {slug}/man/db-status.html[`db status`]
-. {slug}/man/icv-add.html[`icv add`], {slug}/man/icv-drop.html[`icv drop`],  {slug}/man/icv-remove.html[`icv remove`]
-. {slug}/man/metadata-get.html[`metadata get`], {slug}/man/metadata-set.html[`metadata set`]
-. {slug}/man/role-add.html[`role add`], {slug}/man/role-grant.html[`role grant`], {slug}/man/role-list.html[`role list`],
-{slug}/man/role-permission.html[`role permission`], {slug}/man/role-remove.html[`role remove`], {slug}/man/role-revoke.html[`role revoke`]
-. {slug}/man/server-start.html[`server start`], {slug}/man/server-status.html[`server status`], {slug}/man/server-stop.html[`server stop`]
-. {slug}/man/query-kill.html[`query kill`], {slug}/man/query-list.html[`query list`], {slug}/man/query-status.html[`query status`]
-. {slug}/man/user-add.html[`user add`], {slug}/man/user-addrole.html[`user addrole`],
-{slug}/man/user-disable.html[`user disable`], {slug}/man/user-enable.html[`user enable`],
-{slug}/man/user-grant.html[`user grant`],
-{slug}/man/user-list.html[`user list`],
-{slug}/man/user-passwd.html[`user passwd`], {slug}/man/user-permission.html[`user permission`],
-{slug}/man/user-remove.html[`user remove`], {slug}/man/user-removerole.html[`user removerole`],
-{slug}/man/user-revoke.html[`user revoke`]
+. {base-url}man/db-backup.html[`db backup`], {base-url}man/db-copy.html[`db copy`],
+{base-url}man/db-create.html[`db create`], {base-url}man/db-drop.html[`db drop`],
+{base-url}man/db-list.html[`db list`], {base-url}man/db-migrate.html[`db migrate`],
+{base-url}man/db-offline.html[`db offline`], {base-url}man/db-online.html[`db online`], {base-url}man/db-optimize.html[`db optimize`],
+{base-url}man/db-restore.html[`db restore`], {base-url}man/db-status.html[`db status`]
+. {base-url}man/icv-add.html[`icv add`], {base-url}man/icv-drop.html[`icv drop`],  {base-url}man/icv-remove.html[`icv remove`]
+. {base-url}man/metadata-get.html[`metadata get`], {base-url}man/metadata-set.html[`metadata set`]
+. {base-url}man/role-add.html[`role add`], {base-url}man/role-grant.html[`role grant`], {base-url}man/role-list.html[`role list`],
+{base-url}man/role-permission.html[`role permission`], {base-url}man/role-remove.html[`role remove`], {base-url}man/role-revoke.html[`role revoke`]
+. {base-url}man/server-start.html[`server start`], {base-url}man/server-status.html[`server status`], {base-url}man/server-stop.html[`server stop`]
+. {base-url}man/query-kill.html[`query kill`], {base-url}man/query-list.html[`query list`], {base-url}man/query-status.html[`query status`]
+. {base-url}man/user-add.html[`user add`], {base-url}man/user-addrole.html[`user addrole`],
+{base-url}man/user-disable.html[`user disable`], {base-url}man/user-enable.html[`user enable`],
+{base-url}man/user-grant.html[`user grant`],
+{base-url}man/user-list.html[`user list`],
+{base-url}man/user-passwd.html[`user passwd`], {base-url}man/user-permission.html[`user permission`],
+{base-url}man/user-remove.html[`user remove`], {base-url}man/user-removerole.html[`user removerole`],
+{base-url}man/user-revoke.html[`user revoke`]
