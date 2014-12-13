@@ -1,19 +1,20 @@
-== Stardog Milestones
-
-This page briefly lists major features and other notable changes to Stardog from
-1.0 to 2.x; it will be updated for each notable new release. For a complete list of
+.Stardog Milestones
+****
+This timeline describes major features and other notable changes to Stardog starting
+at 1.0; it will be updated for each notable new release. For a complete list of
 changes, including notable bug fixes, see the {release-notes}[release notes].
 
-=== 2.2.1
+[horizontal]
+2.2.1::
 
 - Stardog HA Cluster (beta)
 
-=== 2.2
+2.2::
 
 - Support for RDF versioning
 - Admin support for Web Console
 
-=== 2.1
+2.1::
 
 - Database repair, backup & restore utilities
 - Improved query scalability by flowing intermediate results off-heap or onto disk; requires a JDK that supports `sun.misc.Unsafe`
@@ -21,7 +22,7 @@ changes, including notable bug fixes, see the {release-notes}[release notes].
 - Generation of multiple proofs for inferences & inconsistencies; proofs for integrity constraint violations
 - Reduced memory footprint of queries while being executed
 
-=== 2.0
+2.0::
 
 - <<Using Stardog,SPARQL 1.1 Update>>: the most requested feature ever!
 - <<Stardog Web Console, Web Console>>: a Stardog Web app for managing Stardog Databases; includes Linked Data Server, etc.
@@ -35,7 +36,7 @@ changes, including notable bug fixes, see the {release-notes}[release notes].
 - Client and server dependencies cleanly separated
 - Evaluation of non-recursive datalog queries to improve reasoning performance
 
-=== 1.2
+1.2::
 
 - Query management: slow query log, kill-able queries, etc.
 - new CLI
@@ -45,11 +46,11 @@ changes, including notable bug fixes, see the {release-notes}[release notes].
 - Query rewrite cache
 - Removed Stardog Shell
 
-=== 1.1.2
+1.1.2::
 
 - New optimizer for subqueries
 
-=== 1.1
+1.1::
 
 - SPARQL 1.1 Query
 - Transitive reasoning
@@ -59,27 +60,28 @@ changes, including notable bug fixes, see the {release-notes}[release notes].
 - Improved performance of search indexing
 - Deprecated Stardog Shell
 
-=== 1.0.4
+1.0.4::
 
 - Convert ICVs to SPARQL queries in the CLI or Java API
 - Running as a Windows Service
 - Parametric queries in CLI
 
-=== 1.0.2
+1.0.2::
 
-- Stardog Community
+- Stardog Community edition introduced
 - ICV in SNARL and HTTP
 - HTTP Admin protocol extensions
 - SPARQL 1.1 Graph Store Protocol
 
-=== 1.0.1
+1.0.1::
 
 - Self-hosting Stardog documentation
 - Prefix mappings per database
 - Access and audit logging
 
-=== 1.0
+1.0::
 
 - Execute `DESCRIBE` queries against multiple resources
 - Database consistency checking from CLI
 - Inference explanations from CLI
+****

@@ -9,8 +9,16 @@ Groovy, Spring, Clojure etc.
 
 === Stardog {version} ({release-date})
 
-Consult the {release-notes}[release notes] and <<Stardog Milestones,milestones>>. Check out the <<Quick Start Guide>> to get Stardog
-installed and running in five easy steps.
+Consult the {release-notes}[release notes] and <<Stardog
+Milestones,milestones>>. Check out the <<Quick Start Guide>> to get
+Stardog installed and running in five easy steps.footnote:[This is
+version *{docdatetime}*.]
+
+.Commercial Licensing & Support
+****
+Stardog Developer & Enterprise are commercial software products. For information about http://stardog.com/#plans[Stardog commercial licensing], please
+mailto:sales@clarkparsia.com[email] for more details.
+****
 
 === Downloading Stardog
 
@@ -18,11 +26,6 @@ http://stardog.com/#download[Download Stardog] to get started. The
 mailto:stardog@clarkparsia.com[Stardog support forum] is the place to
 report bugs, ask questions, etc. You can also ask questions on Stack
 Overflow using the tag `stardog`.
-
-=== Commercial Licensing & Support
-
-**For information about http://stardog.com/#plans[Stardog commercial licensing], please
-mailto:sales@clarkparsia.com[email] for more details.**
 
 === Contributing
 
@@ -43,21 +46,18 @@ and the nice people at El Rinconcito Cafe in DC.]
 
 == Stardog Roadmap
 
-Want to know where we're headed over the next 12 to 15 months?
-
-=== 3.0 release (February 2015)
+[horizontal]
+3.0 release (February 2015)::
 - [x] Equality reasoning via hybrid materialization
 - [x] Improved incremental write performance
 - [ ] HA Cluster out of beta
 - [x] Java 7 & Sesame 2.8/RDF 1.1
 - [x] Integrity constraint violation repair plans
 - [x] Improved query performance
-
-=== 3.1 release (Q2 2015)
+3.1 release (Q2 2015)::
 - [ ] Native support for Property Graph model
 - [ ] User-pluggable search indexers
 - [ ] Named Graph security
-
-=== 4.0 release (Q2 2016)
+4.0 release (Q2 2016)::
 - [ ] Stardog Big Data
 - [ ] Declarative mappings to treat Enterprise Data Lakes as Enterprise Knowledge Graphs
