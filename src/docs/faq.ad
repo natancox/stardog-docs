@@ -52,7 +52,7 @@ Stardog Server.  This *completely* disables security in Stardog which
 will let users access the SPARQL endpoint, and all other functionality,
 without needing authorization.
 
-== Remote Bulk Loading
+=== Remote Bulk Loading
 
 Question:: I'm trying to create a database and bulk load files from
 my machine to the server and it's not working, the files don't seem to
