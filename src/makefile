@@ -9,6 +9,9 @@ clean:
 v:
 	open http://localhost:8001/
 
+serve:
+	ruby -run -e httpd docs/ -p 9090
+
 pub: convert
 	cp docs/index.html $(PUB)
 	cp -R docs/icv $(PUB)
