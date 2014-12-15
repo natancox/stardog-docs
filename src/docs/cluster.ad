@@ -227,7 +227,7 @@ Stardog configuration::
 
 * different `STARDOG_HOME` for each node
 * different Stardog port for each node
-** further, easiest if no Stardog listens on port `5820`
+** the easiest setup is if no Stardog listens on port `5820`
 * at least one (but no more than one) proxy on port `5820`
 * different Watchdog port for each node via `watchdog.port` in `stardog.properties`
 
