@@ -16,15 +16,16 @@ non-clustered Stardog.footnote:[The client here means the client of Stardog
 APIs, not necessarily people, administrators, etc.]
 
 NOTE: High Availability requires *at least* three nodes in the Cluster. Stardog
-Cluster works best with an odd-number greater than or equal to three cluster
-size with respect to fault resiliency: 3, 5, 7, etc.footnote:["Because Zookeeper
-requires a majority, it is best to use an odd number of machines. For example,
-with four machines ZooKeeper can only handle the failure of a single machine; if
-two machines fail, the remaining two machines do not constitute a majority.
-However, with five machines ZooKeeper can handle the failure of two machines."
-See https://zookeeper.apache.org/doc/r3.1.2/zookeeperAdmin.html[Zk Admin] for
-more.] With respect to performance, larger cluster sizes
-perform better than smaller ones.
+Cluster works best, with respect to fault resiliency, with a cluster size that
+is an odd-number greater than or equal to three : 3, 5, 7,
+etc.footnote:["Because Zookeeper requires a majority, it is best to use an odd
+number of machines. For example, with four machines ZooKeeper can only handle
+the failure of a single machine; if two machines fail, the remaining two
+machines do not constitute a majority. However, with five machines ZooKeeper can
+handle the failure of two machines." See
+https://zookeeper.apache.org/doc/r3.1.2/zookeeperAdmin.html[Zk Admin] for more.]
+With respect to performance, larger cluster sizes perform better than smaller
+ones.
 
 == Configuration
 
@@ -211,6 +212,31 @@ $ ./stardog-admin db create -n myDb
 $ ./stardog data add myDb /path/to/my/data
 $ ./stardog query myDb "select * { ?s ?p ?o } limit 5"
 ----
+
+.Running Stardog Cluster on a Single Machine
+****
+For testing, development, or other purposes it may be advantageous to run
+Stardog Cluster on a single machine. Of course this won't provide much actual
+high availability, but it may be a reasonable choice in some cases.
+
+The following changes must be made to the multi-machine configuration and
+installation described previously:
+
+[horizontal]
+Stardog configuration::
+
+* different `STARDOG_HOME` for each node
+* different Stardog port for each node
+** further, easiest if no Stardog listens on port `5820`
+* at least one (but no more than one) proxy on port `5820`
+* different Watchdog port for each node via `watchdog.port` in `stardog.properties`
+
+ZooKeeper configuration::
+
+* different, that is, non-overlapping port ranges for each node
+* different data directory for each node (e.g., different subdirectories in `/tmp/zookeeperdata`)
+
+****
 
 == Cluster Topologies & Cluster Size
 
