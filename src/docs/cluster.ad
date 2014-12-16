@@ -342,4 +342,4 @@ But since Stardog's data model is not only richly expressive but rests in part
 on provably correct semantics, we think that a strong consistency model is worth
 the cost.footnote:[Based on customer feedback we may relax these consistency
 guarantees in some future release. Please get in touch if you think an
-eventually consistent approach is more appropriate for yr use of Stardog.]
+eventually consistent approach is more appropriate for your use of Stardog.]

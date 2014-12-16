@@ -183,7 +183,7 @@ $ sudo yum install bash-completion
 
 ==== All Platforms
 
-Now put the Stardog autocomplete script—`stardog-completion.sh`—into yr
+Now put the Stardog autocomplete script—`stardog-completion.sh`—into your
 `bash\_completion.d` directory, typically one of
 `/etc/bash_completion.d, /usr/local/etc/bash_completion.d or ~/bash_completion.d.`
 
@@ -1495,7 +1495,7 @@ JVM.
 
 The following table shows recommended JVM memory and system
 memory requirements for Stardog.footnote:[These are conservative
-values and are somewhat dataset specific. Yr data may require less memory..or more!]
+values and are somewhat dataset specific. Your data may require less memory..or more!]
 
 .Table of Memory Usage for Capacity Planning
 |===

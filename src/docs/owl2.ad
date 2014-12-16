@@ -893,7 +893,7 @@ subclass `:Ci` of `:Employee`:
 SELECT ?employee WHERE { ?employee rdf:type :Ci }
 ----
 +
-Thus, **ask the most specific query sufficient for yr use case**. Why? More general
+Thus, **ask the most specific query sufficient for your use case**. Why? More general
 queries--that is, queries that contain concepts high up in the class
 hierarchy defined by the schema--will typically yield larger EQs.
 
@@ -957,7 +957,7 @@ reasoning__.
 You can add one or more type triples to the query to resolve these
 ambiguities.footnote:[These are harmless and won't otherwise affect query
 evaluation; they can also be added to the data, instead of to queries,
-if that fits yr use case better.]
+if that fits your use case better.]
 
 These "type triples" have the form `?var a TYPE`, where `TYPE` is a URI
 representing the type of entity to which the variable `?var` is supposed
