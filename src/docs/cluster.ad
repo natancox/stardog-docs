@@ -3,8 +3,6 @@
 In this section we explain how to configure, use, and administer Stardog Cluster
 for uninterrupted operations.
 
-== Stardog Cluster
-
 Stardog Cluster is a collection of Stardog Server instances running on one or
 more virtual or physical machines that, *from the client's perspective*, behave
 like a single Stardog Server instance.footnote:[To fully achieve this effect
