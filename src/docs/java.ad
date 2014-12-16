@@ -319,7 +319,7 @@ most part, using Stardog and Sesame is not much different from using
 Sesame with other RDF databases. There are, however, at least two
 differences worth pointing out.
 
-=== Wrap the connection with `StardogRepository`
+=== Wrapping connections with StardogRepository
 
 [source,java]
 ----

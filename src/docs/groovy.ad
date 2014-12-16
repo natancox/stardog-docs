@@ -80,7 +80,7 @@ include::https://gist.githubusercontent.com/AlBaker/4652590/raw/Projection.groov
 include::https://gist.githubusercontent.com/AlBaker/4652608/raw/StardogAddRemove.groovy[]
 ----
 
-=== `withConnection` Closure
+=== withConnection Closure
 
 [source,groovy]
 ----
