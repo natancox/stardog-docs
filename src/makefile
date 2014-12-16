@@ -1,10 +1,18 @@
 PUB = ../published/
 IMG = $(PUB)img/
-convert: #do css first...
-	asciidoctor -v -t -d book -a allow-uri-read -a data-uri -a stylesheet=stardog.css docs/index.ad -o docs/index.html
+VER = 2.2.4
+DATE = "11 December 2014"
+
+FILES = index.ad testing.ad
+
+convert:
+	asciidoctor -v -t -d book -a version=$(VER) -a release-date=$(DATE) -a allow-uri-read -a data-uri -a stylesheet=stardog.css docs/index.ad -o docs/index.html
+
+test_doc:
+	asciidoctor -v -t -d book -a allow-uri-read -a data-uri -a stylesheet=stardog.css docs/testing.ad -o docs/testing.html
 
 clean:
-	rm -r docs/foundation
+	-rm -r docs/foundation
 
 v:
 	open http://localhost:8001/
