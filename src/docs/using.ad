@@ -28,12 +28,27 @@ $ stardog query myDb "select * where { ?s ?p ?o }"
 Detailed information on using the query command in Stardog can be found
 on its link:man/query-execute.html[`man` page].
 
-=== Functions
+=== DESCRIBE
+
+SPARQL's `DESCRIBE` keyword is deliberately underspecified;
+vendors are free to do, for good or bad, whatever they want.
+In Stardog a `DESCRIBE <theResource>` query retrieves the predicates and
+objects for all the triples for which `<theResource>` is the subject.
+There are, of course, about seventeen thousand other ways to implement
+`DESCRIBE`; we've implemented four or five of them and may expose them to
+users in a future release of Stardog _based on user feedback and requests_.
+
+Now you know and knowing is one-quarter of the fun.
+
+=== SPARQL (and other) Functions
 
 Stardog supports all of the functions in SPARQL, as well as some others from
 XPath and SWRL. Any of these functions can be used in queries or rules. Some
-functions appear in multiple namespaces, but all of the namespaces will work:
+functions appear in multiple namespaces, but all of the namespaces will work.
 
+See <<Appendix: SPARQL Query Functions>> for the full list.
+
+////
 .Table of Stardog Function Namespaces
 |===
 |Prefix    |Namespace
@@ -274,18 +289,8 @@ used without an explicit namespace.
 |`swrlb:yearMonthDuration`
 |===
 
+////
 
-=== DESCRIBE
-
-SPARQL's `DESCRIBE` keyword is deliberately underspecified;
-vendors are free to do, for good or bad, whatever they want.
-In Stardog a `DESCRIBE <theResource>` query retrieves the predicates and
-objects for all the triples for which `<theResource>` is the subject.
-There are, of course, about seventeen thousand other ways to implement
-`DESCRIBE`; we've implemented four or five of them and may expose them to
-users in a future release of Stardog _based on user feedback and requests_.
-
-Now you know and knowing is one-quarter of the fun.
 
 == Updating
 

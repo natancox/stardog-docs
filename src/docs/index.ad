@@ -80,6 +80,8 @@ include::manpages.ad[]
 
 include::bench.ad[]
 
+include::testing.ad[]
+
 include::faq.ad[]
 
 include::compatibility.ad[]
@@ -89,3 +91,5 @@ include::known-issues.ad[]
 include::glossary.ad[]
 
 include::timeline.ad[]
+
+include::appendix-a.ad[]
