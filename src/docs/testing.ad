@@ -1,42 +1,15 @@
-:toc: left
-:toc-title: Contents
-:toclevels: 2
-:title: How We Test Stardog
-:experimental:
-:source-highlighter: highlightjs
-:page-layout: base
-:page-javascripts: [view-result]
-:description: Stardog is a fast, lightweight graph database that supports SPARQL, RDF, OWL, and user-defined rules. This is how we test it.
-:compat-mode!:
-:last-update-label!:
-:docinfo:
-:table-caption:
-:example-caption:
-:figure-caption:
-:idprefix!:
-:imagesdir: img/
-:linkattrs:
-:base-url: http://docs.stardog.com/
-:slug: http://docs.stardog.com/{version}
-:img: {slug}/img
-//:css: {slug}/css
-:sectanchors:
-//--end header
+== How Stardog is Tested
 
-image::stardog-docs.png["Stardog Logo", 326, 236, align="left"]
+=== Unit Testing
 
-= {title}
+=== Regression Testing
 
-== Unit Testing
+=== Performance Testing
 
-== Regression Testing
+=== Cluster Testing
 
-== Performance Testing
+==== Jepsen
 
-== Cluster Testing
+==== Releasing the Chaos Monkey
 
-=== Jepsen
-
-=== Releasing the Chaos Monkey
-
-== API Fuzz Testing
+=== System Fuzz Testing
