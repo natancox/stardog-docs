@@ -1,3 +1,8 @@
 * add manchester highlight
-* add javadocs, generated man pages (or integrate w/ Mike...)
-* decide if breaking every extant docs link is okay...?
+
+3.0 release:
+
+* equality reasoning
+* write performance
+* Java 7 & Sesame 2.8/RDF 1.1
+* Integrity constraint violation repair plans
