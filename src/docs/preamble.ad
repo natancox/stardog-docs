@@ -1,3 +1,12 @@
+.What's New in 3.0?
+****
+
+- High Availability Cluster
+- Improved query performance; 100% incremental write performance improvement
+- Integrity constraint violation repair plans
+- Equality reasoning via hybrid materialization
+****
+
 == Introducing Stardog
 
 Stardog is a graph database—fast, lightweight, pure Java for
@@ -44,13 +53,19 @@ Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron Zettlemoyer, Jim
 Rhyne, Andrea Westerinen, Huy Phan, Zach Whitley, Maurice Rabb, the crew at XSB,
 and the nice people at El Rinconcito Cafe in DC.]
 
+=== Long Term Support
+
+include::lts.ad[]
+
 == Stardog Roadmap
 
 [horizontal]
-3.1 release (Q2 2015)::
+3.1 release (early Q2 2015)::
 - [ ] Native support for Property Graph model
 - [ ] User-pluggable search indexers
 - [ ] Named Graph security
-4.0 release (Q2 2016)::
-- [ ] Stardog Big Data
-- [ ] Declarative mappings to treat Enterprise Data Lakes as Enterprise Knowledge Graphs
+3.2 release (late Q2 2015)::
+- [ ] Stored procedures
+4.0 release (2016)::
+- [ ] *Stardog Constellation*: The Data Center Graph Engine
+- [ ] *Stardog Map*: From Data Lakes to Enterprise Knowledge Graphs
