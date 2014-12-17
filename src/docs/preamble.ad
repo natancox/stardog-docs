@@ -47,13 +47,6 @@ and the nice people at El Rinconcito Cafe in DC.]
 == Stardog Roadmap
 
 [horizontal]
-3.0 release (February 2015)::
-- [x] Equality reasoning via hybrid materialization
-- [x] Improved incremental write performance
-- [ ] HA Cluster out of beta
-- [x] Java 7 & Sesame 2.8/RDF 1.1
-- [x] Integrity constraint violation repair plans
-- [x] Improved query performance
 3.1 release (Q2 2015)::
 - [ ] Native support for Property Graph model
 - [ ] User-pluggable search indexers

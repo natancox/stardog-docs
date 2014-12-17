@@ -853,6 +853,13 @@ However, materialization introduces several thorny issues:
     expensive. And truth maintenance, which materialization requires, is
     **always** computationally expensive.
 
+== Equality Reasoning
+
+An exception to Stardog's query rewriting technique for reasoning is equality reasoning, for which
+Stardog performs a hybrid form of materialization.
+
+@@TODO@@
+
 == Performance Hints
 
 The query rewriting approach suggests some guidelines for more efficient
@@ -1022,9 +1029,6 @@ Stardog {version} does not
     query with respect to the schema, results will be sound (__no wrong
     answers__) but potentially incomplete (__some correct answers not
     returned__) with respect to the requested reasoning type.
--   Perform equality reasoning. Only *explicit* `owl:sameAs` and
-    `owl:differentFrom` data assertions will be taken into account for
-    query answering.footnote:[Stardog 3.0 will add support for equality reasoning.]
 -   Perform datatype reasoning or respect user-defined datatypes.
 
 == Terminology
