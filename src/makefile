@@ -1,6 +1,6 @@
 PUB = ../published/
 IMG = $(PUB)img/
-VER = 2.2.4
+VER = 3.0
 DATE = "11 December 2014"
 
 FILES = index.ad testing.ad
