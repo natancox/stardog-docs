@@ -2,6 +2,22 @@
 
 Some frequently asked questions for which we have answers.
 
+=== Why don't my queries work?!
+
+Question:: I've got some named graphs and blah blah my queries don't work blah blah.
+
+Answer::
+
+Queries with FROM NAMED with a named graph that is not **in** Stardog will not cause
+Stardog to download the data from an arbitrary HTTP URL and include it in the
+query. _Stardog will only evaluate queries over data that has been loaded into
+it_.
++
+SPARQL queries without a context or named graph are executed against **the
+default, unnamed graph**. In Stardog, **the default graph is not the union of all
+the named graphs and the default graph**. This behavior is configurable via
+the `query.all.graphs` configuration parameter.
+
 === SPARQL 1.1
 
 Question:: Does Stardog support SPARQL 1.1?
