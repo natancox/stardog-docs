@@ -2,7 +2,7 @@
 :release-date: 11 December 2014
 :release-name:
 :toc: left
-:toc-title: Contents
+:toc-title:
 :toclevels: 2
 :title: Stardog Documentation
 :experimental:
@@ -25,6 +25,7 @@
 :img: {slug}/img
 //:css: {slug}/css
 :sectanchors:
+:numbered:
 //--end header
 
 image::stardog-docs.png["Stardog Logo", 326, 236, align="left"]
@@ -80,7 +81,7 @@ include::manpages.ad[]
 
 include::bench.ad[]
 
-include::testing.ad[]
+//include::testing.ad[]
 
 include::faq.ad[]
 
@@ -89,7 +90,5 @@ include::compatibility.ad[]
 include::known-issues.ad[]
 
 include::glossary.ad[]
-
-include::timeline.ad[]
 
 include::appendix-a.ad[]
