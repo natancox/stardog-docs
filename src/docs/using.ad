@@ -46,7 +46,7 @@ Stardog supports all of the functions in SPARQL, as well as some others from
 XPath and SWRL. Any of these functions can be used in queries or rules. Some
 functions appear in multiple namespaces, but all of the namespaces will work.
 
-See <<Appendix: SPARQL Query Functions>> for the full list.
+See <<SPARQL Query Functions>> for the complete list.
 
 ////
 .Table of Stardog Function Namespaces

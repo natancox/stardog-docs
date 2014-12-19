@@ -1,4 +1,9 @@
-= Appendix: SPARQL Query Functions
+:numbered!:
+= Appendix
+
+The stuff that didn't seem to fit anywhere else...
+
+== SPARQL Query Functions
 
 Stardog supports all of the functions in SPARQL, as well as some others from
 XPath and SWRL. Any of these functions can be used in queries or rules. Some
@@ -243,3 +248,5 @@ used without an explicit namespace.
 |`yearMonthDuration`
 |`swrlb:yearMonthDuration`
 |===
+
+include::timeline.ad[]
