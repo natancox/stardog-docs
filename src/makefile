@@ -14,7 +14,7 @@ test_doc:
 clean:
 	-rm -r docs/foundation
 
-v:
+v: convert
 	open http://localhost:8001/
 
 serve:
