@@ -42,8 +42,8 @@ installation to Chef, Puppet, cfengine, etc. is left as an exercise for the
 reader.
 +
 . Make sure a valid Stardog license key (whether Developer, Enterprise, or a
-30-day eval key) for the size of cluster you're creating exists and is each
-`STARDOG_HOME`. You must also have a `stardog.properties` file with the following
+30-day eval key) for the size of cluster you're creating exists and resides in
+`STARDOG_HOME` on each node. You must also have a `stardog.properties` file with the following
 information **for each node in the cluster**:
 +
 [source,bash]
