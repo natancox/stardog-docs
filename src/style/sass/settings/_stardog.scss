@@ -18,7 +18,7 @@
 
 // Body (IMPORTANT $body-* variables must be defined above the defaults import)
 
-$body-bg: white;
+$body-bg: #f6f6f6;
 $body-font-color: rgba(0,0,0,0.8);
 $body-font-family: "Source Sans Pro", "Open Sans", serif;
 
@@ -26,6 +26,7 @@ $body-font-family: "Source Sans Pro", "Open Sans", serif;
 
 $sd-lime: #C0D732;
 $top-border-thickness: 6px;
+$sd-red: #BC4A2C;
 $footer-height: 167px;
 
 html, body {height: 100%;}
