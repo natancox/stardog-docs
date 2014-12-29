@@ -3,11 +3,9 @@
 @import "components/awesome-icons";
 
 // Your custom SCSS should be written here...
-
-//@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,500,600,700);
-@import url(http://fonts.googleapis.com/css?family=Anonymous+Pro:400,700);
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,400italic);
-//@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700);
+// optimize these font weights...probably don't need all of them...
+@import url(http://fonts.googleapis.com/css?family=Anonymous+Pro:400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,400italic);
 
 html * {
    @include box-sizing(border-box);
@@ -27,10 +25,19 @@ html, body {
    height: 100%;
 }
 
-.sect0 {
+.sect0, #header > h1:first-child {
    color: $sd-lime;
    font-weight: 200;
    font-size: 70px;
+}
+
+#header > h1:first-child {
+    font-weight: 300;
+    color: $sd-red;
+}
+
+#header .details {
+    display: none;
 }
 
 .hide {
@@ -218,6 +225,7 @@ sub {
 //			 url("../fonts/icons/#{$some-font-variable}.woff") format("woff"),
 //			 url("../fonts/icons/#{$some-font-variable}.ttf")  format("truetype");
 //}
+
 
 h1,h2,h3,h4,h5,h6 {
    font-family: $font-family;
