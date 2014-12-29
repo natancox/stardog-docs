@@ -1,4 +1,6 @@
+= {title}
 :version: 2.2.4
+:revnumber: {version}
 :release-date: 11 December 2014
 :release-name:
 :toc: left
@@ -12,6 +14,7 @@
 :description: Stardog is a fast, lightweight graph database that supports SPARQL, RDF, OWL, and user-defined rules.
 :compat-mode!:
 :last-update-label!:
+:doctype: book
 :docinfo:
 :table-caption:
 :example-caption:
@@ -26,11 +29,9 @@
 //:css: {slug}/css
 :sectanchors:
 :numbered:
-//--end header
+:title-logo: stardog-docs.png
 
-image::stardog-docs.png["Stardog Logo", 326, 236, align="left"]
-
-= {title}
+//image::stardog-docs.png["Stardog Logo", 326, 236, align="left"]
 
 include::preamble.ad[]
 
