@@ -1,12 +1,12 @@
 = {title}
+:title: Stardog Docs
 :version: 2.2.4
 :revnumber: {version}
 :release-date: 11 December 2014
 :release-name:
 :toc: left
-:toc-title:
+:toc-title: {title}
 :toclevels: 2
-:title: Stardog Documentation
 :experimental:
 :source-highlighter: highlightjs
 :page-layout: base
@@ -26,12 +26,9 @@
 :slug: http://docs.stardog.com/{version}
 :release-notes: {base-url}RELEASE_NOTES.txt
 :img: {slug}/img
-//:css: {slug}/css
 :sectanchors:
 :numbered:
-:title-logo: stardog-docs.png
-
-//image::stardog-docs.png["Stardog Logo", 326, 236, align="left"]
+:title-logo: stardog-docs.png 
 
 include::preamble.ad[]
 
