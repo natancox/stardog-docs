@@ -1,4 +1,4 @@
-image::stardog-docs.png["Stardog Logo", 328, 236, float="right"]
+image::stardog-docs.png["Stardog Logo", 296, 212, float="right"]
 
 Stardog is a graph database: fast, lightweight, pure Java for
 mission-critical, enterprise apps. Check out the <<Quick Start Guide>>
@@ -14,13 +14,12 @@ details.
 
 = Introduction
 
-*Stardog {version}* supports
-
-- http://www.w3.org/RDF/[RDF graph data model];
-- http://www.w3.org/TR/sparql11-overview/[SPARQL 1.1] query language;
-- HTTP and SNARL protocols for remote access and control; 
-- http://www.w3.org/TR/owl2-overview/[OWL 2] and rules for inference and data analytics; and 
-- programmatic interaction via several languages and network interfaces.
+*Stardog {version}* supports http://www.w3.org/RDF/[RDF graph data
+model]; http://www.w3.org/TR/sparql11-overview/[SPARQL 1.1] query
+language; HTTP and SNARL protocols for remote access and control;
+http://www.w3.org/TR/owl2-overview/[OWL 2] and rules for inference and
+data analytics; and programmatic interaction via several languages and
+network interfaces.
 
 To learn more, Consult the {release-notes}[release notes] and
 <<Stardog Milestones,milestones>>. 
@@ -49,18 +48,6 @@ Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron Zettlemoyer, Jim
 Rhyne, Andrea Westerinen, Huy Phan, Zach Whitley, Maurice Rabb, the crew at XSB,
 and the nice people at El Rinconcito Cafe in DC.]
 
-//== Alternate Versions of this Manual
-
-//This is the manual for Stardog {version} ({release-date}).footnote:[This
-//is version *{docdatetime}*.] Alternate versions of this manual are available---
-
-//|===
-//| Version | HTML | PDF | EPUB3 | Kindle
-//| 3.0     | ✓    | ✓   | ✓     | ✓
-//| 2.2.5   | ✓    | ✓   | ✗     | ✗
-//| 2.2.4   | ✓    | ✗   | ✗     | ✗
-//|===
-
 == Stardog Roadmap
 
 [horizontal]
@@ -78,3 +65,16 @@ and the nice people at El Rinconcito Cafe in DC.]
 4.0 release (Q2 2016)::
 - [ ] Stardog Big Data
 - [ ] Declarative mappings to treat Enterprise Data Lakes as Enterprise Knowledge Graphs
+
+== Alternate Versions of this Manual
+
+This is the manual for Stardog {version} ({release-date}).footnote:[This
+is version *{docdatetime}*.] Alternate versions of this manual are coming in the 3.0 release.
+
+|===
+| Version | HTML | PDF | EPUB3 | Kindle
+//| 3.0     | ✓    | ✓   | ✓     | ✓
+//| 2.2.5   | ✓    | ✓   | ✗     | ✗
+| 2.2.4   | ✓    | ✗   | ✗     | ✗
+|===
+
