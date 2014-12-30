@@ -22,7 +22,7 @@ data analytics; and programmatic interaction via several languages and
 network interfaces.
 
 To learn more, Consult the {release-notes}[release notes] and
-<<Stardog Milestones,milestones>>. 
+<<Stardog Milestones,milestones>>.
 
 == Downloading Stardog
 
@@ -72,9 +72,9 @@ This is the manual for Stardog {version} ({release-date}).footnote:[This
 is version *{docdatetime}*.] Alternate versions of this manual are coming in the 3.0 release.
 
 |===
-| Version | HTML | PDF | EPUB3 | Kindle
-//| 3.0     | ✓    | ✓   | ✓     | ✓
-//| 2.2.5   | ✓    | ✓   | ✗     | ✗
-| 2.2.4   | ✓    | ✗   | ✗     | ✗
+| Version | PDF | EPUB3 | Kindle
+//| 3.0     | ✓   | ✓     | ✓
+//| 2.2.5   | ✓   | ✗     | ✗
+| 2.2.4   | ✗   | ✗     | ✗
 |===
 
