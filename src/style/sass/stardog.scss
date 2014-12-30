@@ -25,15 +25,30 @@ html, body {
    height: 100%;
 }
 
-.sect0, #header > h1:first-child {
-   color: $sd-lime;
-   font-weight: 200;
-   font-size: 70px;
+.sidebarblock>.content>.title {
+    text-align: left;
+}
+
+#preamble>div.sectionbody>div.paragraph>p {
+    font-weight: normal;
+    font-size: 22px;
+}
+
+.sidebarblock {
+    margin-top: 2.5em;
+}
+
+.sect0 {
+   color: $sd-med-blue;
+   font-weight: 300;
+   font-size: 56px;
+   /* text-transform: uppercase; */
 }
 
 #header > h1:first-child {
-    font-weight: 300;
-    color: $sd-red;
+    font-weight: 200;
+    font-size: 100px;
+    color: $sd-lime;
 }
 
 #header .details {
