@@ -42,7 +42,7 @@ users in a future release of Stardog _based on user feedback and requests_.
 
 Now you know and knowing is one-quarter of the fun.
 
-=== SPARQL (and other) Functions
+=== Query Functions
 
 Stardog supports all of the functions in SPARQL, as well as some others from
 XPath and SWRL. Any of these functions can be used in queries or rules. Some

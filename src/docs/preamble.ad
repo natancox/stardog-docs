@@ -1,4 +1,4 @@
-image::stardog-docs.png["Stardog Logo", 296, 212, float="right"]
+include::header-logo.ad[]
 
 Stardog is a graph database: fast, lightweight, pure Java for
 mission-critical, enterprise apps. Check out the <<Quick Start Guide>>
@@ -14,7 +14,7 @@ details.
 
 = Introduction
 
-*Stardog {version}* supports http://www.w3.org/RDF/[RDF graph data
+*Stardog {version}* supports the http://www.w3.org/RDF/[RDF graph data
 model]; http://www.w3.org/TR/sparql11-overview/[SPARQL 1.1] query
 language; HTTP and SNARL protocols for remote access and control;
 http://www.w3.org/TR/owl2-overview/[OWL 2] and rules for inference and
