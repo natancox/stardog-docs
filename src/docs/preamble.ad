@@ -49,17 +49,17 @@ Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron Zettlemoyer, Jim
 Rhyne, Andrea Westerinen, Huy Phan, Zach Whitley, Maurice Rabb, the crew at XSB,
 and the nice people at El Rinconcito Cafe in DC.]
 
-== Alternate Versions of this Manual
+//== Alternate Versions of this Manual
 
-This is the manual for Stardog {version} ({release-date}).footnote:[This
-is version *{docdatetime}*.] Alternate versions of this manual are available---
+//This is the manual for Stardog {version} ({release-date}).footnote:[This
+//is version *{docdatetime}*.] Alternate versions of this manual are available---
 
-|===
-| Version | HTML | PDF | EPUB3 | Kindle
-| 3.0     | ✓    | ✓   | ✓     | ✓
-| 2.2.5   | ✓    | ✓   | ✗     | ✗
-| 2.2.4   | ✓    | ✗   | ✗     | ✗
-|===
+//|===
+//| Version | HTML | PDF | EPUB3 | Kindle
+//| 3.0     | ✓    | ✓   | ✓     | ✓
+//| 2.2.5   | ✓    | ✓   | ✗     | ✗
+//| 2.2.4   | ✓    | ✗   | ✗     | ✗
+//|===
 
 == Stardog Roadmap
 
