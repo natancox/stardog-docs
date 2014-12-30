@@ -1310,17 +1310,25 @@ The default is `sync`.
 
 === Transactions and Database Guarantees
 
+What follows is specific guidance with respect to Stardog's transactional
+semantics and guarantees.footnote:[A good general purpose discussion of these
+issues in context of J2EE is
+http://vladmihalcea.com/2014/12/23/a-beginners-guide-to-transaction-isolation-levels-in-enterprise-java/[this beginner's guide].]
+
 ==== Atomicity
 
 Databases may provide a guarantee of atomicity--groups of database actions
 (i.e., mutations) are irreducible and indivisible: either all of the changes
-happen or none of them happens. Stardog's transacted writes are atomic.
+happen or none of them happens. Stardog's transacted writes are atomic. Stardog
+does not support nested transactions.footnote:[As discussed in <<SPARQL
+Update>>, since Update queries are implicitly atomic transactional operations,
+which means you shouldn't issue an Update query within an open transaction.]
 
 ==== Consistency
 
 Data stored should be valid with respect to the data model (in this case, RDF)
 and to the guarantees offered by the database, as well as to any
-appliction-specific integrity contraints that may exist. Stardog's transactions
+application-specific integrity constraints that may exist. Stardog's transactions
 are guaranteed not to violate integrity constraints during execution. A
 transaction that would leave a database in an inconsistent or invalid state is
 aborted.

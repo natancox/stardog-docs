@@ -1,14 +1,16 @@
 = Using Stardog
 
-Stardog is a full-featured RDF database: its primary purpose is to execute
-queries against RDF data which it has under direct management.footnote:[Stardog
-will not retrieve data from the Web or from any other network via HTTP URLs in
-order to query that data. If you want to query data using Stardog, you must add
-that data to a new or existing Stardog database.]
+Stardog's primary purpose is to execute queries against RDF data which
+it has under direct management. 
+
+Stardog will not retrieve data from the Web or from any other network
+via HTTP URLs in order to query that data. If you want to query data
+using Stardog, you must add that data to a new or existing Stardog
+database. 
 
 Stardog supports
-http://www.cambridgesemantics.com/2008/09/sparql-by-example[SPARQL], the W3C
-standard for querying RDF graphs.
+http://www.cambridgesemantics.com/2008/09/sparql-by-example[SPARQL],
+the W3C standard for querying RDF graphs.
 
 == Querying
 
@@ -336,6 +338,12 @@ INSERT { ?person foaf:givenName 'William' }
 WHERE
   { ?person foaf:givenName 'Bill' }
 ----
+
+NOTE: Per the SPARQL Update spec, Stardog treats Update queries as
+implicitly transactional and atomic. Since Stardog does not support
+nested transactions, it will not (currently) support an Update query
+in an open transaction.footnote:[User feedback about this limitation
+is welcomed.]
 
 === Adding Data with the CLI
 
