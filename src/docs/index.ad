@@ -28,7 +28,8 @@
 :img: {slug}/img
 :sectanchors:
 :numbered:
-:title-logo: stardog-docs.png 
+:title-logo: stardog-docs.png
+:max-width: 100%
 
 include::preamble.ad[]
 
