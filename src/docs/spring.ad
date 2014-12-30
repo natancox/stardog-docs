@@ -1,8 +1,8 @@
 = Spring Programming
 
 The Spring for Stardog http://github.com/clarkparsia/stardog-spring[source
-code](= is available on Github. Binary releases are available on the
-https://github.com/clarkparsia/stardog-spring/releases[Github release    page].
+code] is available on Github. Binary releases are available on the
+https://github.com/clarkparsia/stardog-spring/releases[Github release page].
 
 As of 2.1.3, Stardog-Spring and Stardog-Spring-Batch can both be retrieved from
 Maven central:
