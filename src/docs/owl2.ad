@@ -582,7 +582,7 @@ THEN {
 Stardog supports a wide variety of functions from SPARQL, XPath, SWRL,
 and some native Stardog functions, too. All of them may be used in
 either Stardog Rules syntax or in SWRL syntax. The supported functions
-are enumerated <<Functions,here>>.
+are enumerated <<SPARQL Query Functions,here>>.
 
 == Special Predicates
 

@@ -1,8 +1,6 @@
 = Clojure Programming
 
-Clojure is a Lisp for the JVM. Stardog's Clojure support makes life easier for
-developers who need to work with RDF, SPARQL, and OWL by way of Stardog from
-Clojure. The stardog-clj http://github.com/clarkparsia/stardog-clj[source code]
+The stardog-clj http://github.com/clarkparsia/stardog-clj[source code]
 is available as Apache 2.0 licensed code.
 
 == Installation
