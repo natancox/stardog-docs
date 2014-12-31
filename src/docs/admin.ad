@@ -342,7 +342,7 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
 .  `database.connection.timeout.ms`: Controls how long, in
     milliseconds, connections may idle before being automatically closed
     by the server.
-.  `http.max.connections`: The next two parameters control the maximum
+.  `http.max.connections`: Controls the maximum
     number of simultaneous connections that the Stardog client will use; for more
     information, see the http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html[relevant Apache
     docs].
@@ -555,7 +555,7 @@ The following table summarizes the options:
 | `default`
 | link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#ICV_ACTIVE_GRAPHS[DatabaseOptions.ICV_ACTIVE_GRAPHS]
 
-|icv.consistency.automatic
+|`icv.consistency.automatic`
 | No
 | `false`
 | link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#ICV_CONSISTENCY_AUTOMATIC[DatabaseOptions.ICV_CONSISTENCY_AUTOMATIC]
