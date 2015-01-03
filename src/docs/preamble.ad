@@ -14,15 +14,18 @@ details.
 
 = Introduction
 
-*Stardog {version}* supports the http://www.w3.org/RDF/[RDF graph data
-model]; http://www.w3.org/TR/sparql11-overview/[SPARQL 1.1] query
+Stardog is a fast, lightweight, agile semantic graph database--equally
+adept at traditional client-server mode as in middleware, embedded
+mode. Stardog {version} supports the http://www.w3.org/RDF/[RDF graph
+data model]; http://www.w3.org/TR/sparql11-overview/[SPARQL 1.1] query
 language; HTTP and SNARL protocols for remote access and control;
 http://www.w3.org/TR/owl2-overview/[OWL 2] and rules for inference and
 data analytics; and programmatic interaction via several languages and
 network interfaces.
 
-To learn more, Consult the {release-notes}[release notes] and
-<<Stardog Milestones,milestones>>.
+To learn more about where we've been and where we're headed, consult
+the {release-notes}[release notes] and <<Stardog
+Milestones,milestones>>.
 
 == Downloading Stardog
 
