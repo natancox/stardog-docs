@@ -342,13 +342,6 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
 .  `database.connection.timeout.ms`: Controls how long, in
     milliseconds, connections may idle before being automatically closed
     by the server.
-.  `http.max.connections`: Controls the maximum
-    number of simultaneous connections that the Stardog client will use; for more
-    information, see the http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html[relevant Apache
-    docs].
-. `http.max.get.query.length`: The length in characters of the longest
-    SPARQL query that will be serialized via HTTP `GET`; queries longer
-    are serialized via `POST`.
 . `bnode.preserve.id`: Determines how the Stardog parser handles bnode
     identifiers that may be present in (some) RDF input. If this
     property is enabled (i.e., `TRUE`), parsing and data loading
