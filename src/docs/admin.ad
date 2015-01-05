@@ -1,11 +1,10 @@
 = Adminstering Stardog
 
 In this chapter we describe the administration of Stardog Server and
-Stardog databases, including the various
-command-line programs, configuration options, etc.
+Stardog databases, including the various command-line programs,
+configuration options, etc.
 
-Security is an
-important part of Stardog administration; it's
+Security is an important part of Stardog administration; it's
 discussed separately (<<Security>>).
 
 == Command Line Interface
@@ -39,7 +38,7 @@ Or:
 $ stardog-admin help
 ----
 
-And for the very laziest among us, these work too:
+These work too:
 
 [source,bash]
 ----
@@ -49,39 +48,40 @@ $ stardog-admin
 
 === Security Considerations
 
-We split administrative functionality into two CLI programs
-because of security: `stardog-admin` will need, in
-production environments, to have considerably tighter access
-restrictions than `stardog`.
+We divide administrative functionality into two CLI programs for
+reasons of security: `stardog-admin` will need, in production
+environments, to have considerably tighter access restrictions than
+`stardog`.
 
-CAUTION: For usability, Stardog provides a
-default user "admin" and password "admin" in `stardog-admin` commands
-if no user or password are given. This is obviously **insecure**;
-before any serious use of Stardog is contemplated, read the
-<<Security>> section at least twice, and
-then--minimally--change the administrative password to something we
-haven't published on the interwebs!
+CAUTION: For usability, Stardog provides a default user "admin" and
+password "admin" in `stardog-admin` commands if no user or password
+are given. This is obviously **insecure**; before any serious use of
+Stardog is contemplated, read the <<Security>> section at least twice,
+and then--minimally--change the administrative password to something
+we haven't published on the interwebs!
 
 === Command Groups
 
-The CLI tools use "command groups" to make CLI subcommands easier to find.
-To print help for a particular command group, just ask for help:
+The CLI tools use "command groups" to make CLI subcommands easier to
+find.  To print help for a particular command group, just ask for
+help:
 
 [source,bash]
 ----
 $ stardog help [command_group_name]
 ----
 
-The command groups and their subcommands include
+The command groups and their subcommands:
 
-- data: add, remove, export;
-- query: search, execute, explain, status;
-- reasoning: explain, consistency; namespace: add, list, remove;
-- server: start, stop;
-- metadata: get, set;
-- user: add, drop, edit, grant, list, permission, revoke, passwd;
-- role: add, drop, grant, list, permission, revoke;
-- db: backup, copy, create, drop, migrate, optimize, list, online, offline, repair, restore, status.
+- **data:     ** add, remove, export;
+- **query:    ** search, execute, explain, status;
+- **reasoning:** explain, consistency;
+- **namespace:** add, list, remove;
+- **server:   ** start, stop;
+- **metadata: ** get, set;
+- **user:     ** add, drop, edit, grant, list, permission, revoke, passwd;
+- **role:     ** add, drop, grant, list, permission, revoke;
+- **db:       ** backup, copy, create, drop, migrate, optimize, list, online, offline, repair, restore, status.
 
 The main help command for either CLI tool will print a listing of the
 command groups:
@@ -111,8 +111,7 @@ $ stardog help query execute
 ----
 
 Finally, everything here about command groups, commands, and online help
-works for `stardog-admin`, too. The result of all these changes is a
-better user experience:
+works for `stardog-admin`, too:
 
 [source,bash]
 ----
@@ -197,56 +196,54 @@ source ~/.stardog-completion.sh
 
 === How to Make a Connection String
 
-You need to make a connection string to talk to a Stardog database.
-
-A connection string may consist solely of the **database name** in cases
-where
+You need to know how to make a connection string to talk to a Stardog
+database. A connection string may consist solely of the **database
+name** in cases where
 
 . Stardog is listening on the standard port(s);
 . SNARL is enabled; and
 . the command is invoked on the same machine where the server is running.
 
-In other cases, a "fully qualified" connection string, as described below, is required.
+In other cases, a "fully qualified" connection string, as described
+below, is required.
 
-Further, the connection string is now assumed to be the first argument of any
-command that requires a connection string. Some CLI subcommands require a
-Stardog connection string as an argument to identify the server and database
-upon which operations are to be performed.
+Further, the connection string is now assumed to be the first argument
+of any command that requires a connection string. Some CLI subcommands
+require a Stardog connection string as an argument to identify the
+server and database upon which operations are to be performed.
 
-Connection strings are URLs and may either be local to the
-machine where the CLI is run or they may be on some other remote
-machine.
+Connection strings are URLs and may either be local to the machine
+where the CLI is run or they may be on some other remote machine.
 
 There are two URL schemes recognized by Stardog:
 
 . `http://`
 . `snarl://`
 
-The former uses Stardog's (extended) version of SPARQL
-Protocol; the latter uses Stardog's native data access protocol, called
-SNARL.
+The former uses Stardog's (extended) version of SPARQL Protocol; the
+latter uses Stardog's native data access protocol, called SNARL.
 
-NOTE: `stardog-admin` and `stardog` works with HTTP or
-SNARL Protocol, interchangeably. SNARL is faster than HTTP in cases where
-payloads to and from the server are relatively *small*; for payloads
-that are large, raw transfer time dominates and there isn't much or any
+NOTE: `stardog-admin` and `stardog` works with HTTP or SNARL Protocol,
+interchangeably. SNARL is faster than HTTP in cases where payloads to
+and from the server are relatively *small*; for payloads that are
+large, raw transfer time dominates and there isn't much or any
 difference in performance between them.
 
 === Example Connection Strings
 
 To make a connection string, you need to know the URL scheme; the
-machine name and port Stardog Server is running on; any (optional)
-URL path to the database;footnote:[It's very unlikely you'll need this.] and the
-name of the database:
+machine name and port Stardog Server is running on; any (optional) URL
+path to the database;footnote:[It's very unlikely you'll need this.]
+and the name of the database:
 
-[source]
+[source,html]
 ----
 {scheme}{machineName}:{port}/{databaseName};{connectionOptions}
 ----
 
-For example,
+Here are some example connection strings:
 
-[source]
+[source,html]
 ----
 snarl://server/billion-triples-punk
 http://localhost:5000/myDatabase
@@ -258,16 +255,17 @@ snarl://localhost:1024/db1;reasoning=NONE
 Using the default ports for SNARL and HTTP protocols simplifies
 connection strings. `connectionOptions` are a series of `;` delimited
 key-value pairs which themselves are `=` delimited. Key names must be
-**lowercase** and their values are case-sensitive. Finally, in the case where
-the scheme is SNARL, the machine is "localhost", and the port is the default
-SNARL port, a connection string may consist of the "databaseName" only.
+**lowercase** and their values are case-sensitive. Finally, in the
+case where the scheme is SNARL, the machine is "localhost", and the
+port is the default SNARL port, a connection string may consist of the
+"databaseName" only.
 
 == Server Admin
 
-Stardog Server is multi-protocol, supporting SNARL and HTTP. The default port
-for SNARL is **5820**; the default port for HTTP is **5822**.
-
-**All administrative functions work over SNARL or HTTP protocols.**
+Stardog Server is multi-protocol, supporting SNARL and HTTP. The
+default port for SNARL is **5820**; the default port for HTTP is
+**5822**. **All administrative functions work over SNARL or HTTP
+protocols.**
 
 === Upgrading Stardog Server
 
@@ -290,10 +288,10 @@ To use any of these commands against a remote server, pass a global
 `--server` argument with an HTTP or SNARL URL.
 
 NOTE: If you are running `stardog-admin` on the same machine where
-Stardog Server is running, and you're using the default protocol ports,
-then you can omit the `--server` argument and simply pass a database
-name via `-n` option. Most of the following commands assume this case
-for the sake of exposition.
+Stardog Server is running, and you're using the default protocol
+ports, then you can omit the `--server` argument and simply pass a
+database name via `-n` option. Most of the following commands assume
+this case for the sake of exposition.
 
 === Server Security
 
@@ -320,15 +318,19 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
 
 .  `strict.parsing`: Controls whether Stardog parses RDF strictly
     (`true`, the default) or loosely (`false`)
+
 .  `query.all.graphs`: Controls what data Stardog Server evaluates queries against; if
     `true`, it will query over the default graph and the union of all
     named graphs; if `false` (the default), it will query only over the
     default graph.
+
 .  `query.timeout`: Sets the upper bound for query execution time
     that's inherited by all databases unless explicitly overriden. See
     <<Managing Queries>> section below for details.
+
 .  `logging.[access,audit].[enabled,type,file]`: Controls whether and
     how Stardog logs server events; described in detail below.
+
 .  `logging.slow_query.enabled`, `logging.slow_query.time`, `logging.slow_query.type`:
     The three slow query logging options are
     used in the following way. To enable logging of slow queries, set
@@ -339,9 +341,11 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
     `text` (the default) or `binary`. **To state the obvious explicitly,
     a `logging.slow_query.time` that exceeds the value of
     `query.timeout` will result in null logs.**
+
 .  `database.connection.timeout.ms`: Controls how long, in
     milliseconds, connections may idle before being automatically closed
     by the server.
+
 . `bnode.preserve.id`: Determines how the Stardog parser handles bnode
     identifiers that may be present in (some) RDF input. If this
     property is enabled (i.e., `TRUE`), parsing and data loading
@@ -353,6 +357,7 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
     and you don't want those bnodes to be smushed into a single node in
     the database, then this configuration option should be disabled (set
     to `FALSE`).
+
 . `load.parser.count`, `load.processor.count`: Determines the number of parser and
      processor threads, respectively, to be used during bulk loading
      of data at database creation time. The default values are `3`
@@ -360,14 +365,19 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
      if you have multi-core CPUs. The former is effective only if multiple
      input files are being processed; the latter is effective even
      if a single file is processed as input. The heuristic for these settings is
-     * the value of `load.parser.count` + `load.processor.count` should neither exceed `20` nor be equal to or greater than the number of available cores
+     * the value of `load.parser.count` + `load.processor.count`
+    should neither exceed `20` nor be equal to or greater than the
+    number of available cores
      * the two values should be roughly equal
      * the values don't have much effect unless or until you're loading billions of triples
+
 . `password.length.min`: Sets the password policy for the minimum length of
     user passwords, the value can't be lower than `password.length.min` or greater
     than `password.length.max`. Default: `4`.
+
 . `password.length.max`: Sets the password policy for the maximum length of
     user passwords. Default: `1024`.
+
 . `password.regex`: Sets the password policy of accepted chars in user passwords, via a
     Java regular expression. Default: `[\\w@#$%]+`
 
@@ -414,27 +424,30 @@ of `server start`.
 
 === Server Monitoring with Watchdog & JMX
 
-Stardog's JMX implementation is called Watchdog.  In addition to providing
-some basic JVM information, Watchdog also exports information about the Stardog
-DBMS configuration as well as stats for all of the databases within the system,
-such as the total number of open connections, size, and average query time.
+Stardog's JMX implementation is called Watchdog. In addition to
+providing some basic JVM information, Watchdog also exports
+information about the Stardog DBMS configuration as well as stats for
+all of the databases within the system, such as the total number of
+open connections, size, and average query time.
 
 ==== Accessing Watchdog
 
-To access Watchdog, you can simply use a tool like VisualVM or JConsole
-to attach to the process running the JVM, or connect directly to the JMX server.
-You can also access information from Watchdog in the web console for the database,
-or by performing a `GET` on `/{db}/watchdog` which will return a simple JSON object
-containing the information available via JMX.
+To access Watchdog, you can simply use a tool like VisualVM or
+JConsole to attach to the process running the JVM, or connect directly
+to the JMX server. You can also access information from Watchdog in
+the web console for the database, or by performing a `GET` on
+`/{db}/watchdog` which will return a simple JSON object containing the
+information available via JMX.
 
 ==== Configuring Watchdog
 
-By default, Watchdog will bind an RMI server for remote access on port `5833`.  If you
-want to change which port Watchdog binds the remote server to, you can set the property
-`watchdog.port` via `stardog.properties`.  If you wish
-to disable remote access to JMX, you can set `watchdog.remote.access` to `false`
-in `stardog.properties`.  Finally, if you wish to disable Watchdog completely,
-set `watchdog.enabled` to `false` in `stardog.properties`.
+By default, Watchdog will bind an RMI server for remote access on port
+`5833`.  If you want to change which port Watchdog binds the remote
+server to, you can set the property `watchdog.port` via
+`stardog.properties`.  If you wish to disable remote access to JMX,
+you can set `watchdog.remote.access` to `false` in
+`stardog.properties`.  Finally, if you wish to disable Watchdog
+completely, set `watchdog.enabled` to `false` in `stardog.properties`.
 
 === Locking Stardog Home
 
@@ -448,21 +461,20 @@ pass a different value to `--home`.
 
 See the `stardog.properties` file (in the distribution) for a complete
 discussion of how access and audit logging work in Stardog Server.
-Basically, audit logging is a
-superset of the events in access logging. Access logging covers the most
-often required logging events; you should consider enabling audit
-logging if you really need to log *every* server event. Logging
-generally doesn't have much impact on
-performance; but the safest way to insure that impact is negligible is to log to
-a separate disk (or to a centralized logging server, etc.).
+Basically, audit logging is a superset of the events in access
+logging. Access logging covers the most often required logging events;
+you should consider enabling audit logging if you really need to log
+*every* server event. Logging generally doesn't have much impact on
+performance; but the safest way to insure that impact is negligible is
+to log to a separate disk (or to a centralized logging server, etc.).
 
-The important configuration choices are whether logs should be binary or
-plain text (both based on ProtocolBuffer message formats); the type of
-logging (audit or access); the logging location (which may be "off disk"
-or even "off machine") Logging to a centralized logging facility
+The important configuration choices are whether logs should be binary
+or plain text (both based on ProtocolBuffer message formats); the type
+of logging (audit or access); the logging location (which may be "off
+disk" or even "off machine") Logging to a centralized logging facility
 requires a Java plugin that implements the Stardog Server logging
-interface; see <<Java Programming>> for more information; and
-the log rotation policy (file size or time).
+interface; see <<Java Programming>> for more information; and the log
+rotation policy (file size or time).
 
 Slow query logging is also available. See the <<Managing Queries>> section below.
 
@@ -483,27 +495,27 @@ knobs till you really need to.
 
 The following are the legal configuration options for a Stardog database:
 
-- `database.name`: A legal database name.
-- `database.online`: The status of the database: online or offline. It may be set so that the database is created initially in online or offline status; subsequently, it can't be set directly but only by using the relevant admin commands.
-- `icv.active.graphs`: Specifies which part of the database, in terms of named graphs, is checked with IC validation. Set to `tag:stardog:api:context:all` to validate all the named graphs in the database.
-- `icv.enabled`: Determines whether ICV is active for the database; if true, all database mutations are subject to IC validation (i.e., "guard mode").
-- `icv.reasoning-type`: Determines what kind of reasoning is used during IC validation.
-- `index.differential.enable.limit`: Sets the minimum size of the Stardog database before differential indexes are used.
-- `index.differential.merge.limit`: Sets the size in number of RDF triples before the differential indexes are merged to the main indexes.
-- `index.literals.canonical`: Enables RDF literal canonicalization.
+. `database.name`: A legal database name.
+. `database.online`: The status of the database: online or offline. It may be set so that the database is created initially in online or offline status; subsequently, it can't be set directly but only by using the relevant admin commands.
+. `icv.active.graphs`: Specifies which part of the database, in terms of named graphs, is checked with IC validation. Set to `tag:stardog:api:context:all` to validate all the named graphs in the database.
+. `icv.enabled`: Determines whether ICV is active for the database; if true, all database mutations are subject to IC validation (i.e., "guard mode").
+. `icv.reasoning-type`: Determines what kind of reasoning is used during IC validation.
+. `index.differential.enable.limit`: Sets the minimum size of the Stardog database before differential indexes are used.
+. `index.differential.merge.limit`: Sets the size in number of RDF triples before the differential indexes are merged to the main indexes.
+. `index.literals.canonical`: Enables RDF literal canonicalization.
 See link:/java/snarl/com/clarkparsia/stardog/index/IndexOptions.html#CANONICAL_LITERALS[literal canonicalization]
 for details.
-- `index.named.graphs`: Enables optimized index support for named graphs; speeds SPARQL query evaluation with named graphs at the cost of some overhead for database loading and index maintenance.
-- `index.persist`: Enables persistent indexes.
-- `index.persist.sync`: Enables whether memory indexes are synchronously or asynchronously persisted to disk with respect to a transaction.
-- `index.statistics.update.automatic`: Sets whether statistics are maintained automatically.
-- `index.type`: Sets the index type (memory or disk).
-- `reasoning.consistency.automatic`: Enables automatic consistency checking with respect to a transaction.
-- `reasoning.punning.enabled`: Enables punning.
-- `reasoning.schema.graphs`: Determines which, if any, named graph or graphs contains the "tbox", i.e., the schema part of the data.
-- `search.enabled`: Enables semantic search on the database.
-- `search.reindex.mode`: Sets how search indexes are maintained.
-- `transactions.durable`: Enables durable transactions.
+. `index.named.graphs`: Enables optimized index support for named graphs; speeds SPARQL query evaluation with named graphs at the cost of some overhead for database loading and index maintenance.
+. `index.persist`: Enables persistent indexes.
+. `index.persist.sync`: Enables whether memory indexes are synchronously or asynchronously persisted to disk with respect to a transaction.
+. `index.statistics.update.automatic`: Sets whether statistics are maintained automatically.
+. `index.type`: Sets the index type (memory or disk).
+. `reasoning.consistency.automatic`: Enables automatic consistency checking with respect to a transaction.
+. `reasoning.punning.enabled`: Enables punning.
+. `reasoning.schema.graphs`: Determines which, if any, named graph or graphs contains the "tbox", i.e., the schema part of the data.
+. `search.enabled`: Enables semantic search on the database.
+. `search.reindex.mode`: Sets how search indexes are maintained.
+. `transactions.durable`: Enables durable transactions.
 
 ==== A Note About Database Status
 
@@ -668,9 +680,10 @@ the default graph, respectively. In the context of database
 configurations only, Stardog will recognize `default` and `*` as shorter
 forms of those URIs, respectively.
 
-The legal value of `search.reindex.mode` is one of the strings `sync` or
-`async` (case insensitive) or a legal http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger[Quartz cron
-expression].
+The legal value of `search.reindex.mode` is one of the strings `sync`
+or `async` (case insensitive) or a legal
+http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger[Quartz
+cron expression].
 
 === Managing Database Status
 
@@ -932,11 +945,11 @@ $ stardog-admin db restore $STARDOG_HOME/.backups/myDb/2012-06-21
 ===== One-time Database Migrations for Backup
 
 The backup system cannot directly backup
-databases created in versions before 2.1. These databases must be explicitly
+atbases created in versions before 2.1. These databases must be explicitly
 migrated in order to use the new backup system; this is a one-time operation per
-database and is accomplished by running
+atbase and is accomplished by running
 
-[source,bash]
+ource,bash]
 ----
 $ stardog-admin db migrate foobar
 ----
@@ -1290,18 +1303,18 @@ search indexes is an administrative task and, thus, is described here.
 
 There are three modes for rebuilding indexes:
 
-1.  `sync`: Recompute the search index synchronously with a transacted
+. `sync`: Recompute the search index synchronously with a transacted
     write.
-2.  `async`: Recompute the search index asynchronously as soon as
+. `async`: Recompute the search index asynchronously as soon as
     possible with respect to a transacted write.
-3.  Scheduled: Use a http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger[cron expression]
+. Scheduled: Use a http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger[cron expression]
     to specify when the search index should be updated.
 
 This is specified when creating a database by setting the property
 `search.reindex.mode` to `sync`, `async`, or to a valid cron expression.
 The default is `sync`.
 
-=== Transactions and Database Guarantees
+=== ACID Transactions
 
 What follows is specific guidance with respect to Stardog's transactional
 semantics and guarantees.footnote:[A good general purpose discussion of these
@@ -1331,15 +1344,17 @@ consideration of Stardog's integrity constraint mechanism.
 
 ==== Isolation
 
-A Stardog connection will run in http://en.wikipedia.org/wiki/Isolation_(database_systems)#Read_committed[`READ COMMITTED`]
-isolation level if it has not
-started an explicit transaction and will run in `READ COMMITTED SNAPSHOT`
-isolation level if it has started a transaction. In either mode, uncommitted
-changes will only be visible to the connection that made the changes: no other
-connection can see those values before they are committed. Thus, "dirty reads"
-can never occur. Neither mode locks the database; if there are conflicting
-changes, the latest commit wins.footnote:[However, `READ COMMITTED` does allow
-for non-repeatable reads.]
+A Stardog connection will run in
+http://en.wikipedia.org/wiki/Isolation_(database_systems)#Read_committed[`READ
+COMMITTED`] isolation level if it has not started an explicit
+transaction and will run in `READ COMMITTED SNAPSHOT` isolation level
+if it has started a transaction. In either mode, uncommitted changes
+will only be visible to the connection that made the changes: no other
+connection can see those values before they are committed. Thus,
+"dirty reads" can never occur. Neither mode locks the database; if
+there are conflicting changes, the latest commit
+wins.footnote:[However, `READ COMMITTED` does allow for non-repeatable
+reads.]
 
 The difference between `READ COMMITTED` and `READ COMMITTED SNAPSHOT` isolation
 levels is that in the former case a connection will see updates committed by
@@ -1377,7 +1392,7 @@ DELETE {:x :value ?old}`
 <= `2`
 |`SELECT ?val {?x :val ?val}` +
 <= `1`
-| SELECT ?val {?x :val ?val} +
+| `SELECT ?val {?x :val ?val}` +
 <= `1`
 
 |`4`
@@ -1524,7 +1539,7 @@ values and are somewhat dataset specific. Your data may require less memory..or 
 
 |===
 
-By default, Stardog CLI sets the maximum JVM memory to 2GB. This setting
+Out of the box, Stardog CLI sets the maximum JVM memory to 2GB. This setting
 works fine for most small databases (up to, say, 100 million
 triples). As the database size increases, we recommend increasing JVM
 memory. You can increase the JVM memory for Stardog by setting the
