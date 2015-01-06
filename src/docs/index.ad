@@ -6,7 +6,7 @@
 :release-name:
 :toc: left
 :toc-title: {title}
-:toclevels: 2
+:toclevels: 1 
 :experimental:
 :source-highlighter: highlightjs
 :page-layout: base
