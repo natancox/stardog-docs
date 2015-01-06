@@ -10,7 +10,7 @@ http://www.mindrot.org/projects/jBCrypt/[jBCrypt] for password hashing.
 
 == Resources
 
-A resource is some Stardog entity or service to which access is to be
+A resource is some Stardog entity or service to which access is 
 controlled. Resources are identified by their *type* and their *name*. A
 particular resource is denoted as `type_prefix:name`. The valid resource
 types with their prefixes are shown below.
@@ -47,20 +47,20 @@ types with their prefixes are shown below.
 == Permissions
 
 Permissions are composed of a *permission subject*, an *action*, and a
-*permission object*, which is interpreted as the subject resource can perform the
-specified action over the object resource.
+*permission object*, which is interpreted as..."the subject resource can
+perform the specified action over the object resource".
 
 Permission subjects can be of type `user` or `role` only. Permission
 objects can be of any valid type. Valid actions include the following:
 
-`read`:: Permits reading the resource properties
-`write`:: Permits changing the resource properties
-`create`:: Permits creating new resources
-`delete`:: Permits deleting a resource
-`grant`:: Permits granting permissions over a resource
-`revoke`:: Permits revoking permissions over a resource
-`execute`:: Permits executing administration actions over a database
-`all`:: Special action type that permits all previous actions over a resource
+`read`    :: Permits reading the resource properties
+`write`   :: Permits changing the resource properties
+`create`  :: Permits creating new resources
+`delete`  :: Permits deleting a resource
+`grant`   :: Permits granting permissions over a resource
+`revoke`  :: Permits revoking permissions over a resource
+`execute` :: Permits executing administration actions over a database
+`all`     :: Special action type that permits all previous actions over a resource
 
 === Wildcards
 
@@ -73,10 +73,11 @@ simultaneously.
 
 === Superusers
 
-It is possible at (user) creation time to specify that a given user is a
-superuser. Being a superuser is equivalent to having been granted an `all`
-permission over `\*:*`. Therefore, as expected, superusers are allowed to perform
-any valid action over any existing resource.
+It is possible at user-creation time to specify that a given user is a
+superuser. Being a superuser is equivalent to having been granted an
+`all` permission over every resource, i.e., `\*:*`. Therefore, as
+expected, superusers are allowed to perform any valid action over any
+existing (or future) resource.
 
 === Database Owner Default Permissions
 
@@ -85,18 +86,18 @@ When a user creates a resource, it is automatically granted `delete`,
 resource. If the new resource is a database, then the user is
 additionally granted `write`, `read`, `grant`, and `revoke` permissions
 over `icv-constraints:theDatabase` and `execute` permission over
-`admin:theDatabase`. These latter two permissions give the creator of the
+`admin:theDatabase`. These latter two permissions give the owner of the
 database the ability to administer the ICV constraints for the database
 and to administer the database itself.
 
 === Default Security Configuration
 
-WARNING: Out of the box, the Stardog security setup is minimal and **insecure**:
-`user:admin` with password set to "admin" is a superuser;
-`user:anonymous` with password "anonymous" has the "reader" role;
-`role:reader` allows `read` of any resource.
+WARNING: Out of the box, the Stardog security setup is minimal and
+**insecure**: `user:admin` with password set to "admin" is a
+superuser; `user:anonymous` with password "anonymous" has the "reader"
+role; `role:reader` allows `read` of any resource.
 
-*Do not deploy Stardog in production or hostile environments with the default
+*Do not deploy Stardog in production or in hostile environments with the default
 security settings.*
 
 === Setting Password Constraints
@@ -118,11 +119,13 @@ To avoid putting passwords into scripts or environment variables, you can put
 them into a suitably secured password file. If no credentials are passed
 explicitly in CLI invocations, or you do not ask Stardog to prompt you for
 credentials interactively, then it will look for credentials in a password file.
-On a Unix system, Stardog will look for a file called `.sdpass` in the home
-directory of the user Stardog is running as; on a Windows system, it will look
-for `sdpass.conf` in `Application Data\stardog` in the home directory of the
-user Stardog is running as. If the file is not found in this location, Stardog
-will look in the location provided by the `stardog.passwd.file` system property.
+
+On a Unix system, Stardog will look for a file called `.sdpass` in the
+home directory of the user Stardog is running as; on a Windows system,
+it will look for `sdpass.conf` in `Application Data\stardog` in the
+home directory of the user Stardog is running as. If the file is not
+found in these locations, Stardog will look in the location provided
+by the `stardog.passwd.file` system property.
 
 ==== Password File Format
 
@@ -136,9 +139,9 @@ For example,
 
 [source,bash]
 ----
-  #this is my password file; there are no others like it and this one is mine anyway...
-  *:*:*:flannery:aNahthu8
-  *:*:summercamp:jemima:foh9Moaz
+#this is my password file; there are no others like it and this one is mine anyway...
+*:*:*:flannery:aNahthu8
+*:*:summercamp:jemima:foh9Moaz
 ----
 
 Of course you should secure this file carefully, making sure that only the user
@@ -153,74 +156,74 @@ API.
 
 === Users
 
-Create a user:: `create` permission over `user:*`. Only superusers can create
+Create a user                  :: `create` permission over `user:*`. Only superusers can create
 other superusers.
 
-Delete a user::   `delete` permission over the user.
+Delete a user                  :: `delete` permission over the user.
 
-Enable/Disable a user::   User must be a superuser.
+Enable/Disable a user          :: User must be a superuser.
 
-Change password of a user:: User must be a superuser or user must be trying to
+Change password of a user      :: User must be a superuser or user must be trying to
 change its own password.
 
-Check if a user is a superuser:: `read` permission over the user or user must be
+Check if a user is a superuser :: `read` permission over the user or user must be
 trying to get its own info.
 
-Check if a user is enabled:: `read` permission over the user or user must be
+Check if a user is enabled     :: `read` permission over the user or user must be
 trying to get its own info.
 
-List users:: Superusers can see all users. Other users can see only users over
+List users                     :: Superusers can see all users. Other users can see only users over
 which they have a permission.
 
 === Roles
 
-Create a role:: `create` permission over `role:*`.
+Create a role               :: `create` permission over `role:*`.
 
-Delete a role:: `delete` permission over the role.
+Delete a role               :: `delete` permission over the role.
 
-Assign a role to a user:: `grant` permission over the role **and** user must
+Assign a role to a user     :: `grant` permission over the role **and** user must
 have all the permissions associated to the role.
 
-Unassign a role from a user:: `revoke` permission over the role **and** user
+Unassign a role from a user :: `revoke` permission over the role **and** user
 must have all the permissions associated to the role.
 
-List roles:: Superusers can see all roles. Other users can see only roles they
+List roles                  :: Superusers can see all roles. Other users can see only roles they
 have been assigned or over which they have a permission.
 
 === Databases
 
-Create a database:: `create` permission over `db:*`.
+Create a database                              :: `create` permission over `db:*`.
 
-Delete a database:: `delete` permission over `db:theDatabase`.
+Delete a database                              :: `delete` permission over `db:theDatabase`.
 
-Add/Remove integrity constraints to a database:: `write` permission over
+Add/Remove integrity constraints to a database :: `write` permission over
 `icv-constraints:theDatabase`.
 
-Verify a database is valid:: `read`
+Verify a database is valid                     :: `read`
 permission over `icv-constraints:theDatabase`.
 
-Online/Offline a database:: `execute` permission over `admin:theDatabase`.
+Online/Offline a database                      :: `execute` permission over `admin:theDatabase`.
 
-Migrate a database:: `execute` permission over `admin:theDatabase`.
+Migrate a database                             :: `execute` permission over `admin:theDatabase`.
 
-Optimize a database:: `execute` permission over `admin:theDatabase`.
+Optimize a database                            :: `execute` permission over `admin:theDatabase`.
 
-List databases:: Superusers can see all databases. Regular users can see only
+List databases                                 :: Superusers can see all databases. Regular users can see only
 databases over which they have a permission.
 
 === Permissions
 
-Grant a permission:: `grant` permission over the permission object **and** user
+Grant a permission                                              :: `grant` permission over the permission object **and** user
 must have the permission that it is trying to grant.
 
-Revoke a permission from a user or role over an object resource:: `revoke`
+Revoke a permission from a user or role over an object resource :: `revoke`
 permission over the permission object **and** user must have the permission that
 it is trying to revoke.
 
-List user permissions:: User must be a superuser or user must be trying to get
+List user permissions                                           :: User must be a superuser or user must be trying to get
 its own info.
 
-List role permissions:: User must be a superuser or user must have been assigned
+List role permissions                                           :: User must be a superuser or user must have been assigned
 the role.
 
 == Deploying Stardog Securely
