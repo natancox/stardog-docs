@@ -17,9 +17,9 @@ Stardog's command-line interface (CLI) comes in two parts:
 The admin and user's tools operate on local or remote databases, using
 either HTTP or SNARL protocols. Both of these CLI tools are Unix-only,
 are self-documenting, and the help output of these tools is their
-canonical documentation. In other words, if there is a conflict between this
-documentation and the output of the CLI tools' `help` command, the CLI
-tools' output is correct.
+canonical documentation.footnote:[In other words, if there is a
+conflict between this documentation and the output of the CLI tools'
+`help` command, the CLI output is correct.]
 
 === Help
 
