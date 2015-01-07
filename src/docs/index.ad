@@ -37,8 +37,6 @@ include::qsg.ad[]
 
 include::using.ad[]
 
-include::console.ad[]
-
 include::admin.ad[]
 
 include::cluster.ad[]
@@ -76,13 +74,16 @@ include::groovy.ad[]
 
 include::migration.ad[]
 
-include::manpages.ad[]
+= Understanding Stardog
+
+Background information on performance, testing, terminology, known issues, compatibility
+policies, etc.
+
+include::faq.ad[]
 
 include::bench.ad[]
 
 //include::testing.ad[]
-
-include::faq.ad[]
 
 include::compatibility.ad[]
 

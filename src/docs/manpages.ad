@@ -1,8 +1,3 @@
-= Understanding Stardog
-
-Background information on tuning, terminology, known issues, compatibility
-policies, etc.
-
 == Man Pages
 
 Stardog command-line interface is comprehensively documented in `man` pages that

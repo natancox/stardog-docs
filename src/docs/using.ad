@@ -619,7 +619,6 @@ that Lucene supports, with the exception of fields.
 
 For a more detailed discussion, see the http://lucene.apache.org/java/3_3_0/queryparsersyntax.html[Lucene docs].
 
-
 == Obfuscating
 
 When sharing sensitive RDF data with others, you might
@@ -659,3 +658,6 @@ for obfuscating the queries as well:
 ----
 $ stardog query obfuscate --config obfConfig.ttl myDatabase myQuery.sparql > obfQuery.ttl
 ----
+include::console.ad[]
+
+include::manpages.ad[]
