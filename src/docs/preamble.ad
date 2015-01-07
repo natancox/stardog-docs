@@ -35,22 +35,24 @@ https://groups.google.com/a/clarkparsia.com/d/forum/stardog[Stardog
 support forum] is the place to report bugs, ask questions, etc. You
 can also ask questions on Stack Overflow using the tag `stardog`.
 
-== Contributing Open Source
+== Contributing 
 
-There are many open source subsystems of Stardog; feel free to submit pull
-requests: https://github.com/clarkparsia/stardog-docs[stardog-docs],
+There are several open source components of Stardog; feel free to
+submit pull requests:
+https://github.com/clarkparsia/stardog-docs[stardog-docs],
 https://github.com/clarkparsia/stardog.js[stardog.js],
 https://github.com/clarkparsia/stardog-groovy[stardog-groovy],
 https://github.com/clarkparsia/stardog-spring[stardog-spring],
 https://github.com/antoniogarrote/stardog-rb[stardog.rb], and
-https://github.com/clarkparsia/stardog-clj[stardog-clj]. Many thanks to everyone
-who's contributed so far.footnote:[Thanks to all Stardog users, contributors,
-testers, etc., especially Robert Butler, Al Baker, Marko A. Rodriguez, Brian
-Sletten, Alin Dreghiciu, Rob Vesse, Stephane Fallah, John Goodwin, José Devezas,
-Chris Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl, Morton
-Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron Zettlemoyer, Jim
-Rhyne, Andrea Westerinen, Huy Phan, Zach Whitley, Maurice Rabb, the crew at XSB,
-and the nice people at El Rinconcito Cafe in DC.]
+https://github.com/clarkparsia/stardog-clj[stardog-clj]. Many thanks
+to Stardog customers, users, contributors, testers, etc., especially
+Robert Butler, Al Baker, Marko A. Rodriguez, Brian Sletten, Alin
+Dreghiciu, Rob Vesse, Stephane Fallah, John Goodwin, José Devezas,
+Chris Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl,
+Morton Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron
+Zettlemoyer, Jim Rhyne, Andrea Westerinen, Huy Phan, Zach Whitley,
+Maurice Rabb, the crew at XSB, and the nice people at El Rinconcito
+Cafe in DC.
 
 == Stardog Roadmap
 
@@ -78,7 +80,6 @@ is version *{docdatetime}*.] Alternate versions of this manual are coming in the
 |===
 | Version | PDF | EPUB3 | Kindle
 //| 3.0     | ✓   | ✓     | ✓
-//| 2.2.5   | ✓   | ✗     | ✗
 | 2.2.4   | ✗   | ✗     | ✗
 |===
 
