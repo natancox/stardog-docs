@@ -12,8 +12,8 @@ convert:
 		-a allow-uri-read         \
 		-a data-uri               \
 		-a stylesheet=stardog.css \
-		docs/index.ad             \
-		-o docs/index.html
+		doc/index.ad             \
+		-o doc/index.html
 
 #needs to pass -a titlelogo=stardog.png
 #needs to move header-logo.ad to no-header-logo.ad and vice versa...poor man's conditional include...
@@ -26,23 +26,23 @@ pdf:
 		-a allow-uri-read                      \
 		-a data-uri                            \
 		-a stylesheet=stardog.css              \
-		docs/index.ad                          \
-		-o docs/stardog-manual-$(VER).pdf
+		doc/index.ad                          \
+		-o doc/stardog-manual-$(VER).pdf
 
 epub: export JAVA_OPTS="-Xmx2048m"
 epub:
 	~/.gvm/asciidoctorj/1.5.2/bin/asciidoctorj -b epub3 -a allow-uri-read -a data-uri -a stylesheet=stardog.css docs/index.ad -o docs/stardog-manual-$(VER).epub
 
 clean:
-	-rm -r docs/foundation
+	-rm -r doc/foundation
 
 v: convert
 	open http://localhost:8001/
 
 serve:
-	ruby -run -e httpd docs/ -p 9090
+	ruby -run -e httpd doc/ -p 9090
 
 pub: convert
-	cp docs/index.html $(PUB)
-	cp -R docs/icv $(PUB)
-	cp docs/img/cp.png $(IMG)
+	cp doc/index.html $(PUB)
+	cp -R doc/icv $(PUB)
+	cp doc/img/cp.png $(IMG)
