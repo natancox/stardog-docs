@@ -25,8 +25,7 @@ data analytics; and programmatic interaction via several languages and
 network interfaces.
 
 To learn more about where we've been and where we're headed, consult
-the {release-notes}[release notes] and <<Stardog
-Milestones,milestones>>.
+the {release-notes}[release notes] and <<Stardog Milestones,milestones>>.
 
 == Downloading Stardog
 
@@ -64,10 +63,12 @@ Cafe in DC.
 - [x] Java 7 & Sesame 2.8/RDF 1.1
 - [x] Integrity constraint violation repair plans
 - [x] Improved query performance
-3.1 release (Q2 2015)::
+3.x releases (2015)::
 - [ ] Native support for Property Graph model
 - [ ] User-pluggable search indexers
 - [ ] Named Graph security
+- [ ] HA Cluster management service
+- [ ] HA Cluster containerization
 4.0 release (Q2 2016)::
 - [ ] Stardog Big Data
 - [ ] Declarative mappings to treat Enterprise Data Lakes as Enterprise Knowledge Graphs
