@@ -766,10 +766,10 @@ As can be seen in Figure 1, the rewriting process involves five
 different phases.
 
 .Figure 1 Query Answering
-image::blackout.png[]
+image::blackout.png[Blackout,524,308]
 
 .Figure 2. Query Rewriting
-image::blackout-internals.png[]
+image::blackout-internals.png[Blackout Internals,400,238]
 
 We illustrate the query answering process by means of an example.
 Consider a Stardog database, MyDB~1~, containing the following

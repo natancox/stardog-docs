@@ -16,19 +16,19 @@ To login into the Stardog Web Console, provide your username and password. If
 you're an administrative user, you'll have all the operations available,
 otherwise the functionality will be limited by your permissions.
 
-image::screen_login.png[]
+image::screen_login.png[Login,1394,1405]
 
 ==== Homepage
 
-image::screen_home.png[]
+image::screen_home.png[Home,1394,1405]
 
 ==== Databases
 
-image::screen_dbs.png[]
+image::screen_dbs.png[Databases,1394,1405]
 
 ==== View a database settings
 
-image::screen_db_view.png[]
+image::screen_db_view.png[Database View,1394,1405]
 
 ==== Database Status
 
@@ -57,7 +57,7 @@ menu:Offline[Optimize]:: Optimize an existing database
 
 To drop a database click on btn:[Drop], a confirmation will appear to verify the removal.
 
-image::screen_delete_confirm.png[]
+image::screen_delete_confirm.png[Confirm,1394,1405]
 
 ==== Creating a new database
 
@@ -67,7 +67,7 @@ All values are optional except the database name, and all of them are pre-filled
 with the default values. You can finish the wizard to create a DB since the
 first step, just typing the database name and finish.
 
-image::screen_new_db.png[]
+image::screen_new_db.png[New Database,1394,1405]
 
 You can go through the wizard with btn:[Next] and btn:[Back], setting up
 every section of the database options. Every option contains help as a tooltip
@@ -81,34 +81,34 @@ once it has been created in Stardog.
 
 You can browse the database as Linked Data graph, too.
 
-image::screen_instance_browsing.png[]
+image::screen_instance_browsing.png[Linked Data,1394,1392]
 
 ==== Browsing the Schema
 
 You can browse the schema (the class and property trees).
 
-image::screen_schema_browsing.png[]
+image::screen_schema_browsing.png[Schema Browsing,1394,1392]
 
 ==== Querying a database
 
 Stardog Web Console includes a SPARQL query editor for executing queries against
 the database; the editor includes some canned exploration queries, too.
 
-image::screen_sparql_query.png[]
+image::screen_sparql_query.png[SPARQL,1394,1392]
 
-image::screen_exploration_queries.png[]
+image::screen_exploration_queries.png[Exploration Queries,1394,1392]
 
 ==== Searching a database
 
 You can search the contents of the database using Stardog's search capability.
 
-image::screen_semantic_search.png[]
+image::screen_semantic_search.png[Search,1394,1392]
 
 ==== Editing data in a database
 
 You can edit any statements in the database (with the requisite permissions).
 
-image::screen_editing.png[]
+image::screen_editing.png[Editing,1394,1392]
 
 ==== Listing in-flight queries
 
@@ -118,7 +118,7 @@ queries. This listing is refreshed constantly to reflect the running queries in
 real time, if you have a query that has been running for a while it will be
 shown here.
 
-image::screen_query_list.png[]
+image::screen_query_list.png[Query List,1394,1415]
 
 ==== View an in-flight query
 
@@ -127,7 +127,7 @@ information, such as the user who posted the query, the database it is running
 on, the reasoning level used for the query and the related timestamps. The query
 will be shown at the bottom.
 
-image::screen_query_info.png[]
+image::screen_query_info.png[Query Info,1394,1415]
 
 To kill a query in-flight, click on the query element in the listing to expand
 it and show its related information, a btn:[Kill] button will be shown, you can click
@@ -137,7 +137,7 @@ on that button to terminate the query.
 
 On the navbar, menu:Security[Users] will give a listing of the existent users in the system.
 
-image::screen_users.png[]
+image::screen_users.png[Users,1394,1405]
 
 ==== View user permissions & roles
 
@@ -152,7 +152,7 @@ To assign the user to a role, just type the role name in the `Add role` input
 and click btn:[Add]. The role names will be autocompleted to the ones already
 existing in the system.
 
-image::screen_user_view.png[]
+image::screen_user_view.png[User View,1394,1405]
 
 ==== Create a new user
 
@@ -160,13 +160,13 @@ To create a new user click btn:[New User] and provide the required
 information on the new User popup modal. You'll be redirected to the user's view
 once it has been created in Stardog.
 
-image::screen_new_user.png[]
+image::screen_new_user.png[New User,1394,1405]
 
 ==== Listing roles
 
 On the navbar, menu:Security[Roles] for a listing of the extant roles.
 
-image::screen_roles.png[]
+image::screen_roles.png[Roles,1394,1405]
 
 ==== View role permissions & users assigned to it
 
@@ -181,4 +181,4 @@ To assign a user to the role, just type the username in the `Add user` input and
 click btn:[Add]. The usernames will be autocompleted to the ones already existing
 in the system.
 
-image::screen_role_view.png[]
+image::screen_role_view.png[Screen Role,1394,1405]
