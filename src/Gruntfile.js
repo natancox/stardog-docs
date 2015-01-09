@@ -24,10 +24,14 @@ module.exports = function(grunt) {
               },
           }
       },
+      concat: {
+          css: {
+              src: ['style/stylesheets/stardog.css', 'style/stylesheets/github.min.css'],
+              dest: 'style/stylesheets/stardog.css'
+          },
+      },
       //TODO
-      //optimize img/cp.png
       //get rid of @import for google fonts... how?
-      //4 external stylesheets? inline github css... is there some other css?
       //1. download github css for highlight, concat it to Stardog's css; then proceed as normally?
       //3. Optimize fonts
       //5. Inline highlight JS
@@ -144,6 +148,7 @@ module.exports = function(grunt) {
       },
       clean: {
           css: ["website/stardog.css"],
+          css2: ["style/stylesheets/stardog.css"],
           build: ["website"],
           release: ["doc/optimized-img"]
       },
@@ -180,8 +185,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-embed');
     grunt.loadNpmTasks('grunt-available-tasks');
-    grunt.loadNpmTasks('grunt-newer');
     grunt.loadNpmTasks('grunt-open');
+    grunt.loadNpmTasks('grunt-http');
+    grunt.loadNpmTasks('grunt-contrib-concat');
                    
                   
     // Default task(s).
@@ -199,7 +205,19 @@ module.exports = function(grunt) {
                                    'clean:css',
                                    'open:dev']);
     //probably should do some clean first here...
-    grunt.registerTask('pub', ['clean:build','compass','shell','replace','htmlmin','copy:img','copy:main','copy:css','uncss','cssmin','embed','clean:css','copy:pub']);
+    grunt.registerTask('pub', ['clean:build',
+                               'compass',
+                               'shell',
+                               'replace',
+                               'htmlmin',
+                               'copy:img',
+                               'copy:main',
+                               'copy:css',
+                               'uncss',
+                               'cssmin',
+                               'embed',
+                               'clean:css',
+                               'copy:pub']);
     grunt.registerTask('cl', ['clean:build']);
     grunt.registerTask('t', ['availabletasks:tasks']);
 };

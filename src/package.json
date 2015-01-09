@@ -35,6 +35,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-embed": "^0.2.1",
     "grunt-filerev": "^2.1.2",
+    "grunt-http": "^1.5.0",
     "grunt-inline-css": "^0.1.4",
     "grunt-newer": "^1.0.0",
     "grunt-open": "^0.2.3",
