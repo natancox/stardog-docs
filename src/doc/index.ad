@@ -4,7 +4,7 @@
 :revnumber: {version}
 :release-date: 11 December 2014
 :release-name:
-:toc: left
+:toc: right 
 :toc-title: {title}
 :toclevels: 1 
 :experimental:
