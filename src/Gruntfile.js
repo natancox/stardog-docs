@@ -24,12 +24,25 @@ module.exports = function(grunt) {
               },
           }
       },
+      //TODO
+      //optimize img/cp.png
+      //get rid of @import for google fonts... how?
+      //4 external stylesheets? inline github css... is there some other css?
+      //1. download github css for highlight, concat it to Stardog's css; then proceed as normally?
+      //3. Optimize fonts
+      //5. Inline highlight JS
+      //7. Optimize build: Asciidoctor.js, native sass?, composite targets, http server, newer, livereload, concurrent, asset revisions
+      //8. figure out live examples...
+      //9. move to s3/cloudfront/53
       uncss: {
           dist: {
               files: {
                   'website/stardog.css': ['website/index.html']
               }
           }
+      },
+      availabletasks: {     
+          tasks: {}
       },
       imagemin: {
           dynamic: {
@@ -44,7 +57,7 @@ module.exports = function(grunt) {
               }]
           }
       },
-      shell: {
+      shell: { //replace me with ascidoctor.js
           build: {
               command: function () {
                   comm = "asciidoctor ";
@@ -75,9 +88,9 @@ module.exports = function(grunt) {
           },
           img: {
               nonull:true,
-              cwd: 'doc/',
-              src: 'img/cp.png',
-              dest: 'website/',
+              cwd: 'doc/optimized-img/',
+              src: 'cp.png',
+              dest: 'website/img/',
               expand: true,
           },
           css: {
@@ -104,8 +117,16 @@ module.exports = function(grunt) {
               }
           },
       },
-      // somehow embedding the wrong css, one which hasn't been uncss'ified
-      //disabled for now
+       open: {
+           dev: {
+               path: 'http://127.0.0.1:8001',
+               app: 'Safari',
+           },
+           prod: {
+               path : 'http://docs.stardog.com/',
+               app: 'Google Chrome'
+           },
+      },
       embed: {
           dist: {
               options: {
@@ -120,6 +141,11 @@ module.exports = function(grunt) {
           dist: {
               files: {'website/stardog.css': ['website/stardog.css']}
           }
+      },
+      clean: {
+          css: ["website/stardog.css"],
+          build: ["website"],
+          release: ["doc/optimized-img"]
       },
       replace: {
           main: {
@@ -145,6 +171,7 @@ module.exports = function(grunt) {
     // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-compass');
@@ -152,8 +179,27 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-embed');
-
+    grunt.loadNpmTasks('grunt-available-tasks');
+    grunt.loadNpmTasks('grunt-newer');
+    grunt.loadNpmTasks('grunt-open');
+                   
+                  
     // Default task(s).
     //grunt.registerTask('default', ['shell:build:2.2.4:"11 December 2014"']);
-    grunt.registerTask('default', ['shell:build']);
+    grunt.registerTask('default', ['compass',
+                                   'shell',
+                                   'replace',
+                                   'htmlmin',
+                                   'copy:img',
+                                   'copy:main',
+                                   'copy:css',
+                                   'uncss',
+                                   'cssmin',
+                                   'embed',
+                                   'clean:css',
+                                   'open:dev']);
+    //probably should do some clean first here...
+    grunt.registerTask('pub', ['clean:build','compass','shell','replace','htmlmin','copy:img','copy:main','copy:css','uncss','cssmin','embed','clean:css','copy:pub']);
+    grunt.registerTask('cl', ['clean:build']);
+    grunt.registerTask('t', ['availabletasks:tasks']);
 };
