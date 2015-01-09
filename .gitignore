@@ -21,3 +21,6 @@ src/docs/index.ad.BASE.18040.ad
 src/docs/index.ad.LOCAL.18040.ad
 src/docs/index.ad.REMOTE.18040.ad
 src/doc/index.html
+src/website
+src/.sass-cache
+src/node_modules
