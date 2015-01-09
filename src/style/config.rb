@@ -1,5 +1,4 @@
 require 'zurb-foundation'
-require './lib/functions'
 
 http_path = '/'
 css_dir = 'stylesheets'
@@ -18,3 +17,10 @@ line_comments = false
 
 # doesn't seem to work
 #asset_cache_buster = false
+module Sass::Script::Functions
+  # TODO document me
+  def string_to_color(name)
+    # FIXME check to see if a color could be found, don't just assume
+    Sass::Script::Color.new Sass::Script::Color::COLOR_NAMES[name.value]
+  end
+end
