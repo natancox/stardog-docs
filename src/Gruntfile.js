@@ -91,7 +91,7 @@ module.exports = function(grunt) {
           img: {
               nonull:true,
               cwd: 'doc/optimized-img/',
-              src: 'cp.png',
+              src: ['cp.png', 'ClassDiagram.png'],
               dest: 'website/img/',
               expand: true,
           },
@@ -149,6 +149,15 @@ module.exports = function(grunt) {
           css2: ["style/stylesheets/stardog.css"],
           build: ["website"],
           release: ["doc/optimized-img"]
+      },
+      "link-checker": {
+          options: {
+              maxConcurrency: 20,
+              noFragment: true,
+          },
+          web: {
+              site: "docs.stardog.com"
+          }
       },
       replace: {
           main: {
@@ -219,4 +228,5 @@ module.exports = function(grunt) {
                                'copy:pub']);
     grunt.registerTask('cl', ['clean:build']);
     grunt.registerTask('t', ['availabletasks:tasks']);
+    grunt.registerTask('lc', ['link-checker:web']);
 };
