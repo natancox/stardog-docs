@@ -54,8 +54,7 @@ validly inferred by Stardog.**
 
 When ICV is enabled for a Stardog database, it has to be enabled with respect to
 a reasoning type or level. The valid choices of reasoning type are any type or
-kind of reasoning supported by Stardog. See link:/owl2#reasoning[Stardog's reasoning & inference
-chapter] for the details.
+kind of reasoning supported by Stardog. See <<OWL & Rule Reasoning>> for the details.
 
 So ICV is performed with three inputs:
 
@@ -954,8 +953,8 @@ more information on using SNARL in general, please refer to the
 chapter on link:/java[programming Stardog with Java].
 
 There is command-line interface support for many of the operations
-necessary to using ICV with a Stardog database; please see the
-link:/admin[Admin] chapter for that documentation.
+necessary to using ICV with a Stardog database; please see
+<<Administering Stardog>> for details.
 
 To use ICV in Stardog, one must:
 

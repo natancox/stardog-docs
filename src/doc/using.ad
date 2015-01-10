@@ -370,7 +370,7 @@ If you want to add data to a named graph, specify it via the
 
 === Removing Data with the CLI
 
-To remove data from a Stardog database, link:/docs/man/data-remove.html[`remove`]
+To remove data from a Stardog database, link:/man/data-remove.html[`remove`]
 is used by specifying
 
 1.  one Named Graph, _or_
@@ -436,7 +436,7 @@ $ stardog-admin db create -o versioning.enabled=true -n myDb
 This option can also be set after database creation using the `stardog-admin metadata set` command.
 
 The following examples give a *very brief overview* of this capability;
-see the link:/manpages/[VCS man pages] for all the details.
+see the link:/man/[VCS man pages] for all the details.
 
 === Committing Changes
 
@@ -513,7 +513,7 @@ $ stardog vcs query myDb 'SELECT...'
 == Exporting
 
 To export data from a Stardog database back to RDF,
-link:/docs/man/data-export.html[`export`] is used by specifying
+link:/man/data-export.html[`export`] is used by specifying
 
 1. the connection string of the database to export
 2. the export format: `N-TRIPLES, RDF/XML, TURTLE, TRIG`. The default is
@@ -571,7 +571,7 @@ you like to enhance your initial search results.
 === Searching with the Command Line
 
 First, check out the
-link:/docs/man/query-search.html[`search` man page]:
+link:/man/query-search.html[`search` man page]:
 
 [source,bash]
 ----
