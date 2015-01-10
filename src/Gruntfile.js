@@ -32,10 +32,8 @@ module.exports = function(grunt) {
       },
       //TODO
       //get rid of @import for google fonts... how?
-      //1. download github css for highlight, concat it to Stardog's css; then proceed as normally?
       //3. Optimize fonts
-      //5. Inline highlight JS
-      //7. Optimize build: Asciidoctor.js, native sass?, composite targets, http server, newer, livereload, concurrent, asset revisions
+      //7. Optimize build: Asciidoctor.js, native sass?, composite targets, livereload, concurrent, asset revisions
       //8. figure out live examples...
       //9. move to s3/cloudfront/53
       uncss: {
@@ -174,21 +172,22 @@ module.exports = function(grunt) {
   });
 
     // Load the plugin that provides the "uglify" task.
-    grunt.loadNpmTasks('grunt-shell');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-text-replace');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-contrib-compass');
-    grunt.loadNpmTasks('grunt-uncss');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    grunt.loadNpmTasks('grunt-embed');
-    grunt.loadNpmTasks('grunt-available-tasks');
-    grunt.loadNpmTasks('grunt-open');
-    grunt.loadNpmTasks('grunt-http');
-    grunt.loadNpmTasks('grunt-contrib-concat');
+    // grunt.loadNpmTasks('grunt-shell');
+    // grunt.loadNpmTasks('grunt-contrib-copy');
+    // grunt.loadNpmTasks('grunt-contrib-clean');
+    // grunt.loadNpmTasks('grunt-text-replace');
+    // grunt.loadNpmTasks('grunt-contrib-imagemin');
+    // grunt.loadNpmTasks('grunt-contrib-compass');
+    // grunt.loadNpmTasks('grunt-uncss');
+    // grunt.loadNpmTasks('grunt-contrib-cssmin');
+    // grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    // grunt.loadNpmTasks('grunt-embed');
+    // grunt.loadNpmTasks('grunt-available-tasks');
+    // grunt.loadNpmTasks('grunt-open');
+    // grunt.loadNpmTasks('grunt-http');
+    // grunt.loadNpmTasks('grunt-contrib-concat');
                    
+    require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
                   
     // Default task(s).
     //grunt.registerTask('default', ['shell:build:2.2.4:"11 December 2014"']);
