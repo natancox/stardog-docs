@@ -436,7 +436,7 @@ $ stardog-admin db create -o versioning.enabled=true -n myDb
 This option can also be set after database creation using the `stardog-admin metadata set` command.
 
 The following examples give a *very brief overview* of this capability;
-see the link:/man/[VCS man pages] for all the details.
+see the <<Man Pages>> for all the details.
 
 === Committing Changes
 
