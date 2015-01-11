@@ -91,9 +91,16 @@ module.exports = function(grunt) {
           img: {
               nonull:true,
               cwd: 'doc/optimized-img/',
-              src: ['cp.png', 'ClassDiagram.png'],
+              src: ['cp.png',],
               dest: 'website/img/',
               expand: true,
+          },
+          icv_img: {
+              nonull: true,
+              cwd: 'doc/optimized-img',
+              src: 'ClassDiagram.png',
+              dest: 'website/icv/',
+              expand: true
           },
           css: {
               nonull:true,
@@ -205,6 +212,7 @@ module.exports = function(grunt) {
                                    'replace',
                                    'htmlmin',
                                    'copy:img',
+                                   'copy:icv_img',
                                    'copy:main',
                                    'copy:css',
                                    'uncss',
@@ -219,6 +227,7 @@ module.exports = function(grunt) {
                                'replace',
                                'htmlmin',
                                'copy:img',
+                               'copy:icv_img',
                                'copy:main',
                                'copy:css',
                                'uncss',
