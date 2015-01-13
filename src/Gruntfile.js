@@ -26,16 +26,12 @@ module.exports = function(grunt) {
       },
       concat: {
           css: {
-              src: ['style/stylesheets/stardog.css', 'style/stylesheets/github.min.css'],
+              src: ['style/stylesheets/stardog.css',
+                    //'bower_components/icono/icono.min.css',
+                    'style/stylesheets/github.min.css'],
               dest: 'style/stylesheets/stardog.css'
           },
       },
-      //TODO
-      //get rid of @import for google fonts... how?
-      //3. Optimize fonts
-      //7. Optimize build: Asciidoctor.js, native sass?, composite targets, livereload, concurrent, asset revisions
-      //8. figure out live examples...
-      //9. move to s3/cloudfront/53
       uncss: {
           dist: {
               files: {
@@ -171,6 +167,9 @@ module.exports = function(grunt) {
               src: ['website/index.html'],
               overwrite: true,
               replacements: [{
+                  from: "</title>",
+                  to: "</title><link href='http://fonts.googleapis.com/css?subset=latin-ext&family=Source+Sans+Pro:200,300,400,600,400italic|Anonymous+Pro:400,400italic' rel='stylesheet' type='text/css'>"
+              },{
                   from: '<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>',
                   to: ''
               },{
