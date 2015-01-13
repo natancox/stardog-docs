@@ -1,12 +1,9 @@
-optimze fonts & get rid of @import for google fonts
+use breakpoint to clean up media queries
 
 icono fonts
 
-use bower to manage highlight.js myself, turn it off in asciidoctor
+bower to manage highlight.js, turn it off in asciidoctor
 
-figure out live examples
+live examples
 
-move to s3/cloudfront/53
-
-move to mimosa? jake?
- 
+move to s3/cloudfront
