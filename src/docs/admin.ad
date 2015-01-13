@@ -553,22 +553,22 @@ The following table summarizes the options:
 |`icv.active.graphs`
 | No
 | `default`
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#ICV_ACTIVE_GRAPHS[DatabaseOptions.ICV_ACTIVE_GRAPHS]
+| link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_ACTIVE_GRAPHS[ICVOptions.ICV_ACTIVE_GRAPHS]
 
 |icv.consistency.automatic
 | No
 | `false`
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#ICV_CONSISTENCY_AUTOMATIC[DatabaseOptions.ICV_CONSISTENCY_AUTOMATIC]
+| link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_CONSISTENCY_AUTOMATIC[ICVOptions.ICV_CONSISTENCY_AUTOMATIC]
 
 |`icv.enabled`
 | Yes
 | `false`
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#ICV_ENABLED[DatabaseOptions.ICV_ENABLED]
+| link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_ENABLED[ICVOptions.ICV_ENABLED]
 
 |`icv.reasoning.type`
 | Yes
 | `NONE`
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#ICV_REASONING_TYPE[DatabaseOptions.ICV_REASONING_TYPE]
+| link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_REASONING_TYPE[ICVOptions.ICV_REASONING_TYPE]
 
 |`index.connection.timeout`
 | Yes
@@ -623,22 +623,22 @@ The following table summarizes the options:
 |`reasoning.consistency.automatic`
 | Yes
 | `false`
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#CONSISTENCY_AUTOMATIC[DatabaseOptions.CONSISTENCY_AUTOMATIC]
+| link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#CONSISTENCY_AUTOMATIC[ReasoningOptions.CONSISTENCY_AUTOMATIC]
 
 |`reasoning.punning.enabled`
 | No
 | `false`
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#PUNNING_ENABLED[DatabaseOptions.PUNNING_ENABLED]
+| link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#PUNNING_ENABLED[ReasoningOptions.PUNNING_ENABLED]
 
 |`reasoning.schema.graphs`
 | Yes
 | `default`
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#SCHEMA_GRAPHS[DatabaseOptions.SCHEMA_GRAPHS]
+| link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#SCHEMA_GRAPHS[ReasoningOptions.SCHEMA_GRAPHS]
 
 |`search.enabled`
 | Yes
 | `false`
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#SEARCHABLE[DatabaseOptions.SEARCHABLE]
+| link:/java/snarl/com/complexible/stardog/search/SearchOptions.html#SEARCHABLE[SearchOptions.SEARCHABLE]
 
 |`transactions.durable`
 | Yes
