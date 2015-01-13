@@ -832,11 +832,6 @@ durable; durability increases the cost of all mutation operations.
 |`M`, `D`
 |disk
 
-|`--searchable`, `-s`
-|Specifies whether the database is searchable
-|
-|`false`
-
 |`--index-triples-only`, `-i`
 |Specifies that the database's indexes should be optimized for RDF triples only
 |
