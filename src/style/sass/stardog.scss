@@ -1,9 +1,7 @@
 @import "settings/stardog";
 @import "components/asciidoc";
-//@import "components/awesome-icons";
 
 // Your custom SCSS should be written here...
-// optimize these font weights...probably don't need all of them...
 
 html * {
    @include box-sizing(border-box);
@@ -48,6 +46,11 @@ html, body {
    
 }
 
+#toctitle {
+          @include tablet {
+          display:none;
+          }
+}
 
 #header > h1:first-child {
     color: $sd-lime;
