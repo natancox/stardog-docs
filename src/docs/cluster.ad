@@ -51,7 +51,7 @@ information **for each node in the cluster**:
 # Flag to enable the cluster, without this flag set, the rest of the properties have no effect
 pack.enabled=true
 # this node's IP address (or hostname), and port where other Stardog nodes are going to connect
-pack.node.address=196.69.68.1:5821
+pack.node.address=196.69.68.1
 # the connection string for ZooKeeper where cluster state is stored
 pack.cluster.address=196.69.68.1:2180,196.69.68.2:2180,196.69.68.3:2180
 # credentials used for securing ZooKeeper state
@@ -61,9 +61,12 @@ pack.cluster.password=admin
 +
 `pack.cluster.address` is a ZooKeeper connection string where cluster stores its
 state. `pack.cluster.username` and `pack.cluster.password` are user and password
-tokens for cluster communications and may be different from actual Stardog users
+tokens for ZooKeeper cluster communications and may be different from actual Stardog users
 and passwords; however, **all nodes must use the same user and password
-combination.**
+combination.** `pack.node.address` is not a required property.  The local address of the node, by default,
+is `InetAddress.getLocalhost().getAddress()`, which should work for many deployments.  However if you're
+using an atypical network topology and the default value is not correct, you can provide a value for this
+property.
 +
 . Create the ZooKeeper configuration for each node. This config file is just a standard ZooKeeper configuration file. The following
 config file should be sufficient for most cases.
@@ -75,7 +78,7 @@ On node 1:
 tickTime=2000
 # Make sure this directory exists and
 # ZK can write and read to and from it.
-dataDir=/tmp/zookeeperdata/
+dataDir=/data/zookeeperdata/
 clientPort=2180
 initLimit=5
 syncLimit=2
@@ -92,7 +95,7 @@ On node 2:
 [source,bash]
 ----
 tickTime=2000
-dataDir=/tmp/zookeeperdata/
+dataDir=/data/zookeeperdata/
 clientPort=2180
 initLimit=5
 syncLimit=2
@@ -106,7 +109,7 @@ Finally, on node 3:
 [source,bash]
 ----
 tickTime=2000
-dataDir=/tmp/zookeeperdata/
+dataDir=/data/zookeeperdata/
 clientPort=2180
 initLimit=5
 syncLimit=2
@@ -123,9 +126,9 @@ writes log information about the cluster.
 +
 [source,bash]
 ----
-$ mkdir /tmp/zookeeperdata # on node 1
-$ mkdir /tmp/zookeeperdata # on node 2
-$ mkdir /tmp/zookeeperdata # on node 3
+$ mkdir /data/zookeeperdata # on node 1
+$ mkdir /data/zookeeperdata # on node 2
+$ mkdir /data/zookeeperdata # on node 3
 ----
 +
 . ZooKeeper requires a `myid` file in the `dataDir` folder to identify itself, you will create that file as follows
@@ -133,9 +136,9 @@ for `node1` and `node2`, respectively:
 +
 [source,bash]
 ----
-$ echo 1 > /tmp/zookeeperdata/myid # on node 1
-$ echo 2 > /tmp/zookeeperdata/myid # on node 2
-$ echo 3 > /tmp/zookeeperdata/myid # on node 3
+$ echo 1 > /data/zookeeperdata/myid # on node 1
+$ echo 2 > /data/zookeeperdata/myid # on node 2
+$ echo 3 > /data/zookeeperdata/myid # on node 3
 ----
 
 == Installation
@@ -232,7 +235,7 @@ Stardog configuration::
 ZooKeeper configuration::
 
 * different, that is, non-overlapping port ranges for each node
-* different data directory for each node (e.g., different subdirectories in `/tmp/zookeeperdata`)
+* different data directory for each node (e.g., different subdirectories in `/data/zookeeperdata`)
 
 ****
 
