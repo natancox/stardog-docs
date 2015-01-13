@@ -25,3 +25,4 @@ src/website
 src/.sass-cache
 src/node_modules
 src/style/stylesheets/github.min.css
+src/bower_components
