@@ -611,6 +611,23 @@ that Lucene supports, with the exception of fields.
 
 For a more detailed discussion, see the http://lucene.apache.org/java/3_3_0/queryparsersyntax.html[Lucene docs].
 
+=== Search Admin
+
+Full-text support for a database is disabled by default but can be enabled at any time by setting the configuration option `search.enabled` to true. For example, you can create a database with full-text support as follows:
+
+[source,bash]
+----
+$ stardog-admin db create -o search.enabled=true -n myDb
+----
+
+Normally the search indexes are fully updated within a transaction in a synchronous manner; 
+changes to the RDF index are always reflected immediately in the Lucene index.  Updates can be
+asynchronous where they'll be made outside of the transaction, or run regularly via a scheduled
+job.  This behavior can be configured by the `search.reindex.mode` database option.
+
+The legal value of `search.reindex.mode` is one of the strings `sync` or
+`async` (case insensitive) or a legal http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger[Quartz cron
+expression].
 
 == Obfuscating
 
