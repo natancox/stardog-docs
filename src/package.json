@@ -36,6 +36,7 @@
     "grunt-embed": "^0.2.1",
     "grunt-filerev": "^2.1.2",
     "grunt-http": "^1.5.0",
+    "grunt-inline": "^0.3.4",
     "grunt-inline-css": "^0.1.4",
     "grunt-link-checker": "0.0.6",
     "grunt-newer": "^1.0.0",
