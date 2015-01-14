@@ -42,21 +42,30 @@ $cols: 12 !default;
 $hybrid: 16 !default;
 
 // Responsiveness Settings
-$min-device-width: 320px;
-$tablet-device-width: 768px;
+//$min-device-width: 320px;
+//$tablet-device-width: 768px;
 $document-width: $row-max-width;
-$max-device-width: 2880px;
+//$max-device-width: 2880px;
+//$desktop-width: 1024px;
+
+$tablet-width: 768px;
 $desktop-width: 1024px;
 
 @mixin tablet {
-  @media (min-width: #{$tablet-device-width}) and (max-width: #{$desktop-width - 1px}) {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width}) { 
     @content;
   }
 }
 
 @mixin desktop {
-  @media (min-width: #{$desktop-width}) {
+  @media (min-width: #{$desktop-width} + 1px) {
     @content;
+  }
+}
+
+@mixin cell {
+       @media (max-width: 736px) {
+       @content;
   }
 }
 

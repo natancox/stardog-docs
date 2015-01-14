@@ -39,31 +39,34 @@ html, body {
    font-weight: 300;
    font-size: 56px;
 
-   @include tablet {
-   text-transform: uppercase;
-   font-weight: 200;
+   @include cell {
+            text-transform: uppercase;
+            font-weight: 200;
    }
    
 }
 
 #toctitle {
-          @include tablet {
+          @include cell {
           display:none;
           }
 }
 
 #header > h1:first-child {
     color: $sd-lime;
-
-    @include tablet {
-    font-size: 60px;
-    font-weight: 200;
-    text-transform: uppercase;
-    }
-
-    @include desktop {
     font-size: 100px;
     font-weight: 200;
+
+    @include tablet {
+        font-size: 52px;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+
+    @include cell {
+             font-size: 32px;
+             font-weight: 200;
+             text-transform: uppercase;
     }
 }
 
