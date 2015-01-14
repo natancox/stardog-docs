@@ -27,7 +27,6 @@ module.exports = function(grunt) {
       concat: {
           css: {
               src: ['style/stylesheets/stardog.css',
-                    //'bower_components/icono/icono.min.css',
                     'style/stylesheets/github.min.css'],
               dest: 'style/stylesheets/stardog.css'
           },
@@ -55,7 +54,7 @@ module.exports = function(grunt) {
               }]
           }
       },
-      shell: { //replace me with ascidoctor.js
+      shell: { //me with ascidoctor.js
           build: {
               command: function () {
                   comm = "asciidoctor ";
@@ -82,13 +81,6 @@ module.exports = function(grunt) {
               cwd: 'doc/',
               src: 'icv/*',
               dest: 'website/',
-              expand: true,
-          },
-          img: {
-              nonull:true,
-              cwd: 'doc/optimized-img/',
-              src: ['cp.png',],
-              dest: 'website/img/',
               expand: true,
           },
           icv_img: {
@@ -162,13 +154,22 @@ module.exports = function(grunt) {
               site: "docs.stardog.com"
           }
       },
+      inline: {
+          dist: {
+              options:{
+                  tag: 'img'
+              },
+              src: 'website/index.html',
+              dest: 'website/index.html'
+          }
+      },
       replace: {
           main: {
               src: ['website/index.html'],
               overwrite: true,
               replacements: [{
                   from: "</title>",
-                  to: "</title><link href='http://fonts.googleapis.com/css?subset=latin-ext&family=Source+Sans+Pro:200,300,400,600,400italic|Anonymous+Pro:400,400italic' rel='stylesheet' type='text/css'>"
+                  to: "</title><link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,400italic|Anonymous+Pro:400,400italic' rel='stylesheet' type='text/css'>"
               },{
                   from: '<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>',
                   to: ''
@@ -186,53 +187,23 @@ module.exports = function(grunt) {
       },
   });
 
-    // Load the plugin that provides the "uglify" task.
-    // grunt.loadNpmTasks('grunt-shell');
-    // grunt.loadNpmTasks('grunt-contrib-copy');
-    // grunt.loadNpmTasks('grunt-contrib-clean');
-    // grunt.loadNpmTasks('grunt-text-replace');
-    // grunt.loadNpmTasks('grunt-contrib-imagemin');
-    // grunt.loadNpmTasks('grunt-contrib-compass');
-    // grunt.loadNpmTasks('grunt-uncss');
-    // grunt.loadNpmTasks('grunt-contrib-cssmin');
-    // grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    // grunt.loadNpmTasks('grunt-embed');
-    // grunt.loadNpmTasks('grunt-available-tasks');
-    // grunt.loadNpmTasks('grunt-open');
-    // grunt.loadNpmTasks('grunt-http');
-    // grunt.loadNpmTasks('grunt-contrib-concat');
-                   
     require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
                   
-    // Default task(s).
-    //grunt.registerTask('default', ['shell:build:2.2.4:"11 December 2014"']);
-    grunt.registerTask('default', ['compass',
+    grunt.registerTask('default', ['clean:build',
+                                   'compass',
                                    'shell',
                                    'replace',
                                    'htmlmin',
-                                   'copy:img',
                                    'copy:icv_img',
                                    'copy:main',
                                    'copy:css',
                                    'uncss',
                                    'cssmin',
                                    'embed',
+                                   'inline',
                                    'clean:css',
                                    'open:dev']);
-    //probably should do some clean first here...
-    grunt.registerTask('pub', ['clean:build',
-                               'compass',
-                               'shell',
-                               'replace',
-                               'htmlmin',
-                               'copy:img',
-                               'copy:icv_img',
-                               'copy:main',
-                               'copy:css',
-                               'uncss',
-                               'cssmin',
-                               'embed',
-                               'clean:css',
+    grunt.registerTask('pub', ['default',
                                'copy:pub']);
     grunt.registerTask('cl', ['clean:build']);
     grunt.registerTask('t', ['availabletasks:tasks']);
