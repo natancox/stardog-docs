@@ -10,10 +10,10 @@ terminology.
 The semantics of Stardog's reasoning is based in part on the
 http://www.w3.org/TR/2010/WD-sparql11-entailment-20100126/#id45013[OWL 2 Direct
 Semantics Entailment Regime]. However, the **implementation** of Stardog's
-reasoning system is worth understanding as well. **__Stardog performs reasoning
+reasoning system is worth understanding as well. **Stardog performs reasoning
 in a lazy and late-binding fashion: it does not materialize inferences; but,
 rather, reasoning is performed at query time according to a user-specified
-"reasoning level".__**  This approach allows for maximum
+"reasoning level".**  This approach allows for maximum
 flexibilityfootnote:[You only pay for the reasoning that you use; no more and no
 less. Eager materialization is a great strategy for hard disk manufacturers.]
 while maintaining excellent performance and scalability.
