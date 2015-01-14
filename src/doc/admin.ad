@@ -276,7 +276,7 @@ But how do we easily upgrade between versions? The key is judicious use of
 `STARDOG_HOME`. Best practice is to keep installation directories for different
 versions separate and use a `STARDOG_HOME` in another location for storing
 databases.footnote:[We're big fans of /opt/stardog/{$version} and setting
-`STARDOG_HOME` to /var/stardog` but YMMV.] One you set your `STARDOG_HOME` environment
+`STARDOG_HOME` to /var/stardog` but YMMV.] Once you set your `STARDOG_HOME` environment
 variable to point to this directory, you can simply stop the old version and
 start the new version without copying or moving any files. You can
 also specify the home directory using the `--home` argument when starting the
