@@ -370,8 +370,8 @@ If you want to add data to a named graph, specify it via the
 
 === Removing Data with the CLI
 
-To remove data from a Stardog database, link:/man/data-remove.html[`remove`]
-is used by specifying
+To remove data, use link:/man/data-remove.html[`remove`] with the
+following input(s):
 
 1.  one Named Graph, _or_
 2.  one or more files containing RDF (in some recognized serialization
