@@ -18,11 +18,6 @@ with two commands:
 
 * edit *.ad files using asciidoctor syntax
 * edit SASS stuff in style if you need to tweak CSS (you probably don't)
-* `make` in style/ builds the CSS, placing it in the `src/docs` directory
-* `make convert` in src/ builds the output (including embedding HTML and images)
-
-TODO: add a make target to move that stuff to published submodule so it can be
-published via Github Pages... There may be a Ruby gem that simplifies that which
-we can use.
+* build with grunt
 
 Be aware of [LICENSE.txt](http://creativecommons.org/licenses/by-sa/3.0/).
