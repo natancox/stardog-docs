@@ -1,9 +1,5 @@
-use breakpoint to clean up media queries
-
 icono fonts
-
 bower to manage highlight.js, turn it off in asciidoctor
-
 live examples
-
 move to s3/cloudfront
+embed fonts: http://www.leaseweblabs.com/2015/01/pro-font-embedding-not-font-linking/

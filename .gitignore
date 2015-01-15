@@ -27,3 +27,4 @@ src/node_modules
 src/style/stylesheets/github.min.css
 src/bower_components
 src/style/stylesheets/stardog.css
+src/config.codekit
