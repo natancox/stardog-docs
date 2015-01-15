@@ -69,7 +69,7 @@ module.exports = function(grunt) {
                   comm += " -a stylesheet=stardog.css"; //make an arg?
                   comm += " doc/index.ad";
                   comm += " -a data-uri"
-                  comm += " -o website/index.html"
+                  comm += " -o website/index.html 2> /dev/null"
                   //console.log(comm);
                   return comm
               }

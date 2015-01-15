@@ -53,16 +53,15 @@ html, body {
 }
 
 #header > h1:first-child {
-    color: $sd-lime;
-    font-size: 100px;
-    font-weight: 200;
+        color: $sd-lime;
+        font-size: 100px;
+        font-weight: 200;
 
     @include tablet {
         font-size: 52px;
         font-weight: 300;
         text-transform: uppercase;
     }
-
     @include cell {
              font-size: 32px;
              font-weight: 200;
