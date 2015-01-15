@@ -57,8 +57,11 @@ There are three Beans to add to a Spring application context:
 produces a `DataSource`. All of the Stardog `ConnectionConfiguration`
 and `ConnectionPoolConfig` methods are also property names of the
 `DataSourceFactoryBean`--for example, "to", "url", "createIfNotPresent".
+If you are interested in running an embedded server, use the `Provider`
+interface and inject it into the `DataSourceFactoryBean`.  Note: all of the 
+server jars must be added to your classpath for using the embedded server.
 
-`DataSource` is a Spring for Stardog class, similar to
+
 `javax.sql.DataSource`, that can be used to retrieve a `Connection` from
 the `ConnectionPool`. This additional abstraction serves as place to add
 Spring-specific capabilities (e.g. `spring-tx` support in the future)
@@ -153,6 +156,13 @@ Another example with reasoning and credentials set in the factory bean:
 [source,xml]
 ----
 include::https://gist.githubusercontent.com/AlBaker/8747480/raw/stardog-spring.xml[]
+----
+
+Another example with configuring an EmbeddedProvider to run the Stardog embedded server:
+
+[source,xml]
+----
+include::https://gist.githubusercontent.com/AlBaker/decb9874f7060d8a041f/raw/64531a77a0377cfc40eea889085cb735bb6f5ec5/beans.xml[]
 ----
 
 == Spring Batch
