@@ -1,0 +1,1140 @@
+WARN: 2015/01/15 Unable to locate layout for taxononomy tag: [taxonomy/tag.html indexes/tag.html _default/taxonomy.html _default/list.html]
+WARN: 2015/01/15 Unable to locate layout for taxononomy tag: [taxonomy/tag.html indexes/tag.html _default/taxonomy.html _default/list.html]
+WARN: 2015/01/15 Unable to locate layout for section : [section/.html _default/section.html _default/list.html indexes/.html _default/indexes.html]
+WARN: 2015/01/15 Unable to locate layout for page 2011-01-26-stardog-talk-at-nyc-semweb-meetup.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2011-05-31-stardog-performance-sp2b-benchmark.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2012-02-23-stardog-09-release-announced.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2010-09-23-the-rdf-database-market.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2012-06-18-stardog-10.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2012-09-27-stardog-whats-coming-next.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2011-01-10-stardog-beta.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2014-01-10-scalability-improvements-in-stardog-21.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2014-02-06-stardog-world-tour.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2013-04-22-stardog-12.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html]
+WARN: 2015/01/15 Unable to locate layout for homepage: [index.html _default/list.html _default/single.html]
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html]
+LOG:   2015/01/15 13:09:50 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:09:50 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:09:50 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:09:50 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:09:50 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:09:50 thatswhyyoualwaysleaveanote.go:182: in 11 ms
+WARN: 2015/01/15 Unable to locate layout for taxononomy tag: [taxonomy/tag.html indexes/tag.html _default/taxonomy.html _default/list.html theme/taxonomy/tag.html theme/indexes/tag.html theme/_default/taxonomy.html theme/_default/list.html]
+WARN: 2015/01/15 Unable to locate layout for taxononomy tag: [taxonomy/tag.html indexes/tag.html _default/taxonomy.html _default/list.html theme/taxonomy/tag.html theme/indexes/tag.html theme/_default/taxonomy.html theme/_default/list.html]
+WARN: 2015/01/15 Unable to locate layout for section : [section/.html _default/section.html _default/list.html indexes/.html _default/indexes.html theme/section/.html theme/_default/section.html theme/_default/list.html theme/indexes/.html theme/_default/indexes.html]
+WARN: 2015/01/15 Unable to locate layout for page 2010-09-23-the-rdf-database-market.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2011-01-26-stardog-talk-at-nyc-semweb-meetup.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2012-02-23-stardog-09-release-announced.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2011-05-31-stardog-performance-sp2b-benchmark.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2012-09-27-stardog-whats-coming-next.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2012-06-18-stardog-10.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2013-04-22-stardog-12.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2011-01-10-stardog-beta.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2014-01-10-scalability-improvements-in-stardog-21.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2014-02-06-stardog-world-tour.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for homepage: [index.html _default/list.html _default/single.html theme/index.html theme/_default/list.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:10:12 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:10:12 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:10:12 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:10:12 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:10:12 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:10:12 thatswhyyoualwaysleaveanote.go:182: in 12 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:11:38 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:11:38 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:11:38 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:11:38 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:11:38 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:11:38 thatswhyyoualwaysleaveanote.go:182: in 14 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:12:22 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:12:22 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:12:22 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:12:22 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:12:22 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:12:22 thatswhyyoualwaysleaveanote.go:182: in 13 ms
+LOG:   2015/01/15 13:12:22 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:12:22 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:14:32 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:14:32 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:14:32 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:14:32 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:14:32 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:14:32 thatswhyyoualwaysleaveanote.go:182: in 14 ms
+LOG:   2015/01/15 13:14:32 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:14:32 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:14:32 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:15:03 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:15:03 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:15:03 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:15:03 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:15:03 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:15:03 thatswhyyoualwaysleaveanote.go:182: in 13 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:15:11 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:15:11 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:15:11 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:15:11 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:15:11 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:15:11 thatswhyyoualwaysleaveanote.go:182: in 12 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:15:34 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:15:34 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:15:34 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:15:34 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:15:34 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:15:34 thatswhyyoualwaysleaveanote.go:182: in 14 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:15:41 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:15:41 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:15:41 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:15:41 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:15:41 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:15:41 thatswhyyoualwaysleaveanote.go:182: in 13 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:15:47 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:15:47 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:15:47 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:15:47 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:15:47 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:15:47 thatswhyyoualwaysleaveanote.go:182: in 13 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:15:51 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:15:51 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:15:51 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:15:51 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:15:51 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:15:51 thatswhyyoualwaysleaveanote.go:182: in 13 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:15:56 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:15:56 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:15:56 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:15:56 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:15:56 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:15:56 thatswhyyoualwaysleaveanote.go:182: in 14 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:17:00 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:17:00 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:17:00 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:17:00 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:17:00 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:17:00 thatswhyyoualwaysleaveanote.go:182: in 14 ms
+ERROR: 2015/01/15 Error parsing page meta data for 2012-06-18-stardog-10.md
+ERROR: 2015/01/15 Near line 2, key 'title: Stardog 1.0': Near line 3: Expected key separator '=', but got '\n' instead.
+ERROR: 2015/01/15 Near line 2, key 'title: Stardog 1.0': Near line 3: Expected key separator '=', but got '\n' instead.
+CRITICAL: 2015/01/15 Errors reading pages: Error:Near line 2, key 'title: Stardog 1.0': Near line 3: Expected key separator '=', but got '\n' instead. for 2012-06-18-stardog-10.md
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:17:37 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:17:37 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:17:37 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:17:37 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:17:37 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:17:37 thatswhyyoualwaysleaveanote.go:182: in 14 ms
+LOG:   2015/01/15 13:17:37 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:17:37 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:17:37 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:18:14 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:18:14 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:18:14 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:18:14 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:18:14 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:18:14 thatswhyyoualwaysleaveanote.go:182: in 15 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:18:58 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:18:58 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:18:58 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:18:58 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:18:58 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:18:58 thatswhyyoualwaysleaveanote.go:182: in 14 ms
+LOG:   2015/01/15 13:18:58 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:18:58 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:18:58 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:19:20 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:19:20 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:19:20 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:19:20 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:19:20 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:19:20 thatswhyyoualwaysleaveanote.go:182: in 14 ms
+LOG:   2015/01/15 13:19:20 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:19:20 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:19:20 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for taxononomy tag: [taxonomy/tag.html indexes/tag.html _default/taxonomy.html _default/list.html theme/taxonomy/tag.html theme/indexes/tag.html theme/_default/taxonomy.html theme/_default/list.html]
+WARN: 2015/01/15 Unable to locate layout for taxononomy tag: [taxonomy/tag.html indexes/tag.html _default/taxonomy.html _default/list.html theme/taxonomy/tag.html theme/indexes/tag.html theme/_default/taxonomy.html theme/_default/list.html]
+WARN: 2015/01/15 Unable to locate layout for section : [section/.html _default/section.html _default/list.html indexes/.html _default/indexes.html theme/section/.html theme/_default/section.html theme/_default/list.html theme/indexes/.html theme/_default/indexes.html]
+WARN: 2015/01/15 Unable to locate layout for page 2010-09-23-the-rdf-database-market.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2012-02-23-stardog-09-release-announced.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2011-01-26-stardog-talk-at-nyc-semweb-meetup.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2011-05-31-stardog-performance-sp2b-benchmark.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2012-09-27-stardog-whats-coming-next.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2011-01-10-stardog-beta.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2014-02-06-stardog-world-tour.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2013-04-22-stardog-12.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2014-01-10-scalability-improvements-in-stardog-21.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2012-06-18-stardog-10.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for homepage: [index.html _default/list.html _default/single.html theme/index.html theme/_default/list.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:19:36 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:19:36 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:19:36 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:19:36 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:19:36 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:19:36 thatswhyyoualwaysleaveanote.go:182: in 12 ms
+LOG:   2015/01/15 13:19:36 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:19:36 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:19:36 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+ERROR: 2015/01/15 Unable to render [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/post-title.html _default/theme/post/post-title.html theme/page/theme/post/post-title.html theme/_default/theme/post/post-title.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Unable to render [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/theme/post/frontpage-post.html _default/theme/post/frontpage-post.html theme/page/theme/post/frontpage-post.html theme/_default/theme/post/frontpage-post.html]
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:20:25 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:20:25 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:20:25 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:20:25 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:20:25 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:20:25 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+LOG:   2015/01/15 13:20:25 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:20:25 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:20:25 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+ERROR: 2015/01/15 Error while rendering taxononomy tag: html/template:theme/indexes/tag.html:24:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering taxononomy tag: html/template:theme/indexes/tag.html:24:12: no such template "chrome/footer.html"
+WARN: 2015/01/15 Unable to locate layout for section : [section/.html _default/section.html _default/list.html indexes/.html _default/indexes.html theme/section/.html theme/_default/section.html theme/_default/list.html theme/indexes/.html theme/_default/indexes.html]
+ERROR: 2015/01/15 Error while rendering page 2010-09-23-the-rdf-database-market.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2011-01-10-stardog-beta.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2011-01-26-stardog-talk-at-nyc-semweb-meetup.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2012-02-23-stardog-09-release-announced.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2011-05-31-stardog-performance-sp2b-benchmark.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2012-06-18-stardog-10.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2012-09-27-stardog-whats-coming-next.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2013-04-22-stardog-12.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2014-02-06-stardog-world-tour.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2014-01-10-scalability-improvements-in-stardog-21.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering homepage: html/template:theme/partials/header.html:5:12: no such template "theme/persona/partial/header.includes.html"
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:20:47 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:20:47 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:20:47 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:20:47 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:20:47 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:20:47 thatswhyyoualwaysleaveanote.go:182: in 28 ms
+LOG:   2015/01/15 13:20:47 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:20:47 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:20:47 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+ERROR: 2015/01/15 Error while rendering taxononomy tag: html/template:theme/indexes/tag.html:24:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering taxononomy tag: html/template:theme/indexes/tag.html:24:12: no such template "chrome/footer.html"
+WARN: 2015/01/15 Unable to locate layout for section : [section/.html _default/section.html _default/list.html indexes/.html _default/indexes.html theme/section/.html theme/_default/section.html theme/_default/list.html theme/indexes/.html theme/_default/indexes.html]
+ERROR: 2015/01/15 Error while rendering page 2011-01-26-stardog-talk-at-nyc-semweb-meetup.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2012-02-23-stardog-09-release-announced.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2010-09-23-the-rdf-database-market.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2011-05-31-stardog-performance-sp2b-benchmark.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2012-09-27-stardog-whats-coming-next.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2011-01-10-stardog-beta.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2013-04-22-stardog-12.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2012-06-18-stardog-10.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2014-01-10-scalability-improvements-in-stardog-21.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering page 2014-02-06-stardog-world-tour.md: html/template:theme/_default/single.html:21:12: no such template "chrome/footer.html"
+ERROR: 2015/01/15 Error while rendering homepage: html/template:theme/partials/header.html:5:12: no such template "theme/persona/partial/header.includes.html"
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:20:54 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:20:54 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:20:54 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:20:54 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:20:54 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:20:54 thatswhyyoualwaysleaveanote.go:182: in 14 ms
+LOG:   2015/01/15 13:20:54 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:20:54 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:20:54 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for taxononomy tag: [taxonomy/tag.html indexes/tag.html _default/taxonomy.html _default/list.html theme/taxonomy/tag.html theme/indexes/tag.html theme/_default/taxonomy.html theme/_default/list.html]
+WARN: 2015/01/15 Unable to locate layout for taxononomy tag: [taxonomy/tag.html indexes/tag.html _default/taxonomy.html _default/list.html theme/taxonomy/tag.html theme/indexes/tag.html theme/_default/taxonomy.html theme/_default/list.html]
+WARN: 2015/01/15 Unable to locate layout for section : [section/.html _default/section.html _default/list.html indexes/.html _default/indexes.html theme/section/.html theme/_default/section.html theme/_default/list.html theme/indexes/.html theme/_default/indexes.html]
+WARN: 2015/01/15 Unable to locate layout for page 2011-01-26-stardog-talk-at-nyc-semweb-meetup.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2012-02-23-stardog-09-release-announced.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2010-09-23-the-rdf-database-market.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2011-05-31-stardog-performance-sp2b-benchmark.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2011-01-10-stardog-beta.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2013-04-22-stardog-12.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2012-09-27-stardog-whats-coming-next.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2012-06-18-stardog-10.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2014-01-10-scalability-improvements-in-stardog-21.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2014-02-06-stardog-world-tour.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:21:25 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:21:25 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:21:25 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:21:25 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:21:25 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:21:25 thatswhyyoualwaysleaveanote.go:182: in 14 ms
+LOG:   2015/01/15 13:21:25 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:21:25 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:21:25 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:22:08 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:22:08 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:22:08 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:22:08 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:22:08 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:22:08 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+LOG:   2015/01/15 13:22:08 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:22:08 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:22:08 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:52:28 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:52:28 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:52:28 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:52:28 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:52:28 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:52:28 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:52:43 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:52:43 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:52:43 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:52:43 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:52:43 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:52:43 thatswhyyoualwaysleaveanote.go:182: in 15 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:53:34 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:53:34 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:53:34 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:53:34 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:53:34 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:53:34 thatswhyyoualwaysleaveanote.go:182: in 15 ms
+LOG:   2015/01/15 13:53:34 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:53:34 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:53:34 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:54:00 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:54:00 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:54:00 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:54:00 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:54:00 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:54:00 thatswhyyoualwaysleaveanote.go:182: in 15 ms
+LOG:   2015/01/15 13:54:00 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:54:00 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:54:00 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:54:40 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:54:40 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:54:40 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:54:40 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:54:40 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:54:40 thatswhyyoualwaysleaveanote.go:182: in 21 ms
+LOG:   2015/01/15 13:54:40 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:54:40 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:54:40 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+ERROR: 2015/01/15 Unable to find static directory for theme: hugo-unco in /Users/k/work/stardog-docs/src/blog/themes/hugo-unco/static/
+WARN: 2015/01/15 Unable to locate layout for taxononomy tag: [taxonomy/tag.html indexes/tag.html _default/taxonomy.html _default/list.html theme/taxonomy/tag.html theme/indexes/tag.html theme/_default/taxonomy.html theme/_default/list.html]
+WARN: 2015/01/15 Unable to locate layout for taxononomy tag: [taxonomy/tag.html indexes/tag.html _default/taxonomy.html _default/list.html theme/taxonomy/tag.html theme/indexes/tag.html theme/_default/taxonomy.html theme/_default/list.html]
+WARN: 2015/01/15 Unable to locate layout for section : [section/.html _default/section.html _default/list.html indexes/.html _default/indexes.html theme/section/.html theme/_default/section.html theme/_default/list.html theme/indexes/.html theme/_default/indexes.html]
+WARN: 2015/01/15 Unable to locate layout for page 2011-01-26-stardog-talk-at-nyc-semweb-meetup.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2010-09-23-the-rdf-database-market.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2011-05-31-stardog-performance-sp2b-benchmark.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2012-02-23-stardog-09-release-announced.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2012-09-27-stardog-whats-coming-next.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2012-06-18-stardog-10.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2011-01-10-stardog-beta.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2014-01-10-scalability-improvements-in-stardog-21.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2013-04-22-stardog-12.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for page 2014-02-06-stardog-world-tour.md: [page/single.html _default/single.html theme/page/single.html theme/_default/single.html _default/single.html theme/page/single.html theme/_default/single.html theme/theme/page/single.html theme/theme/_default/single.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for homepage: [index.html _default/list.html _default/single.html theme/index.html theme/_default/list.html theme/_default/single.html]
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:54:59 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:54:59 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:54:59 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:54:59 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:54:59 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:54:59 thatswhyyoualwaysleaveanote.go:182: in 11 ms
+LOG:   2015/01/15 13:54:59 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+ERROR: 2015/01/15 Walker:  lstat /Users/k/work/stardog-docs/src/blog/themes/hugo-unco: no such file or directory
+LOG:   2015/01/15 13:54:59 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:54:59 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:55:03 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:55:03 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:55:03 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:55:03 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:55:03 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:55:03 thatswhyyoualwaysleaveanote.go:182: in 25 ms
+LOG:   2015/01/15 13:55:03 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:55:03 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:55:03 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for taxononomy tag: [taxonomy/tag.html indexes/tag.html _default/taxonomy.html _default/list.html theme/taxonomy/tag.html theme/indexes/tag.html theme/_default/taxonomy.html theme/_default/list.html]
+WARN: 2015/01/15 Unable to locate layout for taxononomy tag: [taxonomy/tag.html indexes/tag.html _default/taxonomy.html _default/list.html theme/taxonomy/tag.html theme/indexes/tag.html theme/_default/taxonomy.html theme/_default/list.html]
+WARN: 2015/01/15 Unable to locate layout for section : [section/.html _default/section.html _default/list.html indexes/.html _default/indexes.html theme/section/.html theme/_default/section.html theme/_default/list.html theme/indexes/.html theme/_default/indexes.html]
+ERROR: 2015/01/15 Error while rendering page 2011-01-10-stardog-beta.md: template: theme/_default/single.html:14:60: executing "theme/_default/single.html" at <.Params.author.link>: can't evaluate field link in type interface {}
+ERROR: 2015/01/15 Error while rendering page 2013-04-22-stardog-12.md: template: theme/_default/single.html:14:60: executing "theme/_default/single.html" at <.Params.author.link>: can't evaluate field link in type interface {}
+ERROR: 2015/01/15 Error while rendering page 2014-01-10-scalability-improvements-in-stardog-21.md: template: theme/_default/single.html:14:60: executing "theme/_default/single.html" at <.Params.author.link>: can't evaluate field link in type interface {}
+ERROR: 2015/01/15 Error while rendering page 2014-02-06-stardog-world-tour.md: template: theme/_default/single.html:14:60: executing "theme/_default/single.html" at <.Params.author.link>: can't evaluate field link in type interface {}
+ERROR: 2015/01/15 Error while rendering page 2012-06-18-stardog-10.md: template: theme/_default/single.html:14:60: executing "theme/_default/single.html" at <.Params.author.link>: can't evaluate field link in type interface {}
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Unable to render [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+ERROR: 2015/01/15 Expecting to find a template in either the theme/layouts or /layouts in one of the following relative locations [page/summary.html _default/summary.html theme/page/summary.html theme/_default/summary.html]
+LOG:   2015/01/15 13:56:02 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:56:02 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:56:02 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:56:02 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:56:02 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:56:02 thatswhyyoualwaysleaveanote.go:182: in 38 ms
+LOG:   2015/01/15 13:56:02 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:56:02 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:56:02 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:56:21 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:56:21 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:56:21 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:56:21 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:56:21 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:56:21 thatswhyyoualwaysleaveanote.go:182: in 23 ms
+LOG:   2015/01/15 13:56:21 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:56:21 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:56:21 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:56:39 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:56:39 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:56:39 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:56:39 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:56:39 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:56:39 thatswhyyoualwaysleaveanote.go:182: in 19 ms
+LOG:   2015/01/15 13:56:39 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:56:39 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:56:39 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+ERROR: 2015/01/15 Error while rendering page 2011-01-10-stardog-beta.md: template: theme/_default/single.html:74:21: executing "theme/_default/single.html" at <.Params.tags>: range can't iterate over Stardog
+ERROR: 2015/01/15 Error while rendering page 2014-02-06-stardog-world-tour.md: template: theme/_default/single.html:74:21: executing "theme/_default/single.html" at <.Params.tags>: range can't iterate over stardog
+ERROR: 2015/01/15 Error while rendering page 2013-04-22-stardog-12.md: template: theme/_default/single.html:74:21: executing "theme/_default/single.html" at <.Params.tags>: range can't iterate over stardog
+ERROR: 2015/01/15 Error while rendering page 2014-01-10-scalability-improvements-in-stardog-21.md: template: theme/_default/single.html:74:21: executing "theme/_default/single.html" at <.Params.tags>: range can't iterate over stardog21
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:57:31 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:57:31 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:57:31 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:57:31 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:57:31 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:57:31 thatswhyyoualwaysleaveanote.go:182: in 32 ms
+LOG:   2015/01/15 13:57:31 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:57:31 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:57:31 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+ERROR: 2015/01/15 Error while rendering page 2013-04-22-stardog-12.md: template: theme/_default/single.html:11:29: executing "theme/_default/single.html" at <.Params.tags>: range can't iterate over stardog
+ERROR: 2015/01/15 Error while rendering page 2011-01-10-stardog-beta.md: template: theme/_default/single.html:11:29: executing "theme/_default/single.html" at <.Params.tags>: range can't iterate over Stardog
+ERROR: 2015/01/15 Error while rendering page 2014-02-06-stardog-world-tour.md: template: theme/_default/single.html:11:29: executing "theme/_default/single.html" at <.Params.tags>: range can't iterate over stardog
+ERROR: 2015/01/15 Error while rendering page 2014-01-10-scalability-improvements-in-stardog-21.md: template: theme/_default/single.html:11:29: executing "theme/_default/single.html" at <.Params.tags>: range can't iterate over stardog21
+ERROR: 2015/01/15 Error while rendering homepage: template: theme/index.html:35:36: executing "theme/index.html" at <.Params.tags>: range can't iterate over Stardog
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:58:02 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:58:02 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:58:02 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:58:02 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:58:02 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:58:02 thatswhyyoualwaysleaveanote.go:182: in 21 ms
+LOG:   2015/01/15 13:58:02 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:58:02 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:58:02 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+ERROR: 2015/01/15 template: theme/_default/summary.html:20:17: executing "theme/_default/summary.html" at <.Params.tags>: range can't iterate over Stardog in theme/_default/summary.html
+ERROR: 2015/01/15 template: theme/_default/summary.html:20:17: executing "theme/_default/summary.html" at <.Params.tags>: range can't iterate over stardog21 in theme/_default/summary.html
+ERROR: 2015/01/15 template: theme/_default/summary.html:20:17: executing "theme/_default/summary.html" at <.Params.tags>: range can't iterate over stardog in theme/_default/summary.html
+ERROR: 2015/01/15 template: theme/_default/summary.html:20:17: executing "theme/_default/summary.html" at <.Params.tags>: range can't iterate over stardog in theme/_default/summary.html
+WARN: 2015/01/15 Unable to locate layout for section : [section/.html _default/section.html _default/list.html indexes/.html _default/indexes.html theme/section/.html theme/_default/section.html theme/_default/list.html theme/indexes/.html theme/_default/indexes.html]
+ERROR: 2015/01/15 Error while rendering page 2014-01-10-scalability-improvements-in-stardog-21.md: template: theme/_default/single.html:8:17: executing "theme/_default/single.html" at <.Params.tags>: range can't iterate over stardog21
+ERROR: 2015/01/15 Error while rendering page 2013-04-22-stardog-12.md: template: theme/_default/single.html:8:17: executing "theme/_default/single.html" at <.Params.tags>: range can't iterate over stardog
+ERROR: 2015/01/15 Error while rendering page 2011-01-10-stardog-beta.md: template: theme/_default/single.html:8:17: executing "theme/_default/single.html" at <.Params.tags>: range can't iterate over Stardog
+ERROR: 2015/01/15 Error while rendering page 2014-02-06-stardog-world-tour.md: template: theme/_default/single.html:8:17: executing "theme/_default/single.html" at <.Params.tags>: range can't iterate over stardog
+LOG:   2015/01/15 13:58:30 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:58:30 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:58:30 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:58:30 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:58:30 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:58:30 thatswhyyoualwaysleaveanote.go:182: in 25 ms
+LOG:   2015/01/15 13:58:30 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:58:30 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:58:30 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 13:59:05 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 13:59:05 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 13:59:05 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 13:59:05 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 13:59:05 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 13:59:05 thatswhyyoualwaysleaveanote.go:182: in 17 ms
+LOG:   2015/01/15 13:59:05 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 13:59:05 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 13:59:05 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:01:25 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:01:25 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:01:25 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:01:25 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 14:01:25 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:01:25 thatswhyyoualwaysleaveanote.go:182: in 27 ms
+LOG:   2015/01/15 14:01:25 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 14:01:25 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 14:01:25 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:02:13 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:02:13 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:02:13 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:02:13 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 14:02:13 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:02:13 thatswhyyoualwaysleaveanote.go:182: in 17 ms
+LOG:   2015/01/15 14:02:13 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 14:02:13 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 14:02:13 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:04:34 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:04:34 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:04:34 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:04:34 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:04:34 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 14:04:34 thatswhyyoualwaysleaveanote.go:182: in 15 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:06:10 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:06:10 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:06:10 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:06:10 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 14:06:10 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:06:10 thatswhyyoualwaysleaveanote.go:182: in 14 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:09:32 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:09:32 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:09:32 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:09:32 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:09:32 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 14:09:32 thatswhyyoualwaysleaveanote.go:182: in 14 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:09:55 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:09:55 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:09:55 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:09:55 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:09:55 thatswhyyoualwaysleaveanote.go:182: 0 categories created
+LOG:   2015/01/15 14:09:55 thatswhyyoualwaysleaveanote.go:182: in 20 ms
+ERROR: 2015/01/15 Error parsing page meta data for 2010-09-23-the-rdf-database-market.md
+ERROR: 2015/01/15 Near line 6, key 'author': Near line 6: Expected value but found 'K' instead.
+ERROR: 2015/01/15 Near line 6, key 'author': Near line 6: Expected value but found 'K' instead.
+CRITICAL: 2015/01/15 Errors reading pages: Error:Near line 6, key 'author': Near line 6: Expected value but found 'K' instead. for 2010-09-23-the-rdf-database-market.md
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:12:39 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:12:39 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:12:39 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:12:39 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:12:39 thatswhyyoualwaysleaveanote.go:182: 3 categories created
+LOG:   2015/01/15 14:12:39 thatswhyyoualwaysleaveanote.go:182: in 18 ms
+LOG:   2015/01/15 14:12:39 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 14:12:39 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 14:12:39 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:12:57 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:12:57 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:12:57 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:12:57 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:12:57 thatswhyyoualwaysleaveanote.go:182: 3 categories created
+LOG:   2015/01/15 14:12:57 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:13:02 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:13:02 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:13:02 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:13:02 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:13:02 thatswhyyoualwaysleaveanote.go:182: 3 categories created
+LOG:   2015/01/15 14:13:02 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+ERROR: 2015/01/15 Error parsing page meta data for 2011-01-10-stardog-beta.md
+ERROR: 2015/01/15 Near line 5, key 'date: "10/01/2011"': Near line 6: Expected key separator '=', but got '\n' instead.
+ERROR: 2015/01/15 Near line 5, key 'date: "10/01/2011"': Near line 6: Expected key separator '=', but got '\n' instead.
+CRITICAL: 2015/01/15 Errors reading pages: Error:Near line 5, key 'date: "10/01/2011"': Near line 6: Expected key separator '=', but got '\n' instead. for 2011-01-10-stardog-beta.md
+ERROR: 2015/01/15 Error parsing page meta data for 2011-01-10-stardog-beta.md
+ERROR: 2015/01/15 Near line 5, key 'date: "10/01/2011"': Near line 6: Expected key separator '=', but got '\n' instead.
+ERROR: 2015/01/15 Near line 5, key 'date: "10/01/2011"': Near line 6: Expected key separator '=', but got '\n' instead.
+CRITICAL: 2015/01/15 Errors reading pages: Error:Near line 5, key 'date: "10/01/2011"': Near line 6: Expected key separator '=', but got '\n' instead. for 2011-01-10-stardog-beta.md
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:17:01 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:17:01 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:17:01 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:17:01 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:17:01 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:17:01 thatswhyyoualwaysleaveanote.go:182: in 17 ms
+LOG:   2015/01/15 14:17:01 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 14:17:01 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 14:17:01 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:17:37 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:17:37 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:17:37 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:17:37 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:17:37 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:17:37 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:17:54 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:17:54 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:17:54 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:17:54 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:17:54 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:17:54 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:18:09 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:18:09 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:18:09 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:18:09 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:18:09 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:18:09 thatswhyyoualwaysleaveanote.go:182: in 19 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:18:23 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:18:23 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:18:23 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:18:23 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:18:23 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:18:23 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:19:02 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:19:02 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:19:02 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:19:02 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:19:02 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:19:02 thatswhyyoualwaysleaveanote.go:182: in 18 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:20:59 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:20:59 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:20:59 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:20:59 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:20:59 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:20:59 thatswhyyoualwaysleaveanote.go:182: in 17 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:21:33 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:21:33 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:21:33 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:21:33 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:21:33 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:21:33 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:21:54 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:21:54 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:21:54 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:21:54 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:21:54 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:21:54 thatswhyyoualwaysleaveanote.go:182: in 17 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:22:29 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:22:29 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:22:29 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:22:29 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:22:29 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:22:29 thatswhyyoualwaysleaveanote.go:182: in 19 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:23:21 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:23:21 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:23:21 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:23:21 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:23:21 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:23:21 thatswhyyoualwaysleaveanote.go:182: in 17 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:23:27 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:23:27 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:23:27 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:23:27 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:23:27 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:23:27 thatswhyyoualwaysleaveanote.go:182: in 17 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:23:45 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:23:45 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:23:45 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:23:45 thatswhyyoualwaysleaveanote.go:182: 2 tags created
+LOG:   2015/01/15 14:23:45 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:23:45 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+ERROR: 2015/01/15 Error parsing page meta data for 2014-01-10-scalability-improvements-in-stardog-21.md
+ERROR: 2015/01/15 Near line 2, key 'title: Scalability Improvements in Stardog 2.1': Near line 3: Expected key separator '=', but got '\n' instead.
+ERROR: 2015/01/15 Near line 2, key 'title: Scalability Improvements in Stardog 2.1': Near line 3: Expected key separator '=', but got '\n' instead.
+CRITICAL: 2015/01/15 Errors reading pages: Error:Near line 2, key 'title: Scalability Improvements in Stardog 2.1': Near line 3: Expected key separator '=', but got '\n' instead. for 2014-01-10-scalability-improvements-in-stardog-21.md
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:25:26 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:25:26 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:25:26 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:25:26 thatswhyyoualwaysleaveanote.go:182: 1 tags created
+LOG:   2015/01/15 14:25:26 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:25:26 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+LOG:   2015/01/15 14:25:26 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 14:25:26 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 14:25:26 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:25:56 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:25:56 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:25:56 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:25:56 thatswhyyoualwaysleaveanote.go:182: 1 tags created
+LOG:   2015/01/15 14:25:56 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:25:56 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:31:30 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:31:30 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:31:30 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:31:30 thatswhyyoualwaysleaveanote.go:182: 1 tags created
+LOG:   2015/01/15 14:31:30 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:31:30 thatswhyyoualwaysleaveanote.go:182: in 18 ms
+LOG:   2015/01/15 14:31:32 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:31:32 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:31:32 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:31:32 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:31:32 thatswhyyoualwaysleaveanote.go:182: 1 tags created
+LOG:   2015/01/15 14:31:32 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:31:32 thatswhyyoualwaysleaveanote.go:182: in 20 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:33:28 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:33:28 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:33:28 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:33:28 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:33:28 thatswhyyoualwaysleaveanote.go:182: 1 tags created
+LOG:   2015/01/15 14:33:28 thatswhyyoualwaysleaveanote.go:182: in 20 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:34:53 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:34:53 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:34:53 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:34:53 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:34:53 thatswhyyoualwaysleaveanote.go:182: 1 tags created
+LOG:   2015/01/15 14:34:53 thatswhyyoualwaysleaveanote.go:182: in 17 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:35:26 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:35:26 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:35:26 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:35:26 thatswhyyoualwaysleaveanote.go:182: 1 tags created
+LOG:   2015/01/15 14:35:26 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:35:26 thatswhyyoualwaysleaveanote.go:182: in 18 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:37:11 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:37:11 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:37:11 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:37:11 thatswhyyoualwaysleaveanote.go:182: 1 tags created
+LOG:   2015/01/15 14:37:11 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:37:11 thatswhyyoualwaysleaveanote.go:182: in 20 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:37:16 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:37:16 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:37:16 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:37:16 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:37:16 thatswhyyoualwaysleaveanote.go:182: 1 tags created
+LOG:   2015/01/15 14:37:16 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+ERROR: 2015/01/15 Error parsing page meta data for 2012-09-27-stardog-whats-coming-next.md
+ERROR: 2015/01/15 Near line 2, key 'title: "Stardog: What's Coming Next?"': Near line 3: Expected key separator '=', but got '\n' instead.
+ERROR: 2015/01/15 Near line 2, key 'title: "Stardog: What's Coming Next?"': Near line 3: Expected key separator '=', but got '\n' instead.
+CRITICAL: 2015/01/15 Errors reading pages: Error:Near line 2, key 'title: "Stardog: What's Coming Next?"': Near line 3: Expected key separator '=', but got '\n' instead. for 2012-09-27-stardog-whats-coming-next.md
+ERROR: 2015/01/15 Error parsing page meta data for 2012-09-27-stardog-whats-coming-next.md
+ERROR: 2015/01/15 Near line 2, key 'title: "Stardog: What's Coming Next?"': Near line 3: Expected key separator '=', but got '\n' instead.
+ERROR: 2015/01/15 Near line 2, key 'title: "Stardog: What's Coming Next?"': Near line 3: Expected key separator '=', but got '\n' instead.
+CRITICAL: 2015/01/15 Errors reading pages: Error:Near line 2, key 'title: "Stardog: What's Coming Next?"': Near line 3: Expected key separator '=', but got '\n' instead. for 2012-09-27-stardog-whats-coming-next.md
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:40:06 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:40:06 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:40:06 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:40:06 thatswhyyoualwaysleaveanote.go:182: 1 tags created
+LOG:   2015/01/15 14:40:06 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:40:06 thatswhyyoualwaysleaveanote.go:182: in 18 ms
+LOG:   2015/01/15 14:40:06 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 14:40:06 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 14:40:06 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:41:01 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:41:01 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:41:01 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:41:01 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 14:41:01 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:41:01 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:41:25 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:41:25 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:41:25 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:41:25 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 14:41:25 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:41:25 thatswhyyoualwaysleaveanote.go:182: in 15 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:41:50 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:41:50 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:41:50 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:41:50 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 14:41:50 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:41:50 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:42:29 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:42:29 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:42:29 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:42:29 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 14:42:29 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:42:29 thatswhyyoualwaysleaveanote.go:182: in 17 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 14:43:51 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 14:43:51 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 14:43:51 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 14:43:51 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 14:43:51 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 14:43:51 thatswhyyoualwaysleaveanote.go:182: in 18 ms
+LOG:   2015/01/15 14:47:21 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 15:07:04 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 15:07:06 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 15:07:08 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+ERROR: 2015/01/15 Unable to find Static Directory: /Users/k/work/stardog-docs/src/blog/static/
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 15:19:17 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 15:19:17 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 15:19:17 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 15:19:17 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 15:19:17 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 15:19:17 thatswhyyoualwaysleaveanote.go:182: in 28 ms
+LOG:   2015/01/15 15:19:17 thatswhyyoualwaysleaveanote.go:174: Watching for changes in /Users/k/work/stardog-docs/src/blog/content
+LOG:   2015/01/15 15:19:17 thatswhyyoualwaysleaveanote.go:174: Serving pages from /Users/k/work/stardog-docs/src/blog/public
+LOG:   2015/01/15 15:19:17 thatswhyyoualwaysleaveanote.go:182: Web Server is available at http://localhost:1313/
+LOG:   2015/01/15 15:40:32 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 15:41:19 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:17:26 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:19:16 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:21:04 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:22:00 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:23:05 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:24:19 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:25:13 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:26:13 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:26:42 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:27:08 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:28:38 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:28:59 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:30:38 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:33:07 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:34:27 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:35:24 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:36:27 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:36:41 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:36:56 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:38:03 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:38:03 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:38:03 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:38:03 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:38:03 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:38:03 thatswhyyoualwaysleaveanote.go:182: in 17 ms
+LOG:   2015/01/15 16:38:55 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:40:16 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:41:04 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:41:57 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:42:18 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:43:20 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:46:01 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:47:51 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:50:16 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:51:41 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+LOG:   2015/01/15 16:54:13 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:54:13 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:54:13 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:54:13 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:54:13 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:54:13 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:54:13 thatswhyyoualwaysleaveanote.go:182: in 15 ms
+LOG:   2015/01/15 16:54:18 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:54:18 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:54:18 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:54:18 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:54:18 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:54:18 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:54:18 thatswhyyoualwaysleaveanote.go:182: in 15 ms
+LOG:   2015/01/15 16:54:19 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:54:19 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:54:19 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:54:19 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:54:19 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:54:19 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:54:19 thatswhyyoualwaysleaveanote.go:182: in 18 ms
+LOG:   2015/01/15 16:54:27 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:54:27 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:54:27 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:54:27 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:54:27 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:54:27 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:54:27 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+LOG:   2015/01/15 16:54:28 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:54:28 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:54:28 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:54:28 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:54:28 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:54:28 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:54:28 thatswhyyoualwaysleaveanote.go:182: in 18 ms
+LOG:   2015/01/15 16:54:43 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:54:43 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:54:43 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:54:43 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:54:43 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:54:43 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:54:43 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+LOG:   2015/01/15 16:55:01 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:55:01 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:55:01 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:55:01 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:55:01 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:55:01 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:55:01 thatswhyyoualwaysleaveanote.go:182: in 19 ms
+LOG:   2015/01/15 16:55:02 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:55:02 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:55:02 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:55:02 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:55:02 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:55:02 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:55:02 thatswhyyoualwaysleaveanote.go:182: in 21 ms
+LOG:   2015/01/15 16:55:10 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:55:10 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:55:10 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:55:10 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:55:10 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:55:10 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:55:10 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+LOG:   2015/01/15 16:55:11 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:55:11 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:55:11 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:55:11 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:55:11 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:55:11 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:55:11 thatswhyyoualwaysleaveanote.go:182: in 18 ms
+LOG:   2015/01/15 16:55:12 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:55:12 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:55:12 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:55:12 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:55:12 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:55:12 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:55:12 thatswhyyoualwaysleaveanote.go:182: in 18 ms
+LOG:   2015/01/15 16:55:16 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:55:16 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:55:16 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:55:16 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:55:16 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:55:16 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:55:16 thatswhyyoualwaysleaveanote.go:182: in 17 ms
+LOG:   2015/01/15 16:55:18 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:55:18 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:55:18 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:55:18 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:55:18 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:55:18 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:55:18 thatswhyyoualwaysleaveanote.go:182: in 15 ms
+LOG:   2015/01/15 16:55:25 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:55:25 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:55:25 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:55:25 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:55:25 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:55:25 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:55:25 thatswhyyoualwaysleaveanote.go:182: in 15 ms
+LOG:   2015/01/15 16:55:32 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:55:32 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:55:32 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:55:32 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:55:32 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:55:32 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:55:32 thatswhyyoualwaysleaveanote.go:182: in 14 ms
+LOG:   2015/01/15 16:55:34 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:55:34 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:55:34 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:55:34 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:55:34 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:55:34 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:55:34 thatswhyyoualwaysleaveanote.go:182: in 15 ms
+LOG:   2015/01/15 16:55:40 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:55:40 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:55:40 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:55:40 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:55:40 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:55:40 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:55:40 thatswhyyoualwaysleaveanote.go:182: in 16 ms
+LOG:   2015/01/15 16:55:41 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:55:41 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:55:41 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:55:41 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:55:41 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:55:41 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:55:41 thatswhyyoualwaysleaveanote.go:182: in 17 ms
+LOG:   2015/01/15 16:55:44 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:55:44 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:55:44 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:55:44 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:55:44 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:55:44 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:55:44 thatswhyyoualwaysleaveanote.go:182: in 15 ms
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:55:45 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:55:45 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:55:45 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:55:45 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:55:45 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:55:45 thatswhyyoualwaysleaveanote.go:182: in 17 ms
+LOG:   2015/01/15 16:55:46 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/15 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/15 16:55:46 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/15 16:55:46 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/15 16:55:46 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/15 16:55:46 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/15 16:55:46 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/15 16:55:46 thatswhyyoualwaysleaveanote.go:182: in 17 ms
+LOG:   2015/01/16 08:59:47 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/16 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/16 08:59:47 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/16 08:59:47 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/16 08:59:47 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/16 08:59:47 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/16 08:59:47 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/16 08:59:47 thatswhyyoualwaysleaveanote.go:182: in 21 ms
+LOG:   2015/01/16 08:59:49 thatswhyyoualwaysleaveanote.go:174: Static file changed, syncing
+
+WARN: 2015/01/16 Unable to locate layout for 404 page: [404.html theme/404.html]
+LOG:   2015/01/16 08:59:49 thatswhyyoualwaysleaveanote.go:174: 0 of 1 draft rendered 
+LOG:   2015/01/16 08:59:49 thatswhyyoualwaysleaveanote.go:174: 0 future content 
+LOG:   2015/01/16 08:59:49 thatswhyyoualwaysleaveanote.go:182: 10 pages created 
+LOG:   2015/01/16 08:59:49 thatswhyyoualwaysleaveanote.go:182: 0 tags created
+LOG:   2015/01/16 08:59:49 thatswhyyoualwaysleaveanote.go:182: 4 categories created
+LOG:   2015/01/16 08:59:49 thatswhyyoualwaysleaveanote.go:182: in 17 ms

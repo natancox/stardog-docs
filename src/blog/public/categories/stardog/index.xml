@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stardog on ★dog blog</title>
+    <link>http://localhost:1313/categories/stardog/</link>
+    <description>Recent content in Stardog on ★dog blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+    
+    <lastBuildDate>Mon, 10 Jan 2011 00:00:00 UTC</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/stardog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Invitation to Stardog Beta</title>
+      <link>http://localhost:1313/2011-01-10-stardog-beta/</link>
+      <pubDate>Mon, 10 Jan 2011 00:00:00 UTC</pubDate>
+      
+      <guid>http://localhost:1313/2011-01-10-stardog-beta/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;TL;DR?&lt;/strong&gt; &lt;a href=&#34;http://stardog.com/&#34;&gt;Stardog&lt;/a&gt; is a fast, lightweight RDF
+database. Today we&amp;rsquo;re announcing limited access to our beta testing program,
+in preparation for the 1.0 release. If you&amp;rsquo;re interested in beta-testing
+Stardog, &lt;a href=&#34;mailto:kendall@clarkparsia.com&#34;&gt;drop me an email&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-and-why:031f92451d7409c107d8dac8c3792baf&#34;&gt;What and why?&lt;/h2&gt;
+
+&lt;p&gt;There&amp;rsquo;s a niche in the &lt;a href=&#34;http://weblog.clarkparsia.com/2010/09/23/the-rdf-database-market/&#34;&gt;RDF commercial
+market&lt;/a&gt;
+that&amp;rsquo;s not well-served&amp;ndash;we built Stardog to fill this niche. After testing
+many RDF databases, we couldn&amp;rsquo;t find one that was exactly right for the use
+cases and requirements that we care about: zero config, fast, transactional,
+lightweight, embeddable, client-server, high-throughput, rich OWL 2
+reasoning, stored procedures in any JVM-based language RDF database. Whew!&lt;/p&gt;
+
+&lt;h2 id=&#34;speed-kills:031f92451d7409c107d8dac8c3792baf&#34;&gt;Speed Kills&lt;/h2&gt;
+
+&lt;p&gt;RDF and OWL are excellent technologies for building data integration and
+analysis apps. Those apps invariably require complex query processing,
+i.e., queries where there are lots of joins, complex logical conditions
+to evaluate, etc. Stardog is targeted at absolute query performance for
+&lt;em&gt;complex SPARQL queries&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;lightweight-braindead-simple-deployment:031f92451d7409c107d8dac8c3792baf&#34;&gt;Lightweight, Braindead Simple Deployment&lt;/h2&gt;
+
+&lt;p&gt;Winners ship. No excuses. No one wants complex deployment models. Stardog
+works out-of-the-box with minimal (none, typically) configuration. You
+shouldn&amp;rsquo;t have to fight to install or to tune an RDF database for days.
+Because Stardog is pure Java, it will run anywhere, in any servlet
+container, on any OS.&lt;/p&gt;
+
+&lt;h2 id=&#34;owl-2-reasoning:031f92451d7409c107d8dac8c3792baf&#34;&gt;OWL 2 Reasoning&lt;/h2&gt;
+
+&lt;p&gt;Finally, Stardog has the most comprehensive and best OWL reasoning support
+of any commercial RDF database available.&lt;/p&gt;
+
+&lt;p&gt;Stardog 1.0 will support: SPARQL 1.1 entailment regimes,
+&lt;a href=&#34;http://weblog.clarkparsia.com/2010/04/01/pellet21-terp/&#34;&gt;Terp&lt;/a&gt;, OWL 2 DL
+schema reasoning via &lt;a href=&#34;http://clarkparsia.com/pelletdb/&#34;&gt;PelletDb&lt;/a&gt;, OWL 2
+QL (query-time reasoning), and OWL 2 closed world reasoning via &lt;a href=&#34;http://clarkparsia.com/pellet/icv/&#34;&gt;Pellet
+ICV&lt;/a&gt;. We&amp;rsquo;ll add OWL 2 RL support to
+Stardog in a future release.&lt;/p&gt;
+
+&lt;p&gt;Okay, there&amp;rsquo;s a lot there and we&amp;rsquo;ll unpack it all in good time; but for now
+the point is that Stardog&amp;rsquo;s reasoning support is not only more comprehensive
+than any other RDF database, it&amp;rsquo;s more consistent, rational, and tied
+carefully to the W3C&amp;rsquo;s OWL 2 standard. Stardog also encompasses all the
+relevant points on the scalability-expressivity spectrum, as well as hitting
+all of the significant reasoning modes of operation (batch, on-demand,
+query-time).&lt;/p&gt;
+
+&lt;h2 id=&#34;next-steps:031f92451d7409c107d8dac8c3792baf&#34;&gt;Next Steps&lt;/h2&gt;
+
+&lt;p&gt;We&amp;rsquo;re running a limited, private beta for Stardog starting 1 March and
+running to 30 May. We&amp;rsquo;ve got a few open slots, and we want to cast a
+wide net to find some new orgs and new faces with new use cases and
+requirements for a commercial RDF database. If you&amp;rsquo;re interested, &lt;a href=&#34;mailto:kendall@clarkparsia.com&#34;&gt;drop me
+an email&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

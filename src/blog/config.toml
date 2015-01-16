@@ -1,0 +1,12 @@
+baseurl = "http://blog.stardog.com/"
+languageCode = "en-us"
+title = "★dog blog"
+footnotereturnlinkcontents = "↩"
+permalinks = "/:title/"
+
+[params]
+  description = ""
+  author = "Complexible Inc"
+  subtitle = "All the graph that's fit to query..."
+  sidebarrecentlimit = 3
+  

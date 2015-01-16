@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+
+    <title>★dog blog &middot; ★dog blog</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
+
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313">★dog blog</a></h1>
+            <h2 class="brand-tagline">A theme based on the pure css blog layout.</h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="pure-button" href="http://twitter.com/"><i class="fa fa-twitter"></i> Twitter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="pure-button" href="http://github.com/ "><i class="fa fa-github-alt"></i> github</a>
+                </li>
+               
+            </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                
+                <h1 class="content-subhead">10 Jan 2014, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://localhost:1313/2014-01-10-scalability-improvements-in-stardog-21/" class="post-title">Scalability Improvements in Stardog 2.1</a>
+
+                        <p class="post-meta">
+                            
+                                By <strong class="post-author">Kendall Clark</strong>
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<p>The forthcoming <a href="http://stardog.com/">Stardog 2.1</a> release improves
+query scalability by about 3 orders of magnitude and can handle 50
+billion triples on a $10,000 server.~ We&rsquo;ve never been overly
+concerned about Stardog scalability per se: first we wanted to make it
+easy to use; then we wanted to make it fast. We just assumed we&rsquo;d get
+around to make it <em>insanely scalable</em>, too. Stardog 2.1 makes giant
+leaps in query, data loading, and reasoning scalability.</p>
+
+<p>Running on $10,000 of server hardware (32 cores, 256 GB RAM), Stardog
+2.1 can handle 20 to 50 billion triples. Compared to Stardog 2.0.x,
+Stardog 2.1 loads ~100M triple datasets about two times faster; it
+loads ~1B triple datasets about 3 times faster&ndash;all while using much
+less memory. 2.1 can load 20B datasets at 300,000 triples per
+second. We also improved query evaluation performance significantly so
+that Stardog 2.1 is still very fast, even at much larger database
+sizes. How did we do it?</p>
+
+<h2 id="improving-concurrency:221fb4795531eb14f0be5b8b2b42c9aa">Improving Concurrency</h2>
+
+<p>Much of the performance improvement comes from taking care with
+concurrency and reducing thread contention, especially during bulk
+data loading (i.e., initial database creation with large amounts of
+data being added at creation time). We&rsquo;re avoiding more locks and
+using more non-blocking algorithms and data structures a lot more
+often. Moving for example from <code>BitSet</code> to <code>ConcurrentLinkedQueue</code>
+helps, even though the former is more space efficient than the
+later. We&rsquo;re also using <code>ThreadLocal</code>s more aggressively to reduce
+thread contention and avoid synchronization. As loading performance
+improved, several LRU caches became problematic since evictions were
+being swamped by additions. Batching evictions in a single thread
+helps but increases memory pressure and GC times.</p>
+
+<h2 id="worse-hashing-is-better-hashing:221fb4795531eb14f0be5b8b2b42c9aa">Worse Hashing is Better Hashing</h2>
+
+<p>Stardog hashes URIs, bnodes, and literal values for storage in a
+mapping dictionary; previously we used the 64-bit <code>MurmurHash</code> because
+it&rsquo;s very fast, has low collision rate, and lets us store values as
+longs. When handling collisions and cache misses, disk accesses are
+required; at scale these random disk accesses are too
+expensive. Moving to <code>SHA1</code> is perhaps non-intuitive since the hash
+size goes from 64 to 160 bits. But since that makes hash collision
+practically impossible, we&rsquo;re able to achieve significant speedups&ndash;it
+also simplifies the mapping dictionary significantly.</p>
+
+<h2 id="off-heap-memory-management:221fb4795531eb14f0be5b8b2b42c9aa">Off-Heap Memory Management</h2>
+
+<p>Before 2.1, we were using <code>mmap</code> aggressively during loading in order to use the operating system&rsquo;s VM, memory management, etc. But memory mapped files in JVM are notoriously crappy (<code>unmap</code>!), and we&rsquo;ve seen frequent JVM crashes when we had a lot of memory mapped files around. Not good.</p>
+
+<p>We also realized that memory mapped files were causing performance slowdowns when there was more than 64GB of RAM available. And since we have no control over when memory mapped files were flushed to disk, that was typically happening too often. But keeping this information on the Java heap was never a viable choice at scale because of GC processing. Stardog 2.1 moves to an off-heap memory allocation scheme, which gives us very fine-grained control over disk flushes, uses available system memory more efficiently, and is (roughly) as fast as memory mapping.</p>
+
+<h2 id="reducing-gc-pauses:221fb4795531eb14f0be5b8b2b42c9aa">Reducing GC Pauses</h2>
+
+<p>Finally, to significantly improve loading performance we needed to do something about GC costs, which are important in bulk loading because of high rate of object creation and destruction. Using immutable objects makes it possible to improve concurrency but with the overhead of additional garbage being created. Tuning the GC knobs and buttons didn&rsquo;t really help appreciably. We&rsquo;ve addressed the GC processing costs by reworking places where we were unnecessarily creating objects. That kind of careful software engineering is aided by the relatively small size of the Stardog code base. It&rsquo;s like engineering works or something!</p>
+
+<p>This careful software re-engineering included, for example, delving into the guts of the RDF parser to use a single <code>StringBuilder</code> that was continuously reset rather than creating new builders for each RDF value. We also reduced the amount of cache use on the heap to relieve memory pressure. We now see GC pauses taking 1% or less of the overall bulk loading time.</p>
+
+<h2 id="query-evaluation:221fb4795531eb14f0be5b8b2b42c9aa">Query Evaluation</h2>
+
+<p>It doesn&rsquo;t do much good to improve bulk data loading performance if
+you don&rsquo;t also improve query evaluation performance at least as
+much. So we did that, too. The key to improving query evaluation
+performance in 2.1 came down to memory usage and how we handle
+intermediate results. Consider a SPARQL query from
+<a href="http://dbis.informatik.uni-freiburg.de/forschung/projekte/SP2B/">SP2B</a>:</p>
+
+<pre><code>
+SELECT DISTINCT ?name1 ?name2
+  WHERE {
+     ?article1 rdf:type bench:Article .
+     ?article2 rdf:type bench:Article .
+     ?article1 dc:creator ?author1 .
+     ?author1 foaf:name ?name1 .
+     ?article2 dc:creator ?author2 .
+     ?author2 foaf:name ?name2 .
+     ?article1 swrc:journal ?journal .
+     ?article2 swrc:journal ?journal
+  FILTER (?name1 &lt; ?name2)
+}</code></pre>
+
+<p>For a 5M triple database, this query produces 18,362,955 (!) results
+and the <code>DISINCT</code> keeps them in memory. Unworkable at scale. Stardog
+2.1 addresses this issue by reusing the new off-heap memory allocation
+scheme. A small heap doesn&rsquo;t work; and GC processing kills you with a
+large heap, so we just avoid the heap instead. Yes, that means we have
+to manage memory manually, but that&rsquo;s actually achievable in a JVM
+application. We implemented a memory manager based on various JVM
+internals; it&rsquo;s responsible for allocating (and deallocating) data
+used during query evaluation, including holding intermediate query
+results. It manages the heap outside the JVM and will flow to disk
+when needed. The new memory manager also performs some static analysis
+of the query using database statistics to guide its behavior.</p>
+
+<h2 id="moving-forward:221fb4795531eb14f0be5b8b2b42c9aa">Moving Forward</h2>
+
+<p>No public APIs were harmed in the creation of the new scalability
+improvements. See
+<a href="http://presentboldly.com/kendall/stardog-21">this slide deck</a> for an
+overview of some other changes in Stardog 2.1.</p>
+
+<p>Enjoy.</p>
+
+                    </div>
+                </section>
+                
+                <h1 class="content-subhead">22 Apr 2013, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://localhost:1313/2013-04-22-stardog-12/" class="post-title">Stardog 1.2</a>
+
+                        <p class="post-meta">
+                            
+                                By <strong class="post-author">Kendall Clark</strong>
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<p>Earlier today we released <a href="http://stardog.com/"><strong>Stardog 1.2</strong></a> which
+you can download for evaluation right now.</p>
+
+<p>Go on&hellip;I&rsquo;ll wait. Done? Awesome.</p>
+
+<p>So what&rsquo;s new in Stardog 1.2? For the complete rundown, check out the
+<a href="http://stardog.com/docs/RELEASE_NOTES.txt">changelog</a>. Yeah, we&rsquo;ve
+been busy&hellip;</p>
+
+<h2 id="performance:c3f7361293cfc40f36deda2439cf8520">Performance</h2>
+
+<p>As always, Stardog&rsquo;s  performance is the most important feature. The 1.2 release is the fastest Stardog we&rsquo;ve ever released. Performance improvements include:</p>
+
+<ul>
+<li>SPARQL query evaluation is faster, including a lower minimal overhead</li>
+<li>Durable transacted writes are faster</li>
+<li>Better caching of query plan rewritings improves reasoning perf</li>
+<li>Improved performance of write caching in transactions</li>
+<li>Applied better ordering to conjuncts makes reasoning query performance more deterministic</li>
+<li>Increased search indexing performance</li>
+</ul>
+
+<h2 id="query-management:c3f7361293cfc40f36deda2439cf8520">Query Management</h2>
+
+<p>A new system for managing queries, which includes slow query logging, automatic query termination for queries that exceed a timeout, and query termination for queries by ID. This stuff makes deploying a public SPARQL endpoint backed by Stardog a lot easier, since long-running, rogue, or otherwise misbehaving queries can be managed effectively.</p>
+
+<p>The slow query log is configurable&ndash;what counts as a slow query is interest-specific and user-relative. With slow query logging enabled, you can debug and then optimize slow queries.</p>
+
+<p>All of this is available in native Stardog APIs including Java, HTTP, and from the CLI.</p>
+
+<h2 id="cli:c3f7361293cfc40f36deda2439cf8520">CLI</h2>
+
+<p>The CLI is an important part of Stardog&rsquo;s great user experience. To make it even better, we&rsquo;ve completely rewritten it for the 1.2 release. The CLI is now more consistent (examples, arguments, response codes, etc), is self-documenting, more rational, and easier to manage. We&rsquo;re also including Unix shell auto-completion support for the CLI.</p>
+
+<p>We&rsquo;ve also added comprehensive &ldquo;man pages&rdquo; to the <a href="http://stardog.com/docs/">Stardog docs</a> for all CLI commands.</p>
+
+<h2 id="transactions:c3f7361293cfc40f36deda2439cf8520">Transactions</h2>
+
+<p>We also developed a new, modular, standalone library for Stardog&rsquo;s transactions; we call it <code>erg</code>. It uses asynchronous writes &amp; memory-mapped logs to improve durable logging performance. Transaction failure recovery has been improved. If there is a fatal error in a transaction commit or rollback, the database will be taken offline and recovery of the failed transaction will be performed. Recovery is automatic, and the database will be brought back online once it is completed.  In the event recovery could not be completed without manual intervention, the database will remain offline as to minimize data loss.</p>
+
+<h2 id="security:c3f7361293cfc40f36deda2439cf8520">Security</h2>
+
+<p>The security layer is completely rewritten. This includes a systematic (internal) security audit, tons of new tests, and generally smaller overhead for security processing. The result? Better security that&rsquo;s faster and easier to manage.</p>
+
+<p>Other notable changes:</p>
+
+<ul>
+<li><code>user edit</code> is replaced by <code>user addrole, removerole, disable, enable</code></li>
+<li><code>LIST</code> action is deprecated</li>
+<li><code>REVOKE</code> and <code>EXECUTE</code> actions added</li>
+<li>Listing all users or roles requires different permissions</li>
+<li>Wildcards permitted when deleting permissions</li>
+<li><code>ADMIN</code> resource for admin actions such as online &amp; offline</li>
+<li>You must specify a password when creating a user</li>
+<li>Fixed vulnerability to billions laughs attacks</li>
+</ul>
+
+<h2 id="miscellaneous:c3f7361293cfc40f36deda2439cf8520">Miscellaneous</h2>
+
+<p>Other improvements include:</p>
+
+<ul>
+<li>HTTP now supports SPARQL 1.1 Service Description</li>
+<li>Support for ARQ builtins <code>pi, e, sqrt, min, max</code>.</li>
+<li>Explanation system handles data inconsistencies</li>
+<li>Database, user, and role names now have a maximum size of 64
+characters</li>
+<li>Updated to Sesame 2.7.0, Jena 2.10.0, Lucene 4.2.0, Shiro 1.2.1.</li>
+</ul>
+
+<h2 id="stardog-2-0:c3f7361293cfc40f36deda2439cf8520">Stardog 2.0</h2>
+
+<p>We&rsquo;re pushing on Stardog 2.0 already and expect it to be released
+sooner than later. More details about that later on. Big items coming
+in 2.0 include Stardog Web&ndash;a semantics-centric Javascript app
+framework based on <a href="http://backbonejs.org/">Backbone.js</a>&ndash;complete
+SPARQL Update support, and the open source release of Stardog client
+libraries for Java.</p>
+
+                    </div>
+                </section>
+                
+                <h1 class="content-subhead">27 Sep 2012, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://localhost:1313/2012-09-27-stardog-whats-coming-next/" class="post-title">Stardog: What&#39;s Coming Next?</a>
+
+                        <p class="post-meta">
+                            
+                                By <strong class="post-author">Kendall Clark</strong>
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<p>Stardog is on the move; we got <a href="http://stardog.com/">Stardog
+1.0</a> out the door without anyone dying; we&rsquo;ve got customers; people
+are using it; and we released Stardog Community, too. Since the 1.0
+release in June we&rsquo;ve done 6 releases, about one every two weeks. Most
+of them have focused on small usability improvements, performance
+tweaks, and, of course, bug fixes.</p>
+
+<p>But where are we headed now with Stardog development?</p>
+
+<h2 id="sparql-1-1:2341668b2be5b5fa620c1e2bfb4e4594">SPARQL 1.1</h2>
+
+<p>The most pressing need in Stardog is support for
+<a href="http://www.w3.org/TR/sparql11-query/">SPARQL 1.1</a>. We got stuck
+between the devil and the deep blue sea&ndash;trying to push the 1.0
+release before the SPARQL Working Group was completely finished with
+the SPARQL 1.1 spec. We were motivated to avoid reimplementing any
+parts of SPARQL 1.1 because the spec shifted. So we decided SPARQL 1.0
+for the Stardog 1.0 release. Then we told everyone that SPARQL 1.1
+would be the highest priority item for the post-1.0 release cycle.</p>
+
+<p>And so it&rsquo;s been.</p>
+
+<p>As of this writing, Stardog TRUNK supports all of SPARQL 1.1 query
+language; property paths are not totally finished but we&rsquo;re close. We
+already support a superset of the HTTP protocol for 1.1, so that&rsquo;s
+good.) Finishing property paths, final testing, and tweaking will take
+a bit longer: we expect Stardog 1.1 release to be out by the end of
+October. It will include full SPARQL 1.1 support.</p>
+
+<p>Except for the bits we don&rsquo;t like.</p>
+
+<p>Frankly we&rsquo;re nervous about adding update operations to SPARQL (the
+query language; we already support update in our HTTP and SNARL
+protocols) because we&rsquo;re worried about SPARQL injection attacks. So
+we&rsquo;re going to take a bit more time to work out a secure design for
+supporting update operations in the query language. Stay tuned for
+those bits some time after the 1.1 release.</p>
+
+<h2 id="user-defined-rules-and-reasoning:2341668b2be5b5fa620c1e2bfb4e4594">User-defined Rules and Reasoning</h2>
+
+<p>Stardog already has the best and most comprehensive OWL 2 reasoning of
+any RDF database; but we&rsquo;re not finished making it better. In Stardog
+1.1 we&rsquo;ll debut user-defined rule reasoning; some domain modeling just
+doesn&rsquo;t fit easily into OWL axioms. <strong>Sometimes you really need to
+write a damn rule!</strong></p>
+
+<p>Stardog 1.1 will support user-defined rules using the SWRL syntax; it
+will include all of the SWRL builtins, as well as a much-requested new
+builtin that allows SWRL rules to create new individuals. (Strictly
+speaking, this new builtin is a gun with which users may easily shoot
+themselves a <em>non-terminating</em> wound. Don&rsquo;t say you weren&rsquo;t warned!)</p>
+
+<p>Finally, we&rsquo;ve added a Datalog engine to Stardog and we&rsquo;ll use that to
+support the rest of OWL 2; that is, we&rsquo;ll use the new Datalog engine
+to support transitivity (first) and (later) equality reasoning.</p>
+
+<h2 id="performance:2341668b2be5b5fa620c1e2bfb4e4594">Performance</h2>
+
+<p>SPARQL query performance is our primary obsession these days,
+especially for very complex queries involving lots of joins, etc. We
+think answering complex queries is the sweet spot for SPARQL and
+RDF-based information systems. And since we reduce OWL reasoning to
+SPARQL query answering (more or less), we have additional motivation
+to make it really fast.</p>
+
+<p>We&rsquo;ve pushed many SPARQL FILTER operations down further into query
+evaluation, with the result that in many cases queries with FILTERs
+are much faster. We&rsquo;ve also improved database write performance&ndash;which
+is, admittedly, a lower priority than database read performance&ndash;by
+being more clever with how we torture the disk head. We&rsquo;ve also
+increased Stardog write safety during system instability (power cord
+got yanked?!) by writing more aggressively and more often to
+disk. Finally, we&rsquo;re looking at some new data compression techniques
+that may let us speed up disk reads substantially.</p>
+
+<h2 id="production-features:2341668b2be5b5fa620c1e2bfb4e4594">Production Features</h2>
+
+<p>We&rsquo;re working on hot backup, i.e., backing up a Stardog database
+without having to take it offline. We&rsquo;ll add that to the JMX
+monitoring that&rsquo;s been sitting in a branch for nearly 9 months; the
+new query management subsystem; and the long-awaited web
+console. These production features will make life easier for the
+operations people in yr life.</p>
+
+<h2 id="geospatial-query-answering:2341668b2be5b5fa620c1e2bfb4e4594">Geospatial Query Answering</h2>
+
+<p>Finally, geospatial query answering and reasoning are coming to
+Stardog. We&rsquo;re implementing GeoSPARQL and, while it&rsquo;s still very early
+in the development cycle, we&rsquo;re excited and confident it&rsquo;ll be a very
+useful addition.</p>
+
+                    </div>
+                </section>
+                
+                <h1 class="content-subhead">18 Jun 2012, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://localhost:1313/2012-06-18-stardog-10/" class="post-title">Stardog 1.0</a>
+
+                        <p class="post-meta">
+                            
+                                By <strong class="post-author">Kendall Clark</strong>
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<p>Today I&rsquo;m happy to announce the release of <a href="http://stardog.com/">Stardog
+1.0</a>, the fastest, smartest, and easiest to use RDF
+database on the planet. Stardog fills a hole in the Semantic Technology
+(and NoSQL database) market for an RDF database that is fast, zero config,
+lightweight, and feature-rich.</p>
+
+<h2 id="speed-kills:9635592bbc40647e0cbf69b34e68feb4">Speed Kills</h2>
+
+<p>RDF and OWL are excellent technologies for building data integration and
+analysis apps. Those apps invariably require complex query processing,
+i.e., queries where there are lots of joins, complex logical conditions to
+evaluate, etc. Stardog is targeted at query performance for <em>complex SPARQL
+queries</em>. We publish <a href="http://stardog.com/docs/performance">performance data</a>
+so you can see how we&rsquo;re doing.</p>
+
+<h2 id="braindead-simple-deployment:9635592bbc40647e0cbf69b34e68feb4">Braindead Simple Deployment</h2>
+
+<p>Winners ship. Period.</p>
+
+<p>We care very much about simple deployments. Stardog works out-of-the-box
+with minimal (none, typically) configuration. You shouldn&rsquo;t have to fight an
+RDF database for days to install or tune it for great performance. Because
+Stardog is pure Java, it will run anywhere. It <em>just works</em> and it&rsquo;s <em>damn
+fast</em>. You shouldn&rsquo;t need to buy and configure a cluster of machines to get
+blazing fast performance from an RDF database. And now you don&rsquo;t have to.</p>
+
+<h2 id="one-more-thing-owl-reasoning:9635592bbc40647e0cbf69b34e68feb4">One More Thing&hellip;OWL Reasoning</h2>
+
+<p>Finally, Stardog has the deepest, most comprehensive, and best OWL reasoning
+support of any commerical RDF database available.</p>
+
+<p>Stardog 1.0 supports RDFS, OWL 2 QL, EL, and RL, as well as OWL 2 DL
+schema-reasoning. It&rsquo;s also the only RDF database to support closed-world
+integrity constraint validation and automatic explanations of integrity constraint
+violations.</p>
+
+<p>If you care about data quality, Stardog 1.0 is worth a hard look.</p>
+
+<h2 id="free-evaluation:9635592bbc40647e0cbf69b34e68feb4">Free Evaluation</h2>
+
+<p>Stardog 1.0 is available for a free 30-day evaluation; <a href="http://stardog.com/dl">download it
+now</a>.</p>
+
+<p>When you&rsquo;re ready to talk about licensing terms and support contracts, drop
+us an <a href="mailto:sales@clarkparsia.com">email</a>.</p>
+
+                    </div>
+                </section>
+                
+                <h1 class="content-subhead">23 Feb 2012, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://localhost:1313/2012-02-23-stardog-09-release-announced/" class="post-title">Stardog 0.9 Release</a>
+
+                        <p class="post-meta">
+                            
+                                By <strong class="post-author">Kendall Clark</strong>
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <p>We&rsquo;re happy to announce the release of <strong>Stardog 0.9</strong>, the first
+<em>feature-complete</em> version of Stardog. Please
+<a href="http://stardog.com/">download</a> it and send feedback to the
+<a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">support forum</a>.</p>
+
+<p>Notable changes in this release:</p>
+
+<ul>
+<li>new security system, including user management, granular roles and permissions model</li>
+<li>new native protocol, SNARL, based on Netty and Google&rsquo;s Protocol Buffers</li>
+<li>new system catalog for all system info, metadata, etc.</li>
+<li>new search system over RDF literals, integrated with SPARQL query eval</li>
+<li>new server management: online, offline databases; better server startup, shutdown, and locking</li>
+<li>CLI now supports remote db administration, many new subcommands</li>
+<li>new Quartz-based job scheduler with cron expression scheduling</li>
+<li>new, optimized index support for named graphs and triples-only databases</li>
+<li>new, differential write indexes with customizable merge thresholds</li>
+<li>new statistics computation &amp; recomputation algorithms</li>
+<li>new customizable TBOX (i.e., reasoning schema or ontology) extraction &amp; management</li>
+<li>new Stardog configuration system, including database creation templates</li>
+<li>new reasoning services (explanation, satisfiability, consistency checking) available programmatically</li>
+<li>reasoning extended to named graphs</li>
+<li>ICV validation extended to named graphs</li>
+<li>new or improved support for NQUADS, Trig, TSV, and CSV</li>
+<li>improved concurrency in data loading</li>
+<li>consistent use of <tt>mmap()</tt> for better performance</li>
+<li>load GZIP-compressed files directly, including ZIP files with multiple RDF</li>
+<li>many (many!) known bugs fixed</li>
+<li>updated documentation</li>
+</ul>
+
+<p>The upcoming 0.9.x releases will focus on query and reasoning
+performance improvements and bug fixes. We anticipate several point
+releases before the final 1.0 release. Thanks to all the <em>closed
+alpha</em> testers for their hard work: about 200 of them downloaded
+Stardog, sent bug reports, fixes, ideas, and feedback.</p>
+
+                    </div>
+                </section>
+                
+                <h1 class="content-subhead">31 May 2011, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://localhost:1313/2011-05-31-stardog-performance-sp2b-benchmark/" class="post-title">Stardog Performance: SP2B Benchmark</a>
+
+                        <p class="post-meta">
+                            
+                                By <strong class="post-author">Kendall Clark</strong>
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<p>As you may already know, we&rsquo;re working hard on
+<a href="http://stardog.com/">Stardog</a>, our upcoming RDF database. It&rsquo;s presently
+in closed alpha testing (55 testers), at version 0.5.3, and progressing
+rapidly. The overriding goals for Stardog, which we&rsquo;ve repeated often, are:</p>
+
+<ol>
+<li>insanely fast performance on complex SPARQL queries in the out-of-the-box, untuned configuration</li>
+<li>feature-rich: logical inference, statistical inference, transactions, store procedures, etc.</li>
+<li>lightweight and pure Java</li>
+</ol>
+
+<p>We think we&rsquo;re on track to meet those goals for a 1.0 release in Q3, 2011.</p>
+
+<p>In advance of Mike Grove&rsquo;s
+<a href="http://semtech2011.semanticweb.com/sessionPop.cfm?confid=62&amp;proposalid=3943">talk</a> next week at Semantic Technology Conference 2011, and since the
+<a href="http://blog.dydra.com/2011/05/27/sp2b-benchmarks">Dydra peeps</a> are
+publishing SP2B benchmark numbers, too, I thought we&rsquo;d say a bit about
+Stardog performance.</p>
+
+<h2 id="sp2b-benchmark-performance:df6b2706cc1f69991ab85433409eec46">SP2B Benchmark Performance</h2>
+
+<p>In short, it&rsquo;s pretty awesome. We&rsquo;re reporting SP2B&ndash;the leading SPARQL
+benchmark for complex, real-world performance&ndash;results that are noteworthy.</p>
+
+<p><img src="http://dl.dropbox.com/u/126772/stardog-perf.png"></p>
+
+<p>As you can see, we&rsquo;re reporting SP2B benchmarks for six dataset sizes: 10k,
+50k, 250k, 1M, 5M, and 25M. We&rsquo;re not aware of any RDF database previously
+reporting <em>any</em> numbers for 25M SP2B dataset size. Note, too, that the
+y-axis is logarithmic in <em>milliseconds</em>.</p>
+
+<p>With the exception of query Q5a&ndash;about which more below&ndash;the performance
+numbers are quite good; the benchmark machine was quite modest (an iMac
+with 2 i7s using 8GB RAM), a bit under-powered in comparison to the average
+production machine these days.</p>
+
+<p>In particular, note Q7, which Stardog evaluates for 1M dataset in less than
+1 second; at 5M in about 5 seconds; and at 25M&ndash;which no other RDF database
+has reported <em>any</em> performance numbers&ndash;in about 12 seconds. For Q4, at 5M,
+Stardog completes in 45 seconds. The next fastest RDF database, for which
+SP2B results have been reported, completes Q4 for 1M dataset in 134 seconds.</p>
+
+<h2 id="state-of-the-art:df6b2706cc1f69991ab85433409eec46">State of the Art</h2>
+
+<p>A brief word about SP2B query Q5a; despite what Arto <a href="http://blog.dydra.com/2011/05/27/sp2b-benchmarks">said
+recently</a>, we don&rsquo;t
+believe there&rsquo;s any mistake in the SP2B benchmark for Q5a. It is simply
+a very hard query, requiring the detection of an implicit join for good
+performance.</p>
+
+<p>We&rsquo;re not aware of any RDF database that is able to detect this implicit
+join <em>generally</em>. Stardog has an optimization that detects it for Q5a and
+for similar queries, which will be available in a future release, pending
+some additional engineering. These benchmark results do not include that
+optimization.</p>
+
+<h2 id="conclusion:df6b2706cc1f69991ab85433409eec46">Conclusion</h2>
+
+<p>It&rsquo;s an exciting time to be a semantic technology
+vendor, especially in the <a href="http://weblog.clarkparsia.com/2010/09/23/the-rdf-database-market/">RDF database
+market</a> which
+is still seeing rapid innovation and maturation. We&rsquo;re happy that the
+Dydra folks are using SP2B as a benchmark; we agree with them that SP2B
+is the &ldquo;gold standard of SPARQL benchmarks&rdquo; and will continue to develop
+<a href="http://stardog.com/">Stardog</a> with SP2B as one measure of progress among
+many.</p>
+
+                    </div>
+                </section>
+                
+                <h1 class="content-subhead">10 Jan 2011, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://localhost:1313/2011-01-10-stardog-beta/" class="post-title">Invitation to Stardog Beta</a>
+
+                        <p class="post-meta">
+                            
+                                By <strong class="post-author">Kendall Clark</strong>
+                            
+                            
+                                under 
+                                <a class="post-category post-category-Stardog" href="/categories/stardog">Stardog</a>
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<p><strong>TL;DR?</strong> <a href="http://stardog.com/">Stardog</a> is a fast, lightweight RDF
+database. Today we&rsquo;re announcing limited access to our beta testing program,
+in preparation for the 1.0 release. If you&rsquo;re interested in beta-testing
+Stardog, <a href="mailto:kendall@clarkparsia.com">drop me an email</a>.</p>
+
+<h2 id="what-and-why:031f92451d7409c107d8dac8c3792baf">What and why?</h2>
+
+<p>There&rsquo;s a niche in the <a href="http://weblog.clarkparsia.com/2010/09/23/the-rdf-database-market/">RDF commercial
+market</a>
+that&rsquo;s not well-served&ndash;we built Stardog to fill this niche. After testing
+many RDF databases, we couldn&rsquo;t find one that was exactly right for the use
+cases and requirements that we care about: zero config, fast, transactional,
+lightweight, embeddable, client-server, high-throughput, rich OWL 2
+reasoning, stored procedures in any JVM-based language RDF database. Whew!</p>
+
+<h2 id="speed-kills:031f92451d7409c107d8dac8c3792baf">Speed Kills</h2>
+
+<p>RDF and OWL are excellent technologies for building data integration and
+analysis apps. Those apps invariably require complex query processing,
+i.e., queries where there are lots of joins, complex logical conditions
+to evaluate, etc. Stardog is targeted at absolute query performance for
+<em>complex SPARQL queries</em>.</p>
+
+<h2 id="lightweight-braindead-simple-deployment:031f92451d7409c107d8dac8c3792baf">Lightweight, Braindead Simple Deployment</h2>
+
+<p>Winners ship. No excuses. No one wants complex deployment models. Stardog
+works out-of-the-box with minimal (none, typically) configuration. You
+shouldn&rsquo;t have to fight to install or to tune an RDF database for days.
+Because Stardog is pure Java, it will run anywhere, in any servlet
+container, on any OS.</p>
+
+<h2 id="owl-2-reasoning:031f92451d7409c107d8dac8c3792baf">OWL 2 Reasoning</h2>
+
+<p>Finally, Stardog has the most comprehensive and best OWL reasoning support
+of any commercial RDF database available.</p>
+
+<p>Stardog 1.0 will support: SPARQL 1.1 entailment regimes,
+<a href="http://weblog.clarkparsia.com/2010/04/01/pellet21-terp/">Terp</a>, OWL 2 DL
+schema reasoning via <a href="http://clarkparsia.com/pelletdb/">PelletDb</a>, OWL 2
+QL (query-time reasoning), and OWL 2 closed world reasoning via <a href="http://clarkparsia.com/pellet/icv/">Pellet
+ICV</a>. We&rsquo;ll add OWL 2 RL support to
+Stardog in a future release.</p>
+
+<p>Okay, there&rsquo;s a lot there and we&rsquo;ll unpack it all in good time; but for now
+the point is that Stardog&rsquo;s reasoning support is not only more comprehensive
+than any other RDF database, it&rsquo;s more consistent, rational, and tied
+carefully to the W3C&rsquo;s OWL 2 standard. Stardog also encompasses all the
+relevant points on the scalability-expressivity spectrum, as well as hitting
+all of the significant reasoning modes of operation (batch, on-demand,
+query-time).</p>
+
+<h2 id="next-steps:031f92451d7409c107d8dac8c3792baf">Next Steps</h2>
+
+<p>We&rsquo;re running a limited, private beta for Stardog starting 1 March and
+running to 30 May. We&rsquo;ve got a few open slots, and we want to cast a
+wide net to find some new orgs and new faces with new use cases and
+requirements for a commercial RDF database. If you&rsquo;re interested, <a href="mailto:kendall@clarkparsia.com">drop me
+an email</a>.</p>
+
+                    </div>
+                </section>
+                
+                <h1 class="content-subhead">23 Sep 2010, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://localhost:1313/2010-09-23-the-rdf-database-market/" class="post-title">The RDF Database Market</a>
+
+                        <p class="post-meta">
+                            
+                                By <strong class="post-author">Kendall Clark</strong>
+                            
+                            
+                                under 
+                                <a class="post-category post-category-RDF" href="/categories/rdf">RDF</a><a class="post-category post-category-database" href="/categories/database">database</a><a class="post-category post-category-business" href="/categories/business">business</a>
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<p>Update: <a href="http://stardog.com/">Stardog</a> is our entry into the
+commercial RDF database market.</p>
+
+<p>There&rsquo;s plenty of talk about the purely technical aspects of RDF databases
+but considerably less talk about the <em>RDF database market</em> as a commercial
+software business.~ As I see it, the commercial RDF database market contains
+at least seven systems, listed here in random order:</p>
+
+<ul>
+<li><a href="http://www.oracle.com/technetwork/database/options/semantic-tech/index.html">Oracle</a></li>
+<li><a href="http://virtuoso.openlinksw.com/">Virtuoso</a></li>
+<li><a href="http://www.franz.com/agraph/allegrograph/">AllegroGraph</a></li>
+<li><a href="http://www.systap.com/bigdata.htm">BigData</a></li>
+<li><a href="http://www.ontotext.com/owlim/">OWLIM</a></li>
+<li><a href="http://4store.org/trac/wiki/5store">5Store</a></li>
+<li><a href="http://www.talis.com/platform/">Talis Platform</a></li>
+</ul>
+
+<p>There are another 8 to 10 <em>technically viable RDF databases
+available</em>. However, I want to talk about these seven systems as
+comprising the <em>commercial market</em>, by which I mean systems that
+satisfy two conditions: first, they are production-ready; and, second, they
+are commercially licensed (that is, you have to pay money to use them). A
+weaker version of the latter condition, which I&rsquo;m happy with, is just
+that there is a single entity which owns the system (i.e., they are not
+community-owned) and that entity is commercial (i.e., profit-seeking) in
+nature.</p>
+
+<p>Most of these systems have a zero-cost version or are open-source
+licensed. But they also all have commercial editions or commercial add-ons,
+extensions, etc. (BigData is a variant: it&rsquo;s using the dual licensing (GPL
+and commercial) model.) I also know that SDB, TDB, Sesame, and plenty of
+others are production-ready, but none of them is commercially licensed, to
+my knowledge&mdash;please post a comment if I&rsquo;ve got that wrong.</p>
+
+<p>A final qualification: the 5Store site says that it &ldquo;may be possible to
+license&rdquo; it from Garlik. My guess (and it&rsquo;s only a guess) is that it&rsquo;s
+more likely if you aren&rsquo;t licensing it in order to compete with Garlik&rsquo;s
+commercial service offerings. I will just assume, however, that 5Store is
+licensable generally.</p>
+
+<p>I don&rsquo;t want to quibble about the contours of the definition; rather, I want
+to speculate about how we might rank these systems in terms of commercial
+impact; that is, who&rsquo;s earning the most revenue from license sales of these
+systems, what are some of the features of the commercial market with respect
+to messaging and positioning, etc.</p>
+
+<h2 id="no-pure-plays:aedb8a7ea38a4e095f87fc7c5e54b3a9">No Pure Plays</h2>
+
+<p>The first point to make is that there are no <em>pure plays</em>
+here. BigData comes the closest to being a pure RDF database play; but
+since it&rsquo;s currently GPL&rsquo;d, it may be the case that its development is
+being subsidized via commercial activities other than software licensing. I
+hope Systap is licensing BigData and its extensions; but they may well be
+generating revenue from customizations, installations, or other service
+revenue.</p>
+
+<p>Every other system is the product of either a larger software enterprise
+(Virtuoso, AllegroGraph, OWLIM, Talis Platform), a <em>much</em> larger
+software enterprise (Oracle), or a related business (5Store, which is
+available from Garlik, a personal information management service in the UK).</p>
+
+<p>I don&rsquo;t know of any RDF database produced as a pure play biz model. I don&rsquo;t
+know what that means, if anything, but it&rsquo;s worth noting. Put another
+way: if that&rsquo;s a viable business model, I don&rsquo;t know of anyone pursuing
+it. Again, if you have other information, please let me know.</p>
+
+<h2 id="integrated-offerings:aedb8a7ea38a4e095f87fc7c5e54b3a9">Integrated Offerings</h2>
+
+<p>Most of the systems are integrated into a larger platform or framework
+of additional offerings. That&rsquo;s obvious in the case of Oracle; everyone
+knows that. Virtuoso has a lot of additional tools, libraries, etc.,
+largely focused on Linked Data, but also including a full RDBMS, XML
+support, etc. Judging informally, I would say Oracle and Virtuoso have
+the biggest spread of integrated offerings to complement their respective
+RDF systems. AllegroGraph has a wide variety of analytic systems that
+are integrated with it, as well as editors, the RacerPro OWL reasoner,
+etc. OWLIM has integrated NLP and related analytic tools, etc. Talis
+Platform takes a slightly different approach; it includes an RDF database,
+but it emphasizes the integrated offerings: the Linked Data publishing
+platform, etc.</p>
+
+<p>The outliers here are 5Store and BigData. As far as I know, 5Store is an RDF
+database only, more or less. I am not certain about BigData: it has some
+extensions (reasoning, temporal, HA); but I don&rsquo;t know their status.</p>
+
+<h2 id="focus-on-scalability:aedb8a7ea38a4e095f87fc7c5e54b3a9">Focus on Scalability</h2>
+
+<p>This one is semi-technical: the marketing of each system explicitly focuses
+on database scalability as the primary metric of evaluation. The marketing
+in the RDF database market, such as it is, reminds me a lot of Carl Sagan:
+billions and billions of stars, er&hellip;, I mean triples. The talk is not
+of transactions per second or average query times for complex OLAP-style
+queries. The most common metrics are loading time and the raw number of
+triples. Several of the systems are built around some kind of distributed
+or clustered architecture, the point of which is scalability (though
+reliability is also a technical factor, but not one which any system except
+BigData emphasizes). AllegroGraph is a near outlier here since it&rsquo;s now
+being marketed explicitly for OLTP or transactional loads. Talis Platform
+is also an outlier since it doesn&rsquo;t especially emphasize scalability in its
+marketing, which is not to say that it isn&rsquo;t scalable (I don&rsquo;t know either
+way).</p>
+
+<p>Recall: my point here isn&rsquo;t purely technical; but, rather, how are each of
+these systems marketed, what is their commercial messaging or positioning,
+who&rsquo;s selling software, etc.</p>
+
+<h2 id="reasoning-required:aedb8a7ea38a4e095f87fc7c5e54b3a9">Reasoning Required</h2>
+
+<p>Some kind of reasoning is part of all, or nearly all, of the systems in
+the RDF database market. This is an important point to emphasize, since
+it sometimes seems that there is a split between the RDF <em>qua</em> graph data
+structure and RDF/OWL <em>qua</em> knowledge representation camps. That so-called
+split isn&rsquo;t really evident when we look at the offerings in the RDF database
+market:</p>
+
+<ul>
+<li>Oracle&rsquo;s system contains a forward-chaining reasoner at (more or less) the
+OWL2 RL level</li>
+<li>Virtuoso appears to prefer backward chaining over an assortment of OWL and
+RDFS property types</li>
+<li>AllegroGraph supports what they call &#8220;RDFS++ reasoning&#8221;, which
+appears to be pretty similar to Virtuoso&rsquo;s property-based reasoning; it also
+supports Prolog rules</li>
+<li>BigData supports RDFS plus some OWL properties</li>
+<li>OWLIM supports RDFS, OWL Horst, and OWL2 RL reasoning</li>
+<li>5Store is an outlier here: it does not support reasoning of any kind (that I can determine)</li>
+<li>Talis Platform is an outlier, too: it does not support reasoning of any kind (that I can determine)</li>
+</ul>
+
+<p>There aren&rsquo;t any systems supporting more expressivity than OWL2 RL; but that
+is what we should expect to see, given the technical affinities between
+databases, rule engines, RDFS, and OWL2 RL.</p>
+
+<h2 id="license-costs-and-pricing-models:aedb8a7ea38a4e095f87fc7c5e54b3a9">License Costs and Pricing Models</h2>
+
+<p>Licensing fees and pricing models are a mixed bag:</p>
+
+<ul>
+<li>OWLIM does per core licensing (900 Euros per core)</li>
+<li>Oracle Semantic Technologies is a free add-on to the Oracle Spatial extension</li>
+<li>BigData: unknown</li>
+<li>AllegroGraph: appears to be licensed per-CPU and list prices don&rsquo;t seem to be publicly available</li>
+<li>5Store: unknown</li>
+<li>Talis Platform: Software as a Service model; has both free and for-pay options</li>
+</ul>
+
+<h2 id="sparql-1-1-participation:aedb8a7ea38a4e095f87fc7c5e54b3a9">SPARQL 1.1 Participation</h2>
+
+<p>The RDF database market achieves a high degree of core interoperability:
+every system implements SPARQL. There may be interoperability issues at
+the edge of these offerings, since most of those extensions are relatively
+tool-specific.</p>
+
+<p>That said, it&rsquo;s interesting to look at which vendors are participating in
+the ongoing efforts to specify SPARQL 1.1. Talis, Oracle, Virtuoso, and
+5Store are active in the SPARQL WG; BigData, OWLIM, and AllegroGraph are not
+participating publicly in the WG.</p>
+
+<h2 id="conclusions:aedb8a7ea38a4e095f87fc7c5e54b3a9">Conclusions</h2>
+
+<p>What&rsquo;s the upshot of all this? The market has some continuities
+(standards-respecting, reasoning offerings pretty uniform, focus on
+scalability) and some discontinuities (pricing, degree of integration with
+other systems, business model). It&rsquo;d be interesting to speculate about
+which is the commercial leader, in the sense of largest volume of licensing
+revenue. There do seem to be some parts of the market that aren&rsquo;t being
+pursued commercially. I wonder, too, if we&rsquo;ll see any consolidation or
+shakeout in this market anytime soon?</p>
+
+<p>What do you think about the commercial RDF database market? Are your use
+cases and requirements for a commercial system being met by the current
+offerings?</p>
+
+                    </div>
+                </section>
+                
+                <h1 class="content-subhead">01 Jan 0001, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://localhost:1313/2011-01-26-stardog-talk-at-nyc-semweb-meetup/" class="post-title"></a>
+
+                        <p class="post-meta">
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <p>+++
+title = &ldquo;Stardog Talk at NYC Semweb Meetup&rdquo;
+date = &ldquo;2011-01-26&rdquo;
+author = &ldquo;Kendall Clark&rdquo;
++++</p>
+
+<p>On 3 Feb, I&rsquo;ll be giving a talk about Stardog at the <a href="http://www.meetup.com/semweb-25/calendar/15655768/">Semweb Meetup in
+NYC</a>.~</p>
+
+<p>I&rsquo;ll publish my <a href="http://db.tt/Lqszdiz">slides</a> for the talk here early next week so people won&rsquo;t
+have to bother actually listening to me during the talk; rather, they can
+tweet their brains out in a furious back-channel frenzy of love for Stardog.
+Tweet, tweet! Woof!</p>
+
+<p>Thanks to Marco Neumann for organizing the event and giving me a slot on the
+program. I hope to see you there.</p>
+
+                    </div>
+                </section>
+                
+                <h1 class="content-subhead">01 Jan 0001, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://localhost:1313/2014-02-06-stardog-world-tour/" class="post-title">Stardog World Tour</a>
+
+                        <p class="post-meta">
+                            
+                                By <strong class="post-author">Mike Grove</strong>
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <p>We&rsquo;re giving talks about <a href="http://stardog.com">Stardog</a> at meetups on the East Coast over the next few months:</p>
+
+<ul>
+<li><a href="http://www.meetup.com/semweb-31/events/163602752/">Washington DC</a>, February 18th at 6:30pm</li>
+<li><a href="http://www.meetup.com/MarylandSemantics/events/163753242/">Baltimore MD</a>, February 27th at 6:30pm</li>
+<li><a href="http://www.meetup.com/The-Philadelphia-Semantic-Web-Meetup/">Philadephia PA</a>, March 4th at 6:30pm</li>
+<li><a href="http://www.meetup.com/semweb-25/events/155269772/">New York, NY</a>, May 22nd at 6:30pm</li>
+</ul>
+
+<p>We&rsquo;ll also be announcing dates in Northern Virginia, Boston, and Toronto in the coming weeks. It&rsquo;s a great opportunity to meet some of the folks behind Stardog and learn more about it.</p>
+
+                    </div>
+                </section>
+                
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="http://hugo.spf13.com/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

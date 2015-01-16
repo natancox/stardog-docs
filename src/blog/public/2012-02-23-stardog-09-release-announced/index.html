@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+
+    <title>Stardog 0.9 Release &middot; ★dog blog</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
+
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313">★dog blog</a></h1>
+            <h2 class="brand-tagline">A theme based on the pure css blog layout.</h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="pure-button" href="http://twitter.com/"><i class="fa fa-twitter"></i> Twitter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="pure-button" href="http://github.com/ "><i class="fa fa-github-alt"></i> github</a>
+                </li>
+               
+            </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">23 Feb 2012, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://localhost:1313/2012-02-23-stardog-09-release-announced/" class="post-title">Stardog 0.9 Release</a>
+
+                        <p class="post-meta">
+                            
+                                By <strong class="post-author">Kendall Clark</strong>
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <p>We&rsquo;re happy to announce the release of <strong>Stardog 0.9</strong>, the first
+<em>feature-complete</em> version of Stardog. Please
+<a href="http://stardog.com/">download</a> it and send feedback to the
+<a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">support forum</a>.</p>
+
+<p>Notable changes in this release:</p>
+
+<ul>
+<li>new security system, including user management, granular roles and permissions model</li>
+<li>new native protocol, SNARL, based on Netty and Google&rsquo;s Protocol Buffers</li>
+<li>new system catalog for all system info, metadata, etc.</li>
+<li>new search system over RDF literals, integrated with SPARQL query eval</li>
+<li>new server management: online, offline databases; better server startup, shutdown, and locking</li>
+<li>CLI now supports remote db administration, many new subcommands</li>
+<li>new Quartz-based job scheduler with cron expression scheduling</li>
+<li>new, optimized index support for named graphs and triples-only databases</li>
+<li>new, differential write indexes with customizable merge thresholds</li>
+<li>new statistics computation &amp; recomputation algorithms</li>
+<li>new customizable TBOX (i.e., reasoning schema or ontology) extraction &amp; management</li>
+<li>new Stardog configuration system, including database creation templates</li>
+<li>new reasoning services (explanation, satisfiability, consistency checking) available programmatically</li>
+<li>reasoning extended to named graphs</li>
+<li>ICV validation extended to named graphs</li>
+<li>new or improved support for NQUADS, Trig, TSV, and CSV</li>
+<li>improved concurrency in data loading</li>
+<li>consistent use of <tt>mmap()</tt> for better performance</li>
+<li>load GZIP-compressed files directly, including ZIP files with multiple RDF</li>
+<li>many (many!) known bugs fixed</li>
+<li>updated documentation</li>
+</ul>
+
+<p>The upcoming 0.9.x releases will focus on query and reasoning
+performance improvements and bug fixes. We anticipate several point
+releases before the final 1.0 release. Thanks to all the <em>closed
+alpha</em> testers for their hard work: about 200 of them downloaded
+Stardog, sent bug reports, fixes, ideas, and feedback.</p>
+
+                    </div>
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="http://hugo.spf13.com/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

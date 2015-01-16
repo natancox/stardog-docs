@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+
+    <title>Stardog: What&#39;s Coming Next? &middot; ★dog blog</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
+
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313">★dog blog</a></h1>
+            <h2 class="brand-tagline">A theme based on the pure css blog layout.</h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="pure-button" href="http://twitter.com/"><i class="fa fa-twitter"></i> Twitter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="pure-button" href="http://github.com/ "><i class="fa fa-github-alt"></i> github</a>
+                </li>
+               
+            </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">27 Sep 2012, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://localhost:1313/2012-09-27-stardog-whats-coming-next/" class="post-title">Stardog: What&#39;s Coming Next?</a>
+
+                        <p class="post-meta">
+                            
+                                By <strong class="post-author">Kendall Clark</strong>
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<p>Stardog is on the move; we got <a href="http://stardog.com/">Stardog
+1.0</a> out the door without anyone dying; we&rsquo;ve got customers; people
+are using it; and we released Stardog Community, too. Since the 1.0
+release in June we&rsquo;ve done 6 releases, about one every two weeks. Most
+of them have focused on small usability improvements, performance
+tweaks, and, of course, bug fixes.</p>
+
+<p>But where are we headed now with Stardog development?</p>
+
+<h2 id="sparql-1-1:2341668b2be5b5fa620c1e2bfb4e4594">SPARQL 1.1</h2>
+
+<p>The most pressing need in Stardog is support for
+<a href="http://www.w3.org/TR/sparql11-query/">SPARQL 1.1</a>. We got stuck
+between the devil and the deep blue sea&ndash;trying to push the 1.0
+release before the SPARQL Working Group was completely finished with
+the SPARQL 1.1 spec. We were motivated to avoid reimplementing any
+parts of SPARQL 1.1 because the spec shifted. So we decided SPARQL 1.0
+for the Stardog 1.0 release. Then we told everyone that SPARQL 1.1
+would be the highest priority item for the post-1.0 release cycle.</p>
+
+<p>And so it&rsquo;s been.</p>
+
+<p>As of this writing, Stardog TRUNK supports all of SPARQL 1.1 query
+language; property paths are not totally finished but we&rsquo;re close. We
+already support a superset of the HTTP protocol for 1.1, so that&rsquo;s
+good.) Finishing property paths, final testing, and tweaking will take
+a bit longer: we expect Stardog 1.1 release to be out by the end of
+October. It will include full SPARQL 1.1 support.</p>
+
+<p>Except for the bits we don&rsquo;t like.</p>
+
+<p>Frankly we&rsquo;re nervous about adding update operations to SPARQL (the
+query language; we already support update in our HTTP and SNARL
+protocols) because we&rsquo;re worried about SPARQL injection attacks. So
+we&rsquo;re going to take a bit more time to work out a secure design for
+supporting update operations in the query language. Stay tuned for
+those bits some time after the 1.1 release.</p>
+
+<h2 id="user-defined-rules-and-reasoning:2341668b2be5b5fa620c1e2bfb4e4594">User-defined Rules and Reasoning</h2>
+
+<p>Stardog already has the best and most comprehensive OWL 2 reasoning of
+any RDF database; but we&rsquo;re not finished making it better. In Stardog
+1.1 we&rsquo;ll debut user-defined rule reasoning; some domain modeling just
+doesn&rsquo;t fit easily into OWL axioms. <strong>Sometimes you really need to
+write a damn rule!</strong></p>
+
+<p>Stardog 1.1 will support user-defined rules using the SWRL syntax; it
+will include all of the SWRL builtins, as well as a much-requested new
+builtin that allows SWRL rules to create new individuals. (Strictly
+speaking, this new builtin is a gun with which users may easily shoot
+themselves a <em>non-terminating</em> wound. Don&rsquo;t say you weren&rsquo;t warned!)</p>
+
+<p>Finally, we&rsquo;ve added a Datalog engine to Stardog and we&rsquo;ll use that to
+support the rest of OWL 2; that is, we&rsquo;ll use the new Datalog engine
+to support transitivity (first) and (later) equality reasoning.</p>
+
+<h2 id="performance:2341668b2be5b5fa620c1e2bfb4e4594">Performance</h2>
+
+<p>SPARQL query performance is our primary obsession these days,
+especially for very complex queries involving lots of joins, etc. We
+think answering complex queries is the sweet spot for SPARQL and
+RDF-based information systems. And since we reduce OWL reasoning to
+SPARQL query answering (more or less), we have additional motivation
+to make it really fast.</p>
+
+<p>We&rsquo;ve pushed many SPARQL FILTER operations down further into query
+evaluation, with the result that in many cases queries with FILTERs
+are much faster. We&rsquo;ve also improved database write performance&ndash;which
+is, admittedly, a lower priority than database read performance&ndash;by
+being more clever with how we torture the disk head. We&rsquo;ve also
+increased Stardog write safety during system instability (power cord
+got yanked?!) by writing more aggressively and more often to
+disk. Finally, we&rsquo;re looking at some new data compression techniques
+that may let us speed up disk reads substantially.</p>
+
+<h2 id="production-features:2341668b2be5b5fa620c1e2bfb4e4594">Production Features</h2>
+
+<p>We&rsquo;re working on hot backup, i.e., backing up a Stardog database
+without having to take it offline. We&rsquo;ll add that to the JMX
+monitoring that&rsquo;s been sitting in a branch for nearly 9 months; the
+new query management subsystem; and the long-awaited web
+console. These production features will make life easier for the
+operations people in yr life.</p>
+
+<h2 id="geospatial-query-answering:2341668b2be5b5fa620c1e2bfb4e4594">Geospatial Query Answering</h2>
+
+<p>Finally, geospatial query answering and reasoning are coming to
+Stardog. We&rsquo;re implementing GeoSPARQL and, while it&rsquo;s still very early
+in the development cycle, we&rsquo;re excited and confident it&rsquo;ll be a very
+useful addition.</p>
+
+                    </div>
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="http://hugo.spf13.com/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

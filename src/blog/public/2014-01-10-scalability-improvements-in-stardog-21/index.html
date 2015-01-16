@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+
+    <title>Scalability Improvements in Stardog 2.1 &middot; ★dog blog</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
+
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313">★dog blog</a></h1>
+            <h2 class="brand-tagline">A theme based on the pure css blog layout.</h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="pure-button" href="http://twitter.com/"><i class="fa fa-twitter"></i> Twitter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="pure-button" href="http://github.com/ "><i class="fa fa-github-alt"></i> github</a>
+                </li>
+               
+            </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">10 Jan 2014, 00:00</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://localhost:1313/2014-01-10-scalability-improvements-in-stardog-21/" class="post-title">Scalability Improvements in Stardog 2.1</a>
+
+                        <p class="post-meta">
+                            
+                                By <strong class="post-author">Kendall Clark</strong>
+                            
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<p>The forthcoming <a href="http://stardog.com/">Stardog 2.1</a> release improves
+query scalability by about 3 orders of magnitude and can handle 50
+billion triples on a $10,000 server.~ We&rsquo;ve never been overly
+concerned about Stardog scalability per se: first we wanted to make it
+easy to use; then we wanted to make it fast. We just assumed we&rsquo;d get
+around to make it <em>insanely scalable</em>, too. Stardog 2.1 makes giant
+leaps in query, data loading, and reasoning scalability.</p>
+
+<p>Running on $10,000 of server hardware (32 cores, 256 GB RAM), Stardog
+2.1 can handle 20 to 50 billion triples. Compared to Stardog 2.0.x,
+Stardog 2.1 loads ~100M triple datasets about two times faster; it
+loads ~1B triple datasets about 3 times faster&ndash;all while using much
+less memory. 2.1 can load 20B datasets at 300,000 triples per
+second. We also improved query evaluation performance significantly so
+that Stardog 2.1 is still very fast, even at much larger database
+sizes. How did we do it?</p>
+
+<h2 id="improving-concurrency:221fb4795531eb14f0be5b8b2b42c9aa">Improving Concurrency</h2>
+
+<p>Much of the performance improvement comes from taking care with
+concurrency and reducing thread contention, especially during bulk
+data loading (i.e., initial database creation with large amounts of
+data being added at creation time). We&rsquo;re avoiding more locks and
+using more non-blocking algorithms and data structures a lot more
+often. Moving for example from <code>BitSet</code> to <code>ConcurrentLinkedQueue</code>
+helps, even though the former is more space efficient than the
+later. We&rsquo;re also using <code>ThreadLocal</code>s more aggressively to reduce
+thread contention and avoid synchronization. As loading performance
+improved, several LRU caches became problematic since evictions were
+being swamped by additions. Batching evictions in a single thread
+helps but increases memory pressure and GC times.</p>
+
+<h2 id="worse-hashing-is-better-hashing:221fb4795531eb14f0be5b8b2b42c9aa">Worse Hashing is Better Hashing</h2>
+
+<p>Stardog hashes URIs, bnodes, and literal values for storage in a
+mapping dictionary; previously we used the 64-bit <code>MurmurHash</code> because
+it&rsquo;s very fast, has low collision rate, and lets us store values as
+longs. When handling collisions and cache misses, disk accesses are
+required; at scale these random disk accesses are too
+expensive. Moving to <code>SHA1</code> is perhaps non-intuitive since the hash
+size goes from 64 to 160 bits. But since that makes hash collision
+practically impossible, we&rsquo;re able to achieve significant speedups&ndash;it
+also simplifies the mapping dictionary significantly.</p>
+
+<h2 id="off-heap-memory-management:221fb4795531eb14f0be5b8b2b42c9aa">Off-Heap Memory Management</h2>
+
+<p>Before 2.1, we were using <code>mmap</code> aggressively during loading in order to use the operating system&rsquo;s VM, memory management, etc. But memory mapped files in JVM are notoriously crappy (<code>unmap</code>!), and we&rsquo;ve seen frequent JVM crashes when we had a lot of memory mapped files around. Not good.</p>
+
+<p>We also realized that memory mapped files were causing performance slowdowns when there was more than 64GB of RAM available. And since we have no control over when memory mapped files were flushed to disk, that was typically happening too often. But keeping this information on the Java heap was never a viable choice at scale because of GC processing. Stardog 2.1 moves to an off-heap memory allocation scheme, which gives us very fine-grained control over disk flushes, uses available system memory more efficiently, and is (roughly) as fast as memory mapping.</p>
+
+<h2 id="reducing-gc-pauses:221fb4795531eb14f0be5b8b2b42c9aa">Reducing GC Pauses</h2>
+
+<p>Finally, to significantly improve loading performance we needed to do something about GC costs, which are important in bulk loading because of high rate of object creation and destruction. Using immutable objects makes it possible to improve concurrency but with the overhead of additional garbage being created. Tuning the GC knobs and buttons didn&rsquo;t really help appreciably. We&rsquo;ve addressed the GC processing costs by reworking places where we were unnecessarily creating objects. That kind of careful software engineering is aided by the relatively small size of the Stardog code base. It&rsquo;s like engineering works or something!</p>
+
+<p>This careful software re-engineering included, for example, delving into the guts of the RDF parser to use a single <code>StringBuilder</code> that was continuously reset rather than creating new builders for each RDF value. We also reduced the amount of cache use on the heap to relieve memory pressure. We now see GC pauses taking 1% or less of the overall bulk loading time.</p>
+
+<h2 id="query-evaluation:221fb4795531eb14f0be5b8b2b42c9aa">Query Evaluation</h2>
+
+<p>It doesn&rsquo;t do much good to improve bulk data loading performance if
+you don&rsquo;t also improve query evaluation performance at least as
+much. So we did that, too. The key to improving query evaluation
+performance in 2.1 came down to memory usage and how we handle
+intermediate results. Consider a SPARQL query from
+<a href="http://dbis.informatik.uni-freiburg.de/forschung/projekte/SP2B/">SP2B</a>:</p>
+
+<pre><code>
+SELECT DISTINCT ?name1 ?name2
+  WHERE {
+     ?article1 rdf:type bench:Article .
+     ?article2 rdf:type bench:Article .
+     ?article1 dc:creator ?author1 .
+     ?author1 foaf:name ?name1 .
+     ?article2 dc:creator ?author2 .
+     ?author2 foaf:name ?name2 .
+     ?article1 swrc:journal ?journal .
+     ?article2 swrc:journal ?journal
+  FILTER (?name1 &lt; ?name2)
+}</code></pre>
+
+<p>For a 5M triple database, this query produces 18,362,955 (!) results
+and the <code>DISINCT</code> keeps them in memory. Unworkable at scale. Stardog
+2.1 addresses this issue by reusing the new off-heap memory allocation
+scheme. A small heap doesn&rsquo;t work; and GC processing kills you with a
+large heap, so we just avoid the heap instead. Yes, that means we have
+to manage memory manually, but that&rsquo;s actually achievable in a JVM
+application. We implemented a memory manager based on various JVM
+internals; it&rsquo;s responsible for allocating (and deallocating) data
+used during query evaluation, including holding intermediate query
+results. It manages the heap outside the JVM and will flow to disk
+when needed. The new memory manager also performs some static analysis
+of the query using database statistics to guide its behavior.</p>
+
+<h2 id="moving-forward:221fb4795531eb14f0be5b8b2b42c9aa">Moving Forward</h2>
+
+<p>No public APIs were harmed in the creation of the new scalability
+improvements. See
+<a href="http://presentboldly.com/kendall/stardog-21">this slide deck</a> for an
+overview of some other changes in Stardog 2.1.</p>
+
+<p>Enjoy.</p>
+
+                    </div>
+                </section>
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="http://hugo.spf13.com/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
