@@ -318,8 +318,6 @@ The following twiddly knobs for Stardog Server are available in
 `stardog.properties`:footnote:[For more details about configuring these values,
 see the `examples/stardog.properties` file that is distributed with Stardog.]
 
-.  `strict.parsing`: Controls whether Stardog parses RDF strictly
-    (`true`, the default) or loosely (`false`)
 .  `query.all.graphs`: Controls what data Stardog Server evaluates queries against; if
     `true`, it will query over the default graph and the union of all
     named graphs; if `false` (the default), it will query only over the
@@ -342,24 +340,6 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
 .  `database.connection.timeout.ms`: Controls how long, in
     milliseconds, connections may idle before being automatically closed
     by the server.
-.  `http.max.connections`: The next two parameters control the maximum
-    number of simultaneous connections that the Stardog client will use; for more
-    information, see the http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html[relevant Apache
-    docs].
-. `http.max.get.query.length`: The length in characters of the longest
-    SPARQL query that will be serialized via HTTP `GET`; queries longer
-    are serialized via `POST`.
-. `bnode.preserve.id`: Determines how the Stardog parser handles bnode
-    identifiers that may be present in (some) RDF input. If this
-    property is enabled (i.e., `TRUE`), parsing and data loading
-    performance are improved; but the other effect is that if distinct
-    input files use (randomly or intentionally) the same bnode
-    identifier, that bnode will point to one and the same node in the
-    database. If you have input files that use explicit bnode
-    identifiers, and multiple files may use the asame bnode idenitifers,
-    and you don't want those bnodes to be smushed into a single node in
-    the database, then this configuration option should be disabled (set
-    to `FALSE`).
 . `load.parser.count`, `load.processor.count`: Determines the number of parser and
      processor threads, respectively, to be used during bulk loading
      of data at database creation time. The default values are `3`
@@ -490,6 +470,7 @@ knobs till you really need to.
 
 The following are the legal configuration options for a Stardog database:
 
+- `bnode.preserve.ids`: Determines how the Stardog parser handles bnode identifiers that may be present in (some) RDF input. If this property is enabled (i.e., `TRUE`), parsing and data loading performance are improved; but the other effect is that if distinct input files use (randomly or intentionally) the same bnode identifier, that bnode will point to one and the same node in the database. If you have input files that use explicit bnode identifiers, and multiple files may use the asame bnode idenitifers, and you don't want those bnodes to be smushed into a single node in the database, then this configuration option should be disabled (set to `FALSE`).
 - `database.name`: A legal database name.
 - `database.online`: The status of the database: online or offline. It may be set so that the database is created initially in online or offline status; subsequently, it can't be set directly but only by using the relevant admin commands.
 - `icv.active.graphs`: Specifies which part of the database, in terms of named graphs, is checked with IC validation. Set to `tag:stardog:api:context:all` to validate all the named graphs in the database.
@@ -510,7 +491,9 @@ for details.
 - `reasoning.schema.graphs`: Determines which, if any, named graph or graphs contains the "tbox", i.e., the schema part of the data.
 - `search.enabled`: Enables semantic search on the database.
 - `search.reindex.mode`: Sets how search indexes are maintained.
+- `strict.parsing`: Controls whether Stardog parses RDF strictly (`true`, the default) or loosely (`false`)
 - `transactions.durable`: Enables durable transactions.
+- `query.all.graphs`: Controls what data the database evaluates queries against; if `true`, it will query over the default graph and the union of all named graphs; if `false` (the default), it will query only over the default graph.  This database option overrides any global server settings.
 
 ==== A Note About Database Status
 
@@ -529,6 +512,11 @@ The following table summarizes the options:
 .Table of Configuration Options
 |===
 |Option |Mutable | Default | API
+
+|`preserve.bnode.ids`
+| Yes
+| `true`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#PRESERVE_BNODE_IDS[DatabaseOptions.PRESERVE_BNODE_IDS]
 
 |`database.archetypes`
 |Yes
@@ -640,10 +628,20 @@ The following table summarizes the options:
 | `false`
 | link:/java/snarl/com/complexible/stardog/search/SearchOptions.html#SEARCHABLE[SearchOptions.SEARCHABLE]
 
+|`strict.parsing`
+| Yes
+| `true`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#STRICT_PARSING[DatabaseOptions.STRICT_PARSING]
+
 |`transactions.durable`
 | Yes
 | `false`
 | link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#TRANSACTIONS_DURABLE[DatabaseOptions.TRANSACTIONS_DURABLE]
+
+|`query.all.graphs`
+| Yes
+| `false`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#QUERY_ALL_GRAPHS[DatabaseOptions.QUERY_ALL_GRAPHS]
 
 |===
 
