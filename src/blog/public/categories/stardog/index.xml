@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Stardog on ★dog blog</title>
-    <link>http://localhost:1313/categories/stardog/</link>
-    <description>Recent content in Stardog on ★dog blog</description>
+    <title>Stardog on STARDOG★WEBLOG</title>
+    <link>/categories/stardog/</link>
+    <description>Recent content in Stardog on STARDOG★WEBLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
     
     <lastBuildDate>Mon, 10 Jan 2011 00:00:00 UTC</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/stardog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/categories/stardog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Invitation to Stardog Beta</title>
-      <link>http://localhost:1313/2011-01-10-stardog-beta/</link>
+      <link>/invitation-to-stardog-beta/</link>
       <pubDate>Mon, 10 Jan 2011 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/2011-01-10-stardog-beta/</guid>
+      <guid>/invitation-to-stardog-beta/</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;TL;DR?&lt;/strong&gt; &lt;a href=&#34;http://stardog.com/&#34;&gt;Stardog&lt;/a&gt; is a fast, lightweight RDF

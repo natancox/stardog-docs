@@ -1,38 +1,177 @@
-@import "index"
 @import "nib"
+@import "axis"
+@import "jeet"
+@import "rupture" //'rupture/index'
 
+//edit()
 normalize-css()
-offset = 10px
-
-grid()
-  column-width = 60px
-  gutter-width = 20px
-  columns = 12
-  total-width = 100%
-
-  .main
-  .sidebar
-    float: left
-
-  .main
-    column(9)
-
-  .sidebar
-    column(3)
-
-#logo
-  absolute: top (offset * 2) left (offset * 2)
-  float: right
-
-#footer
-  absolute: bottom offset left offset
-
-//typography
+mypink = rgba(0,0,0,.8)//#FF69B4 
 font-color = rgba(0, 0, 0, 0.8)
-base-line-height = 24px
-font-size  = 16px
-blog-font  = "Source Sans Pro", "Anonymous"
-
+base-line-height = (font-size * 1.6)
+font-size  = 14px
+blog-font  = "Fira Sans", "Fira Mono"
+head1-color = font-color 
+head2-color = font-color
 base(fonts = blog-font)
-
 typography()
+ligatures = true
+sdlime =  rgba(205,237,136,100)
+text-selection(color = sdlime)
+//inkblue = rgba(0,10.2,17.3,.78)
+inkblue = rgba(15, 117, 150, .78)
+inkbluefoot = rgba(15,117,150,.95)
+
+rupture.scale = 0 415px 600px 800px 1050px 1280px
+rupture.mobile-cutoff = 415px
+
+img
+  max-width 100%
+  height auto
+
+#header
+  col(12/12, gutter: 20px)
+  background inkblue
+  +mobile()
+    #logo>#title
+      fs((font-size * 1.33))
+      font-weight 400
+#dog
+  center()
+  +mobile()
+    display none
+  +below(5)
+    padding: 30px
+#logo
+  col(4/12, offset:1/4, gutter: 20px)
+#logo>#title
+  fs((font-size * 3))
+  font-weight 500
+  a
+    reset-link()
+    color white
+  a:hover
+    color white
+#theSocial
+  col(3/12, offset: 3/4, gutter: 10px)
+  +mobile()
+    col(4/12, offset: 2/4, gutter: 1px)
+    padding 10px
+#content, #content_foot
+  col(8/12, offset:1/4, gutter: 20px)
+  +mobile()
+    col(8/12, offset: 1/6, gutter: 10px)
+    h3
+      a:hover
+        text-decoration none
+  background rgba(255,255,255,.888888888)
+  padding 30px
+  a
+    link: mypink 
+    bold()
+#footer
+  col(12/12, gutter: 20px)
+  background inkbluefoot
+#thefoot
+  +mobile()
+    col(8/12, offset: 1/5, gutter 10px)
+    bold()
+  col(8/12, offset: 1/4, gutter: 20px)
+  padding-bottom 10px
+  p
+    fs((font-size * .75))
+    color white
+    a
+      link: white "glow"
+html  
+  background url("/img/b2.jpg") no-repeat center center fixed
+  -webkit-background-size cover
+  -moz-background-size cover
+  -o-background-size cover
+  background-size cover
+  +mobile()
+    background inkblue 
+p > code
+  color mypink
+  bold()
+pre > code
+  font-family "Fira Mono"
+  pre()
+  background r9gba(0,0,0,.4)
+  border rgba(0,0,0,.1)
+  border-radius 2px 3px / 4px 5px
+  +mobile()
+    fs(font-size / 1.5)
+header#site>h1
+  font-weight 700
+  color head1-color
+h1,h2,h3,h4,h5,h6
+  font-weight 400
+  color head2-color
+  +mobile()
+    fs(font-size * 1.5)
+    line-height (font-size * 1.4)
+h1
+  font-weight 500
+.inline
+  inline-list()
+section#butt
+  center(800px)
+  margin-top:50px
+  background rgba(255,255,255,.1)
+  text-align: center
+  div
+    col(1/3, cycle: 3, gutter: 5)
+    +mobile()
+      col(1/3, cycle: 3, gutter: 1)
+      text-align left
+    margin-top 5px
+    margin-bottom 5px
+    #slugdate
+      upcase()
+      bold()
+    #who
+      bold()
+div#socialFoot
+  #theSocial
+    span(1)
+#topdate
+  margin-top -30px
+  +mobile()
+    margin-top 5px
+  margin-bottom 20px
+#artdate
+  upcase()
+  bold()
+.frontslug
+  margin-top -20px
+  upcase()
+#content, #content_foot
+  a.myicon
+    padding-left: 5px
+    padding-right: 5px
+    +mobile()
+      padding-left: 0px
+      padding-right: 0px
+    reset-link()
+    border-bottom 0
+    :hover
+      reset-link()
+      text-decoration none
+      border-bottom 0
+html 
+  position relative
+  min-height 100%
+body 
+  margin-bottom: 60px
+#footer 
+  position absolute
+  bottom 0
+  width: 100%
+  height: 60px
+#dog
+  z-index: 1000
+  position relative
+.footrule
+  margin-bottom 10px
+  color mypink
+//#disqus_thread

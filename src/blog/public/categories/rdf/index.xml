@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rdf on ★dog blog</title>
-    <link>http://localhost:1313/categories/rdf/</link>
-    <description>Recent content in Rdf on ★dog blog</description>
+    <title>Rdf on STARDOG★WEBLOG</title>
+    <link>/categories/rdf/</link>
+    <description>Recent content in Rdf on STARDOG★WEBLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
     
     <lastBuildDate>Thu, 23 Sep 2010 00:00:00 UTC</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/rdf/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/categories/rdf/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>The RDF Database Market</title>
-      <link>http://localhost:1313/2010-09-23-the-rdf-database-market/</link>
+      <link>/the-rdf-database-market/</link>
       <pubDate>Thu, 23 Sep 2010 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/2010-09-23-the-rdf-database-market/</guid>
+      <guid>/the-rdf-database-market/</guid>
       <description>
 
 &lt;p&gt;Update: &lt;a href=&#34;http://stardog.com/&#34;&gt;Stardog&lt;/a&gt; is our entry into the

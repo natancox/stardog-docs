@@ -1,22 +1,43 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>★dog blog</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on ★dog blog</description>
+    <title>STARDOG★WEBLOG</title>
+    <link>/</link>
+    <description>Recent content on STARDOG★WEBLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
     
-    <lastBuildDate>Fri, 10 Jan 2014 00:00:00 UTC</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Feb 2014 00:00:00 UTC</lastBuildDate>
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Stardog World Tour</title>
+      <link>/stardog-world-tour/</link>
+      <pubDate>Thu, 06 Feb 2014 00:00:00 UTC</pubDate>
+      
+      <guid>/stardog-world-tour/</guid>
+      <description>&lt;p&gt;We&amp;rsquo;re giving talks about &lt;a href=&#34;http://stardog.com&#34;&gt;Stardog&lt;/a&gt; at meetups on the East Coast over the next few months:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.meetup.com/semweb-31/events/163602752/&#34;&gt;Washington DC&lt;/a&gt;, February 18th at 6:30pm&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.meetup.com/MarylandSemantics/events/163753242/&#34;&gt;Baltimore MD&lt;/a&gt;, February 27th at 6:30pm&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.meetup.com/The-Philadelphia-Semantic-Web-Meetup/&#34;&gt;Philadephia PA&lt;/a&gt;, March 4th at 6:30pm&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.meetup.com/semweb-25/events/155269772/&#34;&gt;New York, NY&lt;/a&gt;, May 22nd at 6:30pm&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We&amp;rsquo;ll also be announcing dates in Northern Virginia, Boston, and
+Toronto in the coming weeks. It&amp;rsquo;s a great opportunity to meet some of
+the folks behind Stardog and learn more about it.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Scalability Improvements in Stardog 2.1</title>
-      <link>http://localhost:1313/2014-01-10-scalability-improvements-in-stardog-21/</link>
+      <link>/scalability-improvements-in-stardog-2.1/</link>
       <pubDate>Fri, 10 Jan 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/2014-01-10-scalability-improvements-in-stardog-21/</guid>
+      <guid>/scalability-improvements-in-stardog-2.1/</guid>
       <description>
 
 &lt;p&gt;The forthcoming &lt;a href=&#34;http://stardog.com/&#34;&gt;Stardog 2.1&lt;/a&gt; release improves
@@ -99,7 +120,7 @@ SELECT DISTINCT ?name1 ?name2
 }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;For a 5M triple database, this query produces 18,362,955 (!) results
-and the &lt;code&gt;DISINCT&lt;/code&gt; keeps them in memory. Unworkable at scale. Stardog
+and the &lt;code&gt;DISTINCT&lt;/code&gt; keeps them in memory. Unworkable at scale. Stardog
 2.1 addresses this issue by reusing the new off-heap memory allocation
 scheme. A small heap doesn&amp;rsquo;t work; and GC processing kills you with a
 large heap, so we just avoid the heap instead. Yes, that means we have
@@ -124,10 +145,10 @@ overview of some other changes in Stardog 2.1.&lt;/p&gt;
     
     <item>
       <title>Stardog 1.2</title>
-      <link>http://localhost:1313/2013-04-22-stardog-12/</link>
+      <link>/stardog-1.2/</link>
       <pubDate>Mon, 22 Apr 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/2013-04-22-stardog-12/</guid>
+      <guid>/stardog-1.2/</guid>
       <description>
 
 &lt;p&gt;Earlier today we released &lt;a href=&#34;http://stardog.com/&#34;&gt;&lt;strong&gt;Stardog 1.2&lt;/strong&gt;&lt;/a&gt; which
@@ -213,10 +234,10 @@ libraries for Java.&lt;/p&gt;
     
     <item>
       <title>Stardog: What&#39;s Coming Next?</title>
-      <link>http://localhost:1313/2012-09-27-stardog-whats-coming-next/</link>
+      <link>/stardog-whats-coming-next/</link>
       <pubDate>Thu, 27 Sep 2012 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/2012-09-27-stardog-whats-coming-next/</guid>
+      <guid>/stardog-whats-coming-next/</guid>
       <description>
 
 &lt;p&gt;Stardog is on the move; we got &lt;a href=&#34;http://stardog.com/&#34;&gt;Stardog
@@ -314,10 +335,10 @@ useful addition.&lt;/p&gt;
     
     <item>
       <title>Stardog 1.0</title>
-      <link>http://localhost:1313/2012-06-18-stardog-10/</link>
+      <link>/stardog-1.0/</link>
       <pubDate>Mon, 18 Jun 2012 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/2012-06-18-stardog-10/</guid>
+      <guid>/stardog-1.0/</guid>
       <description>
 
 &lt;p&gt;Today I&amp;rsquo;m happy to announce the release of &lt;a href=&#34;http://stardog.com/&#34;&gt;Stardog
@@ -370,10 +391,10 @@ us an &lt;a href=&#34;mailto:sales@clarkparsia.com&#34;&gt;email&lt;/a&gt;.&lt;/
     
     <item>
       <title>Stardog 0.9 Release</title>
-      <link>http://localhost:1313/2012-02-23-stardog-09-release-announced/</link>
+      <link>/stardog-0.9-release/</link>
       <pubDate>Thu, 23 Feb 2012 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/2012-02-23-stardog-09-release-announced/</guid>
+      <guid>/stardog-0.9-release/</guid>
       <description>&lt;p&gt;We&amp;rsquo;re happy to announce the release of &lt;strong&gt;Stardog 0.9&lt;/strong&gt;, the first
 &lt;em&gt;feature-complete&lt;/em&gt; version of Stardog. Please
 &lt;a href=&#34;http://stardog.com/&#34;&gt;download&lt;/a&gt; it and send feedback to the
@@ -415,10 +436,10 @@ Stardog, sent bug reports, fixes, ideas, and feedback.&lt;/p&gt;
     
     <item>
       <title>Stardog Performance: SP2B Benchmark</title>
-      <link>http://localhost:1313/2011-05-31-stardog-performance-sp2b-benchmark/</link>
+      <link>/stardog-performance-sp2b-benchmark/</link>
       <pubDate>Tue, 31 May 2011 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/2011-05-31-stardog-performance-sp2b-benchmark/</guid>
+      <guid>/stardog-performance-sp2b-benchmark/</guid>
       <description>
 
 &lt;p&gt;As you may already know, we&amp;rsquo;re working hard on
@@ -492,10 +513,10 @@ many.&lt;/p&gt;
     
     <item>
       <title>Invitation to Stardog Beta</title>
-      <link>http://localhost:1313/2011-01-10-stardog-beta/</link>
+      <link>/invitation-to-stardog-beta/</link>
       <pubDate>Mon, 10 Jan 2011 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/2011-01-10-stardog-beta/</guid>
+      <guid>/invitation-to-stardog-beta/</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;TL;DR?&lt;/strong&gt; &lt;a href=&#34;http://stardog.com/&#34;&gt;Stardog&lt;/a&gt; is a fast, lightweight RDF
@@ -561,10 +582,10 @@ an email&lt;/a&gt;.&lt;/p&gt;
     
     <item>
       <title>The RDF Database Market</title>
-      <link>http://localhost:1313/2010-09-23-the-rdf-database-market/</link>
+      <link>/the-rdf-database-market/</link>
       <pubDate>Thu, 23 Sep 2010 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/2010-09-23-the-rdf-database-market/</guid>
+      <guid>/the-rdf-database-market/</guid>
       <description>
 
 &lt;p&gt;Update: &lt;a href=&#34;http://stardog.com/&#34;&gt;Stardog&lt;/a&gt; is our entry into the
@@ -740,50 +761,6 @@ shakeout in this market anytime soon?&lt;/p&gt;
 &lt;p&gt;What do you think about the commercial RDF database market? Are your use
 cases and requirements for a commercial system being met by the current
 offerings?&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://localhost:1313/2011-01-26-stardog-talk-at-nyc-semweb-meetup/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
-      
-      <guid>http://localhost:1313/2011-01-26-stardog-talk-at-nyc-semweb-meetup/</guid>
-      <description>&lt;p&gt;+++
-title = &amp;ldquo;Stardog Talk at NYC Semweb Meetup&amp;rdquo;
-date = &amp;ldquo;2011-01-26&amp;rdquo;
-author = &amp;ldquo;Kendall Clark&amp;rdquo;
-+++&lt;/p&gt;
-
-&lt;p&gt;On 3 Feb, I&amp;rsquo;ll be giving a talk about Stardog at the &lt;a href=&#34;http://www.meetup.com/semweb-25/calendar/15655768/&#34;&gt;Semweb Meetup in
-NYC&lt;/a&gt;.~&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ll publish my &lt;a href=&#34;http://db.tt/Lqszdiz&#34;&gt;slides&lt;/a&gt; for the talk here early next week so people won&amp;rsquo;t
-have to bother actually listening to me during the talk; rather, they can
-tweet their brains out in a furious back-channel frenzy of love for Stardog.
-Tweet, tweet! Woof!&lt;/p&gt;
-
-&lt;p&gt;Thanks to Marco Neumann for organizing the event and giving me a slot on the
-program. I hope to see you there.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Stardog World Tour</title>
-      <link>http://localhost:1313/2014-02-06-stardog-world-tour/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
-      
-      <guid>http://localhost:1313/2014-02-06-stardog-world-tour/</guid>
-      <description>&lt;p&gt;We&amp;rsquo;re giving talks about &lt;a href=&#34;http://stardog.com&#34;&gt;Stardog&lt;/a&gt; at meetups on the East Coast over the next few months:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.meetup.com/semweb-31/events/163602752/&#34;&gt;Washington DC&lt;/a&gt;, February 18th at 6:30pm&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.meetup.com/MarylandSemantics/events/163753242/&#34;&gt;Baltimore MD&lt;/a&gt;, February 27th at 6:30pm&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.meetup.com/The-Philadelphia-Semantic-Web-Meetup/&#34;&gt;Philadephia PA&lt;/a&gt;, March 4th at 6:30pm&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.meetup.com/semweb-25/events/155269772/&#34;&gt;New York, NY&lt;/a&gt;, May 22nd at 6:30pm&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We&amp;rsquo;ll also be announcing dates in Northern Virginia, Boston, and Toronto in the coming weeks. It&amp;rsquo;s a great opportunity to meet some of the folks behind Stardog and learn more about it.&lt;/p&gt;
 </description>
     </item>
     

@@ -1,12 +1,15 @@
-baseurl = "http://blog.stardog.com/"
 languageCode = "en-us"
-title = "★dog blog"
+title = "STARDOG★WEBLOG"
 footnotereturnlinkcontents = "↩"
-permalinks = "/:title/"
+builddrafts = false
+baseurl = "/"
+canonifyurls = true
+
+[permalinks]
+  posts = "/:title/"
 
 [params]
   description = ""
   author = "Complexible Inc"
-  subtitle = "All the graph that's fit to query..."
   sidebarrecentlimit = 3
   
