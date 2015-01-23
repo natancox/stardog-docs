@@ -12,7 +12,6 @@ module.exports = function(grunt) {
         stylus: {
           compile: {
               options: {
-                  compress: true,
                   paths: ["node_modules/axis/",
                           //"node_modules/jeet/stylus/jeet",
                           "node_modules/jeet/stylus/",
@@ -32,6 +31,17 @@ module.exports = function(grunt) {
                   return comm
               }
           }
+         },
+        cssmin: {
+            options: {
+                report: 'min'
+            },
+            main: {
+                expand: true,
+                cwd: 'public/',
+                src: '**/*.css',
+                dest: 'public/'
+            }
         },
         //WARNING: never put this in a git repo dir... put it outside the repo!
         aws: grunt.file.readJSON("../../../grunt-aws-SECRET.json"),
@@ -83,6 +93,36 @@ module.exports = function(grunt) {
                 dest: 'public/'
             }
         },
+        concat: {
+          css: {
+              src: ['static/css/s.css','bower_components/icono/icono.min.css', "node_modules/grunt-highlight/node_modules/highlight.js/styles/tomorrow.css"],
+              dest: 'static/css/s.css'
+          },
+      },
+  highlight: {
+    task: {
+      options: {},
+        expand: true,
+        cwd: 'public',
+        src: ["**/*.html"],
+        dest: "public/"
+    }
+  },
+  cacheBust: {
+    options: {
+        encoding: 'utf8',
+        algorithm: 'sha1',
+        length: 16,
+        baseDir: "public/"
+        
+    },
+      assets: {
+          expand: true,
+          cwd: "public",
+          src: ["**/*.html"],
+          dest: "public/"
+    }
+  },
       availabletasks: {     
           tasks: {}
       },
@@ -93,7 +133,7 @@ module.exports = function(grunt) {
 
     require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
     grunt.registerTask('cl', ['clean:build']);
-    grunt.registerTask("css", ["stylus"]);
-    grunt.registerTask('dev', ['clean:build', 'stylus', 'shell']);
-    grunt.registerTask("pub", ['clean:build', "stylus", "shell", "htmlmin", 'aws_s3']);
+    grunt.registerTask("css", ["stylus","concat", "cssmin"]);
+    grunt.registerTask('dev', ['clean:build', 'css', 'shell', 'highlight']);
+    grunt.registerTask("pub", ['clean:build', "css", "shell", "cacheBust", 'highlight', "htmlmin", 'aws_s3']);
 };
