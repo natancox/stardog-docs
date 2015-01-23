@@ -10,15 +10,11 @@
         <link rel="stylesheet" href="/css/s.css">
     </head>
     <body>
-      <div id="header">
-        <div class="clearfix" id="logo">
-          <h1 id="title"><a href="/">{{ .Site.Title }}</a></h1>
-        </div>
-      </div>
+      {{ partial "header.html" . }}
       <div class="wrapper clearfix content" id="content">
         {{ partial "social.html" . }}
-       <h1 id="theTitle">{{ .Title }}</h1>
-       <div id="topdate">
+        <div id="topdate">
+         <h1 id="theTitle">{{ .Title }}</h1>
          <span id="artdate">{{ .Date.Format "2 January 2006" }}</span>
          <br>
          <span id="twitterbtn"> {{ partial "twitter.html" . }} </span>
@@ -26,17 +22,17 @@
        <div id="md">
          {{ .Content }}
        </div>
-       <section id="butt">
+       <div id="butt">
          <div>
-           <p>by <span id="who"> {{ .Params.author }}</span></p>
+           <p><span class="icono-user"></span><span id="who">&nbsp;{{ .Params.author }}</span></p>
          </div>
          <div>
-           <p id="slugdate">{{ .Date.Format "2 January 2006" }}</p>
+           <p><span class="icono-calendar"></span><span id="slugdate">&nbsp;{{ .Date.Format "2 January 2006" }}</span></p>
          </div>
          <div id="socialFoot">
            {{partial "social.html"}}
          </div>
-       </section>
+       </div>
        <hr width="50%" class="footrule">
        {{ partial "disqus.html" . }}
        <hr width="50%" class="footrule">
@@ -46,5 +42,7 @@
          <img id="dog" width="129" height="113" src="/img/sc3.png"></a>
      </div>
      {{ partial "footer.html" }}
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+     <script>hljs.initHighlightingOnLoad()</script>
     </body>
 </html>
