@@ -69,7 +69,7 @@ performance in 2.1 came down to memory usage and how we handle
 intermediate results. Consider a SPARQL query from
 [SP2B](http://dbis.informatik.uni-freiburg.de/forschung/projekte/SP2B/):
 
-<pre><code>
+<pre><code class="sparql">
 SELECT DISTINCT ?name1 ?name2
   WHERE {
      ?article1 rdf:type bench:Article .
@@ -102,5 +102,3 @@ No public APIs were harmed in the creation of the new scalability
 improvements. See
 [this slide deck](http://presentboldly.com/kendall/stardog-21) for an
 overview of some other changes in Stardog 2.1.
-
-Enjoy.
