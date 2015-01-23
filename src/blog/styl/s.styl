@@ -2,6 +2,7 @@
 @import "axis"
 @import "jeet"
 @import "rupture" //'rupture/index'
+@import "underline"
 
 //edit()
 normalize-css()
@@ -20,54 +21,89 @@ text-selection(color = sdlime)
 //inkblue = rgba(0,10.2,17.3,.78)
 inkblue = rgba(15, 117, 150, .78)
 inkbluefoot = rgba(15,117,150,.95)
-
 rupture.scale = 0 415px 600px 800px 1050px 1280px
 rupture.mobile-cutoff = 415px
 
+html  
+  background url("/img/b3.jpg") no-repeat center center fixed
+  -webkit-background-size cover
+  -moz-background-size cover
+  -o-background-size cover
+  background-size cover
+  +mobile()
+    background inkblue 
+a, a:hover, a:visited
+  reset-link()
 img
   max-width 100%
   height auto
-
+.inliner
+  +mobile()
+    display none
 #header
   col(12/12, gutter: 20px)
   background inkblue
-  +mobile()
-    #logo>#title
-      fs((font-size * 1.33))
-      font-weight 400
+  #logo
+    col(8/12, offset:1/5, gutter: 20px)
+    #title
+      fs((font-size * 3))
+      upcase()
+      font-weight 700
+      a
+        color white
+      a:hover
+        color white
+      +mobile()
+        font-weight 400
+        fs((font-size * 1.33))
+      #star
+        fs((font-size * 1.75))
+        vertical-align bottom
+        color sdlime
+        bold()
 #dog
   center()
   +mobile()
     display none
   +below(5)
     padding: 30px
-#logo
-  col(4/12, offset:1/4, gutter: 20px)
-#logo>#title
-  fs((font-size * 3))
-  font-weight 500
-  a
-    reset-link()
-    color white
-  a:hover
-    color white
 #theSocial
-  col(3/12, offset: 3/4, gutter: 10px)
+  col(2/9, offset: 3/4, gutter: 0px)
+  p
+    text-align right
   +mobile()
     col(4/12, offset: 2/4, gutter: 1px)
     padding 10px
+.myicon
+  margin-left 5px
+  margin-right 5px
+#theTitle
+  margin-bottom -10px
+#topdate
+  span(1)
+  margin-bottom 20px
+  margin-top -20px
+  padding 0 
+#md
+  span(1)
+  margin-right 15px
+figure.inliner
+  margin 0px
+blockquote
+  border 0
+  p
+    fs(font-size)
 #content, #content_foot
-  col(8/12, offset:1/4, gutter: 20px)
+  col(8/12, offset:1/5, gutter: 20px)
+  a:not(.no-underline)
+    linkUnderlines white, black
+  h3
+    a
+      linkUnderlines white, black
   +mobile()
     col(8/12, offset: 1/6, gutter: 10px)
-    h3
-      a:hover
-        text-decoration none
-  background rgba(255,255,255,.888888888)
+  background rgba(255,255,255,.9333)
   padding 30px
-  a
-    link: mypink 
-    bold()
 #footer
   col(12/12, gutter: 20px)
   background inkbluefoot
@@ -79,31 +115,23 @@ img
   padding-bottom 10px
   p
     fs((font-size * .75))
-    color white
     a
-      link: white "glow"
-html  
-  background url("/img/b2.jpg") no-repeat center center fixed
-  -webkit-background-size cover
-  -moz-background-size cover
-  -o-background-size cover
-  background-size cover
-  +mobile()
-    background inkblue 
+      linkUnderlines inkblue, white 
 p > code
   color mypink
-  bold()
+  fs(font-size * 1.0825)
 pre > code
-  font-family "Fira Mono"
   pre()
-  background r9gba(0,0,0,.4)
+  font-family "Fira Mono"
+  background rgba(255,255,255,0)
   border rgba(0,0,0,.1)
   border-radius 2px 3px / 4px 5px
+  bold()
   +mobile()
     fs(font-size / 1.5)
-header#site>h1
-  font-weight 700
-  color head1-color
+//header#site>h1
+//  font-weight 700
+//  color head1-color
 h1,h2,h3,h4,h5,h6
   font-weight 400
   color head2-color
@@ -114,50 +142,22 @@ h1
   font-weight 500
 .inline
   inline-list()
-section#butt
-  center(800px)
-  margin-top:50px
-  background rgba(255,255,255,.1)
-  text-align: center
+#butt
+  span(1)
+  margin-bottom 30px
   div
-    col(1/3, cycle: 3, gutter: 5)
+    col(1/3, cycle: 3, gutter: 10)
     +mobile()
       col(1/3, cycle: 3, gutter: 1)
-      text-align left
-    margin-top 5px
-    margin-bottom 5px
     #slugdate
       upcase()
-      bold()
-    #who
-      bold()
+      text-align center
 div#socialFoot
   #theSocial
     span(1)
-#topdate
-  margin-top -30px
-  +mobile()
-    margin-top 5px
-  margin-bottom 20px
-#artdate
-  upcase()
-  bold()
 .frontslug
   margin-top -20px
   upcase()
-#content, #content_foot
-  a.myicon
-    padding-left: 5px
-    padding-right: 5px
-    +mobile()
-      padding-left: 0px
-      padding-right: 0px
-    reset-link()
-    border-bottom 0
-    :hover
-      reset-link()
-      text-decoration none
-      border-bottom 0
 html 
   position relative
   min-height 100%
@@ -174,4 +174,3 @@ body
 .footrule
   margin-bottom 10px
   color mypink
-//#disqus_thread
