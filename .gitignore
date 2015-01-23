@@ -28,3 +28,6 @@ src/style/stylesheets/github.min.css
 src/bower_components
 src/style/stylesheets/stardog.css
 src/config.codekit
+src/blog/bower_components
+src/blog/hugo.log
+src/blog/static/css
