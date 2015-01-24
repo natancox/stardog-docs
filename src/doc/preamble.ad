@@ -56,22 +56,22 @@ Cafe in DC.
 == Stardog Roadmap
 
 [horizontal]
-3.0 release (February 2015)::
+What's New in the 3.0 release?::
 - [x] Equality reasoning via hybrid materialization
 - [x] Improved incremental write performance
-- [ ] HA Cluster out of beta
+- [x] HA Cluster out of beta
 - [x] Java 7 & Sesame 2.8/RDF 1.1
 - [x] Integrity constraint violation repair plans
 - [x] Improved query performance
+- [x] User-pluggable search indexers
 3.x releases (2015)::
 - [ ] Native support for Property Graph model
-- [ ] User-pluggable search indexers
 - [ ] Named Graph security
 - [ ] HA Cluster management service
 - [ ] HA Cluster containerization
-4.0 release (Q2 2016)::
+4.0 release::
 - [ ] Stardog Big Data
-- [ ] Declarative mappings to treat Enterprise Data Lakes as Enterprise Knowledge Graphs
+- [ ] Stardog Constellation 
 
 == Alternate Versions of this Manual
 
@@ -79,8 +79,7 @@ This is the manual for Stardog {version} ({release-date}).footnote:[This
 is version *{docdatetime}*.] Alternate versions of this manual are coming in the 3.0 release.
 
 |===
-| Version | PDF | EPUB3 | Kindle
-//| 3.0     | ✓   | ✓     | ✓
-| 2.2.4   | ✗   | ✗     | ✗
+| Version | HTML | PDF  | EPUB3 | Kindle
+| 3.0     | ✓    | ✓   | ✓     | ✓
+| 2.2.4   | ✓    | ✗    | ✗     | ✗
 |===
-

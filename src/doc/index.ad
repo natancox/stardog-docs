@@ -1,8 +1,8 @@
 = {title}
 :title: The Stardog Manual
-:version: 2.2.4
+:version: 3.0 
 :revnumber: {version}
-:release-date: 11 December 2014
+:release-date: 15 February 2015 
 :release-name:
 :toc: right 
 :toc-title: Table of Contents 
