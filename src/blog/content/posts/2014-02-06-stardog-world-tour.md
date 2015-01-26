@@ -4,7 +4,7 @@ date = "2014-02-06"
 author = "Mike Grove"
 +++
 
-We're giving talks about [Stardog](http://stardog.com) at meetups on the East Coast over the next few months:
+We're giving talks about [Stardog](http://stardog.com) at meetups on the East Coast over the next few months.<!--more-->
 
 * [Washington DC](http://www.meetup.com/semweb-31/events/163602752/), February 18th at 6:30pm
 * [Baltimore MD](http://www.meetup.com/MarylandSemantics/events/163753242/), February 27th at 6:30pm

@@ -5,7 +5,7 @@ author = "Kendall Clark"
 +++
 
 We're happy to announce the release of **Stardog 0.9**, the first
-*feature-complete* version of Stardog. Please
+*feature-complete* version of Stardog.<!--more--> Please
 [download](http://stardog.com/) it and send feedback to the
 [support forum](https://groups.google.com/a/clarkparsia.com/group/stardog/about).
 

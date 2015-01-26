@@ -7,7 +7,7 @@ author = "Kendall Clark"
 As you may already know, we're working hard on
 [Stardog](http://stardog.com/), our upcoming RDF database. It's presently
 in closed alpha testing (55 testers), at version 0.5.3, and progressing
-rapidly. The overriding goals for Stardog, which we've repeated often, are:
+rapidly.<!--more--> The overriding goals for Stardog, which we've repeated often, are:
 
 1. insanely fast performance on complex SPARQL queries in the out-of-the-box, untuned configuration
 1. feature-rich: logical inference, statistical inference, transactions, store procedures, etc.

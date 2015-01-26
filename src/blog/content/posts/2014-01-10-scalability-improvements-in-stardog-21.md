@@ -4,9 +4,9 @@ date = "2014-01-10"
 author = "Kendall Clark"
 +++
 
-The forthcoming [Stardog 2.1](http://stardog.com/) release improves
+The upcoming [Stardog 2.1](http://stardog.com/) release improves
 query scalability by about 3 orders of magnitude and can handle 50
-billion triples on a $10,000 server.~ We've never been overly
+billion triples on a $10,000 server.<!--more--> We've never been overly
 concerned about Stardog scalability per se: first we wanted to make it
 easy to use; then we wanted to make it fast. We just assumed we'd get
 around to make it *insanely scalable*, too. Stardog 2.1 makes giant

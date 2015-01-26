@@ -10,7 +10,7 @@ commercial RDF database market.
 
 There's plenty of talk about the purely technical aspects of RDF databases
 but considerably less talk about the *RDF database market* as a commercial
-software business.~ As I see it, the commercial RDF database market contains
+software business.<!--more--> As I see it, the commercial RDF database market contains
 at least seven systems, listed here in random order:
 
 * [Oracle](http://www.oracle.com/technetwork/database/options/semantic-tech/index.html)

@@ -6,7 +6,7 @@ author = "Kendall Clark"
 
 Stardog is on the move; we got <a href="http://stardog.com/">Stardog
 1.0</a> out the door without anyone dying; we've got customers; people
-are using it; and we released Stardog Community, too. Since the 1.0
+are using it; and we released Stardog Community, too.<!--more--> Since the 1.0
 release in June we've done 6 releases, about one every two weeks. Most
 of them have focused on small usability improvements, performance
 tweaks, and, of course, bug fixes.
