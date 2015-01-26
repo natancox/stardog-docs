@@ -135,5 +135,11 @@ module.exports = function(grunt) {
     grunt.registerTask('cl', ['clean:build']);
     grunt.registerTask("css", ["stylus","concat", "cssmin"]);
     grunt.registerTask('dev', ['clean:build', 'css', 'shell', 'highlight']);
-    grunt.registerTask("pub", ['clean:build', "css", "shell", "cacheBust", 'highlight', "htmlmin", 'aws_s3']);
+    grunt.registerTask("pub", ['clean:build',
+                               "css",
+                               "shell",
+                               "cacheBust",
+                               'highlight',
+                               //"htmlmin",
+                               'aws_s3']);
 };
