@@ -4,7 +4,6 @@
 @import "rupture" //'rupture/index'
 @import "underline"
 
-//edit()
 normalize-css()
 mypink = rgba(0,0,0,.8)//#FF69B4 
 font-color = rgba(0, 0, 0, 0.8)
@@ -105,13 +104,9 @@ blockquote
   background rgba(255,255,255,.9333)
   padding 30px
 #footer
-  col(12/12, gutter: 20px)
   background inkbluefoot
 #thefoot
-  +mobile()
-    col(8/12, offset: 1/5, gutter 10px)
-    bold()
-  col(8/12, offset: 1/4, gutter: 20px)
+  col(8/12, offset: 1/5, gutter: 20px)
   padding-bottom 10px
   p
     fs((font-size * .75))
@@ -151,7 +146,6 @@ h1
       col(1/3, cycle: 3, gutter: 1)
     #slugdate
       upcase()
-      text-align center
 div#socialFoot
   #theSocial
     span(1)
@@ -172,5 +166,30 @@ body
   z-index: 1000
   position relative
 .footrule
+  col(8/12, offset:1/5, gutter: 20px)
   margin-bottom 10px
   color mypink
+
+.iconmelon, .im
+  position: relative
+  width: 32px
+  height: 32px
+  fill: inkblue
+  
+.iconmelon:after, .im:after
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+.media
+  display: flex
+  align-items: flex-start
+
+.media-figure 
+  margin-right: 1em
+
+.media-body
+  flex: 1
