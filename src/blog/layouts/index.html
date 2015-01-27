@@ -13,7 +13,7 @@
       {{ partial "header.html" . }}
       <div class="wrapper clearfix content" id="content">
         {{ range .Data.Pages.ByDate.Reverse }}
-        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+    <h3 class="post-title"><a class="no-underline" href="{{ .Permalink }}">{{ .Title }}</a></h3>
         <p class="frontslug">{{ .Date.Format "2 January 2006" }}</p>
         <blockquote>{{ .Summary }}</blockquote>
         {{ end }}
