@@ -9,8 +9,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/css/s.css">
     </head>
-    <body>
-      <svg id="svg-source" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" style="position:absolute; margin-left: -100%" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <body id="top">
+      <svg id="svg-source" height="0" version="1.1" 
+  xmlns="http://www.w3.org/2000/svg" style="position:absolute; margin-left: -100%" 
+           xmlns:xlink="http://www.w3.org/1999/xlink">
   <g id="users" data-iconmelon="Dripicons:2b284359e7934c3a68a30261eac0011c">
     <g>
       <path d="M12.408,19.143c4.054,0,7.351-3.297,7.351-7.351c0-4.053-3.297-7.351-7.351-7.351c-4.053,0-7.351,3.298-7.351,7.351
@@ -29,27 +31,6 @@
 		c1.612,0,2.923,1.312,2.923,2.924C25.898,16.394,24.586,17.705,22.975,17.705z"></path>
     </g>
   </g>
-  <g id="home" data-iconmelon="Dripicons:ca7d5421aabc19255467a08a7e9f7cf8">
-    <g>
-      <path d="M31.241,14.659L16.996,0.413C16.732,0.148,16.373,0,16,0c-0.374,0-0.732,0.148-0.997,0.413L0.758,14.659
-		c-0.55,0.551-0.55,1.443,0,1.993c0.551,0.551,1.443,0.551,1.994,0L16,3.403l13.248,13.249c0.274,0.275,0.636,0.413,0.996,0.413
-		s0.722-0.138,0.997-0.413C31.792,16.103,31.792,15.21,31.241,14.659z"></path>
-      <path d="M25.812,15.603c-0.778,0-1.41,0.632-1.41,1.41v12.168h-3.604v-8.562c0-0.778-0.631-1.41-1.409-1.41H12.61
-		c-0.778,0-1.409,0.632-1.409,1.41v8.562H7.597V17.013c0-0.778-0.631-1.41-1.409-1.41c-0.779,0-1.41,0.632-1.41,1.41V30.59
-		c0,0.779,0.631,1.41,1.41,1.41h6.423c0.778,0,1.41-0.631,1.41-1.41v-8.562h3.958v8.562c0,0.779,0.631,1.41,1.41,1.41h6.424
-		c0.778,0,1.41-0.631,1.41-1.41V17.013C27.223,16.234,26.591,15.603,25.812,15.603z"></path>
-    </g>
-  </g>
-  <g id="menu" data-iconmelon="Dripicons:7a94fef4485136d7a7fa3ea7105f37b5">
-    <g>
-      <path d="M2.674,6.713h26.652C30.803,6.713,32,5.517,32,4.04s-1.197-2.674-2.674-2.674H2.674C1.197,1.366,0,2.563,0,4.04
-		S1.197,6.713,2.674,6.713z"></path>
-      <path d="M29.326,13.326H2.674C1.197,13.326,0,14.523,0,15.999c0,1.477,1.197,2.674,2.674,2.674h26.652
-		c1.477,0,2.674-1.197,2.674-2.674C32,14.523,30.803,13.326,29.326,13.326z"></path>
-      <path d="M29.326,25.287H2.674C1.197,25.287,0,26.483,0,27.96s1.197,2.674,2.674,2.674h26.652c1.477,0,2.674-1.197,2.674-2.674
-		S30.803,25.287,29.326,25.287z"></path>
-    </g>
-  </g>
   <g id="calendar" data-iconmelon="Dripicons:75f28bbf4a5690a9ba36f0c13c816b4c">
     <g>
       <path d="M9.28,9.594c0.973,0,1.762-0.789,1.762-1.763V3.414c0-0.973-0.789-1.762-1.762-1.762c-0.974,0-1.762,0.789-1.762,1.762
@@ -66,13 +47,12 @@
 </svg>
       {{ partial "header.html" . }}
       <div class="wrapper clearfix content" id="content">
-        {{ partial "social.html" . }}
         <div id="topdate">
          <h1 id="theTitle">{{ .Title }}</h1>
          <span id="artdate">{{ .Date.Format "2 January 2006" }}</span>
          <br>
          <span id="twitterbtn"> {{ partial "twitter.html" . }} </span>
-       </div>
+        </div>
        <div id="md">
          {{ .Content }}
        </div>
@@ -85,7 +65,7 @@
            </p>
            <p class="media-body" id="authors">{{.Params.author}}</p>
          </div>
-         <div class="media">
+         <div id="dateblock" class="media">
            <p class="media-figure iconmelon">
              <svg viewBox="0 0 32 32">
                <use xlink:href="#calendar"></use>
@@ -97,9 +77,11 @@
            {{partial "social.html"}}
          </div>
        </div>
+       <div id="disqusfeet">
        <hr width="50%" class="footrule">
        {{ partial "disqus.html" . }}
        <hr width="50%" class="footrule">
+       </div>
      </div>
      <div class="wrapper clearfix" id="content_foot">
        <a href="http://stardog.com/">
