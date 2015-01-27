@@ -9,7 +9,7 @@ using Stardog, you must add that data to a new or existing Stardog
 database. 
 
 Stardog supports
-http://www.cambridgesemantics.com/2008/09/sparql-by-example[SPARQL],
+http://www.cambridgesemantics.com/semantic-university/sparql-by-example[SPARQL],
 the W3C standard for querying RDF graphs.
 
 == Querying
