@@ -95,7 +95,7 @@ module.exports = function(grunt) {
         },
         concat: {
           css: {
-              src: ['static/css/s.css','bower_components/icono/icono.min.css', "node_modules/grunt-highlight/node_modules/highlight.js/styles/tomorrow.css"],
+              src: ['static/css/s.css', "node_modules/grunt-highlight/node_modules/highlight.js/styles/tomorrow.css"],
               dest: 'static/css/s.css'
           },
       },
@@ -134,12 +134,14 @@ module.exports = function(grunt) {
     require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
     grunt.registerTask('cl', ['clean:build']);
     grunt.registerTask("css", ["stylus","concat", "cssmin"]);
-    grunt.registerTask('dev', ['clean:build', 'css', 'shell', 'highlight']);
+    grunt.registerTask('dev', ['clean:build',
+                               'css',
+                               'shell',
+                              ]);
     grunt.registerTask("pub", ['clean:build',
                                "css",
                                "shell",
                                "cacheBust",
-                               'highlight',
-                               //"htmlmin",
+                               "htmlmin",
                                'aws_s3']);
 };
