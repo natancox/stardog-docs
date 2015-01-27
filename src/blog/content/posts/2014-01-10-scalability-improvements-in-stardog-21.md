@@ -15,7 +15,7 @@ leaps in query, data loading, and reasoning scalability.
 Running on $10,000 of server hardware (32 cores, 256 GB RAM), Stardog
 2.1 can handle 20 to 50 billion triples. Compared to Stardog 2.0.x,
 Stardog 2.1 loads ~100M triple datasets about two times faster; it
-loads ~1B triple datasets about 3 times faster--all while using much
+loads ~1B triple datasets about 3 times faster---all while using much
 less memory. 2.1 can load 20B datasets at 300,000 triples per
 second. We also improved query evaluation performance significantly so
 that Stardog 2.1 is still very fast, even at much larger database
@@ -45,7 +45,7 @@ longs. When handling collisions and cache misses, disk accesses are
 required; at scale these random disk accesses are too
 expensive. Moving to `SHA1` is perhaps non-intuitive since the hash
 size goes from 64 to 160 bits. But since that makes hash collision
-practically impossible, we're able to achieve significant speedups--it
+practically impossible, we're able to achieve significant speedups---it
 also simplifies the mapping dictionary significantly.
 
 ## Off-Heap Memory Management
@@ -56,9 +56,23 @@ We also realized that memory mapped files were causing performance slowdowns whe
 
 ## Reducing GC Pauses
 
-Finally, to significantly improve loading performance we needed to do something about GC costs, which are important in bulk loading because of high rate of object creation and destruction. Using immutable objects makes it possible to improve concurrency but with the overhead of additional garbage being created. Tuning the GC knobs and buttons didn't really help appreciably. We've addressed the GC processing costs by reworking places where we were unnecessarily creating objects. That kind of careful software engineering is aided by the relatively small size of the Stardog code base. It's like engineering works or something!
+Finally, to significantly improve loading performance we needed to do
+something about GC costs, which are important in bulk loading because
+of high rate of object creation and destruction. Using immutable
+objects makes it possible to improve concurrency but with the overhead
+of additional garbage being created. Tuning the GC knobs and buttons
+didn't really help appreciably. We've addressed the GC processing
+costs by reworking places where we were unnecessarily creating
+objects. That kind of careful software engineering is aided by the
+relatively small size of the Stardog code base. It's like engineering
+works or something!
 
-This careful software re-engineering included, for example, delving into the guts of the RDF parser to use a single `StringBuilder` that was continuously reset rather than creating new builders for each RDF value. We also reduced the amount of cache use on the heap to relieve memory pressure. We now see GC pauses taking 1% or less of the overall bulk loading time.
+This careful software re-engineering included, for example, delving
+into the guts of the RDF parser to use a single `StringBuilder` that
+was continuously reset rather than creating new builders for each RDF
+value. We also reduced the amount of cache use on the heap to relieve
+memory pressure. We now see GC pauses taking 1% or less of the overall
+bulk loading time.
 
 ## Query Evaluation
 

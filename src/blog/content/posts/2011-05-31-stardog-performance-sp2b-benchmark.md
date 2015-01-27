@@ -23,8 +23,8 @@ Stardog performance.
 
 ## SP2B Benchmark Performance
 
-In short, it's pretty awesome. We're reporting SP2B--the leading SPARQL
-benchmark for complex, real-world performance--results that are noteworthy.
+In short, it's pretty awesome. We're reporting SP2B---the leading SPARQL
+benchmark for complex, real-world performance---results that are noteworthy.
 
 <img src="http://dl.dropbox.com/u/126772/stardog-perf.png">
 
@@ -33,14 +33,14 @@ As you can see, we're reporting SP2B benchmarks for six dataset sizes: 10k,
 reporting *any* numbers for 25M SP2B dataset size. Note, too, that the
 y-axis is logarithmic in *milliseconds*.
 
-With the exception of query Q5a--about which more below--the performance
+With the exception of query Q5a---about which more below---the performance
 numbers are quite good; the benchmark machine was quite modest (an iMac
 with 2 i7s using 8GB RAM), a bit under-powered in comparison to the average
 production machine these days.
 
 In particular, note Q7, which Stardog evaluates for 1M dataset in less than
-1 second; at 5M in about 5 seconds; and at 25M--which no other RDF database
-has reported *any* performance numbers--in about 12 seconds. For Q4, at 5M,
+1 second; at 5M in about 5 seconds; and at 25M---which no other RDF database
+has reported *any* performance numbers---in about 12 seconds. For Q4, at 5M,
 Stardog completes in 45 seconds. The next fastest RDF database, for which
 SP2B results have been reported, completes Q4 for 1M dataset in 134 seconds.
 

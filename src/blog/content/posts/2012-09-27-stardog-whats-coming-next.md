@@ -17,7 +17,7 @@ But where are we headed now with Stardog development?
 
 The most pressing need in Stardog is support for
 [SPARQL 1.1](http://www.w3.org/TR/sparql11-query/). We got stuck
-between the devil and the deep blue sea--trying to push the 1.0
+between the devil and the deep blue sea---trying to push the 1.0
 release before the SPARQL Working Group was completely finished with
 the SPARQL 1.1 spec. We were motivated to avoid reimplementing any
 parts of SPARQL 1.1 because the spec shifted. So we decided SPARQL 1.0
@@ -71,8 +71,8 @@ to make it really fast.
 
 We've pushed many SPARQL FILTER operations down further into query
 evaluation, with the result that in many cases queries with FILTERs
-are much faster. We've also improved database write performance--which
-is, admittedly, a lower priority than database read performance--by
+are much faster. We've also improved database write performance---which
+is, admittedly, a lower priority than database read performance---by
 being more clever with how we torture the disk head. We've also
 increased Stardog write safety during system instability (power cord
 got yanked?!) by writing more aggressively and more often to

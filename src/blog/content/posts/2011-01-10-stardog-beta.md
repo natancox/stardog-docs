@@ -14,7 +14,7 @@ Stardog, [drop me an email](mailto:kendall@clarkparsia.com).<!--more-->
 
 There's a niche in the [RDF commercial
 market](http://weblog.clarkparsia.com/2010/09/23/the-rdf-database-market/)
-that's not well-served--we built Stardog to fill this niche. After testing
+that's not well-served---we built Stardog to fill this niche. After testing
 many RDF databases, we couldn't find one that was exactly right for the use
 cases and requirements that we care about: zero config, fast, transactional,
 lightweight, embeddable, client-server, high-throughput, rich OWL 2

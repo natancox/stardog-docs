@@ -1,14 +1,14 @@
 +++
 date = "2015-01-22T12:28:02-05:00"
 draft = false 
-author = "Kendall Clark, Mike Grove, Pavel Klinov"
+author = "Kendall Clark, Mike Grove, Pavel Klinov, Evren Sirin"
 title = "A Preview of Stardog 3: Part One"
 
 +++
 
 In this first post of a quick series we'll be looking at the big
-changes in the upcoming Stardog 3 release.<!--more--> Stardog 3 is
-the result of more than **10,000 commits**. Wow.
+changes in the upcoming Stardog 3 release.Stardog 3 is
+the result of more than **10,000 commits**.<!--more-->
 
 In this post we'll look at HA Cluster and performance
 improvements. Then we'll look at improvements to Stardog's reasoning
@@ -17,35 +17,48 @@ some miscellaneous items.
 
 {{% figure src="/img/change.jpg" class="inliner" %}}
 
-### High Availability
+## High Availability
 
 Stardog HA Cluster beta was released in Fall, 2014; while it was
 usable, it wasn't as robust as we wanted. Let's start by saying that
-distributed systems of any kind are hard! And distributed semantic
+distributed systems of any kind are hard And distributed semantic
 graph databases are even harder. But for the 3.0 release 
 Edgar Rodriguez Diaz and Fernando Hernandez just **crushed**.
 
 Stardog 3 is ready for continuous operations.
 
-### Annual Subscription License Model
+## Annual Subscription License Model
 
-blah blah blah
+As a result of the production-ready state of HA Cluster, we're
+introducing a new wrinkle in the Stardog licensing model: per-node
+annual subscriptions. This wrinkle is optimized for multi-node
+clusters.
 
 {{% figure src="/img/commit.jpg" class="inliner" %}}
-### Write Performance
+## Write Performance
 
-Stardog has always privileged reads over writes; but we don't want the
-privilege to run unchecked and we don't want write performance to be
-unduly slow. For Stardog 3, Evren Sirin rewrote two code
-paths--one for bulk writing at database-creation time and the other
-for incremental writes--into a single, blazingly fast code
-path. Stardog's incremental performance is now within 5% of its bulk
-writing performance which means a big speedup in the common case.
+Stardog privileges reads over writes; but that doesn't mean we will
+accept slow write performance. Stardog's write speed at database
+creation time has been one of the best in the industry for a while;
+and now with Stardog 3, updates to an existing database are equally
+fast, which means a big speedup in the common case.
 
-something, something
+Stardog 3 is more clever about handling updates so there are fewer
+configuration options to tweak. The number of threads used for parsing
+and processing files, the size of buffers used during processing,
+etc. are automatically computed and adjusted so you can add a few
+triples or a lot without tweaking.
+
+Concurrency for transactions has also been improved: read queries can
+continue execution while a large update transaction is committed. This
+means you can wipe and reload a database while it is online without
+disrupting queries in-flight. As an added benefit, the logs will show
+the progress for long write transactions, just like the progress of
+database creation, so you'll know when a huge update is going
+to finish.
 
 {{% figure src="/img/writing.jpg" class="inliner" %}}
-### Query Performance
+## Query Performance
 
 Stardog has always been optimized for SPARQL query evaluation
 performance. We continue to treat slow queries as bugs to be fixed as
@@ -94,7 +107,7 @@ Here are some of things we did to improve query performance in 3.0:
     `MergeJoin(B, C)` and for each do a `O(logN)` lookup **directly** in
     the index for `A`, which now looks like a hash table for the
     top hash join. This requires very little IO and memory at only a
-    marginal cost of look-up `(O(logN)`, instead of pseudo-constant time
+    marginal cost of look-up `O(logN)`, instead of pseudo-constant time
     for real hashtables.
 
 * **Made in-memory hashtables more efficient.**
@@ -107,10 +120,10 @@ Here are some of things we did to improve query performance in 3.0:
 
 * **Query planner improvements, too.**
 
-    1. Stardog 3 has a new cost model for the planner to take full
+    - Stardog 3 has a new cost model for the planner to take full
       advantage of the new hash and loop join algorithms.
 
-    1. A new algorithm for algebraic rewriting, that is, transforming
+    - A new algorithm for algebraic rewriting, that is, transforming
       the original SPARQL algebra into an equivalent one for which it
       is more likely that the join order optimizer will find the
       optimal join tree, which is particularly important for complex
@@ -121,3 +134,10 @@ Here are some of things we did to improve query performance in 3.0:
       patterns to connect the key with the relevant scopes.
 
 Fun stuff!
+
+## Conclusion
+
+In the next two parts of this series we'll look at Stardog 3's
+improvements in reasoning, ICV, search, and custom aggregates.
+
+You can download Stardog 3 at [stardog.com](http://stardog.com/).
