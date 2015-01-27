@@ -366,7 +366,7 @@ syntax. If you specify a type, then all the files being loaded must of
 that same type.
 
 If you want to add data to a named graph, specify it via the
-`--graph-uri` or `-g` options.
+`--named-graph` or `-g` options.
 
 === Removing Data with the CLI
 
@@ -529,7 +529,7 @@ For example,
 ----
 $ stardog data export --format TURTLE myDatabase myDatabase_output.ttl
 
-$ stardog data export --graph-uri http://example.org/context myDatabase myDatabase_output.nt
+$ stardog data export --named-graph http://example.org/context myDatabase myDatabase_output.nt
 ----
 
 == Searching
