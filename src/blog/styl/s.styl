@@ -8,7 +8,7 @@ normalize-css()
 mypink = rgba(0,0,0,.8)//#FF69B4 
 font-color = rgba(0, 0, 0, 0.8)
 base-line-height = (font-size * 1.6)
-font-size  = 14px
+font-size  = 16px
 blog-font  = "Fira Sans", "Fira Mono"
 head1-color = font-color 
 head2-color = font-color
@@ -17,20 +17,14 @@ typography()
 ligatures = true
 sdlime =  rgba(205,237,136,100)
 text-selection(color = sdlime)
-//inkblue = rgba(0,10.2,17.3,.78)
+otherblue = rgba(0,10.2,17.3,.78)
 inkblue = rgba(15, 117, 150, .78)
 inkbluefoot = rgba(15,117,150,.95)
 rupture.scale = 0 415px 600px 800px 1050px 1280px
 rupture.mobile-cutoff = 415px
 
-html  
-  background url("/img/b3.jpg") no-repeat center center fixed
-  -webkit-background-size cover
-  -moz-background-size cover
-  -o-background-size cover
-  background-size cover
-  +mobile()
-    background inkblue 
+html
+  background linear-gradient(otherblue, black)
 a, a:hover, a:visited
   reset-link()
 img
@@ -78,9 +72,15 @@ img
   margin-right 5px
 #theTitle
   margin-bottom -10px
+  +below(4)
+    line-height 1em
+    margin-bottom 0px
+  +mobile()
+    fs (font-size * 1.33)
+    margin-bottom 5px
+    upcase()
 #topdate
   span(1)
-  margin-bottom 20px
   margin-top -20px
   padding 0 
 #md
@@ -96,9 +96,6 @@ blockquote
   col(8/12, offset:1/5, gutter: 20px)
   a:not(.no-underline)
     linkUnderlines white, black
-  h3
-    a
-      linkUnderlines white, black
   +mobile()
     col(8/12, offset: 1/6, gutter: 10px)
   background rgba(255,255,255,.9333)
@@ -106,6 +103,9 @@ blockquote
 #footer
   background inkbluefoot
 #thefoot
+  +mobile()
+    span(1)
+    padding-left 5px
   col(8/12, offset: 1/5, gutter: 20px)
   padding-bottom 10px
   p
@@ -141,14 +141,16 @@ h1
   span(1)
   margin-bottom 30px
   div
-    col(1/3, cycle: 3, gutter: 10)
+    col(1/3, cycle: 3, gutter: 1)
     +mobile()
-      col(1/3, cycle: 3, gutter: 1)
+      stack()
     #slugdate
       upcase()
 div#socialFoot
   #theSocial
-    span(1)
+   span(1)
+   +mobile()
+     display none
 .frontslug
   margin-top -20px
   upcase()
@@ -175,7 +177,7 @@ body
   width: 32px
   height: 32px
   fill: inkblue
-  
+
 .iconmelon:after, .im:after
   content: '';
   position: absolute;
@@ -193,3 +195,10 @@ body
 
 .media-body
   flex: 1
+h3.post-title
+  a
+    upcase()
+    color otherblue
+#disqusfeet
+  +mobile()
+    display none
