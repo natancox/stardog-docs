@@ -19,23 +19,41 @@ sdlime =  rgba(205,237,136,100)
 text-selection(color = sdlime)
 otherblue = rgba(0,10.2,17.3,.78)
 inkblue = rgba(15, 117, 150, .78)
-inkbluefoot = rgba(15,117,150,.95)
+inkbluefoot = rgba(15,117,150,1)
 rupture.scale = 0 415px 600px 800px 1050px 1280px
 rupture.mobile-cutoff = 415px
+//texture = "/img/random-grey-variations.png"
+texture = "/img/dotnoise-light-grey.png"
+//texture = "/img/first-aid-kit.png"
+//texture = "/img/felt.png"
 
 html
-  background linear-gradient(otherblue, black)
+  //background linear-gradient(otherblue, black)
+  background-image url(texture)
+  background-color otherblue
+
+.site
+  display flex
+  min-height 100vh
+  flex-direction column
+
+.site-content
+  flex 1
+
 a, a:hover, a:visited
   reset-link()
 img
   max-width 100%
   height auto
 .inliner
+  width 50% //do I really want this?
   +mobile()
     display none
 #header
   col(12/12, gutter: 20px)
-  background inkblue
+  //background inkblue
+  background-color inkbluefoot
+  //background-image: url(texture);
   #logo
     col(8/12, offset:1/5, gutter: 20px)
     #title
@@ -98,10 +116,11 @@ blockquote
     linkUnderlines white, black
   +mobile()
     col(8/12, offset: 1/6, gutter: 10px)
-  background rgba(255,255,255,.9333)
+  background rgba(255,255,255,1)
   padding 30px
 #footer
   background inkbluefoot
+  //background-image url(texture)
 #thefoot
   +mobile()
     span(1)
@@ -109,7 +128,6 @@ blockquote
   col(8/12, offset: 1/5, gutter: 20px)
   padding-bottom 10px
   p
-    fs((font-size * .75))
     a
       linkUnderlines inkblue, white 
 p > code
@@ -154,16 +172,9 @@ div#socialFoot
 .frontslug
   margin-top -20px
   upcase()
-html 
-  position relative
-  min-height 100%
-body 
-  margin-bottom: 60px
 #footer 
-  position absolute
-  bottom 0
   width: 100%
-  height: 60px
+  height: 90px
 #dog
   z-index: 1000
   position relative
@@ -195,6 +206,7 @@ body
 
 .media-body
   flex: 1
+  
 h3.post-title
   a
     upcase()
