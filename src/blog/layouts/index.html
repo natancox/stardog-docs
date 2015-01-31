@@ -9,13 +9,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/css/s.css">
     </head>
-    <body>
+    <body class="site">
       {{ partial "header.html" . }}
-      <div class="wrapper clearfix content" id="content">
+      <div class="wrapper site-content clearfix content" id="content">
         {{ range .Data.Pages.ByDate.Reverse }}
-    <h3 class="post-title"><a class="no-underline" href="{{ .Permalink }}">{{ .Title }}</a></h3>
-        <p class="frontslug">{{ .Date.Format "2 January 2006" }}</p>
-        <blockquote>{{ .Summary }}</blockquote>
+        <h3 class="post-title">
+          <a class="no-underline" href="{{ .Permalink }}">{{ .Title }}</a></h3>
+          <p class="frontslug">{{ .Date.Format "2 January 2006" }}</p>
+          <blockquote>{{ .Summary }}</blockquote>
         {{ end }}
      </div>
      <div class="wrapper clearfix" id="content_foot">

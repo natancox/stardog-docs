@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/css/s.css">
     </head>
-    <body id="top">
+    <body class="site" id="top">
       <svg id="svg-source" height="0" version="1.1" 
   xmlns="http://www.w3.org/2000/svg" style="position:absolute; margin-left: -100%" 
            xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -46,7 +46,7 @@
   </g>
 </svg>
       {{ partial "header.html" . }}
-      <div class="wrapper clearfix content" id="content">
+      <div class="wrapper clearfix content site-content" id="content">
         <div id="topdate">
          <h1 id="theTitle">{{ .Title }}</h1>
          <span id="artdate">{{ .Date.Format "2 January 2006" }}</span>
