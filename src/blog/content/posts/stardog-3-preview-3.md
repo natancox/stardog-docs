@@ -6,11 +6,10 @@ author = "Kendall Clark"
 +++
 
 In this final preview of Stardog 3, we examine improvements in Search,
-Custom Aggregates, ...
-
-<!--more-->
+Custom Aggregates, and some miscellaneous changes.<!--more-->
 
 ## Search
+{{% figure src="/img/search.jpg" class="inliner" %}}
 
 Previously we used the default Analyzer in Lucene for our search
 index.  This works fine in most cases, but there are situations where
@@ -27,7 +26,12 @@ filter/bind functions in 17.6 (Extensible Value Testing).  This
 provides a convenient way for users to implement domain specific
 functions, identified by URIs, and use them in filter, bind, or
 projection expressions the same way they'd use any other function,
-such as str.  Unfortunately, the spec did not allow for user-defined
+such as str.
+
+{{% figure src="/img/agg.jpg" class="inliner" %}}
+
+
+Unfortunately, the spec did not allow for user-defined
 aggregate functions, and user-defined functions were not valid to use
 in aggregations.  In Stardog 3.0 we've added this capability.  Now
 users can specify their own aggregate functions, such as Geometric
@@ -51,4 +55,3 @@ parser.  However in Stardog 3.0, we'll notice the "agg:" token and
 that will get consumed and, in this case, the custom aggregate with
 the QName "stardog:gmean" will be used over the group of bindings for
 ?o.
-

@@ -5,7 +5,7 @@ title = "Invitation to Stardog Beta"
 date = "2011-01-10"
 +++
 
-**TL;DR?** [Stardog](http://stardog.com/) is a fast, lightweight RDF
+[Stardog](http://stardog.com/) is a fast, lightweight RDF
 database. Today we're announcing limited access to our beta testing program,
 in preparation for the 1.0 release. If you're interested in beta-testing
 Stardog, [drop me an email](mailto:kendall@clarkparsia.com).<!--more-->

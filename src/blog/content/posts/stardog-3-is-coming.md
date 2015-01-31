@@ -1,17 +1,15 @@
 +++
 date = "2015-01-22T12:28:02-05:00"
 draft = false 
-author = "Kendall Clark, Mike Grove, Pavel Klinov, Evren Sirin"
+author = "Kendall Clark, Mike Grove, Pavel Klinov, and Evren Sirin"
 title = "A Preview of Stardog 3: Part One"
 
 +++
 
-In this first post of a quick series we'll be looking at the big
-changes in the upcoming Stardog 3 release.Stardog 3 is
-the result of more than **10,000 commits**.<!--more-->
-
-In this post we'll look at HA Cluster and performance
-improvements. Then we'll look at improvements to Stardog's reasoning
+Stardog 3 is the result of more than **10,000 commits** and it's
+headed this way. Let's preview the goodness. <!--more-->In this post
+we'll look at HA Cluster and performance improvements. In the next
+post we'll look at improvements to Stardog's reasoning
 capabilities. Finally, we'll look at improvements to ICV, search, and
 some miscellaneous items.
 
@@ -22,28 +20,42 @@ some miscellaneous items.
 Stardog HA Cluster beta was released in Fall, 2014; while it was
 usable, it wasn't as robust as we wanted. Let's start by saying that
 distributed systems of any kind are hard And distributed semantic
-graph databases are even harder. But for the 3.0 release 
-Edgar Rodriguez Diaz and Fernando Hernandez just **crushed**.
+graph databases are even harder. But for the 3.0 release Edgar
+Rodriguez Diaz and Fernando Hernandez beat the Cluster into shape.
+
+$more-stuff
 
 Stardog 3 is ready for continuous operations.
 
-## Annual Subscription License Model
+### Annual Subscription License Model
 
-As a result of the production-ready state of HA Cluster, we're
-introducing a new wrinkle in the Stardog licensing model: per-node
-annual subscriptions. This wrinkle is optimized for multi-node
-clusters.
+Since HA Cluster is ready for production now, we're introducing a new
+wrinkle in the Stardog licensing model: per-node annual subscriptions,
+which are optimized for multi-node clusters.
+
+Annual subscription fees include maintenance, support, and access to
+all releases. This is a particularly good choice for running Stardog
+in the cloud since it's based on JVMs, not servers or VMs. Fees are
+based on the number of nodes (i.e., JVMs) you need (counting only
+Stardogs, not ZooKeepers) and are priced to provide real high
+availability (i.e., at least a 3-node cluster) for the same license
+fees as a single machine pre-3.0 license; annual subscription fees
+also have the advantage of shifting your spend from cap-ex to op-ex in
+most cases. A 3-node cluster is the smallest annual subscription we
+offer and discount curves are pretty steep starting at 9 nodes.
+
+Get in [touch](mailto:sales@clarkparsia.com) to discuss licensing.
 
 {{% figure src="/img/commit.jpg" class="inliner" %}}
 ## Write Performance
 
-Stardog privileges reads over writes; but that doesn't mean we will
-accept slow write performance. Stardog's write speed at database
-creation time has been one of the best in the industry for a while;
-and now with Stardog 3, updates to an existing database are equally
-fast, which means a big speedup in the common case.
+Stardog has till now privileged reads over writes; but that doesn't
+mean we accept slow write performance. Stardog's write speed at
+database creation time has been one of the best in the industry for a
+while; and now with Stardog 3, updates to an existing database are
+equally fast, which means a big speedup in the common case.
 
-Stardog 3 is more clever about handling updates so there are fewer
+Stardog 3 is also more clever about handling updates so there are fewer
 configuration options to tweak. The number of threads used for parsing
 and processing files, the size of buffers used during processing,
 etc. are automatically computed and adjusted so you can add a few
@@ -54,7 +66,7 @@ continue execution while a large update transaction is committed. This
 means you can wipe and reload a database while it is online without
 disrupting queries in-flight. As an added benefit, the logs will show
 the progress for long write transactions, just like the progress of
-database creation, so you'll know when a huge update is going
+database creation, so that you'll know when a huge update is going
 to finish.
 
 {{% figure src="/img/writing.jpg" class="inliner" %}}
@@ -62,9 +74,8 @@ to finish.
 
 Stardog has always been optimized for SPARQL query evaluation
 performance. We continue to treat slow queries as bugs to be fixed as
-quickly as possible.
-
-Here are some of things we did to improve query performance in 3.0:
+quickly as possible. Here are a few of the changes that improve query
+performance in Stardog 3.
 
 * **We made hash and loop joins more memory efficient.**
 
@@ -118,12 +129,12 @@ Here are some of things we did to improve query performance in 3.0:
     unnecessary memory is ever spent in any of the relevant data
     structures.
 
-* **Query planner improvements, too.**
+* **Query planner improvements.**
 
     - Stardog 3 has a new cost model for the planner to take full
       advantage of the new hash and loop join algorithms.
 
-    - A new algorithm for algebraic rewriting, that is, transforming
+    - A new algorithm for algebraic rewriting, i.e., transforming
       the original SPARQL algebra into an equivalent one for which it
       is more likely that the join order optimizer will find the
       optimal join tree, which is particularly important for complex
@@ -133,11 +144,13 @@ Here are some of things we did to improve query performance in 3.0:
       reduced by joining with this key, and then compute chains of
       patterns to connect the key with the relevant scopes.
 
-Fun stuff!
+You're gonna love it.
 
-## Conclusion
+## What's Next? 
 
-In the next two parts of this series we'll look at Stardog 3's
-improvements in reasoning, ICV, search, and custom aggregates.
+In the next two posts we'll look at Stardog 3's improvements in
+reasoning, ICV, search, and custom aggregates.
 
-You can download Stardog 3 at [stardog.com](http://stardog.com/).
+You can download Stardog 3 at [stardog.com](http://stardog.com/). If
+you want to chat about licensing,
+[hit us here](mailto:sales@clarkparsia.com).
