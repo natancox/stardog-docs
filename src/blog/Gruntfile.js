@@ -13,7 +13,6 @@ module.exports = function(grunt) {
           compile: {
               options: {
                   paths: ["node_modules/axis/",
-                          //"node_modules/jeet/stylus/jeet",
                           "node_modules/jeet/stylus/",
                           "node_modules/rupture/",
                   ],
@@ -25,13 +24,28 @@ module.exports = function(grunt) {
           }
         },
          shell: { //me with ascidoctor.js
-          build: {
-              command: function () {
-                  comm = "hugo"
-                  return comm
-              }
-          }
+             build: {
+                 command: function () {
+                     comm = "hugo"
+                     return comm
+                 },
+             },
+             update: {
+                 command: function () {
+                     comm = "npm update caniuse-db"
+                     return comm
+                 }
+             }
          },
+        autoprefixer: {
+             single_file: {
+                 options: {
+                     browsers: ["> 1%", "ie10", "ie11"]
+                 },
+                 src: 'static/css/s.css',
+                 dest: 'static/css/s.css'
+             },
+        },
         cssmin: {
             options: {
                 report: 'min'
@@ -132,14 +146,15 @@ module.exports = function(grunt) {
   });
 
     require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
-    grunt.registerTask('cl', ['clean:build']);
+    grunt.registerTask('cl', ['clean:build','shell:update']);
     grunt.registerTask("css", ["stylus","concat", "cssmin"]);
     grunt.registerTask('dev', ['clean:build',
                                'css',
                                'shell',
                               ]);
-    grunt.registerTask("pub", ['clean:build',
+    grunt.registerTask("pub", ['cl',
                                "css",
+                               "autoprefixer",
                                "shell",
                                "cacheBust",
                                "htmlmin",
