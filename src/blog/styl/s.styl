@@ -5,11 +5,11 @@
 @import "underline"
 
 normalize-css()
-mypink = rgba(0,0,0,.8)//#FF69B4 
-font-color = rgba(0, 0, 0, 0.8)
+mypink = #444444 
+font-color = #444444 //rgba(0, 0, 0, 0.8)
 base-line-height = (font-size * 1.6)
 font-size  = 16px
-blog-font  = "Fira Sans", "Fira Mono"
+blog-font  = "Source Sans Pro", "Fira Mono"
 head1-color = font-color 
 head2-color = font-color
 base(fonts = blog-font)
@@ -23,14 +23,13 @@ inkbluefoot = rgba(15,117,150,1)
 rupture.scale = 0 415px 600px 800px 1050px 1280px
 rupture.mobile-cutoff = 415px
 //texture = "/img/random-grey-variations.png"
-texture = "/img/dotnoise-light-grey.png"
-//texture = "/img/first-aid-kit.png"
+//texture = "/img/dotnoise-light-grey.png"
+texture = "/img/first-aid-kit.png"
 //texture = "/img/felt.png"
 
 html
-  //background linear-gradient(otherblue, black)
   background-image url(texture)
-  background-color otherblue
+  background-color font-color //otherblue
 
 .site
   display flex
@@ -110,6 +109,7 @@ blockquote
   border 0
   p
     fs(font-size)
+    font-weight 400
 #content, #content_foot
   col(8/12, offset:1/5, gutter: 20px)
   a:not(.no-underline)
@@ -132,10 +132,11 @@ blockquote
       linkUnderlines inkblue, white 
 p > code
   color mypink
-  fs(font-size * 1.0825)
-pre > code
-  pre()
+  fs(font-size * .9)
   font-family "Fira Mono"
+pre > code
+  font-family "Fira Mono"
+  fs(font-size * .9)
   background rgba(255,255,255,0)
   border rgba(0,0,0,.1)
   border-radius 2px 3px / 4px 5px
