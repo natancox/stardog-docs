@@ -36,12 +36,6 @@ module.exports = function(grunt) {
                      return comm
                  }
              },
-             server: {
-                 command: function () {
-                     comm = "hugo server --watch --log hugo.log"
-                     return comm
-                 }
-             }
          },
         autoprefixer: {
              single_file: {
