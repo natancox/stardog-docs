@@ -35,6 +35,12 @@ module.exports = function(grunt) {
                      comm = "npm update caniuse-db"
                      return comm
                  }
+             },
+             server: {
+                 command: function () {
+                     comm = "hugo server --watch --log hugo.log"
+                     return comm
+                 }
              }
          },
         autoprefixer: {
@@ -57,14 +63,10 @@ module.exports = function(grunt) {
                 dest: 'public/'
             }
         },
-        //WARNING: never put this in a git repo dir... put it outside the repo!
+        //WARNING: never put this in a git repo dir...
         aws: grunt.file.readJSON("../../../grunt-aws-SECRET.json"),
-        //tell grove we want this bucket to be in > 1 AZ...yes?
-        //need another bucket for staging...doesn't need DNS (or ?)...it can be in 1 AZ
-        //fork hugo to build asciidoctor and call it...Boris!
         aws_s3: {
-            dev: {
-                options: {
+             options: {
                     accessKeyId: "<%= aws.secret %>", 
                     secretAccessKey: '<%= aws.key %>',
                     bucket: "<%= aws.bucket %>",
@@ -74,26 +76,61 @@ module.exports = function(grunt) {
                     streams: true,
                     debug: false,
                     uploadConcurrency: 30,
-                    params: {
+                },
+
+            production: {
+                options: {
+                    streams: true,
+                    debug: false,
+                    differential: true,
+                params: {
                         "CacheControl": "max-age=63072000, public",
                         "Expires": new Date(Date.now() + 6.31139e10),//.toUTCString(),
-                        //"ContentEncoding": "gzip"
-                        
-                    }
+                }
+                },
+
+                files: [
+                    { expand: true, dest: '.', cwd: 'public/', src: ['**/*',"!**/*.html","!**/*.css"], action: 'upload', differential: true },
+                    { dest: '/', cwd: 'public/', action: 'delete', differential: true }
+                ]
+            },
+            gzipd: {
+                options: {
+                    streams: true,
+                    debug: false,
+                    differential: true,
+                params: {
+                    "CacheControl": "max-age=63072000, public",
+                    "Expires": new Date(Date.now() + 6.31139e10),
+                    "ContentEncoding": "gzip"
+                }
+                },
+                files: [ {expand: true, dest: ".", cwd: "preflight/", src: ["**/*.html", "**/*.css"], action:"upload", differential:true}]
+            },
+            production_index: {
+                options: {
+                    streams: true,
+                    debug: false,
+                    differential: false,
+                params: {
+                    "CacheControl": "max-age=3600, public",
+                    "Expires": new Date(Date.now() + 3600),
+                    "ContentEncoding": "gzip"
+                }
                 },
                 files: [
-                    { expand: true, dest: '.', cwd: 'public/', src: ['**'], action: 'upload', differential: true },
-                    { dest: '/', cwd: 'public/', action: 'delete', differential: true }
+                    { expand: true, dest: '.', cwd: 'preflight/', src: ['index.html'], action: 'upload', differential: false}
                 ]
             }
         },
         compress: {
             main: {
-                options: { mode: 'gzip'},
+                options: { mode: 'gzip', pretty: true, level: 9},
                 expand: true,
                 cwd: "public/",
-                src: ["**/*"],
-            }
+                src: ["**/*.html", "**/*.css"],
+                dest: "preflight/",
+            },
         },
         htmlmin: {
             dist: {
@@ -140,14 +177,52 @@ module.exports = function(grunt) {
       availabletasks: {     
           tasks: {}
       },
+      invalidate_cloudfront: {
+          options: {
+              key: "<%= aws.secret %>",
+              secret: "<%= aws.key%>",
+              distribution: 'E9J6BU91BD488'
+            },
+            all: {
+                files: [{
+                    expand: true,
+                    cwd: 'public/',
+                    src: ['**/*'],
+                    filter: 'isFile',
+                    dest: ''
+                }]
+            },
+          index: {
+              files: [
+                  {
+                      expand: true,
+                      cwd: "preflight/",
+                      src: "index.html",
+                      dest: ''
+                  }
+              ]
+          },
+          html: {
+              files: [
+                  {
+                      expand: true,
+                      cwd: "preflight/",
+                      src: "**/*.html",
+                      dest: ''
+                  }
+              ]
+          }
+        },
       clean: {
-          build: ["public/*"],
+          build: ["public/*", "preflight/*"],
       },
   });
 
     require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
     grunt.registerTask('cl', ['clean:build','shell:update']);
     grunt.registerTask("css", ["stylus","concat", "cssmin"]);
+    grunt.registerTask("push_production", ["aws_s3:production", "aws_s3:gzipd"])
+    grunt.registerTask("kill_cdn", ["invalidate_cloudfront"])
     grunt.registerTask('dev', ['clean:build',
                                'css',
                                'shell',
@@ -158,5 +233,8 @@ module.exports = function(grunt) {
                                "shell",
                                "cacheBust",
                                "htmlmin",
-                               'aws_s3']);
+                               "compress",
+                               'push_production',
+                               'invalidate_cloudfront:index'
+                              ]);
 };
