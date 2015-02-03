@@ -168,13 +168,28 @@ module.exports = function(grunt) {
           dest: "public/"
     }
   },
-      availabletasks: {     
-          tasks: {}
+        availabletasks: {     
+            tasks: {}
       },
-      invalidate_cloudfront: {
+        prompt: {
+            target: {
+                options: {
+                    questions: [
+                        {
+                            config: 'config.invalidateTarget',
+                            type: 'list', // list, checkbox, confirm, input, password
+                            message: 'What do you want to invalidate?',
+                            default: 'index', // default value if nothing is entered
+                            choices: ["index", "all", "html", "none"],
+                        }
+                    ]
+                }
+            },
+        },
+        invalidate_cloudfront: {
           options: {
               key: "<%= aws.secret %>",
-              secret: "<%= aws.key%>",
+              secret: "<%= aws.key %>",
               distribution: 'E9J6BU91BD488'
             },
             all: {
@@ -215,20 +230,27 @@ module.exports = function(grunt) {
     require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
     grunt.registerTask('cl', ['clean:build','shell:update']);
     grunt.registerTask("css", ["stylus","concat", "cssmin"]);
-    grunt.registerTask("push_production", ["aws_s3:production", "aws_s3:gzipd"])
-    grunt.registerTask("kill_cdn", ["invalidate_cloudfront"])
+    grunt.registerTask("push_production", ["aws_s3:production", "aws_s3:gzipd"]);
+    grunt.registerTask("kill_html", ["invalidate_cloudfront:html"]);
+    grunt.registerTask("hugo", ["shell:build"]);
+    grunt.registerTask('printConfig', function() {
+        grunt.log.writeln(JSON.stringify(grunt.config(), null, 2));
+    })
+    var target1 = grunt.option("invalidate") || "index";
+    grunt.registerTask("kill_cdn", ["invalidate_cloudfront:" + target1])
     grunt.registerTask('dev', ['clean:build',
                                'css',
-                               'shell',
+                               'shell:build',
                               ]);
-    grunt.registerTask("pub", ['cl',
+    grunt.registerTask("pub", ['clean:build',
                                "css",
+                               "shell:update",
                                "autoprefixer",
-                               "shell",
+                               "hugo",
                                "cacheBust",
                                "htmlmin",
-                               "compress",
+                               "compress",//minify and compress because overkill is a thing!
                                'push_production',
-                               'invalidate_cloudfront:index'
+                               'kill_cdn'
                               ]);
 };
