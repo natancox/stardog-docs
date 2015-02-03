@@ -188,7 +188,11 @@ module.exports = function(grunt) {
   });
 
     require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
-                  
+
+    //gzip all the things
+    //s3, invalidate CF
+    //etc
+    //use grunt bump/prompt?
     grunt.registerTask('default', ['clean:build',
                                    'compass',
                                    'shell',
