@@ -1,7 +1,7 @@
 +++
 date = "2015-01-22T12:28:02-05:00"
 draft = false 
-author = "Stardog Engineering Team"
+author = "Kendall Clark, Evren Sirin, Mike Grove, Fernando Hernandez, Edgar Rodriguez, and Pavel Klinov"
 title = "A Preview of Stardog 3"
 +++
 
@@ -13,7 +13,7 @@ we'll look at notable improvements in Stardog 3, including
 * improvements to Stardog's reasoning capabilities
 * improvements to ICV, search, and some miscellaneous items
 
-## High Availability
+## High Availability Cluster
 
 Stardog HA Cluster beta was released in Fall, 2014; while it was
 usable, it wasn't as robust as we wanted. Let's start by saying that
@@ -38,7 +38,22 @@ example.  Cluster state is now handled by using `NodeCache` and
 most of the znode watchers we'd implemented, letting Curator manage
 znode information updates.
 
-...something about transactions from Fernando here...
+We also improved leader-follower replication mechanism for distributed
+transactions in Cluster. We were using blocking calls to replicate the
+data from the leader node to follower nodes; however, this scaled
+poorly. Instead we implemented a variant of two-phase commit with
+ZooKeeper, which uses asynchronous calls for replicating the data
+across nodes. When a new transaction is started, the leader will
+create a znode corresponding to the transaction. Then follower nodes
+will create equivalent znodes for their transactions; the leader will
+subscribe to those follower-znodes in order to detect status updates
+and orchestrate the transaction in a reactive manner.
+
+With these improvements you can expect the distributed transaction
+throughput to be comparable to Stardog 2.x single-server write
+throughput; of course, there is some overhead involved in the
+orchestration of the distributed transaction, but for large
+databases it tends to be negligible.
 
 Stardog 3 is ready for continuous operations.
 
@@ -259,10 +274,10 @@ prefix means that the query will parse correctly in any compliant
 SPARQL system. Third, Stardog 3 knows that the `agg` is the
 user-defined aggregate with the QName `stardog:gmean`.
 
-## External Authentication
-
 ## Conclusion
 
-Thanks to everyone who worked so hard on this release including Mike
-Grove, Evren Sirin, Hector Perez-Urbina, Edgar Rodriguez, Fernando
-Hernandez, Pavel Klinov, Al Baker, Stephen Nowell, and Mike Soren.
+Thanks to everyone who worked so hard on this release. Thanks to our
+users and customers for helping us in numerous ways.
+
+Watch this space for the Stardog 3.0 release announcement later in
+February.
