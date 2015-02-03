@@ -271,7 +271,7 @@ Let's note a few things. First, the `PREFIX` declaration for `agg`
 isn't needed. But including it makes the query portable across SPARQL
 systems: since `agg:stardog:gmean` is a valid QName, including the
 prefix means that the query will parse correctly in any compliant
-SPARQL system. Third, Stardog 3 knows that the `agg` is the
+SPARQL system. Third, Stardog 3 knows that `agg` is the
 user-defined aggregate with the QName `stardog:gmean`.
 
 ## Conclusion
