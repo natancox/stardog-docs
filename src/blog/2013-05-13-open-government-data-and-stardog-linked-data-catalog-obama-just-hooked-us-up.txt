@@ -1,9 +1,0 @@
----
-title: 'Open Government Data and Stardog Linked Data Catalog: Obama Just Hooked Us Up!'
-date: 13/05/2013
-author: Kendall Clark
-comments: true
-tags: 'open data'
-
-Once upon a time...
-
