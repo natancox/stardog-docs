@@ -159,11 +159,17 @@ $ stardog icv explain --reasoning EL "myDB" constraints.ttl
 
 === Security Note
 
-WARNING: There is a security implication in this design choice that may not be
+WARNING: There is a security implication in this design  that may not be
 obvious. Changing the reasoning type associated with a database and
 integrity constraint validation may have serious security implications with
 respect to a Stardog database and, thus, may only be performed by a user role
 with sufficient privileges for that action.
+
+== Repairing ICV Violations
+
+Stardog 3.0 adds support for automatic repair of some kinds of integrity violation.
+
+@@TODO@@
 
 == ICV Examples
 

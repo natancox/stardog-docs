@@ -1,85 +1,71 @@
-include::header-logo.ad[]
+.What's New in 3.0?
+****
 
-Stardog is a graph database: fast, lightweight, pure Java for
-mission-critical, enterprise apps. Check out the <<Quick Start Guide>>
-to get Stardog installed and running in five easy steps.
+- High Availability Cluster
+- Improved query performance; 100% incremental write performance improvement
+- Integrity constraint violation repair plans
+- Equality reasoning via hybrid materialization
+****
+
+== Introducing Stardog
+
+Stardog is a graph database—fast, lightweight, pure Java for
+mission-critical, enterprise apps—that supports the http://www.w3.org/RDF/[RDF graph data
+model]; http://www.w3.org/TR/sparql11-overview/[SPARQL 1.1] query language; HTTP and SNARL protocols for remote
+access and control; http://www.w3.org/TR/owl2-overview/[OWL 2] and rules for inference and data analytics; and
+programmatic interaction via Java, JavaScript, Ruby, Python, .Net,
+Groovy, Spring, Clojure etc.
+
+=== Stardog {version} ({release-date})
+
+Consult the {release-notes}[release notes] and <<Stardog
+Milestones,milestones>>. Check out the <<Quick Start Guide>> to get
+Stardog installed and running in five easy steps.footnote:[This is
+version *{docdatetime}*.]
 
 .Commercial Licensing & Support
 ****
-Stardog is a commercial software product. For
-information about http://stardog.com/#plans[Stardog commercial
-licensing], please mailto:sales@clarkparsia.com[email] for more
-details.
+Stardog Developer & Enterprise are commercial software products. For information about http://stardog.com/#plans[Stardog commercial licensing], please
+mailto:sales@clarkparsia.com[email] for more details.
 ****
 
-= Introduction
+=== Downloading Stardog
 
-Stardog is a fast, lightweight, agile semantic graph database--equally
-adept in client-server, middleware, and embedded modes. Stardog
-**{version}** (**{release-date}**) supports the
-http://www.w3.org/RDF/[RDF graph data model];
-http://www.w3.org/TR/sparql11-overview/[SPARQL 1.1] query language;
-HTTP and SNARL protocols for remote access and control;
-http://www.w3.org/TR/owl2-overview/[OWL 2] and rules for inference and
-data analytics; and programmatic interaction via several languages and
-network interfaces.
+http://stardog.com/#download[Download Stardog] to get started. The
+mailto:stardog@clarkparsia.com[Stardog support forum] is the place to
+report bugs, ask questions, etc. You can also ask questions on Stack
+Overflow using the tag `stardog`.
 
-To learn more about where we've been and where we're headed, consult
-the {release-notes}[release notes] and <<Stardog Milestones,milestones>>.
+=== Contributing
 
-== Downloading Stardog
-
-http://stardog.com/#download[Download] Stardog to get started. The
-https://groups.google.com/a/clarkparsia.com/d/forum/stardog[Stardog
-support forum] is the place to report bugs, ask questions, etc. You
-can also ask questions on Stack Overflow using the tag `stardog`.
-
-== Contributing 
-
-There are several open source components of Stardog; feel free to
-submit pull requests:
-https://github.com/clarkparsia/stardog-docs[stardog-docs],
+There are several open source components of Stardog; feel free to submit pull
+requests: https://github.com/clarkparsia/stardog-docs[stardog-docs],
 https://github.com/clarkparsia/stardog.js[stardog.js],
 https://github.com/clarkparsia/stardog-groovy[stardog-groovy],
 https://github.com/clarkparsia/stardog-spring[stardog-spring],
 https://github.com/antoniogarrote/stardog-rb[stardog.rb], and
-https://github.com/clarkparsia/stardog-clj[stardog-clj]. Many thanks
-to Stardog customers, users, contributors, testers, etc., especially
-Robert Butler, Al Baker, Marko A. Rodriguez, Brian Sletten, Alin
-Dreghiciu, Rob Vesse, Stephane Fallah, John Goodwin, José Devezas,
-Chris Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl,
-Morton Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron
-Zettlemoyer, Jim Rhyne, Andrea Westerinen, Huy Phan, Zach Whitley,
-Maurice Rabb, Grant Pax, the crew at XSB, and the nice people at El Rinconcito
-Cafe in DC.
+https://github.com/clarkparsia/stardog-clj[stardog-clj]. Many thanks to everyone
+who's contributed so far.footnote:[Thanks to all Stardog users, contributors,
+testers, etc., especially Robert Butler, Al Baker, Marko A. Rodriguez, Brian
+Sletten, Alin Dreghiciu, Rob Vesse, Stephane Fallah, John Goodwin, José Devezas,
+Chris Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl, Morton
+Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron Zettlemoyer, Jim
+Rhyne, Andrea Westerinen, Huy Phan, Zach Whitley, Maurice Rabb, the crew at XSB,
+and the nice people at El Rinconcito Cafe in DC.]
+
+=== Long Term Support
+
+include::lts.ad[]
 
 == Stardog Roadmap
 
 [horizontal]
-What's New in the 3.0 release?::
-- [x] Equality reasoning via hybrid materialization
-- [x] Improved incremental write performance
-- [x] HA Cluster out of beta
-- [x] Java 7 & Sesame 2.8/RDF 1.1
-- [x] Integrity constraint violation repair plans
-- [x] Improved query performance
-- [x] User-pluggable search indexers
-3.x releases (2015)::
+3.1 release (early Q2 2015)::
 - [ ] Native support for Property Graph model
+- [ ] User-pluggable search indexers
 - [ ] Named Graph security
-- [ ] HA Cluster management service
-- [ ] HA Cluster containerization
-4.0 release::
-- [ ] Stardog Big Data
-- [ ] Stardog Constellation 
-
-== Alternate Versions of this Manual
-
-This is the manual for Stardog {version} ({release-date}).footnote:[This
-is version *{docdatetime}*.] Alternate versions of this manual are coming in the 3.0 release.
-
-|===
-| Version | HTML | PDF  | EPUB3 | Kindle
-| 3.0     | ✓    | ✓   | ✓     | ✓
-| 2.2.4   | ✓    | ✗    | ✗     | ✗
-|===
+3.2 release (late Q2 2015)::
+- [ ] Stored procedures
+4.0 release (2016)::
+- [ ] *Stardog Constellation*: The Data Center Graph Engine
+- [ ] *Stardog Map*: From Data Lakes to Enterprise Knowledge Graphs
