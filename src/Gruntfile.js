@@ -73,6 +73,14 @@ module.exports = function(grunt) {
                   //console.log(comm);
                   return comm
               }
+          },
+          pdf: {
+              command: function() {
+                  comm = "prince website/index.html --baseurl=http://docs.stardog.com/ --javascript --media=screen -o website/stardog-manual-";
+                  comm += theId;
+                  comm += ".pdf";
+                  return comm
+              }
           }
       },
       copy: {
@@ -142,7 +150,7 @@ module.exports = function(grunt) {
       clean: {
           css: ["website/stardog.css"],
           css2: ["style/stylesheets/stardog.css"],
-          build: ["website"],
+          build: ["website/index.html", "website/icv"],
           release: ["doc/optimized-img"]
       },
       "link-checker": {
@@ -206,6 +214,7 @@ module.exports = function(grunt) {
                                    'embed',
                                    'inline',
                                    'clean:css',
+                                   'shell:pdf',
                                    'open:dev']);
     grunt.registerTask('pub', ['default',
                                'copy:pub']);
