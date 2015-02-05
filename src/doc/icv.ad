@@ -172,6 +172,8 @@ integrity violation.
 
 @@fixme@@
 
+`icv fix`
+
 == ICV Examples
 
 Stardog ICV has a link:/icv/icv-specification.html[formal semantics].  But let's

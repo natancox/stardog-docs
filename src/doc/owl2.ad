@@ -877,8 +877,13 @@ however, an exception to Stardog's query rewriting technique.
 * how it materializes
 * how query results change
 
+@@fixme@@
+
+== Removing Unwanted Inferences
 
 @@fixme@@
+
+`reasoning fix`
 
 == Performance Hints
 
