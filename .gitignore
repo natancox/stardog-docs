@@ -30,3 +30,5 @@ src/config.codekit
 src/blog/bower_components
 src/blog/hugo.log
 src/blog/static/css
+src/website/index.html
+src/website/icv
