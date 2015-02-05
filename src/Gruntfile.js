@@ -82,36 +82,16 @@ module.exports = function(grunt) {
               secret: "<%= aws.key %>",
               distribution: '<%= aws.cf3 %>'
             },
-            all: {
-                files: [{
-                    expand: true,
-                    cwd: 'public/',
-                    src: ['**/*'],
-                    filter: 'isFile',
-                    dest: ''
-                }]
-            },
           index: {
               files: [
-                  {
+                  { //nothing else ever changes
                       expand: true,
-                      cwd: "preflight/",
-                      src: "index.html",
+                      cwd: "website/",
+                      src: ["index.html", "/index.html"],
                       dest: ''
                   }
               ]
           },
-          html: {
-              files: [
-                  {
-                      expand: true,
-                      cwd: "preflight/",
-                      src: "**/*",
-                      filter: 'isDirectory',
-                      dest: ''
-                  }
-              ]
-          }
         },
       compass: {                      
           dist: {                     
@@ -320,7 +300,8 @@ module.exports = function(grunt) {
         'shell:pdf',
         'compress',
         'aws_s3:production',
-        'aws_s3:gzipd'
+        'aws_s3:gzipd',
+        //'invalidate_cloudfront:index' //won't work right now...doesn't exist yet
     ]);
     grunt.registerTask('cl', ['clean:build']);
     grunt.registerTask('t', ['availabletasks:tasks']);
