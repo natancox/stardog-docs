@@ -79,13 +79,13 @@ Cafe in DC.
 - [ ] *Stardog Constellation*: The Data Center Graph Engine
 - [ ] *Stardog Map*: From Data Lakes to Enterprise Knowledge Graphs
 
-== Alternate Versions of this Manual
+== Previous Versions of this Manual
 
-This is the manual for Stardog {version} ({release-date}).footnote:[This
-is version *{docdatetime}*.] Alternate versions of this manual are coming in the 3.0 release.
+This is the manual for Stardog {version}
+({release-date}).footnote:[This is version *{docdatetime}*.]
 
 |===
-| Version | PDF | EPUB3 | Kindle
-| 3.0     | ✓   | ✓     | ✓
-| 2.2.4   | ✗   | ✗     | ✗
+| Version | HTML             | PDF  
+| 3.0     | link:/#[✓]       | link:stardog-manual-{version}.pdf[✓]    
+| 2.2.4   | link:/2.2.4/[✓]  | ✗   
 |===
