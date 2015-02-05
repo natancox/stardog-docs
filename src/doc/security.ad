@@ -147,6 +147,10 @@ For example,
 Of course you should secure this file carefully, making sure that only the user
 that Stardog runs as can read it.
 
+== Enterprise Authentication
+
+@@fixme@@ LDAP, etc
+
 == Managing Stardog Securely
 
 Stardog resources can be managed securely by using the tools included in the
