@@ -1,6 +1,6 @@
 //require('load-grunt-tasks')(grunt);
-var theId = "2.2.4";
-var theDate = '"11 December 2014"';
+var theId = "3.0";
+var theDate = '"28 February 2015"';
 
 module.exports = function(grunt) {
     // Load grunt tasks automatically
