@@ -14,10 +14,9 @@ the W3C standard for querying RDF graphs.
 
 == Querying
 
-Stardog supports SPARQL 1.1 footnote:[Stardog does not support SPARQL 1.1
-federation (the `SERVICE` keyword)] and also the
-http://www.w3.org/TR/2012/CR-sparql11-entailment-20121108/[OWL 2 Direct
-Semantics entailment regime].
+Stardog supports SPARQL 1.1 and also the
+http://www.w3.org/TR/2012/CR-sparql11-entailment-20121108/[OWL 2
+Direct Semantics entailment regime].
 
 To execute a SPARQL query against a Stardog database, use the `query`
 subcommand:
@@ -49,250 +48,6 @@ XPath and SWRL. Any of these functions can be used in queries or rules. Some
 functions appear in multiple namespaces, but all of the namespaces will work.
 
 See <<SPARQL Query Functions>> for the complete list.
-
-////
-.Table of Stardog Function Namespaces
-|===
-|Prefix    |Namespace
-
-|`stardog`
-|`tag:stardog:api:functions:`
-
-|`fn`
-|`\http://www.w3.org/2005/xpath-functions#`
-
-|`math`
-|`\http://www.w3.org/2005/xpath-functions/math#`
-
-|`swrlb`
-|`\http://www.w3.org/2003/11/swrlb#`
-
-|`afn`
-|`\http://jena.hpl.hp.com/ARQ/function#`
-|===
-
-The function names and URIs supported by Stardog are included below.
-Some of these functions exist in SPARQL natively, which just means they can be
-used without an explicit namespace.
-
-.Table of Stardog Function Names & URIs
-|===
-|Function name |Recognized URI(s)
-
-|`abs`
-|`fn:numeric-abs` +
-`swrlb:abs`
-
-|`acos`
-|`math:acos`
-
-|`add`
-|`fn:numeric-add`
-
-|`asin`
-|`math:asin`
-
-|`atan`
-|`math:atan`
-
-|`ceil`
-|`fn:numeric-ceil` +
-`swrlb:ceiling`
-
-|`concat`
-|`fn:concat` +
-`swrlb:stringConcat`
-
-|`contains`
-|`fn:contains` +
-`swrlb:contains`
-
-|`containsIgnoreCase`
-|`swrlb:containsIgnoreCase`
-
-|`cos`
-|`math:cos` +
-`swrlb:cos`
-
-|`cosh`
-|`stardog:cosh`
-
-|`date`
-|`swrlb:date`
-
-|`dateTime`
-|`swrlb:dateTime`
-
-|`day`
-|`fn:day-from-dateTime`
-
-|`dayTimeDuration`
-|`swrlb:dayTimeDuration`
-
-|`divide`
-|`fn:numeric-divide` +
-`swrlb:divide`
-
-|`encode_for_uri`
-|`fn:encode_for_uri`
-
-|`exp`
-|`math:exp` +
-`afn:e`
-
-|`floor`
-|`fn:numeric-floor` +
-`swrlb:floor`
-
-|`hours`
-|`fn:hours-from-dateTime`
-
-|`integerDivide`
-|`fn:numeric-integer-divide` +
-`swlrb:integerDivide`
-
-|`lcase`
-|`fn:lower-case` +
-`swlrb:lowerCase`
-
-|`log`
-|`math:log`
-
-|`log10`
-|`math:log10`
-
-|`max`
-|`fn:max` +
-`afn:max`
-
-|`min`
-|`fn:min` +
-`afn:min`
-
-|`minutes`
-|`fn:minutes-from-dateTime`
-
-|`mod`
-|`swrlb:mod`
-
-|`month`
-|`fn:month-from-dateTime`
-
-|`multiply`
-|`fn:numeric-multiply`
-
-|`normalizeSpace`
-|`fn:normalize-space` +
-`swrlb:normalizeSpace`
-
-|`pi`
-|`math:pi` +
-`afn:pi`
-
-|`pow`
-|`math:pow` +
-`swrlb:pow`
-
-|`replace`
-|`fn:replace`
-
-|`round`
-|`fn:numeric-round` +
-`swrlb:round`
-
-|`roundHalfToEven`
-|`fn:numeric-round-half-to-even` +
-`swrlb:roundHalfToEven`
-
-|`seconds`
-|`fn:seconds-from-dateTime`
-
-|`sin`
-|`math:sin` +
-`swrlb:sin`
-
-|`sinh`
-|`stardog:sinh`
-
-|`sqrt`
-|`math:sqrt` +
-`afn:sqrt`
-
-|`strafter`
-|`fn:substring-after` +
-`swrlb:substringAfter`
-
-|`strbefore`
-|`fn:substring-before` +
-`swrlb:substringBefore`
-
-|`strends`
-|`fn:ends-with` +
-`swrlb:endsWith`
-
-|`stringEqualIgnoreCase`
-|`swrlb:stringEqualIgnoreCase`
-
-|`strlen`
-|`fn:string-length` +
-`swrlb:stringLength`
-
-|`strstarts`
-|`fn:starts-with` +
-`swrlb:startsWith`
-
-|`substring`
-|`fn:substring` +
-`swrlb:substring`
-
-|`subtract`
-|`fn:numeric-subtract` +
-`swrlb:subtract`
-
-|`tan`
-|`math:tan` +
-`swrlb:tan`
-
-|`tanh`
-|`stardog:tanh`
-
-|`time`
-|`swrlb:time`
-
-|`timezone`
-|`fn:timezone-from-dateTime`
-
-|`toDegrees`
-|`stardog:toDegrees`
-
-|`toRadians`
-|`stardog:toRadians`
-
-|`translate`
-|`fn:translate` +
-`swrlb:translate`
-
-|`ucase`
-|`fn:upper-case` +
-`swrlb:upperCase`
-
-|`unaryMinus`
-|`fn:numeric-unary-minus` +
-`swrlb:unaryMinus`
-
-|`unaryPlus`
-|`fn:numeric-unary-plus` +
-`swrlb:unaryPlus`
-
-|`year`
-|`fn:year-from-dateTime`
-
-|`yearMonthDuration`
-|`swrlb:yearMonthDuration`
-|===ex
-
-////
-
 
 == Updating
 
@@ -537,7 +292,7 @@ $ stardog data export --named-graph http://example.org/context myDatabase myData
 
 Stardog includes an RDF-aware semantic search capability: it will index
 RDF literals and supports information retrieval-style queries over
-indexed data.
+indexed data. See <<Managing Search>> for more details.
 
 === Indexing Strategy
 
@@ -620,24 +375,6 @@ that Lucene supports, with the exception of fields.
 
 For a more detailed discussion, see the http://lucene.apache.org/java/3_3_0/queryparsersyntax.html[Lucene docs].
 
-=== Search Admin
-
-Full-text support for a database is disabled by default but can be enabled at any time by setting the configuration option `search.enabled` to true. For example, you can create a database with full-text support as follows:
-
-[source,bash]
-----
-$ stardog-admin db create -o search.enabled=true -n myDb
-----
-
-Normally the search indexes are fully updated within a transaction in a synchronous manner; 
-changes to the RDF index are always reflected immediately in the Lucene index.  Updates can be
-asynchronous where they'll be made outside of the transaction, or run regularly via a scheduled
-job.  This behavior can be configured by the `search.reindex.mode` database option.
-
-The legal value of `search.reindex.mode` is one of the strings `sync` or
-`async` (case insensitive) or a legal http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger[Quartz cron
-expression].
-
 == Obfuscating
 
 When sharing sensitive RDF data with others, you might
@@ -653,10 +390,11 @@ the same set of arguments:
 $ stardog data obfuscate myDatabase obfDatabase.ttl
 ----
 
-By default, all URIs, bnodes, and string literals in the database will be
-obfuscated using the SHA256 message digest algorithm. Non-string typed literals
-(numbers, dates, etc.) are left unchanged as well as URIs from built-in
-namespaces (`RDF`, `RDFS`, and `OWL`). It's possible to customize obfuscation by providing a configuration file.
+By default, all URIs, bnodes, and string literals in the database will
+be obfuscated using the SHA256 message digest algorithm. Non-string
+typed literals (numbers, dates, etc.) are left unchanged as well as
+URIs from built-in namespaces (`RDF`, `RDFS`, and `OWL`). It's
+possible to customize obfuscation by providing a configuration file.
 
 [source,bash]
 ----
