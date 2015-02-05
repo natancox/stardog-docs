@@ -167,9 +167,10 @@ with sufficient privileges for that action.
 
 == Repairing ICV Violations
 
-Stardog 3.0 adds support for automatic repair of some kinds of integrity violation.
+Stardog 3.0 adds support for automatic repair of some kinds of
+integrity violation.
 
-@@TODO@@
+@@fixme@@
 
 == ICV Examples
 
