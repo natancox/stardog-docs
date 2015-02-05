@@ -247,9 +247,9 @@ Here are some example connection strings:
 ----
 snarl://server/billion-triples-punk
 http://localhost:5000/myDatabase
-http://169.175.100.5:1111/myOtherDatabase;reasoning=QL
+http://169.175.100.5:1111/myOtherDatabase;reasoning=true
 snarl://stardog:8888/the_database
-snarl://localhost:1024/db1;reasoning=NONE
+snarl://localhost:1024/db1;reasoning=true
 ----
 
 Using the default ports for SNARL and HTTP protocols simplifies
@@ -1293,10 +1293,19 @@ running query. The same general restriction is applied to query status;
 you cannot see status for a query that you do not own, and a superuser can
 see the status of every query.
 
-=== Managing Search Indexes
+=== Managing Search
 
-Stardog's search service is described in <<Using Stardog>> section. However, managing
-search indexes is an administrative task and, thus, is described here.
+Stardog's search service is described in <<Using Stardog>> section.
+
+Full-text support for a database is disabled by default but can be
+enabled at any time by setting the configuration option
+`search.enabled` to true. For example, you can create a database with
+full-text support as follows:
+
+[source,bash]
+----
+$ stardog-admin db create -o search.enabled=true -n myDb
+----
 
 There are three modes for rebuilding indexes:
 
@@ -1308,15 +1317,17 @@ There are three modes for rebuilding indexes:
     to specify when the search index should be updated.
 
 This is specified when creating a database by setting the property
-`search.reindex.mode` to `sync`, `async`, or to a valid cron expression.
-The default is `sync`.
+`search.reindex.mode` to `sync`, `async`, or to a valid cron
+expression.  The default is `sync`. This behavior can be configured by
+the `search.reindex.mode` database option.
 
 === ACID Transactions
 
-What follows is specific guidance with respect to Stardog's transactional
-semantics and guarantees.footnote:[A good general purpose discussion of these
-issues in context of J2EE is
-http://vladmihalcea.com/2014/12/23/a-beginners-guide-to-transaction-isolation-levels-in-enterprise-java/[this beginner's guide].]
+What follows is specific guidance with respect to Stardog's
+transactional semantics and guarantees.footnote:[A good general
+purpose discussion of these issues in context of J2EE is
+http://vladmihalcea.com/2014/12/23/a-beginners-guide-to-transaction-isolation-levels-in-enterprise-java/[this
+beginner's guide].]
 
 ==== Atomicity
 
