@@ -12,6 +12,107 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
       pkg: grunt.file.readJSON('package.json'),
+      autoprefixer: {
+          single_file: {
+              options: {
+                  browsers: ["> 1%", "ie10", "ie11"]
+              },
+              src: 'website/stardog.css',
+              dest: 'website/stardog.css'
+          },
+        },
+        //WARNING: never put this in a git repo dir...
+        aws: grunt.file.readJSON("../../grunt-aws-SECRET.json"),
+        aws_s3: {
+             options: {
+                    accessKeyId: "<%= aws.secret %>",
+                    secretAccessKey: '<%= aws.key %>',
+                    bucket: "<%= aws.bucket3 %>",
+                    region: "us-east-1",
+                    access: "public-read",
+                    progress: "progressBar",
+                    streams: true,
+                    debug: false,
+                    uploadConcurrency: 30,
+                },
+
+            production: { //everything else: images and pdfs
+                options: {
+                    streams: true,
+                    debug: false,
+                    differential: true,
+                params: {
+                        "CacheControl": "max-age=63072000, public",
+                        "Expires": new Date(Date.now() + 6.31139e10),//.toUTCString(),
+                }
+                },
+
+                files: [
+                    { expand: true, dest: '.', cwd: 'website/', src: ['**/*',], action: 'upload', differential: true },
+                    { dest: '/', cwd: 'website/', action: 'delete', differential: true }
+                ]
+            },
+            gzipd: { //only the compressed html files
+                options: {
+                    streams: true,
+                    debug: false,
+                    differential: true,
+                params: {
+                    "CacheControl": "max-age=63072000, public",
+                    "Expires": new Date(Date.now() + 6.31139e10),
+                    "ContentEncoding": "gzip"
+                }
+                },
+                files: [ {expand: true, dest: ".", cwd: "website-gzipd/", src: ["**/*"], action:"upload", differential:true},
+                       ]
+            },
+        },
+        compress: {
+            main: {
+                options: { mode: 'gzip', pretty: true, level: 9},
+                expand: true,
+                cwd: "website/",
+                src: ["index.html"],
+                dest: "website-gzipd/",
+            },
+        },
+        invalidate_cloudfront: {
+          options: {
+              key: "<%= aws.secret %>",
+              secret: "<%= aws.key %>",
+              distribution: '<%= aws.cf3 %>'
+            },
+            all: {
+                files: [{
+                    expand: true,
+                    cwd: 'public/',
+                    src: ['**/*'],
+                    filter: 'isFile',
+                    dest: ''
+                }]
+            },
+          index: {
+              files: [
+                  {
+                      expand: true,
+                      cwd: "preflight/",
+                      src: "index.html",
+                      dest: ''
+                  }
+              ]
+          },
+          html: {
+              files: [
+                  {
+                      expand: true,
+                      cwd: "preflight/",
+                      src: "**/*",
+                      filter: 'isDirectory',
+                      dest: ''
+                  }
+              ]
+          }
+        },
       compass: {                      
           dist: {                     
               options: {
@@ -27,7 +128,8 @@ module.exports = function(grunt) {
       concat: {
           css: {
               src: ['style/stylesheets/stardog.css',
-                    'style/stylesheets/github.min.css'],
+                    'style/stylesheets/github.min.css',
+                    'style/stylesheets/terminal.css'],
               dest: 'style/stylesheets/stardog.css'
           },
       },
@@ -150,7 +252,7 @@ module.exports = function(grunt) {
       clean: {
           css: ["website/stardog.css"],
           css2: ["style/stylesheets/stardog.css"],
-          build: ["website/index.html", "website/icv"],
+          build: ["website/index.html", "website/icv", "website-gzipd/index.html"],
           release: ["doc/optimized-img"]
       },
       "link-checker": {
@@ -197,27 +299,29 @@ module.exports = function(grunt) {
 
     require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
 
-    //gzip all the things
-    //s3, invalidate CF
-    //etc
-    //use grunt bump/prompt?
     grunt.registerTask('default', ['clean:build',
                                    'compass',
-                                   'shell',
+                                   'shell:build',
                                    'replace',
                                    'htmlmin',
                                    'copy:icv_img',
                                    'copy:main',
                                    'copy:css',
-                                   'uncss',
+                                   'autoprefixer',
+                                  // 'uncss',
                                    'cssmin',
                                    'embed',
                                    'inline',
                                    'clean:css',
-                                   'shell:pdf',
-                                   'open:dev']);
-    grunt.registerTask('pub', ['default',
-                               'copy:pub']);
+                                  ]);
+    grunt.registerTask('pub', [
+        //do we want to start off by doing a bump?
+        'default',
+        'shell:pdf',
+        'compress',
+        'aws_s3:production',
+        'aws_s3:gzipd'
+    ]);
     grunt.registerTask('cl', ['clean:build']);
     grunt.registerTask('t', ['availabletasks:tasks']);
     grunt.registerTask('lc', ['link-checker:web']);
