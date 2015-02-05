@@ -47,7 +47,16 @@ include::owl2.ad[]
 
 include::icv.ad[]
 
-include::programming.ad[]
+= Programming Stardog
+
+You can program Stardog in Java, over HTTP, JavaScript, Clojure, Groovy, Spring,
+and .Net.
+
+== Sample Code
+
+There's a https://github.com/clarkparsia/stardog-examples[Github repo of
+example Java code] that you can fork and use as the starting point for your
+Stardog projects. Feel free to add new examples using pull requests in Github.
 
 include::java.ad[]
 
@@ -67,8 +76,8 @@ include::migration.ad[]
 
 = Understanding Stardog
 
-Background information on performance, testing, terminology, known issues, compatibility
-policies, etc.
+Background information on performance, testing, terminology, known
+issues, compatibility policies, etc.
 
 include::faq.ad[]
 
