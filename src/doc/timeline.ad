@@ -8,8 +8,7 @@ changes, including notable bug fixes, see the {release-notes}[release notes].
 3.0::
 - Equality reasoning via hybrid materialization
 - Improved incremental write performance
-- HA Cluster
-- Java 7 & Sesame 2.8/RDF 1.1
+- HA Cluster production ready
 - Integrity constraint violation repair plans
 - Improved query performance
 
