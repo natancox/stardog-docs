@@ -1,5 +1,17 @@
-icono or entypo fonts
-bower to manage highlight.js, turn it off in asciidoctor
-live examples
 move to s3/cloudfront
-embed fonts? http://www.leaseweblabs.com/2015/01/pro-font-embedding-not-font-linking/
+
+finish equality reasoning
+
+cluster docs...
+
+service keyword
+
+repair plans: minimal docs
+
+https://github.com/clarkparsia/stardog/issues/2005
+
+how to write a custom aggregate
+
+how to make a custom analyzer
+
+automate bump for new versions...works w/ git mostly...doesn't help with moving directories
