@@ -8,39 +8,54 @@ are not familiar with the terminology, you can peruse the section on
 terminology.
 
 The semantics of Stardog's reasoning is based in part on the
-http://www.w3.org/TR/2010/WD-sparql11-entailment-20100126/#id45013[OWL 2 Direct
-Semantics Entailment Regime]. However, the **implementation** of Stardog's
-reasoning system is worth understanding as well. **Stardog performs reasoning
-in a lazy and late-binding fashion: it does not materialize inferences; but,
-rather, reasoning is performed at query time according to a user-specified
-"reasoning level".**  This approach allows for maximum
-flexibilityfootnote:[You only pay for the reasoning that you use; no more and no
-less. Eager materialization is a great strategy for hard disk manufacturers.]
-while maintaining excellent performance and scalability.
+http://www.w3.org/TR/2010/WD-sparql11-entailment-20100126/#id45013[OWL
+2 Direct Semantics Entailment Regime]. However, the implementation of
+Stardog's reasoning system is worth understanding as well. For the
+most part, **Stardog performs reasoning in a lazy and late-binding
+fashion: it does not materialize inferences; but, rather, reasoning is
+performed at query time according to a user-specified "reasoning
+level".** This approach allows for maximum flexibilityfootnote:[You
+only pay for the reasoning that you use; no more and no less. Eager
+materialization is a great strategy for hard disk manufacturers.]
+while maintaining excellent performance and scalability. The one
+exception to this general approach is equality reasoning which is
+eagerly materialized. See <<Equality Reasoning>> for more details.
 
 == Reasoning Levels
 
-Stardog supports several reasoning levels; the reasoning level determines the
-kinds of inference rules or axioms that are to be considered during query
-evaluation:
+Stardog supports all of OWL 2, including DL, EQ, QL, and RL, as well
+as user-defined rules via SWRL. However, for the most part users don't
+need to worry too much about which reasoning level is necessary. Thus,
+the reasoning levels were simplified in Stardog 3.0 to a simple
+boolean flag:
 
 [horizontal]
-`NONE`:: No axioms or rules are considered; no reasoning is performed.
-`RDFS`:: For the OWL 2 axioms allowed in http://www.w3.org/TR/rdf-schema/[RDF schema] (mainly subclasses, subproperties, domain, and ranges).
-`QL`:: For http://www.w3.org/TR/owl2-profiles/#OWL_2_QL[OWL 2 QL] axioms.
-`RL`:: For http://www.w3.org/TR/owl2-profiles/#OWL_2_RL[OWL 2 RL] axioms.
-`EL`:: For http://www.w3.org/TR/owl2-profiles/#OWL_2_EL[OWL 2 EL] axioms.
-`DL`:: For http://www.w3.org/TR/owl2-syntax/[OWL 2 DL] axioms.
-`SL`:: For a combination of RDFS, QL, RL, and EL axioms, plus http://www.w3.org/Submission/SWRL/[SWRL rules].
+`false`:: No axioms or rules are considered; no reasoning is performed.
+`true`:: Axioms and rules are considered and reasoning is performed
+according to the value of `reasoning.level`.
+
+The default reasoning level is "false", that is, no reasoning is
+performed without exlicitly setting reasoning to "true". The default
+value of `reasoning.level` is "SL", but may be set to any other
+reasoning level that Stardog supports ("RDFS", "EL", "QL", "RL", or
+"SL").footnote:[`RDFS` is the OWL 2 axioms allowed in
+http://www.w3.org/TR/rdf-schema/[RDF schema] (mainly subclasses,
+subproperties, domain, and ranges); `QL` for the
+http://www.w3.org/TR/owl2-profiles/#OWL_2_QL[OWL 2 QL] axioms; `RL` for 
+the http://www.w3.org/TR/owl2-profiles/#OWL_2_RL[OWL 2 RL] axioms; 
+`EL` for the http://www.w3.org/TR/owl2-profiles/#OWL_2_EL[OWL 2 EL]
+axioms; and `SL` is for a combination of RDFS, QL, RL, and EL axioms, plus
+http://www.w3.org/Submission/SWRL/[SWRL rules].]
 
 == Using Reasoning
 
-In order to perform query evaluation with reasoning, Stardog requires a
-schemafootnote:[Sometimes called a "TBox".] to be present in the database. Since
-schemas are serialized as RDF, they are loaded into a Stardog database
-in the same way that any RDF is loaded into a Stardog database. Also,
-note that, since the schema is just more RDF triples, it may change as
-needed: it is neither fixed nor compiled in any special way.
+In order to perform query evaluation with reasoning, Stardog requires
+a schemafootnote:[Sometimes called a "TBox".] to be present in the
+database. Since schemas are serialized as RDF, they are loaded into a
+Stardog database in the same way that any RDF is loaded into a Stardog
+database. Also, note that, since the schema is just more RDF triples,
+it may change as needed: it is neither fixed nor compiled in any
+special way.
 
 The schema may reside in the default graph, in a specific named graph,
 or in a collection of graphs. **You can tell Stardog where the schema is
@@ -49,13 +64,10 @@ graph URIs.** If you want the default graph to be considered part of the
 schema, then you can use the special built-in URI
 `tag:stardog:api:context:default`. If you want to use all named graphs
 (that is, to tell Stardog to look for the schema in every named graph),
-you can use `tag:stardog:api:context:all`. **The default value for this
-property is to use the default graph only.**
+you can use `tag:stardog:api:context:all`.
 
-NOTE: A common source of confusion for new users is failing to (1) read this chapter,
-(2) realize that Stardog does not eagerly materialize inferences on data load, and (3)
-properly set the location (in terms of one or more named graps or the default graph)
-of the schema.
+NOTE: As of Stardog 3.0, **the default value for this property is to
+use all graphs, i.e., `tag:stardog:api:context:all`.**
 
 This design is intended to support both of Stardog's primary use cases:
 
@@ -75,7 +87,7 @@ string:
 
 [source,bash]
 ----
-$ ./stardog query "myDB;reasoning=QL" "SELECT ?s { ?s a :C } LIMIT 10"
+$ ./stardog query "myDB;reasoning=true" "SELECT ?s { ?s a :C } LIMIT 10"
 ----
 
 === HTTP
@@ -85,7 +97,7 @@ parameters:
 
 [source,bash]
 ----
-$ curl -u admin:admin -X GET "http://localhost:5822/myDB/query?reasoning=ql&query=..."
+$ curl -u admin:admin -X GET "http://localhost:5822/myDB/query?reasoning=true&query=..."
 ----
 
 === Reasoning Connection API
@@ -118,14 +130,16 @@ by providing an input file that contains the inferences to be explained:
 
 [source,bash]
 ----
-$ stardog reasoning explain "myDB;reasoning=EL" inference_to_explain.ttl
+$ stardog reasoning explain "myDB;reasoning=true" inference_to_explain.ttl
 ----
 
-The output is displayed in a concise syntax designed to be legible; but it can
-be rendered in any one of the supported RDF syntaxes if desired. Explanations
-are also accessible through the <<Network Programming, Stardog's extended HTTP
-protocol>> and <<Java Programming, discussion of SNARL>>. See the examples included in the distribution for
-more details about retrieving explanations programmatically.
+The output is displayed in a concise syntax designed to be legible;
+but it can be rendered in any one of the supported RDF syntaxes if
+desired. Explanations are also accessible through the <<Network
+Programming, Stardog's extended HTTP protocol>> and <<Java
+Programming, discussion of SNARL>>. See the examples included in the
+distribution for more details about retrieving explanations
+programmatically.
 
 === Proof Trees
 
@@ -855,10 +869,16 @@ However, materialization introduces several thorny issues:
 
 == Equality Reasoning
 
-An exception to Stardog's query rewriting technique for reasoning is equality reasoning, for which
-Stardog performs a hybrid form of materialization.
+Stardog 3.0 adds full support for OWL 2 equality reasoning. It is,
+however, an exception to Stardog's query rewriting technique.
 
-@@TODO@@
+* how to enable it
+* support sameAs only or sameAs plus OWL axioms?
+* how it materializes
+* how query results change
+
+
+@@fixme@@
 
 == Performance Hints
 
