@@ -1,4 +1,4 @@
-move to s3/cloudfront
+cloudfront
 
 finish equality reasoning
 
@@ -14,4 +14,8 @@ how to write a custom aggregate
 
 how to make a custom analyzer
 
-automate bump for new versions...works w/ git mostly...doesn't help with moving directories
+automate bump for new versions...works w/ git mostly...doesn't help
+with moving directories
+
+move the previous versions thing under what's new for 3.0 and drop the
+section header
