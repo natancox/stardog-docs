@@ -14,17 +14,6 @@ to get Stardog installed and running in five easy steps.
 - [x] User-defined search indexers
 - [x] User-defined aggregate functions
 ****
-
-This is the manual for Stardog {version}
-({release-date}).footnote:[This is version *{docdatetime}*.]
-
-|===
-| Version | HTML             | PDF
-| 3.0     | link:/#[✓]       | link:stardog-manual-{version}.pdf[✓]
-| 2.2.4   | link:/2.2.4/[✓]  | ✗
-|===
-
-
 = Introduction
 
 Stardog is a fast, lightweight, agile semantic graph database--equally
@@ -47,6 +36,16 @@ details.
 
 To learn more about where we've been and where we're headed, consult
 the {release-notes}[release notes] and <<Stardog Milestones,milestones>>.
+
+This is the manual for Stardog {version}
+({release-date}).footnote:[This is version *{docdatetime}*.]
+
+|===
+| Version | HTML             | PDF
+| 3.0     | link:/#[✓]       | link:stardog-manual-{version}.pdf[✓]
+| 2.2.4   | link:/2.2.4/[✓]  | ✗
+|===
+
 
 == Downloading Stardog
 
