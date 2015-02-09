@@ -324,6 +324,13 @@ that have those literals. Alternatively, you could use
 reference the search criteria; you can include as many other BGPs as
 you like to enhance your initial search results.
 
+==== Escaping Characters in Search
+
+The "/" character must be escaped because Lucene says so. In fact,
+there are several characters that are part of Lucene's query syntax
+that must be
+http://lucene.apache.org/core/4_0_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#Escaping_Special_Characters[escaped].
+
 === Searching with the Command Line
 
 First, check out the
@@ -363,7 +370,7 @@ Index    Score    Hit
 === Query Syntax
 
 Stardog search is based on Lucene 4.2.0: we support all of the
-http://lucene.apache.org/java/3_4_0/queryparsersyntax.html[search modifiers]
+http://lucene.apache.org/core/4_2_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description[search modifiers]
 that Lucene supports, with the exception of fields.
 
 - wildcards: `?` and `*`
@@ -373,7 +380,7 @@ that Lucene supports, with the exception of fields.
 - booleans: `OR`, `AND`, `NOT`, +`, and `-`.
 - grouping
 
-For a more detailed discussion, see the http://lucene.apache.org/java/3_3_0/queryparsersyntax.html[Lucene docs].
+For a more detailed discussion, see the http://lucene.apache.org/core/4_2_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description[Lucene docs].
 
 == Obfuscating
 
