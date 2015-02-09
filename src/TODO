@@ -1,16 +1,13 @@
 cloudfront
 
-finish equality reasoning
+finish equality reasoning -- ask evren
 
-cluster docs...
+cluster docs...ask edgar/fernando
 
-service keyword
+service keyword -- talk to grove
 
+in user-defined rules sectio, mention
 https://github.com/clarkparsia/stardog/issues/2005
 
 how to write a custom aggregate
-
-how to make a custom analyzer
-
-automate bump for new versions...works w/ git mostly...doesn't help
-with moving directories
+how to write a custom analyzer
