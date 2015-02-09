@@ -146,7 +146,7 @@ command will explain the IC violations for constraints stored in the database:
 
 [source,bash]
 ----
-$ stardog icv explain --reasoning EL "myDB"
+$ stardog icv explain --reasoning "myDB"
 ----
 
 It is possible to explain violations for external constraints by passing the
@@ -154,7 +154,7 @@ file with constraints as an additional argument:
 
 [source,bash]
 ----
-$ stardog icv explain --reasoning EL "myDB" constraints.ttl
+$ stardog icv explain --reasoning "myDB" constraints.ttl
 ----
 
 === Security Note
@@ -168,20 +168,35 @@ with sufficient privileges for that action.
 == Repairing ICV Violations
 
 Stardog 3.0 adds support for automatic repair of some kinds of
-integrity violation.
+integrity violation. This can be accomplished programmatically via
+API, as well as via CLI using the `icv fix` subcommand.
 
-@@fixme@@
+[source,bash]
+----
+$ stardog help icv fix
+----
 
-`icv fix`
+Repair plans are emitted as a sequence of SPARQL Update queries, which
+means they can be applied to any system that understands SPARQL
+Update. If you pass `--execute` the repair plan will be applied
+immediately.
+
+`icv fix` will repair violations of all constraints in the database;
+if you'd prefer to fix the violations for only some constraints, you
+can pass those constraints as an additional argument. Although a
+possible (but trivial) fix for any violation is to remove one or more
+constraints, `icv fix` does not suggest that kind of repair, even
+though it may be appropriate in some cases.
 
 == ICV Examples
 
-Stardog ICV has a link:/icv/icv-specification.html[formal semantics].  But let's
-just look at some examples instead; these examples use OWL 2 Manchester syntax,
-and they assume a simple data schema, which is available as an
-link:/icv/company.owl[OWL ontology] and as a link:/icv/ClassDiagram.png[UML
-diagram]. The examples  assume that the default namespace is
-`<http://example.com/company.owl#>` and that `xsd:` is bound to the standard,
+Stardog ICV has a link:/icv/icv-specification.html[formal semantics].
+But let's just look at some examples instead; these examples use OWL 2
+Manchester syntax, and they assume a simple data schema, which is
+available as an link:/icv/company.owl[OWL ontology] and as a
+link:/icv/ClassDiagram.png[UML diagram]. The examples assume that the
+default namespace is `<http://example.com/company.owl#>` and that
+`xsd:` is bound to the standard,
 `<http://www.w3.org/2001/XMLSchema#>`.
 
 https://gist.github.com/1333767[Reference Java code] is available for each of
