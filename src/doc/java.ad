@@ -285,6 +285,32 @@ syntax]. This provides a powerful mechanism for querying both your RDF index and
 full-text index at the same time while also giving you a more performant option
 to the SPARQL `regex` filter.
 
+=== User-defined Lucene Analyzer
+
+Stardog's <<Searching,Semantic Search>> capability uses Lucene's
+https://lucene.apache.org/core/4_7_2/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html[default
+text analyzer], which may not be ideal for your data or
+application. You can implement a custom analyzer that Stardog will use
+by implementing `org.apache.lucene.analysis.Analyzer`. That lets you customize Stardog to support different natural languages, geospatial indexing, domain-specific stop word lists, etc.
+
+See
+https://github.com/clarkparsia/stardog-examples/tree/master/examples/analyzer[Custom
+Analyzers] in the stardog-examples Github repo for a complete
+description of the API, registry, sample code, etc.
+
+=== User-defined Functions and Aggregates
+
+Stardog may be extended via Function and Aggregate extensibility APIs,
+which are fully documented, including sample code, in the
+https://github.com/clarkparsia/stardog-examples/blob/master/examples/function/readme.md[stardog-examples
+Github repo] section about function extensibility.
+
+In short you can extend Stardog's SPARQL query evaluation with custom
+functions and aggregates easily. Function extensibility corresponds to
+built-in expressions used in `FILTER`, `BIND` and `SELECT`
+expressions, as well as aggregate operators in a SPARQL query like
+`COUNT` or `SAMPLE`.
+
 === SNARL Connection Views
 
 SNARL
