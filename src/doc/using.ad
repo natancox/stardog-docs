@@ -1,14 +1,10 @@
 = Using Stardog
 
 Stardog's primary purpose is to execute queries against RDF data which
-it has under direct management. 
-
-Stardog will not retrieve data from the Web or from any other network
-via HTTP URLs in order to query that data. If you want to query data
-using Stardog, you must add that data to a new or existing Stardog
-database. 
-
-Stardog supports
+it directly manages.footnote:[Stardog will not retrieve data from the
+Web or from any other network via HTTP URLs in order to query that
+data. If you want to query data using Stardog, you must add that data
+to a new or existing Stardog database.] Stardog supports
 http://www.cambridgesemantics.com/semantic-university/sparql-by-example[SPARQL],
 the W3C standard for querying RDF graphs.
 
@@ -39,8 +35,6 @@ There are, of course, about seventeen thousand other ways to implement
 `DESCRIBE`; we've implemented four or five of them and may expose them to
 users in a future release of Stardog _based on user feedback and requests_.
 
-Now you know and knowing is one-quarter of the fun.
-
 === Query Functions
 
 Stardog supports all of the functions in SPARQL, as well as some others from
@@ -49,11 +43,41 @@ functions appear in multiple namespaces, but all of the namespaces will work.
 
 See <<SPARQL Query Functions>> for the complete list.
 
+=== Federated Queries
+
+Stardog 3.0 adds support for the
+http://www.w3.org/TR/sparql11-federated-query/[SERVICE]
+keywordfootnote:[The last SPARQL 1.1 feature that we didn't support.]
+which allows users to query distributed RDF via SPARQL-compliant data
+sources. You can use this to federate queries between several Stardog
+database, or Stardog and other public endpoints.
+
+NOTE: Stardog 3.0 doesn't support variables for the service URL
+(`SERVICE ?serviceURL`).
+
+Stardog ships with a default `Service` implementation which uses
+SPARQL Protocol to send the service fragment to the remote endpoint
+and retrieve the results. Any endpoint that conforms to the SPARQL
+protocol can be used.
+
+The Stardog SPARQL endpoint is `http://<server>:<port>/{db}/query`.
+
+==== HTTP Authentication
+
+Stardog requires authentication. If the endpoint you're referencing
+with the `SERVICE` keyword requires HTTP authentication, credentials
+are stored in a <<Using a Password File,password file>> called
+`services.sdpass` located in `STARDOG_HOME` directory. The default
+`Service` implementation assumes HTTP BASIC authentication; for
+services that use DIGEST auth, or a different authentication mechanism
+altogether, you'll need to implement a custom `Service`
+implementation.
+
 == Updating
 
-There are many ways to update the data in a Stardog database; the most commonly
-used methods are the CLI and SPARQL Update queries, both of which we discuss
-below.
+There are many ways to update the data in a Stardog database; two of
+the most commonly used methods are the CLI and SPARQL Update queries,
+each of which are discussed below.
 
 === SPARQL Update
 
@@ -299,6 +323,9 @@ indexed data. See <<Managing Search>> for more details.
 The indexing strategy creates a "search document" per RDF literal. Each
 document consists of the following fields: literal ID; literal value;
 and contexts.
+
+See <<User-defined Lucene Analyzer>> for details on customizing
+Stardog's search programmatically.
 
 === Search in SPARQL
 
