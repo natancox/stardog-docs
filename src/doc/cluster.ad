@@ -13,26 +13,81 @@ client's perspective Stardog Cluster should be indistinguishable from
 non-clustered Stardog.footnote:[The client here means the client of Stardog
 APIs, not necessarily people, administrators, etc.]
 
-NOTE: High Availability requires *at least* three nodes in the Cluster. Stardog
-Cluster works best, with respect to fault resiliency, with a cluster size that
-is an odd-number greater than or equal to three : 3, 5, 7,
-etc.footnote:["Because Zookeeper requires a majority, it is best to use an odd
-number of machines. For example, with four machines ZooKeeper can only handle
-the failure of a single machine; if two machines fail, the remaining two
-machines do not constitute a majority. However, with five machines ZooKeeper can
-handle the failure of two machines." See
-https://zookeeper.apache.org/doc/r3.1.2/zookeeperAdmin.html[Zk Admin] for more.]
-With respect to performance, larger cluster sizes perform better than smaller
-ones.
+NOTE: High Availability requires *at least* three nodes in the
+Cluster. Stardog Cluster works best, with respect to fault resiliency,
+with a cluster size that is an odd-number greater than or equal to
+three : 3, 5, 7, etc.footnote:["Because Zookeeper requires a majority,
+it is best to use an odd number of machines. For example, with four
+machines ZooKeeper can only handle the failure of a single machine; if
+two machines fail, the remaining two machines do not constitute a
+majority. However, with five machines ZooKeeper can handle the failure
+of two machines." See
+https://zookeeper.apache.org/doc/r3.1.2/zookeeperAdmin.html[Zk Admin]
+for more.]  With respect to performance, larger cluster sizes perform
+better than smaller ones.
+
+== Cluster Guarantees
+
+Stardog Cluster implements an atomic commitment protocol based on
+http://en.wikipedia.org/wiki/Two-phase_commit_protocol[two-phase commit (2PC)]
+over a shared replicated memory that's provided by Apache ZooKeeper. A cluster is
+composed of a set of Stardog servers running together. One of the servers is
+known as the Coordinator and the rest as Participants.
+
+In case the Coordinator fails at any point, a new Coordinator will be elected
+out of the remaining available Participants. Stardog Cluster supports both
+`read` (e.g., querying) and `write` (e.g., adding data) requests. Read requests
+are load-balanced over the available Participants, whereas write requests are
+transparently forwarded to and handled by the Coordinator. In some future
+release we may change the protocol implemented by the Cluster and thus change
+some of the allowable topologies, including multiple-writers and
+multiple-readers.
+
+When a client commits a transaction (containing a list of `write` requests), it
+will be acknowledged by the Coordinator only **after every non-failing Participant
+has committed the transaction**. If a Participant fails during the process of
+committing a transaction, it will be expelled from the cluster by the
+Coordinator and put in a temporary `failed` state.
+
+If the Coordinator fails during the process, the transaction will be aborted,
+and a new Coordinator will be elected automatically. Since `failed` nodes are
+not used for any subsequent `read` or `write` requests, **if a commit is
+acknowledged by the Coordinator, then Stardog Cluster guarantees that the data
+has been accordingly modified at *every* available node in the cluster**.
+
+While this approach is less performant with respect to write
+operations than eventual consistency used by other distributed databases,
+typically those databases offer a much less expressive data model than Stardog,
+which makes an eventually consistency model more appropriate for those systems.
+But since Stardog's data model is not only richly expressive but rests in part
+on provably correct semantics, we think that a strong consistency model is worth
+the cost.footnote:[Based on customer feedback we may relax these consistency
+guarantees in some future release. Please get in touch if you think an
+eventually consistent approach is more appropriate for your use of Stardog.]
 
 == Configuration
 
-To deploy Stardog Cluster you use `stardog-admin` commands and some additional
-configuration. Stardog Cluster depends on Apache ZooKeeper. In the following
-installation notes, we install Stardog Cluster in a 3-node configuration on a
-LAN. If you need larger cluster, adjust accordingly.footnote:[In order to deploy
-a cluster to a single machine--for example, for testing or development--you must
-ensure that each Stardog and ZooKeeper servers has a different home location.]
+To deploy Stardog Cluster you use `stardog-admin` commands and some
+additional configuration. Stardog Cluster depends on Apache
+ZooKeeper. 
+
+In Stardog 3.0 we added `stardog-admin cluster generate` to bootstrap
+a cluster configuration and, thus, to ease installation. You may be
+able to get away with simply passing a list of hostnames or IP
+addresses for the cluster's nodes.
+
+[source,bash]
+----
+$ stardog-admin cluster generate --output-dir /home/stardog 10.0.0.1 10.0.0.2 10.0.0.3
+----
+
+See the link:/man/cluster-generate.html[man page] for the details.
+
+In the following installation notes, we install Stardog Cluster in a
+3-node configuration. If you need larger cluster, adjust
+accordingly.footnote:[In order to deploy a cluster to a single
+machine--for example, for testing or development--you must ensure that
+each Stardog and ZooKeeper servers has a different home location.]
 
 . <<Quick Start Guide,Install>> Stardog {version} on each machine in the cluster.
 +
@@ -306,41 +361,3 @@ the same IP address, which may not be possible or expensive for some cloud
 providers.
 ////
 
-== Stardog Cluster Guarantees
-
-Stardog Cluster implements an atomic commitment protocol based on
-http://en.wikipedia.org/wiki/Two-phase_commit_protocol[two-phase commit (2PC)]
-over a shared replicated memory that's provided by Apache ZooKeeper. A cluster is
-composed of a set of Stardog servers running together. One of the servers is
-known as the Coordinator and the rest as Participants.
-
-In case the Coordinator fails at any point, a new Coordinator will be elected
-out of the remaining available Participants. Stardog Cluster supports both
-`read` (e.g., querying) and `write` (e.g., adding data) requests. Read requests
-are load-balanced over the available Participants, whereas write requests are
-transparently forwarded to and handled by the Coordinator. In some future
-release we may change the protocol implemented by the Cluster and thus change
-some of the allowable topologies, including multiple-writers and
-multiple-readers.
-
-When a client commits a transaction (containing a list of `write` requests), it
-will be acknowledged by the Coordinator only **after every non-failing Participant
-has committed the transaction**. If a Participant fails during the process of
-committing a transaction, it will be expelled from the cluster by the
-Coordinator and put in a temporary `failed` state.
-
-If the Coordinator fails during the process, the transaction will be aborted,
-and a new Coordinator will be elected automatically. Since `failed` nodes are
-not used for any subsequent `read` or `write` requests, **if a commit is
-acknowledged by the Coordinator, then Stardog Cluster guarantees that the data
-has been accordingly modified at *every* available node in the cluster**.
-
-While this approach is less performant with respect to write
-operations than eventual consistency used by other distributed databases,
-typically those databases offer a much less expressive data model than Stardog,
-which makes an eventually consistency model more appropriate for those systems.
-But since Stardog's data model is not only richly expressive but rests in part
-on provably correct semantics, we think that a strong consistency model is worth
-the cost.footnote:[Based on customer feedback we may relax these consistency
-guarantees in some future release. Please get in touch if you think an
-eventually consistent approach is more appropriate for your use of Stardog.]
