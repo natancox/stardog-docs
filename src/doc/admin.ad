@@ -342,18 +342,6 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
 .  `database.connection.timeout.ms`: Controls how long, in
     milliseconds, connections may idle before being automatically closed
     by the server.
-. `load.parser.count`, `load.processor.count`: Determines the number of parser and
-     processor threads, respectively, to be used during bulk loading
-     of data at database creation time. The default values are `3`
-     and `4` respectively, but they may be set higher, to good effect,
-     if you have multi-core CPUs. The former is effective only if multiple
-     input files are being processed; the latter is effective even
-     if a single file is processed as input. The heuristic for these settings is
-     * the value of `load.parser.count` + `load.processor.count`
-    should neither exceed `20` nor be equal to or greater than the
-    number of available cores
-     * the two values should be roughly equal
-     * the values don't have much effect unless or until you're loading billions of triples
 
 . `password.length.min`: Sets the password policy for the minimum length of
     user passwords, the value can't be lower than `password.length.min` or greater
