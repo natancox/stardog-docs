@@ -6,8 +6,3 @@ cluster docs:
 
 * no port for node address?
 * remove some proxy arg?
-
-service keyword
-
-how to write a custom aggregate
-how to write a custom analyzer
