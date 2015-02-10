@@ -287,30 +287,33 @@ so its alternatives get ids `2.1` and `2.2`.
 
 Many reasoning problems may be solved with OWL's axiom-based approach;
 but, of course, not all reasoning problems are amenable to this
-approach. A user-defined rules approach complements the OWL axiom-based
-approach nicely and increases the expressive power of a reasoning system
-from the user's point of view. Many RDF databases support user-defined
-rules only. Stardog is the only RDF database that
-comprehensively supports both axioms and rules. Some problems (and some
-people) are simply a better fit for a rules-based approach to modeling
-and reasoning than to an axioms-based approach (and, of course, _vice versa_).
+approach. A user-defined rules approach complements the OWL
+axiom-based approach nicely and increases the expressive power of a
+reasoning system from the user's point of view. Many RDF databases
+support user-defined rules only. Stardog is the only RDF database that
+comprehensively supports both axioms and rules. Some problems (and
+some people) are simply a better fit for a rules-based approach to
+modeling and reasoning than to an axioms-based approach (and, of
+course, _vice versa_).
 
 NOTE: There isn't a one-size-fits-all answer to the question
 "rules or axioms or both?" Use the thing that makes the most sense given
 the task at hand. This is engineering, not religion.
 
-Stardog supports user-defined rule reasoning together with a rich set of
-built-in functions using the http://www.w3.org/Submission/SWRL/[SWRL]
-syntax and builtin-ins library. In order to apply SWRL user-defined
-rules, you must include the rules as part of the database's schema: that
-is, put your rules where your axioms are, i.e., in the schema. Once the
-rules are part of the schema, they will be used for reasoning
-automatically when using the **SL** reasoning level.
+Stardog supports user-defined rule reasoning together with a rich set
+of built-in functions using the
+http://www.w3.org/Submission/SWRL/[SWRL] syntax and builtin-ins
+library. In order to apply SWRL user-defined rules, you must include
+the rules as part of the database's schema: that is, put your rules
+where your axioms are, i.e., in the schema. Once the rules are part of
+the schema, they will be used for reasoning automatically when using
+the **SL** reasoning level.
 
 Assertions implied by the rules *will not* be materialized. Instead,
 rules are used to expand queries just as regular axioms are used.
 
-NOTE: To trigger rules to fire, execute a relevant query--simple and easy as the truth.
+NOTE: To trigger rules to fire, execute a relevant query--simple and
+easy as the truth.
 
 === Stardog Rules Syntax
 
@@ -333,6 +336,9 @@ in the normal way (examples below) and use regular SPARQL variables for
 rule variables. As you can see, some SPARQL 1.1 syntactic
 sugar--property paths, especially, but also bnode syntax--make complex
 Stardog Rules concise and elegant.
+
+NOTE: Starting in Stardog 3.0, it's legal to use any valid Stardog
+built-in function in Stardog Rules.
 
 ==== How to Use Stardog Rules
 
