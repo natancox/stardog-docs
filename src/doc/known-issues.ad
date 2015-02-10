@@ -2,8 +2,8 @@
 
 The known issues in Stardog {version}:
 
-. Our `CONSTRUCT` slightly deviates from
-http://www.w3.org/TR/sparql11-query/#construct[SPARQL 1.1 specification] in that
+. Our implementation of `CONSTRUCT` slightly deviates from the
+http://www.w3.org/TR/sparql11-query/#construct[SPARQL 1.1 specification]: 
 it does not implicitly `DISTINCT` query results; rather, it implicitly applies
 `REDUCED` semantics to `CONSTRUCT` query results.footnote:[Strictly speaking, this is
 a Sesame parser deviation from the SPARQL 1.1 spec with which we happen to
@@ -15,17 +15,16 @@ agree.]
     in Stardog Home associated with that database. If you
     want to keep the data files and remove the database from the
     system catalog, then you need to manually copy these files to
-    another location before deleting the database.
+    another location before dropping the database.
 .  If relative URIs exist in the data files passed to create, add, or
     remove commands, then they will be resolved using the constant base
-    URI `http://api.stardog.com/` iff the format of the file allows base
+    URI `http://api.stardog.com/` if, but only if, the format of the file allows base
     URIs. Turtle and RDF/XML formats allows base URIs but N-Triples
     format doesn't allow base URIs and relative URIs in N-Triples data
     will cause errors.
 .  Queries with `FROM NAMED` with a named graph that is *not* in
     Stardog will **not** cause Stardog to download the data from an arbitrary
-    HTTP URL and include it in the query. Stardog will *only* evaluate
-    queries over data that has been loaded into it.
+    HTTP URL and include it in the query.
 .  SPARQL queries without a context or named graph are executed against
     the default, unnamed graph. In Stardog, the default graph is *not*
     the union of all the named graphs and the default graph. Note: this
