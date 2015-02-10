@@ -2,12 +2,12 @@ cloudfront
 
 finish equality reasoning -- ask evren
 
-cluster docs...ask edgar/fernando
+cluster docs:
 
-service keyword -- talk to grove
+* no port for node address?
+* remove some proxy arg?
 
-in user-defined rules sectio, mention
-https://github.com/clarkparsia/stardog/issues/2005
+service keyword
 
 how to write a custom aggregate
 how to write a custom analyzer
