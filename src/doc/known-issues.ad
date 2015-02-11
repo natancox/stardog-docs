@@ -11,7 +11,7 @@ agree.]
 .  Asking for all individuals with reasoning via the query
     `{?s a owl:Thing}` might also retrieve some classes and properties. **WILLFIX**
 .  Schema queries do not bind graph variables.
-.  Dropping a database with the CLI deletes all of the data files
+.  Dropping a database deletes all of the data files
     in Stardog Home associated with that database. If you
     want to keep the data files and remove the database from the
     system catalog, then you need to manually copy these files to
