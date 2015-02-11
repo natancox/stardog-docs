@@ -1,10 +1,7 @@
 = Using Stardog
 
 Stardog's primary purpose is to execute queries against RDF data which
-it directly manages.footnote:[Stardog will not retrieve data from the
-Web or from any other network via HTTP URLs in order to query that
-data. If you want to query data using Stardog, you must add that data
-to a new or existing Stardog database.] Stardog supports
+it directly manages. Stardog supports
 http://www.cambridgesemantics.com/semantic-university/sparql-by-example[SPARQL],
 the W3C standard for querying RDF graphs.
 
