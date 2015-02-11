@@ -487,7 +487,7 @@ Anything marked `@VisibleForTesting` is just that, visible as a
 consequence of test case requirements; don't write any important code
 that depends on functions with this annotation.
 
-== Support for Maven
+== Using Maven
 
 Like Maven generated archives, Stardog client JARs contain Maven
 meta information `pom.xml` and `pom.properties` files.  Dependency information
@@ -522,3 +522,8 @@ the http://www.gradle.org[Gradle] convention and is of the form:
 |Sesame SNARL client          | `com.complexible.stardog:sesame:version`, `com.complexible.stardog.protocols.snarl:client:version`
 |Sesame HTTP client           | `com.complexible.stardog:sesame:version`, `com.complexible.stardog.protocols.http:client:version`
 |===
+
+ifdef::maven[]
+include::maven.ad[]
+endif::maven[]
+ 
