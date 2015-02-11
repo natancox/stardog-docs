@@ -26,26 +26,15 @@ http://www.w3.org/TR/owl2-overview/[OWL 2] and rules for inference and
 data analytics; and programmatic interaction via several languages and
 network interfaces.
 
-.Commercial Licensing & Support
-****
-Stardog is a commercial software product. For
-information about http://stardog.com/#plans[Stardog commercial
-licensing], please mailto:sales@clarkparsia.com[email] for more
-details.
-****
-
 To learn more about where we've been and where we're headed, consult
-the {release-notes}[release notes] and <<Stardog Milestones,milestones>>.
-
-This is the manual for Stardog {version}
-({release-date}).footnote:[This is version *{docdatetime}*.]
+the {release-notes}[release notes] and <<Stardog
+Milestones,milestones>>.footnote:[This is version *{docdatetime}*.]
 
 |===
-| Version | HTML             | PDF
+| Stardog Version | HTML             | PDF
 | 3.0     | link:/#[✓]       | link:stardog-manual-{version}.pdf[✓]
 | 2.2.4   | link:/2.2.4/[✓]  | ✗
 |===
-
 
 == Downloading Stardog
 
@@ -64,14 +53,14 @@ https://github.com/clarkparsia/stardog-groovy[stardog-groovy],
 https://github.com/clarkparsia/stardog-spring[stardog-spring],
 https://github.com/antoniogarrote/stardog-rb[stardog.rb], and
 https://github.com/clarkparsia/stardog-clj[stardog-clj]. Many thanks
-to Stardog customers, users, contributors, testers, etc., especially
-Robert Butler, Al Baker, Marko A. Rodriguez, Brian Sletten, Alin
-Dreghiciu, Rob Vesse, Stephane Fallah, John Goodwin, José Devezas,
-Chris Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl,
-Morton Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron
-Zettlemoyer, Jim Rhyne, Andrea Westerinen, Huy Phan, Zach Whitley,
-Maurice Rabb, Grant Pax, the crew at XSB, and the nice people at El Rinconcito
-Cafe in DC.
+to Stardog customers, users, contributors, testers, etc. You know who
+you are, but so do we: Robert Butler, Marko A. Rodriguez, Brian
+Sletten, Alin Dreghiciu, Rob Vesse, Stephane Fallah, John Goodwin,
+José Devezas, Chris Halaschek-Wiener, Gavin Carothers, Brian Panulla,
+Ryan Kohl, Morton Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex
+Tucker, Ron Zettlemoyer, Jim Rhyne, Andrea Westerinen, Huy Phan, Zach
+Whitley, Maurice Rabb, Grant Pax, the crew at XSB, and the nice people
+at El Rinconcito Cafe in DC.
 
 == Stardog Roadmap
 
