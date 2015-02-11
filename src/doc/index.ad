@@ -1,6 +1,12 @@
 = {title}
 :title: Stardog 3: The Manual
-:version: 3.0 
+:version: 3.0
+//uncomment these are they're ready to be included...clusterman depends on maven & docker, likely
+//:premium: true
+//:docker: true
+//:maven: true
+//:clusterman: true
+//:testing: true
 :revnumber: {version}
 :release-date: 15 February 2015 
 :release-name:
@@ -35,11 +41,23 @@ include::preamble.ad[]
 
 include::qsg.ad[]
 
+ifdef::premium[]
+include::premium-support.ad[]
+endif::premium[]
+
 include::using.ad[]
 
 include::admin.ad[]
 
+ifdef::premium[]
+include::docker.ad[]
+endif::premium[]
+
 include::cluster.ad[]
+
+ifdef::clusterman[]
+include::cluster-management.ad[]
+endif::clusterman[]
 
 include::security.ad[]
 
@@ -47,16 +65,7 @@ include::owl2.ad[]
 
 include::icv.ad[]
 
-= Programming Stardog
-
-You can program Stardog in Java, over HTTP, JavaScript, Clojure, Groovy, Spring,
-and .Net.
-
-== Sample Code
-
-There's a https://github.com/clarkparsia/stardog-examples[Github repo of
-example Java code] that you can fork and use as the starting point for your
-Stardog projects. Feel free to add new examples using pull requests in Github.
+include::programming.ad[]
 
 include::java.ad[]
 
@@ -74,16 +83,15 @@ include::groovy.ad[]
 
 include::migration.ad[]
 
-= Understanding Stardog
-
-Background information on performance, testing, terminology, known
-issues, compatibility policies, etc.
+include::understand.ad[]
 
 include::faq.ad[]
 
 include::bench.ad[]
 
-//include::testing.ad[]
+ifdef::testing[]
+include::testing.ad[]
+endif::testing[]
 
 include::compatibility.ad[]
 
