@@ -508,19 +508,8 @@ the http://www.gradle.org[Gradle] convention and is of the form:
 .Table of client type dependencies
 |===
 |Type of Client               | Stardog Dependency
-|SNARL client                 | `com.complexible.stardog.protocols.snarl:client:version`
-|HTTP client                  | `com.complexible.stardog.protocols.http:client:version`
-|reasoning snarl client       | `com.complexible.stardog.reasoning.snarl:client:version`
-|reasoning http client        | `com.complexible.stardog.reasoning.http:client:version`
-|search snarl client          | `com.complexible.stardog.search.snarl:client:version`
-|search http client           | `com.complexible.stardog.search.http:client:version`
-|ICV SNARL client             | `com.complexible.stardog.icv.snarl:client:version`
-|ICV HTTP client              | `com.complexible.stardog.icv.http:client:version`
-|Empire client                | `com.complexible.stardog:empire:version`
-|Jena SNARL client            | `com.complexible.stardog:jena:version`,   `com.complexible.stardog.protocols.snarl:client:version`
-|Jena HTTP client             | `com.complexible.stardog:jena:version`,  `com.complexible.stardog.protocols.http:client:version`
-|Sesame SNARL client          | `com.complexible.stardog:sesame:version`, `com.complexible.stardog.protocols.snarl:client:version`
-|Sesame HTTP client           | `com.complexible.stardog:sesame:version`, `com.complexible.stardog.protocols.http:client:version`
+|client                       | `com.complexible.stardog:client:version`
+|server                       | `com.complexible.stardog:client:version`
 |===
 
 ifdef::maven[]
