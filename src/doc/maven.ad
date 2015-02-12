@@ -1,7 +1,8 @@
+include::customer-feature-only.ad[]
+
 === Managing JARs
 
 === Maven, Docker, and Devops
 
-include::customer-feature-only.ad[]
 
 === Private Maven Repositories
