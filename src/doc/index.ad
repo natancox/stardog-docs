@@ -4,14 +4,14 @@
 //uncomment these are they're ready to be included...clusterman depends on maven & docker, likely
 //:premium: true
 //:docker: true
-//:maven: true
+:maven: true
 //:clusterman: true
 //:testing: true
 :revnumber: {version}
-:release-date: 15 February 2015 
+:release-date: 28 February 2015 
 :release-name:
 :toc: right 
-:toc-title: Table of Contents 
+:toc-title: 
 :toclevels: 1 
 :experimental:
 :source-highlighter: highlightjs
@@ -32,10 +32,6 @@
 :slug: http://docs.stardog.com/{version}
 :release-notes: {base-url}RELEASE_NOTES.txt
 :img: {slug}/img
-:sectanchors:
-:numbered:
-:max-width: 100%
-:cache-uri:
 
 include::preamble.ad[]
 
