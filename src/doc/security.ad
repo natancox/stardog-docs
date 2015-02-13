@@ -149,15 +149,14 @@ that Stardog runs as can read it.
 
 == Enterprise Authentication
 
-Stardog can use an LDAP server to authenticate users.
+Stardog can use an LDAP server to authenticate enterprise
+users. Stardog assumes the existence of two different groups to
+identify regular and superusers, respectively.  Groups must be
+identified with the `cn` attribute and be instances of the
+`groupOfNames` object class.  Users must be specified using the
+`member` attribute.
 
-=== Defining Stardog users in LDAP
-
-Stardog assumes the existence of two different groups to identify regular and super users, respectively. 
-Groups must be identified with the `cn` attribute and be instances of the `groupOfNames` object class. 
-Users must be specified using the `member` attribute.
-
-Example:
+For example, 
 
 [source,bash]
 ----
@@ -173,7 +172,7 @@ member: uid=regularuser,ou=people,dc=example,dc=com
 member: uid=anotherregularuser,ou=people,dc=example,dc=com
 ----
 
-Credentials and other user information is stored as usual:
+Credentials and other user information are stored as usual:
 
 [source,bash]
 ----
@@ -188,18 +187,18 @@ userPassword: superpassword
 
 === Configuring Stardog
 
-In order to enable LDAP authentication in Stardog, we need to include the following **mandatory** properties 
-in `stardog.properties`:
+In order to enable LDAP authentication in Stardog, we need to include
+the following **mandatory** properties in `stardog.properties`:
 
-- `ldap.provider.url`- The URL of the LDAP server
-- `ldap.security.principal` - An LDAP user allowed to retrieve group members from the LDAP server
-- `ldap.security.credentials` - The principal's password
-- `ldap.user.dn.template` - A template to form LDAP names from Stardog usernames
-- `ldap.group.lookup.string` - A string to lookup the Stardog user groups
-- `ldap.users.cn` - The `cn` of the group identifying regular Stardog users
-- `ldap.superusers.cn` - The `cn` of the group identifying Stardog super users
+- `ldap.provider.url`: The URL of the LDAP server
+- `ldap.security.principal`:  An LDAP user allowed to retrieve group members from the LDAP server
+- `ldap.security.credentials`: The principal's password
+- `ldap.user.dn.template`: A template to form LDAP names from Stardog usernames
+- `ldap.group.lookup.string`: A string to lookup the Stardog user groups
+- `ldap.users.cn`: The `cn` of the group identifying regular Stardog users
+- `ldap.superusers.cn`: The `cn` of the group identifying Stardog super users
 
-Example:
+Here's another example:
 
 [source,bash]
 ----
@@ -213,31 +212,34 @@ ldap.users.cn = stardogUsers
 ldap.superusers.cn = stardogSuperUsers
 ----
 
-=== Important Remarks
+=== User Management
 
-==== User Management
+Users can no longer be added/removed/modified via Stardog. User
+management is delegated to the LDAP server.
 
-Users can no longer be added/removed/modified via Stardog. User management is delegated to the LDAP server.
+=== User Cache
 
-==== User Cache
+Stardog does not cache the list of users. The LDAP server is contacted
+every time a user authenticates, which ensures that users deleted from
+LDAP will not be able to authenticate in Stardog.
 
-Stardog does not cache the list of users. The LDAP server is contacted every time a user authenticates, 
-which ensures that users deleted from LDAP will not be able to authenticate in Stardog.
+=== Authorization
 
-==== Authorization
-
-The LDAP server is used for *authentication only*. Permissions and roles are assigned in Stardog.
+The LDAP server is used for *authentication only*. Permissions and
+roles are assigned in Stardog.
 
 ==== Stale Permissions/Roles
 
-Permissions and roles in Stardog might refer to no longer existing users (those who were deleted from the LDAP server). 
-This does not constitute a security risk as these users will not be able to authenticate (see above).
+Permissions and roles in Stardog might refer to no longer existing
+users (those who were deleted from the LDAP server).  This is safe as
+these users will not be able to authenticate (see above).
 
-It is possible to configure Stardog to periodically clean up the list of permissions and roles according to the latest users 
-in the LDAP server. In order to do this, we pass a http://www.quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger[Quartz cron expression] 
-using the `ldap.consistency.scheduler.expression` property.
-
-Example:
+It is possible to configure Stardog to periodically clean up the list
+of permissions and roles according to the latest users in the LDAP
+server. In order to do this, we pass a
+http://www.quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger[Quartz
+cron expression] using the `ldap.consistency.scheduler.expression`
+property:
 
 [source,bash]
 ----
@@ -247,10 +249,10 @@ ldap.consistency.scheduler.expression = 0 0 18 * * ?
 
 == Managing Stardog Securely
 
-Stardog resources can be managed securely by using the tools included in the
-admin CLI or by programming against Stardog APIs. In this section we describe
-the permissions required to manage various Stardog resources either by CLI or
-API.
+Stardog resources can be managed securely by using the tools included
+in the admin CLI or by programming against Stardog APIs. In this
+section we describe the permissions required to manage various Stardog
+resources either by CLI or API.
 
 === Users
 
