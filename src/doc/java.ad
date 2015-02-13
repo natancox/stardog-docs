@@ -496,9 +496,9 @@ basic properties. Located in the Stardog distribution `bin `directory, the
 script `mavenInstall` (and `mavenInstall.bat` for Windows systems) will install
 the Stardog client jars into the local Maven repository.
 
-NOTE: Only client dependencies are provided, which does not include running
-the server in the embedded mode.  For those use cases, the server JARs must
-still be included.
+//NOTE: Only client dependencies are provided, which does not include running
+//the server in the embedded mode.  For those use cases, the server JARs must
+//still be included.
 
 The following table summarizes the type of client to be built and its
 associated Stardog dependency.  The stardog dependency list below follows
