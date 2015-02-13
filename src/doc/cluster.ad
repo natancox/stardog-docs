@@ -1,7 +1,7 @@
 = High Availability Cluster
 
-In this section we explain how to configure, use, and administer Stardog Cluster
-for uninterrupted operations.
+In this section we explain how to configure, use, and administer
+Stardog Cluster for uninterrupted operations.
 
 Stardog Cluster is a collection of Stardog Server instances running on one or
 more virtual or physical machines that, *from the client's perspective*, behave
@@ -10,8 +10,8 @@ requires DNS (i.e., with `SRV` records) and proxy configuration that's left as
 an exercise for the user. Of course Stardog Cluster should have some different
 operational properties, the main one of which is high availability. But from the
 client's perspective Stardog Cluster should be indistinguishable from
-non-clustered Stardog.footnote:[The client here means the client of Stardog
-APIs, not necessarily people, administrators, etc.]
+non-clustered Stardog.footnote:["Client" here means the client of Stardog
+APIs.]
 
 NOTE: High Availability requires *at least* three nodes in the
 Cluster. Stardog Cluster works best, with respect to fault resiliency,
