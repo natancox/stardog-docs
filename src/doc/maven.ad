@@ -1,8 +1,19 @@
+=== Public Maven Repo
+
+The public Maven repo for the current Stardog release is $$
+
+some other stuff here...
+
+=== Private Maven Repo
+
 include::customer-feature-only.ad[]
 
-=== Managing JARs
+For access to nightly builds, priority bug fixes, priority feature
+access, hot fixes, etc. customers of our $SOMETHING have access to
+their own private Maven repository that is linked to our internal
+development repository. This insures latest-greatest access to BLAH
+BLAH.
 
-=== Maven, Docker, and Devops
+How?
 
-
-=== Private Maven Repositories
+What?
