@@ -14,7 +14,8 @@ to get Stardog installed and running in five easy steps.
 - [x] User-defined search indexers
 - [x] User-defined aggregate functions
 - [x] Maven support
-- [x] Enterprise auth via LDAP 
+- [x] Enterprise auth via LDAP
+- [x] Simplified reasoning levels
 ****
 = Introduction
 
