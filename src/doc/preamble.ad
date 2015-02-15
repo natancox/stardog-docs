@@ -6,13 +6,15 @@ to get Stardog installed and running in five easy steps.
 
 .What's New in 3.0
 ****
-- [x] HA Cluster production-ready
+- [x] High Availability Cluster
 - [x] Improved query performance
-- [x] Equality reasoning via hybrid materialization
+- [x] Equality reasoning
 - [x] Improved incremental write performance
 - [x] ICV repair plans
 - [x] User-defined search indexers
 - [x] User-defined aggregate functions
+- [x] Maven support
+- [x] Enterprise auth via LDAP 
 ****
 = Introduction
 
@@ -54,24 +56,10 @@ https://github.com/clarkparsia/stardog-spring[stardog-spring],
 https://github.com/antoniogarrote/stardog-rb[stardog.rb], and
 https://github.com/clarkparsia/stardog-clj[stardog-clj]. Many thanks
 to Stardog customers, users, contributors, testers, etc. You know who
-you are, but so do we: Robert Butler, Marko A. Rodriguez, Brian
+you are, but so do we.footnote:[Robert Butler, Marko A. Rodriguez, Brian
 Sletten, Alin Dreghiciu, Rob Vesse, Stephane Fallah, John Goodwin,
 José Devezas, Chris Halaschek-Wiener, Gavin Carothers, Brian Panulla,
 Ryan Kohl, Morton Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex
 Tucker, Ron Zettlemoyer, Jim Rhyne, Andrea Westerinen, Huy Phan, Zach
 Whitley, Maurice Rabb, Grant Pax, the crew at XSB, and the nice people
-at El Rinconcito Cafe in DC.
-
-== Stardog Roadmap
-
-[horizontal]
-3.x releases (late Q1 2015)::
-- [ ] Native support for Property Graph model, Gremlin DSL, TinkerPop3
-- [ ] Named Graph security
-- [ ] HA Cluster management service
-- [ ] HA Cluster containerization
-3.2 release (late Q2 2015)::
-- [ ] Stored procedures
-4.0 release (2016)::
-- [ ] *Stardog Constellation*: The Data Center Graph Engine
-- [ ] *Stardog Map*: From Data Lakes to Enterprise Knowledge Graphs
+at El Rinconcito Cafe in DC.]
