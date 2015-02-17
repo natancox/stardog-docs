@@ -6,17 +6,17 @@ to get Stardog installed and running in five easy steps.
 
 .What's New in 3.0
 ****
-- [x] High Availability Cluster
-- [x] Improved query performance
-- [x] Equality reasoning
-- [x] Improved incremental write performance
-- [x] ICV repair plans
-- [x] User-defined search indexers
-- [x] User-defined aggregate functions
-- [x] Maven support
-- [x] Enterprise auth via LDAP
-- [x] Simplified reasoning levels
-****
+- [x] <<High Availability Cluster>>
+- [x] <<Benchmark Results,Improved query performance>>
+- [x] <<Equality Reasoning,Equality reasoning>>
+- [x] <<Benchmark Results,Improved incremental write performance>>
+- [x] <<Repairing ICV Violations,ICV repair plans>>
+- [x] <<User-defined Lucene Analyzer,User-defined search indexers>>
+- [x] <<User-defined Functions and Aggregates,User-defined aggregate functions>>
+- [x] <<Using Maven,Maven support>>
+- [x] <<Enterprise Authentication,Enterprise authentication via LDAP>>
+- [x] <<Reasoning Levels,Simplified reasoning levels>>
+**** 
 = Introduction
 
 Stardog is a fast, lightweight, agile semantic graph database--equally
