@@ -20,8 +20,7 @@ install Zurb Foundation via Gem by hand.
 
 ## Editing Docs
 
-* edit *.ad files using asciidoctor syntax
-** note: Asciidoctor != Markdown...!
+* edit *.ad files using asciidoctor syntax. Note: Asciidoctor != Markdown...!
 * edit Sass in style if you need to tweak CSS (you probably don't)
 * build with `grunt`
 * publish with `grunt pub`
