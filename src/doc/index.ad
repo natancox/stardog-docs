@@ -1,15 +1,11 @@
 = {title}
 :title: Stardog 3: The Manual
-:version: 3.0
-//uncomment these are they're ready to be included...clusterman depends on maven & docker, likely
 //:premium: true
 //:docker: true
 :maven: true
 //:clusterman: true
 //:testing: true
 :revnumber: {version}
-:release-date: 28 February 2015 
-:release-name:
 :toc: right 
 :toc-title: 
 :toclevels: 1 

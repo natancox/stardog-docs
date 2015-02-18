@@ -876,7 +876,9 @@ However, materialization introduces several thorny issues:
 == Equality Reasoning
 
 Stardog 3.0 adds full support for OWL 2 equality reasoning. It is,
-however, an exception to Stardog's query rewriting technique.
+however, an exception to Stardog's query rewriting technique: equality
+inferences are materialized upon writes or modifications to a
+database.
 
 * how to enable it
 * support sameAs only or sameAs plus OWL axioms?
