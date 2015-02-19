@@ -476,7 +476,7 @@ The following are the legal configuration options for a Stardog database:
 . `index.differential.enable.limit`: Sets the minimum size of the Stardog database before differential indexes are used.
 . `index.differential.merge.limit`: Sets the size in number of RDF triples before the differential indexes are merged to the main indexes.
 . `index.literals.canonical`: Enables RDF literal canonicalization.
-See link:/java/snarl/com/clarkparsia/stardog/index/IndexOptions.html#CANONICAL_LITERALS[literal canonicalization]
+See link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#CANONICAL_LITERALS[literal canonicalization]
 for details.
 . `index.named.graphs`: Enables optimized index support for named graphs; speeds SPARQL query evaluation with named graphs at the cost of some overhead for database loading and index maintenance.
 . `index.persist`: Enables persistent indexes.

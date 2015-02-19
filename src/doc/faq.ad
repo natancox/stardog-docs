@@ -78,3 +78,12 @@ Answer:: Stardog does not tranfser files during database creation to
 the server, sending big files over a network kind of defeats the purpose
 of blazing fast bulk loading. If you want to bulk load files from your
 machine to a remote server, copy them to the server and bulk load them.
+
+=== Canonicalized Literals
+
+Question:: Why doesn't my literal look the same as I when I added it to Stardog?
+
+Answer:: Stardog performs
+http://docs.stardog.com/java/snarl/com/complexible/stardog/index/IndexOptions.html#CANONICAL_LITERALS[literal
+canonicalization] by default. This can be turned off by setting
+`index.literals.canonical` to `false`. See <<Configuration Options>> for the details.
