@@ -25,9 +25,7 @@
 :imagesdir: optimized-img/
 :linkattrs:
 :base-url: http://docs.stardog.com/
-:slug: http://docs.stardog.com/{version}
 :release-notes: {base-url}RELEASE_NOTES.txt
-:img: {slug}/img
 
 include::preamble.ad[]
 
