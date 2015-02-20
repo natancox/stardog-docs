@@ -1,9 +1,12 @@
 = Using Stardog
 
-Stardog's primary purpose is to execute queries against RDF data which
-it directly manages. Stardog supports
+Stardog supports
 http://www.cambridgesemantics.com/semantic-university/sparql-by-example[SPARQL],
-the W3C standard for querying RDF graphs.
+the W3C standard for <<Querying,querying>> RDF graphs, as well as a range of other
+capabilities, including <<Updating,updating>>,
+<<Versioning,versioning>> <<Exporting,exporting>>,
+<<Searching,searching>>, <<Obfuscating,obfuscating>>, and
+<<Browsing,browsing>> graph data.
 
 == Querying
 
