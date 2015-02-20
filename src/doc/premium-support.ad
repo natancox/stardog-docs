@@ -1,17 +1,28 @@
 = Enterprise Support
 
-include::customer-feature-only.ad[]
+Customers of Stardog Enterprise Support have access to the following
+capabilities and services:
 
 == Maven Repositories
 
+include::maven-repo-summary.ad[]
+
 == Docker Builds
+
+include::docker-summary.ad[]
 
 == Cluster Management
 
+include::clusterman-summary.ad[]
+
 == Real-time Support
+
+include::rts-summary.ad[]
 
 == Priority Bug Fixes
 
+include::pbf-summary.ad[]
+
 == Early Release Access
 
-== Enterprise Portal
+include::early-release-summary.ad[]
