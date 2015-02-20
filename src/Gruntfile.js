@@ -72,7 +72,7 @@ module.exports = function(grunt) {
                 options: { mode: 'gzip', pretty: true, level: 9},
                 expand: true,
                 cwd: "website/",
-                src: ["index.html"],
+                src: ["**/index.html"],
                 dest: "website-gzipd/",
             },
         },
