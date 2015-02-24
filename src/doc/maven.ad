@@ -1,0 +1,71 @@
+=== Public Maven Repo
+
+// todo: update the repo url
+
+The public Maven repository for the current Stardog release is $repoURl$
+
+To get started, you need to add the following endpoint to your
+preferred build system, e.g. in your Gradle build script:
+
+[source,text]
+----
+repositories {
+	maven {
+		url "https://raw.github.com/clarkparsia/$stardog-maven/master"
+		credentials {
+			username yourGithubUsername
+			password yourGithubPassword
+		}
+	}
+}
+----
+
+Similarly, if you're using Maven you'll need to add the following
+to your Maven `pom.xml`:
+
+[source,xml]
+----
+<repositories>
+	<repository>
+		<id>stardog-public</id>
+		<url>https://raw.github.com/clarkparsia/$stardog-maven/master</url>
+	</repository>
+</repositories>
+----
+
+Then in your Maven `settings.xml` add:
+
+[source,xml]
+----
+<settings>
+	<servers>
+		<server>
+			<id>stardog-public</id>
+			<username>yourGithubUsername</username>
+			<password>yourGithubPassword</password>
+		</server>
+	</servers>
+</settings>
+----
+
+Note that instead of your Github password you can generate an API token to
+be used my Maven/Gradle as described on https://github.com/blog/1509-personal-api-tokens[Github]
+
+=== Private Maven Repo
+
+include::customer-feature-only.ad[]
+
+For access to nightly builds, priority bug fixes, priority feature
+access, hot fixes, etc. customers of our $SOMETHING have access to
+their own private Maven repository that is linked to our internal
+development repository. This insures latest-greatest access to BLAH
+BLAH.
+
+How?
+
+We set up a private repository which you can either proxy in your preferred
+artifact manager, e.g. Artifactory or Nexus.
+
+What?
+
+=== Connecting to Your Private Maven Repo
