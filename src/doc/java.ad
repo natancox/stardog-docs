@@ -486,33 +486,3 @@ API. See <<Compatibility Policies>> for more information about API stability.
 Anything marked `@VisibleForTesting` is just that, visible as a
 consequence of test case requirements; don't write any important code
 that depends on functions with this annotation.
-
-== Using Maven
-
-Like Maven generated archives, Stardog client JARs contain Maven
-meta information `pom.xml` and `pom.properties` files.  Dependency information
-is included in the `pom.xml` files and the `pom.properties` files include some
-basic properties. Located in the Stardog distribution `bin `directory, the
-script `mavenInstall` (and `mavenInstall.bat` for Windows systems) will install
-the Stardog client jars into the local Maven repository.
-
-//NOTE: Only client dependencies are provided, which does not include running
-//the server in the embedded mode.  For those use cases, the server JARs must
-//still be included.
-
-The following table summarizes the type of client to be built and its
-associated Stardog dependency.  The stardog dependency list below follows
-the http://www.gradle.org[Gradle] convention and is of the form:
-`groupId:artifactId:version`.  Versions 2.1 and higher supported.
-
-.Table of client type dependencies
-|===
-|Type of Client               | Stardog Dependency
-|client                       | `com.complexible.stardog:client:version`
-|server                       | `com.complexible.stardog:client:version`
-|===
-
-ifdef::maven[]
-include::maven.ad[]
-endif::maven[]
- 
