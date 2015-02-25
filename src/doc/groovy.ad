@@ -17,8 +17,8 @@ declaration (Gradle style) `com.complexible.stardog:stardog-groovy:2.1.3`.
 As of version 2.1.3, Stardog-Groovy can be included via
 "com.complexible.stardog:stardog-groovy:2.1.3" from Maven central.
 
-NOTE: You must run "mavenInstall" to get the Stardog client dependencies into your
-local repository.
+NOTE: You must include our public repository in your build script to get the Stardog
+client dependencies into your local repository.
 
 Using the embedded server with Stardog Groovy is not supported in 2.1.2, due to
 conflicts of the asm library for various third party dependencies.  If you wish

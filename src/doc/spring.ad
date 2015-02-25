@@ -23,9 +23,9 @@ standard boilerplate away from application developers.
 Stardog Spring can be included via Maven with
 `com.complexible.stardog:stardog-spring:version` and
 `com.complexible.stardog:stardog-spring-batch` for Spring Batch support.  Both
-of these dependencies require the local `mavenInstall` script be run, and the
-Stardog Spring packages installed in Maven.  Embedded server is still supported,
-but via providing an implementatino of the Provider interface. This enables
+of these dependencies require the public Stardog repository to be included in
+your build script, and the Stardog Spring packages installed in Maven.  Embedded server
+is still supported, but via providing an implementatino of the Provider interface. This enables
 users of the embedded server to have full control over how to use the embedded
 server.
 
