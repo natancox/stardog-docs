@@ -309,8 +309,6 @@ To add more Stardog Cluster nodes, simply repeat the steps for Stardog on
 additional machines. Generally, as mentioned above, Stardog Cluster size should
 be an odd number greater or equal to 3.
 
-//<<Cluster Performance>>
-
 == Stardog Cluster Client
 
 To use Stardog Cluster with standard Stardog clients and CLI tools in the
@@ -335,29 +333,3 @@ any node in the cluster. Queries can be issued to any node in the cluster using
 the `stardog query` command. All the `stardog-admin` features are also available
 in Cluster, which means you can use any of the commands to create
 databases, adminster users, and the rest of the functionality.
-
-////
-== Troubleshooting ZooKeeper
-
-ZooKeeper uses
-http://zookeeper.apache.org/doc/r3.3.5/zookeeperInternals.html#sc_quorum[majority
-quorums] for leader election by default which means that, at any given time, ZooKeeper
-requires that there are at least *n/2 + 1* nodes when leader election is
-happening. In the event that a Stardog Cluster is stuck in this
-phase, you can use Starman to recover a ZooKeeper node using:
-
-[source,bash]
-----
-$ ./starman cluster addnodes ==provider <provider> ==id <cluster id> ==zk-node
-----
-
-Starman will attempt to guess which of the ZooKeeper server(s) was lost and try
-to bring a ZooKeeper server back--one at a time--with the same hostname.
-
-Starman creates a list of hostnames when nodes are deployed to a cluster and
-uses that list to communicate between nodes in the ZooKeeper cluster. Whenever a
-ZooKeeper server is lost, a new one can be brought back without having to use
-the same IP address, which may not be possible or expensive for some cloud
-providers.
-////
-

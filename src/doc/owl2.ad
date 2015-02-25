@@ -16,10 +16,10 @@ fashion: it does not materialize inferences; but, rather, reasoning is
 performed at query time according to a user-specified "reasoning
 level".** This approach allows for maximum flexibilityfootnote:[You
 only pay for the reasoning that you use; no more and no less. Eager
-materialization is a great strategy for hard disk manufacturers.]
-while maintaining excellent performance and scalability. The one
+materialization is mostly a great strategy for hard disk
+manufacturers.] while maintaining excellent performance. The one
 exception to this general approach is equality reasoning which is
-eagerly materialized. See <<Equality Reasoning>> for more details.
+eagerly materialized. See <<Same As Reasoning>> for more details.
 
 == Reasoning Levels
 
@@ -204,7 +204,7 @@ database:
 :ResearchProject rdfs:subClassOf :Project
 :projectID rdfs:domain :Project
 
-# instance data
+#instance data
 :Alice :supervises :Bob
 :Alice :manages :ProjectX
 :ProjectX a :ResearchProject
@@ -873,41 +873,43 @@ However, materialization introduces several thorny issues:
     expensive. And truth maintenance, which materialization requires, is
     **always** computationally expensive.
 
-== OWL sameAs Reasoning
+== Same As Reasoning
 
-Stardog 3.0 adds full support for OWL 2 sameAs reasoning. However, sameAs
-reasoning works in a different way compared to the rest of the reasoning
-mechanism. The sameAs inferences are computed and indexed upfront so these 
-materialized inferences can be used directly at query rewriting time. The sameAs 
-index is updated automatically as the database is modified so the difference is
-not visible to a user.
+Stardog 3.0 adds full support for OWL 2 `sameAs` reasoning. However,
+`sameAs` reasoning works in a different way than the rest of the
+reasoning mechanism. The `sameAs` inferences are computed and indexed
+eagerly so that these materialized inferences can be used directly at
+query rewriting time. The `sameAs` index is updated automatically as the
+database is modified so the difference is not of much direct concern to users.
 
-In order to use the sameAs reasoning, the database configuration option
-`reasoning.sameas` should be set either at database creation time or at a later
-time when the database is offline. This can be done through the Webconsole or
-using the command line as follows:
+In order to use `sameAs` reasoning, the database configuration
+option `reasoning.sameas` should be set either at database creation
+time or at a later time when the database is offline. This can be done
+through the Web Console or using the command line as follows:
+
 [source,bash]
 ----
 $ ./stardog-admin db create -o reasoning.sameas=FULL -n myDB
 ----
 
-There are three values for this option:
+There are legal three values for this option:
 
-* `OFF` disables all sameAs inferences, only asserted sameAs triples will be
-  included in query results.
-* `ON` computes sameAs inferences using only asserted sameAs triples taking the
-  reflexivity, symmetry and transitivity of the sameAs relation.
-* `FULL` same as `ON` but also uses OWL functional properties, inverse
-  functional properties and hasKey axioms while computing sameAs inferences.
+* `OFF` disables all `sameAs` inferences, that is, only asserted `sameAs` triples will be
+  included in query results.footnote:[This is effectively the only setting for Stardog prior to 3.0.]
+* `ON` computes `sameAs` inferences using only asserted `sameAs` triples, considering the
+  reflexivity, symmetry and transitivity of the `sameAs` relation.
+* `FULL` same as `ON` but also considers OWL functional properties, inverse
+  functional properties, and `hasKey` axioms while computing `sameAs` inferences.
 
-The way sameAs reasoning works differs from the OWL semantics slightly in the
-sense that Stardog designates one canonical individual for each sameAs
-equivalence set and only returns the canonical individual. This avoids the
-combinatorial explosion in query results while providing the data integration
-benefits.
+NOTE: The way `sameAs` reasoning works differs from the OWL semantics
+slightly in the sense that Stardog designates one canonical individual
+for each `sameAs` equivalence set and only returns the canonical
+individual. This avoids the combinatorial explosion in query results
+while providing the data integration benefits.
 
-Let's see an example showing how the sameAs reasoning works. Consider the
-following database where sameAs reasoning is set to ON:
+Let's see an example showing how `sameAs` reasoning works. Consider the
+following database where `sameAs` reasoning is set to `ON`:
+
 [source, ttl]
 ----
 dbpedia:Elvis_Presley
@@ -923,10 +925,15 @@ freebase:en.elvis_presley
 	freebase:common.topic.official_website <http://www.elvis.com/> .
 ----
 
-Let's look at the following query and its results:
+Now consider the following query and its results:
+
 [source, bash]
 ----
 $ ./stardog query --reasoning elvis 'SELECT * { ?s dbpedia-owl:birthPlace ?o; rdfs:label "Elvis Presley" }'
+----
+
+[source,bash]
+----
 +-----------------------+---------------------+
 |           s           |          o          |
 +-----------------------+---------------------+
@@ -934,18 +941,22 @@ $ ./stardog query --reasoning elvis 'SELECT * { ?s dbpedia-owl:birthPlace ?o; rd
 +-----------------------+---------------------+
 ----
 
-First thing to note about this example is that the query returns only one result
-even though there are three different URIs that denote Elvis Presley. The second
-thing to note is that the URI returned is fixed but chosen completely randomly.
-Stardog picks one of the tree URIs as the canonical URI and always returns that
-and only that canonical URI in the results. If more sameAs triples are added the
-chosen canonical individual may change. Finally, it is important to point out
-that only one URI is returned the effect of sameAs reasoning is visible in the
-results since the `rdfs:label` and `dbpedia-owl:birthPlace` properties were
-asserted on different URIs.
+Let's unpack this carefully. There are three things to note.
 
-One might be inclined to write queries such as this to get all the properties
-for a specific URI:
+First, the query returns only one result even though there are three
+different URIs that denote Elvis Presley. Second, the URI returned is
+fixed but chosen randomly. **Stardog picks one of the URIs as the
+canonical URI and always returns that and only that canonical URI in
+the results.** If more `sameAs` triples are added the chosen canonical
+individual may change. Third, it is important to point out that even
+though only one URI is returned, the effect of `sameAs` reasoning is
+visible in the results since the `rdfs:label` and
+`dbpedia-owl:birthPlace` properties were asserted about different
+instances (i.e., different URIs).
+
+Now, you might might be inclined to write queries such as this to get
+all the properties for a specific URI:
+
 [source,sparql]
 ----
 SELECT * {
@@ -954,9 +965,10 @@ SELECT * {
 }
 ----
 
-However, this is completely unnecessary and one can simply write the following
-query and get the same results since sameAs reasoning would automatically merge
-the results for you. Therefore, the query
+However, this is completely unnecessary; rather, you can write the
+following query and get the same results since `sameAs` reasoning would
+automatically merge the results for you. Therefore, the query
+
 [source,sparql]
 ----
 SELECT * {
@@ -967,6 +979,7 @@ SELECT * {
 would return these results:
 
 [source,bash]
+----
 +----------------------------------------+-----------------------+
 |                   p                    |           o           |
 +----------------------------------------+-----------------------+
@@ -976,20 +989,29 @@ would return these results:
 | freebase:common.topic.official_website | http://www.elvis.com/ |
 | rdf:type                               | owl:Thing             |
 +----------------------------------------+-----------------------+
+----
 
-The URI used in the query does not need to be the same one returned in the
-results. thus, the following query would return the exact same results too:
-query and get the exact same results:
+NOTE: The URI used in the query does not need to be the same one
+returned in the results. Thus, the following query would return the
+exact same results, too:
 
 [source,sparql]
+----
 SELECT * {
    dbpedia:Elvis_Presley nyt:presley_elvis_per ?p ?o
 }
+----
 
-The only time Stardog will return a non-canonical URI in the query results is
-when you explicitly query for the `sameAs` inferences as in this next example:
+The only time Stardog will return a non-canonical URI in the query
+results is when you explicitly query for the `sameAs` inferences as in
+this next example:
+
 [source,bash]
+----
 $ ./stardog query -r elvis 'SELECT * { freebase:en.elvis_presley owl:sameAs ?elvis }'
+----
+[source,bash]
+----
 +---------------------------+
 |           elvis           |
 +---------------------------+
@@ -997,19 +1019,21 @@ $ ./stardog query -r elvis 'SELECT * { freebase:en.elvis_presley owl:sameAs ?elv
 | freebase:en.elvis_presley |
 | nyt:presley_elvis_per     |
 +---------------------------+
+----
 
+In the `FULL` `sameAs` reasoning mode, Stardog will also take other
+OWL axioms into account when computing `sameAs` inferences. Consider
+the following example:
 
-In the FULL sameAs reasoning mode, Stardog will also use OWL axioms into account
-when computing sameAs inferences. Consider the following example:
 [source,ttl]
 ----
-# Everyone has a unique SSN number
+#Everyone has a unique SSN number
 :hasSSN a owl:InverseFunctionalProperty , owl:DatatypeProperty .
 
 :JohnDoe :hasSSN "123-45-6789" .
 :JDoe :hasSSN "123-45-6789" .
 
-# Nobody can work for more than one company (for the sake of the example)
+#Nobody can work for more than one company (for the sake of the example)
 :worksFor a owl:FunctionalProperty , owl:ObjectProperty ;
 	rdfs:domain :Employee ;
 	rdfs:range :Company .
@@ -1017,7 +1041,7 @@ when computing sameAs inferences. Consider the following example:
 :JohnDoe :worksFor :Acme .
 :JDoe :worksFor :AcmeInc .
 
-# For each company, there can only be one employee with the same employee ID
+#For each company, there can only be one employee with the same employee ID
 :Employee owl:hasKey (:employeeID :worksFor ).
 
 :JohnDoe :employeeID "1234-ABC" .
@@ -1032,10 +1056,15 @@ when computing sameAs inferences. Consider the following example:
       :worksFor :Emca .
 ----
 
-For this database, with sameAs reasonig set to FULL, we would get the following
-answers:
+For this database, with `sameAs` reasoning set to `FULL`, we would get
+the following answers:
+
 [source,bash]
+----
 $ ./stardog query -r acme "SELECT * {?x owl:sameAs ?y}"
+----
+[source,bash]
+----
 +----------+----------+
 |    x     |    y     |
 +----------+----------+
@@ -1043,35 +1072,38 @@ $ ./stardog query -r acme "SELECT * {?x owl:sameAs ?y}"
 | :JDoe    | :JohnD   |
 | :Acme    | :AcmeInc |
 +----------+----------+
+----
 
-We can follow the chain of inferences to understand how these results were
-computed. First, `:JohnDoe owl:sameAs :JohnD` can be computed due to the fact 
-that both have the same SSN numbers and `hasSSN` property is inverse functional. 
-Next, we can infer `:Acme owl:sameAs :AcmeInc` since `:JohnDoe` can work for at 
-most one company. Finally, `:JohnDoe owl:sameAs :JohnD` can be inferred using 
-the `owl:hasKey` definition since both individuals are known to work for the 
-same company and have the same employee ID. No more sameAs inferences can be 
-computed due to the key definition since other employees either have different 
-IDs or work for other companies.
+We can follow the chain of inferences to understand how these results
+were computed:
+
+1. `:JohnDoe owl:sameAs :JohnD` can be computed due
+to the fact that both have the same SSN numbers and `hasSSN` property
+is inverse functional.
+1. We can infer `:Acme owl:sameAs :AcmeInc` since `:JohnDoe` can work
+for at most one company.
+1. `:JohnDoe owl:sameAs :JohnD` can be
+inferred using the `owl:hasKey` definition since both individuals are
+known to work for the same company and have the same employee ID.
+1. No more `sameAs` inferences can be computed due to the key definition,
+since other employees either have different IDs or work for other
+companies.
 
 == Removing Unwanted Inferences
 
-Sometimes it might be the case that reasoning can produce unintended inferences.
-This might be due to various reasons such as errors in the modeling the 
-ontology or incorrect assertions in the data. After an unintended inference is
-detected it might still be hard to figure out how to fix the issue because there
-might be multiple different reasons for the inference. The `reasoning explain`
-command can be used to see the different explanations and the `reasoning undo`
-command can be used to generate a SPARQL update query that will remove the
-minimum amount of triples to get rid of this inference:
-[source,bash]
----
-$ ./reasoning undo myDB ": a :Person"
----
-+
-The explain and undo commands are closely related. To undo an inference, at 
-least one tripel from every 
+Sometimes reasoning can produce unintended inferences. Perhaps there
+are modeling errors in the schema or incorrect assertions in the
+data. After an unintended inference is detected, it might be hard to
+figure out how to fix it, because there might be multiple different
+reasons for the inference. The `reasoning explain` command can be used
+to see the different explanations and the `reasoning undo` command can
+be used to generate a SPARQL update query that will remove the minimum
+amount of triples necessary to remove the unwanted inference:
 
+[source,bash]
+----
+$ ./reasoning undo myDB ":AcmeInc a :Person"
+----
 
 == Performance Hints
 

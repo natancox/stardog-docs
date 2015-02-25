@@ -486,3 +486,5 @@ API. See <<Compatibility Policies>> for more information about API stability.
 Anything marked `@VisibleForTesting` is just that, visible as a
 consequence of test case requirements; don't write any important code
 that depends on functions with this annotation.
+
+include::maven.ad[]

@@ -8,7 +8,7 @@ to get Stardog installed and running in five easy steps.
 ****
 - [x] <<High Availability Cluster>>
 - [x] <<Benchmark Results,Improved query performance>>
-- [x] <<Equality Reasoning,Equality reasoning>>
+- [x] <<Same As Reasoning,Equality reasoning>>
 - [x] <<Benchmark Results,Improved incremental write performance>>
 - [x] <<Repairing ICV Violations,ICV repair plans>>
 - [x] <<User-defined Lucene Analyzer,User-defined search indexers>>

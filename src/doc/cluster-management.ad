@@ -1,9 +1,10 @@
-== Managing Cluster
+== Cluster Management
 
 include::customer-feature-only.ad[]
 
-=== Concept of Operations
+=== Deployment
+
+=== Elastic Scaling
 
 === Rolling Upgrades
 
-=== Elastic Scaling

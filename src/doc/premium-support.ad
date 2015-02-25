@@ -11,10 +11,6 @@ include::maven-repo-summary.ad[]
 
 include::docker-summary.ad[]
 
-== Cluster Management
-
-include::clusterman-summary.ad[]
-
 == Real-time Support
 
 include::rts-summary.ad[]
