@@ -21,6 +21,10 @@ higher are supported.
 |jena                         | `com.complexible.stardog.jena:stardog-jena:version`
 |===
 
+You can see an example of their usage in our examples
+https://github.com/clarkparsia/stardog-examples/blob/628cf3dab2/examples/api/build.gradle#L3-L14[repository
+on Github].
+
 ifdef::maven[]
 include::maven.ad[]
 endif::maven[]
