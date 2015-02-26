@@ -7,16 +7,16 @@ is a Stardog client, or server, or both. Additionally, you can also
 include the Jena or Sesame bindings if you would like to use them in
 your project. The Stardog dependency list below follows the
 http://www.gradle.org[Gradle] convention and is of the form:
-`groupId:artifactId:version`. Versions 3.0 and higher are supported.
+`groupId:artifactId:VERSION`. Versions 3.0 and higher are supported.
 
 .Table of client type dependencies
 |===
 |*Type*                         | *Stardog Dependency*
-|snarl client                 | `com.complexible.stardog:client-snarl:version`
-|http client                  | `com.complexible.stardog:client-http:version`
-|server                       | `com.complexible.stardog:server:version`
-|sesame                       | `com.complexible.stardog.sesame:stardog-core:version`
-|jena                         | `com.complexible.stardog.jena:stardog-jena:version`
+|snarl client                 | `com.complexible.stardog:client-snarl:VERSION`
+|http client                  | `com.complexible.stardog:client-http:VERSION`
+|server                       | `com.complexible.stardog:server:VERSION`
+|sesame                       | `com.complexible.stardog.sesame:stardog-core:VERSION`
+|jena                         | `com.complexible.stardog.jena:stardog-jena:VERSION`
 |===
 
 You can see an example of their usage in our examples
@@ -53,6 +53,8 @@ to your Maven `pom.xml`:
 ----
 
 === Private Maven Repo
+
+include::customer-feature-only.ad[]
 
 For access to nightly builds, priority bug fixes, priority feature
 access, hot fixes, etc. Premium Enterprise Support customers have

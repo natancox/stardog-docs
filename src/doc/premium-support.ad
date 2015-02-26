@@ -1,9 +1,9 @@
 = Enterprise Support
 
-Customers of Stardog Enterprise Support have access to the following
-capabilities and services:
+Customers of Stardog's Premium Enterprise Support have access to the
+following capabilities and services:
 
-== Maven Repositories
+== Private Maven Repositories
 
 include::maven-repo-summary.ad[]
 
@@ -19,6 +19,6 @@ include::rts-summary.ad[]
 
 include::pbf-summary.ad[]
 
-== Early Release Access
+== Early Feature Release Access
 
 include::early-release-summary.ad[]
