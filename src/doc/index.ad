@@ -1,7 +1,6 @@
 = {title}
 :title: Stardog 3: The Manual
-//:premium: true
-//:docker: true
+:docker: true
 :maven: true
 //:clusterman: true
 //:testing: true
@@ -30,19 +29,17 @@
 
 include::preamble.ad[]
 
-include::qsg.ad[]
-
-ifdef::premium[]
 include::premium-support.ad[]
-endif::premium[]
+
+include::qsg.ad[]
 
 include::using.ad[]
 
 include::admin.ad[]
 
-ifdef::premium[]
+ifdef::docker[]
 include::docker.ad[]
-endif::premium[]
+endif::docker[]
 
 include::cluster.ad[]
 

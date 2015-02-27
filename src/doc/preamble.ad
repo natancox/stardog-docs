@@ -1,12 +1,13 @@
 include::header-logo.ad[]
 
-Stardog is a graph database: fast, lightweight, pure Java for
-mission-critical, enterprise apps. Check out the <<Quick Start Guide>>
-to get Stardog installed and running in five easy steps.
+Stardog is a fast, semantic graph database for the enterprise. Check
+out the <<Quick Start Guide>> to get Stardog installed and running in
+five easy steps.
 
 .What's New in 3.0
 ****
 - [x] <<High Availability Cluster>>
+- [x] <<Enterprise Premium Support>>
 - [x] <<Benchmark Results,Improved query performance>>
 - [x] <<Same As Reasoning,Equality reasoning>>
 - [x] <<Benchmark Results,Improved incremental write performance>>

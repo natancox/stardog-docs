@@ -1,11 +1,9 @@
-== Using Docker 
+= Using Docker 
 
-include::customer-feature-only.ad[]
+== Docker as Deliverable
 
-=== Docker as Deliverable
+== Dynamic Updates
 
-=== Dynamic Updates
+== Data Persistence
 
-=== Data Persistence
-
-=== Docker and Maven
+== Docker and Maven
