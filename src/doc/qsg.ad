@@ -1,14 +1,23 @@
 = Quick Start Guide
 
-Stardog runs on Java 7 and should run fine on Java 8. Stardog runs best on, but
-does not require a 64-bit JVM that supports `sun.misc.Unsafe`.
+== Requirements
 
-WARNING: Stardog ships with an *insecure* but usable default setting: the
-super user is `admin` and the `admin` password is "admin".
+It just doesn't get any easier than this: Stardog runs on Java 6, 7
+and 8. Stardog runs best on, but does not require, a 64-bit JVM that
+supports `sun.misc.Unsafe`.
 
-This is fine until it isn't, at which point you should read the <<Security>> section.
+== Insecurity
 
-== Linux and OSX
+We optimize Stardog out-of-the-box for ease and simplicity. You should
+take additional steps to secure it before production deployement. It's
+easy and it's smart, so just do it. In case that's not blunt enough:
+
+NOTE: Stardog ships with an *insecure* but usable default setting: the
+super user is `admin` and the `admin` password is "admin". This is
+fine until it isn't, at which point you should read the <<Security>>
+section.
+
+== Linux and OSX 
 
 . Tell Stardog where its home directory (where databases and other files will be stored) is
 +
