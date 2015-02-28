@@ -26,6 +26,7 @@
 :base-url: http://docs.stardog.com/
 :release-notes: {base-url}RELEASE_NOTES.txt
 :cache-uri:
+:sectanchors:
 
 include::preamble.ad[]
 
