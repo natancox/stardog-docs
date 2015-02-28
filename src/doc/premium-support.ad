@@ -10,7 +10,7 @@ Get access to the core Stardog development team in real-time via voice
 or chat. Let us help you get the most from Stardog, 24/7. Our core
 team has more semantic graph application and tool development
 experience than any other team on the planet. Other vendors shunt you
-off to inexperienced level one techs.
+off to inexperienced level one techs. We've never done that and never will.
 
 == Private Maven Repositories
 
@@ -21,28 +21,31 @@ releases.
 We're also tying Maven and Docker together, providing private Docker
 repositories for customers, which allows us to build out clusters,
 custom configurations, best practices, and devops tips-and-tricks into
-custom Docker images.
+custom Docker images...so that you don't have to.
 
 == Private Docker Repositories
 
-This not only shortens your development and devops cycles but keeps
-you up-to-date with the latest-greatest versions of Stardog, including
-security fixes, performance hot fixes, and deployment best practices
-and configurations.
+Docker-based deliverables not only shortens your development and
+devops cycles but keeps you up-to-date with the latest-greatest
+versions of Stardog, including security fixes, performance hot fixes,
+and deployment best practices and configurations.
 
 Some day all software will be distributed via containers; the days of
 the monolithic release, held for weeks or month to suit business
-cycles, are over for enterprise software.
+cycles, are over. You heard it here first; well, okay, not *first* but
+you *got* it here *early*.
 
-== Priority Bug Fixes & Feature Releases
+== Priority Bug Fixes 
 
 With Maven and Docker in place, we've got a software delivery
 mechanism ready to push priority bug fixes into your enterprise as
 soon as they're ready. We've averaged one Stardog release every two
-weeks for the since 2012 and Enterprise Premium Support customers can
-now take advantage of our development pace in controlled fashion.
+weeks since 2012. Enterprise Premium Support customers can
+now take advantage of our development pace in a controlled fashion.
 
-We don't like holding new features in a feature branch; we want to
-release them as soon as possible to our customers. With Enterprise
-Premium Support, we can maintain a disruptive pace of innovation
-without disrupting your enterprise.
+== Priority Feature Releases
+
+We hate holding new features in a feature branch, especially for
+mundane business reasons; we want to release new stuff as soon as
+possible to our customers. With Enterprise Premium Support, we can
+maintain a disruptive pace of innovation without disrupting *you*. 
