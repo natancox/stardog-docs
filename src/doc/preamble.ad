@@ -20,18 +20,18 @@ five easy steps.
 **** 
 = Introduction
 
-Stardog is a fast, agile semantic graph database--equally adept in
-client-server, middleware, and embedded modes. Stardog **{version}**
+Stardog is a semantic graph database--equally adept in client-server,
+middleware, and embedded modes. Stardog **{version}**
 (**{release-date}**) supports the http://www.w3.org/RDF/[RDF graph
 data model]; http://www.w3.org/TR/sparql11-overview/[SPARQL] query
 language; HTTP and SNARL protocols for remote access and control;
 http://www.w3.org/TR/owl2-overview/[OWL 2] and user-defined rules for
 inference and data analytics; and programmatic interaction via several
-languages and network interfaces.
+languages and network interfaces. Stardog is made with skill, taste,
+and a point of view in Washington, DC, Boston, and Germany.
 
 To learn more about where we've been and where we're headed, consult
-the {release-notes}[release notes] and <<Stardog
-Milestones,milestones>>.footnote:[This is version *{docdatetime}*.]
+the {release-notes}[release notes] and <<Milestones,milestones>>.footnote:[This is version *{docdatetime}*.]
 
 |===
 | Stardog Version | HTML             | PDF
@@ -64,3 +64,19 @@ Ryan Kohl, Morton Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex
 Tucker, Ron Zettlemoyer, Jim Rhyne, Andrea Westerinen, Huy Phan, Zach
 Whitley, Maurice Rabb, Grant Pax, the crew at XSB, and the nice people
 at El Rinconcito Cafe in DC.]
+
+== Roadmap
+
+[horizontal]
+Stardog 3.x::
+- Property Graph/Tinker Pop 3 support
+- Cluster management
+- Virtual graphs
+- Named Graph security
+- Distributed transaction performance improvements
+Stardog 4.x::
+- Stardog Constellation, a unified graph computation framework
+- Virtual enterprise graphs from HDFS-based data lakes 
+
+Our roadmap is heavily influenced by our customers. Let us know what
+you want to see in the future for Stardog.
