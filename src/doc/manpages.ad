@@ -1,3 +1,5 @@
+:man-base-url: link:/
+
 == Man Pages
 
 Stardog command-line interface is comprehensively documented in `man` pages that
@@ -6,33 +8,33 @@ convenience to the reader.
 
 === Stardog CLI
 
-. {base-url}man/data-add.html[`data add`], {base-url}man/data-export.html[`data export`], {base-url}man/data-obfuscate.html[`data obfuscate`], {base-url}man/data-remove.html[`data remove`], {base-url}man/data-size.html[`data size`]
-. {base-url}man/icv-convert.html[`icv convert`], {base-url}man/icv-explain.html[`icv explain`], {base-url}man/icv-export.html[`icv export`], {base-url}man/icv-validate.html[`icv validate`]
-. {base-url}man/namespace-add.html[`namespace add`], {base-url}man/namespace-list.html[`namespace list`], {base-url}man/namespace-remove.html[`namespace remove`]
-. {base-url}man/query-execute.html[`query execute`], {base-url}man/query-explain.html[`query explain`], {base-url}man/query-obfuscate.html[`query obfuscate`], {base-url}man/query-search.html[`query search`]
-. {base-url}man/reasoning-consistency.html[`reasoning consistency`], {base-url}man/reasoning-explain.html[`reasoning explain`]
-. {base-url}man/vcs-commit.html[`vcs commit`], {base-url}man/vcs-diff.html[`vcs diff`], {base-url}man/vcs-list.html[`vcs list`], {base-url}man/vcs-query.html[`vcs query`], {base-url}man/vcs-revert.html[`vcs revert`], {base-url}man/vcs-tag.html[`vcs tag`]
+. {man-base-url}man/data-add.html[`data add`], {man-base-url}man/data-export.html[`data export`], {man-base-url}man/data-obfuscate.html[`data obfuscate`], {man-base-url}man/data-remove.html[`data remove`], {man-base-url}man/data-size.html[`data size`]
+. {man-base-url}man/icv-convert.html[`icv convert`], {man-base-url}man/icv-explain.html[`icv explain`], {man-base-url}man/icv-export.html[`icv export`], {man-base-url}man/icv-validate.html[`icv validate`]
+. {man-base-url}man/namespace-add.html[`namespace add`], {man-base-url}man/namespace-list.html[`namespace list`], {man-base-url}man/namespace-remove.html[`namespace remove`]
+. {man-base-url}man/query-execute.html[`query execute`], {man-base-url}man/query-explain.html[`query explain`], {man-base-url}man/query-obfuscate.html[`query obfuscate`], {man-base-url}man/query-search.html[`query search`]
+. {man-base-url}man/reasoning-consistency.html[`reasoning consistency`], {man-base-url}man/reasoning-explain.html[`reasoning explain`]
+. {man-base-url}man/vcs-commit.html[`vcs commit`], {man-base-url}man/vcs-diff.html[`vcs diff`], {man-base-url}man/vcs-list.html[`vcs list`], {man-base-url}man/vcs-query.html[`vcs query`], {man-base-url}man/vcs-revert.html[`vcs revert`], {man-base-url}man/vcs-tag.html[`vcs tag`]
 
 === Stardog Admin CLI
 
-. {base-url}man/db-backup.html[`db backup`], {base-url}man/db-copy.html[`db copy`],
-{base-url}man/db-create.html[`db create`], {base-url}man/db-drop.html[`db drop`],
-{base-url}man/db-list.html[`db list`], {base-url}man/db-migrate.html[`db migrate`],
-{base-url}man/db-offline.html[`db offline`], {base-url}man/db-online.html[`db online`], {base-url}man/db-optimize.html[`db optimize`],
-{base-url}man/db-restore.html[`db restore`], {base-url}man/db-status.html[`db status`]
-. {base-url}man/icv-add.html[`icv add`], {base-url}man/icv-drop.html[`icv drop`],  {base-url}man/icv-remove.html[`icv remove`]
-. {base-url}man/metadata-get.html[`metadata get`], {base-url}man/metadata-set.html[`metadata set`]
-. {base-url}man/role-add.html[`role add`], {base-url}man/role-grant.html[`role grant`], {base-url}man/role-list.html[`role list`],
-{base-url}man/role-permission.html[`role permission`], {base-url}man/role-remove.html[`role remove`], {base-url}man/role-revoke.html[`role revoke`]
-. {base-url}man/server-start.html[`server start`], {base-url}man/server-status.html[`server status`], {base-url}man/server-stop.html[`server stop`]
-. {base-url}man/query-kill.html[`query kill`], {base-url}man/query-list.html[`query list`], {base-url}man/query-status.html[`query status`]
-. {base-url}man/user-add.html[`user add`], {base-url}man/user-addrole.html[`user addrole`],
-{base-url}man/user-disable.html[`user disable`], {base-url}man/user-enable.html[`user enable`],
-{base-url}man/user-grant.html[`user grant`],
-{base-url}man/user-list.html[`user list`],
-{base-url}man/user-passwd.html[`user passwd`], {base-url}man/user-permission.html[`user permission`],
-{base-url}man/user-remove.html[`user remove`], {base-url}man/user-removerole.html[`user removerole`],
-{base-url}man/user-revoke.html[`user revoke`]
+. {man-base-url}man/db-backup.html[`db backup`], {man-base-url}man/db-copy.html[`db copy`],
+{man-base-url}man/db-create.html[`db create`], {man-base-url}man/db-drop.html[`db drop`],
+{man-base-url}man/db-list.html[`db list`], {man-base-url}man/db-migrate.html[`db migrate`],
+{man-base-url}man/db-offline.html[`db offline`], {man-base-url}man/db-online.html[`db online`], {man-base-url}man/db-optimize.html[`db optimize`],
+{man-base-url}man/db-restore.html[`db restore`], {man-base-url}man/db-status.html[`db status`]
+. {man-base-url}man/icv-add.html[`icv add`], {man-base-url}man/icv-drop.html[`icv drop`],  {man-base-url}man/icv-remove.html[`icv remove`]
+. {man-base-url}man/metadata-get.html[`metadata get`], {man-base-url}man/metadata-set.html[`metadata set`]
+. {man-base-url}man/role-add.html[`role add`], {man-base-url}man/role-grant.html[`role grant`], {man-base-url}man/role-list.html[`role list`],
+{man-base-url}man/role-permission.html[`role permission`], {man-base-url}man/role-remove.html[`role remove`], {man-base-url}man/role-revoke.html[`role revoke`]
+. {man-base-url}man/server-start.html[`server start`], {man-base-url}man/server-status.html[`server status`], {man-base-url}man/server-stop.html[`server stop`]
+. {man-base-url}man/query-kill.html[`query kill`], {man-base-url}man/query-list.html[`query list`], {man-base-url}man/query-status.html[`query status`]
+. {man-base-url}man/user-add.html[`user add`], {man-base-url}man/user-addrole.html[`user addrole`],
+{man-base-url}man/user-disable.html[`user disable`], {man-base-url}man/user-enable.html[`user enable`],
+{man-base-url}man/user-grant.html[`user grant`],
+{man-base-url}man/user-list.html[`user list`],
+{man-base-url}man/user-passwd.html[`user passwd`], {man-base-url}man/user-permission.html[`user permission`],
+{man-base-url}man/user-remove.html[`user remove`], {man-base-url}man/user-removerole.html[`user removerole`],
+{man-base-url}man/user-revoke.html[`user revoke`]
 
 === Installing Man Pages Locally
 
