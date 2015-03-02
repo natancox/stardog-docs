@@ -28,10 +28,11 @@ language; HTTP and SNARL protocols for remote access and control;
 http://www.w3.org/TR/owl2-overview/[OWL 2] and user-defined rules for
 inference and data analytics; and programmatic interaction via several
 languages and network interfaces. Stardog is made with skill, taste,
-and a point of view in Washington, DC, Boston, and Germany.
+and a point of view in DC, Boston, and Germany.
 
 To learn more about where we've been and where we're headed, consult
-the {release-notes}[release notes] and <<Milestones,milestones>>.footnote:[This is version *{docdatetime}*.]
+the {release-notes}[release notes] and
+<<Milestones,milestones>>.footnote:[This is version *{docdatetime}*.]
 
 |===
 | Stardog Version | HTML             | PDF
@@ -78,5 +79,5 @@ Stardog 4.x::
 - Stardog Constellation, a unified graph computation framework
 - Virtual enterprise graphs from HDFS-based data lakes 
 
-Our roadmap is heavily influenced by our customers. Let us know what
-you want to see in the future for Stardog.
+Our roadmap is largely determined by customer input. Let us know what
+you want to see.
