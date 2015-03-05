@@ -87,3 +87,14 @@ Answer:: Stardog performs
 http://docs.stardog.com/java/snarl/com/complexible/stardog/index/IndexOptions.html#CANONICAL_LITERALS[literal
 canonicalization] by default. This can be turned off by setting
 `index.literals.canonical` to `false`. See <<Configuration Options>> for the details.
+
+=== Cluster Isn't Working
+
+Question:: I've setup Stardog Cluster, but it isn't working and I have
+`NoRouteToHostException` exceptions all over my Zookeeper log.
+
+Answer:: Typically--but especially on Red Hat Linux and its
+variants--this means that `iptables` is blocking one, some, or all of
+the ports that the Cluster is trying to use. You can disable
+`iptables` or, better yet, configure it to unblock the ports Cluster
+is using.

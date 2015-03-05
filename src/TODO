@@ -1,8 +1,7 @@
-cloudfront
+- cloudfront
 
-finish equality reasoning
+- cluster docs:
+  * no port for node address?
+  * remove some proxy arg?
 
-cluster docs:
-
-* no port for node address?
-* remove some proxy arg?
+- namespace import
