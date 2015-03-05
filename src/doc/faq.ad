@@ -98,3 +98,12 @@ variants--this means that `iptables` is blocking one, some, or all of
 the ports that the Cluster is trying to use. You can disable
 `iptables` or, better yet, configure it to unblock the ports Cluster
 is using.
+
+=== Client Connection Isn't Working
+
+Question:: I'm getting a `ServiceConfigurationError` saying that `SNARLDriver` could not
+be instantiated.
+
+Answer:: Make sure that your classpath includes all Stardog JARs and that the user executing your
+code has access to them.
+
