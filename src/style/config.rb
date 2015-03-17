@@ -15,8 +15,6 @@ relative_assets = true
 #line_comments = true
 line_comments = false
 
-# doesn't seem to work
-#asset_cache_buster = false
 module Sass::Script::Functions
   # TODO document me
   def string_to_color(name)

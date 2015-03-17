@@ -1,6 +1,6 @@
 = {title}
 :title: Stardog 3: The Manual
-:docker: true
+//:docker: true
 :maven: true
 //:clusterman: true
 //:testing: true

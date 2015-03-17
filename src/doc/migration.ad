@@ -2,34 +2,41 @@
 
 == Stardog 3
 
-This document guides migration from Stardog 2.x to Stardog 3.
+This section guides migration from Stardog 2.x to Stardog 3.
 
 === Reasoning
 
-`ReasoningType` is no longer a `Connection` client option.  Reasoning is now enabled, or disabled; the database 
-will determine the appropriate OWL profile to use given the TBox associated with the database.
+`ReasoningType` is no longer a `Connection` client option.  Reasoning is now
+enabled, or disabled; the database will determine the appropriate OWL profile to
+use given the TBox associated with the database.
 
-The default value of `reasoning.schema.graphs` has been changed to `ALL` from `DEFAULT`.
+The default value of `reasoning.schema.graphs` has been changed to `ALL` from
+`DEFAULT`.
 
 === Custom Functions and Aggregates 
 
-The API for custom SPARQL functions has changed in Stardog 3 to accomdate the addition of custom SPARQL aggregates.  
-A discussion on how to create custom functions and aggregates can be found 
-[in the examples](https://github.com/clarkparsia/stardog-examples/tree/master/examples/function).
+The API for custom SPARQL functions has changed in Stardog 3 to accommodate the
+addition of custom SPARQL aggregates.  A discussion on how to create custom
+functions and aggregates can be found [in the
+examples](https://github.com/clarkparsia/stardog-examples/tree/master/examples/function).
 
 === Database Properties
 
-In Stardog 3, `DatabaseOptions` no longer serves as a single collection of all options for the system.  Module-specific
-options have been split into their respectively modules.  For example, all options dealing with configuration of the
-reasoner in Stardog, those whose names are prefixed with `reasoning`, such as `SCHEMA_GRAPHS`, have been moved to 
-`ReasoningOptions`.  Similar changes were made for `ICVOptions` and `SearchOptions`.
+In Stardog 3, `DatabaseOptions` no longer serves as a single collection of all
+options for the system.  Module-specific options have been split into their
+respective modules.  For example, all options dealing with configuration of
+the reasoner in Stardog--those whose names are prefixed with `reasoning`, such
+as `SCHEMA_GRAPHS`--have been moved to `ReasoningOptions`.  Similar changes were
+made for `ICVOptions` and `SearchOptions`.
 
 `query.all.graphs` is now a database option.
 
 === Empire
 
-The [Empire](https://github.com/mhgrove/Empire) bindings for Stardog have been open-sourced and are no longer part of the
-Stardog distribution.  They are now available in the Empire codebase in the `stardog` module.
+The [Empire](https://github.com/mhgrove/Empire) bindings for Stardog have been
+released under Apache license and are no longer part of the Stardog
+distribution. They are now available in the Empire code base in the `stardog`
+module.
 
 === API
 
@@ -38,8 +45,8 @@ The following methods were added to the SNARL API:
 * `Getter#ask`
 * `ConnectionConfiguration#setAll`
 
-Additionally, the Search API now exposes the ability to execute searches over named graphs, which was previously only 
-available via SPARQL.
+Additionally, the Search API now exposes the ability to execute searches over
+named graphs, which was previously only available via SPARQL.
 
 == Stardog 2
 
@@ -143,6 +150,6 @@ server remains `5820`.
 
 === Command line
 
-The global options --home, --logfile, --disable-security for `server start`
-command have been turned into regular options. See the `stardog-admin help
-server start` for details.
+The global options `--home`, `--logfile`, `--disable-security` for `server
+start` command have been turned into regular options. See the `stardog-admin
+help server start` for details.
