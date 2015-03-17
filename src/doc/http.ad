@@ -175,11 +175,12 @@ To issue SPARQL queries with reasoning over HTTP, see <<Using Reasoning>>.
 
 [source,http]
 ----
-GET | POST /{db}/update
+GET | POST /{db}/update → text/boolean
 ----
 
 The SPARQL endpoint for updating the database with SPARQL Update. The valid Accept types are
-`application/sparql-update` `or application/x-www-form-urlencoded`.
+`application/sparql-update` `or application/x-www-form-urlencoded`.  Response is the result of
+the update operation as text, eg `true` or `false`.
 
 === Query Plan
 
@@ -260,6 +261,18 @@ Returns a representation of a query executed within the `txId`
 transaction. Queries within transactions will be slower as extra
 processing is required to make the changes visible to the query. Again,
 the valid Accept types are listed above in the `HTTP Headers` section.
+
+[source,http]
+----
+GET | POST /{db}/{txId}/update → text/boolean
+----
+
+The SPARQL endpoint for updating the database with SPARQL Update.  Update queries
+are executed within the specified transaction `txId` and are *not* atomic operations
+as with the normal SPARQL update endpoint.  The updates are executed when the 
+transaction is committed like any other change. The valid Accept types are
+`application/sparql-update` `or application/x-www-form-urlencoded`.  Response is the result of
+the update operation as text, eg `true` or `false`.
 
 === Adding Data (Transactionally)
 
