@@ -12,7 +12,7 @@
 :Stardog a sd:RdfDatabase;
          a doap:Project;
          doap:name "Stardog";
-         doap:mailing-list "stardog@clarkparsia.com";
+         doap:mailing-list "stardog@complexible.com";
          doap:category "RDF database";
          doap:download-page <http://stardog.com/testing>;
          doap:version [
@@ -25,10 +25,10 @@
          doap:programming-language <http://jdk6.java.net>;
          doap:implements :OWL, :SPARQL;
          doap:platform "J2EE, JDK";
-         doap:blog <http://weblog.clarkparsia.com/>;
-         doap:vendor <http://clarkparsia.com/>.
+         doap:blog <http://blog.stardog.com/>;
+         doap:vendor <http://complexible.com/>.
 
-<http://clarkparsia.com/> a foaf:Organization;
+<http://complexible.com/> a foaf:Organization;
        :hasOfficeIn "Boston, MA"^^xsd:string;
        :hasOfficeIn "Washington, DC"^^xsd:string;
        :hasEmployee :Mike;

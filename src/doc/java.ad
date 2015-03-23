@@ -89,7 +89,7 @@ Also note, Stardog database administration can be performed from the <<Command L
 As you can see, the
 link:java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html[`ConnectionConfiguration`]
 in
-link:java/snarl/com/complexible/stardog/api/package-summary.html[`com.clarkparsia.stardog.api`]
+link:java/snarl/com/complexible/stardog/api/package-summary.html[`com.complexible.stardog.api`]
 package class is where the initial action takes place:
 
 [source,java]
@@ -294,7 +294,7 @@ application. You can implement a custom analyzer that Stardog will use
 by implementing `org.apache.lucene.analysis.Analyzer`. That lets you customize Stardog to support different natural languages, geospatial indexing, domain-specific stop word lists, etc.
 
 See
-https://github.com/clarkparsia/stardog-examples/tree/master/examples/analyzer[Custom
+https://github.com/complexible/stardog-examples/tree/master/examples/analyzer[Custom
 Analyzers] in the stardog-examples Github repo for a complete
 description of the API, registry, sample code, etc.
 
@@ -302,7 +302,7 @@ description of the API, registry, sample code, etc.
 
 Stardog may be extended via Function and Aggregate extensibility APIs,
 which are fully documented, including sample code, in the
-https://github.com/clarkparsia/stardog-examples/blob/master/examples/function/readme.md[stardog-examples
+https://github.com/complexible/stardog-examples/blob/master/examples/function/readme.md[stardog-examples
 Github repo] section about function extensibility.
 
 In short you can extend Stardog's SPARQL query evaluation with custom

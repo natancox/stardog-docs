@@ -20,7 +20,7 @@ http://www.gradle.org[Gradle] convention and is of the form:
 |===
 
 You can see an example of their usage in our examples
-https://github.com/clarkparsia/stardog-examples/blob/628cf3dab2/examples/api/build.gradle#L3-L14[repository
+https://github.com/complexible/stardog-examples/blob/628cf3dab2/examples/api/build.gradle#L3-L14[repository
 on Github].
 
 === Public Maven Repo
@@ -57,7 +57,7 @@ to your Maven `pom.xml`:
 include::customer-feature-only.ad[]
 
 For access to nightly builds, priority bug fixes, priority feature
-access, hot fixes, etc. Premium Enterprise Support customers have
+access, hot fixes, etc. Enterprise Premium Support customers have
 access to their own private Maven repository that is linked to our
 internal development repository. We provide a private repository which
 you can either proxy from your preferred Maven repository

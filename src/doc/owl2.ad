@@ -1246,7 +1246,7 @@ following line in the logging.properties file in `STARDOG_HOME`:
 
 [source,java]
 ----
-com.clarkparsia.blackout.level = ALL
+com.complexible.blackout.level = ALL
 ----
 
 === Are you using DL?
@@ -1304,12 +1304,12 @@ prefixes for RDF(S) and OWL.
 
 [source,ttl]
 ----
-:clark_and_parsia rdf:type :Company
-:clark_and_parsia :maintains :Stardog
+:complexible rdf:type :Company
+:complexible :maintains :Stardog
 ----
 
-Which says that `:clark_and_parsia` is a company, and that
-`:clark_and_parsia` maintains `:Stardog`.
+Which says that `:complexible` is a company, and that
+`:complexible` maintains `:Stardog`.
 
 The most common schema axioms are subclass axioms. Subclass axioms are
 used to state that every instance of a particular class is also an
@@ -1368,16 +1368,16 @@ following assertion and axiom:
 
 [source,ttl]
 ----
- :clark_and_parsia rdf:type :Company
+ :complexible rdf:type :Company
  :Company rdfs:subClassOf :Organization
 ----
 
 From this DB, we can use Stardog in order to *infer* that
-`:clark_and_parsia` is an organization:
+`:complexible` is an organization:
 
 [source,ttl]
 ----
-:clark_and_parsia rdf:type :Organization
+:complexible rdf:type :Organization
 ----
 
 Using reasoning in order to infer implicit knowledge in the context of
@@ -1428,7 +1428,7 @@ free of any logical contradiction, there can be no instances of `:LLC`.
 
 Asserting (or inferring) that an unsatisfiable class has an instance, causes the
 DB to be *inconsistent*. In the particular case of MyDB~2~, we know that
-`:clark_and_parsia` is a company *and* an organization; therefore, we also know
+`:complexible` is a company *and* an organization; therefore, we also know
 that it is an instance of `:LLC`, and as `:LLC` is known to be unsatisfiable, we
 have that MyDB~2~ is inconsistent.
 

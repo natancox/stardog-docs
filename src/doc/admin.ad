@@ -88,7 +88,7 @@ command groups:
 
 [source]
 ----
-usage: stardog []
+usage: stardog <command> [ <args> ] 
 
 The most commonly used stardog commands are:
     data        Commands which can modify or dump the contents of a database

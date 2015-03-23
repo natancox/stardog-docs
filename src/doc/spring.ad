@@ -1,8 +1,8 @@
 = Spring Programming
 
-The Spring for Stardog http://github.com/clarkparsia/stardog-spring[source
+The Spring for Stardog http://github.com/complexible/stardog-spring[source
 code] is available on Github. Binary releases are available on the
-https://github.com/clarkparsia/stardog-spring/releases[Github release page].
+https://github.com/complexible/stardog-spring/releases[Github release page].
 
 As of 2.1.3, Stardog-Spring and Stardog-Spring-Batch can both be retrieved from
 Maven central:
@@ -49,9 +49,9 @@ Adder API.
 
 There are three Beans to add to a Spring application context:
 
-- `DataSourceFactoryBean`: `com.clarkparsia.stardog.ext.spring.DataSourceFactoryBean`
-- `SnarlTemplate`: `com.clarkparsia.stardog.ext.spring.SnarlTemplate`
-- `DataImporter`: `com.clarkparsia.stardog.ext.spring.DataImporter`
+- `DataSourceFactoryBean`: `com.complexible.stardog.ext.spring.DataSourceFactoryBean`
+- `SnarlTemplate`: `com.complexible.stardog.ext.spring.SnarlTemplate`
+- `DataImporter`: `com.complexible.stardog.ext.spring.DataImporter`
 
 `DataSourceFactoryBean` is a Spring `FactoryBean` that configures and
 produces a `DataSource`. All of the Stardog `ConnectionConfiguration`
@@ -76,13 +76,6 @@ automatically mapping result set bindings into common data types. The
 `SimpleRowMapper` projects the `BindingSet` as a `List>` and a
 `SingleMapper` that accepts a constructor parameter for binding a single
 parameter for a single result set.
-
-For example,
-
-[source,java]
-----
-include::https://gist.githubusercontent.com/AlBaker/4570152/raw/SingleMapper.java[]
-----
 
 The key methods on `SnarlTemplate` include the following:
 
@@ -144,96 +137,14 @@ formats, so if there are many different types of files to load with
 different RDF formats, there would be different `DataImporter` beans
 configured in Spring.
 
-Here's a sample `applicationContext`:
-
-[source,xml]
-----
-include::https://gist.githubusercontent.com/kendall/1115889/raw/applicationContext.xml[]
-----
-
-Another example with reasoning and credentials set in the factory bean:
-
-[source,xml]
-----
-include::https://gist.githubusercontent.com/AlBaker/8747480/raw/stardog-spring.xml[]
-----
-
-Another example with configuring an EmbeddedProvider to run the Stardog embedded server:
-
-[source,xml]
-----
-include::https://gist.githubusercontent.com/AlBaker/decb9874f7060d8a041f/raw/64531a77a0377cfc40eea889085cb735bb6f5ec5/beans.xml[]
-----
-
 == Spring Batch
 
 In addition to the base `DataSource` and `SnarlTemplate`, Spring Batch
 support adds the following:
 
 -   `SnarlItemReader`:
-    `com.clarkparsia.stardog.ext.spring.batch.SnarlItemReader`
+    `com.complexible.stardog.ext.spring.batch.SnarlItemReader`
 -   `SnarlItemWriter`:
-    `com.clarkparsia.stardog.ext.spring.batch.SnarlItemWriter`
+    `com.complexible.stardog.ext.spring.batch.SnarlItemWriter`
 -   `BatchAdderCallback`:
-    `com.clarkparsia.stardog.ext.spring.batch.BatchAdderCallback`
-
-These beans can then be used within Spring Batch job definition, for
-example:
-
-<gist>4570209?file=batchContext.xml</gist>
-
-[source,xml]
-----
-include::https://gist.githubusercontent.com/AlBaker/4570209/raw/batchContext.xml[]
-----
-
-== Examples
-
-=== query() with SELECT queries
-
-[source,java]
-----
-include::https://gist.githubusercontent.com/kendall/1115894/raw/spring-select.java[]
-----
-
-=== doWithGetter
-
-[source,java]
-----
-include::https://gist.github.com/kendall/1115915/raw/dowithgetter.java[]
-----
-
-=== doWithAdder
-
-[source,java]
-----
-include::https://gist.github.com/kendall/1115915/raw/doWithAdder.java[]
-----
-
-=== doWithRemover
-
-[source,java]
-----
-include::https://gist.github.com/kendall/1115915/raw/doWithRemover.java[]
-----
-
-=== construct()
-
-[source,java]
-----
-include::https://gist.github.com/kendall/1115915/raw/construct.java[]
-----
-
-=== update()
-
-[source,java]
-----
-include::https://gist.github.com/AlBaker/7846171/raw/StardogSpringUpdate.java[]
-----
-
-=== ask()
-
-[source,java]
-----
-include::https://gist.github.com/AlBaker/7846198/raw/StardogSpringAsk.java
-----
+    `com.complexible.stardog.ext.spring.batch.BatchAdderCallback`

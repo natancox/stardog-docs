@@ -107,3 +107,15 @@ be instantiated.
 Answer:: Make sure that your classpath includes all Stardog JARs and that the user executing your
 code has access to them.
 
+=== Loading Compressed Data
+
+Question:: How can I load data from a compressed format that Stardog doesn't support?
+
+Answer:: Are you ready for some next-level Unix shit?
+
+[source,bash]
+----
+$ mkfifo some-data.rdf 
+$ xz -dc some-data.rdf.xz > some-data.rdf
+$ stardog-admin db create -n test some-data.rdf
+----

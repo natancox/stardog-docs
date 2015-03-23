@@ -20,8 +20,8 @@ The default value of `reasoning.schema.graphs` has been changed to `ALL` from
 
 The API for custom SPARQL functions has changed in Stardog 3 to accommodate the
 addition of custom SPARQL aggregates.  A discussion on how to create custom
-functions and aggregates can be found [in the
-examples](https://github.com/clarkparsia/stardog-examples/tree/master/examples/function).
+functions and aggregates can be found
+https://github.com/complexible/stardog-examples/tree/master/examples/function[in the examples].
 
 === Database Properties
 
@@ -42,7 +42,7 @@ either in stardog.properties or in the database metadata.
 
 === Empire
 
-The [Empire](https://github.com/mhgrove/Empire) bindings for Stardog have been
+The https://github.com/mhgrove/Empire[Empire] bindings for Stardog have been
 released under Apache license and are no longer part of the Stardog
 distribution. They are now available in the Empire code base in the `stardog`
 module.
