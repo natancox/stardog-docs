@@ -10,7 +10,7 @@ This section guides migration from Stardog 2.x to Stardog 3.
 enabled, or disabled; the database will determine the appropriate OWL profile to
 use given the TBox associated with the database. Therefore, the CLI commands that 
 optionally accept `-r, --reasoning` argument does not need a level value. The
-comannds that required a reasoning level in 2.x does not need a `-r, --reasoning` 
+commands that required a reasoning level in 2.x does not need a `-r, --reasoning` 
 argument anymore as they enable reasoning automatically. 
 
 The default value of `reasoning.schema.graphs` has been changed to `ALL` from
