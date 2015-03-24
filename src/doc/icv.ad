@@ -1090,7 +1090,7 @@ include::https://gist.githubusercontent.com/mhgrove/1333782/raw/CreateDiskAndICV
 ----
 
 This illustrates how to create a persistent disk database with ICV guard
-mode enabled at the QL reasoning type. Guard mode can also be enabled
+mode and reasoning enabled. Guard mode can also be enabled
 when the database is created on the <<Command Line Interface, CLI>>.
 
 == Terminology
