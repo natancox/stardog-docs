@@ -80,7 +80,7 @@ include::https://gist.githubusercontent.com/mhgrove/1333782/raw/CreateDiskAndICV
 ----
 
 This illustrates how to create a persistent disk database with ICV guard mode
-enabled at the QL reasoning type. For more information on what the available
+and reasoning enabled. For more information on what the available
 options for `set` are and what they mean, see the <<Database Admin>> section.
 Also note, Stardog database administration can be performed from the <<Command Line Interface, CLI>>.
 
@@ -257,10 +257,7 @@ include::https://gist.githubusercontent.com/mhgrove/1045578/raw/CreateReasoningC
 ----
 
 In this code example, you can see that it's trivial to enable reasoning
-for a `Connection`: simply call `reasoning` with the appropriate
-constant such as `ReasoningType.QL` passed in. In addition to OWL2 QL,
-EL, and RL, Stardog supports OWL2 DL *schema* queries. Stardog also
-supports http://www.w3.org/Submission/SWRL/[SWRL] and <<Stardog Rules Syntax,Stardog Rules>>, too.
+for a `Connection`: simply call `reasoning` with `true` passed in.
 
 === Search
 
