@@ -35,7 +35,7 @@ boolean flag:
 according to the value of `reasoning.level`.
 
 The default reasoning level is "false", that is, no reasoning is
-performed without exlicitly setting reasoning to "true". The default
+performed without explicitly setting reasoning to "true". The default
 value of `reasoning.level` is "SL", but may be set to any other
 reasoning level that Stardog supports ("RDFS", "EL", "QL", "RL", or
 "SL").footnote:[`RDFS` is the OWL 2 axioms allowed in
@@ -845,7 +845,7 @@ The form of the EQ depends on the reasoning level. For OWL 2 QL, every
 EQ produced by Stardog is **guaranteed to be expanded into a set of
 queries**. If the reasoning level is OWL 2 RL or EL, then the EQ *may*
 (but may not) include a recursive rule. _**If a recursive rule is included,
-Stardog's answers will be sound but incomplete with respect to the
+Stardog's answers may be incomplete with respect to the
 semantics of the reasoning level.**_
 
 === Why Query Rewriting?
