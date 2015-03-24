@@ -109,13 +109,17 @@ code has access to them.
 
 === Loading Compressed Data
 
-Question:: How can I load data from a compressed format that Stardog doesn't support?
+Question:: How can I load data from a compressed format that Stardog doesn't support without decompressing the file?
 
-Answer:: Are you ready for some next-level Unix shit?
+Answer:: Stardog supports several compression formats by default (zip, gzip, bzip2) so files compressed with those 
+formats can be passed as input directly without decompression. Files compressed with other formats can also be loaded
+to Stardog by decompressing them on-the-fly using http://en.wikipedia.org/wiki/Named_pipe[named pipes] in Unix-like
+systems. The following example shows using a named pipe where the decompressed data is sent directly to Stardog
+without being writing to disk.
 
 [source,bash]
 ----
 $ mkfifo some-data.rdf 
-$ xz -dc some-data.rdf.xz > some-data.rdf
+$ xz -dc some-data.rdf.xz > some-data.rdf &
 $ stardog-admin db create -n test some-data.rdf
 ----
