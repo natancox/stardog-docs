@@ -54,7 +54,7 @@ This creates a connection space for use in `connect` or `make-datasource` with t
 
 [source,clojure]
 ----
-{:url "snarl://localhost:5820/" :db "testdb" :pass "admin" :user "admin" :max-idle 100 :max-pool 200 :min-pool 10 :reasoning "none"}`
+{:url "snarl://localhost:5820/" :db "testdb" :pass "admin" :user "admin" :max-idle 100 :max-pool 200 :min-pool 10 :reasoning false}
 ----
 
 Create a single Connection using the database spec. Can be used with
@@ -109,7 +109,7 @@ Positional arguments are in order:
 
 -   base: The base URI for the query (String).
 -   parameters: A parameter map to bind parameters in the query (Map).
--   reasoning: The type of reasoning to use with the query (String/keyword).
+-   reasoning: The reasoning flag (boolean).
 -   converter: A function to convert returned values with (Function).
 -   key-converter: A function to convert returned binding names with (Function).
 -   limit: The limit for the result. Must be present to use offset (integer).
