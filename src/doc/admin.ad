@@ -115,7 +115,7 @@ works for `stardog-admin`, too:
 
 [source,bash]
 ----
-$ stardog reasoning consistency -u myUsername -p myPassword -r QL myDB
+$ stardog reasoning consistency -u myUsername -p myPassword -r myDB
 
 $ stardog-admin db migrate -u myUsername -p myPassword myDb
 ----
@@ -472,7 +472,7 @@ The following are the legal configuration options for a Stardog database:
 . `database.online`: The status of the database: online or offline. It may be set so that the database is created initially in online or offline status; subsequently, it can't be set directly but only by using the relevant admin commands.
 . `icv.active.graphs`: Specifies which part of the database, in terms of named graphs, is checked with IC validation. Set to `tag:stardog:api:context:all` to validate all the named graphs in the database.
 . `icv.enabled`: Determines whether ICV is active for the database; if true, all database mutations are subject to IC validation (i.e., "guard mode").
-. `icv.reasoning-type`: Determines what kind of reasoning is used during IC validation.
+. `icv.reasoning.enabled`: Determines if reasoning is used during IC validation.
 . `index.differential.enable.limit`: Sets the minimum size of the Stardog database before differential indexes are used.
 . `index.differential.merge.limit`: Sets the size in number of RDF triples before the differential indexes are merged to the main indexes.
 . `index.literals.canonical`: Enables RDF literal canonicalization.
@@ -550,10 +550,10 @@ The following table summarizes the options:
 | `false`
 | link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_ENABLED[ICVOptions.ICV_ENABLED]
 
-|`icv.reasoning.type`
+|`icv.reasoning.enabled`
 | Yes
-| `NONE`
-| link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_REASONING_TYPE[ICVOptions.ICV_REASONING_TYPE]
+| `false`
+| link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_REASONING_ENABLED[ICVOptions.ICV_REASONING_ENABLED]
 
 |`index.connection.timeout`
 | Yes
@@ -654,8 +654,7 @@ The legal value of `icv.active.graphs` is a comma-separated list of named graph
 identifiers. See `reasoning.schema.graphs` below for syntactic sugar
 URIs for default graph and all named graphs.
 
-The legal value of `icv.reasoning.type` is one of the reasoning levels
-(i.e, one of the following strings): `NONE, RDFS, QL, RL, EL, DL`.
+The legal value of `icv.reasoning.enabled` is either `true` or `false`.
 
 The legal value of `index.differential.*` is an integer.
 
@@ -802,7 +801,7 @@ follows:
 
 [source,bash]
 ----
-$ stardog-admin db create -n db -o icv.enabled=true icv.reasoning.type=QL -- input.ttl
+$ stardog-admin db create -n db -o icv.enabled=true icv.reasoning.enabled=true -- input.ttl
 ----
 
 Note that "`--`" is used in this case when "`-o`" is the last option to
