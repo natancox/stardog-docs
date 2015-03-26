@@ -25,18 +25,18 @@ eagerly materialized. See <<Same As Reasoning>> for more details.
 
 Stardog supports all of OWL 2, including DL, EQ, QL, and RL, as well
 as user-defined rules via SWRL. However, for the most part users don't
-need to worry too much about which reasoning level is necessary. Thus,
-the reasoning levels were simplified in Stardog 3.0 to a simple
+need to worry too much about which reasoning level is necessary. Thus, in 
+Stardog 3.0, reasoning can be enabled or disabled using a simple
 boolean flag:
 
 [horizontal]
 `false`:: No axioms or rules are considered; no reasoning is performed.
 `true`:: Axioms and rules are considered and reasoning is performed
-according to the value of `reasoning.level`.
+according to the value of the `reasoning.type` database option.
 
-The default reasoning level is "false", that is, no reasoning is
-performed without explicitly setting reasoning to "true". The default
-value of `reasoning.level` is "SL", but may be set to any other
+Reasoning is disabled by default; that is, no reasoning is
+performed without explicitly setting the reasoning flag to "true". The default
+value of `reasoning.type` is "SL", but may be set to any other
 reasoning level that Stardog supports ("RDFS", "EL", "QL", "RL", or
 "SL").footnote:[`RDFS` is the OWL 2 axioms allowed in
 http://www.w3.org/TR/rdf-schema/[RDF schema] (mainly subclasses,
@@ -82,18 +82,16 @@ during query evaluation.
 === Command Line
 
 In order to evaluate queries in Stardog using reasoning via the command
-line, a specific reasoning level must be specified in the connection
-string:
+line, reasoning must be enabled in the connection string:
 
 [source,bash]
 ----
-$ ./stardog query "myDB;reasoning=true" "SELECT ?s { ?s a :C } LIMIT 10"
+$ ./stardog query --reasoning myDB "SELECT ?s { ?s a :C } LIMIT 10"
 ----
 
 === HTTP
 
-For HTTP, the reasoning level is specified with the other HTTP request
-parameters:
+For HTTP, the reasoning flag is specified with the other HTTP request parameters:
 
 [source,bash]
 ----
@@ -102,9 +100,8 @@ $ curl -u admin:admin -X GET "http://localhost:5822/myDB/query?reasoning=true&qu
 
 === Reasoning Connection API
 
-In order to use the `ReasoningConnection` API one needs to specify a
-reasoning level. See the <<Java Programming>> section for
-details on specifying the reasoning level programmatically.
+In order to use the `ReasoningConnection` API one needs to enable 
+reasoning. See the <<Java Programming>> section for details.
 
 Currently, the API has two methods:
 
@@ -125,12 +122,12 @@ logically justify the inference. Explanations are useful for
 understanding data, schema, and their interactions, especially when large number
 of statements interact with each other to infer new statements.
 
-Explanations can be retrieved using the CLI
-by providing an input file that contains the inferences to be explained:
+Explanations can be retrieved using the CLI by providing an input file that contains 
+the inferences to be explained:
 
 [source,bash]
 ----
-$ stardog reasoning explain "myDB;reasoning=true" inference_to_explain.ttl
+$ stardog reasoning explain myDB inference_to_explain.ttl
 ----
 
 The output is displayed in a concise syntax designed to be legible;
