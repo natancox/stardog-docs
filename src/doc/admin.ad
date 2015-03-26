@@ -889,7 +889,7 @@ link:/man/db-restore.html[`restore`] for details.
 `stardog-admin db backup` assumes a default location for its output, namely,
 `$STARDOG_HOME/.backup`; that default may be overriden by passing
 a `-t` or `--to` argument. Backup sets are stored in the backup directory by
-database name and then in data-versioned subdirectories for each backup volume.
+database name and then in date-versioned subdirectories for each backup volume.
 Of course you can use a variety of OS-specific options to accomplish remote
 backups over some network or data protocol; those options are left as an
 exercise for the admin.
