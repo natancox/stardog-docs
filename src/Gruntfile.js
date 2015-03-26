@@ -43,13 +43,12 @@ module.exports = function(grunt) {
                     differential: true,
                 params: {
                         "CacheControl": "max-age=63072000, public",
-                        "Expires": new Date(Date.now() + 6.31139e10),//.toUTCString(),
+                        "Expires": new Date(Date.now() + 6.31139e10)//.toUTCString(),
                 }
                 },
-
                 files: [
-                    { expand: true, dest: '.', cwd: 'website/', src: ['**/*',], action: 'upload', differential: true },
-                    { dest: '/', cwd: 'website/', action: 'delete', differential: true }
+                    { action: "upload", expand: true, dest: '.', cwd: 'website/', src: ['**/*',], differential: true },
+                    //{ expand: true, dest: '/', cwd: 'website/', differential: true }
                 ]
             },
             gzipd: { //only the compressed html files
@@ -63,8 +62,7 @@ module.exports = function(grunt) {
                     "ContentEncoding": "gzip"
                 }
                 },
-                files: [ {expand: true, dest: ".", cwd: "website-gzipd/", src: ["**/*"], action:"upload", differential:true},
-                       ]
+                files: [ {expand: true, dest: ".", cwd: "website-gzipd/", src: ["**/*"], differential:true},]
             },
         },
         compress: {
@@ -76,7 +74,8 @@ module.exports = function(grunt) {
                 dest: "website-gzipd/",
             },
         },
-        invalidate_cloudfront: {
+      invalidate_cloudfront: {
+          aws: grunt.file.readJSON("../../grunt-aws-SECRET.json"),
           options: {
               key: "<%= aws.secret %>",
               secret: "<%= aws.key %>",

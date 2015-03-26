@@ -32,7 +32,7 @@ and a point of view in DC, Boston, and Germany.
 
 To learn more about where we've been and where we're headed, consult
 the {release-notes}[release notes] and
-<<Milestones,milestones>>.footnote:[This is version *{docdatetime}*.]
+<<Milestones,milestones>>.
 
 |===
 | Stardog Version | HTML             | PDF
@@ -79,5 +79,5 @@ Stardog 4.x::
 - Stardog Constellation, a unified graph computation framework
 - Virtual enterprise graphs from HDFS-based data lakes 
 
-Our roadmap is largely determined by customer input. Let us know what
-you want to see.
+Our roadmap is influenced by customer input. Let us know what
+you need.

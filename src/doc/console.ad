@@ -10,175 +10,19 @@ machine where Stardog is running.
 Seriously, this is a lot more fun if you just http://stardog.com/[download]
 the damn thing and hit it with a browser!
 
-==== Login
+==== Web Console
 
-To login into the Stardog Web Console, provide your username and password. If
-you're an administrative user, you'll have all the operations available,
-otherwise the functionality will be limited by your permissions.
+image::webconsole_main.png[Main,1388,1296]
 
-image::screen_login.png[Login,1394,1405]
+==== Browsing the Graph
 
-==== Homepage
+image::webconsole_browse.png[Browsing,1388,1380]
 
-image::screen_home.png[Home,1394,1405]
+==== Managing a Database
 
-==== Databases
+image:webconsole_db.png[Managing,1388,1296]
 
-image::screen_dbs.png[Databases,1394,1405]
+==== Searching the Graph
 
-==== View a database settings
+image:webconsole_search.png[Searching,1388,1296]
 
-image::screen_db_view.png[Database View,1394,1405]
-
-==== Database Status
-
-You can set the database online/offline with the switch included in the top
-right of the action bar. Setting the switch to `on` will set the database
-`online`, switching it `off` will set the database `offline`.
-
-NOTE: Setting a database offline will result in downtime on all the services
-provided by the database, e.g. querying, searching, modifying, etc.
-
-==== DB Actions
-
-Within the database view, a bar with actions available on the database is
-included. Depending on the database status, the actions available are:
-
-[horizontal]
-menu:Online[Query]:: Takes you to the Query Panel of the database, letting you query the DB with SPARQL queries
-menu:Online[Browse]:: Takes you to the Schema Browser of the database
-
-[horizontal]
-menu:Offline[Edit]:: Will render the database view in edit mode, letting you modify the database settings
-menu:Offline[Migrate]:: Migrates the existing content of a legacy database to new format
-menu:Offline[Optimize]:: Optimize an existing database
-
-==== Drop a database
-
-To drop a database click on btn:[Drop], a confirmation will appear to verify the removal.
-
-image::screen_delete_confirm.png[Confirm,1394,1405]
-
-==== Creating a new database
-
-To create a new database click btn:[New DB] in the database listing
-screen. A wizard will be shown to select and customize the settings of the DB.
-All values are optional except the database name, and all of them are pre-filled
-with the default values. You can finish the wizard to create a DB since the
-first step, just typing the database name and finish.
-
-image::screen_new_db.png[New Database,1394,1405]
-
-You can go through the wizard with btn:[Next] and btn:[Back], setting up
-every section of the database options. Every option contains help as a tooltip
-that is shown having the cursor over the option label.
-
-Once you're done setting the database options, at any step of the wizard, just
-click btn:[Finish] to create the database. You'll be redirected to the database view
-once it has been created in Stardog.
-
-==== Browsing the database as Linked Data
-
-You can browse the database as Linked Data graph, too.
-
-image::screen_instance_browsing.png[Linked Data,1394,1392]
-
-==== Browsing the Schema
-
-You can browse the schema (the class and property trees).
-
-image::screen_schema_browsing.png[Schema Browsing,1394,1392]
-
-==== Querying a database
-
-Stardog Web Console includes a SPARQL query editor for executing queries against
-the database; the editor includes some canned exploration queries, too.
-
-image::screen_sparql_query.png[SPARQL,1394,1392]
-
-image::screen_exploration_queries.png[Exploration Queries,1394,1392]
-
-==== Searching a database
-
-You can search the contents of the database using Stardog's search capability.
-
-image::screen_semantic_search.png[Search,1394,1392]
-
-==== Editing data in a database
-
-You can edit any statements in the database (with the requisite permissions).
-
-image::screen_editing.png[Editing,1394,1392]
-
-==== Listing in-flight queries
-
-To list the current running queries on the system click btn:[Query Management]
-in the top navbar, you'll be redirected to an accordion style listing of running
-queries. This listing is refreshed constantly to reflect the running queries in
-real time, if you have a query that has been running for a while it will be
-shown here.
-
-image::screen_query_list.png[Query List,1394,1415]
-
-==== View an in-flight query
-
-Clicking on the query entry in the listing will show the in-flight query's related
-information, such as the user who posted the query, the database it is running
-on, the reasoning level used for the query and the related timestamps. The query
-will be shown at the bottom.
-
-image::screen_query_info.png[Query Info,1394,1415]
-
-To kill a query in-flight, click on the query element in the listing to expand
-it and show its related information, a btn:[Kill] button will be shown, you can click
-on that button to terminate the query.
-
-==== Listing users
-
-On the navbar, menu:Security[Users] will give a listing of the existent users in the system.
-
-image::screen_users.png[Users,1394,1405]
-
-==== View user permissions & roles
-
-The user's view lets you administer a user's permissions and the roles it has
-been assigned to. To add permissions to a new resource for the user, click
-btn:[Add Permission] and provide the information for the resource; once
-it has been added to the list, click on the specific allowed actions. To add
-permissions to a resource already in the permissions table, just click on the
-permission actions to add/remove.
-
-To assign the user to a role, just type the role name in the `Add role` input
-and click btn:[Add]. The role names will be autocompleted to the ones already
-existing in the system.
-
-image::screen_user_view.png[User View,1394,1405]
-
-==== Create a new user
-
-To create a new user click btn:[New User] and provide the required
-information on the new User popup modal. You'll be redirected to the user's view
-once it has been created in Stardog.
-
-image::screen_new_user.png[New User,1394,1405]
-
-==== Listing roles
-
-On the navbar, menu:Security[Roles] for a listing of the extant roles.
-
-image::screen_roles.png[Roles,1394,1405]
-
-==== View role permissions & users assigned to it
-
-The roles's view lets you administer a role's permissions and the users it has
-been assigned to. To add permissions to a new resource for the role, click
-btn:[Add Permission] and provide the information for the resource, once it has
-been added to the list, click on the specific allowed actions. To add
-permissions to a resource already in the permissions table, just click on the
-permission actions to add/remove.
-
-To assign a user to the role, just type the username in the `Add user` input and
-click btn:[Add]. The usernames will be autocompleted to the ones already existing
-in the system.
-
-image::screen_role_view.png[Screen Role,1394,1405]
