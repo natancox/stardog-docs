@@ -82,7 +82,7 @@ during query evaluation.
 === Command Line
 
 In order to evaluate queries in Stardog using reasoning via the command
-line, reasoning must be enabled in the connection string:
+line, we use the reasoning flag:
 
 [source,bash]
 ----
