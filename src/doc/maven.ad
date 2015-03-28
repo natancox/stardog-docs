@@ -15,7 +15,7 @@ http://www.gradle.org[Gradle] convention and is of the form:
 |snarl client                 | `com.complexible.stardog:client-snarl:VERSION`
 |http client                  | `com.complexible.stardog:client-http:VERSION`
 |server                       | `com.complexible.stardog:server:VERSION`
-|sesame                       | `com.complexible.stardog.sesame:stardog-core:VERSION`
+|sesame                       | `com.complexible.stardog.sesame:stardog-sesame-core:VERSION`
 |jena                         | `com.complexible.stardog.jena:stardog-jena:VERSION`
 |===
 
