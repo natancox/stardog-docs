@@ -12,9 +12,9 @@ http://www.gradle.org[Gradle] convention and is of the form:
 .Table of client type dependencies
 |===
 |*Type*                         | *Stardog Dependency*
-|snarl client                 | `com.complexible.stardog:client-snarl:VERSION`*
-|http client                  | `com.complexible.stardog:client-http:VERSION`*
-|server                       | `com.complexible.stardog:server:VERSION`*
+|snarl client                 | `com.complexible.stardog:client-snarl:VERSION`
+|http client                  | `com.complexible.stardog:client-http:VERSION`
+|server                       | `com.complexible.stardog:server:VERSION`
 |sesame                       | `com.complexible.stardog.sesame:stardog-sesame-core:VERSION`
 |jena                         | `com.complexible.stardog.jena:stardog-jena:VERSION`
 |===
@@ -52,8 +52,9 @@ to your Maven `pom.xml`:
 </repositories>
 ----
 
-* If you're using Maven as your build tool, these dependencies require that you specify the
-packaging type. For example:
+NOTE: If you're using Maven as your build tool, then `client-snarl`,
+`client-http`, and `server` dependencies require that you specify the packaging
+type. For example,
 
 [source, xml]
 ----
