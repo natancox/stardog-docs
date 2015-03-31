@@ -487,6 +487,7 @@ for details.
 . `reasoning.punning.enabled`: Enables punning.
 . `reasoning.schema.graphs`: Determines which, if any, named graph or graphs contains the "tbox", i.e., the schema part of the data.
 . `reasoning.type`: Specifies the reasoning level associated with the database ("RDFS", "EL", "QL", "RL", or "SL").
+. `reasoning.approximate`: Flag to enable approximate reasoning. With this flag enabled Stardog will approximate an axiom that is outside the profile Stardog supports and normally ignored. For example, an equivalent class axiom might be split into two subclass axioms and only one subclass axiom is used. 
 . `search.enabled`: Enables semantic search on the database.
 . `search.reindex.mode`: Sets how search indexes are maintained.
 - `strict.parsing`: Controls whether Stardog parses RDF strictly (`true`, the default) or loosely (`false`)
@@ -620,6 +621,11 @@ The following table summarizes the options:
 | Yes
 | `default`
 | link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#SCHEMA_GRAPHS[ReasoningOptions.SCHEMA_GRAPHS]
+
+|`reasoning.approximate`
+| Yes
+| `false`
+| link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#SCHEMA_GRAPHS[ReasoningOptions.APPROXIMATE]
 
 |`search.enabled`
 | Yes
