@@ -910,12 +910,12 @@ following database where `sameAs` reasoning is set to `ON`:
 [source, ttl]
 ----
 dbpedia:Elvis_Presley
-    rdfs:label "Elvis Presley" ;
     dbpedia-owl:birthPlace dbpedia:Mississippi ;
     owl:sameAs freebase:en.elvis_presley .
 
 nyt:presley_elvis_per
     nyt:associated_article_count 35 ;
+    rdfs:label "Elvis Presley" ;
     owl:sameAs dbpedia:Elvis_Presley .
  
 freebase:en.elvis_presley
