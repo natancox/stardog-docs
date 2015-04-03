@@ -42,8 +42,8 @@ line of code:
 include::https://gist.githubusercontent.com/mhgrove/1333782/raw/CreateTempMemDb.java[]
 ----
 
-NOTE: It's important to always clean up connections to the database by calling
-`AdminConnection#close().
+WARNING: It's *crucially important to always clean up connections to the
+database* by calling `AdminConnection#close().
 
 You can also use the
 link:java/snarl/com/complexible/stardog/api/admin/AdminConnection.html#memory[`memory`]

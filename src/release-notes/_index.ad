@@ -2,7 +2,7 @@
 :title: Stardog Release Notes
 :revnumber: {version}
 :toc: right 
-:toc-title: "Release Notes"
+:toc-title: 
 :toclevels: 1 
 :experimental:
 :page-layout: base
@@ -18,10 +18,15 @@
 :cache-uri:
 :sectlinks:
 
+[horizontal]
+image:a.png[]:: Add new feature
+image:m.png[]:: Modified system 
+image:f.png[]:: Fixed bug
+
 == 3.0 Release
 [none]
 *ADD: Equality Reasoning
-*ADD: Cluster 1.0
+*ADD: High Availability Cluster
 *ADD: LDAP Authentication
 *ADD: DL instance reasoning (in-memory only)
 *ADD: Removed reasoning types; reasoning is either enabled or disabled.  Database auto-detects profile

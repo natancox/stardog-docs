@@ -272,6 +272,25 @@ module.exports = function(grunt) {
                   from: '</body>',
                   to: '<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>\n<script>hljs.initHighlightingOnLoad()</script>\n</body>'
               }]
+          },
+          release_notes: {
+              src: ['release-notes/_index.ad'],
+              dest: ['release-notes/index.ad'],
+              overwrite: false,
+              replacements: [
+                  {
+                      from: "*ADD: ",
+                      to: "* image:a.png[Fixed,15,14]&nbsp;&nbsp; "
+                  },
+                  {
+                      from: "*FIX: ",
+                      to: "* image:f.png[Fixed,15,15]&nbsp;&nbsp; "
+                  },
+                  {
+                      from: "*MOD: ",
+                      to: "* image:m.png[Fixed,15,16]&nbsp;&nbsp; " 
+                  }
+              ]
           }
       },
   });

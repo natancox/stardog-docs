@@ -25,7 +25,7 @@
 :linkattrs:
 :base-url: http://docs.stardog.com/
 :release-notes: {base-url}RELEASE_NOTES.txt
-:cache-uri:
+//:cache-uri:
 :sectlinks:
 
 include::preamble.ad[]
