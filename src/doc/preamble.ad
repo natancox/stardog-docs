@@ -35,8 +35,9 @@ the {release-notes}[release notes] and
 <<Milestones,milestones>>.
 
 |===
-| Stardog Version | HTML             | PDF
-| 3.0     | link:/#[✓]       | link:stardog-manual-{version}.pdf[✓]
+| Stardog Version | HTML     | PDF
+| 3.0.1   | link:/[✓]        | link:/stardog-manual-{version}.pdf[✓]
+| 3.0     | link:/3.0/#[✓]   | link:/3.0/stardog-manual-3.0.pdf[✓]
 | 2.2.4   | link:/2.2.4/[✓]  | ✗
 |===
 
