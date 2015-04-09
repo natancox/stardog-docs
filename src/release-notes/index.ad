@@ -1,9 +1,9 @@
 = {title}
 :title: Stardog Release Notes
 :revnumber: {version}
-//:toc: right 
-//:toc-title: 
-//:toclevels: 1 
+:toc: right 
+:toc-title: 
+:toclevels: 1 
 :experimental:
 :page-layout: base
 :description: Stardog is a fast, lightweight graph database that supports SPARQL, RDF, OWL, and user-defined rules.
@@ -18,10 +18,15 @@
 :cache-uri:
 :sectlinks:
 
+[horizontal]
+image:a.png[]:: Added new feature
+image:m.png[]:: Modified system 
+image:f.png[]:: Fixed bug
+
 == 3.0 Release
 [none]
 * image:a.png[Fixed,15,14]&nbsp;&nbsp; Equality Reasoning
-* image:a.png[Fixed,15,14]&nbsp;&nbsp; Cluster 1.0
+* image:a.png[Fixed,15,14]&nbsp;&nbsp; High Availability Cluster
 * image:a.png[Fixed,15,14]&nbsp;&nbsp; LDAP Authentication
 * image:a.png[Fixed,15,14]&nbsp;&nbsp; DL instance reasoning (in-memory only)
 * image:a.png[Fixed,15,14]&nbsp;&nbsp; Removed reasoning types; reasoning is either enabled or disabled.  Database auto-detects profile
@@ -126,14 +131,14 @@
 * image:f.png[Fixed,15,15]&nbsp;&nbsp; HTTPConnection.admin uses the wrong server URL
 
 == 2.2.4 Release
-
+[none]
 * image:f.png[Fixed,15,15]&nbsp;&nbsp; File descriptor leak in cluster proxy
 * image:f.png[Fixed,15,15]&nbsp;&nbsp; Reasoning write events are not correctly handled by data replication
 * image:f.png[Fixed,15,15]&nbsp;&nbsp; ZK and proxy use same java args as Stardog server
 * image:f.png[Fixed,15,15]&nbsp;&nbsp; Corrected rolling timeout handling in data replication to better allow for expensive/large replications
 
 == 2.2.3 Release
-
+[none]
 * image:m.png[Fixed,15,16]&nbsp;&nbsp; Querying an uncommitted state with reasoning updates reasoner state eagerly
 * image:m.png[Fixed,15,16]&nbsp;&nbsp; More optimized implementation for MINUS when using sorted operands
 * image:m.png[Fixed,15,16]&nbsp;&nbsp; Improve SPARQL query pre-processing in Query Panel
@@ -162,7 +167,7 @@
 * image:f.png[Fixed,15,15]&nbsp;&nbsp; Reasoning with transitive reflexive properties with SL causes class cast exception
 
 == 2.2.2 Release
-
+[none]
 * image:a.png[Fixed,15,14]&nbsp;&nbsp; Support xpath:subtract-dateTimes
 * image:m.png[Fixed,15,16]&nbsp;&nbsp; Improved performance of BIND operator
 * image:m.png[Fixed,15,16]&nbsp;&nbsp; Improved performance of count aggregate
