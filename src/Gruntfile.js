@@ -119,7 +119,7 @@ module.exports = function(grunt) {
               }
           }
       },
-      availabletasks: {     
+      availabletasks: {
           tasks: {}
       },
       imagemin: {
@@ -152,6 +152,15 @@ module.exports = function(grunt) {
                   comm += " -a data-uri"
                   comm += " -o website/index.html 2> /dev/null"
                   //console.log(comm);
+                  return comm
+              }
+          },
+          release_notes: {
+              command: function () {
+                  comm = "asciidoctor ";
+                  comm += "-v -t -a allow-uri-read -a embedcss -a stylesheet='../doc/stardog.css' release-notes/index.ad -a data-uri "
+                  comm += "-o website/release-notes/index.html"
+                  console.log(comm);
                   return comm
               }
           },
@@ -192,14 +201,15 @@ module.exports = function(grunt) {
               cwd: 'website/'
           }
       },
-      htmlmin: {                                 
-          dist: {                                     
-              options: {                               
+      htmlmin: {
+          dist: {
+              options: {
                   removeComments: true,
                   collapseWhitespace: true
               },
               files: {
-                  'website/index.html': 'website/index.html',    
+                  'website/index.html': 'website/index.html',
+                  'website/release-notes/index.html': 'website/release-notes/index.html',
               }
           },
       },
@@ -232,7 +242,8 @@ module.exports = function(grunt) {
           css: ["website/stardog.css"],
           css2: ["style/stylesheets/stardog.css"],
           build: ["website/index.html", "website/icv", "website-gzipd/index.html"],
-          release: ["doc/optimized-img"]
+          release: ["doc/optimized-img"],
+          release_notes: ['website/release-notes/index.html', "website-gzipd/release-notes/index.html"]
       },
       "link-checker": {
           options: {
@@ -288,7 +299,7 @@ module.exports = function(grunt) {
                   },
                   {
                       from: "*MOD: ",
-                      to: "* image:m.png[Fixed,15,16]&nbsp;&nbsp; " 
+                      to: "* image:m.png[Fixed,15,16]&nbsp;&nbsp; "
                   }
               ]
           }
@@ -306,14 +317,19 @@ module.exports = function(grunt) {
                                    'copy:main',
                                    'copy:css',
                                    'autoprefixer',
-                                  // 'uncss',
                                    'cssmin',
                                    'embed',
                                    'inline',
                                    'clean:css',
                                   ]);
+    grunt.registerTask("release_notes", [
+        'clean:release_notes',
+        'replace:release_notes',
+        'shell:release_notes',
+    ]);
     grunt.registerTask('pub', [
         //do we want to start off by doing a bump?
+        'release_notes',
         'default',
         'shell:pdf',
         'compress',
