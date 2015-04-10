@@ -20,6 +20,32 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
+== 3.0.1 Release
+[none]
+*MOD: Improve handling of very large schemas
+*MOD: Reduced memory usage of reasoner
+*MOD: Better error messages for SPARQL update parsing errors
+*FIX: Super properties of topObjectProperty are list
+*FIX: Property hierarchy contains duplicates
+*FIX: Parameters assigned to update queries are not set in the where clause
+*FIX: Explanations for schema inferences inadvertantly extracts instance data into memory 
+*FIX: Long queries in webconole produce exceptions
+*FIX: Optimization of property paths could yield incorrect results
+*FIX: User defined classes that produce bnodes are hidden in schema browser
+*FIX: Avg of an empty group returns the wrong result
+*FIX: Variables bound by VALUES clause not treated as join vars
+*FIX: IllegalStateException: This scan isn't supposed to skip 
+*FIX: SL filter does not support data some values as superclass 
+*FIX: Inline optimization fails with sameAs reasoning
+*FIX: Webconsole does not support reasoning.approximate option 
+*FIX: Overriding query.all.graphs in database configuration does not work
+*FIX: Literal comparator is broken
+*FIX: SPARQL Update request with no query returns a 200 via http
+*FIX: DB creation message contains incorrect info 
+*FIX: Annex dependency causes maven resolution problems
+*FIX: Accept */* not recognized
+*FIX: Long literals not wrapped in the webconsole
+
 == 3.0 Release
 [none]
 *ADD: Equality Reasoning
