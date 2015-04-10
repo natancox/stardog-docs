@@ -20,6 +20,32 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
+== 3.0.1 Release
+[none]
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Improve handling of very large schemas
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Reduced memory usage of reasoner
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Better error messages for SPARQL update parsing errors
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Super properties of topObjectProperty are list
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Property hierarchy contains duplicates
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Parameters assigned to update queries are not set in the where clause
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Explanations for schema inferences inadvertantly extracts instance data into memory 
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Long queries in webconsole produce exceptions
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Optimization of property paths could yield incorrect results
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; User defined classes that produce bnodes are hidden in schema browser
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Avg of an empty group returns the wrong result
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Variables bound by VALUES clause not treated as join vars
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; IllegalStateException: This scan isn't supposed to skip 
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; SL filter does not support data some values as superclass 
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Inline optimization fails with sameAs reasoning
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Webconsole does not support reasoning.approximate option 
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Overriding query.all.graphs in database configuration does not work
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Literal comparator is broken
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; SPARQL Update request with no query returns a 200 via http
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; DB creation message contains incorrect info 
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Annex dependency causes maven resolution problems
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Accept `&#42;/&#42;` not recognized
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Long literals not wrapped in the webconsole
+
 == 3.0 Release
 [none]
 * image:a.png[Fixed,15,14]&nbsp;&nbsp; Equality Reasoning

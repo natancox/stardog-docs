@@ -29,7 +29,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *FIX: Property hierarchy contains duplicates
 *FIX: Parameters assigned to update queries are not set in the where clause
 *FIX: Explanations for schema inferences inadvertantly extracts instance data into memory 
-*FIX: Long queries in webconole produce exceptions
+*FIX: Long queries in webconsole produce exceptions
 *FIX: Optimization of property paths could yield incorrect results
 *FIX: User defined classes that produce bnodes are hidden in schema browser
 *FIX: Avg of an empty group returns the wrong result
@@ -43,7 +43,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *FIX: SPARQL Update request with no query returns a 200 via http
 *FIX: DB creation message contains incorrect info 
 *FIX: Annex dependency causes maven resolution problems
-*FIX: Accept */* not recognized
+*FIX: Accept `&#42;/&#42;` not recognized
 *FIX: Long literals not wrapped in the webconsole
 
 == 3.0 Release
