@@ -1177,6 +1177,27 @@ then the EQ would collapse to
 +
 which is considerably easier to evaluate.
 
+=== Very Large Schemas
+
+If you are working with a very large schema like SNOMED then there are couple
+things to note. First of all, Stardog reasoning works by pulling the complete
+schema into memory. This means you might need to increase the default memory 
+settings for Stardog for a large schema. Stardog performs all schema reasoning 
+upfront and only once but waits until the first reasoning query arrives. With a 
+large schema, this step can be slow but subsequent reasoning queries will be 
+fast. Also note that, Stardog will update schema reasoning results automatically 
+after the database is modified so there will be some processing time spent then.
+
+Reasoning with very expressive schemas can be time consuming and use a lot of
+memory. To get the best performance out of Stardog with large schemas, limit the
+expressivity of your schema to 
+http://www.w3.org/TR/2012/REC-owl2-profiles-20121211/#OWL_2_EL[OWL 2 EL]. You
+can also set the reasoning level of the database to `EL` and Stardog will 
+automatically filter any axiom outside the EL expressivity. See 
+<<Reasoning Levels>> for more details on reasoning levels. OWL 2 EL allows
+range declarations for properties and user-defined datatypes but avoiding these
+two constructs will further improve schema reasoning performance in Stardog.
+
 == Not Seeing Expected Results?
 
 Here's a few things that you might want to consider.
@@ -1233,7 +1254,10 @@ reasoning can be performed as requested.
 
 Stardog might be extracting the wrong schema. You have to tell Stardog where to
 find the schema. See database <<Configuration Options, configuration options>>
-for details.
+for details. You can also use the 
+{man-base-url}man/reasoning-schema.html[`reasoning schema`]
+command to export the contents of the schema to see exactly what is included in
+the schema that Stardog uses.
 
 === Are you using the right reasoning level?
 
@@ -1271,7 +1295,6 @@ Stardog {version} does not
     query with respect to the schema, results will be sound (__no wrong
     answers__) but potentially incomplete (__some correct answers not
     returned__) with respect to the requested reasoning type.
--   Perform datatype reasoning or respect user-defined datatypes.
 
 == Terminology
 
