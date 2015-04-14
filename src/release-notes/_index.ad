@@ -25,6 +25,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *MOD: Improve handling of very large schemas
 *MOD: Reduced memory usage of reasoner
 *MOD: Better error messages for SPARQL update parsing errors
+*FIX: Incorrect query results within a transaction
 *FIX: Super properties of topObjectProperty are list
 *FIX: Property hierarchy contains duplicates
 *FIX: Parameters assigned to update queries are not set in the where clause
