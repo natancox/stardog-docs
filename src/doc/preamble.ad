@@ -50,22 +50,20 @@ can also ask questions on Stack Overflow using the tag `stardog`.
 
 == Contributing 
 
-There are several open source components of Stardog; feel free to
-submit pull requests:
-https://github.com/complexible/stardog-docs[stardog-docs],
+There are several open source components of Stardog; feel free to submit pull
+requests: https://github.com/complexible/stardog-docs[stardog-docs],
 https://github.com/complexible/stardog.js[stardog.js],
 https://github.com/complexible/stardog-groovy[stardog-groovy],
 https://github.com/complexible/stardog-spring[stardog-spring],
 https://github.com/antoniogarrote/stardog-rb[stardog.rb], and
-https://github.com/complexible/stardog-clj[stardog-clj]. Many thanks
-to Stardog customers, users, contributors, testers, etc. You know who
-you are, and so do we. Thank you!footnote:[Robert Butler, Marko A. Rodriguez, Brian
-Sletten, Alin Dreghiciu, Rob Vesse, Stephane Fallah, John Goodwin,
-José Devezas, Chris Halaschek-Wiener, Gavin Carothers, Brian Panulla,
-Ryan Kohl, Morton Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex
-Tucker, Ron Zettlemoyer, Jim Rhyne, Andrea Westerinen, Huy Phan, Zach
-Whitley, Maurice Rabb, Grant Pax, the crew at XSB, and the nice people
-at El Rinconcito Cafe in DC.]
+https://github.com/complexible/stardog-clj[stardog-clj]. Many thanks to Stardog
+customers, users, contributors, testers, etc. You know who you are, and so do
+we. Thank you!footnote:[Robert Butler, Marko A. Rodriguez, Brian Sletten, Alin
+Dreghiciu, Rob Vesse, Stephane Fallah, John Goodwin, José Devezas, Chris
+Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl, Morton Swimmer,
+Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron Zettlemoyer, Jim Rhyne,
+Andrea Westerinen, Huy Phan, Zach Whitley, Maurice Rabb, Grant Pax, Conrad
+Leonard, the crew at XSB, and the nice people at El Rinconcito Cafe in DC.]
 
 == Roadmap
 

@@ -619,7 +619,7 @@ The following table summarizes the options:
 
 |`reasoning.schema.graphs`
 | Yes
-| `default`
+| `*`
 | link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#SCHEMA_GRAPHS[ReasoningOptions.SCHEMA_GRAPHS]
 
 |`reasoning.approximate`

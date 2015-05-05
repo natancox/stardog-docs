@@ -1212,17 +1212,12 @@ http://www.w3.org/TR/sparql11-entailment/#OWLDSEnRegime[relevant standard],
 **every variable in a SPARQL query must bind to at most one of these types of
 entity**.
 
-Stardog can often figure out the right entity type from the query itself
-(e.g., given the triple pattern `?i ?p "a literal"`, we know `?p` is
-supposed to bind to a data property); however, sometimes this isn't
-possible (e.g., `?s ?p ?o`). In case the types can't be determined
-automatically, **Stardog logs a message and evaluates the query without
-any reasoning**.
-
-NOTE: This bears repeating since it's a frequently asked question: If Stardog
-cannot determine the types of variables in a query for which reasoning is
-requested, Stardog will log a message and evaluate the query __without
-reasoning__.
+Stardog can often figure out the right entity type from the query itself (e.g.,
+given the triple pattern `?i ?p "a literal"`, we know `?p` is supposed to bind
+to a data property); however, sometimes this isn't possible (e.g., `?s ?p
+?o`). In case the types can't be determined automatically, **Stardog logs a
+message and evaluates the query by making some assumptions, which may not be
+what the query writer intended, about the types of variables**.
 
 You can add one or more type triples to the query to resolve these
 ambiguities.footnote:[These are harmless and won't otherwise affect query
@@ -1230,55 +1225,51 @@ evaluation; they can also be added to the data, instead of to queries,
 if that fits your use case better.]
 
 These "type triples" have the form `?var a TYPE`, where `TYPE` is a URI
-representing the type of entity to which the variable `?var` is supposed
-to bind: the most common are `owl:ObjectProperty` or
-`owl:DatatypeProperty`; in some cases, you might want
-`owl:NamedIndividual`, or `owl:Class`. For instance, if you are
-interested in all the object properties of `:i1`, you can use the
-following query:
+representing the type of entity to which the variable `?var` is supposed to
+bind: the most common are `owl:ObjectProperty` or `owl:DatatypeProperty`; in
+some cases, you might want `owl:NamedIndividual`, or `owl:Class`. For instance,
+you can use the following query to retrieve all object properties and their
+characteristics; without the type triple, `?s` will bind only to individuals:
 
 [source,sparql]
 ----
     SELECT ?o
     WHERE {
-        :i1 ?p ?o.
-        ?p a owl:ObjectProperty.
+        ?s rdf:type ?o.
+        ?s a owl:ObjectProperty.
     }.
 ----
 
-Since Stardog now knows that `?p` should bind to an object property, we can now
-infer that `?o` binds to an individual, so there are no ambiguities and
-reasoning can be performed as requested.
+Since Stardog now knows that `?s` should bind to an object property, it can now
+infer that `?o` binds to property characteristics of `?s`.
 
 === Is the schema where you think it is?
 
-Stardog might be extracting the wrong schema. You have to tell Stardog where to
-find the schema. See database <<Configuration Options, configuration options>>
-for details. You can also use the 
-{man-base-url}man/reasoning-schema.html[`reasoning schema`]
-command to export the contents of the schema to see exactly what is included in
-the schema that Stardog uses.
+Starting in Stardog 3.0, Stardog will extract the schema from *all named graphs
+and the default graph*.
+
+If you require that the schema only be extracted from one or more specific named
+graphs, then you must tell Stardog where to find the schema. See database
+<<Configuration Options, configuration options>> for details. You can also use
+the {man-base-url}man/reasoning-schema.html[`reasoning schema`] command to
+export the contents of the schema to see exactly what is included in the schema
+that Stardog uses.
 
 === Are you using the right reasoning level?
 
 Perhaps some of the modeling constructs (a.k.a. axioms) in your database are
-being ignored. You can find out which axioms are being ignored by including the
-following line in the logging.properties file in `STARDOG_HOME`:
-
-[source,java]
-----
-com.complexible.blackout.level = ALL
-----
+being ignored. By default, Stardog uses the `SL` reasoning level. You can find
+out which axioms are being ignored by looking at the Stardog log file.
 
 === Are you using DL?
 
-Stardog supports schema-only reasoning for OWL 2 DL, which effectively means
-that only TBox queries—queries that contain <<Queries, TBox BGPs>> only—will
-return complete query results.
+Stardog supports full OWL 2 DL reasoning but only for data that fits into main
+memory. 
 
 === Are you using SWRL?
 
-As from version 2.0, SWRL rules are only taken into account using the **SL** reasoning level.
+SWRL rules--whether using SWRL syntax or Stardog Rules Syntax--are only taken
+into account using the **SL** reasoning level.
 
 === Do you know what to expect?
 
