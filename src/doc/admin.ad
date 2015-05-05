@@ -408,7 +408,7 @@ To access Watchdog, you can simply use a tool like VisualVM or
 JConsole to attach to the process running the JVM, or connect directly
 to the JMX server. You can also access information from Watchdog in
 the web console for the database, or by performing a `GET` on
-`/{db}/watchdog` which will return a simple JSON object containing the
+`/watchdog` which will return a simple JSON object containing the
 information available via JMX.
 
 ==== Configuring Watchdog
