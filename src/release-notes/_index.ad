@@ -20,6 +20,45 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
+== 3.0.2 Release
+[none]
+*MOD: Do not force an slf4j implementation in the Maven dependencies
+*MOD: Improve SPARQL Service Description creation for named graphs
+*MOD: Improve writing index metadata to disk
+*MOD: Expose configuration for specifying join/write timeouts in the cluster
+*MOD: Faster inlining of `xsd:double`-typed literals
+*MOD: Better cardinality estimations for property paths
+*MOD: Improve plan caching
+*MOD: Reduce lock contention in search indexing to improve its performance 
+*MOD: Reduced memory overhead of grouping operators `distinct`, `minus`, `group` and some joins.
+*MOD: Faster update of reasoner state when schema does not change
+*MOD: Supply the missing switch to enable/disable `query.all.graphs` in web console
+*MOD: Improve performance of the processing of user-defined datatypes
+*MOD: Better use of concurrency when computing the reasoner state
+*FIX: Detect untyped classes and properties outside schema graphs
+*FIX: Exception from reasoner when `rdfs:range` is a `rdfs:Literal`
+*FIX: Missing results when `owl:sameAs` is explicitly used in queries
+*FIX: Missing results for some types of queries when using equality reasoning
+*FIX: Ground reasoning queries with unknown properties should not update schema
+*FIX: CLI data add command should send absolute paths
+*FIX: Query status command prints incorrect timeout value
+*FIX: Named graph info in SPARL Service Description does not match the spec
+*FIX: SPARQL Service Description should not include dataset by default
+*FIX: Avoid caching update plans for `insert/remove data` queries
+*FIX: `xsd:double` inlining isn't functional
+*FIX: 'Reasoning' is misspelled in the form for creating a new database in the webconsole
+*FIX: Missing query results with property paths and equality reasoning
+*FIX: Setting `reasoning.type=NONE` should disable schema reasoning
+*FIX: Error while parsing query that uses `exists`
+*FIX: NullPointerException with GROUP_CONCAT
+*FIX: Plans with property paths are not cached properly
+*FIX: Avoid use of default `false` value for `query.all.graphs`
+*FIX: Optimizer can select sub-optimal scans over the index
+*FIX: Duration 0 is shown as Oms
+*FIX: Computing reasoner state for a large number of named graphs is slow
+*FIX: Comments with leading spaces seem to cause parse errors
+*FIX: Order operator is never simple sorted
+
 == 3.0.1 Release
 [none]
 *MOD: Improve handling of very large schemas
