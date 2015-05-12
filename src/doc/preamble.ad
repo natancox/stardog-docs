@@ -36,17 +36,17 @@ the {release-notes}[release notes] and
 
 |===
 | Stardog Version | HTML     | PDF
-| 3.0.1   | link:/[✓]        | link:/stardog-manual-{version}.pdf[✓]
+| 3.0.2   | link:/[✓]        | link:/stardog-manual-{version}.pdf[✓]
+| 3.0.1   | link:/3.0.1#[✓]  | link:/3.0.1/stardog-manual-3.0.1.pdf[✓]
 | 3.0     | link:/3.0/#[✓]   | link:/3.0/stardog-manual-3.0.pdf[✓]
 | 2.2.4   | link:/2.2.4/[✓]  | ✗
 |===
 
-== Downloading Stardog
+== Downloading Stardog & Support
 
 http://stardog.com/#download[Download] Stardog to get started. The
 https://groups.google.com/a/clarkparsia.com/d/forum/stardog[Stardog
-support forum] is the place to report bugs, ask questions, etc. You
-can also ask questions on Stack Overflow using the tag `stardog`.
+support forum] is the place to report bugs, ask questions, etc.
 
 == Contributing 
 
