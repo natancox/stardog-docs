@@ -20,6 +20,45 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
+== 3.0.2 Release
+[none]
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Do not force an slf4j implementation in the Maven dependencies
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Improve SPARQL Service Description creation for named graphs
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Improve writing index metadata to disk
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Expose configuration for specifying join/write timeouts in the cluster
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Faster inlining of `xsd:double`-typed literals
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Better cardinality estimations for property paths
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Improve plan caching
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Reduce lock contention in search indexing to improve its performance 
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Reduced memory overhead of grouping operators `distinct`, `minus`, `group` and some joins.
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Faster update of reasoner state when schema does not change
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Supply the missing switch to enable/disable `query.all.graphs` in web console
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Improve performance of the processing of user-defined datatypes
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Better use of concurrency when computing the reasoner state
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Detect untyped classes and properties outside schema graphs
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Exception from reasoner when `rdfs:range` is a `rdfs:Literal`
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Missing results when `owl:sameAs` is explicitly used in queries
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Missing results for some types of queries when using equality reasoning
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Ground reasoning queries with unknown properties should not update schema
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; CLI data add command should send absolute paths
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Query status command prints incorrect timeout value
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Named graph info in SPARL Service Description does not match the spec
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; SPARQL Service Description should not include dataset by default
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Avoid caching update plans for `insert/remove data` queries
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; `xsd:double` inlining isn't functional
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; 'Reasoning' is misspelled in the form for creating a new database in the webconsole
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Missing query results with property paths and equality reasoning
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Setting `reasoning.type=NONE` should disable schema reasoning
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Error while parsing query that uses `exists`
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; NullPointerException with GROUP_CONCAT
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Plans with property paths are not cached properly
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Avoid use of default `false` value for `query.all.graphs`
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Optimizer can select sub-optimal scans over the index
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Duration 0 is shown as Oms
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Computing reasoner state for a large number of named graphs is slow
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Comments with leading spaces seem to cause parse errors
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Order operator is never simple sorted
+
 == 3.0.1 Release
 [none]
 * image:m.png[Fixed,15,16]&nbsp;&nbsp; Improve handling of very large schemas

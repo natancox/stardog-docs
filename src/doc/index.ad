@@ -24,7 +24,7 @@
 :imagesdir: optimized-img/
 :linkattrs:
 :base-url: http://docs.stardog.com/
-:release-notes: {base-url}RELEASE_NOTES.txt
+:release-notes: {base-url}release-notes/
 //:cache-uri:
 :sectlinks:
 
