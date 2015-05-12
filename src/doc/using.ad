@@ -50,7 +50,7 @@ http://www.w3.org/TR/sparql11-federated-query/[SERVICE]
 keywordfootnote:[The last SPARQL 1.1 feature that we didn't support.]
 which allows users to query distributed RDF via SPARQL-compliant data
 sources. You can use this to federate queries between several Stardog
-database, or Stardog and other public endpoints.
+database or Stardog and other public endpoints.
 
 NOTE: Stardog 3.0 doesn't support variables for the service URL
 (`SERVICE ?serviceURL`).

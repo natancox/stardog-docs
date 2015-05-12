@@ -1,7 +1,5 @@
 == Cluster Management
 
-include::customer-feature-only.ad[]
-
 === Deployment
 
 === Elastic Scaling

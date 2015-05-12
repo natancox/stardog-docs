@@ -38,17 +38,17 @@ include::using.ad[]
 
 include::admin.ad[]
 
+include::security.ad[]
+
 ifdef::docker[]
 include::docker.ad[]
 endif::docker[]
 
 include::cluster.ad[]
 
-ifdef::clusterman[]
 include::cluster-management.ad[]
-endif::clusterman[]
 
-include::security.ad[]
+include::virtual-graphs.ad[]
 
 include::owl2.ad[]
 

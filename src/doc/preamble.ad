@@ -4,8 +4,14 @@ Stardog is a fast, semantic graph database for the enterprise. Check
 out the <<Quick Start Guide>> to get Stardog installed and running in
 five easy steps.
 
-.What's New in 3.0
+.What's New
 ****
+.In 3.1...
+- [x] <<Named Graph Security>>
+- [x] <<Cluster Management>>
+- [x] <<Virtual Graphs>>
+
+.In 3.0...
 - [x] <<High Availability Cluster>>
 - [x] <<Enterprise Premium Support>>
 - [x] <<Benchmark Results,Improved query performance>>
@@ -36,7 +42,8 @@ the {release-notes}[release notes] and
 
 |===
 | Stardog Version | HTML     | PDF
-| 3.0.2   | link:/[✓]        | link:/stardog-manual-{version}.pdf[✓]
+| 3.1     | link:/[✓]        | link:/stardog-manual-{version}.pdf[✓]
+| 3.0.2   | link:/[✓]        | link:/stardog-manual-3.0.2.pdf[✓]
 | 3.0.1   | link:/3.0.1#[✓]  | link:/3.0.1/stardog-manual-3.0.1.pdf[✓]
 | 3.0     | link:/3.0/#[✓]   | link:/3.0/stardog-manual-3.0.pdf[✓]
 | 2.2.4   | link:/2.2.4/[✓]  | ✗
@@ -70,9 +77,6 @@ Leonard, the crew at XSB, and the nice people at El Rinconcito Cafe in DC.]
 [horizontal]
 Stardog 3.x::
 - Property Graph/Tinker Pop 3 support
-- Cluster management
-- Virtual graphs
-- Named Graph security
 - Distributed transaction performance improvements
 Stardog 4.x::
 - Stardog Constellation, a unified graph computation framework

@@ -20,6 +20,12 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
+== 3.1 Release
+[none]
+*ADD Named Graph Security
+*ADD Virtual Graphs via R2RML
+*ADD Cluster Management tools via Bosh/PCF
+
 == 3.0.2 Release
 [none]
 *MOD: Do not force an slf4j implementation in the Maven dependencies
