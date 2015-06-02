@@ -22,9 +22,34 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 
 == 3.1 Release
 [none]
-*ADD Named Graph Security
-*ADD Virtual Graphs via R2RML
-*ADD Cluster Management tools
+* image:a.png[Fixed,15,14]&nbsp;&nbsp; Named Graph Security
+* image:a.png[Fixed,15,14]&nbsp;&nbsp; R2RML Support
+* image:a.png[Fixed,15,14]&nbsp;&nbsp; Cluster Management Tools
+* image:a.png[Fixed,15,14]&nbsp;&nbsp; Improved log shipping between nodes in cluster
+* image:a.png[Fixed,15,14]&nbsp;&nbsp; Show class/property definitions in the web console
+* image:a.png[Fixed,15,14]&nbsp;&nbsp; Export named graphs from the web console
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; ConnectionPool will throw an exception (StardogException) when exhausted instead of returning null
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Shiro permission strings are not returned from PermissionManager, returning Permission objects instead
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Improved performance of wildcard removals via Remover#statements()
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Update to Sesame 2.7.15
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Update to Guice 4
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Use namespaces when showing query results in the webconsole
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Improve performance of mixed updates
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Selecting index orders can wrongly prefer context-last orders
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Reduced overhead of security checks
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; User can view permissions of a role they do not hold (#2265)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; TSV mimetype is mis-spelled (#2294)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Weighted MIME types are not being properly handled (#2295)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Javadocs for StardogRepositoryConnection are out-of-date (#2296)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Unary variable scans do not bind variables which are constants in the query (#2302)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Database archetypes not closing iterations (#2303)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; NPE during data add with versioning enabled (#2304)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Empty VALUES clause not supported (#2306)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Count query with non-existent named graph in dataset returns an 'empty' result (#2307)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Using data oneOf throws an exception during commit (#2312)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Export call via HTTP fails with error 500 when no `graph-uri` parameter is used (#2314)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Incorrect join type selection for unbound scan when a sort order is present (#2315)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Parsing error in web console when STRLEN is used (#2318)
 
 == 3.0.2 Release
 [none]

@@ -20,6 +20,11 @@ $ stardog-admin user grant -a write -o named-graph:myDB\http://example.org/g2 my
 Note the use of "\" to separate the name of the database ("myDB") from the named
 graph identifier ("http://example.org/g1").
 
+IMPORTANT: Named Graph Security is **disabled** by default (for backwards
+compatibility with the installed base). It can be enabled globally (or per
+database) by setting `security.named.graphs=true`, in `stardog.properties`
+globally, or per database.
+
 === Named Graph Operations
 
 Stardog does not support the notion of an empty named graph; thus, there is no

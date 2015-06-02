@@ -39,7 +39,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *MOD: Reduced overhead of security checks
 *FIX: User can view permissions of a role they do not hold (#2265)
 *FIX: TSV mimetype is mis-spelled (#2294)
-*FIX: Weighted media types are not being properly handled (#2295)
+*FIX: Weighted MIME types are not being properly handled (#2295)
 *FIX: Javadocs for StardogRepositoryConnection are out-of-date (#2296)
 *FIX: Unary variable scans do not bind variables which are constants in the query (#2302)
 *FIX: Database archetypes not closing iterations (#2303)

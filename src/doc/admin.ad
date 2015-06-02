@@ -83,6 +83,8 @@ The command groups and their subcommands:
 - **role:     ** add, drop, grant, list, permission, revoke;
 - **db:       ** backup, copy, create, drop, migrate, optimize, list, online, offline, repair, restore, status.
 
+NOTE: See the <<Man Pages, man pages>> for the canonical list of commands.
+
 The main help command for either CLI tool will print a listing of the
 command groups:
 
@@ -343,15 +345,17 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
     milliseconds, connections may idle before being automatically closed
     by the server.
 
-. `password.length.min`: Sets the password policy for the minimum length of
+.  `password.length.min`: Sets the password policy for the minimum length of
     user passwords, the value can't be lower than `password.length.min` or greater
     than `password.length.max`. Default: `4`.
 
-. `password.length.max`: Sets the password policy for the maximum length of
+.  `password.length.max`: Sets the password policy for the maximum length of
     user passwords. Default: `1024`.
 
-. `password.regex`: Sets the password policy of accepted chars in user passwords, via a
+.  `password.regex`: Sets the password policy of accepted chars in user passwords, via a
     Java regular expression. Default: `[\\w@#$%]+`
+
+.  `security.named.graphs`: Sets named graph security on globally. Default: `false`.
 
 === Starting & Stopping the Server
 
