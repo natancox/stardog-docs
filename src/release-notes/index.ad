@@ -24,7 +24,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 [none]
 *ADD Named Graph Security
 *ADD Virtual Graphs via R2RML
-*ADD Cluster Management tools via Bosh/PCF
+*ADD Cluster Management tools
 
 == 3.0.2 Release
 [none]

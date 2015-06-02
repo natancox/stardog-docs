@@ -22,9 +22,10 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 
 == 3.1 Release
 [none]
-*ADD Named Graph Security
-*ADD Virtual Graphs via R2RML
-*ADD Cluster Management tools via Bosh/PCF
+*ADD: Named Graph Security
+*ADD: Virtual Graphs via R2RML
+*ADD: Cluster Management tools
+*ADD: Log-shipping to Cluster for efficient node joining
 
 == 3.0.2 Release
 [none]
