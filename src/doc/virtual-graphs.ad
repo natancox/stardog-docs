@@ -6,22 +6,135 @@ Stardog rewrites (a portion of) SPARQL queries against the Stardog database into
 SQL, issues that SQL query to an RDBMS, and interpolates the results from the
 RDBS into its own results.
 
+Virtual graphs are supported via the http://www.w3.org/TR/r2rml/[R2RML] mapping
+language. R2RML language is designed for expressing mappings from relational 
+databases to RDF datasets but it can be used for mapping any tabular data like 
+CSV. Stardog will support mapping other tabular formats to RDF in future 
+releases.
+
 In fact, any tabular data source may be used via R2RML.
 
 NOTE: As of Stardog 3.1, virtual graphs are marked **BETA**.
 
 Current limitations include:
 
-* no cluster
-* RDBMS-only
-* no HTTP or SNARL support
+* virtual graphs are not supported in the cluster
+* admin commands for adding and removing R2RML mappings work only over SNARL 
+(once R2RML mappings are added through the admin command, query answering will
+work over both SNARL and HTTP protocols)
+* queries that range over Stardog database and virtual graphs are optimized with
+a simplistic query planner
 
 These will be remediated in 3.1.x releases.
 
-== Mapping Tabular Data to Graphs
+== Defining Virtual Graphs
 
-== RDBMS
+First step in enabling virtual graph support is to define the data source and 
+the mappings fopr the virtual graph. A virtual graph definition has three 
+components:
 
-== LDAP
+* a unique name
+* configuration options for the data source
+* R2RML mappings for the data
 
-== Other
+Name of the visrtual graph should be a valid local name. The configuration 
+options define the JDBC connection parameters along with a base URI that will be
+used as the base URI to resolve relative URIs produced by the R2RML mapping. 
+Configuration files are in Java properties file format and an example looks as
+follows:
+
+[source,bash]
+----
+uri=http\://example.com/base
+
+jdbc.url=jdbc\:mysql\://localhost/rdb
+jdbc.username=admin
+jdbc.password=admin
+jdbc.driver=com.mysql.jdbc.Driver
+----
+
+NOTE: Stardog does not come with JDBC drivers. You need to manually copy the jar 
+file containing the driver to the `STARDOG/server/dbms/` directory so it will be
+available to the Stardog server. Server needs to be restarted after the jar is
+copied.
+
+Adding the new virtual graph is done via the following command:
+
+[source,bash]
+----
+$ stardog-admin r2rml add example.properties example.ttl
+----
+
+The file `example.properties` contains the configuration options and the name of 
+this file is used as the name of the virtual graph. So the above command
+registers a virtual graph named `example` and we can see the registered virtual
+graphs as follows:
+
+[source,bash]
+----
+$ stardog-admin r2rml list
+Found 1 services
+example
+----
+
+The `r2rml remove` can be used to remove a registered virtual graph.
+
+== Querying Virtual Graphs
+
+Virtual graphs are defined globally in the server queries to any database in the 
+server can also query the virtual graph. Querying a specific virtual graph is
+done by using a `SERVICE` clause where the service URI is `r2rml://name`. The
+following example shows how to query the virtual graph named `people:
+
+[source,sparql]
+----
+SELECT * {
+   SERVICE <r2rml://people> {
+      ?person a foaf:Person ;
+           foaf:name "John Doe"
+   }
+}
+----
+
+We can query the Stardog database and pull data from a virtual graph in a single
+query. If the `people` relationsla database stores information about people and 
+the Stardog  database contains informaiton about their interests then we can
+use the following query to combine the information from both sources:
+
+[source,sparql]
+----
+SELECT * {
+   SERVICE <r2rml://people> {
+      ?person a foaf:Person ;
+           foaf:name "John Doe"
+   }
+   ?person foaf:interest ?interest
+}
+----
+
+NOTE: Query performance will be best if the `SERVICE` clause is selective.
+
+== Materializing Virtual Graphs
+
+In some cases one wants to materialize the information stored in RDBMS directly
+in RDF. It is possible to use a `CONSTRUCT` query with the `SERVICE` keyword
+to export the contents of the virtual graph into RDF. Or we can directly insert
+the results into the Stardog database with a SPARQL update query:
+
+[source,sparql]
+----
+INSERT {
+   ?s ?p ?o
+}
+WHERE
+   SERVICE <r2rml://example> {
+      ?s ?p ?o
+   }
+}
+----
+
+If the RDBMS contents change over time and we need to update the materialization
+results in the future we can insert the results into a named graph so that we 
+can drop the named graph and rematerialize again. Query performance over 
+materialized graphs will be better as the data will be indexed locally by 
+Stardog but materialization might not be practical for very large datasets.
