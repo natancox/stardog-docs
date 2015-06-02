@@ -17,5 +17,8 @@ See the http://bosh.io/docs[BOSH docs] for more details.
 
 === Limitations
 
-AWS and BOSH Lite (local machine) for now... OpenStack, vSphere, vCloud if you
-need it, ping us.
+The notable limitations of Stardog Release as of Stardog 3.1:
+
+* supports AWS and BOSH Lite (local machine) deployments only
+** in other words, if you want OpenStack, vSphere, or vCloud deployment, ping us.
+* VMs only
