@@ -23,9 +23,33 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 == 3.1 Release
 [none]
 *ADD: Named Graph Security
-*ADD: Virtual Graphs via R2RML
-*ADD: Cluster Management tools
-*ADD: Log-shipping to Cluster for efficient node joining
+*ADD: R2RML Support
+*ADD: Cluster Management Tools
+*ADD: Improved log shipping between nodes in cluster
+*ADD: Show class/property definitions in the web console
+*ADD: Export named graphs from the web console
+*MOD: ConnectionPool will throw an exception (StardogException) when exhausted instead of returning null
+*MOD: Shiro permission strings are not returned from PermissionManager, returning Permission objects instead
+*MOD: Improved performance of wildcard removals via Remover#statements()
+*MOD: Update to Sesame 2.7.15
+*MOD: Update to Guice 4
+*MOD: Use namespaces when showing query results in the webconsole
+*MOD: Improve performance of mixed updates
+*MOD: Selecting index orders can wrongly prefer context-last orders
+*MOD: Reduced overhead of security checks
+*FIX: User can view permissions of a role they do not hold (#2265)
+*FIX: TSV mimetype is mis-spelled (#2294)
+*FIX: Weighted media types are not being properly handled (#2295)
+*FIX: Javadocs for StardogRepositoryConnection are out-of-date (#2296)
+*FIX: Unary variable scans do not bind variables which are constants in the query (#2302)
+*FIX: Database archetypes not closing iterations (#2303)
+*FIX: NPE during data add with versioning enabled (#2304)
+*FIX: Empty VALUES clause not supported (#2306)
+*FIX: Count query with non-existent named graph in dataset returns an 'empty' result (#2307)
+*FIX: Using data oneOf throws an exception during commit (#2312)
+*FIX: Export call via HTTP fails with error 500 when no `graph-uri` parameter is used (#2314)
+*FIX: Incorrect join type selection for unbound scan when a sort order is present (#2315)
+*FIX: Parsing error in web console when STRLEN is used (#2318)
 
 == 3.0.2 Release
 [none]
