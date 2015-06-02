@@ -1,8 +1,21 @@
 == Cluster Management
 
-=== Deployment
+Stardog Cluster may be managed more easily by using
+http://github.com/complexible/stardog-release[Stardog Release], a new, open
+source Stardog Cluster management system. Stardog Release is based on
+http://bosh.io[BOSH], "an open source tool chain for release engineering,
+deploying and lifecycle management of large scale distributed services" from
+http://https://run.pivotal.io/[Pivotal Cloud Foundry]. Using BOSH, you can
+manage Stardog Cluster more easily than ever before; with Stardog Release you
+can install and update Stardog Cluster "on large numbers of VMs over many IaaS
+platforms with the absolute minimum of configuration changes".
 
-=== Elastic Scaling
+See the http://github.com/complexible/stardog-release[Stardog Release] Github
+repo for installation, configuration, and usage.
 
-=== Rolling Upgrades
+See the http://bosh.io/docs[BOSH docs] for more details.
 
+=== Limitations
+
+AWS and BOSH Lite (local machine) for now... OpenStack, vSphere, vCloud if you
+need it, ping us.

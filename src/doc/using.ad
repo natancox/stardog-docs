@@ -73,6 +73,25 @@ services that use DIGEST auth, or a different authentication mechanism
 altogether, you'll need to implement a custom `Service`
 implementation.
 
+=== Querying RDBMS via Virtual Graphs
+
+Sometimes enterprise information belongs to or in a Stardog graph but for
+various reasons the upstream or canonical data source should not be disturbed,
+consolidated, or decommissioned. In those (and other) cases it makes sense to
+use Stardog's R2RMLfootnote:[See the http://www.w3.org/TR/r2rml/[R2RML spec] for
+more information about R2RML.] mapping feature to create virtual graphs, that
+is, mappings between a Stardog graph and external data sources such that Stardog
+will query the external data sources--by rewriting SPARQL to SQL
+automatically--as if they were actually materialized in Stardog.
+
+==== List
+
+==== Add
+
+==== Update
+
+==== Remove
+
 == Updating
 
 There are many ways to update the data in a Stardog database; two of

@@ -33,7 +33,7 @@ types with their prefixes are shown below.
 
 |Named Graph
 |`named-graph`
-|A named graph (graph subset) @FIXME
+|A named graph (graph subset) (`named-graph:myDb\named-graph-id`)
 
 |Database Metadata
 |`metadata`
@@ -47,10 +47,6 @@ types with their prefixes are shown below.
 |`icv-constraints`
 |Integrity constraints associated with a database (e.g., `icv-constraints:myDB`)
 |===
-
-== Named Graph Security
-
-include::named-graph-security.ad[]
 
 == Permissions
 
@@ -161,6 +157,10 @@ For example,
 
 Of course you should secure this file carefully, making sure that only the user
 that Stardog runs as can read it.
+
+== Named Graph Security
+
+include::named-graph-security.ad[]
 
 == Enterprise Authentication
 

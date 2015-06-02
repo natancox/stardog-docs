@@ -1,6 +1,22 @@
 = Virtual Graphs
 
-Stardog supports virtualized graphs, that is, data...
+Stardog supports virtual graphs: tabular data that is declaratively mapped into
+a Stardog database graph, but which is not materialized into the graph. Rather,
+Stardog rewrites (a portion of) SPARQL queries against the Stardog database into
+SQL, issues that SQL query to an RDBMS, and interpolates the results from the
+RDBS into its own results.
+
+In fact, any tabular data source may be used via R2RML.
+
+NOTE: As of Stardog 3.1, virtual graphs are marked **BETA**.
+
+Current limitations include:
+
+* no cluster
+* RDBMS-only
+* no HTTP or SNARL support
+
+These will be remediated in 3.1.x releases.
 
 == Mapping Tabular Data to Graphs
 
