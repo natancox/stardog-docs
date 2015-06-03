@@ -48,7 +48,7 @@ include::cluster.ad[]
 
 include::cluster-management.ad[]
 
-include::virtual-graphs.ad[]
+//include::virtual-graphs.ad[]
 
 include::owl2.ad[]
 

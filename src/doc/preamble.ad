@@ -9,7 +9,8 @@ five easy steps.
 .In 3.1...
 - [x] <<Named Graph Security>>
 - [x] <<Cluster Management>>
-- [x] <<Virtual Graphs>>
+- [x] Cluster write performance improvements
+- [x] <<Web Console, Web Console improvements>>
 
 .In 3.0...
 - [x] <<High Availability Cluster>>
@@ -80,6 +81,7 @@ You can also contribute by helping us make the Stardog Docs better; https://gith
 
 [horizontal]
 Stardog 3.x::
+- Virtual Graphs via R2RML
 - Property Graph/Tinker Pop 3 support
 - Distributed transaction performance improvements
 Stardog 4.x::

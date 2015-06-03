@@ -51,6 +51,14 @@ module.exports = function(grunt) {
                     //{ expand: true, dest: '/', cwd: 'website/', differential: true }
                 ]
             },
+            stage: {
+                options: {
+                    bucket: "<%= aws.bucket4 %>",
+                },
+                files: [
+                    { action: "upload", expand: true, dest: '.', cwd: 'website/', src: ['**/*',], differential: true },
+                ]
+            },
             gzipd: { //only the compressed html files
                 options: {
                     streams: true,
@@ -336,6 +344,14 @@ module.exports = function(grunt) {
         'aws_s3:production',
         'aws_s3:gzipd',
         //'invalidate_cloudfront:index' //won't work right now...doesn't exist yet
+    ]);
+    grunt.registerTask("stage", [
+                       'release_notes',
+                       'default',
+                       'shell:pdf',
+                       'compress',
+                       'aws_s3:stage',
+                       'aws_s3:gzipd',
     ]);
     grunt.registerTask('cl', ['clean:build']);
     grunt.registerTask('t', ['availabletasks:tasks']);
