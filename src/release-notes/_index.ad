@@ -37,6 +37,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *MOD: Improve performance of mixed updates
 *MOD: Selecting index orders can wrongly prefer context-last orders
 *MOD: Reduced overhead of security checks
+*MOD: Deprecated cluster configuration property `pack.cluster.address`; preferred property is `pack.zookeeper.address`
 *FIX: User can view permissions of a role they do not hold (#2265)
 *FIX: TSV mimetype is mis-spelled (#2294)
 *FIX: Weighted MIME types are not being properly handled (#2295)
