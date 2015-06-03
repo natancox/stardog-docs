@@ -9,7 +9,7 @@ five easy steps.
 .In 3.1...
 - [x] <<Named Graph Security>>
 - [x] <<Cluster Management>>
-- [x] Cluster write performance improvements
+- [x] Cluster performance improvements
 - [x] <<Web Console, Web Console improvements>>
 
 .In 3.0...
@@ -38,7 +38,7 @@ languages and network interfaces. Stardog is made with skill, taste,
 and a point of view in DC, Boston, and Germany.
 
 To learn more about where we've been and where we're headed, consult
-the {release-notes}[release notes] and
+the link:/release-notes/[release notes] and
 <<Milestones,milestones>>.
 
 |===
