@@ -269,7 +269,7 @@ GET | POST /{db}/{txId}/update → text/boolean
 
 The SPARQL endpoint for updating the database with SPARQL Update.  Update queries
 are executed within the specified transaction `txId` and are *not* atomic operations
-as with the normal SPARQL update endpoint.  The updates are executed when the 
+as with the normal SPARQL update endpoint.  The updates are executed when the
 transaction is committed like any other change. The valid Accept types are
 `application/sparql-update` `or application/x-www-form-urlencoded`.  Response is the result of
 the update operation as text, eg `true` or `false`.
@@ -309,6 +309,18 @@ Removes all data from the database within the context of the
 transaction. `200` indicates success; `500` indicates an error. Also
 takes an optional parameter, `graph-uri`, which removes data from a
 named graph. To clear only the default graph, pass `DEFAULT` as the value of `graph-uri`.
+
+=== Export Database
+
+[source,http]
+----
+GET /{db}/export → RDF
+----
+
+Exports the default graph in the database in Turtle format. Also
+takes an optional parameter, `graph-uri`, which selects a
+named graph to export. The valid Accept types are the ones defined
+above in <<HTTP Headers: Content-Type & Accept,HTTP Headers>> for RDF Formats.
 
 === Explanation of Inferences
 
