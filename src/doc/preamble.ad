@@ -43,7 +43,7 @@ the link:/release-notes/[release notes] and
 
 |===
 | Stardog Version | HTML     | PDF
-| 3.1     | link:/[✓]        | link:/stardog-manual-{version}.pdf[✓]
+| 3.1     | &#171;latest release&#187; | link:/stardog-manual-{version}.pdf[✓]
 | 3.0.2   | link:/3.0.2#[✓]  | link:/stardog-manual-3.0.2.pdf[✓]
 | 3.0.1   | link:/3.0.1#[✓]  | link:/3.0.1/stardog-manual-3.0.1.pdf[✓]
 | 3.0     | link:/3.0/#[✓]   | link:/3.0/stardog-manual-3.0.pdf[✓]
