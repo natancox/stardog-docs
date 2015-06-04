@@ -5,6 +5,11 @@ at 1.0; it will be updated for each notable new release. For a complete list of
 changes, including notable bug fixes, see the {release-notes}[release notes].
 
 [horizontal]
+3.1::
+- Named Graph security
+- BOSH-based cluster management tool
+- proper logshipping in the Cluster
+
 3.0::
 - Equality reasoning via hybrid materialization
 - Improved incremental write performance

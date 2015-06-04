@@ -23,7 +23,6 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 == 3.1 Release
 [none]
 *ADD: Named Graph Security
-*ADD: R2RML Support
 *ADD: Cluster Management Tools
 *ADD: Improved log shipping between nodes in cluster
 *ADD: Show class/property definitions in the web console
