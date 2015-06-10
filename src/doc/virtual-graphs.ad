@@ -3,51 +3,204 @@
 Stardog supports virtual graphs: tabular data that is declaratively mapped into
 a Stardog database graph, but which is not materialized into the graph. Rather,
 Stardog rewrites (a portion of) SPARQL queries against the Stardog database into
-SQL, issues that SQL query to an RDBMS, and interpolates the results from the
-RDBS into its own results.
+SQL, issues that SQL query to an RDBMS, and translates the SQL results into
+SPARQL results.
 
-Virtual graphs are supported via the http://www.w3.org/TR/r2rml/[R2RML] mapping
-language. R2RML language is designed for expressing mappings from relational 
-databases to RDF datasets but it can be used for mapping any tabular data like 
-CSV. Stardog will support mapping other tabular formats to RDF in future 
-releases.
+Virtual graphs can be used for mapping any tabular data, e.g. CSV, to RDF and 
+Stardog will support mapping other tabular formats to RDF in future releases.
 
-In fact, any tabular data source may be used via R2RML.
-
-NOTE: As of Stardog 3.1, virtual graphs are marked **BETA**.
+NOTE: As of Stardog 3.x, virtual graphs are marked **BETA**.
 
 Current limitations include:
 
-* virtual graphs are not supported in the cluster
+* virtual graphs are not supported in the Stardog HA cluster
 * admin commands for adding and removing R2RML mappings work only over SNARL 
 (once R2RML mappings are added through the admin command, query answering will
 work over both SNARL and HTTP protocols)
 * queries that range over Stardog database and virtual graphs are optimized with
 a simplistic query planner
 
-These will be remediated in 3.1.x releases.
+These will be remediated in future releases.
 
-== Defining Virtual Graphs
-
-First step in enabling virtual graph support is to define the data source and 
-the mappings fopr the virtual graph. A virtual graph definition has three 
-components:
+A virtual graph definition has three components:
 
 * a unique name
 * configuration options for the data source
-* R2RML mappings for the data
+* mappings for the data
 
-Name of the visrtual graph should be a valid local name. The configuration 
-options define the JDBC connection parameters along with a base URI that will be
-used as the base URI to resolve relative URIs produced by the R2RML mapping. 
-Configuration files are in Java properties file format and an example looks as
-follows:
+Name of the virtual graph should conform to the regular expression 
+`[A-Za-z]{1}[A-Za-z0-9_-]`. The configuration options include several parameters
+for the virtual graph including JDBC connection parameters. Finally, the 
+mappings define how the tabular data stored in the RDBMS will be represented in
+RDF. The mappings are defined using the http://www.w3.org/TR/r2rml/[R2RML] 
+mapping language but a simpler Stardog mapping syntax is also supported for
+serializing R2RML mappings.
+
+== Stardog Mapping Syntax
+
+Stardog mapping syntax is an alternative way to serialize R2RML mappings that is
+much simpler to read and write but has the same expressive power. Mappings
+written in Stardog mapping syntax can be converted to R2RML and vice versa.
+
+We will use the http://www.w3.org/TR/r2rml/#example-input-database[example database]
+from the R2RML specification to explain the Stardog mapping syntax. The SQL
+schema that corresponds to this example is as follows:
+
+[source,sql]
+----
+CREATE TABLE "DEPT" (
+      "deptno" INTEGER UNIQUE,
+      "dname" VARCHAR(30),
+      "loc" VARCHAR(100));
+INSERT INTO "DEPT" ("deptno", "dname", "loc") 
+       VALUES (10, 'APPSERVER', 'NEW YORK');
+
+CREATE TABLE "EMP" (
+      "empno" INTEGER PRIMARY KEY,
+      "ename" VARCHAR(100),
+      "job" VARCHAR(30),
+      "deptno" INTEGER REFERENCES "DEPT" ("deptno"),
+      "etype" VARCHAR(30));
+INSERT INTO "EMP" ("empno", "ename", "job", "deptno", "etype" ) 
+       VALUES (7369, 'SMITH', 'CLERK', 10, 'PART_TIME');
+----
+
+Suppose we would like to represent this information in RDF as follows:
 
 [source,bash]
 ----
-uri=http\://example.com/base
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix emp: <http://example.com/emp/> .
+@prefix dept: <http://example.com/dept/> .
 
-jdbc.url=jdbc\:mysql\://localhost/rdb
+dept:10 a dept:Department ;
+    dept:location "NEW YORK" ;
+    dept:deptno "10"^^xsd:integer .
+
+emp:7369 a emp:Employee ;
+    emp:name "SMITH" ;
+    emp:role emp:general-office ;
+    emp:department dept:10 .
+----
+
+We will use the same http://www.w3.org/TR/r2rml/#example-translationtable[translation rules]
+used in the R2RML example for mapping job names to URIs. Stardog mappings rules 
+looks very similar to the output RDF representation:
+
+[source,sparql]
+----
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix emp: <http://example.com/emp/> .
+@prefix dept: <http://example.com/dept/> .
+@prefix sm: <tag:stardog:api:mapping:> .
+
+dept:{"deptno"} a dept:Department ;
+    dept:location "{\"loc\"}" ;
+    dept:deptno "{\"deptno\"}"^^xsd:integer ;
+    sm:map [
+      sm:table "DEPT" ;
+    ] .
+
+emp:{"empno"} a emp:Employee ;
+    emp:name "{\"ename\"}" ;
+    emp:role emp:{ROLE} ;
+    emp:department dept:{"deptno"} ;
+    sm:map [
+      sm:query """
+        SELECT \"empno\", \"ename\", \"deptno\", (CASE \"job\"
+            WHEN 'CLERK' THEN 'general-office'
+            WHEN 'NIGHTGUARD' THEN 'security'
+            WHEN 'ENGINEER' THEN 'engineering'
+        END) AS ROLE FROM \"EMP\"
+        """ ;
+    ] .
+----
+
+Stardog mapping syntax is based on Turtle but not a valid Turtle document since
+it uses the http://www.w3.org/TR/r2rml/#from-template[URI templates] of R2RML
+so curly braces can appear in URIs. Every subject with a `tag:stardog:api:mapping:map`
+property maps a single row form the corresponding table/view. If an existing 
+table/view is being mapped, `tag:stardog:api:mapping:table` is used to refer to
+the table. Alternatively, a SQL query can be provided inline using the
+`tag:stardog:api:mapping:query` property.
+
+The values generated will be a URI, blank node, or a literal based on the type 
+of the value used in the mapping. The column names referenced between curly
+braces will be replaced with the corresponding values from the matching row.
+
+Stardog mappings syntax can be translated to the standard R2RML syntax. For
+completeness, we provide the R2RML mappings corresponding to the above example:
+
+[source,sparql]
+----
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix emp: <http://example.com/emp#> .
+@prefix dept: <http://example.com/dept#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://example.com/base/> .
+
+<DeptTriplesMap>
+    a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName "DEPT" ];
+    rr:subjectMap [ rr:template "http://data.example.com/dept/{\"deptno\"}" ;
+                    rr:class dept:Department ];
+    rr:predicateObjectMap [
+      rr:predicate	  dept:deptno ; 
+      rr:objectMap    [ rr:column "\"deptno\""; rr:datatype xsd:positiveInteger ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate	dept:location ; 
+      rr:objectMap	[ rr:column "\"loc\"" ]
+    ].
+
+<EmpTriplesMap>
+	a rr:TriplesMap;
+    rr:logicalTable [ rr:sqlQuery """
+        SELECT "EMP".*, (CASE "job"
+            WHEN 'CLERK' THEN 'general-office'
+            WHEN 'NIGHTGUARD' THEN 'security'
+            WHEN 'ENGINEER' THEN 'engineering'
+        END) AS ROLE FROM "EMP"
+        """ ];
+    rr:subjectMap [
+        rr:template "http://data.example.com/employee/{\"empno\"}";
+        rr:class emp:Employee ];
+    ];    
+    rr:predicateObjectMap [ 
+      rr:predicate		emp:name ; 
+      rr:objectMap    [ rr:column "\"ename\"" ]; 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate emp:role;
+        rr:objectMap [ rr:template "http://data.example.com/roles/{ROLE}" ];
+    ];    
+    rr:predicateObjectMap [
+        rr:predicate emp:department;
+        rr:objectMap [ rr:template "http://example.com/dept/{\"deptno\"}"; ];
+    ].
+----
+
+== Managing Virtual Graphs
+
+In order to query a virtual graph it first needs to be registered to the 
+Stardog server. Adding a new virtual graph is done via the following command:
+
+[source,bash]
+----
+$ stardog-admin virtual add dept.properties dept.ttl
+----
+
+The first argument is the configuration file for the virtual graph and the
+second argument is the mappings file. The name of the configuration file is used
+as the name of virtual graph so the above command registers a virtual graph 
+named `dept`. Configuration files should be in Java properties file format and 
+provide the JDBC connection parameters. A minimal example looks as follows:
+
+[source,bash]
+----
+jdbc.url=jdbc\:mysql\://localhost/dept
 jdbc.username=admin
 jdbc.password=admin
 jdbc.driver=com.mysql.jdbc.Driver
@@ -58,55 +211,69 @@ file containing the driver to the `STARDOG/server/dbms/` directory so it will be
 available to the Stardog server. Server needs to be restarted after the jar is
 copied.
 
-Adding the new virtual graph is done via the following command:
+Note that, the credentials for the JDBC connection needs to be provided in 
+plain text. An alternative way to provide credentials is to use the 
+<<Using a Password File,password file>> mechanism. The credentials should be
+stored in a password file called `services.sdpass` located in `STARDOG_HOME` 
+directory. The password file entries are in the format `hostname:port:database:username:password`
+so for the above example there should be an entry `localhost:*:dept:admin:admin`
+in this file and then the credentials in the configuration file can be omitted.
+
+The configuration file can also contain a property called `base` to specify a
+http://www.w3.org/TR/r2rml/#dfn-base-iri[base URI] for resolving relative URIs 
+generated by the mappings (if any). If no value is provided the URI 
+`virtual://myGraph` is used as the base URI where `myGraph` is the name of the
+virtual graph.
+
+The add command by default assumes the mappings are in R2RML format. Mappings
+in Stardog rule syntax can be added by using the `--stardog` option in the 
+command-line.
+
+Registered virtual graphs can be listed with the following command:
 
 [source,bash]
 ----
-$ stardog-admin r2rml add example.properties example.ttl
+$ stardog-admin virtual list
+1 virtual graphs
+dept
 ----
 
-The file `example.properties` contains the configuration options and the name of 
-this file is used as the name of the virtual graph. So the above command
-registers a virtual graph named `example` and we can see the registered virtual
-graphs as follows:
-
-[source,bash]
-----
-$ stardog-admin r2rml list
-Found 1 services
-example
-----
-
-The `r2rml remove` can be used to remove a registered virtual graph.
+The commands `virtual mappings` and `virtual options` can be used to retrieve
+the mappings and configuration options associated with a virtual graph 
+respectively. Registered virtual graphs can be removed using the `virtual remove`
+command. See the man pages for the details of these commands.
 
 == Querying Virtual Graphs
 
-Virtual graphs are defined globally in the server queries to any database in the 
-server can also query the virtual graph. Querying a specific virtual graph is
-done by using a `SERVICE` clause where the service URI is `r2rml://name`. The
-following example shows how to query the virtual graph named `people:
+Querying virtual graphs is done by using the `SERVICE` clause where a special
+service URI in the form `virtual://myGraph` is used to query the virtual graph
+named `myGraph`. The following example shows how to query the virtual graph 
+named `dept`:
 
 [source,sparql]
 ----
 SELECT * {
-   SERVICE <r2rml://people> {
-      ?person a foaf:Person ;
-           foaf:name "John Doe"
+   SERVICE <virtual://dept> {
+      ?person a emp:Employee ;
+           emp:name "SMITH"
    }
 }
 ----
 
+Virtual graphs are defined globally in the server so once they 
+are registered with the server they can be accessed via any database. 
 We can query the Stardog database and pull data from a virtual graph in a single
-query. If the `people` relationsla database stores information about people and 
-the Stardog  database contains informaiton about their interests then we can
-use the following query to combine the information from both sources:
+query. Suppose we have the `dept` virtual graph defined as in the above examples
+that contains employee and department information and the Stardog  database 
+contains data the interests of people. We can use the following query to combine 
+the information from both sources:
 
 [source,sparql]
 ----
 SELECT * {
-   SERVICE <r2rml://people> {
-      ?person a foaf:Person ;
-           foaf:name "John Doe"
+   SERVICE <virtual://dept> {
+      ?person a emp:Employee ;
+           emp:name "SMITH"
    }
    ?person foaf:interest ?interest
 }
@@ -124,17 +291,19 @@ the results into the Stardog database with a SPARQL update query:
 [source,sparql]
 ----
 INSERT {
-   ?s ?p ?o
+   GRAPH <http://example.com/dept/materialized> {
+      ?s ?p ?o
+   }
 }
 WHERE
-   SERVICE <r2rml://example> {
+   SERVICE <virtual://dept> {
       ?s ?p ?o
    }
 }
 ----
 
 If the RDBMS contents change over time and we need to update the materialization
-results in the future we can insert the results into a named graph so that we 
-can drop the named graph and rematerialize again. Query performance over 
+results in the future we can drop the named graph contents and rematerialize 
+again. Query performance over 
 materialized graphs will be better as the data will be indexed locally by 
 Stardog but materialization might not be practical for very large datasets.
