@@ -84,13 +84,7 @@ is, mappings between a Stardog graph and external data sources such that Stardog
 will query the external data sources--by rewriting SPARQL to SQL
 automatically--as if they were actually materialized in Stardog.
 
-==== List
-
-==== Add
-
-==== Update
-
-==== Remove
+See the <<Virtual Graphs>> chapter for configuration and usage.
 
 == Updating
 
