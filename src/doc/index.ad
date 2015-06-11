@@ -6,7 +6,7 @@
 //:testing: true
 :revnumber: {version}
 :toc: right 
-:toc-title: 
+:toc-title: Stardog {version} ({release-date})
 :toclevels: 1 
 :experimental:
 :source-highlighter: highlightjs
@@ -48,7 +48,7 @@ include::cluster.ad[]
 
 include::cluster-management.ad[]
 
-//include::virtual-graphs.ad[]
+include::virtual-graphs.ad[]
 
 include::owl2.ad[]
 

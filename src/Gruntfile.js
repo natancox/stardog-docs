@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
     var theId = grunt.option("id") || "3.1";
-    var theDate = grunt.option("date") || "'4 June 2015'";
+    var theDate = grunt.option("date") || "4 June 2015";
 
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
@@ -152,7 +152,7 @@ module.exports = function(grunt) {
                   comm += "-a ";
                   comm += "version=" + theId;
                   comm += " -a ";
-                  comm += "release-date=" + theDate;
+                  comm += "release-date=" + "'"+theDate+"'";
                   comm += " -a allow-uri-read";
                   comm += " -a linkcss"
                   comm += " -a stylesheet=stardog.css"; //make an arg?
@@ -284,7 +284,8 @@ module.exports = function(grunt) {
               },{
                   from: '<link rel="stylesheet" href="./stardog.css">',
                   to: '<link data-embed rel="stylesheet" href="./stardog.css">'
-              },{
+              },
+                            {
                   from: '<script>hljs.initHighlightingOnLoad()</script>',
                   to: ''
               }, {

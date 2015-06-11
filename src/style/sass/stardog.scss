@@ -24,6 +24,19 @@ html, body {
     text-align: left;
 }
 
+div#toctitle {
+    position: fixed;
+    color: $sd-red;
+    z-index: 10;
+    font-weight: 500;
+    background: rgba(248,248,247,.9);
+    margin-bottom: 20px;
+} 
+
+ul.sectlevel0 {
+    margin-top: 40px;
+}
+
 #preamble>div.sectionbody>div.paragraph>p {
     font-weight: normal;
     font-size: 22px;
@@ -34,27 +47,27 @@ html, body {
 }
 
 .sect0 {
-   color: $sd-med-blue;
-   font-weight: 300;
-   font-size: 56px;
+    color: $sd-med-blue;
+    font-weight: 300;
+    font-size: 56px;
 
-   @include cell {
-            text-transform: uppercase;
-            font-weight: 200;
-   }
+    @include cell {
+        text-transform: uppercase;
+        font-weight: 200;
+    }
    
 }
 
 #toctitle {
-          @include cell {
-          display:none;
-          }
+    @include cell {
+        display:none;
+    }
 }
 
 #header > h1:first-child {
-        color: $sd-lime;
-        font-size: 100px;
-        font-weight: 200;
+    color: $sd-lime;
+    font-size: 100px;
+    font-weight: 200;
 
     @include tablet {
         font-size: 52px;
@@ -62,9 +75,9 @@ html, body {
         text-transform: uppercase;
     }
     @include cell {
-             font-size: 32px;
-             font-weight: 200;
-             text-transform: uppercase;
+        font-size: 32px;
+        font-weight: 200;
+        text-transform: uppercase;
     }
 }
 
@@ -76,31 +89,31 @@ ul.checklist {
     columns: 2;
     -webkit-columns: 2;
     -moz-columns: 2;
-    }
+}
 
 .hide {
-   display: none;
+    display: none;
 }
 
 .hide.active, .show {
-   display: block;
+    display: block;
 }
 
 .fixed {
-   position: fixed;
-   white-space: nowrap;
+    position: fixed;
+    white-space: nowrap;
 }
 
 .text-center {
-   text-align: center;
+    text-align: center;
 }
 
 .text-left {
-   text-align: left;
+    text-align: left;
 }
 
 .text-right {
-   text-align: right;
+    text-align: right;
 }
 
 .tease {
@@ -116,33 +129,33 @@ kbd,
 samp,
 var,
 pre span {
-   font-family: "Anonymous Pro";
-   font-weight: 400;
-   }
+    font-family: "Anonymous Pro";
+    font-weight: 400;
+}
 
 a {
-   text-decoration: none;
-   padding-bottom: 0px;
-   color: $sd-med-blue;
-   //border-bottom: 1px solid $sd-med-blue;
+    text-decoration: none;
+    padding-bottom: 0px;
+    color: $sd-med-blue;
+    //border-bottom: 1px solid $sd-med-blue;
 }
 
 a:visited {
-   color: $sd-med-blue;
-   border: 0;
-   text-decoration: none;
+    color: $sd-med-blue;
+    border: 0;
+    text-decoration: none;
 }
 
 h2 a,h3 a,h4 a,h5 a,h6 a, p#tocnav a, .sidebar-nav a, i a, a img#thelogo, .fn-marker {
-   text-decoration: none;
-   background: none;
-   border: 0;
+    text-decoration: none;
+    background: none;
+    border: 0;
 }
 
 a#a52:hover {
-   text-decoration: none;
-   background: none;
-   border: 0;
+    text-decoration: none;
+    background: none;
+    border: 0;
 }
 
 pre {
@@ -154,99 +167,99 @@ dd {
 dl { }
 
 h2 {
-   color: $sd-med-blue;
+    color: $sd-med-blue;
 }
 
 thead,tfoot {
-   font-weight: $font-weight-bold
+    font-weight: $font-weight-bold
 }
 
 table{
-   border: 1px solid #F0F8FF;
-   font: $body-font-family;
+    border: 1px solid #F0F8FF;
+    font: $body-font-family;
 }
 
 th, td{
-   padding: 4px;
-   font: $body-font-family;
+    padding: 4px;
+    font: $body-font-family;
 
 }
 
 th{
-   color: #fff;
-   background-color: #aaa;
-   font: $body-font-family;
+    color: #fff;
+    background-color: #aaa;
+    font: $body-font-family;
 
 }
 
 
 .container + .container {
-   padding: 75px 20px 70px 20px;
+    padding: 75px 20px 70px 20px;
 }
 
 .container + .container.nopad {
-   padding-top: 0;
-   padding-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .container.shaded {
-   background-color: $shaded-container-color !important;
+    background-color: $shaded-container-color !important;
 }
 
 .container {
-   min-width: 0;
-   margin-left: 0;
-   margin-right: 0;
+    min-width: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .nlm {
-   margin-left: 0px;
-   padding: 0px;
-   border: 0;
+    margin-left: 0px;
+    padding: 0px;
+    border: 0;
 }
 
 
 cite {  border-bottom: 1px solid $black;}
 
 .wrapper + .wrapper {
-   padding: 75px 20px 70px 20px;
+    padding: 75px 20px 70px 20px;
 }
 
 .wrapper + .wrapper.nopad {
-   padding-top: 0;
-   padding-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .wrapper.shaded {
-   background-color: #e9e9e9 !important;
-   /*background-size: cover;*/
+    background-color: #e9e9e9 !important;
+    /*background-size: cover;*/
 }
 
 .iconlinks {
-   text-decoration: none;
-   color:$body-font-color;
-   background-color: $global-bg-color;
+    text-decoration: none;
+    color:$body-font-color;
+    background-color: $global-bg-color;
 }
 
 .iconlinks:hover {
-   background-color: $global-bg-color;
-   text-decoration: none;
+    background-color: $global-bg-color;
+    text-decoration: none;
 }
 
 sup {
-   vertical-align: baseline;
-   position: relative;
-   top: -0.45em;
-   font-size: $small;
-   font-weight: $font-weight-bold;
+    vertical-align: baseline;
+    position: relative;
+    top: -0.45em;
+    font-size: $small;
+    font-weight: $font-weight-bold;
 }
 
 sub {
-   vertical-align: baseline;
-   position: relative;
-   top: 0.45em;
-   font-size: $small;
-   font-weight: $font-weight-bold;
+    vertical-align: baseline;
+    position: relative;
+    top: 0.45em;
+    font-size: $small;
+    font-weight: $font-weight-bold;
 
 }
 
@@ -280,13 +293,13 @@ sub {
 //}
 
 h1,h2,h3,h4,h5,h6 {
-   font-family: $font-family;
-   font-weight: $header-font-weight;
-   color: $header-font-color;
-   text-rendering: optimizeLegibility;
-   a {
-      color: $header-link-color;
-   }
+    font-family: $font-family;
+    font-weight: $header-font-weight;
+    color: $header-font-color;
+    text-rendering: optimizeLegibility;
+    a {
+        color: $header-link-color;
+    }
 }
 
 /*=====================================================
