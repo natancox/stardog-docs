@@ -15,6 +15,7 @@ Virtual graphs are currently marked **BETA**.
 We will be remediating the following limitations in 3.x releases:
 
 * virtual graphs are not supported in the Stardog HA cluster
+* named graphs in mappings are ignored
 * admin commands for adding and removing R2RML mappings work only over SNARL; but once R2RML mappings are added through the admin command, query answering will
 work over both SNARL and HTTP protocols
 * queries that range over Stardog database and virtual graphs are optimized with a simplistic query planner
@@ -31,7 +32,7 @@ A virtual graph's name must conform to the regular expression
 parameters, especially JDBC connection parameters. Finally, the mappings define
 how the tabular data stored in the RDBMS will be represented in
 RDF. The mappings are defined using the http://www.w3.org/TR/r2rml/[R2RML] 
-mapping language, but a simpler Stardog mapping syntax is also supported for
+mapping language, but a simpler <<Stardog Mapping Syntax>> is also supported for
 serializing R2RML mappings.
 
 == Managing Virtual Graphs
@@ -191,7 +192,10 @@ INSERT INTO "EMP" ("empno", "ename", "job", "deptno", "etype" )
        VALUES (7369, 'SMITH', 'CLERK', 10, 'PART_TIME');
 ----
 
-Suppose we would like to represent this information in RDF as follows:
+Suppose we would like to represent this information in RDF as follows using
+the same
+http://www.w3.org/TR/r2rml/#example-translationtable[translation for job codes] 
+as in the original example:
 
 [source,bash]
 ----
@@ -210,10 +214,7 @@ emp:7369 a emp:Employee ;
     emp:department dept:10 .
 ----
 
-We will use the same
-http://www.w3.org/TR/r2rml/#example-translationtable[translation rules] used in
-the R2RML example for mapping job names to URIs. SMS looks very similar to the
-output RDF representation:
+SMS looks very similar to the output RDF representation:
 
 [source,sparql]
 ----
@@ -251,7 +252,7 @@ braces can appear in URIs. Other than this difference, we can treat an SMS
 document as a set of RDF triples. SMS documents use the special namespace 
 `tag:stardog:api:mapping:` that we will represent with the `sm` prefix below.
 
-Every subject in the Stardog mappings document with a `sm:map` property maps a 
+Every subject in the SMS document that has a `sm:map` property maps a 
 single row from the corresponding table/view to one or more triples. If an 
 existing  table/view is being mapped, `sm:table` is used to refer to the table. 
 Alternatively, a SQL query can be provided inline using the `sm:query` property.
