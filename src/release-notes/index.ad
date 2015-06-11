@@ -23,7 +23,6 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 == 3.1 Release
 [none]
 * image:a.png[Fixed,15,14]&nbsp;&nbsp; Named Graph Security
-* image:a.png[Fixed,15,14]&nbsp;&nbsp; R2RML Support
 * image:a.png[Fixed,15,14]&nbsp;&nbsp; Cluster Management Tools
 * image:a.png[Fixed,15,14]&nbsp;&nbsp; Improved log shipping between nodes in cluster
 * image:a.png[Fixed,15,14]&nbsp;&nbsp; Show class/property definitions in the web console
