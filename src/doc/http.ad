@@ -95,7 +95,7 @@ Stardog uses the following HTTP response codes:
 
 [horizontal]
 `200`::   Operation has succeeded.
-`202`::   Operation was recieved successfully and will be processed shortly.
+`202`::   Operation was received successfully and will be processed shortly.
 `400`::   Indicates parse errors or that the transaction identifier specified for an operation is invalid or does not correspond to a known transaction.
 `401`::   Request is unauthorized.
 `403`::   User attempting to perform the operation does not exist, their username or password is invalid, or they do not have the proper credentials to perform the action.
@@ -935,7 +935,7 @@ POST /admin/shutdown
 ----
 
 Shuts down the Stardog Server. If successful, returns a `202` to
-indicate that the request was recieved and that the server will be shut
+indicate that the request was received and that the server will be shut
 down shortly.
 
 === Query Version Metadata
