@@ -64,6 +64,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *FIX: Export call via HTTP fails with error 500 when no `graph-uri` parameter is used (#2314)
 *FIX: Incorrect join type selection for unbound scan when a sort order is present (#2315)
 *FIX: Parsing error in web console when STRLEN is used (#2318)
+*FIX: SPARQL update graph operators should not pull source graph into memory (#2310)
 
 == 3.0.2 Release
 [none]
