@@ -32,6 +32,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *FIX: Adding a permission which uses an implicit resource avoid adding the resource to the catalog (#2346)
 *FIX: Problems with enabling reasoning through Sesame interface (#2348)
 *FIX: Incorrect results with skipping in equality reasoning (#2351)
+*FIX: Serialization error for permissions in web console
 
 == 3.1 Release
 [none]
