@@ -20,6 +20,20 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
+== 3.1.1 Release
+[none]
+
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Reduced optimization overhead for simple queries
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; StardogRepositoryConnection buffers updates unnecessarily
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Queries which require punning do not work (#2331)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Queries with unused variables in filters are incorrectly optimized (#2320)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Security options are not available from the command line (#2344)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Server default in stardog.properties of security.named.graphs is ignored (#2345)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Adding a permission which uses an implicit resource avoid adding the resource to the catalog (#2346)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Problems with enabling reasoning through Sesame interface (#2348)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Incorrect results with skipping in equality reasoning (#2351)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Serialization error for permissions in web console
+
 == 3.1 Release
 [none]
 * image:a.png[Fixed,15,14]&nbsp;&nbsp; Named Graph Security
@@ -50,6 +64,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 * image:f.png[Fixed,15,15]&nbsp;&nbsp; Export call via HTTP fails with error 500 when no `graph-uri` parameter is used (#2314)
 * image:f.png[Fixed,15,15]&nbsp;&nbsp; Incorrect join type selection for unbound scan when a sort order is present (#2315)
 * image:f.png[Fixed,15,15]&nbsp;&nbsp; Parsing error in web console when STRLEN is used (#2318)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; SPARQL update graph operators should not pull source graph into memory (#2310)
 
 == 3.0.2 Release
 [none]
