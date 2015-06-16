@@ -20,6 +20,19 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
+== 3.1.1 Release
+[none]
+
+*MOD: Reduced optimization overhead for simple queries
+*MOD: StardogRepositoryConnection buffers updates unnecessarily
+*FIX: Queries which require punning do not work (#2331)
+*FIX: Queries with unused variables in filters are incorrectly optimized (#2320)
+*FIX: Security options are not available from the command line (#2344)
+*FIX: Server default in stardog.properties of security.named.graphs is ignored (#2345)
+*FIX: Adding a permission which uses an implicit resource avoid adding the resource to the catalog (#2346)
+*FIX: Problems with enabling reasoning through Sesame interface (#2348)
+*FIX: Incorrect results with skipping in equality reasoning (#2351)
+
 == 3.1 Release
 [none]
 *ADD: Named Graph Security
