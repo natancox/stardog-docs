@@ -84,8 +84,13 @@ You can also contribute by helping us make the Stardog Docs better; https://gith
 Stardog 3.x::
 - Virtual Graphs via R2RML
 - Property Graph/Tinker Pop 3 support
-- Distributed transaction performance improvements
+- Geospatial search
+- Remove dependency on Cluster proxy
+Stardog 4.0::
+- require Java 8
 Stardog 4.x::
+- HDFS backend
+- Distributed transaction performance improvements
 - Stardog Constellation, a unified graph computation framework
 - Virtual enterprise graphs from HDFS-based data lakes 
 

@@ -247,7 +247,7 @@ emp:{"empno"} a emp:Employee ;
 ----
 
 SMS is based on Turtle, but is not valid Turtle since it uses the
-http://www.w3.org/TR/r2rml/#from-template[URI templates] of R2RML---curly
+http://www.w3.org/TR/r2rml/#from-template[URI templates] of R2RML--curly
 braces can appear in URIs. Other than this difference, we can treat an SMS
 document as a set of RDF triples. SMS documents use the special namespace 
 `tag:stardog:api:mapping:` that we will represent with the `sm` prefix below.

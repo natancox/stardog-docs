@@ -778,6 +778,10 @@ Archetypes are composable, so you can use more of them and they are
 intended to be used alongside *your domain data*, which may include as many
 other schemas, ontologies, etc. as are required.
 
+==== User-defined Archetypes
+
+Please see the https://github.com/Complexible/stardog-examples/blob/master/examples/foaf/readme.md[Stardog Examples repository] on Github for an example that shows how to create your own Stardog archetype.
+
 === Database Creation Templates
 
 As a boon to the overworked admin or devops peeps, Stardog Server supports

@@ -232,6 +232,15 @@ ldap.superusers.cn = stardogSuperUsers
 Users can no longer be added/removed/modified via Stardog. User
 management is delegated to the LDAP server.
 
+==== An LDAP Quirk
+
+When Stardog manages users, instead of delegating to LDAP, when a user is
+created, they are assigned the permission `read:user:$NEW_USER`. But when user
+management is delegated to LDAP, this permission is not automatically created at
+new user creation time in Stardog and, therefore, it should be added manually to
+Stardog. If this doesn't happen, users won't be able to--among other things--log
+into the Web Console.
+
 === User Cache
 
 Stardog does not cache the list of users. The LDAP server is contacted
