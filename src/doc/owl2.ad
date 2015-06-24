@@ -34,18 +34,17 @@ boolean flag:
 `true`:: Axioms and rules are considered and reasoning is performed
 according to the value of the `reasoning.type` database option.
 
-Reasoning is disabled by default; that is, no reasoning is
-performed without explicitly setting the reasoning flag to "true". The default
-value of `reasoning.type` is "SL", but may be set to any other
-reasoning level that Stardog supports ("RDFS", "EL", "QL", "RL", or
-"SL").footnote:[`RDFS` is the OWL 2 axioms allowed in
-http://www.w3.org/TR/rdf-schema/[RDF schema] (mainly subclasses,
-subproperties, domain, and ranges); `QL` for the
-http://www.w3.org/TR/owl2-profiles/#OWL_2_QL[OWL 2 QL] axioms; `RL` for 
-the http://www.w3.org/TR/owl2-profiles/#OWL_2_RL[OWL 2 RL] axioms; 
-`EL` for the http://www.w3.org/TR/owl2-profiles/#OWL_2_EL[OWL 2 EL]
-axioms; and `SL` is for a combination of RDFS, QL, RL, and EL axioms, plus
-http://www.w3.org/Submission/SWRL/[SWRL rules].]
+Reasoning is disabled by default; that is, no reasoning is performed without
+explicitly setting the reasoning flag to "true". The default value of
+`reasoning.type` is "SL", but it may be set to any other reasoning level that
+Stardog supports: `RDFS` is the OWL 2 axioms allowed in
+http://www.w3.org/TR/rdf-schema/[RDF Schema] (mainly subclasses, subproperties,
+domain, and ranges); `QL` for the
+http://www.w3.org/TR/owl2-profiles/#OWL_2_QL[OWL 2 QL] axioms; `RL` for the
+http://www.w3.org/TR/owl2-profiles/#OWL_2_RL[OWL 2 RL] axioms; `EL` for the
+http://www.w3.org/TR/owl2-profiles/#OWL_2_EL[OWL 2 EL] axioms; and `SL` for a
+combination of RDFS, QL, RL, and EL axioms, plus
+http://www.w3.org/Submission/SWRL/[SWRL rules].
 
 == Using Reasoning
 
