@@ -467,36 +467,226 @@ changed. All of the config options have sensible defaults (except,
 obviously, for the database name), so you don't have to twiddle any of the
 knobs till you really need to.
 
+To configure a database, use the `metadata-get` and `metadata-set` CLI commands.
+See <<Man Pages>> for the details.
+
 === Configuration Options
 
-The following are the legal configuration options for a Stardog database:
+.Table of Configuration Options
+|===
+|Option |Mutable | Default | API
 
-. `bnode.preserve.ids`: Determines how the Stardog parser handles bnode identifiers that may be present in (some) RDF input. If this property is enabled (i.e., `TRUE`), parsing and data loading performance are improved; but the other effect is that if distinct input files use (randomly or intentionally) the same bnode identifier, that bnode will point to one and the same node in the database. If you have input files that use explicit bnode identifiers, and multiple files may use the asame bnode idenitifers, and you don't want those bnodes to be smushed into a single node in the database, then this configuration option should be disabled (set to `FALSE`).
-. `database.name`: A legal database name.
-. `database.online`: The status of the database: online or offline. It may be set so that the database is created initially in online or offline status; subsequently, it can't be set directly but only by using the relevant admin commands.
-. `icv.active.graphs`: Specifies which part of the database, in terms of named graphs, is checked with IC validation. Set to `tag:stardog:api:context:all` to validate all the named graphs in the database.
-. `icv.enabled`: Determines whether ICV is active for the database; if true, all database mutations are subject to IC validation (i.e., "guard mode").
-. `icv.reasoning.enabled`: Determines if reasoning is used during IC validation.
-. `index.differential.enable.limit`: Sets the minimum size of the Stardog database before differential indexes are used.
-. `index.differential.merge.limit`: Sets the size in number of RDF triples before the differential indexes are merged to the main indexes.
-. `index.literals.canonical`: Enables RDF literal canonicalization.
-See link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#CANONICAL_LITERALS[literal canonicalization]
-for details.
-. `index.named.graphs`: Enables optimized index support for named graphs; speeds SPARQL query evaluation with named graphs at the cost of some overhead for database loading and index maintenance.
-. `index.persist`: Enables persistent indexes.
-. `index.persist.sync`: Enables whether memory indexes are synchronously or asynchronously persisted to disk with respect to a transaction.
-. `index.statistics.update.automatic`: Sets whether statistics are maintained automatically.
-. `index.type`: Sets the index type (memory or disk).
-. `reasoning.consistency.automatic`: Enables automatic consistency checking with respect to a transaction.
-. `reasoning.punning.enabled`: Enables punning.
-. `reasoning.schema.graphs`: Determines which, if any, named graph or graphs contains the "tbox", i.e., the schema part of the data.
-. `reasoning.type`: Specifies the reasoning level associated with the database ("RDFS", "EL", "QL", "RL", or "SL").
-. `reasoning.approximate`: Flag to enable approximate reasoning. With this flag enabled Stardog will approximate an axiom that is outside the profile Stardog supports and normally ignored. For example, an equivalent class axiom might be split into two subclass axioms and only one subclass axiom is used. 
-. `search.enabled`: Enables semantic search on the database.
-. `search.reindex.mode`: Sets how search indexes are maintained.
-. `strict.parsing`: Controls whether Stardog parses RDF strictly (`true`, the default) or loosely (`false`)
-. `transactions.durable`: Enables durable transactions.
-. `query.all.graphs`: Controls what data the database evaluates queries against; if `true`, it will query over the default graph and the union of all named graphs; if `false` (the default), it will query only over the default graph.  This database option overrides any global server settings.
+|`*preserve.bnode.ids*`
+| Yes
+| `true`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#PRESERVE_BNODE_IDS[DatabaseOptions.PRESERVE_BNODE_IDS]
+
+4+|Determines how the Stardog parser handles bnode identifiers that may be present in RDF input. If this property is enabled (i.e., `TRUE`), parsing and data loading performance are improved; but the other effect is that if distinct input files use (randomly or intentionally) the same bnode identifier, that bnode will point to one and the same node in the database. If you have input files that use explicit bnode identifiers, and multiple files may use the same bnode idenitifers, and you don't want those bnodes to be smushed into a single node in the database, then this configuration option should be disabled (set to `FALSE`).
+
+|`*database.archetypes*`
+|Yes
+|
+|link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#ARCHETYPES[DatabaseOptions.ARCHETYPES]
+
+4+|The name of one or more database archetypes.
+
+|`*database.name*`
+|No
+|
+|link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#NAME[DatabaseOptions.NAME]
+4+|A database name, the legal value of which is is given by the regular expression
+`[A-Za-z]{1}[A-Za-z0-9_-]`.
+
+|`*database.namespaces*`
+|Yes
+|`rdf, rdfs, xsd, owl, stardog`
+|link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#NAMESPACES[DatabaseOptions.NAMESPACES]
+
+4+|
+
+|`*database.online*`
+| No
+| `true`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#ONLINE[DatabaseOptions.ONLINE]
+
+4+|The status of the database: online or offline. It may be set so that the database is created initially in online or offline status; subsequently, it can't be set directly but only by using the relevant admin commands.
+
+|`*icv.active.graphs*`
+| No
+| `default`
+| link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_ACTIVE_GRAPHS[ICVOptions.ICV_ACTIVE_GRAPHS]
+
+4+|Specifies which part of the database, in terms of named graphs, is checked with IC validation. Set to `tag:stardog:api:context:all` to validate all the named graphs in the database; otherwise, the legal value of `icv.active.graphs` is a comma-separated list of named graph
+identifiers.
+
+|`*icv.consistency.automatic*`
+| No
+| `false`
+| link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_CONSISTENCY_AUTOMATIC[ICVOptions.ICV_CONSISTENCY_AUTOMATIC]
+
+4+|
+
+|`*icv.enabled*`
+| Yes
+| `false`
+| link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_ENABLED[ICVOptions.ICV_ENABLED]
+
+4+|Determines whether ICV is active for the database; if true, all database mutations are subject to IC validation (i.e., "guard mode").
+
+|`*icv.reasoning.enabled*`
+| Yes
+| `false`
+| link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_REASONING_ENABLED[ICVOptions.ICV_REASONING_ENABLED]
+
+4+|Determines if reasoning is used during IC validation.
+
+|`*index.connection.timeout*`
+| Yes
+| `3,600,000`
+| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#INDEX_CONNECTION_TIMEOUT_MS[IndexOptions.INDEX_CONNECTION_TIMEOUT_MS]
+
+4+|
+
+|`*index.differential.enable.limit*`
+| Yes
+| `1,000,000`
+| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#DIFF_INDEX_MIN_LIMIT[IndexOptions.DIFF_INDEX_MIN_LIMIT]
+
+4+|Sets the minimum size of the Stardog database before differential indexes are used. The legal value is an integer.
+
+
+|`*index.differential.merge.limit*`
+| Yes
+| `10,000`
+| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#DIFF_INDEX_MAX_LIMIT[IndexOptions.DIFF_INDEX_MAX_LIMIT]
+
+4+|Sets the size in number of RDF triples before the differential indexes are merged to the main indexes. The legal value is an integer.
+
+|`*index.literals.canonical*`
+| No
+| `true`
+| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#CANONICAL_LITERALS[IndexOptions.CANONICAL_LITERALS]
+
+4+|Enables RDF literal canonicalization. 
+
+|`*index.named.graphs*`
+| No
+| `true`
+| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#INDEX_NAMED_GRAPHS[IndexOptions.INDEX_NAMED_GRAPHS]
+
+4+|Enables optimized index support for named graphs; speeds SPARQL query evaluation with named graphs at the cost of some overhead for database loading and index maintenance.
+
+|`*index.persist*`
+| Yes
+| `false`
+| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#PERSIST[IndexOptions.PERSIST]
+
+4+|Enables persistent indexes.
+
+|`*index.persist.sync*`
+| Yes
+| `true`
+| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#SYNC[IndexOptions.SYNC]
+
+4+|Determines whether memory indexes are synchronously or asynchronously persisted to disk with respect to a transaction.
+
+|`*index.statistics.update.automatic*`
+| Yes
+| `true`
+| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#AUTO_STATS_UPDATE[IndexOptions.AUTO_STATS_UPDATE]
+
+4+|Determines whether statistics are maintained automatically.
+
+|`*index.type*`
+| No
+| `disk`
+| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#INDEX_TYPE[IndexOptions.INDEX_TYPE]
+
+4+|The legal value of `index.type` is the string "disk" or "memory" (case-insensitive).
+
+|`*query.timeout*`
+| Yes
+|
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#QUERY_TIMEOUT[DatabaseOptions.QUERY_TIMEOUT]
+
+4+|
+
+|`*reasoning.consistency.automatic*`
+| Yes
+| `false`
+| link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#CONSISTENCY_AUTOMATIC[ReasoningOptions.CONSISTENCY_AUTOMATIC]
+
+4+|Enables automatic consistency checking with respect to a transaction.
+
+|`*reasoning.punning.enabled*`
+| No
+| `false`
+| link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#PUNNING_ENABLED[ReasoningOptions.PUNNING_ENABLED]
+
+4+|Enables punning.
+
+|`*reasoning.schema.graphs*`
+| Yes
+| `*`
+| link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#SCHEMA_GRAPHS[ReasoningOptions.SCHEMA_GRAPHS]
+
+4+| Determines which, if any, named graph or graphs contains the "tbox", i.e., the schema part of the data. The legal value is a comma-separated list of named graph identifiers, including (optionally) the special names,
+`tag:stardog:api:context:default` and `tag:stardog:api:context:all`, which represent the default graph and the union of all named graphs and
+the default graph, respectively. In the context of database configurations only, Stardog will recognize `default` and `*` as short forms of those URIs, respectively.
+
+|`*reasoning.type*`
+| Yes
+| `RDFS, EL, QL, RL, DL, SL`
+|
+
+4+|Specifies the reasoning level associated with the database 
+
+|`*reasoning.approximate*`
+| Yes
+| `false`
+| link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#SCHEMA_GRAPHS[ReasoningOptions.APPROXIMATE]
+
+4+|Enables approximate reasoning. With this flag enabled Stardog will approximate an axiom that is outside the profile Stardog supports and normally ignored. For example, an equivalent class axiom might be split into two subclass axioms and only one subclass axiom is used. 
+
+|`*search.enabled*`
+| Yes
+| `false`
+| link:/java/snarl/com/complexible/stardog/search/SearchOptions.html#SEARCHABLE[SearchOptions.SEARCHABLE]
+
+4+|Enables semantic search for the database.
+
+|`*strict.parsing*`
+| Yes
+| `true`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#STRICT_PARSING[DatabaseOptions.STRICT_PARSING]
+
+4+|Controls whether Stardog parses RDF strictly (`true`, the default) or loosely (`false`)
+
+|`*search.reindex.mode*`
+| Yes 
+| ??
+| ??
+
+4+|Determins how search indexes are maintained. The legal value of `search.reindex.mode` is one of the strings `sync`
+or `async` (case insensitive) or a legal http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger[Quartz
+cron expression].
+
+
+|`*transactions.durable*`
+| Yes
+| `false`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#TRANSACTIONS_DURABLE[DatabaseOptions.TRANSACTIONS_DURABLE]
+
+4+|Enables durable transactions.
+
+|`*query.all.graphs*`
+| Yes
+| `false`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#QUERY_ALL_GRAPHS[DatabaseOptions.QUERY_ALL_GRAPHS]
+
+4+|Determines what data the database evaluates queries against; if `true`, it will query over the default graph and the union of all named graphs; if `false` (the default), it will query only over the default graph.  This database option overrides any global server settings.
+
+|===
 
 ==== A Note About Database Status
 
@@ -507,183 +697,6 @@ of these operations may be done programmatically from CLI tools, such
 that they can be scripted in advance to minimize downtime. In a future
 version, we will allow some properties to be set while the database
 remains online.
-
-==== Summary of Configuration Options
-
-The following table summarizes the options:
-
-.Table of Configuration Options
-|===
-|Option |Mutable | Default | API
-
-|`preserve.bnode.ids`
-| Yes
-| `true`
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#PRESERVE_BNODE_IDS[DatabaseOptions.PRESERVE_BNODE_IDS]
-
-|`database.archetypes`
-|Yes
-|
-|link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#ARCHETYPES[DatabaseOptions.ARCHETYPES]
-
-|`database.name`
-|No
-|
-|link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#NAME[DatabaseOptions.NAME]
-
-|`database.namespaces`
-|Yes
-|`rdf, rdfs, xsd, owl, stardog`
-|link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#NAMESPACES[DatabaseOptions.NAMESPACES]
-
-|`database.online`
-| No
-| `true`
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#ONLINE[DatabaseOptions.ONLINE]
-
-|`icv.active.graphs`
-| No
-| `default`
-| link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_ACTIVE_GRAPHS[ICVOptions.ICV_ACTIVE_GRAPHS]
-
-|`icv.consistency.automatic`
-| No
-| `false`
-| link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_CONSISTENCY_AUTOMATIC[ICVOptions.ICV_CONSISTENCY_AUTOMATIC]
-
-|`icv.enabled`
-| Yes
-| `false`
-| link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_ENABLED[ICVOptions.ICV_ENABLED]
-
-|`icv.reasoning.enabled`
-| Yes
-| `false`
-| link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_REASONING_ENABLED[ICVOptions.ICV_REASONING_ENABLED]
-
-|`index.connection.timeout`
-| Yes
-| `3,600,000`
-| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#INDEX_CONNECTION_TIMEOUT_MS[IndexOptions.INDEX_CONNECTION_TIMEOUT_MS]
-
-|`index.differential.enable.limit`
-| Yes
-| `1,000,000`
-| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#DIFF_INDEX_MIN_LIMIT[IndexOptions.DIFF_INDEX_MIN_LIMIT]
-
-|`index.differential.merge.limit`
-| Yes
-| `10,000`
-| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#DIFF_INDEX_MAX_LIMIT[IndexOptions.DIFF_INDEX_MAX_LIMIT]
-
-|`index.literals.canonical`
-| No
-| `true`
-| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#CANONICAL_LITERALS[IndexOptions.CANONICAL_LITERALS]
-
-|`index.named.graphs`
-| No
-| `true`
-| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#INDEX_NAMED_GRAPHS[IndexOptions.INDEX_NAMED_GRAPHS]
-
-|`index.persist`
-| Yes
-| `false`
-| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#PERSIST[IndexOptions.PERSIST]
-
-|`index.persist.sync`
-| Yes
-| `true`
-| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#SYNC[IndexOptions.SYNC]
-
-|`index.statistics.update.automatic`
-| Yes
-| `true`
-| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#AUTO_STATS_UPDATE[IndexOptions.AUTO_STATS_UPDATE]
-
-|`index.type`
-| No
-| `disk`
-| link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#INDEX_TYPE[IndexOptions.INDEX_TYPE]
-
-|`query.timeout`
-| Yes
-|
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#QUERY_TIMEOUT[DatabaseOptions.QUERY_TIMEOUT]
-
-|`reasoning.consistency.automatic`
-| Yes
-| `false`
-| link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#CONSISTENCY_AUTOMATIC[ReasoningOptions.CONSISTENCY_AUTOMATIC]
-
-|`reasoning.punning.enabled`
-| No
-| `false`
-| link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#PUNNING_ENABLED[ReasoningOptions.PUNNING_ENABLED]
-
-|`reasoning.schema.graphs`
-| Yes
-| `*`
-| link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#SCHEMA_GRAPHS[ReasoningOptions.SCHEMA_GRAPHS]
-
-|`reasoning.approximate`
-| Yes
-| `false`
-| link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#SCHEMA_GRAPHS[ReasoningOptions.APPROXIMATE]
-
-|`search.enabled`
-| Yes
-| `false`
-| link:/java/snarl/com/complexible/stardog/search/SearchOptions.html#SEARCHABLE[SearchOptions.SEARCHABLE]
-
-|`strict.parsing`
-| Yes
-| `true`
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#STRICT_PARSING[DatabaseOptions.STRICT_PARSING]
-
-|`transactions.durable`
-| Yes
-| `false`
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#TRANSACTIONS_DURABLE[DatabaseOptions.TRANSACTIONS_DURABLE]
-
-|`query.all.graphs`
-| Yes
-| `false`
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#QUERY_ALL_GRAPHS[DatabaseOptions.QUERY_ALL_GRAPHS]
-
-|===
-
-==== Legal Values of Configuration Options
-
-The following options take a boolean value:
-`database.online, icv.enabled, index.literals.canonical, index.named.graphs, index.persist, index.sync, index.statistics.update.automatic, reasoning.consistency.automatic, reasoning.punning.enabled, search.enabled, transactions.durable`.
-
-The legal value of `database.name` is given by the regular expression
-`[A-Za-z]{1}[A-Za-z0-9_-]`.
-
-The legal value of `icv.active.graphs` is a comma-separated list of named graph
-identifiers. See `reasoning.schema.graphs` below for syntactic sugar
-URIs for default graph and all named graphs.
-
-The legal value of `icv.reasoning.enabled` is either `true` or `false`.
-
-The legal value of `index.differential.*` is an integer.
-
-The legal value of `index.type` is the string "disk" or "memory"
-(case-insensitive).
-
-The legal value of `reasoning.schema.graphs` is a comma-separated list of named graph
-identifiers, including (optionally) the special names,
-`tag:stardog:api:context:default` and `tag:stardog:api:context:all`,
-which represent the default graph and the union of all named graphs and
-the default graph, respectively. In the context of database
-configurations only, Stardog will recognize `default` and `*` as shorter
-forms of those URIs, respectively.
-
-The legal value of `search.reindex.mode` is one of the strings `sync`
-or `async` (case insensitive) or a legal
-http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger[Quartz
-cron expression].
 
 === Managing Database Status
 
