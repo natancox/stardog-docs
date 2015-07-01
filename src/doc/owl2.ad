@@ -42,7 +42,7 @@ http://www.w3.org/TR/rdf-schema/[RDF Schema] (mainly subclasses, subproperties,
 domain, and ranges); `QL` for the
 http://www.w3.org/TR/owl2-profiles/#OWL_2_QL[OWL 2 QL] axioms; `RL` for the
 http://www.w3.org/TR/owl2-profiles/#OWL_2_RL[OWL 2 RL] axioms; `EL` for the
-http://www.w3.org/TR/owl2-profiles/#OWL_2_EL[OWL 2 EL] axioms; and `SL` for a
+http://www.w3.org/TR/owl2-profiles/#OWL_2_EL[OWL 2 EL] axioms; `DL` for http://www.w3.org/TR/2012/REC-owl2-syntax-20121211/[OWL 2 DL axioms]; and `SL` for a
 combination of RDFS, QL, RL, and EL axioms, plus
 http://www.w3.org/Submission/SWRL/[SWRL rules].
 
