@@ -502,7 +502,7 @@ See <<Man Pages>> for the details.
 |`rdf, rdfs, xsd, owl, stardog`
 |link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#NAMESPACES[DatabaseOptions.NAMESPACES]
 
-4+|
+4+|Sets the default namespaces for new databases.
 
 |`*database.online*`
 | No
@@ -524,7 +524,7 @@ identifiers.
 | `false`
 | link:/java/snarl/com/complexible/stardog/icv/ICVOptions.html#ICV_CONSISTENCY_AUTOMATIC[ICVOptions.ICV_CONSISTENCY_AUTOMATIC]
 
-4+|
+4+|Enables automatic ICV consistency check as part of transactions.
 
 |`*icv.enabled*`
 | Yes
@@ -545,7 +545,7 @@ identifiers.
 | `3,600,000`
 | link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#INDEX_CONNECTION_TIMEOUT_MS[IndexOptions.INDEX_CONNECTION_TIMEOUT_MS]
 
-4+|
+4+|Determines timeout value for open connections.
 
 |`*index.differential.enable.limit*`
 | Yes
@@ -609,7 +609,7 @@ identifiers.
 |
 | link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#QUERY_TIMEOUT[DatabaseOptions.QUERY_TIMEOUT]
 
-4+|
+4+|Determines max execution time for query evaluation.
 
 |`*reasoning.consistency.automatic*`
 | Yes
@@ -664,8 +664,8 @@ the default graph, respectively. In the context of database configurations only,
 
 |`*search.reindex.mode*`
 | Yes 
-| ??
-| ??
+| `async`
+| 
 
 4+|Determins how search indexes are maintained. The legal value of `search.reindex.mode` is one of the strings `sync`
 or `async` (case insensitive) or a legal http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger[Quartz
