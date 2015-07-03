@@ -347,12 +347,14 @@ module.exports = function(grunt) {
         //'invalidate_cloudfront:index' //won't work right now...doesn't exist yet
     ]);
     grunt.registerTask("stage", [
-                       'release_notes',
-                       'default',
-                       'shell:pdf',
-                       'compress',
-                       'aws_s3:stage',
-                       'aws_s3:gzipd',
+        'clean',
+        'imagemin',
+        'release_notes',
+        'default',
+        'shell:pdf',
+        'compress',
+        'aws_s3:stage',
+        //'aws_s3:gzipd',
     ]);
     grunt.registerTask('cl', ['clean:build']);
     grunt.registerTask('t', ['availabletasks:tasks']);
