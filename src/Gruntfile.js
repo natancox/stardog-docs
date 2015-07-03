@@ -166,9 +166,9 @@ module.exports = function(grunt) {
           release_notes: {
               command: function () {
                   comm = "asciidoctor ";
-                  comm += "-v -t -a allow-uri-read -a embedcss -a stylesheet='../doc/stardog.css' release-notes/index.ad -a data-uri "
+                  comm += "-a allow-uri-read -a embedcss -a stylesheet='../doc/stardog.css' release-notes/index.ad -a data-uri "
                   comm += "-o website/release-notes/index.html"
-                  console.log(comm);
+                  //console.log(comm);
                   return comm
               }
           },
@@ -337,21 +337,19 @@ module.exports = function(grunt) {
         'shell:release_notes',
     ]);
     grunt.registerTask('pub', [
-        //do we want to start off by doing a bump?
         'release_notes',
         'default',
         'shell:pdf',
         'compress',
         'aws_s3:production',
         'aws_s3:gzipd',
-        //'invalidate_cloudfront:index' //won't work right now...doesn't exist yet
     ]);
     grunt.registerTask("stage", [
-        'clean',
-        'imagemin',
         'release_notes',
         'default',
-        'shell:pdf',
+        //we don't really need to build a PDF every time we stage
+        //it can be commented out for the most part
+        //'shell:pdf',
         'compress',
         'aws_s3:stage',
         //'aws_s3:gzipd',
