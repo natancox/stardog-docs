@@ -20,6 +20,19 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
+== 3.1.2 Release
+[none]
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Optimize sorting and de-duplication of uncommitted changes during querying (#2347)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Last committed transaction ID inconsistent across nodes for brand-new databases (#2374)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Use xerces implementation of DatatypeFactory over the native sun implementation (#2373)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Databases which could not be created at startup cannot be synched to restore them (#2371)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; List of available databases does not account for databases that were deleted externally (#2370)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Incorrect index order chosen when vars in equality filters are inlined (#2361)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Admin console does not work with SSL (#2360)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Persistent memory index leaks open file handles (#2356)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; LDAP user records are assumed to have uid attribute (#2354)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; ClassCastException during updates (#2277)
+
 == 3.1.1 Release
 [none]
 
