@@ -37,7 +37,7 @@ changes, including notable bug fixes, see the {release-notes}[release notes].
 2.0::
 
 - <<Using Stardog,SPARQL 1.1 Update>>: the most requested feature ever!
-- <<Stardog Web Console, Web Console>>: a Stardog Web app for managing Stardog Databases; includes Linked Data Server, etc.
+- <<Browsing, Stardog Web Console>>: a Stardog Web app for managing Stardog Databases; includes Linked Data Server, etc.
 - <<Server Monitoring with Watchdog & JMX,JMX monitoring>>: includes graphical monitoring via Web Console
 - HTTP & SNARL servers unified into a single server (default port 5820)
 - <<Database Archetypes>> for PROV, SKOS; extensible for user-defined ontologies, schemas, etc.
