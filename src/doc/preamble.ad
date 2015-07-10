@@ -74,25 +74,22 @@ Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl, Morton Swimmer,
 Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron Zettlemoyer, Jim Rhyne,
 Andrea Westerinen, Huy Phan, Zach Whitley, Maurice Rabb, Grant Pax, Conrad
 Leonard, the crew at XSB, and the nice people at El Rinconcito Cafe in DC.] You
-can also help us make the Stardog Docs better:
-https://github.com/Complexible/stardog-docs/tree/master/src/doc[edit these docs
-on Github] if you spot a problem.
+can also help by
+https://github.com/Complexible/stardog-docs/tree/master/src/doc[editing these
+docs on Github] if you spot a problem.
 
 == Roadmap
 
 [horizontal]
-Stardog 3.x::
+Stardog 4.0::
 - Virtual Graphs via R2RML
 - Property Graph/Tinker Pop 3 support
 - https://gist.github.com/kendall/b699db38ec4c0034eba2[Geospatial query answering]
 - Remove dependency on Cluster proxy
-Stardog 4.0::
-- require Java 8
+- *require Java 8*
+- http://nasa.clarkparsia.com/[Pelorus] integrated with Stardog Web Console
 Stardog 4.x::
-- HDFS backend
+- native HDFS support
 - Distributed transaction performance improvements
 - Stardog Constellation, a unified graph computation framework
 - Virtual enterprise graphs from HDFS-based data lakes 
-
-Our roadmap is influenced by customer input. Let us know what
-you need.
