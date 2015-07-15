@@ -31,6 +31,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *FIX: Hard offline is not propagated to particpants (#2375)
 *FIX: Graph store protocol does not respect parsing options (#2257)
 *FIX: data add/remove does not correctly handle directory arguments (#2093)
+*FIX: QueryStringDecoder imposes a hard-coded maximum number of parameters yielding incorrect results for large HTTP requests (#2392)
 
 == 3.1.2 Release
 [none]
