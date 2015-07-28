@@ -20,6 +20,19 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
+== 3.1.3 Release
+[none]
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Improved logging for invalid rules (#2377)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Use Stardog default port of 5820 when none specified for AdminConnection over HTTP (#2391)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Character encoding defaults to US-ASCII rather than UTF-8 (#2382)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Service incorrectly reports bound variables (#2381)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Cluster should not replicate file references from data add/remove, contents should be replicated instead (#2380)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Copying a database does not create a new entry in ZK (#2376)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Hard offline is not propagated to particpants (#2375)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Graph store protocol does not respect parsing options (#2257)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; data add/remove does not correctly handle directory arguments (#2093)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; QueryStringDecoder imposes a hard-coded maximum number of parameters yielding incorrect results for large HTTP requests (#2392)
+
 == 3.1.2 Release
 [none]
 * image:m.png[Fixed,15,16]&nbsp;&nbsp; Optimize sorting and de-duplication of uncommitted changes during querying (#2347)
