@@ -38,14 +38,15 @@ languages and network interfaces. Stardog is made with skill, taste,
 and a point of view in DC, Boston, and Germany.
 
 To learn more about where we've been and where we're headed, consult
-the link:/release-notes/[release notes] and
+the link:/release-notes/[RELEASE NOTES] and
 <<Milestones,milestones>>.
 
 |===
-| Stardog Version | HTML     | PDF
-| 3.1.3   | &#171;latest release&#187; | link:/stardog-manual-{version}.pdf[✓]
+| Stardog Version | HTML   | PDF
+| 3.1.4   | link:/#[✓]      | link:/stardog-manual-{version}.pdf[✓]
+| 3.1.3   | link:/3.1.3#[✓]  | link:/stardog-manual-3.1.3.pdf[✓]
 | 3.1.2   | link:/3.1.2#[✓]  | link:/stardog-manual-3.1.2.pdf[✓]
-| 3.1.1   | link:/3.1.1#[✓]  | link:/stardog-manual-3-1.1.pdf[✓]
+| 3.1.1   | link:/3.1.1#[✓]  | link:/stardog-manual-3.1.1.pdf[✓]
 | 3.1     | link:/3.1#[✓]    | link:/stardog-manual-3.1.pdf[✓]
 | 3.0.2   | link:/3.0.2#[✓]  | link:/stardog-manual-3.0.2.pdf[✓]
 | 3.0.1   | link:/3.0.1#[✓]  | link:/3.0.1/stardog-manual-3.0.1.pdf[✓]
@@ -55,10 +56,9 @@ the link:/release-notes/[release notes] and
 == Downloading Stardog & Support
 
 http://stardog.com/#download[Download] Stardog to get started. The
-https://groups.google.com/a/clarkparsia.com/d/forum/stardog[Stardog
-support forum] is the place to report bugs, ask questions, etc.
-
-Stardog developers may be found on https://gitter.im/Complexible/stardog-examples[Gitter chat], too.
+https://groups.google.com/a/clarkparsia.com/d/forum/stardog[Stardog support
+forum] is the place to report bugs, ask questions, etc. Stardog developers may
+be found on https://gitter.im/Complexible/stardog-examples[Gitter chat], too.
 
 == Contributing 
 
@@ -88,7 +88,7 @@ Stardog 4.0::
 - Property Graph/Tinker Pop 3 support
 - https://gist.github.com/kendall/b699db38ec4c0034eba2[Geospatial query answering]
 - Remove dependency on Cluster proxy
-- *require Java 8*
+- *move to Java 8*
 - http://nasa.clarkparsia.com/[Pelorus] integrated with Stardog Web Console
 Stardog 4.x::
 - native HDFS support

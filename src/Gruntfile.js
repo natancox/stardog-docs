@@ -3,8 +3,8 @@
 module.exports = function(grunt) {
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
-    var theId = grunt.option("id") || "3.1.3";
-    var theDate = grunt.option("date") || "15 July 2015";
+    var theId = grunt.option("id") || "3.1.4";
+    var theDate = grunt.option("date") || "28 July 2015";
 
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
@@ -349,7 +349,7 @@ module.exports = function(grunt) {
         'default',
         //we don't really need to build a PDF every time we stage
         //it can be commented out for the most part
-        //'shell:pdf',
+        'shell:pdf',
         'compress',
         'aws_s3:stage',
         //'aws_s3:gzipd',

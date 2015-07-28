@@ -20,7 +20,7 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
-== 3.1.4 Release
+== 3.1.4 (Oh my it's π) Release
 [none]
 *MOD: Improved join key selection for multi-key joins (#2399)
 *MOD: DB Connection timeout default too small in Web Console (#2394)
