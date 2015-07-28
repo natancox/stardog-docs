@@ -73,6 +73,7 @@ services that use DIGEST auth, or a different authentication mechanism
 altogether, you'll need to implement a custom `Service`
 implementation.
 
+////
 === Querying RDBMS via Virtual Graphs
 
 Sometimes enterprise information belongs to or in a Stardog graph but for
@@ -85,6 +86,7 @@ will query the external data sources--by rewriting SPARQL to SQL
 automatically--as if they were actually materialized in Stardog.
 
 See the <<Virtual Graphs>> chapter for configuration and usage.
+////
 
 == Updating
 

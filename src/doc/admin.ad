@@ -318,44 +318,45 @@ The following twiddly knobs for Stardog Server are available in
 `stardog.properties`:footnote:[For more details about configuring these values,
 see the `examples/stardog.properties` file that is distributed with Stardog.]
 
-.  `query.all.graphs`: Controls what data Stardog Server evaluates queries against; if
-    `true`, it will query over the default graph and the union of all
-    named graphs; if `false` (the default), it will query only over the
+. `query.all.graphs`: Controls what data Stardog Server evaluates queries
+    against; if `true`, it will query over the default graph and the union of
+    all named graphs; if `false` (the default), it will query only over the
     default graph.
 
-.  `query.timeout`: Sets the upper bound for query execution time
-    that's inherited by all databases unless explicitly overriden. See
-    <<Managing Queries>> section below for details.
+. `query.timeout`: Sets the upper bound for query execution time that's
+    inherited by all databases unless explicitly overriden. See <<Managing Queries>> section below for details.
 
-.  `logging.[access,audit].[enabled,type,file]`: Controls whether and
-    how Stardog logs server events; described in detail below.
+. `logging.[access,audit].[enabled,type,file]`: Controls whether and how Stardog
+    logs server events; described in detail below.
 
-.  `logging.slow_query.enabled`, `logging.slow_query.time`, `logging.slow_query.type`:
-    The three slow query logging options are
-    used in the following way. To enable logging of slow queries, set
-    `enabled` to `true`. To define what counts as a "slow" query, set
-    `time` to a time duration value (positive integer plus "h", "m",
-    "s", or "ms" for hours, minutes, seconds, or milliseconds
-    respectively). To determine the type of logging, set `type` to
-    `text` (the default) or `binary`. **To state the obvious explicitly,
-    a `logging.slow_query.time` that exceeds the value of
+. `logging.slow_query.enabled`, `logging.slow_query.time`,
+    `logging.slow_query.type`: The three slow query logging options are used in
+    the following way. To enable logging of slow queries, set `enabled` to
+    `true`. To define what counts as a "slow" query, set `time` to a time
+    duration value (positive integer plus "h", "m", "s", or "ms" for hours,
+    minutes, seconds, or milliseconds respectively). To determine the type of
+    logging, set `type` to `text` (the default) or `binary`. **To state the
+    obvious explicitly, a `logging.slow_query.time` that exceeds the value of
     `query.timeout` will result in null logs.**
 
-.  `database.connection.timeout.ms`: Controls how long, in
-    milliseconds, connections may idle before being automatically closed
-    by the server.
+. `database.connection.timeout.ms`: Controls how long, in milliseconds,
+    connections may idle before being automatically closed by the server.
 
-.  `password.length.min`: Sets the password policy for the minimum length of
-    user passwords, the value can't be lower than `password.length.min` or greater
+. `http.max.request.parameters`: Default is 1024; any value smaller than
+`Integer.MAX_VALUE` may be provided. Useful if you have lots of named graphs.
+
+. `password.length.min`: Sets the password policy for the minimum length of user
+    passwords, the value can't be lower than `password.length.min` or greater
     than `password.length.max`. Default: `4`.
 
-.  `password.length.max`: Sets the password policy for the maximum length of
-    user passwords. Default: `1024`.
+. `password.length.max`: Sets the password policy for the maximum length of user
+    passwords. Default: `1024`.
 
-.  `password.regex`: Sets the password policy of accepted chars in user passwords, via a
-    Java regular expression. Default: `[\\w@#$%]+`
+. `password.regex`: Sets the password policy of accepted chars in user
+    passwords, via a Java regular expression. Default: `[\\w@#$%]+`
 
-.  `security.named.graphs`: Sets named graph security on globally. Default: `false`.
+. `security.named.graphs`: Sets named graph security on globally. Default:
+`false`.
 
 === Starting & Stopping the Server
 
