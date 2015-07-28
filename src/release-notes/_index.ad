@@ -20,6 +20,22 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
+== 3.1.4 Release
+[none]
+*MOD: Improved join key selection for multi-key joins (#2399)
+*MOD: DB Connection timeout default too small in Web Console (#2394)
+*FIX: Data obfuscation w/ named graphs collapses data into default graph (#2411)
+*FIX: Named graph security checks do not use effective permissions, only explicit (#2410)
+*FIX: Stack overflow in the TBox operator (#2406)
+*FIX: Incorrect cache lookup for queries with equality and datatype casting (#2405)
+*FIX: Bind operator can evaluate bindings in a wrong order (#2404)
+*FIX: SameAs Operator returns prematurely (#2403)
+*FIX: Empty query results when data contains `Contexts.ALL` and `query.all.graphs` is enabled (#2400)
+*FIX: Tracking deletions in the search index does not correctly respect the arity of the literal value (#2396)
+*FIX: Query fails with IllegalStateException: This scan does not provide an ordered output and cannot skip through solutions (#2388)
+*FIX: Schema browser queries don't terminate when using named graphs (#2387)
+*FIX: Incorrect join results in case of non-existent keys (#2412)
+
 == 3.1.3 Release
 [none]
 *MOD: Improved logging for invalid rules (#2377)
