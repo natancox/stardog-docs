@@ -345,6 +345,14 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
 . `http.max.request.parameters`: Default is 1024; any value smaller than
 `Integer.MAX_VALUE` may be provided. Useful if you have lots of named graphs.
 
+.  `database.connection.timeout`: The amount of time a connection to the database can
+    be open, but inactive, before being automatically closed to reclaim the resources.
+    The timeout values specified in the property file should be a positive integer
+    followed by either letter `h` (for hours), letter `m` (for minutes),
+    letter `s` (for seconds), or letters `ms` (for milliseconds).
+    Example intervals: `1h` for 1 hour, `5m` for 5 minutes, `90s` for 90 seconds,
+    `500ms` for 500 milliseconds. Default value is `1h`.
+
 . `password.length.min`: Sets the password policy for the minimum length of user
     passwords, the value can't be lower than `password.length.min` or greater
     than `password.length.max`. Default: `4`.
