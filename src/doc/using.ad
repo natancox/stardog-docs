@@ -345,6 +345,14 @@ Stardog's search programmatically.
 We use the predicate `\http://jena.hpl.hp.com/ARQ/property#textMatch` to
 access the search index in a SPARQL query.
 
+The `textMatch` function has one required argument, the search query in Lucene syntax.
+It also has two optional arguments.  The first is the score threshold; results
+whose score is *below* this number are not included in the results.  The second
+is the maximum number of results to return from Lucene.  When not specified,
+the default limit is `50`.  When a `LIMIT` is specified in the SPARQL query,
+it does not affect the full-text search, that only restricts the size of
+the final result set.
+
 For example,
 
 [source,SPARQL]
