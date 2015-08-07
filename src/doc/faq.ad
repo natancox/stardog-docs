@@ -2,6 +2,14 @@
 
 Some frequently asked questions for which we have answers.
 
+=== Why can't I load Dbpedia (or other RDF) data?
+
+Question:: I get a parsing error when loading Dbpedia or some other RDF. What can I do?
+
+Answer:: First, it's not a bad thing to expect data providers to publish valid data. Second, it is, apparently, a very naive thing to expect data providers to publish valid data...
++
+Stardog supports a loose parsing mode which will ignore certain kinds of data invalidity and may allow you to load invalid data. See `strict.parsing` in <<Configuration Options>>.
+
 === Why don't my queries work?!
 
 Question:: I've got some named graphs and blah blah my queries don't work blah blah.
