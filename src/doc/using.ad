@@ -198,15 +198,12 @@ $ stardog data remove -g http://foo -f TURTLE myDatabase 2.rdf 3.rdf
 will remove the triples in the Turtle files `2.rdf` and `3.rdf` from the
 named graph `\http://foo` of `myDatabase`.
 
-Strict or loose parsing may be set for the input payload by using
-`--strict-parsing=TRUE|FALSE`.
-
 === How Stardog Handles RDF Parsing
 
 RDF parsing in Stardog is strict: it requires typed RDF literals to
 match their explicit datatypes, URIs to be well-formed, etc. In some
 cases, strict parsing isn't ideal—it may be disabled using the
-`--strict-parsing=FALSE`.
+`strict.parsing` <<Configuration Options,configuration option>>.
 
 However, even with strict parsing disabled, Stardog's RDF parser may
 encounter parse errors from which it cannot recover. And loading data in
