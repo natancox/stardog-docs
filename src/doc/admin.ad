@@ -645,10 +645,10 @@ the default graph, respectively. In the context of database configurations only,
 
 |`*reasoning.type*`
 | Yes
-| `RDFS, EL, QL, RL, DL, SL`
+| `SL`
 |
 
-4+|Specifies the reasoning level associated with the database 
+4+|Specifies the reasoning type associated with the database; legal values are `SL`, `RL`, `QL`, `EL`, `DL`, `RDFS`, and `NONE`.
 
 |`*reasoning.approximate*`
 | Yes

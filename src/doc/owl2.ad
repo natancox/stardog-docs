@@ -14,36 +14,40 @@ Stardog's reasoning system is worth understanding as well. For the
 most part, **Stardog performs reasoning in a lazy and late-binding
 fashion: it does not materialize inferences; but, rather, reasoning is
 performed at query time according to a user-specified "reasoning
-level".** This approach allows for maximum flexibilityfootnote:[You
+type".** This approach allows for maximum flexibilityfootnote:[You
 only pay for the reasoning that you use; no more and no less. Eager
 materialization is mostly a great strategy for hard disk
 manufacturers.] while maintaining excellent performance. The one
 exception to this general approach is equality reasoning which is
 eagerly materialized. See <<Same As Reasoning>> for more details.
 
-== Reasoning Levels
+== Reasoning Types
 
-Stardog supports all of OWL 2, including DL, EQ, QL, and RL, as well
-as user-defined rules via SWRL. However, for the most part users don't
-need to worry too much about which reasoning level is necessary. Thus, in 
-Stardog 3.0, reasoning can be enabled or disabled using a simple
-boolean flag:
+Stardog supports all of OWL 2, including DL, EQ, QL, and RL, as well as
+user-defined rules via SWRL. However, for the most part users don't need to
+worry too much about which reasoning type is necessary. Thus, in Stardog 3.0,
+reasoning can be enabled or disabled using a simple boolean flag---in HTTP,
+`reasoning`; in CLI, `-r` or `--reasoning`; in the Web Console, a reasoning
+button in the query panel; and in Java APIs,
+http://docs.stardog.com/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#REASONING_TYPE[some
+flags]:
 
 [horizontal]
 `false`:: No axioms or rules are considered; no reasoning is performed.
 `true`:: Axioms and rules are considered and reasoning is performed
 according to the value of the `reasoning.type` database option.
 
-Reasoning is disabled by default; that is, no reasoning is performed without
-explicitly setting the reasoning flag to "true". The default value of
-`reasoning.type` is "SL", but it may be set to any other reasoning level that
+**Reasoning is disabled by default; that is, no reasoning is performed without
+explicitly setting the reasoning flag to "true"**. The default value of
+`reasoning.type` is "SL", but it may be set to any other reasoning type that
 Stardog supports: `RDFS` is the OWL 2 axioms allowed in
 http://www.w3.org/TR/rdf-schema/[RDF Schema] (mainly subclasses, subproperties,
 domain, and ranges); `QL` for the
 http://www.w3.org/TR/owl2-profiles/#OWL_2_QL[OWL 2 QL] axioms; `RL` for the
 http://www.w3.org/TR/owl2-profiles/#OWL_2_RL[OWL 2 RL] axioms; `EL` for the
-http://www.w3.org/TR/owl2-profiles/#OWL_2_EL[OWL 2 EL] axioms; `DL` for http://www.w3.org/TR/2012/REC-owl2-syntax-20121211/[OWL 2 DL axioms]; and `SL` for a
-combination of RDFS, QL, RL, and EL axioms, plus
+http://www.w3.org/TR/owl2-profiles/#OWL_2_EL[OWL 2 EL] axioms; `DL` for
+http://www.w3.org/TR/2012/REC-owl2-syntax-20121211/[OWL 2 DL axioms]; and `SL`
+for a combination of RDFS, QL, RL, and EL axioms, plus
 http://www.w3.org/Submission/SWRL/[SWRL rules].
 
 == Using Reasoning
@@ -105,10 +109,10 @@ reasoning. See the <<Java Programming>> section for details.
 Currently, the API has two methods:
 
 -   `isConsistent()`, which can be used to check if the database is
-    (logically) consistent with respect to the reasoning level.
+    (logically) consistent with respect to the reasoning type.
 -   `isSatisfiable(URI theURIClass)`, which can be used to check if the
     given class if satisfiable with respect to the database and
-    reasoning level.
+    reasoning type.
 
 == Explaining Reasoning Results
 
@@ -303,7 +307,7 @@ library. In order to apply SWRL user-defined rules, you must include
 the rules as part of the database's schema: that is, put your rules
 where your axioms are, i.e., in the schema. Once the rules are part of
 the schema, they will be used for reasoning automatically when using
-the **SL** reasoning level.
+the **SL** reasoning type.
 
 Assertions implied by the rules *will not* be materialized. Instead,
 rules are used to expand queries just as regular axioms are used.
@@ -837,12 +841,12 @@ Then Stardog executes these queries over the data as if they were written that
 way to begin with. In fact, Stardog can't tell that they weren't. Reasoning in
 Stardog **just is query answering** in nearly every case.
 
-The form of the EQ depends on the reasoning level. For OWL 2 QL, every
+The form of the EQ depends on the reasoning type. For OWL 2 QL, every
 EQ produced by Stardog is **guaranteed to be expanded into a set of
-queries**. If the reasoning level is OWL 2 RL or EL, then the EQ *may*
+queries**. If the reasoning type is OWL 2 RL or EL, then the EQ *may*
 (but may not) include a recursive rule. _**If a recursive rule is included,
 Stardog's answers may be incomplete with respect to the
-semantics of the reasoning level.**_
+semantics of the reasoning type.**_
 
 === Why Query Rewriting?
 
@@ -1191,9 +1195,9 @@ Reasoning with very expressive schemas can be time consuming and use a lot of
 memory. To get the best performance out of Stardog with large schemas, limit the
 expressivity of your schema to 
 http://www.w3.org/TR/2012/REC-owl2-profiles-20121211/#OWL_2_EL[OWL 2 EL]. You
-can also set the reasoning level of the database to `EL` and Stardog will 
+can also set the reasoning type of the database to `EL` and Stardog will 
 automatically filter any axiom outside the EL expressivity. See 
-<<Reasoning Levels>> for more details on reasoning levels. OWL 2 EL allows
+<<Reasoning Types>> for more details on reasoning types. OWL 2 EL allows
 range declarations for properties and user-defined datatypes but avoiding these
 two constructs will further improve schema reasoning performance in Stardog.
 
@@ -1254,10 +1258,10 @@ the {man-base-url}man/reasoning-schema.html[`reasoning schema`] command to
 export the contents of the schema to see exactly what is included in the schema
 that Stardog uses.
 
-=== Are you using the right reasoning level?
+=== Are you using the right reasoning type?
 
 Perhaps some of the modeling constructs (a.k.a. axioms) in your database are
-being ignored. By default, Stardog uses the `SL` reasoning level. You can find
+being ignored. By default, Stardog uses the `SL` reasoning type. You can find
 out which axioms are being ignored by looking at the Stardog log file.
 
 === Are you using DL?
@@ -1268,7 +1272,7 @@ memory.
 === Are you using SWRL?
 
 SWRL rules--whether using SWRL syntax or Stardog Rules Syntax--are only taken
-into account using the **SL** reasoning level.
+into account using the **SL** reasoning type.
 
 === Do you know what to expect?
 
