@@ -23,14 +23,12 @@ eagerly materialized. See <<Same As Reasoning>> for more details.
 
 == Reasoning Types
 
-Stardog supports all of OWL 2, including DL, EQ, QL, and RL, as well as
-user-defined rules via SWRL. However, for the most part users don't need to
-worry too much about which reasoning type is necessary. Thus, in Stardog 3.0,
+In Stardog 3.0,
 reasoning can be enabled or disabled using a simple boolean flag--in HTTP,
 `reasoning`; in CLI, `-r` or `--reasoning`; in the Web Console, a reasoning
-button in the query panel; and in Java APIs,
-http://docs.stardog.com/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#REASONING_TYPE[a 
-flag]:
+button in the query panel; and in Java APIs, 
+http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html#reasoning(boolean)[a connection option]
+or http://docs.stardog.com/java/snarl/com/complexible/stardog/api/Query.html#reasoning(boolean)[a query option]:
 
 [horizontal]
 `false`:: No axioms or rules are considered; no reasoning is performed.
@@ -38,8 +36,15 @@ flag]:
 according to the value of the `reasoning.type` database option.
 
 **Reasoning is disabled by default; that is, no reasoning is performed without
-explicitly setting the reasoning flag to "true"**. The default value of
-`reasoning.type` is "SL", but it may be set to any other reasoning type that
+explicitly setting the reasoning flag to "true"**. 
+
+When reasoning is enabled by the boolean flag, the axioms and rules 
+in the database are first filtered according to the value of the 
+`reasoning.type` database option. The default value of `reasoning.type` 
+is `SL` and for the most part users don't need to
+worry too much about which reasoning type is necessary since `SL` covers 
+all of the OWL 2 profiles as well as user-defined rules via SWRL. 
+However, this value may be set to any other reasoning type that
 Stardog supports: `RDFS` is the OWL 2 axioms allowed in
 http://www.w3.org/TR/rdf-schema/[RDF Schema] (mainly subclasses, subproperties,
 domain, and ranges); `QL` for the
@@ -48,7 +53,26 @@ http://www.w3.org/TR/owl2-profiles/#OWL_2_RL[OWL 2 RL] axioms; `EL` for the
 http://www.w3.org/TR/owl2-profiles/#OWL_2_EL[OWL 2 EL] axioms; `DL` for
 http://www.w3.org/TR/2012/REC-owl2-syntax-20121211/[OWL 2 DL axioms]; and `SL`
 for a combination of RDFS, QL, RL, and EL axioms, plus
-http://www.w3.org/Submission/SWRL/[SWRL rules].
+http://www.w3.org/Submission/SWRL/[SWRL rules]. Any axiom outside the selected
+type will be ignored by the reasoner.
+
+The `DL` reasoning type behaves significantly different than other types. 
+Stardog normally uses the <<Query Rewriting>> technique for reasoning which 
+scales very well with increasing number of instances and only the schema needs
+to be kept in memory. But query rewriting cannot handle axioms outside the OWL 2
+profiles where `DL` reasoning type can be used so that no axiom or rule is ignored
+as long as they satisfy 
+http://www.w3.org/TR/2012/REC-owl2-syntax-20121211/#Global_Restrictions_on_Axioms_in_OWL_2_DL[the OWL 2 DL restricions]. 
+With `DL` reasoning, both the schema and the instance data need to pulled into 
+memory which limits its applicability with large number of instances. 
+`DL` reasoning also requires the database to be logically consistent or no 
+reasoning can be be performed. Finally, `DL` reasoning requires more computation upfront 
+compared to query rewriting which exhibits a "pay-as-you-go" behabior. 
+
+The `reasoning.type` can also be set to the special value `NONE` which will
+filter all axioms and rules thus effectively disables reasoning. This value can be
+used for the database option to prevent reasoning to be used by any client even 
+though they might enable it with the boolean flag on the client side.
 
 == Using Reasoning
 
