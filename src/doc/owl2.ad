@@ -1494,7 +1494,7 @@ are three OWL 2 profiles, each of which achieves efficiency differently.
     diagrams and ER diagrams.
 -   http://www.w3.org/TR/owl2-profiles/#OWL_2_EL[OWL 2 EL] is
     particularly useful in applications employing ontologies that
-    contain very large numbers of properties and/or classes. This
+    contain very large numbers of properties and classes. This
     profile captures the expressive power used by many such ontologies
     and is a subset of OWL 2 for which the basic reasoning problems can
     be performed in time that is polynomial with respect to the size of
