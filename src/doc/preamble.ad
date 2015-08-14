@@ -6,6 +6,13 @@ five easy steps.
 
 .What's New
 ****
+.In 4.0...
+- [x] <<Migration, Mandatory migration to Java 8>>
+
+.In 3.2...
+- [x] <<TinkerPop, Property Graph, Gremlin, TinkerPop3>> support
+- [x] <<Virtual Graphs, Virtual graphs via R2RML>>
+
 .In 3.1...
 - [x] <<Named Graph Security>>
 - [x] <<Cluster Management>>
@@ -25,6 +32,7 @@ five easy steps.
 - [x] <<Enterprise Authentication,Enterprise authentication via LDAP>>
 - [x] <<Reasoning Levels,Simplified reasoning levels>>
 **** 
+
 = Introduction
 
 Stardog is a semantic graph database, available in client-server,
