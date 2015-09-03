@@ -314,6 +314,24 @@ can also be configured via a `stardog.properties`—which is a Java
 Properties file—file in `STARDOG_HOME`. To change the behavior of a
 running Stardog Server, it is necessary to restart it.
 
+==== Configuring Temp Space
+
+Stardog uses the value of the JVM argument `java.io.tmpdir` to write temporary
+files for many different operations. If you want to configure temp space to use
+a particular disk volume or partition, use the `java.io.tmpdir` JVM argument on
+Stardog startup.
+
+Bad (or at least very weird) things are guaranteed to happen if this part of the
+filesystem runs out of (or even very low on) free disk space. Stardog will
+delete temporary files when they're no longer needed. But Stardog admins should
+configure their monitoring systems to make sure that free disk space is always
+available, both on `java.io.tmpdir` and on the disk volume that hosts
+`STARDOG_HOME`.footnote:[This is equally true, when using Stardog HA Cluster, of
+Zookeeper's access to free disk space. Very bad things happen to the Stardog
+Cluster if Zookeeper cannot write to disk.]
+
+==== Stardog Configuration
+
 The following twiddly knobs for Stardog Server are available in
 `stardog.properties`:footnote:[For more details about configuring these values,
 see the `examples/stardog.properties` file that is distributed with Stardog.]
@@ -665,7 +683,7 @@ the default graph, respectively. In the context of database configurations only,
 4+|Enables semantic search for the database.
 
 |`*strict.parsing*`
-| Yes
+| No
 | `true`
 | link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#STRICT_PARSING[DatabaseOptions.STRICT_PARSING]
 
