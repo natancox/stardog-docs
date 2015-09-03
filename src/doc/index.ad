@@ -3,7 +3,7 @@
 :maven: true
 :revnumber: {version}
 :toc: right 
-:toc-title: {version} ({release-date})
+:toc-title: {version}—{release-date}
 :toclevels: 1 
 :experimental:
 :source-highlighter: highlightjs

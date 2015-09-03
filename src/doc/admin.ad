@@ -314,7 +314,7 @@ can also be configured via a `stardog.properties`—which is a Java
 Properties file—file in `STARDOG_HOME`. To change the behavior of a
 running Stardog Server, it is necessary to restart it.
 
-==== Configuring Temp Space
+==== Configuring Temporary ("Scratch") Space
 
 Stardog uses the value of the JVM argument `java.io.tmpdir` to write temporary
 files for many different operations. If you want to configure temp space to use

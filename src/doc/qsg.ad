@@ -2,7 +2,7 @@
 
 == Requirements
 
-It just doesn't get any easier than this: Stardog runs on Java 8. Stardog runs
+It just doesn't get any easier than this: **Stardog runs on Java 8**. Stardog runs
 best on, but does not require, a 64-bit JVM that supports `sun.misc.Unsafe`.
 
 == Insecurity
