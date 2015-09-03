@@ -20,6 +20,22 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
+== 3.1.4 (Oh my it's π) Release
+[none]
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; Improved join key selection for multi-key joins (#2399)
+* image:m.png[Fixed,15,16]&nbsp;&nbsp; DB Connection timeout default too small in Web Console (#2394)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Data obfuscation w/ named graphs collapses data into default graph (#2411)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Named graph security checks do not use effective permissions, only explicit (#2410)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Stack overflow in the TBox operator (#2406)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Incorrect cache lookup for queries with equality and datatype casting (#2405)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Bind operator can evaluate bindings in a wrong order (#2404)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; SameAs Operator returns prematurely (#2403)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Empty query results when data contains `Contexts.ALL` and `query.all.graphs` is enabled (#2400)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Tracking deletions in the search index does not correctly respect the arity of the literal value (#2396)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Query fails with IllegalStateException: This scan does not provide an ordered output and cannot skip through solutions (#2388)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Schema browser queries don't terminate when using named graphs (#2387)
+* image:f.png[Fixed,15,15]&nbsp;&nbsp; Incorrect join results in case of non-existent keys (#2412)
+
 == 3.1.3 Release
 [none]
 * image:m.png[Fixed,15,16]&nbsp;&nbsp; Improved logging for invalid rules (#2377)
