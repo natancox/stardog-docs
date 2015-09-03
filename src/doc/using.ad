@@ -73,7 +73,6 @@ services that use DIGEST auth, or a different authentication mechanism
 altogether, you'll need to implement a custom `Service`
 implementation.
 
-////
 === Querying RDBMS via Virtual Graphs
 
 Sometimes enterprise information belongs to or in a Stardog graph but for
@@ -86,7 +85,6 @@ will query the external data sources--by rewriting SPARQL to SQL
 automatically--as if they were actually materialized in Stardog.
 
 See the <<Virtual Graphs>> chapter for configuration and usage.
-////
 
 == Updating
 
@@ -470,5 +468,10 @@ for obfuscating the queries as well:
 $ stardog query obfuscate --config obfConfig.ttl myDatabase myQuery.sparql > obfQuery.ttl
 ----
 include::console.ad[]
+
+== Namespacing
+
+* pointers to the namespace management stuff
+* description of namespace-free mode...
 
 include::manpages.ad[]
