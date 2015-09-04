@@ -14,6 +14,7 @@ five easy steps.
 - [x] <<Requirements, Java 8>>
 - [x] <<Stardog 4, Stardog 4 API Changes>>
 - [x] <<RDF 1.1>>
+- [x] Remove Cluster proxy dependency
 
 **** 
 
@@ -74,15 +75,8 @@ docs on Github] if you spot a problem.
 == Roadmap
 
 [horizontal]
-Stardog 4.0::
-- Virtual Graphs via R2RML
-- Property Graph/Tinker Pop 3 support
-- https://gist.github.com/kendall/b699db38ec4c0034eba2[Geospatial query answering]
-- Remove dependency on Cluster proxy
-- *move to Java 8*
-- http://nasa.clarkparsia.com/[Pelorus] integrated with Stardog Web Console
 Stardog 4.x::
+- http://nasa.clarkparsia.com/[Pelorus] integrated with Stardog Web Console
 - native HDFS support
 - Distributed transaction performance improvements
-- Stardog Constellation, a unified graph computation framework
-- Virtual enterprise graphs from HDFS-based data lakes 
+- Stardog Constellation, a unified graph integration and analytics platform
