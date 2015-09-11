@@ -5,6 +5,47 @@
 === Implementation
 === Integration with SPARQL
 
+=== Database Configuration
+
+Any Stardog database should work out-of-the-box with the Stardog TinkerPop 3 implementation, but given that Stardog
+enables by default
+http://docs.stardog.com/java/snarl/com/complexible/stardog/index/IndexOptions.html#CANONICAL_LITERALS[RDF literal
+canonicalization], some property value types may not be as expected when fetching them from the TinkerPop 3 graph.
+
+To allow for better compatibility between TinkerPop 3 and Stardog, the setting `index.literals.canonical` must be
+disabled in the database at creation time, using the following command:
+
+[source,bash]
+----
+$ stardog-admin db create -o index.literals.canonical=false -n <dbname>
+----
+
+=== Graph Configuration
+
+In order to create TinkerPop 3 graphs, a configuration object must be created to set up the graph. The TinkerPop 3
+implementation for Stardog contains a tool for creating this configuration easily, supporting many of the features
+available in Stardog, such as reasoning and named-graphs. This tool is available via the API or the Gremlin Console in
+Groovy.
+
+[source,groovy]
+----
+gremlin> graphConf = StardogGraphConfiguration.builder()
+...
+gremlin> graphConf.connectionString("snarl://localhost:5820/mygraph").credentials("admin", "admin")
+...
+gremlin> graphConf.baseIRI("http://tinkerpop.incubator.apache.org/").reasoning(false)
+==>gremlin.graph=tag:stardog:api:context:default
+stardog.computer.cache_size=5000
+stardog.label_iri=http://www.w3.org/2000/01/rdf-schema#label
+stardog.connection=snarl://localhost:5820/mygraph
+stardog.user=admin
+stardog.password=admin
+stardog.base_iri=http://tinkerpop.incubator.apache.org/
+stardog.reasoning_enabled=false
+gremlin> graph = StardogGraphFactory.open(graphConf.build())
+==>cachedstardoggraph[cachedstardoggraph]
+----
+
 == Stardog & Gremlin Console
 
 Stardog's TinkerPop 3 implementation includes a plugin for
@@ -71,21 +112,9 @@ gremlin> :pin use complexible.stardog
 The following describes the process to create a `StardogGraph` and explore data
 in Stardog using the TinkerPop 3 API via the Gremlin Console.
 
-The only requirement is that you have an existent database in a Stardog server,
-which could be in-memory or disk based. Assuming you have correctly installed
-Stardog, we create the database disabling RDF literal canonicalization for
-better compatibility with TinkerPop 3.
-
-[source,bash]
-----
-$ stardog-admin server start                                              # <1>
-$ stardog-admin db create -o index.literals.canonical=false -n mygraph    # <2>
-----
-<1> Start the Stardog Server
-<2> create database for graphs
-
-Assuming you already installed the Stardog plugin for the Gremlin Console and it
-is active, start the Gremlin Console.
+The only requirement is that you have an existent database in Stardog as directed in
+<<Database Configuration>>, which could be in-memory or disk based. Assuming you already installed the Stardog plugin
+for the Gremlin Console and it is active, start the Gremlin Console.
 
 [source,bash]
 ----
@@ -98,16 +127,18 @@ user is `admin` and password `admin`.
 
 [source,groovy]
 ----
-gremlin> conf = new BaseConfiguration()
-==>org.apache.commons.configuration.BaseConfiguration@379ab47b
-gremlin> conf.setProperty(StardogGraph.CONNECTION_STRING, "snarl://localhost:5820/mygraph")
-==>null
-gremlin> conf.setProperty(StardogGraph.USER, "admin")
-==>null
-gremlin> conf.setProperty(StardogGraph.PASSWORD, "admin")
-==>null
-gremlin> mygraph = StardogGraphFactory.open(conf)
-==>stardoggraph[stardoggraph]
+gremlin> graphConf = StardogGraphConfiguration.builder()
+...
+gremlin> graphConf.connectionString("snarl://localhost:5820/mygraph").credentials("admin", "admin").baseIRI("http://tinkerpop.incubator.apache.org/")
+==>gremlin.graph=tag:stardog:api:context:default
+stardog.computer.cache_size=5000
+stardog.label_iri=http://www.w3.org/2000/01/rdf-schema#label
+stardog.connection=snarl://localhost:5820/mygraph
+stardog.user=admin
+stardog.password=admin
+stardog.base_iri=http://tinkerpop.incubator.apache.org/
+gremlin> graph = StardogGraphFactory.open(graphConf.build())
+==>cachedstardoggraph[cachedstardoggraph]
 ----
 
 ==== Named Graphs
@@ -116,24 +147,19 @@ The previous commands will create a Graph within the `default` graph of the
 Stardog database `mygraph`. A database can contain multiple graphs, which would
 be the equivalent to `named-graphs` in Stardog.
 
-To create a `StardogGraph` over a specific named-graph, just set the named-graph
-URI in the configuration for the `StardogGraph` to create:
-
+To create a `StardgoGraph` over a specific named-graph, just set the named-graph URI in the <<Graph Configuration>> for
+the `StardogGraph` to create:
 [source,groovy]
 ----
-gremlin> confNG = new BaseConfiguration()
-==>org.apache.commons.configuration.BaseConfiguration@379ab47b
-gremlin> confNG.setProperty(StardogGraph.CONNECTION_STRING, "snarl://localhost:5820/mygraph")
-==>null
-gremlin> confNG.setProperty(StardogGraph.USER, "admin")
-==>null
-gremlin> confNG.setProperty(StardogGraph.PASSWORD, "admin")
-==>null
-gremlin> confNG.setProperty(StardogGraph.NAMED_GRAPH, "tag:stardog:api:graph:test")
-==>null
-gremlin> testGraph = StardogGraphFactory.open(confNG)
-==>stardoggraph[stardoggraph]
+gremlin> graphConf.namedGraph("tag:graph1")
+==>gremlin.graph=tag:stardog:api:context:default
+...
+stardog.named_graph=tag:graph1
+...
 ----
+
+*NOTE:* by default, the property `gremlin.graph` is set to the default graph in a Stardog database; setting the
+`stardog.named_graph` configuration option will override the graph option.
 
 == Stardog & Gremlin Server
 
@@ -168,9 +194,9 @@ server:
 === Configure Stardog Graphs
 
 To setup a graph for use with the Gremlin Server you need to create a
-configuration file in `conf/` with the Stardog graph properties. The following
-example file, `stardoggraph-mygraph.properties`, contains the required
-properties to use a Stardog graph:
+configuration file in `conf/` with the Stardog graph properties. The following example file,
+`stardoggraph-mygraph.properties`, contains the required properties to use a Stardog graph, described in <<Graph
+Configuration>>:
 
 ----
 # Properties for creating a StardogGraph in Gremlin Server
@@ -188,7 +214,7 @@ implementation to use, in this case is the `StardogGraph`. The property
 Server, if the graph is contained in the Stardog DB's default graph, the value
 to use is: `tag:stardog:api:graph:default` as shown in the example; if other
 named-graph is used, just set the value to the named-graph's `URI`. The rest of
-the properties are just connection settings to the stardog server.
+the properties are just connection settings to the Stardog server.
 
 Now you need to point to the Stardog graph properties file from the server
 configuration file, `conf/gremlin-server.yaml`, and enable the Stardog plugin.
