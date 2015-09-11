@@ -5,7 +5,7 @@
 === Implementation
 === Integration with SPARQL
 
-== Using Stardog with Gremlin Console
+== Stardog & Gremlin Console
 
 Stardog's TinkerPop 3 implementation includes a plugin for
 http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#gremlin-console[Gremlin
@@ -135,7 +135,7 @@ gremlin> testGraph = StardogGraphFactory.open(confNG)
 ==>stardoggraph[stardoggraph]
 ----
 
-== Using Stardog with Gremlin Server
+== Stardog & Gremlin Server
 
 The TinkerPop 3 implementation for Stardog includes a plugin for
 http://tinkerpop.incubator.apache.org/docs/3.0.0.M9-incubating/#gremlin-server[Gremlin
