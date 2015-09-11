@@ -10,6 +10,15 @@ Answer:: First, it's not a bad thing to expect data providers to publish valid d
 +
 Stardog supports a loose parsing mode which will ignore certain kinds of data invalidity and may allow you to load invalid data. See `strict.parsing` in <<Configuration Options>>.
 
+=== Why doesn't search work?
+
+Question:: I created a database but search doesn't work.
+
+Answer:: Search is disabled by default; you can enable it at database creation
+time, or at any subsequent time, using the Web Console or by using
+link:/man/metadata-set.html[`metadata set`] CLI. It can be enabled using link:/man/db-create.html[`db
+create`] too.
+
 === Why don't my queries work?!
 
 Question:: I've got some named graphs and blah blah my queries don't work blah blah.
