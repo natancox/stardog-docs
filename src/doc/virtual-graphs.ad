@@ -8,19 +8,6 @@ SPARQL results. Virtual graphs can be used for mapping any tabular data, e.g.
 CSV, to RDF and Stardog will support mapping other tabular formats to graphs in
 future releases.
 
-.Virtual Graphs: BETA 
-****
-Virtual graphs are currently marked **BETA**.
-
-We will be remediating the following limitations in 3.x releases:
-
-* virtual graphs are not supported in the Stardog HA cluster
-* named graphs in mappings are ignored
-* admin commands for adding and removing R2RML mappings work only over SNARL; but once R2RML mappings are added through the admin command, query answering will
-work over both SNARL and HTTP protocols
-* queries that range over Stardog database and virtual graphs are optimized with a simplistic query planner
-****
-
 A virtual graph definition has three components:
 
 * a unique name
