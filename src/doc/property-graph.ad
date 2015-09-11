@@ -1,24 +1,22 @@
 = Property Graphs
 
-== TinkerPop 3
+== TinkerPop 3 & Gremlin
 
-== Gremlin
+=== Implementation
+=== Integration with SPARQL
 
-== Integration with SPARQL
+== Using Stardog with Gremlin Console
 
-== Integration with RDF
+Stardog's TinkerPop 3 implementation includes a plugin for
+http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#gremlin-console[Gremlin
+Console, window="_blank"].
 
-== How to Use
+=== Installation
 
-=== Using Stardog with Gremlin Console
+The following steps describe how to install the Stardog plugin into the Gremlin console:
 
-The TinkerPop 3 implementation for Stardog includes a plugin for http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#gremlin-console[Gremlin Console, window="_blank"].
-
-==== Installation
-
-The following steps describe how to install the Stardog plugin into the gremlin console:
 [start=1]
-. Create `stardog-gremlin/plugin` directory within the `ext/` directory in the gremlin console directory.
+. Create `stardog-gremlin/plugin` directory within the `ext/` directory in the Gremlin console directory.
 
 [source,bash]
 ----
@@ -68,28 +66,35 @@ gremlin> :pin use complexible.stardog
 [start=6]
 . You're done installing the stardog-gremlin pluging for Gremlin Console. Now you can create a `StardogGraph` and start exploring the TinkerPop 3 API with Stardog.
 
-==== Using a Stardog Graph
+=== Using a Stardog Graph
 
-The following describes the process to create a `StardogGraph` and explore data in Stardog using the TinkerPop 3 API via the Gremlin Console.
+The following describes the process to create a `StardogGraph` and explore data
+in Stardog using the TinkerPop 3 API via the Gremlin Console.
 
-The only requirement is that you have an existent database in a Stardog server, which could be in-memory or disk based. Assuming you have correctly installed Stardog, we create the database disabling RDF literal canonicalization for better compatibility with TinkerPop 3.
+The only requirement is that you have an existent database in a Stardog server,
+which could be in-memory or disk based. Assuming you have correctly installed
+Stardog, we create the database disabling RDF literal canonicalization for
+better compatibility with TinkerPop 3.
 
 [source,bash]
 ----
 $ stardog-admin server start                                              # <1>
 $ stardog-admin db create -o index.literals.canonical=false -n mygraph    # <2>
 ----
-<1> start the stardog server
+<1> Start the Stardog Server
 <2> create database for graphs
 
-Assuming you already installed the Stardog plugin for the Gremlin Console and it is active, start the gremlin console.
+Assuming you already installed the Stardog plugin for the Gremlin Console and it
+is active, start the Gremlin Console.
 
 [source,bash]
 ----
 gremlin-console$ bin/gremlin.sh
 ----
 
-In the Gremlin Console, create the configuration settings for opening the `StardogGraph`. Assuming the Stardog server is running in `localhost:5820`, the user is `admin` and password `admin`.
+In the Gremlin Console, create the configuration settings for opening the
+`StardogGraph`. Assuming the Stardog server is running in `localhost:5820`, the
+user is `admin` and password `admin`.
 
 [source,groovy]
 ----
@@ -107,9 +112,12 @@ gremlin> mygraph = StardogGraphFactory.open(conf)
 
 ==== Named Graphs
 
-The previous commands will create a Graph within the `default` graph of the Stardog database `mygraph`. A database can contain multiple graphs, which would be the equivalent to `named-graphs` in Stardog.
+The previous commands will create a Graph within the `default` graph of the
+Stardog database `mygraph`. A database can contain multiple graphs, which would
+be the equivalent to `named-graphs` in Stardog.
 
-To create a `StardgoGraph` over a specific named-graph, just set the named-graph URI in the configuration for the `StardogGraph` to create:
+To create a `StardogGraph` over a specific named-graph, just set the named-graph
+URI in the configuration for the `StardogGraph` to create:
 
 [source,groovy]
 ----
@@ -127,13 +135,16 @@ gremlin> testGraph = StardogGraphFactory.open(confNG)
 ==>stardoggraph[stardoggraph]
 ----
 
-=== Using Stardog with Gremlin Server
+== Using Stardog with Gremlin Server
 
-The TinkerPop 3 implementation for Stardog includes a plugin for http://tinkerpop.incubator.apache.org/docs/3.0.0.M9-incubating/#gremlin-server[Gremlin Server, window="_blank"].
+The TinkerPop 3 implementation for Stardog includes a plugin for
+http://tinkerpop.incubator.apache.org/docs/3.0.0.M9-incubating/#gremlin-server[Gremlin
+Server, window="_blank"].
 
-==== Installation
+=== Installation
 
-The following steps describe how to install the Stardog plugin into the gremlin server:
+The following steps describe how to install the Stardog plugin into the gremlin
+server:
 
 [start=1]
 . Create `stardog-gremlin/plugin` directory within the `ext/` directory in the gremlin server directory.
@@ -154,9 +165,12 @@ The following steps describe how to install the Stardog plugin into the gremlin 
 [start=3]
 . Make sure the jar file `stardog-gremlin-X.X.X.jar` is contained in the `stardog-gremlin/plugin` directory along with all other Stardog jars; copy the jar if it doesn't exist.
 
-==== Configure Stardog Graphs
+=== Configure Stardog Graphs
 
-To setup a graph for use with the Gremlin Server you need to create a configuration file in `conf/` with the Stardog graph properties. The following example file, `stardoggraph-mygraph.properties`, contains the required properties to use a Stardog graph:
+To setup a graph for use with the Gremlin Server you need to create a
+configuration file in `conf/` with the Stardog graph properties. The following
+example file, `stardoggraph-mygraph.properties`, contains the required
+properties to use a Stardog graph:
 
 ----
 # Properties for creating a StardogGraph in Gremlin Server
@@ -168,9 +182,18 @@ stardog.named_graph=tag:stardog:api:graph:default
 stardog.reasoning_enabled=false
 ----
 
-In the previous example, `gremlin.graph` defines the TinkerPop Class implementation to use, in this case is the `StardogGraph`. The property `gremlin.stardog.named_graph` is required when configuring a graph in Gremlin Server, if the graph is contained in the Stardog DB's default graph, the value to use is: `tag:stardog:api:graph:default` as shown in the example; if other named-graph is used, just set the value to the named-graph's `URI`. The rest of the properties are just connection settings to the stardog server.
+In the previous example, `gremlin.graph` defines the TinkerPop Class
+implementation to use, in this case is the `StardogGraph`. The property
+`gremlin.stardog.named_graph` is required when configuring a graph in Gremlin
+Server, if the graph is contained in the Stardog DB's default graph, the value
+to use is: `tag:stardog:api:graph:default` as shown in the example; if other
+named-graph is used, just set the value to the named-graph's `URI`. The rest of
+the properties are just connection settings to the stardog server.
 
-Now, you need to point to the Stardog graph properties file from the server configuration file, `conf/gremlin-server.yaml`, and enable the Stardog plugin. the following are the relevant parts of the configuration file that need to be set:
+Now you need to point to the Stardog graph properties file from the server
+configuration file, `conf/gremlin-server.yaml`, and enable the Stardog plugin.
+the following are the relevant parts of the configuration file that need to be
+set:
 
 [source,yaml]
 ----
@@ -184,7 +207,7 @@ plugins:
 <1> set the stardog graph properties
 <2> enable the stardog gremlin plugin
 
-==== Running the Gremlin Server
+=== Running the Gremlin Server
 
 Having a Stardog server running, at this point you're ready to start the Gremlin Server.
 
@@ -193,13 +216,10 @@ Having a Stardog server running, at this point you're ready to start the Gremlin
 ~/gremlin-server$ bin/gremlin-server.sh
 ----
 
-You should see that the Gremlin Server creates an instance of the `StardogGraph`, named `graph`, based on the properties file configured.
+You should see that the Gremlin Server creates an instance of the
+`StardogGraph`, named `graph`, based on the properties file configured.
 
 [source,bash]
 ----
 [INFO] Graphs - Graph [graph] was successfully configured via [conf/stardoggraph-mygraph.properties].
 ----
-
-=== Database Configuration
-
-== Current Limitations
