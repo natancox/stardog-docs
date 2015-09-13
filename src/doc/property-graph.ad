@@ -2,8 +2,45 @@
 
 == TinkerPop 3 & Gremlin
 
+For information on how to use the TinkerPop 3 Framework, please refer to its http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating[documentation, window="_blank"].
+
 === Implementation
+
+Stardog's implementation of the TinkerPop 3 framework is based on the RDF model in which Stardog persists all Vertices,
+Edges and Properties of the Property Graph model. In order to be able to support edge properties in the RDF model,
+Stardog includes a reification function which allows us to define quads in which statement Ids can be the subjects
+of a Quad; this would extend the Quad model used in Stardog to have a virtual notion of Quints.
+
+Having virtual Quints in Stardog lets us manipulate existing RDF content as a Property Graph, but most importantly, it
+allows us to use all the cool features in Stardog, such as reasoning, with Property
+Graphs. Reification will extend current content and let users add edge properties if required via the TinkerPop 3
+Property Graph model or SPARQL.
+
+An internal representation in Stardog for the known
+http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#intro[TinkerGraph Modern, window="_blank"] graph:
+
+[source,turtle]
+----
+include::https://gist.githubusercontent.com/edgarRd/c20e5bd963e7526c54f3/raw/3d250c691f67b805ac9de9eacdc2a49eb67b029f/tinkerpop-modern.ttl[]
+----
+
 === Integration with SPARQL
+
+Access to the reification function is available via SPARQL in order to be able to query edge properties created via the
+TinkerPop 3 API, e.g. query to find the first 10 edge properties excluding the label:
+
+[source,sparql]
+----
+select ?srcName ?edgeLabel ?destName ?edgeProp ?val where {
+  ?src ?pred ?dest .
+  ?src tp:name ?srcName .
+  ?dest tp:name ?destName .
+  BIND(stardog:identifier(?src, ?pred, ?dest) as ?edgeId) .
+  ?edgeId rdfs:label ?edgeLabel .
+  ?edgeId ?edgeProp ?val .
+  FILTER (?edgeProp != rdfs:label) .
+} limit 10
+----
 
 === Database Configuration
 
@@ -45,6 +82,10 @@ stardog.reasoning_enabled=false
 gremlin> graph = StardogGraphFactory.open(graphConf.build())
 ==>cachedstardoggraph[cachedstardoggraph]
 ----
+
+== Features Supported
+
+
 
 == Stardog & Gremlin Console
 
