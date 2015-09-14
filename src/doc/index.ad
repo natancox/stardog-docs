@@ -35,23 +35,23 @@ include::using.ad[]
 
 include::admin.ad[]
 
-include::property-graph.ad[]
-
-include::virtual-graphs.ad[]
-
-include::geospatial.ad[]
-
-//include::docker.ad[]
+include::security.ad[]
 
 include::cluster.ad[]
 
 include::cluster-management.ad[]
 
+//include::docker.ad[]
+
 include::owl2.ad[]
 
 include::icv.ad[]
 
-include::security.ad[]
+include::virtual-graphs.ad[]
+
+include::property-graph.ad[]
+
+include::geospatial.ad[]
 
 include::programming.ad[]
 
