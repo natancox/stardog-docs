@@ -13,31 +13,32 @@ client's perspective Stardog Cluster should be indistinguishable from
 non-clustered Stardog.footnote:["Client" here means the client of Stardog
 APIs.]
 
-NOTE: High Availability requires *at least* three nodes in the
-Cluster. Stardog Cluster works best, with respect to fault resiliency,
-with a cluster size that is an odd-number greater than or equal to
-three : 3, 5, 7, etc.footnote:["Because Zookeeper requires a majority,
+NOTE: High Availability requires *at least* three Stardog and three ZooKeeper nodes
+in the Cluster. ZooKeeper works best, with respect to fault resiliency,
+with an ensemble size that is an odd-number greater than or equal to
+three : 3, 5, 7, etc.footnote:["Because ZooKeeper requires a majority,
 it is best to use an odd number of machines. For example, with four
 machines ZooKeeper can only handle the failure of a single machine; if
 two machines fail, the remaining two machines do not constitute a
 majority. However, with five machines ZooKeeper can handle the failure
 of two machines." See
 https://zookeeper.apache.org/doc/r3.1.2/zookeeperAdmin.html[Zk Admin]
-for more.]  With respect to performance, larger cluster sizes perform
-better than smaller ones.
+for more.]  With respect to performance, larger cluster sizes (Stardog and ZooKeeper) perform
+better than smaller ones for reads, while larger cluster sizes perform worse for writes.
+It is responsibility of the administrator to find the right balance.
 
 == Cluster Guarantees
 
 Stardog Cluster implements an atomic commitment protocol based on
 http://en.wikipedia.org/wiki/Two-phase_commit_protocol[two-phase commit (2PC)]
 over a shared replicated memory that's provided by Apache ZooKeeper. A cluster is
-composed of a set of Stardog servers running together. One of the servers is
-known as the Coordinator and the rest as Participants.
+composed of a set of Stardog servers and a ZooKeeper ensemble running together. One of the Stardog
+servers is known as the Coordinator and the rest as Participants.
 
 In case the Coordinator fails at any point, a new Coordinator will be elected
 out of the remaining available Participants. Stardog Cluster supports both
 `read` (e.g., querying) and `write` (e.g., adding data) requests. Read requests
-are load-balanced over the available Participants, whereas write requests are
+are served by the Stardog node receiving it, whereas write requests are
 transparently forwarded to and handled by the Coordinator. In some future
 release we may change the protocol implemented by the Cluster and thus change
 some of the allowable topologies, including multiple-writers and
@@ -69,7 +70,7 @@ eventually consistent approach is more appropriate for your use of Stardog.]
 
 To deploy Stardog Cluster you use `stardog-admin` commands and some
 additional configuration. Stardog Cluster depends on Apache
-ZooKeeper. 
+ZooKeeper.
 
 In Stardog 3.0 we added `stardog-admin cluster generate` to bootstrap
 a cluster configuration and, thus, to ease installation. You may be
@@ -84,8 +85,11 @@ $ stardog-admin cluster generate --output-dir /home/stardog 10.0.0.1 10.0.0.2 10
 See the link:/man/cluster-generate.html[man page] for the details.
 
 In the following installation notes, we install Stardog Cluster in a
-3-node configuration. If you need larger cluster, adjust
-accordingly.footnote:[In order to deploy a cluster to a single
+pseudo-distributed 3-node configuration, that is, Stardog and ZooKeeper nodes
+are co-located in the same machine. In a production we strongly recommend
+that each ZooKeeper process runs in a different machine and, if possible, that
+ZooKeeper has a separate drive for its data directory. If you need a larger
+cluster, adjust accordingly.footnote:[In order to deploy a cluster to a single
 machine--for example, for testing or development--you must ensure that
 each Stardog and ZooKeeper servers has a different home location.]
 
@@ -108,13 +112,13 @@ pack.enabled=true
 # this node's IP address (or hostname), and port where other Stardog nodes are going to connect
 pack.node.address=196.69.68.1
 # the connection string for ZooKeeper where cluster state is stored
-pack.cluster.address=196.69.68.1:2180,196.69.68.2:2180,196.69.68.3:2180
+pack.zookeeper.address=196.69.68.1:2180,196.69.68.2:2180,196.69.68.3:2180
 # credentials used for securing ZooKeeper state
 pack.cluster.username=pack
 pack.cluster.password=admin
 ----
 +
-`pack.cluster.address` is a ZooKeeper connection string where cluster stores its
+`pack.zookeeper.address` is a ZooKeeper connection string where cluster stores its
 state. `pack.cluster.username` and `pack.cluster.password` are user and password
 tokens for ZooKeeper cluster communications and may be different from actual Stardog users
 and passwords; however, **all nodes must use the same user and password
@@ -199,9 +203,16 @@ $ echo 3 > /data/zookeeperdata/myid # on node 3
 == Installation
 
 In the next few steps you will use the Stardog Admin CLI commands to deploy
-Stardog Cluster: that is, ZooKeeper, the Proxy, and Stardog itself.
+Stardog Cluster: that is, ZooKeeper and Stardog itself. We'll also configure
+HAProxy as an example of use of Stardog Cluster behind a proxy for load-balancing
+and failover capability.
++
+NOTE: As mentioned earlier, we recommend to have Stardog and ZooKeeper nodes in
+different machines, but for the purpose of this example we'll co-locate them in
+the same machines.
++
 
-. To start ZooKeeper's part of Cluster, use the `stadog-admin cluster` subcommand:
+. To start ZooKeeper's part of Cluster, use the `stadog-admin cluster zkstart` subcommand:
 +
 [source,bash]
 ----
@@ -231,35 +242,70 @@ $ ./stardog-admin server start --home ~/stardog --port 5821 # on node 3
 Again, if your `$STARDOG_HOME` is set to `~/stardog`, you don't need to specify
 the `--home` option.
 +
-NOTE: We start Stardog here on the non-default port (`5821`) so that the Proxy
-can run on the default port (`5820`), which means that Stardog clients can act
-normally (i.e., use the default port, `5820`) since they need to interact with
-the Proxy.
+NOTE: We start Stardog here on the non-default port (`5821`) so that you can use
+a proxy or load-balancer in the same machine which can run on the default port
+(`5820`), meaning that Stardog clients can act normally (i.e., use the default
+port, `5820`) since they need to interact with HAProxy.
 +
-. Start the Stardog Cluster Proxy:
+. Start HAProxy:
 +
-[source,bash]
-----
-$ ./stardog-admin cluster proxystart --zkconnstr 196.69.68.1:2180,196.69.68.2:2180,196.69.68.3:2180 \
-	--user pack --password admin --port 5820 # on node 1
-$ ./stardog-admin cluster proxystart --zkconnstr 196.69.68.1:2180,196.69.68.2:2180,196.69.68.3:2180 \
-   --user pack --password admin --port 5820 # on node 2
-$ ./stardog-admin cluster proxystart --zkconnstr 196.69.68.1:2180,196.69.68.2:2180,196.69.68.3:2180 \
-	--user pack --password admin --port 5820 # on node 3
-----
-+
-Note that the `zkconnstr` option is the same connection string as
-`pack.cluster.address` in `stardog.properties`, and `user` and `password` are
-the same as `pack.cluster.username` and `pack.cluster.password`, respectively.
-For more information on the proxy configuration execute:
+In most *nix systems, HAProxy is available via package managers, e.g. in Debian-based systems:
 +
 [source,bash]
 ----
-$ ./stardog-admin help cluster proxystart
+$ sudo apt-get update
+$ sudo apt-get install haproxy
 ----
++
+At the time of this writing, this will install HAProxy 1.4. You can refer to the
+http://www.haproxy.org/[official site] to install a later release.
+
+Place the following configuration in a file (such as `haproxy.cfg`) in order to
+point HAProxy to the Stardog Cluster.
++
+[source,text]
+----
+global
+    daemon
+    maxconn 256
+
+defaults
+    timeout connect 5s
+    timeout client 1h
+    timeout server 1h
+
+# where HAProxy will listen for connections
+frontend stardog-in
+    option tcpka # keep-alive
+    bind *:5820
+    default_backend stardogs
+
+# the Stardog servers - we use sticky sessions
+backend stardogs
+    option tcpka # keep-alive
+    # sticks the client to a given server for the duration of the connection
+    #   using the destination IP address
+    stick-table type integer size 200k expire 30m
+    stick on dst
+    # replace these IP addresses with the corresponding node address
+    server stardog1 196.69.68.1:5821 maxconn 32 check
+    server stardog2 196.69.68.2:5821 maxconn 32 check
+    server stardog3 196.69.68.3:5821 maxconn 32 check
+----
++
+Then start HAProxy:
++
+[source,bash]
+----
+$ haproxy -f haproxy.cfg
+----
++
+For more info on configuring HAProxy please refer to the http://www.haproxy.org/#docs[official
+documentation]. In production environments we recommend running multiple proties
+to avoid single point of failures, and use DNS solutions for fail-over.
 
 Now Stardog Cluster is running on 3 nodes, one each on 3 machines. Since
-the proxy was conveniently configured to use port `5820` you can execute
+HAProxy was conveniently configured to use port `5820` you can execute
 standard Stardog CLI commands to the Cluster:
 
 [source,bash]
@@ -297,11 +343,11 @@ ZooKeeper configuration::
 == Cluster Topologies & Cluster Size
 
 In the configuration instructions above, we assume a particular Cluster
-typology, which is to say, for each node `n` of a cluster, we run Stardog,
-ZooKeeper, and a Proxy. But this is not the only typology supported by Stardog
-Cluster. ZooKeeper nodes run independently, so other typologies--three ZooKeeper
+topology, which is to say, for each node `n` of a cluster, we run Stardog,
+ZooKeeper, and HAProxy. But this is not the only topology supported by Stardog
+Cluster. ZooKeeper nodes run independently, so other topologies--three ZooKeeper
 servers and five Stardog servers are possible--you just have to point Stardog to
-the corresponding ZooKeeper cluster.
+the corresponding ZooKeeper ensemble.
 
 To add more Stardog Cluster nodes, simply repeat the steps for Stardog on
 additional machines. Generally, as mentioned above, Stardog Cluster size should
