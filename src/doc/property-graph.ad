@@ -1,25 +1,40 @@
 = Property Graphs
 
+In addition to RDF, SPARQL, OWL, and SNARL, Stardog supports the non-semantic
+https://github.com/tinkerpop/blueprints/wiki/Property-Graph-Model[property graph
+model], Gremlin graph traversal language, and TinkerPop 3 API.
+
 == TinkerPop 3 & Gremlin
 
-For information on how to use the TinkerPop 3 Framework, please refer to its http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating[documentation, window="_blank"].
-
-Information about currently supported http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#_features[TinkerPop 3 Features, window="_blank"] in Stardog can be found in  http://docs.stardog.com/java/snarl/com/complexible/stardog/gremlin/features/StardogFeatureSet.html[Stardog Feature Set, window="_blank"].
+For information on how to use the TinkerPop 3 Framework, please refer to its
+http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating[documentation,
+window="_blank"]. Details about Stardog's support for 
+http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#_features[TinkerPop
+3 Features] can be found in
+link:/java/snarl/com/complexible/stardog/gremlin/features/StardogFeatureSet.html[Stardog
+Feature Set].
 
 === Implementation
 
-Stardog's implementation of the TinkerPop 3 framework is based on the RDF model in which Stardog persists all Vertices,
-Edges and Properties of the Property Graph. In order to be able to support edge properties in the RDF model,
-Stardog includes a reification function which allows us to have statement Ids that can be subjects
-of a Quad; this would extend the Quad model used in Stardog to have a notion of virtual Quints.
+Stardog's implementation of TinkerPop 3 is based ultimately on a (seamless and
+opaque) translation to and from RDF, in which Stardog persists all vertices,
+edges and properties. In order to support edge properties in the RDF model,
+Stardog includes a reification function which allows statement identifiers to be
+used as the subject of an RDF quad; this extends the RDF Quad model used in
+Stardog to have a notion of virtual "quints".
 
-Having virtual Quints in Stardog lets us manipulate existing RDF content as a Property Graph, but most importantly, it
-allows us to use all the cool features in Stardog with Property
-Graphs. Reification will extend current content and let users add edge properties if required via the TinkerPop 3
-Property Graph model or SPARQL.
+Having virtual quints in Stardog lets us manipulate existing RDF content as a
+property graph; but, most importantly, it also allows us to use Stardog
+capabilities (reasoning, ICV, etc) with property graphs. Reification extends
+existing Stardog graph database and let users add edge properties if required
+via the TinkerPop 3 or even SPARQL.
 
-Loading the http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#intro[TinkerGraph Modern, window="_blank"]
-graph via TinkerPop 3 (using Gremlin Console), using the described <<Graph Configuration>>:
+=== Example
+
+Loading the
+http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#intro[TinkerGraph
+Modern] graph via TinkerPop 3 (using Gremlin Console), using the described
+<<Graph Configuration>>:
 
 [source, groovy]
 ----
@@ -29,17 +44,22 @@ graph.io(graphml()).readGraph('data/tinkerpop-modern.xml')  // <2>
 <1> Get the Graph from the `StardogGraphFactory`
 <2> Load the graph `tinkerpop-modern` included in Gremlin Console distribution at `data/tinkerpop-modern.xml`.
 
-Produces the following internal representation in Stardog:
+That produces the following internal representation in Stardog:
 
 [source,turtle]
 ----
 include::https://gist.githubusercontent.com/edgarRd/c20e5bd963e7526c54f3/raw/13a54e8fc771a33c2fa6ef42f98904c7d7265c1b/tinkerpop-modern.ttl[]
 ----
 
+NOTE: This translation between RDF and property graph models is transparent to
+the user. It just works. But, of course, since at the end it's just RDF, you can
+always query or interact with it as RDF directly using SPARQL, Jena, Sesame, or
+SNARL code, etc.
+
 Getting properties for in-edges for a vertex from the previous graph, using the TinkerPop 3 API:
 [source,groovy]
 ----
-g = graph.traversal()                        // <1>
+g = graph.traversal()                        //<1>
 g.V('https://www.tinkerpop.com/software-5964a0af-1bb4-4469-b362-6b7db5e617e2').inE().properties()  // <2>
 g.V().has('name','lop').inE().properties()  // <3>
 ----
@@ -49,8 +69,9 @@ g.V().has('name','lop').inE().properties()  // <3>
 
 === Integration with SPARQL
 
-Access to the reification function is available via SPARQL in order to be able to query edge properties created via the
-TinkerPop 3 API, e.g. query to find the first 10 edge properties excluding the label:
+Access to the reification function is available via SPARQL in order to be able
+to query edge properties created via the TinkerPop 3 API, e.g. query to find the
+first 10 edge properties, excluding the label:
 
 [source,sparql]
 ----
@@ -58,12 +79,13 @@ select ?srcName ?edgeLabel ?destName ?edgeProp ?val where {
   ?src ?pred ?dest .
   ?src tp:name ?srcName .
   ?dest tp:name ?destName .
-  BIND(stardog:identifier(?src, ?pred, ?dest) as ?edgeId) .
+  BIND(stardog:identifier(?src, ?pred, ?dest) as ?edgeId) . //<1>
   ?edgeId rdfs:label ?edgeLabel .
   ?edgeId ?edgeProp ?val .
   FILTER (?edgeProp != rdfs:label) .
 } limit 10
 ----
+<1> Using the `stardog:identifier()` (aka "reification") function. 
 
 === Database Configuration
 
@@ -82,10 +104,12 @@ $ stardog-admin db create -o index.literals.canonical=false -n <dbname>
 
 === Graph Configuration
 
-In order to create TinkerPop 3 graphs, a configuration object must be created to set up the graph. The TinkerPop 3
-implementation for Stardog contains a tool for creating this configuration easily, supporting many of the features
-available in Stardog, such as reasoning and named-graphs. The http://docs.stardog.com/java/snarl/com/complexible/stardog/gremlin/StardogGraphConfiguration.html[StardogGraphConfiguration, window="_blank"], is available via the API or the Gremlin Console in
-Groovy.
+In order to create TinkerPop 3 graphs, a configuration object must be created to
+set up the graph. The TinkerPop 3 implementation for Stardog contains a tool for
+creating this configuration easily, supporting many of the features available in
+Stardog, such as reasoning and named-graphs. The
+http://docs.stardog.com/java/snarl/com/complexible/stardog/gremlin/StardogGraphConfiguration.html[StardogGraphConfiguration],
+is available via the API or the Gremlin Console in Groovy.
 
 [source,groovy]
 ----
@@ -218,8 +242,9 @@ stardog.named_graph=tag:graph1
 ...
 ----
 
-*NOTE:* by default, the property `gremlin.graph` is set to the default graph in a Stardog database; setting the
-`stardog.named_graph` configuration option will override the graph option.
+NOTE: by default, the property `gremlin.graph` is set to the default graph in a
+Stardog database; setting the `stardog.named_graph` configuration option will
+override the graph option.
 
 == Stardog & Gremlin Server
 
