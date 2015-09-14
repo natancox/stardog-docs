@@ -301,7 +301,7 @@ $ haproxy -f haproxy.cfg
 ----
 +
 For more info on configuring HAProxy please refer to the http://www.haproxy.org/#docs[official
-documentation]. In production environments we recommend running multiple proties
+documentation]. In production environments we recommend running multiple proxies
 to avoid single point of failures, and use DNS solutions for fail-over.
 
 Now Stardog Cluster is running on 3 nodes, one each on 3 machines. Since
