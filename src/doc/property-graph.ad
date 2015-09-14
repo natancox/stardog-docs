@@ -4,25 +4,48 @@
 
 For information on how to use the TinkerPop 3 Framework, please refer to its http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating[documentation, window="_blank"].
 
+Information about currently supported http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#_features[TinkerPop 3 Features, window="_blank"] in Stardog can be found in  http://docs.stardog.com/java/snarl/com/complexible/stardog/gremlin/features/StardogFeatureSet.html[Stardog Feature Set, window="_blank"].
+
 === Implementation
 
 Stardog's implementation of the TinkerPop 3 framework is based on the RDF model in which Stardog persists all Vertices,
-Edges and Properties of the Property Graph model. In order to be able to support edge properties in the RDF model,
-Stardog includes a reification function which allows us to define quads in which statement Ids can be the subjects
-of a Quad; this would extend the Quad model used in Stardog to have a virtual notion of Quints.
+Edges and Properties of the Property Graph. In order to be able to support edge properties in the RDF model,
+Stardog includes a reification function which allows us to have statement Ids that can be subjects
+of a Quad; this would extend the Quad model used in Stardog to have a notion of virtual Quints.
 
 Having virtual Quints in Stardog lets us manipulate existing RDF content as a Property Graph, but most importantly, it
-allows us to use all the cool features in Stardog, such as reasoning, with Property
+allows us to use all the cool features in Stardog with Property
 Graphs. Reification will extend current content and let users add edge properties if required via the TinkerPop 3
 Property Graph model or SPARQL.
 
-An internal representation in Stardog for the known
-http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#intro[TinkerGraph Modern, window="_blank"] graph:
+Loading the http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#intro[TinkerGraph Modern, window="_blank"]
+graph via TinkerPop 3 (using Gremlin Console), using the described <<Graph Configuration>>:
+
+[source, groovy]
+----
+Graph graph = StardogGraphFactory.open(...)  // <1>
+graph.io(graphml()).readGraph('data/tinkerpop-modern.xml')  // <2>
+----
+<1> Get the Graph from the `StardogGraphFactory`
+<2> Load the graph `tinkerpop-modern` included in Gremlin Console distribution at `data/tinkerpop-modern.xml`.
+
+Produces the following internal representation in Stardog:
 
 [source,turtle]
 ----
-include::https://gist.githubusercontent.com/edgarRd/c20e5bd963e7526c54f3/raw/3d250c691f67b805ac9de9eacdc2a49eb67b029f/tinkerpop-modern.ttl[]
+include::https://gist.githubusercontent.com/edgarRd/c20e5bd963e7526c54f3/raw/13a54e8fc771a33c2fa6ef42f98904c7d7265c1b/tinkerpop-modern.ttl[]
 ----
+
+Getting properties for in-edges for a vertex from the previous graph, using the TinkerPop 3 API:
+[source,groovy]
+----
+g = graph.traversal()                        // <1>
+g.V('https://www.tinkerpop.com/software-5964a0af-1bb4-4469-b362-6b7db5e617e2').inE().properties()  // <2>
+g.V().has('name','lop').inE().properties()  // <3>
+----
+<1> Get a traversal that can be reused
+<2> Get a vertex using its IRI Id and list in-edge properties
+<3> Get a vertex filtering by name and list in-edge properties
 
 === Integration with SPARQL
 
@@ -61,7 +84,7 @@ $ stardog-admin db create -o index.literals.canonical=false -n <dbname>
 
 In order to create TinkerPop 3 graphs, a configuration object must be created to set up the graph. The TinkerPop 3
 implementation for Stardog contains a tool for creating this configuration easily, supporting many of the features
-available in Stardog, such as reasoning and named-graphs. This tool is available via the API or the Gremlin Console in
+available in Stardog, such as reasoning and named-graphs. The http://docs.stardog.com/java/snarl/com/complexible/stardog/gremlin/StardogGraphConfiguration.html[StardogGraphConfiguration, window="_blank"], is available via the API or the Gremlin Console in
 Groovy.
 
 [source,groovy]
@@ -82,10 +105,6 @@ stardog.reasoning_enabled=false
 gremlin> graph = StardogGraphFactory.open(graphConf.build())
 ==>cachedstardoggraph[cachedstardoggraph]
 ----
-
-== Features Supported
-
-
 
 == Stardog & Gremlin Console
 
@@ -236,8 +255,7 @@ server:
 
 To setup a graph for use with the Gremlin Server you need to create a
 configuration file in `conf/` with the Stardog graph properties. The following example file,
-`stardoggraph-mygraph.properties`, contains the required properties to use a Stardog graph, described in <<Graph
-Configuration>>:
+`stardoggraph-mygraph.properties`, contains the required properties to use a Stardog graph, described in <<Graph Configuration>>:
 
 ----
 # Properties for creating a StardogGraph in Gremlin Server
