@@ -1,10 +1,10 @@
 = Java Programming
 
-In the <<Network Programming>> section, we look at how to
-interact with Stardog over a network via HTTP and SNARL protocol. In this
-chapter we describe how to program Stardog from Java using SNARL
-Stardog Native API for the RDF Language, Sesame, and Jena. We prefer
-SNARL to Sesame to Jena and recommend--all other things being equal--them in that order.
+In the <<Network Programming>> section, we look at how to interact with Stardog
+over a network via HTTP and SNARL protocol. In this chapter we describe how to
+program Stardog from Java using SNARL Stardog Native API for the RDF Language,
+Sesame, and Jena. We prefer SNARL to Sesame to Jena and recommend them--all
+other things being equal--in that order.
 
 If you're a Spring developer, you might want to read <<Spring Programming>> or
 if you prefer a ORM-style approach, you might want to checkout
