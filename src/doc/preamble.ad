@@ -74,10 +74,7 @@ https://github.com/Complexible/stardog-docs/tree/master/src/doc[editing these
 docs on Github] if you spot a problem.
 
 == Roadmap
-
 [horizontal]
-Stardog 4.x::
-- http://nasa.clarkparsia.com/[Pelorus] integrated with Stardog Web Console
-- native HDFS support
-- Distributed transaction performance improvements
-- Stardog Constellation, a unified graph integration and analytics platform
+Stardog 4.1:: Pelorus--a faceted graph browser--integrated with Stardog Web Console
+Stardog 4.2:: Native HDFS disk indexes 
+Stardog 4.x:: Generalizing R2RML virtual graph support
