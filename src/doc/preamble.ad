@@ -4,11 +4,10 @@ Stardog is a fast, semantic graph database for the enterprise. Check
 out the <<Quick Start Guide>> to get Stardog installed and running in
 five easy steps.
 
-.What's New
+.What's New in Stardog 4
 ****
-.Stardog 4.0
-- [x] <<Property Graphs, Gremlin & TinkerPop 3>>
 - [x] <<Virtual Graphs>>
+- [x] <<Property Graphs, Gremlin & TinkerPop 3>>
 - [x] <<Geospatial Query>>
 - [x] <<Namespacing, RDF Namespaces optional>>
 - [x] <<Requirements, Java 8>>
@@ -30,8 +29,8 @@ rules for inference and data analytics; virtual graphs; geospatial query
 answering; and programmatic interaction via several languages and network
 interfaces.
 
-Stardog is made with skill, taste, and a point of view in DC, Boston, Germany,
-and Southern California.
+Stardog is made with skill, taste, and a point of view in DC, Boston, and
+Germany.
 
 To learn more about where we've been and where we're headed, consult
 the link:/release-notes/[RELEASE NOTES] and
