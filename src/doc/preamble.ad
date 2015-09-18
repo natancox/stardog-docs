@@ -22,12 +22,14 @@ five easy steps.
 Stardog is a semantic graph database, available in client-server, middleware,
 and embedded modes. Stardog **{version}** (**{release-date}**) supports the
 http://www.w3.org/RDF/[RDF graph data model];
-http://www.w3.org/TR/sparql11-overview/[SPARQL] query language; property graph
-model and Gremlin graph traversal language; HTTP and SNARL protocols for remote
-access and control; http://www.w3.org/TR/owl2-overview/[OWL 2] and user-defined
-rules for inference and data analytics; virtual graphs; geospatial query
-answering; and programmatic interaction via several languages and network
-interfaces.
+http://www.w3.org/TR/sparql11-overview/[SPARQL] query language;
+https://github.com/tinkerpop/blueprints/wiki/Property-Graph-Model[property graph
+model] and
+http://tinkerpop.incubator.apache.org/docs/3.0.1-incubating/#_on_gremlin_language_variants[Gremlin
+graph traversal language]; HTTP and SNARL protocols for remote access and
+control; http://www.w3.org/TR/owl2-overview/[OWL 2] and user-defined rules for
+inference and data analytics; virtual graphs; geospatial query answering; and
+programmatic interaction via several languages and network interfaces.
 
 Stardog is made with skill, taste, and a point of view in DC, Boston, and
 Germany.
