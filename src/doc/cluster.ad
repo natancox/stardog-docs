@@ -353,7 +353,7 @@ To add more Stardog Cluster nodes, simply repeat the steps for Stardog on
 additional machines. Generally, as mentioned above, Stardog Cluster size should
 be an odd number greater or equal to 3.
 
-NOTE: ZooKeeper uses a very write heavy protocol; having Stardog and ZooKeeper
+WARNING: ZooKeeper uses a very write heavy protocol; having Stardog and ZooKeeper
 both writing to the *same* disk can yield contention issues, resulting in
 timeouts at scale. We recommend at a minimum having the two services writing to
 separate disks to reduce contention or, ideally, have them run on separate nodes
