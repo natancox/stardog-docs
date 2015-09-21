@@ -10,7 +10,7 @@ http://www.mindrot.org/projects/jBCrypt/[jBCrypt] for password hashing.
 
 == Resources
 
-A resource is some Stardog entity or service to which access is 
+A resource is some Stardog entity or service to which access is
 controlled. Resources are identified by their *type* and their *name*. A
 particular resource is denoted as `type_prefix:name`. The valid resource
 types with their prefixes are shown below.
@@ -171,7 +171,7 @@ identified with the `cn` attribute and be instances of the
 `groupOfNames` object class.  Users must be specified using the
 `member` attribute.
 
-For example, 
+For example,
 
 [source,ldap]
 ----
@@ -204,7 +204,7 @@ userPassword: superpassword
 In order to enable LDAP authentication in Stardog, we need to include
 the following **mandatory** properties in `stardog.properties`:
 
-- `security.realms`: with a value of `ldap` 
+- `security.realms`: with a value of `ldap`
 - `ldap.provider.url`: The URL of the LDAP server
 - `ldap.security.principal`:  An LDAP user allowed to retrieve group members from the LDAP server
 - `ldap.security.credentials`: The principal's password
@@ -212,6 +212,7 @@ the following **mandatory** properties in `stardog.properties`:
 - `ldap.group.lookup.string`: A string to lookup the Stardog user groups
 - `ldap.users.cn`: The `cn` of the group identifying regular Stardog users
 - `ldap.superusers.cn`: The `cn` of the group identifying Stardog super users
+- `ldap.cache.invalidate.time`: The time duration to invalidate cache entries, default to `24h`.
 
 Here's another example:
 
@@ -225,6 +226,7 @@ ldap.user.dn.template = uid={0},ou=people,dc=example,dc=com
 ldap.group.lookup.string = ou=group,dc=example,dc=com
 ldap.users.cn = stardogUsers
 ldap.superusers.cn = stardogSuperUsers
+ldap.cache.invalidate.time = 1h
 ----
 
 === User Management
@@ -243,9 +245,8 @@ into the Web Console.
 
 === User Cache
 
-Stardog does not cache the list of users. The LDAP server is contacted
-every time a user authenticates, which ensures that users deleted from
-LDAP will not be able to authenticate in Stardog.
+Stardog includes a time constrained cache with a configurable time for eviction, default to 24 hours. To disable
+the cache, the eviction time must be set to `0ms`.
 
 === Authorization
 
