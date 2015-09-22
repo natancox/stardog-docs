@@ -243,10 +243,11 @@ new user creation time in Stardog and, therefore, it should be added manually to
 Stardog. If this doesn't happen, users won't be able to--among other things--log
 into the Web Console.
 
-=== User Cache
+=== Authenticated User Cache
 
-Stardog includes a time constrained cache with a configurable time for eviction, default to 24 hours. To disable
-the cache, the eviction time must be set to `0ms`.
+Stardog includes a time constrained cache with a configurable time for eviction,
+default to 24 hours. To disable the cache, the eviction time must be set to
+`0ms`.
 
 === Authorization
 
@@ -255,16 +256,13 @@ roles are assigned in Stardog.
 
 ==== Stale Permissions/Roles
 
-Permissions and roles in Stardog might refer to no longer existing
-users (those who were deleted from the LDAP server).  This is safe as
-these users will not be able to authenticate (see above).
-
-It is possible to configure Stardog to periodically clean up the list
-of permissions and roles according to the latest users in the LDAP
-server. In order to do this, we pass a
+Permissions and roles in Stardog might refer to users that no long exist, i.e.,
+those that were deleted from the LDAP server. This is safe as these users will
+not be able to authenticate (see above). It is possible to configure Stardog to
+periodically clean up the list of permissions and roles according to the latest
+users in the LDAP server. In order to do this, we pass a
 http://www.quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger[Quartz
-cron expression] using the `ldap.consistency.scheduler.expression`
-property:
+cron expression] using the `ldap.consistency.scheduler.expression` property:
 
 [source,bash]
 ----
