@@ -20,8 +20,87 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
-== 4.0 Release
+== 4.0 RC1 Release
 [none]
+*ADD: Property Graphs
+*ADD: Virtual Graphs
+*ADD: RDF 1.1
+*ADD: Java 8
+*ADD: Geospatial
+*ADD: Support --bind option in query explain command (#2495)
+*ADD: Handle adding RDF in compressed format in web console (#2453)
+*ADD: Cluster-wode shutdown. (#2402)
+*ADD: Add setting to `stardog-admin` to allow starting the server in the foreground (#2326)
+*ADD: Add a CacheManager for LDAP (#2510)
+*ADD: Merge proxy functionality into nodes (#2115)
+*ADD: Introduce configurable isolation level option and serializable transactions (#1222)
+*REM: Remove explicit migration from the API (#2433)
+*REM: Remove `pack.cluster.address` which is deprecated in 3.1 (#2327)
+*MOD: Update to Netty 4.0.30
+*MOD: Update to Lucene 5.3.0
+*MOD: Update to Jena 3.0.0
+*MOD: Update to Sesame 4.0
+*MOD: Change from JUL to Log4j 2
+*MOD: Cost model reflects estimation accuracy (#2541)
+*MOD: Change default values for differential index parameters (#2540)
+*MOD: Compute and store page fragmentation info (#2530)
+*MOD: Improved performance of node synch for new nodes (#2517)
+*MOD: Progress monitor for migration (#2481)
+*MOD: Improve performance of client side exports (#2479)
+*MOD: Improve variable inlining to cover more cases (#2465)
+*MOD: Rename `transactions.durable` option to `transaction.logged` for clarity (#2464)
+*MOD: Allow query.timeout to be modified while db is online (#2441)
+*MOD: Default base URI used for RDF parsing changed from `tag:stardog:api:` to `http://api.stardog.com/` (#2395)
+*MOD: Define a default namespace for databases (#2390)
+*MOD: Do not automatically upgrade an index, force user to do it explicitly (#2339)
+*MOD: Improve optimization of plans re-written by the reasoner (#2102)
+*MOD: Inline equality filters for some literals (#1925)
+*MOD: Progress meter for startup (#1684)
+*MOD: Use DB namespaces while parsing RDF files (#1230)
+*FIX: `db status` and `server status` are showing negative values for open transactions (#2532)
+*FIX: Large number of small transactions use too much disk space (#2529)
+*FIX: Some valid ASK queries cannot be parsed (#2508)
+*FIX: Multiple occurrences of a variable in a triple pattern produces incorrect results (#2502)
+*FIX: Assured vars for projections are wrong (#2500)
+*FIX: Implicit join detection does not respect variable scopes (#2499)
+*FIX: Setting an optional variable as a query parameter produces incorrect results (#2498)
+*FIX: "Home locked" message not printed to the standard output (#2491)
+*FIX: Incorrect parsing of update query with USING (#2489)
+*FIX: PlanCache incorrectly handles plans with VALUES (#2488)
+*FIX: DB repair can leak direct memory (#2487)
+*FIX: Server start command cannot be killed with CTRL-C (#2486)
+*FIX: Server start command creates home directory if it does not exist (#2482)
+*FIX: Client export does not close the StatementSource after export (#2480)
+*FIX: Join order optimizers can NPE (#2467)
+*FIX: Inlining variables used in VALUES clause can lose filters (#2466)
+*FIX: langMatches implementation is incomplete (#2463)
+*FIX: Mouse events in webconsole's tree browser are broken (#2462)
+*FIX: Queries using DL reasoning compute incorrect results for annotation properties (#2460)
+*FIX: Unhandled exception `java.util.NoSuchElementException` on query execution (#2459)
+*FIX: Canonicalize operator loses bindings computed by child operator (#2458)
+*FIX: Top operator does not filter solutions produced by child operator (#2457)
+*FIX: Show message in UI to alert user when no NG were selected when exporting data (#2454)
+*FIX: Restored dictionaries might be corrupt (#2452)
+*FIX: java.nio.BufferUnderflowException during backup (#2451)
+*FIX: Stats are computed twice after db is restored (#2450)
+*FIX: Add data in DB web console is not catching parsing errors from stardog (#2449)
+*FIX: Adding invalid RDF data makes db unusable in the cluster (#2447)
+*FIX: Bnode URIs in VALUES are not recognized (#2445)
+*FIX: Can't start stardog server when `STARDOG_HOME` is a symlink (#2444)
+*FIX: Parameterized queries fail in CLI when parameter value contains equal character (#2443)
+*FIX: Large databases cannot be migrated (#2440)
+*FIX: Function registry missing regex and langMatches functions (#2439)
+*FIX: Non-numeric datatype facets cause UnsupportedOperationException (#2438)
+*FIX: NullPointerException in datatype reasoning (#2437)
+*FIX: Joins can be incorrect if the key is bound to a runtime index value (#2431)
+*FIX: SearchIndex auto-creates an index, but not the metadata (#2428)
+*FIX: Search uses wrong wrapper when reading metadata (#2427)
+*FIX: Stored namespaces override namespaces explicitly declared in SPARQL queries (#2426)
+*FIX: Retrieving role assignments from system index is incorrect (#2414)
+*FIX: Rolling back unprepared transaction makes database unusable (#2359)
+*FIX: Reasoning with string literals are broken (#2340)
+*FIX: Do not allow triples with literal subjects in rules (#2219)
+*FIX: Log messages are not always flushed to stardog.log (#2172)
 
 == 3.1.4 (Oh my it's π) Release
 [none]
