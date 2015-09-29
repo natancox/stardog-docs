@@ -87,15 +87,15 @@ command. See the <<Man Pages>> for the details of these commands.
 
 == Querying Virtual Graphs
 
-Querying virtual graphs is done by using the `SERVICE` clause, using a special
-service URI in the form `virtual://myGraph` to query the virtual graph named
+Querying virtual graphs is done by using the `GRAPH` clause, using a special
+graph URI in the form `virtual://myGraph` to query the virtual graph named
 `myGraph`. The following example shows how to query the virtual graph named
 `dept`:
 
 [source,sparql]
 ----
 SELECT * {
-   SERVICE <virtual://dept> {
+   GRAPH <virtual://dept> {
       ?person a emp:Employee ;
            emp:name "SMITH"
    }
@@ -113,7 +113,7 @@ sources:
 [source,sparql]
 ----
 SELECT * {
-   SERVICE <virtual://dept> {
+   GRAPH <virtual://dept> {
       ?person a emp:Employee ;
            emp:name "SMITH"
    }
@@ -121,24 +121,42 @@ SELECT * {
 }
 ----
 
-NOTE: Query performance will be best if the `SERVICE` clause is selective.
+NOTE: Query performance will be best if the `GRAPH` clause for virtual graphs
+is selective.
 
 == Materializing Virtual Graphs
 
 In some cases one wants to materialize the information stored in RDBMS directly
-into RDF. It is possible to use a `CONSTRUCT` query with the `SERVICE` keyword to
-export the contents of the virtual graph into RDF. Or we can directly insert the
-results into the Stardog database with a SPARQL update query:
+into RDF. There is a special command `virtual import` that can be used to import
+the contents of the RDBMS into Stardog. The command can be used as follows:
+
+[source,bash]
+----
+$ stardog-admin virtual import dept.properties dept.ttl
+----
+
+This command adds all the mapped triples from the RDBMS into the default graph. Similar
+to `virtual add`, this command assumes <<Stardog Mapping Syntax>> by default and can accept R2RML mappings using the `--format R2RML` option.
+
+It is also possible to specify a target named graph by using the `-g`/`--namedGraph`
+option:
+	
+[source,bash]
+----
+$ stardog-admin virtual import -g http://example.com/targetGraph dept.properties dept.ttl
+----
+
+This `virtual import` command is equivalent executing the following SPARQL update query:
 
 [source,sparql]
 ----
 INSERT {
-   GRAPH <http://example.com/dept/materialized> {
+   GRAPH <http://example.com/targetGraph> {
       ?s ?p ?o
    }
 }
 WHERE
-   SERVICE <virtual://dept> {
+   GRAPH <virtual://dept> {
       ?s ?p ?o
    }
 }
@@ -149,6 +167,32 @@ results in the future we can drop the named graph contents and rematerialize
 again. Query performance over materialized graphs will be better as the data
 will be indexed locally by Stardog, but materialization may not be practical in
 cases where frequency of change is very high.
+
+== CSV Files as Virtual Graphs
+
+Mappings can be used to treat CSV files as virtual graphs since they represent 
+tabular data similar to RDBMS tables. But unlike RDBMS tables, CSV files are
+supported only for importing into Stardog. The same import command above can be 
+used to specify a mappings file and an input CSV file:
+
+[source,bash]
+----
+$ stardog-admin virtual import cars.ttl cars.csv
+----
+
+If the input file is using different kind of separators, e.g. tab character, a configuration file can be provided 
+
+[source,bash]
+----
+$ stardog-admin virtual import cars.properties cars.ttl cars.tsv
+----
+
+The configuration file for CSV files can specify values for the following 
+properties: `csv.separator` (character for separating fields), `csv.quote` 
+(character for strings), `csv.escape` (character for escaping special characters), `csv.header` (boolean value for specifying whether or not the input file has 
+a header line at the beginning). Note that, whitespace characters in Java 
+properties file need to be escaped so if you want to import tab-separated
+value files set `csv.separator=\t` in the configuration file.
 
 == Stardog Mapping Syntax
 
