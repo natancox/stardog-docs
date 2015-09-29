@@ -57,6 +57,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *MOD: Inline equality filters for some literals (#1925)
 *MOD: Progress meter for startup (#1684)
 *MOD: Use DB namespaces while parsing RDF files (#1230)
+*MOD: Change key binding for Execute in web console query panel (#2543)
 *FIX: `db status` and `server status` are showing negative values for open transactions (#2532)
 *FIX: Large number of small transactions use too much disk space (#2529)
 *FIX: Some valid ASK queries cannot be parsed (#2508)
