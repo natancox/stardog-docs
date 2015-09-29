@@ -2,6 +2,103 @@
 
 == Stardog 4
 
+Stardog 4 introduces significant changes; this section provides an overview of 
+those changes and how they affect users.
+
+Migration of persisted information, RDF, search, spatial, etc, is *required*. 
+Particularly, pre-4.0 RDF indexes are not RDF 1.1 compatible and executing queries 
+over these older indexes could yield unexpected results, including queries which 
+return no results, but should. Because of this, migration of persisted information 
+can be performed automatically the first time Stardog is started. However, because
+these migrations are *NOT* backward compatible and cannot be reversed, you cannot 
+revert to an earlier version of Stardog once they have been updated. 
+
+Automatic migrations is be disabled *by default*; this means the first time you start
+Stardog 4 with an existing `$STARDOG_HOME`, *Stardog will not run*.  You must opt-in
+to the migration of your existing data.  This can be done by setting the Stardog 
+configuration option `upgrade.automatic` in the `stardog.properties` to `true`. 
+Migration can also be allowed by using the flag `--upgrade` to `server start`.
+
+=== Java 8
+
+Starting with Stardog 4, Java 8 is required.  The public Stardog APIs have been
+updated to take advantage of new additions to the JDK.  Anywhere we previously
+accepted a `java.io.File` as an argument, we now expect a `java.nio.file.Path`.
+
+Within the `Getter` class, `Iteration` is no longer returned as a result,
+`Stream` is instead used.  Some of the utility methods, such as 
+`Getter#iterator(Function)` have been removed in favor of using the resulting
+`Stream` and, in this example, using its `map` method.
+
+We have updated libraries, most notabley Jena 3 and Sesame 4.  In particular,
+the change to Sesame 4 impacts our APIs.  Anywhere `URI` was used has been
+changed to `IRI`.  Similarly, anything expecting, or returning, a `Graph` now
+uses `Model`.
+
+The default base URI used for RDF parsing changed from `tag:stardog:api:` 
+to `http://api.stardog.com/`.
+
+Optional migration has been removed from the API and CLI.
+
+Finally, `StardogException` and all other exceptions used by the Stardog APIs
+have been made unchecked and are now subclasses of `RuntimeException`.
+
+=== Libraries
+
+Most notably, Stardog now only supports Jena 3 and Sesame 4 and our bindings
+have been updated accordingly.  For those using these libraries to work with
+Stardog, [Jena](http://jena.apache.org/documentation/migrate_jena2_jena3.html) 
+and [Sesame](http://rdf4j.org/doc/4/programming.docbook?view#Changes_in_Sesame_4)
+have posted their own migration guides.
+
+If you're using Jena, we recommend running with `JenaRuntime.isRDF11 = true` for 
+maximal compatibility between the libraries.
+
+=== RDF 1.1
+
+Stardog 4 now supports the RDF 1.1 specification.  To learn more about the changes
+in RDF 1.1, [see here](http://www.w3.org/TR/rdf11-new/).
+
+=== Configuration
+
+The database option `transactions.durable` has been renamed `transaction.logged` 
+for clarity. Transactions in Stardog are always durable without additional changes 
+to the system. Transactions can be optionally logged, primarily for use with the 
+cluster's log shipping capabilities.
+
+`waldo.default.limit` is now `search.default.limit`. Additionally, the default has 
+changed from `50` to `100`.  `leading.wildcard.search.enabled` is now 
+`search.leading.wildcard.search.enabled`; the default value is still `false`.
+These options are also available as database options of the same names for 
+controlling this behavior on a per-database basis.
+
+=== Cluster
+
+The proxy component is no longer in the cluster. Nodes will forward write requests 
+to the master and service any reads that directly come to them.
+
+It is suggested now that deployments use a load balancer and proxy to provide a 
+single address for a cluster.
+
+todo: HA Proxy information, dynamic DNS via AWS
+
+The configuration property `pack.cluster.address`, deprecated in 3.1, is no longer 
+used. Use `pack.zookeeper.address` instead.
+
+todo: shutdown changes
+
+=== Logging
+
+We no longer use JUL for logging; we use [Log4j 2](http://logging.apache.org/log4j/2.x/).
+
+The entire logging configuration is managed by log4j; therefore, `server start` and 
+`cluster zkstart` no longer take a `--logfile` option. Instead, the default logging 
+behavior is overridden by placing a log4j2 configuration file in `$STARDOG_HOME`.
+
+The default behavior is to log to `$STARDOG_HOME/stardog.log` using a buffered, 
+synchronous file appender. This means that it will write to a buffer first but every 
+log record is flushed to disk once the entire record is finished writing.
+
 == Stardog 3
 
 This section guides migration from Stardog 2.x to Stardog 3.
