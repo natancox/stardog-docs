@@ -1,20 +1,17 @@
-= Property Graphs
+= Gremlin, Property Graphs, TP3
 
 In addition to RDF, SPARQL, OWL, and SNARL, Stardog supports the non-semantic
 https://github.com/tinkerpop/blueprints/wiki/Property-Graph-Model[property graph
-model], Gremlin graph traversal language, and TinkerPop 3 API.
-
-== TinkerPop 3 & Gremlin
-
-For information on how to use the TinkerPop 3 Framework, please refer to its
+model], Gremlin graph traversal language, and TinkerPop 3 API. For information
+on how to use the TinkerPop 3 Framework, please refer to its
 http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating[documentation,
-window="_blank"]. Details about Stardog's support for 
+window="_blank"]. Details about Stardog's support for
 http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#_features[TinkerPop
 3 Features] can be found in
 link:/java/snarl/com/complexible/stardog/gremlin/features/StardogFeatureSet.html[Stardog
 Feature Set].
 
-=== Implementation
+== Implementation
 
 Stardog's implementation of TinkerPop 3 is based ultimately on a (seamless and
 opaque) translation to and from RDF, in which Stardog persists all vertices,
@@ -24,10 +21,10 @@ used as the subject of an RDF quad; this extends the RDF Quad model used in
 Stardog to have a notion of virtual "quints".
 
 Having virtual quints in Stardog lets us manipulate existing RDF content as a
-property graph; but, most importantly, it also allows us to use Stardog
-capabilities (reasoning, ICV, etc) with property graphs. Reification extends
-existing Stardog graph database and let users add edge properties if required
-via the TinkerPop 3 or even SPARQL.
+property graph; but, most importantly, it lets us use Stardog capabilities
+(reasoning, ICV, etc) with property graphs. Reification extends existing Stardog
+graph database and let users add edge properties if required via the TinkerPop 3
+or even SPARQL.
 
 === Example
 
@@ -51,10 +48,12 @@ That produces the following internal representation in Stardog:
 include::https://gist.githubusercontent.com/edgarRd/c20e5bd963e7526c54f3/raw/13a54e8fc771a33c2fa6ef42f98904c7d7265c1b/tinkerpop-modern.ttl[]
 ----
 
-NOTE: This translation between RDF and property graph models is transparent to
-the user. It just works. But, of course, since at the end it's just RDF, you can
-always query or interact with it as RDF directly using SPARQL, Jena, Sesame, or
-SNARL code, etc.
+WARNING: This translation between RDF and property graph models is transparent
+to the user. It just works. But, of course, since in the end it's just RDF, you
+can always query or interact with it as RDF directly using SPARQL, Jena, Sesame,
+or SNARL code, etc. However, the mapping between Property Graphs and RDF is
+*not* considered part of Stardog's <<Compatibility Policies,contract>> so it may
+change without notice. You've been warned!
 
 Getting properties for in-edges for a vertex from the previous graph, using the TinkerPop 3 API:
 [source,groovy]
@@ -89,12 +88,12 @@ select ?srcName ?edgeLabel ?destName ?edgeProp ?val where {
 
 === Database Configuration
 
-Any Stardog database should work out-of-the-box with the Stardog TinkerPop 3 implementation, but given that Stardog
-enables by default
-http://docs.stardog.com/java/snarl/com/complexible/stardog/index/IndexOptions.html#CANONICAL_LITERALS[RDF literal
-canonicalization], some property value types may not be as expected when fetching them from the TinkerPop 3 graph.
-
-To allow for better compatibility between TinkerPop 3 and Stardog, the setting `index.literals.canonical` must be
+Any Stardog database should work out-of-the-box with the Stardog TinkerPop 3
+implementation, but given that Stardog enables by default
+http://docs.stardog.com/java/snarl/com/complexible/stardog/index/IndexOptions.html#CANONICAL_LITERALS[RDF
+literal canonicalization], some property value types may not be as expected when
+fetching them from the TinkerPop 3 graph. To allow for better compatibility
+between TinkerPop 3 and Stardog, the setting `index.literals.canonical` must be
 disabled in the database at creation time, using the following command:
 
 [source,bash]
