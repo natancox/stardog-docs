@@ -383,6 +383,8 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
 . `security.named.graphs`: Sets named graph security on globally. Default:
 `false`.
 
+. `spatial.use.jts`: Enabled support for JTS in the geospatial module. Default: `false`
+
 === Starting & Stopping the Server
 
 NOTE: Unlike the other `stardog-admin` subcommands, starting the
@@ -693,17 +695,30 @@ the default graph, respectively. In the context of database configurations only,
 | `async`
 |
 
-4+|Determins how search indexes are maintained. The legal value of `search.reindex.mode` is one of the strings `sync`
+4+|Determines how search indexes are maintained. The legal value of `search.reindex.mode` is one of the strings `sync`
 or `async` (case insensitive) or a legal http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger[Quartz
 cron expression].
 
-
-|`*transactions.durable*`
+|`*search.wildcard.search.enabled*`
 | Yes
 | `false`
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#TRANSACTIONS_DURABLE[DatabaseOptions.TRANSACTIONS_DURABLE]
+| link:/java/snarl/com/complexible/stardog/search/SearchOptions.html#LEADING_WILDCARD_SEARCH_ENABLED[SearchOptions.LEADING_WILDCARD_SEARCH_ENABLED]
 
-4+|Enables durable transactions.
+4+|Enable support in Lucene for searches with leading wildcards.
+
+|`*search.default.limit*`
+| Yes
+| `10`
+| link:/java/snarl/com/complexible/stardog/search/SearchOptions.html#SEARCH_DEFAULT_LIMIT[SearchOptions.SEARCH_DEFAULT_LIMIT]
+
+4+|Specify the default limit on the number of results returned from a full-text search
+
+|`*transaction.logging*`
+| Yes
+| `false`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#TRANSACTION_LOGGING[DatabaseOptions.TRANSACTION_LOGGING]
+
+4+|Enables logged transactions
 
 |`*query.all.graphs*`
 | Yes
@@ -711,6 +726,20 @@ cron expression].
 | link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#QUERY_ALL_GRAPHS[DatabaseOptions.QUERY_ALL_GRAPHS]
 
 4+|Determines what data the database evaluates queries against; if `true`, it will query over the default graph and the union of all named graphs; if `false` (the default), it will query only over the default graph.  This database option overrides any global server settings.
+
+|`*spatial.enabled*`
+| Yes
+| `false`
+| link:/java/snarl/com/complexible/stardog/spatial/GeospatialOptions.html#SPATIAL_ENABLED[GeospatialOptions.SPATIAL_ENABLED]
+
+4+|Enables geospatial search for the database.
+
+|`*spatial.precision*`
+| No
+| `11`
+| link:/java/snarl/com/complexible/stardog/spatial/GeospatialOptions.html#SPATIAL_PRECISION[GeospatialOptions.SPATIAL_PRECISION]
+
+4+|Specifies the precision used for the indexing of geospatial data.  The smaller the value, the less precision.
 
 |===
 
@@ -870,9 +899,13 @@ command.
 |===
 |Name |Description |Arg values |Default
 
-|`--durable`, `-d`
-|If present, sets all mutation operations to database as transactionally
-durable; durability increases the cost of all mutation operations.
+|`--name`, `-n`
+|Required, the name of the database to create
+|
+|
+
+|`--copy-server-side`,
+|Flag to specify whether or not bulk loaded files should be first copied to the server
 |
 |`false`
 
@@ -1484,8 +1517,7 @@ DELETE {:x :value ?old}`
 
 ==== Durability
 
-By default Stardog's transacted writes are not durable; in some applications
-transactional durability is required and, thus, should be enabled.
+By default Stardog's transacted writes are durable and no additional actions are required.
 
 ==== Commit Failure Autorecovery
 
