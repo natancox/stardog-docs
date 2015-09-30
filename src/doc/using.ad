@@ -476,7 +476,63 @@ include::console.ad[]
 
 == Namespacing
 
-* pointers to the namespace management stuff
-* description of namespace-free mode...
+Stardog allows users to store and manage custom namespace prefix bindings for
+each database. These stored namespaces allow users to omit prefix declarations
+in Turtle files and SPARQL queries. <<Namespace Prefix Bindings>> section
+describes how to manage these namespace prefixes in detail.
+
+Stored namespaces allow one to use Stardog without declaring a single namespace 
+prefix. Stardog will use its default namespace (`http://api.stardog.com/`) 
+behind the scenes so everything will still be valid RDF but users won't need to 
+deal with namespaces manually as if there are no namespaces.
+
+For example, let's assume we the following data file that does not contain
+any namespace declarations:
+[source,bash]
+----
+:Alice a :Person ;
+       :knows :Bob .
+----
+
+We can create a database using this file directly:
+
+[source,bash]
+----
+$ stardog-admin db create -n mydb data.ttl
+----
+
+We can also add this file to the database after it is created. After the data is
+loaded, we can then execute SPARQL queries without prefix declarations:
+
+
+[source,bash]
+----
+$ stardog query mydb "SELECT * { ?person a :Person }"
++--------+
+| person |
++--------+
+| :Alice |
++--------+
+
+Query returned 1 results in 00:00:00.111
+----
+
+Note that, once we export the data from this database in RDF the default prefix 
+declarations will be printed but otherwise we will get the same serialization
+as in the original data file:
+
+[source,bash]
+----
+$ stardog data export mydb
+@prefix : <http://api.stardog.com/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix stardog: <tag:stardog:api:> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Alice a :Person ;
+       :knows :Bob .
+----
 
 include::manpages.ad[]
