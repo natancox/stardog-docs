@@ -102,7 +102,8 @@ SELECT * {
 ----
 
 Virtual graphs are defined globally in Stardog Server. Once they are registered
-with the server they can be accessed via any Stardog database.
+with the server they can be accessed via any Stardog database as allowed by the
+<<Virtual Graph Security,access rules>>.
 
 We can query the Stardog database and pull data from a virtual graph in a single
 query. Suppose we have the `dept` Virtual Graph, defined as above, that contains
@@ -123,6 +124,21 @@ SELECT * {
 
 NOTE: Query performance will be best if the `GRAPH` clause for Virtual Graphs is
 as selective as possible.
+
+== Virtual Graph Security
+
+Accessing virtual graphs can be controlled similar to regular named graphs as
+explained in the <<Named Graph Security>> section. If named graph security is
+not enabled for a database, all registered virtual graphs in the server will 
+be accessible through that database. If named graph security is enabled for a 
+database then users will be able to query only the virtual graphs for which
+they have been granted access. 
+
+If the virtual graphs contain any sensitive
+information then it is recommended to enable named graph security globally
+by setting `security.named.graphs=true` in `stardog.properties`. Otherwise
+creating a new database without proper configuration would allow users to
+access those virtual graphs.
 
 == Materializing Virtual Graphs
 
