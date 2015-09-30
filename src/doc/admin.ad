@@ -1526,10 +1526,11 @@ DELETE {:x :value ?old}`
 <= `3`
 |===
 
-There are no locks or conflict resolution performed for concurrent transaction in
-`READ COMMITTED SNAPSHOT` isolation level. If there are conflicting changes, the 
-latest commit wins which might yield unexpected results in some cases since every 
-transaction reads from a snapshot that was created at the time transaction started. 
+No locks are taken, or any conflict resolution performed, for concurrent
+transactions in `READ COMMITTED SNAPSHOT` isolation level. If there are
+conflicting changes, the latest commit wins which might yield unexpected results
+in some cases since every transaction reads from a snapshot that was created at
+the time transaction started.
 
 Consider the following query being executed by two concurrent threads in
 `READ COMMITTED SNAPSHOT` isolation level against a database having the triple 
@@ -1543,13 +1544,13 @@ WHERE  { :counter :val ?oldValue
          BIND (?oldValue+1 AS ?newValue) }
 ----
 
-Since each transaction will read the current value from its snapshot, it is 
+Since each transaction will read the current value from its snapshot, it is
 possible that both transactions will read the value `1` and insert the value `2`
-even tough we expect the final value to be `3`.
+even though we expect the final value to be `3`.
 
 Isolation level `SERIALIZABLE` can be used to avoid these situations. In
 `SERIALIZABLE` mode an exclusive lock needs to be acquired before a transaction 
-begins. This ensures concurrent updates cannot interfere with each other but as a 
+begins. This ensures concurrent updates cannot interfere with each other, but as a 
 result update throughput will decrease since only one transaction can run at a time.
 
 ==== Durability

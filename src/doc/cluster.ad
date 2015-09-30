@@ -65,16 +65,16 @@ the cost.footnote:[Based on customer feedback we may relax these consistency
 guarantees in some future release. Please get in touch if you think an
 eventually consistent approach is more appropriate for your use of Stardog.]
 
-== Migrating from single server mode to a cluster
+== Single Server Migration 
 
-It is assumed that Stardog nodes in a Stardog Cluster are always going to be used
-within a cluster context. Therefore, whenever you want to migrate from a Stardog
-instance running in single server mode, it is advised that you create backups of
-your current databases and then import them to the cluster in order to be able
-to provide the guarantees explained above. If you simply add a Stardog instance
-to cluster that was previously running in single server mode _it will sync to the
-state of the cluster_; any local data could be removed when syncing with the
-cluster state.
+It is assumed that Stardog nodes in a Stardog Cluster are always going to be
+used within a cluster context. Therefore, if you want to migrate from a Stardog
+instance running in single server mode to running in a cluster, it is advised
+that you create backups of your current databases and then import them to the
+cluster in order to be able to provide the guarantees explained above. If you
+simply add a Stardog instance to cluster that was previously running in single
+server mode, _it will sync to the state of the cluster_; local data could be
+removed when syncing with the cluster state.
 
 == Configuration
 
