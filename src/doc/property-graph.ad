@@ -11,7 +11,7 @@ http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#_features[TinkerPop
 link:/java/snarl/com/complexible/stardog/gremlin/features/StardogFeatureSet.html[Stardog
 Feature Set].
 
-== Implementation
+== Motivation & Implementation
 
 Stardog's implementation of TinkerPop 3 is based ultimately on a (seamless and
 opaque) translation to and from RDF, in which Stardog persists all vertices,
@@ -25,6 +25,11 @@ property graph; but, most importantly, it lets us use Stardog capabilities
 (reasoning, ICV, etc) with property graphs. Reification extends existing Stardog
 graph database and let users add edge properties if required via the TinkerPop 3
 or even SPARQL.
+
+Okay, so why add property graph support to Stardog? A few reasons:
+
+1. sometimes you need to traverse, rather than query, a graph
+1. sometimes you need to traverse a *semantic* graph
 
 === Example
 

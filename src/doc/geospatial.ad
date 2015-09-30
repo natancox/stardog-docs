@@ -6,7 +6,7 @@ http://www.opengeospatial.org/standards/geosparql[OGC's GeoSPARQL vocabular].
 Any RDF data stored in Stardog using one or both of these vocabularies will be
 automatically indexed for geospatial queries.
 
-== Enabling Spatial Support
+== Enabling Geospatial Support
 
 To get started using Stardog's geospatial support, you'll need to create a
 database with geospatial support enabled. You can do this by setting the option
@@ -35,7 +35,7 @@ default value is `11` which yields sub-meter precision; a value of `8` will give
 a precision +/- 50m. Setting the precision value lower than the default can
 *improve the performance of spatial queries at the cost of accuracy*.
 
-== Spatial Data
+== Geospatial Data
 
 The WGS84 or OGC vocabularies can be used to encode geospatial features within
 your dataset. When data is committed, Stardog will look for these vocabularies
