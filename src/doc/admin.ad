@@ -713,6 +713,13 @@ cron expression].
 
 4+|Specify the default limit on the number of results returned from a full-text search
 
+|`*transaction.isolation*`
+| Yes
+| `SNAPSHOT`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#TRANSACTION_ISOLATION[DatabaseOptions.TRANSACTION_ISOLATION]
+
+4+|Configures isolation level for transactions; legal values are SNAPSHOT and SERIALIZABLE.
+
 |`*transaction.logging*`
 | Yes
 | `false`
@@ -1435,15 +1442,12 @@ consideration of Stardog's integrity constraint mechanism.
 
 A Stardog connection will run in
 http://en.wikipedia.org/wiki/Isolation_(database_systems)#Read_committed[`READ
-COMMITTED`] isolation level if it has not started an explicit
-transaction and will run in `READ COMMITTED SNAPSHOT` isolation level
-if it has started a transaction. In either mode, uncommitted changes
-will only be visible to the connection that made the changes: no other
-connection can see those values before they are committed. Thus,
-"dirty reads" can never occur. Neither mode locks the database; if
-there are conflicting changes, the latest commit
-wins.footnote:[However, `READ COMMITTED` does allow for non-repeatable
-reads.]
+COMMITTED`] isolation level if it has not started an explicit transaction and 
+will run in `READ COMMITTED SNAPSHOT` or `SERIALIZABLE` isolation level
+depending on the value of the `transaction.isolation`. In any of these modes, 
+uncommitted changes will only be visible to the connection that made the changes: 
+no other connection can see those values before they are committed. Thus,
+"dirty reads" can never occur. 
 
 The difference between `READ COMMITTED` and `READ COMMITTED SNAPSHOT` isolation
 levels is that in the former case a connection will see updates committed by
@@ -1452,7 +1456,7 @@ a transactionally consistent snapshot of the data as it existed at the start of
 the transaction and will not see any updates.
 
 We illustrate the difference between these two levels with the following example
-where initially the database contains a single triple `:x :value 1`.
+where initially the database contains a single triple `:x :val 1`.
 
 .Table of the difference between RCI and RCSI
 |===
@@ -1521,6 +1525,32 @@ DELETE {:x :value ?old}`
 |`SELECT ?val {?x :val ?val}` +
 <= `3`
 |===
+
+There are no locks or conflict resolution performed for concurrent transaction in
+`READ COMMITTED SNAPSHOT` isolation level. If there are conflicting changes, the 
+latest commit wins which might yield unexpected results in some cases since every 
+transaction reads from a snapshot that was created at the time transaction started. 
+
+Consider the following query being executed by two concurrent threads in
+`READ COMMITTED SNAPSHOT` isolation level against a database having the triple 
+`:counter :val 1` initially:
+
+[source,sparql]
+----
+INSERT { :counter :val ?newValue }
+DELETE { :counter :val ?oldValue } 
+WHERE  { :counter :val ?oldValue 
+         BIND (?oldValue+1 AS ?newValue) }
+----
+
+Since each transaction will read the current value from its snapshot, it is 
+possible that both transactions will read the value `1` and insert the value `2`
+even tough we expect the final value to be `3`.
+
+Isolation level `SERIALIZABLE` can be used to avoid these situations. In
+`SERIALIZABLE` mode an exclusive lock needs to be acquired before a transaction 
+begins. This ensures concurrent updates cannot interfere with each other but as a 
+result update throughput will decrease since only one transaction can run at a time.
 
 ==== Durability
 
