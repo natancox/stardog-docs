@@ -34,6 +34,9 @@ programmatic interaction via several languages and network interfaces.
 Stardog is made with skill, taste, and a point of view in DC, Boston, and
 Germany.
 
+CAUTION: Stardog **{version}** is a *release candidate*. Please take appropriate
+measures before upgrading production systems.
+
 To learn more about where we've been and where we're headed, consult
 the link:/release-notes/[RELEASE NOTES] and
 <<Milestones,milestones>>.

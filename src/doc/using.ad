@@ -481,12 +481,13 @@ each database. These stored namespaces allow users to omit prefix declarations
 in Turtle files and SPARQL queries. <<Namespace Prefix Bindings>> section
 describes how to manage these namespace prefixes in detail.
 
-Stored namespaces allow one to use Stardog without declaring a single namespace 
-prefix. Stardog will use its default namespace (`http://api.stardog.com/`) 
-behind the scenes so everything will still be valid RDF but users won't need to 
-deal with namespaces manually as if there are no namespaces.
+Stored namespaces allow one to use Stardog without declaring a single namespace
+prefix. Stardog will use its default namespace (`http://api.stardog.com/`)
+behind the scenes so that everything will still be valid RDF, but users won't
+need to deal with namespaces manually. Stardog will act *as if* there are no
+namespaces, which in some cases is exactly what you want!
 
-For example, let's assume we the following data file that does not contain
+For example, let's assume we have some data that does not contain
 any namespace declarations:
 [source,bash]
 ----
@@ -504,7 +505,6 @@ $ stardog-admin db create -n mydb data.ttl
 We can also add this file to the database after it is created. After the data is
 loaded, we can then execute SPARQL queries without prefix declarations:
 
-
 [source,bash]
 ----
 $ stardog query mydb "SELECT * { ?person a :Person }"
@@ -517,9 +517,9 @@ $ stardog query mydb "SELECT * { ?person a :Person }"
 Query returned 1 results in 00:00:00.111
 ----
 
-Note that, once we export the data from this database in RDF the default prefix 
-declarations will be printed but otherwise we will get the same serialization
-as in the original data file:
+NOTE: Once we export the data from this database, the default (i.e., in-built)
+prefix declarations will be printed, but otherwise we will get the same
+serialization as in the original data file:
 
 [source,bash]
 ----

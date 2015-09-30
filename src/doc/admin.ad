@@ -1124,16 +1124,17 @@ indexes if the main index itself is small. For this reason, the differential
 index is not used until the main index size reaches
 `index.differential.enable.limit`.
 
-In most cases, the default values of the differential index parameters will
-work fine and doesn't need to be changed. The corollary  is that you shouldn't
-change this value in a production system till you've tested the effects of a
-change in a non-production system. Important point to note is that increasing
-`index.differential.merge.limit` will improve the throughput for updates
-but there will be longer pauses when the differential index is being merged.
-Reducing the value of `index.differential.merge.limit` will make sure there
-are no long pauses but overall throughput will suffer. The optimal value depends
-on the average size of a transaction for the application and the frequency of 
-the updates.
+In most cases, the default values of the differential index parameters will work
+fine and doesn't need to be changed. The corollary is that you shouldn't change
+this value in a production system till you've tested the effects of a change in
+a non-production system.
+
+NOTE: Increasing `index.differential.merge.limit` will improve the throughput
+for updates, but there will be longer pauses when the differential index is
+being merged. Reducing the value of `index.differential.merge.limit` will make
+sure there are no long pauses but overall throughput will suffer. The optimal
+value depends on the average size of a transaction for the application and the
+frequency of updates.
  
 === Loading Compressed Data
 
