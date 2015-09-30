@@ -2,6 +2,7 @@
 :title: Stardog 4: The Manual
 :maven: true
 :revnumber: {version}
+:tp3-version: 3.0.0-incubating
 :toc: right 
 :toc-title: {version}—{release-date}
 :toclevels: 1 

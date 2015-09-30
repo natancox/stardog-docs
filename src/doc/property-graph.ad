@@ -11,7 +11,7 @@ http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#_features[TinkerPop
 link:/java/snarl/com/complexible/stardog/gremlin/features/StardogFeatureSet.html[Stardog
 Feature Set].
 
-NOTE: Stardog {{version}} supports TinkerPop `3.0.0-incubating`.
+NOTE: Stardog `{version}` supports TinkerPop `{tp3-version}`.
 
 == Motivation & Implementation
 
