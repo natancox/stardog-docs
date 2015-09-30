@@ -65,6 +65,17 @@ the cost.footnote:[Based on customer feedback we may relax these consistency
 guarantees in some future release. Please get in touch if you think an
 eventually consistent approach is more appropriate for your use of Stardog.]
 
+== Migrating from single server mode to a cluster
+
+It is assumed that Stardog nodes in a Stardog Cluster are always going to be used
+within a cluster context. Therefore, whenever you want to migrate from a Stardog
+instance running in single server mode, it is advised that you create backups of
+your current databases and then import them to the cluster in order to be able
+to provide the guarantees explained above. If you simply add a Stardog instance
+to cluster that was previously running in single server mode _it will sync to the
+state of the cluster_; any local data could be removed when syncing with the
+cluster state.
+
 == Configuration
 
 To deploy Stardog Cluster you use `stardog-admin` commands and some
@@ -85,7 +96,7 @@ See the link:/man/cluster-generate.html[man page] for the details.
 
 In the following installation notes, we install Stardog Cluster in a
 pseudo-distributed 3-node configuration, that is, Stardog and ZooKeeper nodes
-are co-located in the same machine. In a production we strongly recommend
+are co-located in the same machine. In a production environment we strongly recommend
 that each ZooKeeper process runs in a different machine and, if possible, that
 ZooKeeper has a separate drive for its data directory. If you need a larger
 cluster, adjust accordingly.footnote:[In order to deploy a cluster to a single
@@ -314,6 +325,15 @@ $ ./stardog-admin db create -n myDb
 $ ./stardog data add myDb /path/to/my/data
 $ ./stardog query myDb "select * { ?s ?p ?o } limit 5"
 ----
++
+In order to shut down the cluster you only need to execute the following command once:
++
+[source,bash]
+----
+$ ./stardog-admin server stop
+----
++
+You still need to shut down ZooKeeper independently.
 
 .Running Stardog Cluster on a Single Machine
 ****
