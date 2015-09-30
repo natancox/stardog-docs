@@ -577,7 +577,7 @@ identifiers.
 
 |`*index.differential.enable.limit*`
 | Yes
-| `1,000,000`
+| `500,000`
 | link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#DIFF_INDEX_MIN_LIMIT[IndexOptions.DIFF_INDEX_MIN_LIMIT]
 
 4+|Sets the minimum size of the Stardog database before differential indexes are used. The legal value is an integer.
@@ -585,7 +585,7 @@ identifiers.
 
 |`*index.differential.merge.limit*`
 | Yes
-| `10,000`
+| `20,000`
 | link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#DIFF_INDEX_MAX_LIMIT[IndexOptions.DIFF_INDEX_MAX_LIMIT]
 
 4+|Sets the size in number of RDF triples before the differential indexes are merged to the main indexes. The legal value is an integer.
@@ -1119,16 +1119,22 @@ answers are computed as if all the data is stored in the main indexes.
 There is a slight overhead for query answering with differential indexes
 if the differential index size gets too large. For this reason, the
 differential index is merged into the main indexes when its size reaches
-`DIFF_INDEX_MAX_LIMIT`. There is no benefit of differential indexes
-if the main index itself is small. For this reason, the differential
+`index.differential.merge.limit`. There is also no benefit of differential 
+indexes if the main index itself is small. For this reason, the differential
 index is not used until the main index size reaches
-`DIFF_INDEX_MAX_LIMIT`.
+`index.differential.enable.limit`.
 
-In most cases, the default value of the `DIFF_INDEX_MAX_LIMIT` parameter will
+In most cases, the default values of the differential index parameters will
 work fine and doesn't need to be changed. The corollary  is that you shouldn't
 change this value in a production system till you've tested the effects of a
-change in a non-production system.
-
+change in a non-production system. Important point to note is that increasing
+`index.differential.merge.limit` will improve the throughput for updates
+but there will be longer pauses when the differential index is being merged.
+Reducing the value of `index.differential.merge.limit` will make sure there
+are no long pauses but overall throughput will suffer. The optimal value depends
+on the average size of a transaction for the application and the frequency of 
+the updates.
+ 
 === Loading Compressed Data
 
 Stardog supports loading data from compressed files directly: there's no need to
