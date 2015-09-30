@@ -90,7 +90,7 @@ command groups:
 
 [source]
 ----
-usage: stardog <command> [ <args> ] 
+usage: stardog <command> [ <args> ]
 
 The most commonly used stardog commands are:
     data        Commands which can modify or dump the contents of a database
@@ -357,9 +357,6 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
     obvious explicitly, a `logging.slow_query.time` that exceeds the value of
     `query.timeout` will result in null logs.**
 
-. `database.connection.timeout.ms`: Controls how long, in milliseconds,
-    connections may idle before being automatically closed by the server.
-
 . `http.max.request.parameters`: Default is 1024; any value smaller than
 `Integer.MAX_VALUE` may be provided. Useful if you have lots of named graphs.
 
@@ -369,7 +366,9 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
     followed by either letter `h` (for hours), letter `m` (for minutes),
     letter `s` (for seconds), or letters `ms` (for milliseconds).
     Example intervals: `1h` for 1 hour, `5m` for 5 minutes, `90s` for 90 seconds,
-    `500ms` for 500 milliseconds. Default value is `1h`.
+    `500ms` for 500 milliseconds. Default value is `1h`. *NOTE: setting a very short
+    timeout can have adverse results specially if updates are being performed without
+    commit changes to the server, closing the connection prematurely while using it.*
 
 . `password.length.min`: Sets the password policy for the minimum length of user
     passwords, the value can't be lower than `password.length.min` or greater
@@ -594,7 +593,7 @@ identifiers.
 | `true`
 | link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#CANONICAL_LITERALS[IndexOptions.CANONICAL_LITERALS]
 
-4+|Enables RDF literal canonicalization. 
+4+|Enables RDF literal canonicalization.
 
 |`*index.named.graphs*`
 | No
@@ -673,7 +672,7 @@ the default graph, respectively. In the context of database configurations only,
 | `false`
 | link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#SCHEMA_GRAPHS[ReasoningOptions.APPROXIMATE]
 
-4+|Enables approximate reasoning. With this flag enabled Stardog will approximate an axiom that is outside the profile Stardog supports and normally ignored. For example, an equivalent class axiom might be split into two subclass axioms and only one subclass axiom is used. 
+4+|Enables approximate reasoning. With this flag enabled Stardog will approximate an axiom that is outside the profile Stardog supports and normally ignored. For example, an equivalent class axiom might be split into two subclass axioms and only one subclass axiom is used.
 
 |`*search.enabled*`
 | Yes
@@ -690,9 +689,9 @@ the default graph, respectively. In the context of database configurations only,
 4+|Controls whether Stardog parses RDF strictly (`true`, the default) or loosely (`false`)
 
 |`*search.reindex.mode*`
-| Yes 
+| Yes
 | `async`
-| 
+|
 
 4+|Determins how search indexes are maintained. The legal value of `search.reindex.mode` is one of the strings `sync`
 or `async` (case insensitive) or a legal http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger[Quartz

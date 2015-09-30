@@ -1,8 +1,8 @@
 = Geospatial Query
 
 Stardog supports geospatial queries over data encoded using
-http://www.w3.org/2003/01/geo/p[WGS 84] or the
-http://www.opengeospatial.org/standards/geosparql[OGC's GeoSPARQL vocabular].
+http://www.w3.org/2003/01/geo/[WGS 84] or the
+http://www.opengeospatial.org/standards/geosparql[OGC's GeoSPARQL vocabulary].
 Any RDF data stored in Stardog using one or both of these vocabularies will be
 automatically indexed for geospatial queries.
 
@@ -63,8 +63,8 @@ of the White House can also be encoded using the WGS 84 vocabulary:
 
 == SPARQL Integration
 
-Once your data has been indexed, you can perform several geospatial queries on
-the data. These are seamlessly integrated into SPARQL so you can query for
+Once your data has been indexed, you can perform several type of geospatial queries 
+on the data. These are seamlessly integrated into SPARQL so you can query for
 non-spatial information about features in your dataset alongside the geospatial
 queries.
 
@@ -85,9 +85,9 @@ select ?name where {
 
 === Geospatial Datatypes
 
-The QUDT ontology is used to specify units for distances; `Kilometer`, `Meter`,
+The http://www.qudt.org/[QUDT] ontology is used to specify units for distances; `Kilometer`, `Meter`,
 `Centimeter`, `MileUSStatute`, `Yard`, `Foot`, `Inch`. Additionally, the OGC
-units vocabulary `"http://www.opengis.net/def/uom/OGC/1.0/` defines `degree`,
+units vocabulary `http://www.opengis.net/def/uom/OGC/1.0/` defines `degree`,
 `radian` and `metre`.
 
 == Enhanced Polygons

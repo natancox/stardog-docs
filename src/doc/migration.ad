@@ -47,8 +47,8 @@ have been made unchecked and are now subclasses of `RuntimeException`.
 
 Most notably, Stardog now only supports Jena 3 and Sesame 4 and our bindings
 have been updated accordingly.  For those using these libraries to work with
-Stardog, [Jena](http://jena.apache.org/documentation/migrate_jena2_jena3.html) 
-and [Sesame](http://rdf4j.org/doc/4/programming.docbook?view#Changes_in_Sesame_4)
+Stardog, http://jena.apache.org/documentation/migrate_jena2_jena3.html[Jena]
+and http://rdf4j.org/doc/4/programming.docbook?view#Changes_in_Sesame_4[Sesame]
 have posted their own migration guides.
 
 If you're using Jena, we recommend running with `JenaRuntime.isRDF11 = true` for 
@@ -57,7 +57,7 @@ maximal compatibility between the libraries.
 === RDF 1.1
 
 Stardog 4 now supports the RDF 1.1 specification.  To learn more about the changes
-in RDF 1.1, [see here](http://www.w3.org/TR/rdf11-new/).
+in RDF 1.1, http://www.w3.org/TR/rdf11-new/[see here].
 
 === Configuration
 
@@ -89,7 +89,7 @@ todo: shutdown changes
 
 === Logging
 
-We no longer use JUL for logging; we use [Log4j 2](http://logging.apache.org/log4j/2.x/).
+We no longer use JUL for logging; we use http://logging.apache.org/log4j/2.x/[Log4j 2].
 
 The entire logging configuration is managed by log4j; therefore, `server start` and 
 `cluster zkstart` no longer take a `--logfile` option. Instead, the default logging 
