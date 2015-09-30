@@ -13,7 +13,7 @@ can be performed automatically the first time Stardog is started. However, becau
 these migrations are *NOT* backward compatible and cannot be reversed, you cannot 
 revert to an earlier version of Stardog once they have been updated. 
 
-Automatic migrations is be disabled *by default*; this means the first time you start
+Automatic migrations is disabled *by default*; this means the first time you start
 Stardog 4 with an existing `$STARDOG_HOME`, *Stardog will not run*.  You must opt-in
 to the migration of your existing data.  This can be done by setting the Stardog 
 configuration option `upgrade.automatic` in the `stardog.properties` to `true`. 
