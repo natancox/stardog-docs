@@ -13,6 +13,8 @@ Feature Set].
 
 == Motivation & Implementation
 
+Currently supported TinkerPop version: `3.0.0-incubating`.
+
 Stardog's implementation of TinkerPop 3 is based ultimately on a (seamless and
 opaque) translation to and from RDF, in which Stardog persists all vertices,
 edges and properties. In order to support edge properties in the RDF model,
@@ -89,7 +91,7 @@ select ?srcName ?edgeLabel ?destName ?edgeProp ?val where {
   FILTER (?edgeProp != rdfs:label) .
 } limit 10
 ----
-<1> Using the `stardog:identifier()` (aka "reification") function. 
+<1> Using the `stardog:identifier()` (aka "reification") function.
 
 === Database Configuration
 
