@@ -29,13 +29,13 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *ADD: Geospatial
 *ADD: Support --bind option in query explain command (#2495)
 *ADD: Handle adding RDF in compressed format in web console (#2453)
-*ADD: Cluster-wode shutdown. (#2402)
+*ADD: Cluster-wide shutdown. (#2402)
 *ADD: Add setting to `stardog-admin` to allow starting the server in the foreground (#2326)
 *ADD: Add a CacheManager for LDAP (#2510)
 *ADD: Merge proxy functionality into nodes (#2115)
 *ADD: Introduce configurable isolation level option and serializable transactions (#1222)
-*REM: Remove explicit migration from the API (#2433)
-*REM: Remove `pack.cluster.address` which is deprecated in 3.1 (#2327)
+*MOD: Remove explicit migration from the API (#2433)
+*MOD: Remove `pack.cluster.address` which is deprecated in 3.1 (#2327)
 *MOD: Update to Netty 4.0.30
 *MOD: Update to Lucene 5.3.0
 *MOD: Update to Jena 3.0.0
