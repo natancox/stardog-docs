@@ -453,15 +453,15 @@ Expected input (`application/json`):
 
 [source,javascript]
 ----
-    {
-      "dbname" : "testDb",
-      "options" : {
-        "icv.active.graphs" : "http://graph, http://another",
-        "search.enabled" : true,
-        ...
-      },
-      "files" : [{ "filename":"fileX.ttl", "context":"some:context" }, ...]
-    }
+{
+  "dbname" : "testDb",
+  "options" : {
+    "icv.active.graphs" : "http://graph, http://another",
+    "search.enabled" : true,
+    ...
+  },
+  "files" : [{ "filename":"fileX.ttl", "context":"some:context" }, ...]
+}
 ----
 
 === Drop an existing database
@@ -538,12 +538,12 @@ Expected input (`application/json`):
 
 [source,javascript]
 ----
-    {
-      "database.name" : "DB_NAME",
-      "icv.enabled" : true | false,
-      "search.enabled" : true | false,
-      ...
-    }
+{
+  "database.name" : "DB_NAME",
+  "icv.enabled" : true | false,
+  "search.enabled" : true | false,
+  ...
+}
 ----
 
 === Get option values of an existing database.
@@ -561,24 +561,24 @@ Expected input:
 
 [source,javascript]
 ----
-    {
-      "database.name" : ...,
-      "icv.enabled" : ...,
-      "search.enabled" : ...,
-      ...
-    }
+{
+  "database.name" : ...,
+  "icv.enabled" : ...,
+  "search.enabled" : ...,
+  ...
+}
 ----
 
 Output JSON example:
 
 [source,javascript]
 ----
-    {
-      "database.name" : "testdb",
-      "icv.enabled" : true,
-      "search.enabled" : true,
-      ...
-    }
+{
+  "database.name" : "testdb",
+  "icv.enabled" : true,
+  "search.enabled" : true,
+  ...
+}
 ----
 
 === Add a new user to the system.
@@ -596,11 +596,11 @@ Expected input:
 
 [source,javascript]
 ----
-    {
-      "username"  : "bob",
-      "superuser" : true | false
-      "password"  : "passwd"
-    }
+{
+  "username"  : "bob",
+  "superuser" : true | false
+  "password"  : "passwd"
+}
 ----
 
 === Change user password.
@@ -633,9 +633,9 @@ Output JSON example:
 
 [source,javascript]
 ----
-    {
-      "enabled": true
-    }
+{
+  "enabled": true
+}
 ----
 
 === Check if user is superuser.
@@ -649,9 +649,9 @@ Verifies if the user is a superuser:
 
 [source,javascript]
 ----
-    {
-      "superuser": true
-    }
+{
+  "superuser": true
+}
 ----
 
 === Listing users.
@@ -667,9 +667,9 @@ Output JSON example:
 
 [source,javascript]
 ----
-    {
-      "users": ["anonymous", "admin"]
-    }
+{
+  "users": ["anonymous", "admin"]
+}
 ----
 
 === Listing user roles.
@@ -685,9 +685,9 @@ Output JSON example:
 
 [source,javascript]
 ----
-    {
-      "roles": ["reader"]
-    }
+{
+  "roles": ["reader"]
+}
 ----
 
 === Deleting users.
@@ -711,9 +711,9 @@ format:
 
 [source,javascript]
 ----
-    {
-      "enabled" : true
-    }
+{
+  "enabled" : true
+}
 ----
 
 === Setting user roles.
@@ -728,9 +728,9 @@ for the user in the following format:
 
 [source,javascript]
 ----
-    {
-      "roles" : ["reader","secTestDb-full"]
-    }
+{
+  "roles" : ["reader","secTestDb-full"]
+}
 ----
 
 === Adding new roles.
@@ -746,9 +746,9 @@ Expected input:
 
 [source,javascript]
 ----
- {
-   "rolename" : ""
- }
+{
+  "rolename" : ""
+}
 ----
 
 === Listing roles.
@@ -765,8 +765,8 @@ Output JSON example:
 [source,javascript]
 ----
 {
-   "roles": ["reader"]
- }
+  "roles": ["reader"]
+}
 ----
 
 === Listing users with a specified role.
@@ -782,7 +782,7 @@ Output JSON example:
 [source,javascript]
 ----
 {
-   "users": ["anonymous"]
+  "users": ["anonymous"]
 }
 ----
 
@@ -810,9 +810,9 @@ expects input JSON Object in the following format:
 [source,javascript]
 ----
 {
-   "action" : "read" | "write" | "create" | "delete" | "revoke" | "execute" | "grant" | "*",
-   "resource_type" : "user" | "role" | "db" | "named-graph" | "metadata" | "admin" | "icv-constraints" | "*",
-   "resource" : ""
+  "action" : "read" | "write" | "create" | "delete" | "revoke" | "execute" | "grant" | "*",
+  "resource_type" : "user" | "role" | "db" | "named-graph" | "metadata" | "admin" | "icv-constraints" | "*",
+  "resource" : ""
 }
 ----
 
@@ -829,10 +829,10 @@ expects input JSON Object in the following format:
 [source,javascript]
 ----
 {
-   "action" : "read" | "write" | "create" | "delete" | "revoke" | "execute" | "grant" | "*",
-   "resource_type" : "user" | "role" | "db" | "named-graph" | "metadata" | "admin" | "icv-constraints" | "*",
-   "resource" : ""
- }
+  "action" : "read" | "write" | "create" | "delete" | "revoke" | "execute" | "grant" | "*",
+  "resource_type" : "user" | "role" | "db" | "named-graph" | "metadata" | "admin" | "icv-constraints" | "*",
+  "resource" : ""
+}
 ----
 
 === Deleting permissions from roles.
@@ -847,11 +847,11 @@ input JSON Object in the following format:
 
 [source,javascript]
 ----
- {
-    "action" : "read" | "write" | "create" | "delete" | "revoke" | "execute" | "grant" | "*",
-    "resource_type" : "user" | "role" | "db" | "named-graph" | "metadata" | "admin" | "icv-constraints" | "*",
-    "resource" : ""
- }
+{
+  "action" : "read" | "write" | "create" | "delete" | "revoke" | "execute" | "grant" | "*",
+  "resource_type" : "user" | "role" | "db" | "named-graph" | "metadata" | "admin" | "icv-constraints" | "*",
+  "resource" : ""
+}
 ----
 
 === Deleting permissions from users.
@@ -867,9 +867,9 @@ input JSON Object in the following format:
 [source,javascript]
 ----
 {
-   "action" : "read" | "write" | "create" | "delete" | "revoke" | "execute" | "grant" | "*",
-   "resource_type" : "user" | "role" | "db" | "named-graph" | "metadata" | "admin" | "icv-constraints" | "*",
-   "resource" : ""
+  "action" : "read" | "write" | "create" | "delete" | "revoke" | "execute" | "grant" | "*",
+  "resource_type" : "user" | "role" | "db" | "named-graph" | "metadata" | "admin" | "icv-constraints" | "*",
+  "resource" : ""
 }
 ----
 
@@ -886,9 +886,9 @@ Output JSON example:
 
 [source,javascript]
 ----
- {
-   "permissions": ["stardog:read:*"]
- }
+{
+  "permissions": ["stardog:read:*"]
+}
 ----
 
 === Listing user permissions.
@@ -904,9 +904,9 @@ Output JSON example:
 
 [source,javascript]
 ----
- {
-   "permissions": ["stardog:read:*"]
- }
+{
+  "permissions": ["stardog:read:*"]
+}
 ----
 
 === Listing user effective permissions.
@@ -922,9 +922,9 @@ Output JSON example:
 
 [source,javascript]
 ----
-    {
-      "permissions": ["stardog:*"]
-    }
+{
+  "permissions": ["stardog:*"]
+}
 ----
 
 === Get nodes in cluster
@@ -941,11 +941,11 @@ Output JSON example:
 [source,javascript]
 ----
 {
-    "nodes": [
-        "192.168.69.1:5820 (Available)",
-        "192.168.69.2:5820 (Available)",
-        "192.168.69.3:5820 (Available)"
-    ]
+  "nodes": [
+    "192.168.69.1:5820 (Available)",
+    "192.168.69.2:5820 (Available)",
+    "192.168.69.3:5820 (Available)"
+  ]
 }
 ----
 
