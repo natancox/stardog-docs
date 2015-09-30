@@ -927,6 +927,28 @@ Output JSON example:
     }
 ----
 
+=== Get nodes in cluster
+[source,http]
+----
+GET /admin/cluster
+----
+
+Retrieves the list of nodes in the cluster; the elected cluster coordinator is the first element in the array.
+This route is only available when Stardog is running within a cluster setup.
+
+Output JSON example:
+
+[source,javascript]
+----
+{
+    "nodes": [
+        "192.168.69.1:5820 (Available)",
+        "192.168.69.2:5820 (Available)",
+        "192.168.69.3:5820 (Available)"
+    ]
+}
+----
+
 === Shutdown server.
 
 [source,http]
