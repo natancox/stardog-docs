@@ -1,21 +1,23 @@
-= Spatial
+= Geospatial Query
 
-Stardog supports spatial queries over data encoded using [WGS 84](http://www.w3.org/2003/01/geo/) 
-or the [OGC GeoSPARQL vocabulary](http://www.opengeospatial.org/standards/geosparql).  Any RDF data
-stored in Stardog using one, or both, of these vocabularies will be automatically indexed for spatial
-queries.
+Stardog supports geospatial queries over data encoded using
+http://www.w3.org/2003/01/geo/p[WGS 84] or the
+http://www.opengeospatial.org/standards/geosparql[OGC's GeoSPARQL vocabular].
+Any RDF data stored in Stardog using one or both of these vocabularies will be
+automatically indexed for geospatial queries.
 
 == Enabling Spatial Support
 
-To get started using Stardog's spatial support, you'll need to create a database with spatial support
-enabled.  You can do this by setting the option `spatial.enabled=true`:
+To get started using Stardog's geospatial support, you'll need to create a
+database with geospatial support enabled. You can do this by setting the option
+`spatial.enabled` to `true`:
 
 ```bash
 stardog-admin db create -o spatial.enabled=true -n mySpatialDb
 ```
 
-Similarly, you can set the option using `GeospatialOptions#SPATIAL_ENABLED` when creating the database
-programmatically:
+Similarly, you can set the option using `GeospatialOptions#SPATIAL_ENABLED` when
+creating the database programmatically:
 
 ```java
 aAdminConnection.disk("mySpatialDb")
@@ -23,19 +25,22 @@ aAdminConnection.disk("mySpatialDb")
 				.create()
 ```
 
-When creating a database with spatial support, you can specify the precision with which the spatial 
-features are indexed.  The database property `spatial.precision` or programmatically via 
-`GeospatialOptions#SPATIAL_PRECISION`, which can only be specified when the database is created, can
-control the index precision.  The default value is `11` which yields sub-meter precision; a value of
-`8` will give a precision +/- 50m.  Setting the precision value lower than the default can improve
-the performance of spatial queries at the cost of accuracy.
+=== Precision & Accuracy 
+
+When creating a database with geospatial support, you can specify the precision
+with which the features are indexed. The database property `spatial.precision`
+or programmatically via `GeospatialOptions#SPATIAL_PRECISION`, which can only be
+specified when the database is created, can control the index precision. The
+default value is `11` which yields sub-meter precision; a value of `8` will give
+a precision +/- 50m. Setting the precision value lower than the default can
+*improve the performance of spatial queries at the cost of accuracy*.
 
 == Spatial Data
 
-The WGS84 or OGC vocabularies can be used to encode spatial features within your dataset.  When data is
-committed, Stardog will look for RDF using one of these vocabularies and automatically extract all features
-and insert them into the spatial index.  Here is an example of using WKT to define the location of the 
-White House:
+The WGS84 or OGC vocabularies can be used to encode geospatial features within
+your dataset. When data is committed, Stardog will look for these vocabularies
+and automatically extract all features and insert them into the geospatial index.
+Here is an example of using WKT to define the location of the White House:
 
 ```ttl
 :whiteHouse a geo:Feature ;
@@ -46,8 +51,8 @@ White House:
     ] .
 ```
 
-Note that for WKT formatted points, the location is `<long, lat>`.  The location of the White House 
-can also be encoded using the WGS 84 vocabulary:
+Note that for WKT formatted points, the location is `<long, lat>`. The location
+of the White House can also be encoded using the WGS 84 vocabulary:
 
 ```ttl
 :whiteHouse a :Location ;
@@ -56,16 +61,18 @@ can also be encoded using the WGS 84 vocabulary:
     wgs:long "-77.03653"^^xsd:float .
 ```
 
-== SPARQL
+== SPARQL Integration
 
-Once your data has been indexed, you can perform several spatial queries on the data.  These are seamlessly 
-integrated into SPARQL so you can query for non-spatial information about features in your dataset alongside
-the spatial queries.
+Once your data has been indexed, you can perform several geospatial queries on
+the data. These are seamlessly integrated into SPARQL so you can query for
+non-spatial information about features in your dataset alongside the geospatial
+queries.
 
-The operators supported by Stardog are `geo:relate`, `geo:distance`, `geo:within`, `geo:nearby` and `geo:area`.
-The `geo` namespace is `http://www.opengis.net/def/function/geosparql/`.
+The operators supported by Stardog are `geo:relate`, `geo:distance`,
+`geo:within`, `geo:nearby` and `geo:area`. The `geo` namespace is
+`http://www.opengis.net/def/function/geosparql/`.
 
-This query shows how to get all features within 2km of the Complexible Headquarters in DC:
+This query gets all features within 2km of Complexible HQ in DC:
 
 ```sparql
 select ?name where {
@@ -76,13 +83,21 @@ select ?name where {
 }
 ```
 
-The QUDT ontology is used to specify units for distances; `Kilometer`, `Meter`, `Centimeter`, `MileUSStatute`, `Yard`, `Foot`, `Inch`.
-Additionally, the OGC units vocabulary `"http://www.opengis.net/def/uom/OGC/1.0/` defines `degree`, `radian` and `metre`.
+=== Geospatial Datatypes
 
-== Enhanced polygons
+The QUDT ontology is used to specify units for distances; `Kilometer`, `Meter`,
+`Centimeter`, `MileUSStatute`, `Yard`, `Foot`, `Inch`. Additionally, the OGC
+units vocabulary `"http://www.opengis.net/def/uom/OGC/1.0/` defines `degree`,
+`radian` and `metre`.
 
-Stardog's spatial support covers the use of basic WKT formatted shapes; specifically points and rectangles.
-However, WKT can encode more complex spatial structures, most notably, polygons.  To enabled support for 
-these more complex shapes, download [JTS](http://www.vividsolutions.com/jts/JTSHome.htm) and include the jar
-in Stardog's *server* classpath.  Then set `spatial.use.jts=true` in your `stardog.properties` file.  When
-you restart Stardog, it will pick up JTS and you'll be able to use more complex WKT formatted shapes.
+== Enhanced Polygons
+
+Stardog's geospatial support covers the use of basic WKT formatted shapes;
+specifically points and rectangles. However, WKT can encode more complex spatial
+structures, most notably, polygons.
+
+To enable support for these more complex shapes, download
+http://www.vividsolutions.com/jts/JTSHome.htm[JTS] and include its JAR in
+Stardog's *server* classpath. Then set `spatial.use.jts=true` in your
+`stardog.properties` file. When you restart Stardog, it will pick up JTS and
+you'll be able to use more complex WKT formatted shapes.
