@@ -1,11 +1,12 @@
 = Property Graphs
 
 In addition to RDF, SPARQL, OWL, and SNARL, Stardog supports the non-semantic
-https://github.com/tinkerpop/blueprints/wiki/Property-Graph-Model[property graph
-model], Gremlin graph traversal language, and TinkerPop 3 API. For information
-on how to use the TinkerPop 3 Framework, please refer to its
-http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating[documentation,
-window="_blank"]. Details about Stardog's support for
+http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#intro[property
+graph model], Gremlin graph traversal language, and http://tinkerpop.com/[Apache
+TinkerPop 3] APIs. For information on how to use the TinkerPop 3, please refer
+to its
+http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating[documentation].
+Details about Stardog's support for
 http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#_features[TinkerPop
 3 Features] can be found in
 link:/java/snarl/com/complexible/stardog/gremlin/features/StardogFeatureSet.html[Stardog
@@ -176,7 +177,7 @@ The following steps describe how to install the Stardog plugin into the Gremlin 
 plugin activated: tinkerpop.server
 plugin activated: tinkerpop.utilities
 plugin activated: tinkerpop.tinkergraph
-gremlin> :pin list
+gremlin> :plugin list
 ==>tinkerpop.server[active]
 ==>tinkerpop.gephi
 ==>tinkerpop.utilities[active]
@@ -190,7 +191,7 @@ gremlin> :pin list
 
 [source,groovy]
 ----
-gremlin> :pin use complexible.stardog
+gremlin> :plugin use complexible.stardog
 ==>complexible.stardog activated
 ----
 
