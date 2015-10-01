@@ -127,18 +127,17 @@ as selective as possible.
 
 == Virtual Graph Security
 
-Accessing virtual graphs can be controlled similar to regular named graphs as
+Accessing Virtual Graphs can be controlled similar to regular named graphs as
 explained in the <<Named Graph Security>> section. If named graph security is
-not enabled for a database, all registered virtual graphs in the server will 
+not enabled for a database, all registered Virtual Graphs in the server will 
 be accessible through that database. If named graph security is enabled for a 
-database then users will be able to query only the virtual graphs for which
+database, then users will be able to query only the Virtual Graphs for which
 they have been granted access. 
 
-If the virtual graphs contain any sensitive
-information then it is recommended to enable named graph security globally
-by setting `security.named.graphs=true` in `stardog.properties`. Otherwise
-creating a new database without proper configuration would allow users to
-access those virtual graphs.
+If the virtual graphs contain any sensitive information, then it is recommended
+to enable named graph security globally by setting `security.named.graphs=true`
+in `stardog.properties`. Otherwise creating a new database without proper
+configuration would allow users to access those Virtual Graphs.
 
 == Materializing Virtual Graphs
 
