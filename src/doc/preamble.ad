@@ -42,11 +42,11 @@ the link:/release-notes/[RELEASE NOTES] and
 <<Milestones,milestones>>.
 
 |===
-| Stardog Version | HTML   | PDF
-| 4.0     | link:/#[✓]     | link:/stardog-manual-{version}.pdf[✓]
-| 3.1.4   | link:/#[✓]      | link:/stardog-manual-{version}.pdf[✓]
-| 3.1     | link:/3.1#[✓]    | link:/stardog-manual-3.1.pdf[✓]
-| 3.0     | link:/3.0/#[✓]   | link:/3.0/stardog-manual-3.0.pdf[✓]
+| Stardog Version | HTML             | PDF
+| 4.0             | link:/#[✓]       | link:/stardog-manual-{version}.pdf[✓]
+| 3.1.4           | link:/3.1.4#[✓]  | link:/stardog-manual-3.1.4.pdf[✓]
+| 3.1             | link:/3.1#[✓]    | link:/stardog-manual-3.1.pdf[✓]
+| 3.0             | link:/3.0/#[✓]   | link:/3.0/stardog-manual-3.0.pdf[✓]
 |===
 
 == Downloading Stardog & Support

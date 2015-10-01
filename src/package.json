@@ -46,6 +46,7 @@
     "grunt-newer": "^1.0.0",
     "grunt-open": "^0.2.3",
     "grunt-shell": "^1.1.1",
+    "grunt-spell": "^0.2.1",
     "grunt-text-replace": "^0.4.0",
     "grunt-uncss": "^0.3.8",
     "grunt-usemin": "^3.0.0",

@@ -11,7 +11,7 @@ discussed separately (<<Security>>).
 
 Stardog's command-line interface (CLI) comes in two parts:
 
-. `stardog-admin`: admininstrative client
+. `stardog-admin`: administrative client
 . `stardog`: a user's client
 
 The admin and user's tools operate on local or remote databases, using
@@ -509,7 +509,7 @@ See <<Man Pages>> for the details.
 | `true`
 | link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#PRESERVE_BNODE_IDS[DatabaseOptions.PRESERVE_BNODE_IDS]
 
-4+|Determines how the Stardog parser handles bnode identifiers that may be present in RDF input. If this property is enabled (i.e., `TRUE`), parsing and data loading performance are improved; but the other effect is that if distinct input files use (randomly or intentionally) the same bnode identifier, that bnode will point to one and the same node in the database. If you have input files that use explicit bnode identifiers, and multiple files may use the same bnode idenitifers, and you don't want those bnodes to be smushed into a single node in the database, then this configuration option should be disabled (set to `FALSE`).
+4+|Determines how the Stardog parser handles bnode identifiers that may be present in RDF input. If this property is enabled (i.e., `TRUE`), parsing and data loading performance are improved; but the other effect is that if distinct input files use (randomly or intentionally) the same bnode identifier, that bnode will point to one and the same node in the database. If you have input files that use explicit bnode identifiers, and multiple files may use the same bnode identifiers, and you don't want those bnodes to be smushed into a single node in the database, then this configuration option should be disabled (set to `FALSE`).
 
 |`*database.archetypes*`
 |Yes
@@ -658,7 +658,7 @@ identifiers.
 | `*`
 | link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#SCHEMA_GRAPHS[ReasoningOptions.SCHEMA_GRAPHS]
 
-4+| Determines which, if any, named graph or graphs contains the "tbox", i.e., the schema part of the data. The legal value is a comma-separated list of named graph identifiers, including (optionally) the special names,
+4+| Determines which, if any, named graph or graphs contains the "TBox", i.e., the schema part of the data. The legal value is a comma-separated list of named graph identifiers, including (optionally) the special names,
 `tag:stardog:api:context:default` and `tag:stardog:api:context:all`, which represent the default graph and the union of all named graphs and
 the default graph, respectively. In the context of database configurations only, Stardog will recognize `default` and `*` as short forms of those URIs, respectively.
 
@@ -817,7 +817,7 @@ examples.
 Stardog database archetypes are a new feature in 2.0. A database archetype is a
 named, vendor-defined or user-defined bundle of data and functionality to be
 applied at database-creation time. Archetypes are primarily for supporting
-various data standards or toolchain configurations in a simple way.
+various data standards or tool chain configurations in a simple way.
 
 For example, the SKOS standard from W3C defines an OWL vocabulary for building
 taxonomies, thesauruses, etc. SKOS is made up by a vocabulary, some constraints,
@@ -1008,7 +1008,7 @@ of time it takes to backup a database; the tradeoff is with restore performance.
 ==== Restore
 
 To restore a Stardog database from a Stardog backup volume, simply pass a
-fully-qualfied path to the volume in question. The location of the backup should
+fully-qualified path to the volume in question. The location of the backup should
 be the full path to the backup, not the location of the backup directory as
 specified in your Stardog configuration. There is no need to specify the name of
 the database to restore.
@@ -1023,11 +1023,11 @@ $ stardog-admin db restore $STARDOG_HOME/.backups/myDb/2012-06-21
 ===== One-time Database Migrations for Backup
 
 The backup system cannot directly backup
-atbases created in versions before 2.1. These databases must be explicitly
+databases created in versions before 2.1. These databases must be explicitly
 migrated in order to use the new backup system; this is a one-time operation per
-atbase and is accomplished by running
+database and is accomplished by running
 
-ource,bash]
+[source,bash]
 ----
 $ stardog-admin db migrate foobar
 ----
@@ -1156,7 +1156,7 @@ release.]
 
 A file passed to `create` will be treated as compressed if the file name ends
 with `.gz` or `.bz2`. The RDF format of the file is determined by the
-penultimate extension. For exammple, if a file named `test.ttl.gz`
+penultimate extension. For example, if a file named `test.ttl.gz`
 is used as input, Stardog will perform GZIP decompression during loading and
 parse the file with Turtle parser. All the formats supported by Stardog
 (RDF/XML, Turtle, Trig, etc.) can be used with compression.
@@ -1320,7 +1320,7 @@ query will receive an error message. The value of `query.timeout` may be
 overriden by setting a different value (smaller or longer) in database
 options. To disable, set to `query.timeout` to `0`.
 
-The value of `query.timeout` is a positive integer concated with a
+The value of `query.timeout` is a positive integer concatenated with a
 letter, interpreted as a time duration: 'h' (for hours),
 'm' (for minutes), 's' (for seconds), or 'ms' (for milliseconds). For
 example, '1h' for 1 hour, '5m' for 5 minutes, '90s' for 90 seconds, and

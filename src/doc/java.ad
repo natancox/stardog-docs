@@ -125,7 +125,7 @@ API docs or <<How to Make a Connection String>> for more information.
 
 === Managing Security
 
-We discuss the security sytem in Stardog in <<Security>>. When logged into the Stardog
+We discuss the security system in Stardog in <<Security>>. When logged into the Stardog
 link:java/snarl/com/complexible/stardog/api/admin/AdminConnection.html[DBMS]
 you can access all security related features detailed in the security
 section using any of the core security interfaces for link:java/snarl/com/complexible/stardog/security/UserManager.html[managing
@@ -209,7 +209,7 @@ results. We can also rebind the "?s" variable easily:
 in any BGP in the query, and you can specify `null` to remove the
 binding.
 
-Query objects are re-useable, so you can create one from your original
+Query objects are re-usable, so you can create one from your original
 query string and alter bindings, limit, and offset in any way you see
 fit and re-execute the query to get the updated results.
 

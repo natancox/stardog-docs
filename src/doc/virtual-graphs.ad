@@ -141,7 +141,7 @@ configuration would allow users to access those Virtual Graphs.
 
 == Materializing Virtual Graphs
 
-In some cases you needc to *materialize the information stored in RDBMS directly
+In some cases you need to *materialize the information stored in RDBMS directly
 into RDF*. There is a special command `virtual import` that can be used to
 import the contents of the RDBMS into Stardog. The command can be used as
 follows:

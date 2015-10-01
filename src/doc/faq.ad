@@ -91,7 +91,7 @@ Question:: I'm trying to create a database and bulk load files from
 my machine to the server and it's not working, the files don't seem to
 load, what gives?
 
-Answer:: Stardog does not tranfser files during database creation to
+Answer:: Stardog does not transfer files during database creation to
 the server, sending big files over a network kind of defeats the purpose
 of blazing fast bulk loading. If you want to bulk load files from your
 machine to a remote server, copy them to the server and bulk load them.

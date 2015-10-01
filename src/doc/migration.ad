@@ -5,35 +5,36 @@
 Stardog 4 introduces significant changes; this section provides an overview of
 those changes and how they affect users.
 
-Migration of persisted information, RDF, search, spatial, etc, is *required*.
-Particularly, pre-4.0 RDF indexes are not RDF 1.1 compatible and executing queries
-over these older indexes could yield unexpected results, including queries which
-return no results, but should. Because of this, migration of persisted information
-can be performed automatically the first time Stardog is started. However, because
-these migrations are *NOT* backward compatible and cannot be reversed, you cannot
-revert to an earlier version of Stardog once they have been updated.
+Migration of existing, persisted information, RDF, search, spatial, etc, is
+*required*. Particularly, pre-4.0 RDF indexes are not RDF 1.1 compatible and
+executing queries over these older indexes could yield unexpected results,
+including queries which return no results, but should. Thus migration of
+persisted information can be performed automatically the first time Stardog is
+started. However, because these migrations are *NOT* backward compatible and
+cannot be reversed, you cannot revert to an earlier version of Stardog once they
+have been updated.
 
-Automatic migrations is disabled *by default*; this means the first time you start
-Stardog 4 with an existing `$STARDOG_HOME`, *Stardog will not run*.  You must opt-in
-to the migration of your existing data.  This can be done by setting the Stardog
-configuration option `upgrade.automatic` in the `stardog.properties` to `true`.
-Migration can also be allowed by using the flag `--upgrade` to `server start`.
+NOTE: Automatic migration is disabled *by default*; this means the first time
+you start Stardog 4 with an existing `$STARDOG_HOME`, *Stardog will not run*.
+You must opt-in to the migration of your existing data. This can be done by
+setting the Stardog configuration option `upgrade.automatic` in the
+`stardog.properties` to `true`. Migration can also be allowed by using the flag
+`--upgrade` to `server start`.
 
 === Java 8
 
-Starting with Stardog 4, Java 8 is required.  The public Stardog APIs have been
-updated to take advantage of new additions to the JDK.  Anywhere we previously
-accepted a `java.io.File` as an argument, we now expect a `java.nio.file.Path`.
+Java 8 is no required. The public Stardog APIs have been updated to take
+advantage of new additions to the JDK. Anywhere we previously accepted a
+`java.io.File` as an argument, we now expect a `java.nio.file.Path`.
 
 Within the `Getter` class, `Iteration` is no longer returned as a result,
 `Stream` is instead used.  Some of the utility methods, such as
 `Getter#iterator(Function)` have been removed in favor of using the resulting
 `Stream` and, in this example, using its `map` method.
 
-We have updated libraries, most notabley Jena 3 and Sesame 4.  In particular,
-the change to Sesame 4 impacts our APIs.  Anywhere `URI` was used has been
-changed to `IRI`.  Similarly, anything expecting, or returning, a `Graph` now
-uses `Model`.
+We have updated libraries, most notably Jena 3 and Sesame 4. In particular, the
+change to Sesame 4 impacts our APIs. Anywhere `URI` was used has been changed to
+`IRI`. Similarly, anything expecting or returning a `Graph` now uses `Model`.
 
 The default base URI used for RDF parsing changed from `tag:stardog:api:`
 to `http://api.stardog.com/`.

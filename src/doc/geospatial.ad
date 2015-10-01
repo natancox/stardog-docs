@@ -79,7 +79,7 @@ select ?name where {
   ?loc rdfs:label ?name .
   ?loc geo:hasGeometry ?feature .
   ?hq geo:hasGeometry ?hqGeo ; rdfs:label "Complexible Headquarters" .
-  ?feature geof:nearby (?hqGeo 2 <http://www.qudt.org/qudt/owl/1.0.0/unit/Instances.html#Kilometer>).
+  ?feature geo:nearby (?hqGeo 2 <http://www.qudt.org/qudt/owl/1.0.0/unit/Instances.html#Kilometer>).
 }
 ```
 

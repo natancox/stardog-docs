@@ -13,7 +13,7 @@ client of Stardog APIs.]
 
 NOTE: High Availability requires *at least* three Stardog and three ZooKeeper
 nodes in the Cluster. ZooKeeper works best, with respect to fault resiliency,
-with an ensemble size that is an odd-number greater than or equal to three : 3,
+with an ensemble size that is an odd-number greater than or equal to three: 3,
 5, 7, etc.footnote:["Because ZooKeeper requires a majority, it is best to use an
 odd number of machines. For example, with four machines ZooKeeper can only
 handle the failure of a single machine; if two machines fail, the remaining two
@@ -96,7 +96,7 @@ See the link:/man/cluster-generate.html[man page] for the details.
 
 In the following installation notes, we install Stardog Cluster in a
 pseudo-distributed 3-node configuration, that is, Stardog and ZooKeeper nodes
-are co-located in the same machine. In a production environment we strongly recommend
+are colocated in the same machine. In a production environment we strongly recommend
 that each ZooKeeper process runs in a different machine and, if possible, that
 ZooKeeper has a separate drive for its data directory. If you need a larger
 cluster, adjust accordingly.footnote:[In order to deploy a cluster to a single
@@ -217,13 +217,13 @@ Stardog Cluster: that is, ZooKeeper and Stardog itself. We'll also configure
 HAProxyfootnote:[There's nothing special about HAProxy here; you could implement
 this proxy functionality in many different ways. We use HAProxy because it's
 relatively easy and ubiquitous. YMMV.] as an example of how to use of Stardog
-Cluster behind a proxy for load-balancing and failover capability.
+Cluster behind a proxy for load-balancing and fail-over capability.
 
 NOTE: As mentioned earlier, we recommend to have Stardog and ZooKeeper nodes in
-different machines, but for the purpose of this example we'll co-locate them in
+different machines, but for the purpose of this example we'll colocate them in
 the same machines.
 
-. *Start ZooKeeper with the `stadog-admin cluster zkstart` subcommand*
+. *Start ZooKeeper with the `stardog-admin cluster zkstart` subcommand*
 +
 [source,bash]
 ----
@@ -402,4 +402,4 @@ To add or remove data, issue `stardog data add` or `remove` commands to
 any node in the cluster. Queries can be issued to any node in the cluster using
 the `stardog query` command. All the `stardog-admin` features are also available
 in Cluster, which means you can use any of the commands to create
-databases, adminster users, and the rest of the functionality.
+databases, administer users, and the rest of the functionality.

@@ -33,7 +33,7 @@ Stardog-clj provides the following features:
 . Functions for insert and remove, for orchestrating the Adder and Remover APIs
 in SNARL
 . Macros for resource handling, including with-connection-tx,
-with-connnection-pool, and with-transaction
+with-connection-pool, and with-transaction
 . Support for programming Stardog applications with either the connection pool
 or direct handling of the connection
 . Idiomatic clojure handling of data structures, with converters that can be

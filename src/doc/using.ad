@@ -87,7 +87,8 @@ See the <<Virtual Graphs>> chapter for configuration and usage.
 
 === Querying Geospatial Data
 
-@TODO
+This works more or less like any SPARQL query, as long as the right geospatial
+vocabulary is used in the data.
 
 See the <<Geospatial Query>> chapter for configuration and usage.
 

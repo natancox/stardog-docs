@@ -1,7 +1,7 @@
 = Network Programming
 
 In the <<Java Programming>> section, we consider interacting with Stardog
-programatically from a Java program. In this section we consider interacting
+programmatically from a Java program. In this section we consider interacting
 with Stardog over HTTP. In some use cases or deployment scenarios, it may be
 necessary to interact with or control Stardog remotely over an IP-based network.
 

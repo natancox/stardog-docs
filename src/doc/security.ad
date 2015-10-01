@@ -377,7 +377,7 @@ properties for specifying keystore information:
 
 These properties are checked first in `stardog.properties`; then in JVM args
 passed in from the command line, e.g. `-Djavax.net.ssl.keyStorePassword=mypwd`. If
-you're creating a Server progammatically via `ServerBuilder`, you can specify
+you're creating a Server programmatically via `ServerBuilder`, you can specify
 values for these properties using the appropriate `ServerOptions` when creating
 the server.  These values will override anything specified in
 `stardog.properties` or via normal JVM args.
