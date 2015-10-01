@@ -9,7 +9,7 @@ supports `sun.misc.Unsafe`.
 == Insecurity
 
 We optimize Stardog out-of-the-box for ease and simplicity. You should
-take additional steps to secure it before production deployement. It's
+take additional steps to secure it before production deployment. It's
 easy and it's smart, so just do it. In case that's not blunt enough:
 
 NOTE: Stardog ships with an *insecure* but usable default setting: the
