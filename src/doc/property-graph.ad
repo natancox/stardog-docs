@@ -1,4 +1,4 @@
-= Gremlin, Property Graphs, TP3
+= Property Graphs
 
 In addition to RDF, SPARQL, OWL, and SNARL, Stardog supports the non-semantic
 https://github.com/tinkerpop/blueprints/wiki/Property-Graph-Model[property graph
