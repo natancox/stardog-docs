@@ -353,12 +353,13 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
     `true`. To define what counts as a "slow" query, set `time` to a time
     duration value (positive integer plus "h", "m", "s", or "ms" for hours,
     minutes, seconds, or milliseconds respectively). To determine the type of
-    logging, set `type` to `text` (the default) or `binary`. **To state the
-    obvious explicitly, a `logging.slow_query.time` that exceeds the value of
-    `query.timeout` will result in null logs.**
+    logging, set `type` to `text` (the default) or `binary`. Note that a
+    `logging.slow_query.time` that exceeds the value of `query.timeout` will
+    result in empty log entries.**
 
 . `http.max.request.parameters`: Default is 1024; any value smaller than
-`Integer.MAX_VALUE` may be provided. Useful if you have lots of named graphs.
+`Integer.MAX_VALUE` may be provided. Useful if you have lots of named graphs and
+are at risk of blowing out the value of `http.max.request.parameters`.
 
 .  `database.connection.timeout`: The amount of time a connection to the database can
     be open, but inactive, before being automatically closed to reclaim the resources.

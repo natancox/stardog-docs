@@ -44,15 +44,14 @@ See <<SPARQL Query Functions>> for the complete list.
 
 === Federated Queries
 
-Stardog 3.0 adds support for the
-http://www.w3.org/TR/sparql11-federated-query/[SERVICE]
-keywordfootnote:[The last SPARQL 1.1 feature that we didn't support.]
-which allows users to query distributed RDF via SPARQL-compliant data
-sources. You can use this to federate queries between several Stardog
-database or Stardog and other public endpoints.
+In Stardog 3.0 we added support for the
+http://www.w3.org/TR/sparql11-federated-query/[SERVICE] keywordfootnote:[The
+last SPARQL 1.1 feature that we didn't support.] which allows users to query
+distributed RDF via SPARQL-compliant data sources. You can use this to federate
+queries between several Stardog database or Stardog and other public endpoints.
 
-NOTE: Stardog 3.0 doesn't support variables for the service URL
-(`SERVICE ?serviceURL`).
+NOTE: Stardog doesn't support variables for the service URL (`SERVICE
+?serviceURL`).
 
 Stardog ships with a default `Service` implementation which uses
 SPARQL Protocol to send the service fragment to the remote endpoint
