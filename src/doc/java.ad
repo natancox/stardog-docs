@@ -12,6 +12,19 @@ https://github.com/mhgrove/Empire[Empire], an implementation of
 http://www.oracle.com/technetwork/java/javaee/tech/persistence-jsp-140049.html[JPA]
 for RDF that works with Stardog.
 
+== SNARL Protocol Buffers
+
+The native Stardog protocol, SNARL, is based on Google Protocol Buffers. The
+definitions for the various parts of SNARL are
+
+. https://github.com/mhgrove/cp-common-utils/blob/master/protobuf/core.proto[core.proto]: defines core types
+. link:/snarl/admin.proto[admin.proto]: defines SNARL
+. link:/snarl/snarl.proto[snarl.proto]: defines SNARL
+. link:/snarl/bigpacket.proto[bigpacket.proto]: defines RPC transport
+. link:/snarl/rdf.proto[rdf.proto]: defines binary RDF on-the-wire format
+. link:/snarl/proof.proto[proof.proto]: defines proof trees
+
+
 == Examples
 
 The *best* way to learn to program Stardog with Java is to study the
@@ -49,18 +62,18 @@ You can also use the
 link:java/snarl/com/complexible/stardog/api/admin/AdminConnection.html#memory[`memory`]
 and
 link:java/snarl/com/complexible/stardog/api/admin/AdminConnection.html#disk[`disk`]
-functions to configure and create a database in any way you prefer.
-These methods return
+functions to configure and create a database in any way you prefer. These
+methods return
 link:java/snarl/com/complexible/stardog/api/admin/DatabaseBuilder.html[`DatabaseBuilder`]
-objects which you can use to configure the options of the database
-you'd like to create. Finally, the
+objects which you can use to configure the options of the database you'd like to
+create. Finally, the
 link:java/snarl/com/complexible/stardog/api/admin/DatabaseBuilder.html#create[`create`]
-method takes the list of files to bulk load into the database when you
-create it and returns a valid
+method takes the list of files to bulk load into the database when you create it
+and returns a valid
 link:java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html[`ConnectionConfiguration`]
 which can be used to create new
-link:java/snarl/com/complexible/stardog/api/Connection.html[`Connections`]
-to your database.
+link:java/snarl/com/complexible/stardog/api/Connection.html[`Connections`] to
+your database.
 
 WARNING: It is important to note that you **must** take
 care to always log out of the server when you are done working with
