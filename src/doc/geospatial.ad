@@ -68,8 +68,8 @@ on the data. These are seamlessly integrated into SPARQL so you can query for
 non-spatial information about features in your dataset alongside the geospatial
 queries.
 
-The operators supported by Stardog are `geo:relate`, `geo:distance`,
-`geo:within`, `geo:nearby` and `geo:area`. The `geo` namespace is
+The operators supported by Stardog are `geof:relate`, `geof:distance`,
+`geof:within`, `geof:nearby` and `geof:area`. The `geof` namespace is
 `http://www.opengis.net/def/function/geosparql/`.
 
 This query gets all features within 2km of Complexible HQ in DC:
@@ -79,16 +79,16 @@ select ?name where {
   ?loc rdfs:label ?name .
   ?loc geo:hasGeometry ?feature .
   ?hq geo:hasGeometry ?hqGeo ; rdfs:label "Complexible Headquarters" .
-  ?feature geo:nearby (?hqGeo 2 <http://www.qudt.org/qudt/owl/1.0.0/unit/Instances.html#Kilometer>).
+  ?feature geof:nearby (?hqGeo 2 <http://qudt.org/vocab/unit#Kilometer>).
 }
 ```
 
 === Geospatial Datatypes
 
-The http://www.qudt.org/[QUDT] ontology is used to specify units for distances; `Kilometer`, `Meter`,
-`Centimeter`, `MileUSStatute`, `Yard`, `Foot`, `Inch`. Additionally, the OGC
-units vocabulary `http://www.opengis.net/def/uom/OGC/1.0/` defines `degree`,
-`radian` and `metre`.
+The http://www.qudt.org/[QUDT] ontology, namespace `http://qudt.org/vocab/unit#`, is 
+used to specify units for distances; `Kilometer`, `Meter`, `Centimeter`, `MileUSStatute`, 
+`Yard`, `Foot`, `Inch`. Additionally, the OGC units vocabulary 
+`http://www.opengis.net/def/uom/OGC/1.0/` defines `degree`, `radian` and `metre`.
 
 == Enhanced Polygons
 
