@@ -81,8 +81,8 @@ The command groups and their subcommands:
 - **metadata: ** get, set;
 - **user:     ** add, drop, edit, grant, list, permission, revoke, passwd;
 - **role:     ** add, drop, grant, list, permission, revoke;
-- **db:       ** backup, copy, create, drop, migrate, optimize, list, online, offline, repair, restore, status.
-- **virtual:  ** add, import, list, mappings, options, remove;
+- **db:       ** backup, copy, create, drop, migrate, optimize, list, online, offline, repair, restore, status;
+- **virtual:  ** add, import, list, mappings, options, remove.
 
 NOTE: See the <<Man Pages, man pages>> for the canonical list of commands.
 
