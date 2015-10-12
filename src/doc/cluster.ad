@@ -65,7 +65,7 @@ the cost.footnote:[Based on customer feedback we may relax these consistency
 guarantees in some future release. Please get in touch if you think an
 eventually consistent approach is more appropriate for your use of Stardog.]
 
-== Single Server Migration 
+== Single Server Migration
 
 It is assumed that Stardog nodes in a Stardog Cluster are always going to be
 used within a cluster context. Therefore, if you want to migrate from a Stardog
@@ -253,10 +253,12 @@ $ ./stardog-admin server start --home ~/stardog --port 5821 # on node 3
 Again, if your `$STARDOG_HOME` is set to `~/stardog`, you don't need to specify
 the `--home` option.
 +
-NOTE: We start Stardog here on the non-default port (`5821`) so that you can use
-a proxy or load-balancer in the same machine which can run on the default port
-(`5820`), meaning that Stardog clients can act normally (i.e., use the default
-port, `5820`) since they need to interact with HAProxy.
+NOTE: Make sure to allocate roughly twice as much heap for Stardog than you would normally
+do for single-server operation since there can be an additional overhead involved for
+replication in the cluster. Also, we start Stardog here on the non-default port
+(`5821`) so that you can use a proxy or load-balancer in the same machine which can
+run on the default port (`5820`), meaning that Stardog clients can act normally (i.e.,
+use the default port, `5820`) since they need to interact with HAProxy.
 +
 . *Start HAProxy*
 +
