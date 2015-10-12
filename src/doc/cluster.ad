@@ -300,6 +300,41 @@ backend stardogs
     #   using the destination IP address
     stick-table type integer size 200k expire 30m
     stick on dst
+    # these three lines perform a health check
+    # they will check that the node accepts connections and
+    # that it's operational within the cluster
+    option tcp-check
+    tcp-check send-binary 50494e47 # PING
+    tcp-check expect binary 504F4e47 # PONG
+    # replace these IP addresses with the corresponding node address
+    server stardog1 196.69.68.1:5821 maxconn 32 check
+    server stardog2 196.69.68.2:5821 maxconn 32 check
+    server stardog3 196.69.68.3:5821 maxconn 32 check
+----
++
+Conversely, if you wish to operate the cluster in HTTP-only mode, you can
+use the following HAProxy configuration:
++
+[source,text]
+----
+global
+    daemon
+    maxconn 256
+
+defaults
+    timeout connect 5s
+    timeout client 1h
+    timeout server 1h
+
+frontend stardog-in
+    option tcpka # keep-alive
+    bind *:5820
+    default_backend stardogs
+
+backend stardogs
+    mode http
+    # this line serves the same purpose as PING/PONG in tcp mode
+    option httpchk GET /admin/healthcheck
     # replace these IP addresses with the corresponding node address
     server stardog1 196.69.68.1:5821 maxconn 32 check
     server stardog2 196.69.68.2:5821 maxconn 32 check
