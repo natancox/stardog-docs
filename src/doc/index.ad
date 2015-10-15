@@ -76,8 +76,6 @@ include::understand.ad[]
 
 include::faq.ad[]
 
-include::rdf11.ad[]
-
 include::bench.ad[]
 
 //include::testing.ad[]
