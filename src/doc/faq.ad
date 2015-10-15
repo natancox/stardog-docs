@@ -121,18 +121,30 @@ is using.
 Question:: I'm getting a `ServiceConfigurationError` saying that `SNARLDriver` could not
 be instantiated.
 
-Answer:: Make sure that your classpath includes all Stardog JARs and that the user executing your
-code has access to them.
+Answer:: Make sure that your classpath includes all Stardog JARs and that the
+user executing your code has access to them.
+
+=== Logging
+
+Question:: Why doesn't Stardog implement our corporate logging scheme, which is
+not only incredibly byzantine but also totally proprietary?!
+
+Answer:: Stardog 4 will log to `$STARDOG_HOME/stardog.log` by
+<<Logging,default>>, but you can use a log4j 2 config file in `$STARDOG_HOME` so
+that Stardog will log wherever & however you want.
 
 === Loading Compressed Data
 
-Question:: How can I load data from a compressed format that Stardog doesn't support without decompressing the file?
+Question:: How can I load data from a compressed format that Stardog doesn't
+support without decompressing the file?
 
-Answer:: Stardog supports several compression formats by default (zip, gzip, bzip2) so files compressed with those 
-formats can be passed as input directly without decompression. Files compressed with other formats can also be loaded
-to Stardog by decompressing them on-the-fly using http://en.wikipedia.org/wiki/Named_pipe[named pipes] in Unix-like
-systems. The following example shows using a named pipe where the decompressed data is sent directly to Stardog
-without being writing to disk.
+Answer:: Stardog supports several compression formats by default (zip, gzip,
+bzip2) so files compressed with those formats can be passed as input directly
+without decompression. Files compressed with other formats can also be loaded to
+Stardog by decompressing them on-the-fly using
+http://en.wikipedia.org/wiki/Named_pipe[named pipes] in Unix-like systems. The
+following example shows using a named pipe where the decompressed data is sent
+directly to Stardog without being writing to disk.
 
 [source,bash]
 ----
