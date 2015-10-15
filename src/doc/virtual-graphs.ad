@@ -22,7 +22,8 @@ RDF. The mappings are defined using the http://www.w3.org/TR/r2rml/[R2RML]
 mapping language, but a simpler <<Stardog Mapping Syntax>> is also supported for
 serializing R2RML mappings.
 
-== Supported RDBMSes //See https://github.com/ontop/ontop/wiki/ObdalibPluginJDBC#Driver_class
+== Supported RDBMSes
+//See https://github.com/ontop/ontop/wiki/ObdalibPluginJDBC#Driver_class
 
 Stardog Virtual Graphs supports the following relational database systems; please <<mailto:inquiries@complexible.com,inquire>> if you need support for another.
 
