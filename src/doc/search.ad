@@ -1,22 +1,24 @@
-= Search
+= Graph Search
 
-intro...
+Stardog's builtin graph search system indexes graph data stored in Stardog for
+information retrieval queries.
 
 == Indexing Strategy
 
 The indexing strategy creates a "search document" per RDF literal. Each
 document consists of the following fields: literal ID; literal value;
-and contexts.
-
-See <<User-defined Lucene Analyzer>> for details on customizing
+and contexts. See <<User-defined Lucene Analyzer>> for details on customizing
 Stardog's search programmatically.
 
 == Maintaining Search Indexes
 
+See the Admin chapter section on <<Configuration Options>> for the details.
+
 == Integration with SPARQL
 
-We use the predicate `\http://jena.hpl.hp.com/ARQ/property#textMatch` to
-access the search index in a SPARQL query.
+We use the predicate `tag:stardog:api:property:textMatch` (or
+`\http://jena.hpl.hp.com/ARQ/property#textMatch`) to access the search index in
+a SPARQL query.
 
 The `textMatch` function has one required argument, the search query in Lucene
 syntax. It also has two optional arguments. The first is the score threshold;
@@ -33,7 +35,7 @@ For example,
 SELECT DISTINCT ?s ?score
 WHERE {
 ?s ?p ?l.
-( ?l ?score ) <http://jena.hpl.hp.com/ARQ/property#textMatch> ( 'mac' 0.5 50 ).
+( ?l ?score ) <tag:stardog:api:property:textMatch> ( 'mac' 0.5 50 ).
 }
 ----
 
@@ -54,8 +56,8 @@ http://lucene.apache.org/core/4_0_0/queryparser/org/apache/lucene/queryparser/cl
 
 == Search Syntax
 
-Stardog search is based on Lucene 4.2.0: we support all of the
-http://lucene.apache.org/core/4_2_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description[search modifiers]
+Stardog search is based on Lucene 5.3.0: we support all of the
+http://lucene.apache.org/core/5_3_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description[search modifiers]
 that Lucene supports, with the exception of fields.
 
 - wildcards: `?` and `*`
