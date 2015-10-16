@@ -299,9 +299,11 @@ to the SPARQL `regex` filter.
 
 Stardog's <<Searching,Semantic Search>> capability uses Lucene's
 https://lucene.apache.org/core/4_7_2/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html[default
-text analyzer], which may not be ideal for your data or
-application. You can implement a custom analyzer that Stardog will use
-by implementing `org.apache.lucene.analysis.Analyzer`. That lets you customize Stardog to support different natural languages, geospatial indexing, domain-specific stop word lists, etc.
+text analyzer], which may not be ideal for your data or application. You can
+implement a custom analyzer that Stardog will use by implementing
+`org.apache.lucene.analysis.Analyzer`. That lets you customize Stardog to
+support different natural languages, domain-specific stop
+word lists, etc.
 
 See
 https://github.com/complexible/stardog-examples/tree/master/examples/analyzer[Custom
