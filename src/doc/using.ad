@@ -91,6 +91,16 @@ vocabulary is used in the data.
 
 See the <<Geospatial Query>> chapter for configuration and usage.
 
+== Traversing
+
+Blah blah Gremlin traversals blah blah setup the Gremlin Console blah blah.
+
+Example
+
+Example
+
+Joy...
+
 == Updating
 
 There are many ways to update the data in a Stardog database; two of
