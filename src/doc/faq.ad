@@ -126,8 +126,8 @@ user executing your code has access to them.
 
 === Logging
 
-Question:: Why doesn't Stardog implement our corporate logging scheme, which is
-not only incredibly byzantine but also totally proprietary?!
+Question:: Why doesn't Stardog implement our (byzantine and proprietary!)
+corporate logging scheme?
 
 Answer:: Stardog 4 will log to `$STARDOG_HOME/stardog.log` by
 <<Logging,default>>, but you can use a log4j 2 config file in `$STARDOG_HOME` so
