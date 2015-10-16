@@ -38,6 +38,8 @@ To learn more about where we've been and where we're headed, consult
 the link:/release-notes/[RELEASE NOTES] and
 <<Milestones,milestones>>.
 
+== Documentation
+
 |===
 | Stardog Version | HTML             | PDF
 | 4.0             | link:/#[✓]       | link:/stardog-manual-{version}.pdf[✓]
@@ -46,7 +48,7 @@ the link:/release-notes/[RELEASE NOTES] and
 | 3.0             | link:/3.0/#[✓]   | link:/3.0/stardog-manual-3.0.pdf[✓]
 |===
 
-== Downloading Stardog & Support
+== Downloading & Support
 
 http://stardog.com/#download[Download] Stardog to get started. The
 https://groups.google.com/a/clarkparsia.com/d/forum/stardog[Stardog support
