@@ -44,6 +44,8 @@ include::cluster-management.ad[]
 
 //include::docker.ad[]
 
+include::search.ad[]
+
 include::owl2.ad[]
 
 include::icv.ad[]
