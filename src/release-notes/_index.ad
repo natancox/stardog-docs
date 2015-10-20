@@ -39,6 +39,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *FIX: System database disk usage grows endlessly (#2586)
 *FIX: Gracefully handle the empty query string in the SPARQL parser (#2588)
 *FIX: Race condition in free page handling (#2591)
+*FIX: Inlining singleton VALUEs can lose bindings (#2600)
 
 == 4.0 RC1 Release
 [none]
