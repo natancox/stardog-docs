@@ -21,8 +21,24 @@
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
 == 4.0 RC2 Release
-*MOD:
-*FIX:
+*ADD: Per-query timeouts (#2442)
+*ADD: Add spatial.enabled to webconsole (#2583)
+*MOD: Tinkerpop 3.0.1 (#2554)
+*MOD: Improved progress reporting for restoring a database from backup (#2552)
+*MOD: Metadata for index fragmentation (#2530)
+*MOD: Improved accuracy of sub-query timeouts (#2564)
+*FIX: Typos in reasoning undo CLI command (#2561)
+*FIX: Server losing ZK connectivity causes client to freeze (#2567)
+*FIX: Restoring 3.x backups in 4.0 assigns bogus datatype to plain literals (#2571)
+*FIX: Auto-complete scripts missing virtual graph completions (#2572)
+*FIX: Disk index should clean statistics after closing connections (#2573)
+*FIX: Opening concurrent search index connections throws exceptions (#2578)
+*FIX: Coordinator losing ZK connection does not cancel transactions (#2580)
+*FIX: Spatial query re-writer can eat binds that aren't using spatial functions (#2584)
+*FIX: HTTP client sends too many options exceeding URL length restrictions (#2585)
+*FIX: System database disk usage grows endlessly (#2585)
+*FIX: Gracefully handle the empty query string in the SPARQL parser (#2588)
+*FIX: Race condition in free page handling (#2591)
 
 == 4.0 RC1 Release
 [none]
