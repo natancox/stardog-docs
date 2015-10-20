@@ -1,13 +1,13 @@
 = Property Graphs
 
 In addition to RDF, SPARQL, OWL, and SNARL, Stardog supports the non-semantic
-http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#intro[property
+http://tinkerpop.incubator.apache.org/docs/{tp3-version}/#intro[property
 graph model], Gremlin graph traversal language, and http://tinkerpop.com/[Apache
 TinkerPop 3] APIs. For information on how to use the TinkerPop 3, please refer
 to its
-http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating[documentation].
+http://tinkerpop.incubator.apache.org/docs/{tp3-version}[documentation].
 Details about Stardog's support for
-http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#_features[TinkerPop
+http://tinkerpop.incubator.apache.org/docs/{tp3-version}/#_features[TinkerPop
 3 Features] can be found in
 link:/java/snarl/com/complexible/stardog/gremlin/features/StardogFeatureSet.html[Stardog
 Feature Set].
@@ -37,7 +37,7 @@ Okay, so why add property graph support to Stardog? A few reasons:
 === Example
 
 Loading the
-http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#intro[TinkerGraph
+http://tinkerpop.incubator.apache.org/docs/{tp3-version}/#intro[TinkerGraph
 Modern] graph via TinkerPop 3 (using Gremlin Console), using the described
 <<Graph Configuration>>:
 
@@ -140,7 +140,7 @@ gremlin> graph = StardogGraphFactory.open(graphConf.build())
 == Stardog & Gremlin Console
 
 Stardog's TinkerPop 3 implementation includes a plugin for
-http://tinkerpop.incubator.apache.org/docs/3.0.0-incubating/#gremlin-console[Gremlin
+http://tinkerpop.incubator.apache.org/docs/{tp3-version}/#gremlin-console[Gremlin
 Console, window="_blank"].
 
 === Installation
