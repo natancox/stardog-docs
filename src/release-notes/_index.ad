@@ -27,6 +27,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *MOD: Improved progress reporting for restoring a database from backup (#2552)
 *MOD: Metadata for index fragmentation (#2530)
 *MOD: Improved accuracy of sub-query timeouts (#2564)
+*MOD: Always log timed out queries in slow query log (#2570)
 *FIX: Typos in reasoning undo CLI command (#2561)
 *FIX: Server losing ZK connectivity causes client to freeze (#2567)
 *FIX: Restoring 3.x backups in 4.0 assigns bogus datatype to plain literals (#2571)
@@ -39,7 +40,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *FIX: System database disk usage grows endlessly (#2586)
 *FIX: Gracefully handle the empty query string in the SPARQL parser (#2588)
 *FIX: Race condition in free page handling (#2591)
-*FIX: Inlining singleton VALUEs can lose bindings (#2600)
+*FIX: Inlining singleton VALUES can lose bindings (#2600)
 
 == 4.0 RC1 Release
 [none]
