@@ -36,7 +36,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *FIX: Coordinator losing ZK connection does not cancel transactions (#2580)
 *FIX: Spatial query re-writer can eat binds that aren't using spatial functions (#2584)
 *FIX: HTTP client sends too many options exceeding URL length restrictions (#2585)
-*FIX: System database disk usage grows endlessly (#2585)
+*FIX: System database disk usage grows endlessly (#2586)
 *FIX: Gracefully handle the empty query string in the SPARQL parser (#2588)
 *FIX: Race condition in free page handling (#2591)
 
