@@ -119,7 +119,7 @@ information **for each node in the cluster**:
 ----
 # Flag to enable the cluster, without this flag set, the rest of the properties have no effect
 pack.enabled=true
-# this node's IP address (or hostname), and port where other Stardog nodes are going to connect
+# this node's IP address (or hostname) where other Stardog nodes are going to connect
 pack.node.address=196.69.68.1
 # the connection string for ZooKeeper where cluster state is stored
 pack.zookeeper.address=196.69.68.1:2180,196.69.68.2:2180,196.69.68.3:2180
