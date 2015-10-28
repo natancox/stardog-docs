@@ -20,6 +20,9 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
+== 4.0 RC3 Release
+*FIX: blah blah cluster doesn't suck as much blah
+
 == 4.0 RC2 Release
 *ADD: Per-query timeouts (#2442)
 *ADD: Add spatial.enabled to webconsole (#2583)

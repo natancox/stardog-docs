@@ -3,8 +3,8 @@
 module.exports = function(grunt) {
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
-    var theId = grunt.option("id") || "4.0RC2";
-    var theDate = grunt.option("date") || "20 October 2015";
+    var theId = grunt.option("id") || "4.0RC3";
+    var theDate = grunt.option("date") || "29 October 2015";
 
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
