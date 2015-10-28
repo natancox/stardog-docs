@@ -21,7 +21,20 @@
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
 == 4.0 RC3 Release
-*FIX: blah blah cluster doesn't suck as much blah
+*ADD: Add progress monitor for server-side exports (#2545)
+*MOD: Speed up data export for large databases (#2607)
+*FIX: NPE if pinged while cluster node is starting up (#2630)
+*FIX: System db in the cluster syncs on startup even if no changes (#2629)
+*FIX: IOException: Unsupported class type Permission in the audit log (#2628)
+*FIX: Event executor terminated in SNARL client (#2623)
+*FIX: Rolling back a transaction that is in progress fails (#2621)
+*FIX: ConcurrentModificationException in the algebraic rewriter (#2617)
+*FIX: Commits without a message reuse previous commit message (#2616)
+*FIX: Add explicit vcs:Updates type in versioning metadata assertions (#2615)
+*FIX: Non-select queries for versioning metadata query the database (#2613)
+*FIX: CLS vcs commit command prints wrong message (#2612)
+*FIX: Differential index causes repair command to think db is invalid (#2602)
+*FIX: Deadlock in RPC client can halt coordinator (#2579)
 
 == 4.0 RC2 Release
 *ADD: Per-query timeouts (#2442)
