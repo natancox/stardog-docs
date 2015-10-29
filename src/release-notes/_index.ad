@@ -23,6 +23,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 == 4.0 RC3 Release
 *ADD: Add progress monitor for server-side exports (#2545)
 *MOD: Speed up data export for large databases (#2607)
+*FIX: Too many files exceptions in the cluster (#2632)
 *FIX: NPE if pinged while cluster node is starting up (#2630)
 *FIX: System db in the cluster syncs on startup even if no changes (#2629)
 *FIX: IOException: Unsupported class type Permission in the audit log (#2628)
