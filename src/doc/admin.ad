@@ -727,7 +727,21 @@ cron expression].
 | `false`
 | link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#TRANSACTION_LOGGING[DatabaseOptions.TRANSACTION_LOGGING]
 
-4+|Enables logged transactions
+4+|Enables logged transactions. Logged transactions are activated by default in Cluster mode.
+
+|`*transaction.logging.rotation.size*`
+| Yes
+| `524288000`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#TRANSACTION_LOGGING[DatabaseOptions.TRANSACTION_LOGGING_ROTATION_SIZE]
+
+4+|When `transaction.logging` is `true`, it determines the size (in bytes) at which the transaction log will be rotated. Default is 500 MB.
+
+|`*transaction.logging.rotation.remove*`
+| Yes
+| `true`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#TRANSACTION_LOGGING[DatabaseOptions.TRANSACTION_LOGGING_ROTATION_REMOVE]
+
+4+|When `transaction.logging` is `true`, it determines whether the rotated log will be deleted or kept in disk.
 
 |`*query.all.graphs*`
 | Yes
@@ -1128,7 +1142,7 @@ answers are computed as if all the data is stored in the main indexes.
 There is a slight overhead for query answering with differential indexes
 if the differential index size gets too large. For this reason, the
 differential index is merged into the main indexes when its size reaches
-`index.differential.merge.limit`. There is also no benefit of differential 
+`index.differential.merge.limit`. There is also no benefit of differential
 indexes if the main index itself is small. For this reason, the differential
 index is not used until the main index size reaches
 `index.differential.enable.limit`.
@@ -1144,7 +1158,7 @@ being merged. Reducing the value of `index.differential.merge.limit` will make
 sure there are no long pauses but overall throughput will suffer. The optimal
 value depends on the average size of a transaction for the application and the
 frequency of updates.
- 
+
 === Loading Compressed Data
 
 Stardog supports loading data from compressed files directly: there's no need to
@@ -1444,12 +1458,12 @@ consideration of Stardog's integrity constraint mechanism.
 
 A Stardog connection will run in
 http://en.wikipedia.org/wiki/Isolation_(database_systems)#Read_committed[`READ
-COMMITTED`] isolation level if it has not started an explicit transaction and 
+COMMITTED`] isolation level if it has not started an explicit transaction and
 will run in `READ COMMITTED SNAPSHOT` or `SERIALIZABLE` isolation level
-depending on the value of the `transaction.isolation`. In any of these modes, 
-uncommitted changes will only be visible to the connection that made the changes: 
+depending on the value of the `transaction.isolation`. In any of these modes,
+uncommitted changes will only be visible to the connection that made the changes:
 no other connection can see those values before they are committed. Thus,
-"dirty reads" can never occur. 
+"dirty reads" can never occur.
 
 The difference between `READ COMMITTED` and `READ COMMITTED SNAPSHOT` isolation
 levels is that in the former case a connection will see updates committed by
@@ -1535,14 +1549,14 @@ in some cases since every transaction reads from a snapshot that was created at
 the time transaction started.
 
 Consider the following query being executed by two concurrent threads in
-`READ COMMITTED SNAPSHOT` isolation level against a database having the triple 
+`READ COMMITTED SNAPSHOT` isolation level against a database having the triple
 `:counter :val 1` initially:
 
 [source,sparql]
 ----
 INSERT { :counter :val ?newValue }
-DELETE { :counter :val ?oldValue } 
-WHERE  { :counter :val ?oldValue 
+DELETE { :counter :val ?oldValue }
+WHERE  { :counter :val ?oldValue
          BIND (?oldValue+1 AS ?newValue) }
 ----
 
@@ -1551,8 +1565,8 @@ possible that both transactions will read the value `1` and insert the value `2`
 even though we expect the final value to be `3`.
 
 Isolation level `SERIALIZABLE` can be used to avoid these situations. In
-`SERIALIZABLE` mode an exclusive lock needs to be acquired before a transaction 
-begins. This ensures concurrent updates cannot interfere with each other, but as a 
+`SERIALIZABLE` mode an exclusive lock needs to be acquired before a transaction
+begins. This ensures concurrent updates cannot interfere with each other, but as a
 result update throughput will decrease since only one transaction can run at a time.
 
 ==== Durability
