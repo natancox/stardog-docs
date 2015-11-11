@@ -265,9 +265,8 @@ port is the default SNARL port, a connection string may consist of the
 
 == Server Admin
 
-Stardog Server is multi-protocol, supporting SNARL and HTTP. The
-default port for SNARL is **5820**; the default port for HTTP is
-**5822**. **All administrative functions work over SNARL or HTTP
+Stardog Server is multi-protocol, supporting SNARL and HTTP; the
+default port is **5820**.  **All administrative functions work over SNARL or HTTP
 protocols.**
 
 === Upgrading Stardog Server
