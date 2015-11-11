@@ -392,7 +392,7 @@ database:
 
 [source,bash]
 ----
-$ stardog status -c https://stardog.example.org/sp2b_10k
+$ stardog query https://stardog.example.org/sp2b_10k "ask { ?s ?p ?o }"
 ----
 
 If the client is unable to authenticate to the server, then the connection
@@ -404,15 +404,15 @@ Error during connect.  Cause was SSLPeerUnverifiedException: peer not authentica
 ----
 
 The most common cause of this error is that the server presented a certificate
-that was not issued by an authority that the client trusts. The Stardog HTTP
-client driver uses standard Java security components to access a store of
+that was not issued by an authority that the client trusts. The Stardog client 
+uses standard Java security components to access a store of
 trusted certificates. By default, it trusts a list of certificates installed
 with the Java runtime environment, but it can be configured to use a custom
-trust store.footnote:[The Stardog HTTP client driver uses an `X509TrustManager`.
+trust store.footnote:[The Stardog client uses an `X509TrustManager`.
 The details of how a trust store is selected to initialize the trust manager are
 http://docs.oracle.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html#X509TrustManager.]
 
-The client driver can be directed to use a specific Java KeyStore file as a
+The client can be directed to use a specific Java KeyStore file as a
 trust store by setting the `javax.net.ssl.trustStore` system property. To
 address the authentication error above, that trust store should contain the
 issuer of the server’s certificate. Standard Java tools can create such a file.
@@ -434,11 +434,11 @@ truststore.
 
 [source,bash]
 ----
-$ STARDOG_JAVA_ARGS=”-Djavax.net.ssl.trustStore=my-truststore.jks” stardog \
-status -c https://stardog.example.org/sp2b_10k
+$ STARDOG_JAVA_ARGS=”-Djavax.net.ssl.trustStore=my-truststore.jks” 
+$ stardog query https://stardog.example.org/sp2b_10k "ask { ?s ?p ?o }"
 ----
 
-For custom Java applications that use the Stardog HTTP client driver,
+For custom Java applications that use the Stardog client,
 the system property can be set programmatically or when the JVM is
 initialized.
 
@@ -461,7 +461,7 @@ This will cause an error message like the following
 Error during connect.  Cause was SSLException: hostname in certificate didn't match
 ----
 
-The client driver does not support connecting when there's a mismatch;
+The client does not support connecting when there's a mismatch;
 therefore, the only workarounds are to replace the server’s certificate or
 modify the connection string to use an alias for the same server that
 matches the certificate.
