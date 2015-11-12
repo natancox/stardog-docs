@@ -20,6 +20,9 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
+== 4.0 Release
+
+
 == 4.0 RC3 Release
 *ADD: Add progress monitor for server-side exports (#2545)
 *MOD: Speed up data export for large databases (#2607)
