@@ -416,6 +416,17 @@ timeouts at scale. We recommend at a minimum having the two services writing to
 separate disks to reduce contention or, ideally, have them run on separate nodes
 entirely.
 
+== Open File Limits
+
+If you expect to use Stardog Cluster with heavy concurrent write workloads, then
+you should probably increase the number of open files that host OS will permit
+on each Cluster node. You can typically do this on a Linux machine with `ulimit
+-n` or some variant thereof. Because nodes communicate between themselves and
+with ZooKeeper, it's important to make sure that there are sufficient file
+handle resources available.footnote:[This point is especially true of Cluster
+but may be relevant for some workloads on a single Stardog database, that
+is, non-Cluster configuration, too.]
+
 == Stardog Cluster Client
 
 To use Stardog Cluster with standard Stardog clients and CLI tools in the
