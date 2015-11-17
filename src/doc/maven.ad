@@ -11,12 +11,13 @@ http://www.gradle.org[Gradle] convention and is of the form:
 
 .Table of client type dependencies
 |===
-|*Type*                         | *Stardog Dependency*
+|*Type*                       | *Stardog Dependency*
 |snarl client                 | `com.complexible.stardog:client-snarl:VERSION`
 |http client                  | `com.complexible.stardog:client-http:VERSION`
 |server                       | `com.complexible.stardog:server:VERSION`
 |sesame                       | `com.complexible.stardog.sesame:stardog-sesame-core:VERSION`
 |jena                         | `com.complexible.stardog.jena:stardog-jena:VERSION`
+|gremlin                      | `com.complexible.stardog.gremlin:stardog-gremlin:VERSION`
 |===
 
 You can see an example of their usage in our examples

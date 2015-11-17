@@ -23,12 +23,13 @@ eagerly materialized. See <<Same As Reasoning>> for more details.
 
 == Reasoning Types
 
-In Stardog 3.0,
-reasoning can be enabled or disabled using a simple boolean flag--in HTTP,
+Reasoning can be enabled or disabled using a simple boolean flag--in HTTP,
 `reasoning`; in CLI, `-r` or `--reasoning`; in the Web Console, a reasoning
-button in the query panel; and in Java APIs, 
-http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html#reasoning(boolean)[a connection option]
-or http://docs.stardog.com/java/snarl/com/complexible/stardog/api/Query.html#reasoning(boolean)[a query option]:
+button in the query panel; and in Java APIs,
+http://docs.stardog.com/java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html#reasoning(boolean)[a
+connection option] or
+http://docs.stardog.com/java/snarl/com/complexible/stardog/api/Query.html#reasoning(boolean)[a
+query option]:
 
 [horizontal]
 `false`:: No axioms or rules are considered; no reasoning is performed.
@@ -63,7 +64,7 @@ be kept in memory. But query rewriting cannot handle axioms outside the OWL 2
 profiles; however, `DL` reasoning type can be used so that no axiom or rule is
 ignored as long as they satisfy
 http://www.w3.org/TR/2012/REC-owl2-syntax-20121211/#Global_Restrictions_on_Axioms_in_OWL_2_DL[the
-OWL 2 DL restricions]. With `DL` reasoning, both the schema and the instance
+OWL 2 DL restrictions]. With `DL` reasoning, both the schema and the instance
 data need to pulled into memory, which limits its applicability with large
 number of instances. `DL` reasoning also requires the database to be logically
 consistent or no reasoning can be be performed. Finally, `DL` reasoning requires
@@ -94,7 +95,7 @@ schema, then you can use the special built-in URI
 (that is, to tell Stardog to look for the schema in every named graph),
 you can use `tag:stardog:api:context:all`.
 
-NOTE: As of Stardog 3.0, **the default value for this property is to
+NOTE: **The default value for this property is to
 use all graphs, i.e., `tag:stardog:api:context:all`.**
 
 This design is intended to support both of Stardog's primary use cases:
@@ -141,7 +142,7 @@ Currently, the API has two methods:
 
 == Explaining Reasoning Results
 
-Stardog can be used to check if the current datbase logically entails a set of
+Stardog can be used to check if the current database logically entails a set of
 triples; moreover, Stardog can explain why this is so.footnote:[Find another
 database, any other database anywhere, that can do that! We'll wait...] An
 explanation of an inference is the minimum set of statements explicitly stored
@@ -327,7 +328,7 @@ the task at hand. This is engineering, not religion.
 
 Stardog supports user-defined rule reasoning together with a rich set
 of built-in functions using the
-http://www.w3.org/Submission/SWRL/[SWRL] syntax and builtin-ins
+http://www.w3.org/Submission/SWRL/[SWRL] syntax and builtins
 library. In order to apply SWRL user-defined rules, you must include
 the rules as part of the database's schema: that is, put your rules
 where your axioms are, i.e., in the schema. Once the rules are part of
@@ -380,7 +381,7 @@ you've changed the value of `reasoning.schema.graphs`, you're probably
 going to be fine; that is, just add the rules to the database and it
 will all work out.footnote:[Of course if you've tweaked
 `reasoning.schema.graphs`, then you should put the rules into the named
-graph(s) that are specifed in that configuration parameter.]
+graph(s) that are specified in that configuration parameter.]
 
 Second, you represent the rules with specially constructed RDF triples. Here's
 a kind of template example:
@@ -683,7 +684,8 @@ rather than the (more unwieldy) triple pattern.
                                           }
 ----
 
-The predicates `sp:directSubPropertyOf` and `sp:strictSubPropertyOf` are defined analogously.
+The predicates `sp:directSubPropertyOf` and `sp:strictSubPropertyOf` are defined
+analogously.
 
 === New Individuals with SWRL
 
@@ -879,7 +881,7 @@ Query rewriting has several advantages over materialization. In materialization,
 the data gets expanded with respect to the schema, not with respect to any
 actual query. And it's the data--all of the data--that gets expanded, whether
 any actual query subsequently requires reasoning or not. The schema is used to
-generate new triples, typicaly when data is added or removed from the system.
+generate new triples, typically when data is added or removed from the system.
 However, materialization introduces several thorny issues:
 
 .   **data freshness**. Materialization has to be performed **every time**

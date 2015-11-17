@@ -1,27 +1,14 @@
 = Virtual Graphs
 
-Stardog supports virtual graphs: tabular data that is declaratively mapped into
-a Stardog database graph, but which is not materialized into the graph. Rather,
-Stardog rewrites (a portion of) SPARQL queries against the Stardog database into
-SQL, issues that SQL query to an RDBMS, and translates the SQL results into
-SPARQL results. Virtual graphs can be used for mapping any tabular data, e.g.
-CSV, to RDF and Stardog will support mapping other tabular formats to graphs in
-future releases.
+Stardog supports *Virtual Graphs*, that is, tabular data declaratively mapped
+into a Stardog database graph and queries by Stardog _in situ_, typically
+using SQL. Stardog rewrites (a portion of) SPARQL queries against the Stardog
+database into SQL, issues that SQL query to an RDBMS, and translates the SQL
+results into SPARQL results. Virtual Graphs can be used for mapping any tabular
+data, e.g. CSV, to RDF and Stardog will support mapping other tabular formats to
+graphs in future releases, including enterprise directory services.
 
-.Virtual Graphs: BETA 
-****
-Virtual graphs are currently marked **BETA**.
-
-We will be remediating the following limitations in 3.x releases:
-
-* virtual graphs are not supported in the Stardog HA cluster
-* named graphs in mappings are ignored
-* admin commands for adding and removing R2RML mappings work only over SNARL; but once R2RML mappings are added through the admin command, query answering will
-work over both SNARL and HTTP protocols
-* queries that range over Stardog database and virtual graphs are optimized with a simplistic query planner
-****
-
-A virtual graph definition has three components:
+A Virtual Graph has three components:
 
 * a unique name
 * configuration options for the data source
@@ -29,15 +16,28 @@ A virtual graph definition has three components:
 
 A virtual graph's name must conform to the regular expression
 `[A-Za-z]{1}[A-Za-z0-9_-]`. The configuration options include several
-parameters, especially JDBC connection parameters. Finally, the mappings define
+parameters, primarily JDBC connection parameters. Finally, the mappings define
 how the tabular data stored in the RDBMS will be represented in
 RDF. The mappings are defined using the http://www.w3.org/TR/r2rml/[R2RML] 
 mapping language, but a simpler <<Stardog Mapping Syntax>> is also supported for
 serializing R2RML mappings.
 
+== Supported RDBMSes
+//See https://github.com/ontop/ontop/wiki/ObdalibPluginJDBC#Driver_class
+
+Stardog Virtual Graphs supports the following relational database systems; please <<mailto:inquiries@complexible.com,inquire>> if you need support for another.
+
+* PostgreSQL
+* MySQL
+* Microsoft SQL Server
+* Oracle
+* DB2
+* H2
+* SAP HANA
+
 == Managing Virtual Graphs
 
-In order to query a virtual graph it first needs to be registered with Stardog.
+In order to query a Virtual Graph it first must be registered with Stardog.
 Adding a new virtual graph is done via the following command:
 
 [source,bash]
@@ -61,17 +61,17 @@ jdbc.driver=com.mysql.jdbc.Driver
 ----
 
 NOTE: Stardog does not ship with JDBC drivers. You need to manually copy the JAR
-file containing the driver to the `STARDOG/server/dbms/` directory so it will be
-available to the Stardog server. Server needs to be restarted after the JAR is
-copied.
+file containing the driver to the `STARDOG/server/dbms/` directory so that it
+will be available to the Stardog server. Server needs to be restarted after the
+JAR is copied.
 
-The credentials for the JDBC connection needs to be provided in plain text. An
+The credentials for the JDBC connection need to be provided in plain text. An
 alternative way to provide credentials is to use the <<Using a Password File,
 password file>> mechanism. The credentials should be stored in a password file
 called `services.sdpass` located in `STARDOG_HOME` directory. The password file
 entries are in the format `hostname:port:database:username:password` so for the
 above example there should be an entry `localhost:*:dept:admin:admin` in this
-file and then the credentials in the configuration file can be omitted.
+file. Then the credentials in the configuration file can be omitted.
 
 The configuration file can also contain a property called `base` to specify a
 http://www.w3.org/TR/r2rml/#dfn-base-iri[base URI] for resolving relative URIs
@@ -84,7 +84,7 @@ Mapping Syntax>>. Mappings in standard R2RML syntax can be used by adding the
 If there are no mappings provided to the add commands then the 
 http://www.w3.org/TR/rdb-direct-mapping/[R2RML direct mapping] is used. 
 
-Registered virtual graphs can be listed with the following command:
+Registered virtual graphs can be listed:
 
 [source,bash]
 ----
@@ -100,33 +100,34 @@ command. See the <<Man Pages>> for the details of these commands.
 
 == Querying Virtual Graphs
 
-Querying virtual graphs is done by using the `SERVICE` clause, using a special
-service URI in the form `virtual://myGraph` to query the virtual graph named
-`myGraph`. The following example shows how to query the virtual graph named
-`dept`:
+Querying Virtual Graphs is done by using the `GRAPH` clause, using a special
+graph URI in the form `virtual://myGraph` to query the Virtual Graph named
+`myGraph`. The following example shows how to query `dept`:
 
 [source,sparql]
 ----
 SELECT * {
-   SERVICE <virtual://dept> {
+   GRAPH <virtual://dept> {
       ?person a emp:Employee ;
            emp:name "SMITH"
    }
 }
 ----
 
-Virtual graphs are defined globally in the server so once they are registered
-with the server they can be accessed via any database. We can query the Stardog
-database and pull data from a virtual graph in a single query. Suppose we have
-the `dept` virtual graph defined as in the above examples that contains employee
-and department information and the Stardog database contains data the interests
-of people. We can use the following query to combine the information from both
-sources:
+Virtual graphs are defined globally in Stardog Server. Once they are registered
+with the server they can be accessed via any Stardog database as allowed by the
+<<Virtual Graph Security,access rules>>.
+
+We can query the Stardog database and pull data from a virtual graph in a single
+query. Suppose we have the `dept` Virtual Graph, defined as above, that contains
+employee and department information, and the Stardog database contains data
+about the interests of people. We can use the following query to combine the
+information from both sources:
 
 [source,sparql]
 ----
 SELECT * {
-   SERVICE <virtual://dept> {
+   GRAPH <virtual://dept> {
       ?person a emp:Employee ;
            emp:name "SMITH"
    }
@@ -134,34 +135,96 @@ SELECT * {
 }
 ----
 
-NOTE: Query performance will be best if the `SERVICE` clause is selective.
+NOTE: Query performance will be best if the `GRAPH` clause for Virtual Graphs is
+as selective as possible.
+
+== Virtual Graph Security
+
+Accessing Virtual Graphs can be controlled similar to regular named graphs as
+explained in the <<Named Graph Security>> section. If named graph security is
+not enabled for a database, all registered Virtual Graphs in the server will 
+be accessible through that database. If named graph security is enabled for a 
+database, then users will be able to query only the Virtual Graphs for which
+they have been granted access. 
+
+If the virtual graphs contain any sensitive information, then it is recommended
+to enable named graph security globally by setting `security.named.graphs=true`
+in `stardog.properties`. Otherwise creating a new database without proper
+configuration would allow users to access those Virtual Graphs.
 
 == Materializing Virtual Graphs
 
-In some cases one wants to materialize the information stored in RDBMS directly
-into RDF. It is possible to use a `CONSTRUCT` query with the `SERVICE` keyword to
-export the contents of the virtual graph into RDF. Or we can directly insert the
-results into the Stardog database with a SPARQL update query:
+In some cases you need to *materialize the information stored in RDBMS directly
+into RDF*. There is a special command `virtual import` that can be used to
+import the contents of the RDBMS into Stardog. The command can be used as
+follows:
+
+[source,bash]
+----
+$ stardog-admin virtual import dept.properties dept.ttl
+----
+
+This command adds all the mapped triples from the RDBMS into the default graph.
+Similar to `virtual add`, this command assumes <<Stardog Mapping Syntax>> by
+default and can accept R2RML mappings using the `--format r2rml` option.
+
+It is also possible to specify a target named graph by using the
+`-g`/`--namedGraph` option:
+	
+[source,bash]
+----
+$ stardog-admin virtual import -g http://example.com/targetGraph dept.properties dept.ttl
+----
+
+This `virtual import` command is equivalent executing the following SPARQL update query:
 
 [source,sparql]
 ----
 INSERT {
-   GRAPH <http://example.com/dept/materialized> {
+   GRAPH <http://example.com/targetGraph> {
       ?s ?p ?o
    }
 }
 WHERE
-   SERVICE <virtual://dept> {
+   GRAPH <virtual://dept> {
       ?s ?p ?o
    }
 }
 ----
 
-If the RDBMS contents change over time and we need to update the materialization
-results in the future we can drop the named graph contents and rematerialize
-again. Query performance over materialized graphs will be better as the data
-will be indexed locally by Stardog, but materialization may not be practical in
-cases where frequency of change is very high.
+If the RDBMS contents change over time, and we need to update the
+materialization results in the future, then we can drop the named graph contents
+and rematerialize again. Query performance over materialized graphs will be
+better as the data will be indexed locally by Stardog, but materialization may
+not be practical in cases where frequency of change is very high.
+
+== CSV as Virtual Graph
+
+Mappings can be used to treat CSV files as Virtual Graphs since they represent
+tabular data similar to RDBMS tables. But unlike RDBMS tables, CSV files are
+supported only for importing into Stardog. The same import command above can be
+used to specify a mappings file and an input CSV file:
+
+[source,bash]
+----
+$ stardog-admin virtual import cars.ttl cars.csv
+----
+
+If the input file is using different kind of separators, e.g. tab character, a
+configuration file can be provided
+
+[source,bash]
+----
+$ stardog-admin virtual import cars.properties cars.ttl cars.tsv
+----
+
+The configuration file for CSV files can specify values for the following
+properties: `csv.separator` (character for separating fields), `csv.quote`
+(character for strings), `csv.escape` (character for escaping special
+characters), `csv.header` (boolean value for specifying whether or not the input
+file has a header line at the beginning). Note that, whitespace characters in
+Java properties file need to be escaped so if you want to import tab-separated
+value files set `csv.separator=\t` in the configuration file.
 
 == Stardog Mapping Syntax
 
@@ -171,7 +234,7 @@ power as R2RML. Mappings written in SMS can be converted to R2RML and vice
 versa. We will use the
 http://www.w3.org/TR/r2rml/#example-input-database[example database] from the
 R2RML specification to explain SMS. The SQL schema that corresponds to this
-example is as follows:
+example is 
 
 [source,sql]
 ----
@@ -192,10 +255,9 @@ INSERT INTO "EMP" ("empno", "ename", "job", "deptno", "etype" )
        VALUES (7369, 'SMITH', 'CLERK', 10, 'PART_TIME');
 ----
 
-Suppose we would like to represent this information in RDF as follows using
-the same
-http://www.w3.org/TR/r2rml/#example-translationtable[translation for job codes] 
-as in the original example:
+Suppose we would like to represent this information in RDF using the
+same http://www.w3.org/TR/r2rml/#example-translationtable[translation for job
+codes] as in the original example:
 
 [source,bash]
 ----
@@ -246,10 +308,10 @@ emp:{"empno"} a emp:Employee ;
     ] .
 ----
 
-SMS is based on Turtle, but is not valid Turtle since it uses the
-http://www.w3.org/TR/r2rml/#from-template[URI templates] of R2RML--curly
-braces can appear in URIs. Other than this difference, we can treat an SMS
-document as a set of RDF triples. SMS documents use the special namespace 
+SMS is based on Turtle, but it's not valid Turtle since it uses the
+http://www.w3.org/TR/r2rml/#from-template[URI templates] of R2RML--curly braces
+can appear in URIs. Other than this difference, we can treat an SMS document as
+a set of RDF triples. SMS documents use the special namespace
 `tag:stardog:api:mapping:` that we will represent with the `sm` prefix below.
 
 Every subject in the SMS document that has a `sm:map` property maps a 

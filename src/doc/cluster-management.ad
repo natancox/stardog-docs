@@ -1,4 +1,4 @@
-== Cluster Management
+== Management
 
 Stardog Cluster may be managed more easily by using
 http://github.com/complexible/stardog-release[Stardog Release], a new, open
@@ -19,6 +19,5 @@ See the http://bosh.io/docs[BOSH docs] for more details.
 
 The notable limitations of Stardog Release as of Stardog 3.1:
 
-* supports AWS and BOSH Lite (local machine) deployments only
-** in other words, if you want OpenStack, vSphere, or vCloud deployment, ping us.
+* supports AWS and BOSH Lite (local machine) deployments only--if you need OpenStack, vSphere, or vCloud deployment, ping us.
 * VMs only

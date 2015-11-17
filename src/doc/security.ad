@@ -10,7 +10,7 @@ http://www.mindrot.org/projects/jBCrypt/[jBCrypt] for password hashing.
 
 == Resources
 
-A resource is some Stardog entity or service to which access is 
+A resource is some Stardog entity or service to which access is
 controlled. Resources are identified by their *type* and their *name*. A
 particular resource is denoted as `type_prefix:name`. The valid resource
 types with their prefixes are shown below.
@@ -171,7 +171,7 @@ identified with the `cn` attribute and be instances of the
 `groupOfNames` object class.  Users must be specified using the
 `member` attribute.
 
-For example, 
+For example,
 
 [source,ldap]
 ----
@@ -204,7 +204,7 @@ userPassword: superpassword
 In order to enable LDAP authentication in Stardog, we need to include
 the following **mandatory** properties in `stardog.properties`:
 
-- `security.realms`: with a value of `ldap` 
+- `security.realms`: with a value of `ldap`
 - `ldap.provider.url`: The URL of the LDAP server
 - `ldap.security.principal`:  An LDAP user allowed to retrieve group members from the LDAP server
 - `ldap.security.credentials`: The principal's password
@@ -212,6 +212,7 @@ the following **mandatory** properties in `stardog.properties`:
 - `ldap.group.lookup.string`: A string to lookup the Stardog user groups
 - `ldap.users.cn`: The `cn` of the group identifying regular Stardog users
 - `ldap.superusers.cn`: The `cn` of the group identifying Stardog super users
+- `ldap.cache.invalidate.time`: The time duration to invalidate cache entries, default to `24h`.
 
 Here's another example:
 
@@ -225,6 +226,7 @@ ldap.user.dn.template = uid={0},ou=people,dc=example,dc=com
 ldap.group.lookup.string = ou=group,dc=example,dc=com
 ldap.users.cn = stardogUsers
 ldap.superusers.cn = stardogSuperUsers
+ldap.cache.invalidate.time = 1h
 ----
 
 === User Management
@@ -241,11 +243,11 @@ new user creation time in Stardog and, therefore, it should be added manually to
 Stardog. If this doesn't happen, users won't be able to--among other things--log
 into the Web Console.
 
-=== User Cache
+=== Authenticated User Cache
 
-Stardog does not cache the list of users. The LDAP server is contacted
-every time a user authenticates, which ensures that users deleted from
-LDAP will not be able to authenticate in Stardog.
+Stardog includes a time constrained cache with a configurable time for eviction,
+default to 24 hours. To disable the cache, the eviction time must be set to
+`0ms`.
 
 === Authorization
 
@@ -254,16 +256,13 @@ roles are assigned in Stardog.
 
 ==== Stale Permissions/Roles
 
-Permissions and roles in Stardog might refer to no longer existing
-users (those who were deleted from the LDAP server).  This is safe as
-these users will not be able to authenticate (see above).
-
-It is possible to configure Stardog to periodically clean up the list
-of permissions and roles according to the latest users in the LDAP
-server. In order to do this, we pass a
+Permissions and roles in Stardog might refer to users that no long exist, i.e.,
+those that were deleted from the LDAP server. This is safe as these users will
+not be able to authenticate (see above). It is possible to configure Stardog to
+periodically clean up the list of permissions and roles according to the latest
+users in the LDAP server. In order to do this, we pass a
 http://www.quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger[Quartz
-cron expression] using the `ldap.consistency.scheduler.expression`
-property:
+cron expression] using the `ldap.consistency.scheduler.expression` property:
 
 [source,bash]
 ----
@@ -378,7 +377,7 @@ properties for specifying keystore information:
 
 These properties are checked first in `stardog.properties`; then in JVM args
 passed in from the command line, e.g. `-Djavax.net.ssl.keyStorePassword=mypwd`. If
-you're creating a Server progammatically via `ServerBuilder`, you can specify
+you're creating a Server programmatically via `ServerBuilder`, you can specify
 values for these properties using the appropriate `ServerOptions` when creating
 the server.  These values will override anything specified in
 `stardog.properties` or via normal JVM args.
@@ -393,7 +392,7 @@ database:
 
 [source,bash]
 ----
-$ stardog status -c https://stardog.example.org/sp2b_10k
+$ stardog query https://stardog.example.org/sp2b_10k "ask { ?s ?p ?o }"
 ----
 
 If the client is unable to authenticate to the server, then the connection
@@ -405,15 +404,15 @@ Error during connect.  Cause was SSLPeerUnverifiedException: peer not authentica
 ----
 
 The most common cause of this error is that the server presented a certificate
-that was not issued by an authority that the client trusts. The Stardog HTTP
-client driver uses standard Java security components to access a store of
+that was not issued by an authority that the client trusts. The Stardog client 
+uses standard Java security components to access a store of
 trusted certificates. By default, it trusts a list of certificates installed
 with the Java runtime environment, but it can be configured to use a custom
-trust store.footnote:[The Stardog HTTP client driver uses an `X509TrustManager`.
+trust store.footnote:[The Stardog client uses an `X509TrustManager`.
 The details of how a trust store is selected to initialize the trust manager are
 http://docs.oracle.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html#X509TrustManager.]
 
-The client driver can be directed to use a specific Java KeyStore file as a
+The client can be directed to use a specific Java KeyStore file as a
 trust store by setting the `javax.net.ssl.trustStore` system property. To
 address the authentication error above, that trust store should contain the
 issuer of the server’s certificate. Standard Java tools can create such a file.
@@ -435,11 +434,11 @@ truststore.
 
 [source,bash]
 ----
-$ STARDOG_JAVA_ARGS=”-Djavax.net.ssl.trustStore=my-truststore.jks” stardog \
-status -c https://stardog.example.org/sp2b_10k
+$ STARDOG_JAVA_ARGS=”-Djavax.net.ssl.trustStore=my-truststore.jks” 
+$ stardog query https://stardog.example.org/sp2b_10k "ask { ?s ?p ?o }"
 ----
 
-For custom Java applications that use the Stardog HTTP client driver,
+For custom Java applications that use the Stardog client,
 the system property can be set programmatically or when the JVM is
 initialized.
 
@@ -462,7 +461,7 @@ This will cause an error message like the following
 Error during connect.  Cause was SSLException: hostname in certificate didn't match
 ----
 
-The client driver does not support connecting when there's a mismatch;
+The client does not support connecting when there's a mismatch;
 therefore, the only workarounds are to replace the server’s certificate or
 modify the connection string to use an alias for the same server that
 matches the certificate.

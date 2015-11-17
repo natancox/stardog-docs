@@ -696,7 +696,7 @@ properties.
 ----
 
 This constraint says that if an RDF instance `i` is related to `j` via the
-property `manages`, then `i` must also be related to `j` va the property
+property `manages`, then `i` must also be related to `j` via the property
 `works_in`. In A, `Bob` is related to `MyDepartment` via `manages`, but not via
 `works_in`, so A is invalid. In B, `Bob` is related to `MyDepartment` via both
 `manages` and `works_in`, so B is valid.

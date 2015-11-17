@@ -1,18 +1,16 @@
 = {title}
-:title: Stardog 3: The Manual
-//:docker: true
+:title: Stardog 4: The Manual
 :maven: true
-//:clusterman: true
-//:testing: true
 :revnumber: {version}
+:tp3-version: 3.0.1-incubating
 :toc: right 
-:toc-title: Stardog {version} ({release-date})
+:toc-title: {version}—{release-date}
 :toclevels: 1 
 :experimental:
 :source-highlighter: highlightjs
 :page-layout: base
 :page-javascripts: [view-result]
-:description: Stardog is a fast, lightweight graph database that supports SPARQL, RDF, OWL, and user-defined rules.
+:description: Stardog is a fast, lightweight graph database that supports SPARQL, RDF, OWL, property graphs, Gremlin, virtual graphs, and user-defined rules.
 :compat-mode!:
 :last-update-label!:
 :doctype: book
@@ -40,19 +38,23 @@ include::admin.ad[]
 
 include::security.ad[]
 
-ifdef::docker[]
-include::docker.ad[]
-endif::docker[]
-
 include::cluster.ad[]
 
 include::cluster-management.ad[]
 
-//include::virtual-graphs.ad[]
+//include::docker.ad[]
+
+include::search.ad[]
 
 include::owl2.ad[]
 
 include::icv.ad[]
+
+include::virtual-graphs.ad[]
+
+include::property-graph.ad[]
+
+include::geospatial.ad[]
 
 include::programming.ad[]
 
@@ -78,9 +80,7 @@ include::faq.ad[]
 
 include::bench.ad[]
 
-ifdef::testing[]
-include::testing.ad[]
-endif::testing[]
+//include::testing.ad[]
 
 include::compatibility.ad[]
 

@@ -2,9 +2,8 @@
 
 == Requirements
 
-It just doesn't get any easier than this: Stardog runs on Java 6, 7
-and 8. Stardog runs best on, but does not require, a 64-bit JVM that
-supports `sun.misc.Unsafe`.
+It just doesn't get any easier than this: **Stardog runs on Java 8**. Stardog runs
+best on, but does not require, a 64-bit JVM that supports `sun.misc.Unsafe`.
 
 == Insecurity
 
@@ -16,6 +15,12 @@ NOTE: Stardog ships with an *insecure* but usable default setting: the
 super user is `admin` and the `admin` password is "admin". This is
 fine until it isn't, at which point you should read the <<Security>>
 section.
+
+== Upgrading to Stardog 4
+
+If you are upgrading to Stardog 4 from any previous version, please see
+<<Stardog 4>> in <<SNARL Migration Guide>> for details about auto-migrating
+pre-4.0 indexes.
 
 == Linux and OSX 
 

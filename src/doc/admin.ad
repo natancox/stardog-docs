@@ -11,7 +11,7 @@ discussed separately (<<Security>>).
 
 Stardog's command-line interface (CLI) comes in two parts:
 
-. `stardog-admin`: admininstrative client
+. `stardog-admin`: administrative client
 . `stardog`: a user's client
 
 The admin and user's tools operate on local or remote databases, using
@@ -81,7 +81,8 @@ The command groups and their subcommands:
 - **metadata: ** get, set;
 - **user:     ** add, drop, edit, grant, list, permission, revoke, passwd;
 - **role:     ** add, drop, grant, list, permission, revoke;
-- **db:       ** backup, copy, create, drop, migrate, optimize, list, online, offline, repair, restore, status.
+- **db:       ** backup, copy, create, drop, migrate, optimize, list, online, offline, repair, restore, status;
+- **virtual:  ** add, import, list, mappings, options, remove.
 
 NOTE: See the <<Man Pages, man pages>> for the canonical list of commands.
 
@@ -90,7 +91,7 @@ command groups:
 
 [source]
 ----
-usage: stardog <command> [ <args> ] 
+usage: stardog <command> [ <args> ]
 
 The most commonly used stardog commands are:
     data        Commands which can modify or dump the contents of a database
@@ -264,9 +265,8 @@ port is the default SNARL port, a connection string may consist of the
 
 == Server Admin
 
-Stardog Server is multi-protocol, supporting SNARL and HTTP. The
-default port for SNARL is **5820**; the default port for HTTP is
-**5822**. **All administrative functions work over SNARL or HTTP
+Stardog Server is multi-protocol, supporting SNARL and HTTP; the
+default port is **5820**.  **All administrative functions work over SNARL or HTTP
 protocols.**
 
 === Upgrading Stardog Server
@@ -314,7 +314,7 @@ can also be configured via a `stardog.properties`—which is a Java
 Properties file—file in `STARDOG_HOME`. To change the behavior of a
 running Stardog Server, it is necessary to restart it.
 
-==== Configuring Temp Space
+==== Configuring Temporary ("Scratch") Space
 
 Stardog uses the value of the JVM argument `java.io.tmpdir` to write temporary
 files for many different operations. If you want to configure temp space to use
@@ -353,15 +353,13 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
     `true`. To define what counts as a "slow" query, set `time` to a time
     duration value (positive integer plus "h", "m", "s", or "ms" for hours,
     minutes, seconds, or milliseconds respectively). To determine the type of
-    logging, set `type` to `text` (the default) or `binary`. **To state the
-    obvious explicitly, a `logging.slow_query.time` that exceeds the value of
-    `query.timeout` will result in null logs.**
-
-. `database.connection.timeout.ms`: Controls how long, in milliseconds,
-    connections may idle before being automatically closed by the server.
+    logging, set `type` to `text` (the default) or `binary`. Note that a
+    `logging.slow_query.time` that exceeds the value of `query.timeout` will
+    result in empty log entries.**
 
 . `http.max.request.parameters`: Default is 1024; any value smaller than
-`Integer.MAX_VALUE` may be provided. Useful if you have lots of named graphs.
+`Integer.MAX_VALUE` may be provided. Useful if you have lots of named graphs and
+are at risk of blowing out the value of `http.max.request.parameters`.
 
 .  `database.connection.timeout`: The amount of time a connection to the database can
     be open, but inactive, before being automatically closed to reclaim the resources.
@@ -369,7 +367,9 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
     followed by either letter `h` (for hours), letter `m` (for minutes),
     letter `s` (for seconds), or letters `ms` (for milliseconds).
     Example intervals: `1h` for 1 hour, `5m` for 5 minutes, `90s` for 90 seconds,
-    `500ms` for 500 milliseconds. Default value is `1h`.
+    `500ms` for 500 milliseconds. Default value is `1h`. *NOTE: setting a very short
+    timeout can have adverse results specially if updates are being performed without
+    commit changes to the server, closing the connection prematurely while using it.*
 
 . `password.length.min`: Sets the password policy for the minimum length of user
     passwords, the value can't be lower than `password.length.min` or greater
@@ -383,6 +383,8 @@ see the `examples/stardog.properties` file that is distributed with Stardog.]
 
 . `security.named.graphs`: Sets named graph security on globally. Default:
 `false`.
+
+. `spatial.use.jts`: Enabled support for JTS in the geospatial module. Default: `false`
 
 === Starting & Stopping the Server
 
@@ -508,7 +510,7 @@ See <<Man Pages>> for the details.
 | `true`
 | link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#PRESERVE_BNODE_IDS[DatabaseOptions.PRESERVE_BNODE_IDS]
 
-4+|Determines how the Stardog parser handles bnode identifiers that may be present in RDF input. If this property is enabled (i.e., `TRUE`), parsing and data loading performance are improved; but the other effect is that if distinct input files use (randomly or intentionally) the same bnode identifier, that bnode will point to one and the same node in the database. If you have input files that use explicit bnode identifiers, and multiple files may use the same bnode idenitifers, and you don't want those bnodes to be smushed into a single node in the database, then this configuration option should be disabled (set to `FALSE`).
+4+|Determines how the Stardog parser handles bnode identifiers that may be present in RDF input. If this property is enabled (i.e., `TRUE`), parsing and data loading performance are improved; but the other effect is that if distinct input files use (randomly or intentionally) the same bnode identifier, that bnode will point to one and the same node in the database. If you have input files that use explicit bnode identifiers, and multiple files may use the same bnode identifiers, and you don't want those bnodes to be smushed into a single node in the database, then this configuration option should be disabled (set to `FALSE`).
 
 |`*database.archetypes*`
 |Yes
@@ -576,7 +578,7 @@ identifiers.
 
 |`*index.differential.enable.limit*`
 | Yes
-| `1,000,000`
+| `500,000`
 | link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#DIFF_INDEX_MIN_LIMIT[IndexOptions.DIFF_INDEX_MIN_LIMIT]
 
 4+|Sets the minimum size of the Stardog database before differential indexes are used. The legal value is an integer.
@@ -584,7 +586,7 @@ identifiers.
 
 |`*index.differential.merge.limit*`
 | Yes
-| `10,000`
+| `20,000`
 | link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#DIFF_INDEX_MAX_LIMIT[IndexOptions.DIFF_INDEX_MAX_LIMIT]
 
 4+|Sets the size in number of RDF triples before the differential indexes are merged to the main indexes. The legal value is an integer.
@@ -594,7 +596,7 @@ identifiers.
 | `true`
 | link:/java/snarl/com/complexible/stardog/index/IndexOptions.html#CANONICAL_LITERALS[IndexOptions.CANONICAL_LITERALS]
 
-4+|Enables RDF literal canonicalization. 
+4+|Enables RDF literal canonicalization.
 
 |`*index.named.graphs*`
 | No
@@ -657,7 +659,7 @@ identifiers.
 | `*`
 | link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#SCHEMA_GRAPHS[ReasoningOptions.SCHEMA_GRAPHS]
 
-4+| Determines which, if any, named graph or graphs contains the "tbox", i.e., the schema part of the data. The legal value is a comma-separated list of named graph identifiers, including (optionally) the special names,
+4+| Determines which, if any, named graph or graphs contains the "TBox", i.e., the schema part of the data. The legal value is a comma-separated list of named graph identifiers, including (optionally) the special names,
 `tag:stardog:api:context:default` and `tag:stardog:api:context:all`, which represent the default graph and the union of all named graphs and
 the default graph, respectively. In the context of database configurations only, Stardog will recognize `default` and `*` as short forms of those URIs, respectively.
 
@@ -673,7 +675,7 @@ the default graph, respectively. In the context of database configurations only,
 | `false`
 | link:/java/snarl/com/complexible/stardog/reasoning/ReasoningOptions.html#SCHEMA_GRAPHS[ReasoningOptions.APPROXIMATE]
 
-4+|Enables approximate reasoning. With this flag enabled Stardog will approximate an axiom that is outside the profile Stardog supports and normally ignored. For example, an equivalent class axiom might be split into two subclass axioms and only one subclass axiom is used. 
+4+|Enables approximate reasoning. With this flag enabled Stardog will approximate an axiom that is outside the profile Stardog supports and normally ignored. For example, an equivalent class axiom might be split into two subclass axioms and only one subclass axiom is used.
 
 |`*search.enabled*`
 | Yes
@@ -690,21 +692,55 @@ the default graph, respectively. In the context of database configurations only,
 4+|Controls whether Stardog parses RDF strictly (`true`, the default) or loosely (`false`)
 
 |`*search.reindex.mode*`
-| Yes 
+| Yes
 | `async`
-| 
+|
 
-4+|Determins how search indexes are maintained. The legal value of `search.reindex.mode` is one of the strings `sync`
+4+|Determines how search indexes are maintained. The legal value of `search.reindex.mode` is one of the strings `sync`
 or `async` (case insensitive) or a legal http://www.quartz-scheduler.org/documentation/quartz-2.1.x/tutorials/crontrigger[Quartz
 cron expression].
 
-
-|`*transactions.durable*`
+|`*search.wildcard.search.enabled*`
 | Yes
 | `false`
-| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#TRANSACTIONS_DURABLE[DatabaseOptions.TRANSACTIONS_DURABLE]
+| link:/java/snarl/com/complexible/stardog/search/SearchOptions.html#LEADING_WILDCARD_SEARCH_ENABLED[SearchOptions.LEADING_WILDCARD_SEARCH_ENABLED]
 
-4+|Enables durable transactions.
+4+|Enable support in Lucene for searches with leading wildcards.
+
+|`*search.default.limit*`
+| Yes
+| `10`
+| link:/java/snarl/com/complexible/stardog/search/SearchOptions.html#SEARCH_DEFAULT_LIMIT[SearchOptions.SEARCH_DEFAULT_LIMIT]
+
+4+|Specify the default limit on the number of results returned from a full-text search
+
+|`*transaction.isolation*`
+| Yes
+| `SNAPSHOT`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#TRANSACTION_ISOLATION[DatabaseOptions.TRANSACTION_ISOLATION]
+
+4+|Configures isolation level for transactions; legal values are SNAPSHOT and SERIALIZABLE.
+
+|`*transaction.logging*`
+| Yes
+| `false`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#TRANSACTION_LOGGING[DatabaseOptions.TRANSACTION_LOGGING]
+
+4+|Enables logged transactions. Logged transactions are activated by default in Cluster mode.
+
+|`*transaction.logging.rotation.size*`
+| Yes
+| `524288000`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#TRANSACTION_LOGGING[DatabaseOptions.TRANSACTION_LOGGING_ROTATION_SIZE]
+
+4+|When `transaction.logging` is `true`, it determines the size (in bytes) at which the transaction log will be rotated. Default is 500 MB.
+
+|`*transaction.logging.rotation.remove*`
+| Yes
+| `true`
+| link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#TRANSACTION_LOGGING[DatabaseOptions.TRANSACTION_LOGGING_ROTATION_REMOVE]
+
+4+|When `transaction.logging` is `true`, it determines whether the rotated log will be deleted or kept in disk.
 
 |`*query.all.graphs*`
 | Yes
@@ -712,6 +748,20 @@ cron expression].
 | link:/java/snarl/com/complexible/stardog/db/DatabaseOptions.html#QUERY_ALL_GRAPHS[DatabaseOptions.QUERY_ALL_GRAPHS]
 
 4+|Determines what data the database evaluates queries against; if `true`, it will query over the default graph and the union of all named graphs; if `false` (the default), it will query only over the default graph.  This database option overrides any global server settings.
+
+|`*spatial.enabled*`
+| Yes
+| `false`
+| link:/java/snarl/com/complexible/stardog/spatial/GeospatialOptions.html#SPATIAL_ENABLED[GeospatialOptions.SPATIAL_ENABLED]
+
+4+|Enables geospatial search for the database.
+
+|`*spatial.precision*`
+| No
+| `11`
+| link:/java/snarl/com/complexible/stardog/spatial/GeospatialOptions.html#SPATIAL_PRECISION[GeospatialOptions.SPATIAL_PRECISION]
+
+4+|Specifies the precision used for the indexing of geospatial data.  The smaller the value, the less precision.
 
 |===
 
@@ -782,7 +832,7 @@ examples.
 Stardog database archetypes are a new feature in 2.0. A database archetype is a
 named, vendor-defined or user-defined bundle of data and functionality to be
 applied at database-creation time. Archetypes are primarily for supporting
-various data standards or toolchain configurations in a simple way.
+various data standards or tool chain configurations in a simple way.
 
 For example, the SKOS standard from W3C defines an OWL vocabulary for building
 taxonomies, thesauruses, etc. SKOS is made up by a vocabulary, some constraints,
@@ -871,9 +921,13 @@ command.
 |===
 |Name |Description |Arg values |Default
 
-|`--durable`, `-d`
-|If present, sets all mutation operations to database as transactionally
-durable; durability increases the cost of all mutation operations.
+|`--name`, `-n`
+|Required, the name of the database to create
+|
+|
+
+|`--copy-server-side`,
+|Flag to specify whether or not bulk loaded files should be first copied to the server
 |
 |`false`
 
@@ -969,7 +1023,7 @@ of time it takes to backup a database; the tradeoff is with restore performance.
 ==== Restore
 
 To restore a Stardog database from a Stardog backup volume, simply pass a
-fully-qualfied path to the volume in question. The location of the backup should
+fully-qualified path to the volume in question. The location of the backup should
 be the full path to the backup, not the location of the backup directory as
 specified in your Stardog configuration. There is no need to specify the name of
 the database to restore.
@@ -984,11 +1038,11 @@ $ stardog-admin db restore $STARDOG_HOME/.backups/myDb/2012-06-21
 ===== One-time Database Migrations for Backup
 
 The backup system cannot directly backup
-atbases created in versions before 2.1. These databases must be explicitly
+databases created in versions before 2.1. These databases must be explicitly
 migrated in order to use the new backup system; this is a one-time operation per
-atbase and is accomplished by running
+database and is accomplished by running
 
-ource,bash]
+[source,bash]
 ----
 $ stardog-admin db migrate foobar
 ----
@@ -1087,15 +1141,22 @@ answers are computed as if all the data is stored in the main indexes.
 There is a slight overhead for query answering with differential indexes
 if the differential index size gets too large. For this reason, the
 differential index is merged into the main indexes when its size reaches
-`DIFF_INDEX_MAX_LIMIT`. There is no benefit of differential indexes
-if the main index itself is small. For this reason, the differential
+`index.differential.merge.limit`. There is also no benefit of differential
+indexes if the main index itself is small. For this reason, the differential
 index is not used until the main index size reaches
-`DIFF_INDEX_MAX_LIMIT`.
+`index.differential.enable.limit`.
 
-In most cases, the default value of the `DIFF_INDEX_MAX_LIMIT` parameter will
-work fine and doesn't need to be changed. The corollary  is that you shouldn't
-change this value in a production system till you've tested the effects of a
-change in a non-production system.
+In most cases, the default values of the differential index parameters will work
+fine and doesn't need to be changed. The corollary is that you shouldn't change
+this value in a production system till you've tested the effects of a change in
+a non-production system.
+
+NOTE: Increasing `index.differential.merge.limit` will improve the throughput
+for updates, but there will be longer pauses when the differential index is
+being merged. Reducing the value of `index.differential.merge.limit` will make
+sure there are no long pauses but overall throughput will suffer. The optimal
+value depends on the average size of a transaction for the application and the
+frequency of updates.
 
 === Loading Compressed Data
 
@@ -1110,7 +1171,7 @@ release.]
 
 A file passed to `create` will be treated as compressed if the file name ends
 with `.gz` or `.bz2`. The RDF format of the file is determined by the
-penultimate extension. For exammple, if a file named `test.ttl.gz`
+penultimate extension. For example, if a file named `test.ttl.gz`
 is used as input, Stardog will perform GZIP decompression during loading and
 parse the file with Turtle parser. All the formats supported by Stardog
 (RDF/XML, Turtle, Trig, etc.) can be used with compression.
@@ -1274,7 +1335,7 @@ query will receive an error message. The value of `query.timeout` may be
 overriden by setting a different value (smaller or longer) in database
 options. To disable, set to `query.timeout` to `0`.
 
-The value of `query.timeout` is a positive integer concated with a
+The value of `query.timeout` is a positive integer concatenated with a
 letter, interpreted as a time duration: 'h' (for hours),
 'm' (for minutes), 's' (for seconds), or 'ms' (for milliseconds). For
 example, '1h' for 1 hour, '5m' for 5 minutes, '90s' for 90 seconds, and
@@ -1396,15 +1457,12 @@ consideration of Stardog's integrity constraint mechanism.
 
 A Stardog connection will run in
 http://en.wikipedia.org/wiki/Isolation_(database_systems)#Read_committed[`READ
-COMMITTED`] isolation level if it has not started an explicit
-transaction and will run in `READ COMMITTED SNAPSHOT` isolation level
-if it has started a transaction. In either mode, uncommitted changes
-will only be visible to the connection that made the changes: no other
-connection can see those values before they are committed. Thus,
-"dirty reads" can never occur. Neither mode locks the database; if
-there are conflicting changes, the latest commit
-wins.footnote:[However, `READ COMMITTED` does allow for non-repeatable
-reads.]
+COMMITTED`] isolation level if it has not started an explicit transaction and
+will run in `READ COMMITTED SNAPSHOT` or `SERIALIZABLE` isolation level
+depending on the value of the `transaction.isolation`. In any of these modes,
+uncommitted changes will only be visible to the connection that made the changes:
+no other connection can see those values before they are committed. Thus,
+"dirty reads" can never occur.
 
 The difference between `READ COMMITTED` and `READ COMMITTED SNAPSHOT` isolation
 levels is that in the former case a connection will see updates committed by
@@ -1413,7 +1471,7 @@ a transactionally consistent snapshot of the data as it existed at the start of
 the transaction and will not see any updates.
 
 We illustrate the difference between these two levels with the following example
-where initially the database contains a single triple `:x :value 1`.
+where initially the database contains a single triple `:x :val 1`.
 
 .Table of the difference between RCI and RCSI
 |===
@@ -1483,10 +1541,36 @@ DELETE {:x :value ?old}`
 <= `3`
 |===
 
+No locks are taken, or any conflict resolution performed, for concurrent
+transactions in `READ COMMITTED SNAPSHOT` isolation level. If there are
+conflicting changes, the latest commit wins which might yield unexpected results
+in some cases since every transaction reads from a snapshot that was created at
+the time transaction started.
+
+Consider the following query being executed by two concurrent threads in
+`READ COMMITTED SNAPSHOT` isolation level against a database having the triple
+`:counter :val 1` initially:
+
+[source,sparql]
+----
+INSERT { :counter :val ?newValue }
+DELETE { :counter :val ?oldValue }
+WHERE  { :counter :val ?oldValue
+         BIND (?oldValue+1 AS ?newValue) }
+----
+
+Since each transaction will read the current value from its snapshot, it is
+possible that both transactions will read the value `1` and insert the value `2`
+even though we expect the final value to be `3`.
+
+Isolation level `SERIALIZABLE` can be used to avoid these situations. In
+`SERIALIZABLE` mode an exclusive lock needs to be acquired before a transaction
+begins. This ensures concurrent updates cannot interfere with each other, but as a
+result update throughput will decrease since only one transaction can run at a time.
+
 ==== Durability
 
-By default Stardog's transacted writes are not durable; in some applications
-transactional durability is required and, thus, should be enabled.
+By default Stardog's transacted writes are durable and no additional actions are required.
 
 ==== Commit Failure Autorecovery
 

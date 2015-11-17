@@ -20,7 +20,83 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
-== 4.0 RC1 Relase
+== 4.0 Release
+[none]
+*ADD: Server option to require client certificate via SSL (#2574)
+*MOD: Reduced offline wait time (#2610)
+*MOD: Update to Sesame 4.0.0 final (#2603)
+*FIX: Exception: The limit cannot be greater than the page size (#2665)
+*FIX: ClassCastException in algebraic rewriter with VALUES and UNION (#2663)
+*FIX: Date/time comparison functions not working in DL mode (#2656)
+*FIX: Avoiding creating writer for rollback in search index when one was not created (#2655)
+*FIX: Make the subquery-based JO optimizer a bit more cautious (#2650)
+*FIX: Bash completion is missing for stardog-admin license is missing (#2649)
+*FIX: Filters sometimes report negative cardinality (#2648)
+*FIX: Property paths with the empty path expression should be optimized away (#2647)
+*FIX: HTTP shutdown call returns status 406 (#2646)
+*FIX: DB restore is not creating a znode for the new db (#2643)
+*FIX: Blank nodes break edge caching (#2641)
+*FIX: OOM in Streamer under heavy read load (#2640)
+*FIX: Updating individuals within a Named Graph in Web Console strips the context information (#2639)
+*FIX: Improved optimization of WHERE clause of update queries (#2638)
+*FIX: NPE rendering plan explanation (#2637)
+*FIX: System catalog size grows endlessly (#2635)
+*FIX: TX logs need to be cleaned up periodically (#2627)
+*FIX: AssertionError in tx log (#2626)
+*FIX: TimerPausedException in cluster (#2622)
+*FIX: EncodingException can leak connections (#2609)
+*FIX: Exporting NQuads from webconsole yields NPE (#2608)
+*FIX: Boolean query results ignore content negotiation (#2605)
+*FIX: Gracefully handle the empty query string in the SPARQL parser (#2588)
+*FIX: Stuck transaction prevents shutdown (#2582)
+*FIX: Unavailable nodes in the cluster do not accept server stop command (#2581)
+*FIX: Some valid construct queries cannot be parsed (#2516)
+*FIX: Nodes depend on ZK ensemble to shut down cleanly (#2506)
+*FIX: Connection times out during long SPARQL update queries (#2292)
+*FIX: Negative cardinality estimations (#1834)
+
+== 4.0 RC3 Release
+[none]
+*ADD: Add progress monitor for server-side exports (#2545)
+*MOD: Speed up data export for large databases (#2607)
+*FIX: Too many files exceptions in the cluster (#2632)
+*FIX: NPE if pinged while cluster node is starting up (#2630)
+*FIX: System db in the cluster syncs on startup even if no changes (#2629)
+*FIX: IOException: Unsupported class type Permission in the audit log (#2628)
+*FIX: Event executor terminated in SNARL client (#2623)
+*FIX: Rolling back a transaction that is in progress fails (#2621)
+*FIX: ConcurrentModificationException in the algebraic rewriter (#2617)
+*FIX: Commits without a message reuse previous commit message (#2616)
+*FIX: Add explicit vcs:Updates type in versioning metadata assertions (#2615)
+*FIX: Non-select queries for versioning metadata query the database (#2613)
+*FIX: CLS vcs commit command prints wrong message (#2612)
+*FIX: Differential index causes repair command to think db is invalid (#2602)
+*FIX: Deadlock in RPC client can halt coordinator (#2579)
+
+== 4.0 RC2 Release
+[none]
+*ADD: Per-query timeouts (#2442)
+*ADD: Add spatial.enabled to webconsole (#2583)
+*MOD: Tinkerpop 3.0.1 (#2554)
+*MOD: Improved progress reporting for restoring a database from backup (#2552)
+*MOD: Metadata for index fragmentation (#2530)
+*MOD: Improved accuracy of sub-query timeouts (#2564)
+*MOD: Always log timed out queries in slow query log (#2570)
+*FIX: Typos in reasoning undo CLI command (#2561)
+*FIX: Server losing ZK connectivity causes client to freeze (#2567)
+*FIX: Restoring 3.x backups in 4.0 assigns bogus datatype to plain literals (#2571)
+*FIX: Auto-complete scripts missing virtual graph completions (#2572)
+*FIX: Disk index should clean statistics after closing connections (#2573)
+*FIX: Opening concurrent search index connections throws exceptions (#2578)
+*FIX: Coordinator losing ZK connection does not cancel transactions (#2580)
+*FIX: Spatial query re-writer can eat binds that aren't using spatial functions (#2584)
+*FIX: HTTP client sends too many options exceeding URL length restrictions (#2585)
+*FIX: System database disk usage grows endlessly (#2586)
+*FIX: Gracefully handle the empty query string in the SPARQL parser (#2588)
+*FIX: Race condition in free page handling (#2591)
+*FIX: Inlining singleton VALUES can lose bindings (#2600)
+
+== 4.0 RC1 Release
 [none]
 *ADD: Property Graphs
 *ADD: Virtual Graphs
@@ -29,13 +105,13 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *ADD: Geospatial
 *ADD: Support --bind option in query explain command (#2495)
 *ADD: Handle adding RDF in compressed format in web console (#2453)
-*ADD: Cluster-wode shutdown. (#2402)
+*ADD: Cluster-wide shutdown. (#2402)
 *ADD: Add setting to `stardog-admin` to allow starting the server in the foreground (#2326)
 *ADD: Add a CacheManager for LDAP (#2510)
 *ADD: Merge proxy functionality into nodes (#2115)
 *ADD: Introduce configurable isolation level option and serializable transactions (#1222)
-*REM: Remove explicit migration from the API (#2433)
-*REM: Remove `pack.cluster.address` which is deprecated in 3.1 (#2327)
+*MOD: Remove explicit migration from the API (#2433)
+*MOD: Remove `pack.cluster.address` which is deprecated in 3.1 (#2327)
 *MOD: Update to Netty 4.0.30
 *MOD: Update to Lucene 5.3.0
 *MOD: Update to Jena 3.0.0
