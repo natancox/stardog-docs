@@ -21,9 +21,10 @@
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
 == 4.0 Release
+[none]
 *ADD: Server option to require client certificate via SSL (#2574)
-*MODIFIED: Reduced offline wait time (#2610)
-*MODIFIED: Update to Sesame 4.0.0 final (#2603)
+*MOD: Reduced offline wait time (#2610)
+*MOD: Update to Sesame 4.0.0 final (#2603)
 *FIX: ClassCastException in algebraic rewriter with VALUES and UNION (#2663)
 *FIX: Trying to add invalid RDF data causes cluster problems (#2658)
 *FIX: Date/time comparison functions not working in DL mode (#2656)
@@ -55,6 +56,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *FIX: Negative cardinality estimations (#1834)
 
 == 4.0 RC3 Release
+[none]
 *ADD: Add progress monitor for server-side exports (#2545)
 *MOD: Speed up data export for large databases (#2607)
 *FIX: Too many files exceptions in the cluster (#2632)
@@ -72,6 +74,7 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 *FIX: Deadlock in RPC client can halt coordinator (#2579)
 
 == 4.0 RC2 Release
+[none]
 *ADD: Per-query timeouts (#2442)
 *ADD: Add spatial.enabled to webconsole (#2583)
 *MOD: Tinkerpop 3.0.1 (#2554)
