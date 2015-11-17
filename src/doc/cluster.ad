@@ -25,7 +25,7 @@ perform better than smaller ones for reads, while larger cluster sizes perform
 worse for writes. It is responsibility of the administrator to find the right
 balance.
 
-== Cluster Guarantees
+== Guarantees
 
 Stardog Cluster implements an atomic commitment protocol based on
 http://en.wikipedia.org/wiki/Two-phase_commit_protocol[two-phase commit (2PC)]
@@ -397,7 +397,9 @@ ZooKeeper configuration::
 
 ****
 
-== Cluster Topologies & Cluster Size
+== Configuration Issues
+
+=== Topologies & Size
 
 In the configuration instructions above, we assume a particular Cluster
 topology, which is to say, for each node `n` of a cluster, we run Stardog,
@@ -416,7 +418,7 @@ timeouts at scale. We recommend at a minimum having the two services writing to
 separate disks to reduce contention or, ideally, have them run on separate nodes
 entirely.
 
-== Open File Limits
+=== Open File Limits
 
 If you expect to use Stardog Cluster with heavy concurrent write workloads, then
 you should probably increase the number of open files that host OS will permit
@@ -427,7 +429,7 @@ handle resources available.footnote:[This point is especially true of Cluster
 but may be relevant for some workloads on a single Stardog database, that
 is, non-Cluster configuration, too.]
 
-== Stardog Cluster Client
+=== Client Usage
 
 To use Stardog Cluster with standard Stardog clients and CLI tools in the
 ordinary way--`stardog-admin` and `stardog`--you must have Stardog installed
