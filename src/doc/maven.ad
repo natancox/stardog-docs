@@ -24,6 +24,21 @@ You can see an example of their usage in our examples
 https://github.com/complexible/stardog-examples/blob/628cf3dab2/examples/api/build.gradle#L3-L14[repository
 on Github].
 
+WARNING: If you're using Maven as your build tool, then `client-snarl`,
+`client-http`, and `server` dependencies require that you specify the packaging
+type **as POM** (`pom`):
+
+[source, xml]
+----
+<dependency>
+  <groupId>com.complexible.stardog</groupId>
+  <artifactId>client-snarl</artifactId>
+  <version>$VERSION</version>
+  <type>pom</type> <1> 
+</dependency>
+----
+<1> **The dependency type must be set to `pom`.**
+
 === Public Maven Repo
 
 The public Maven repository for the current Stardog release is
@@ -51,20 +66,6 @@ to your Maven `pom.xml`:
      <url>http://maven.stardog.com</url>
    </repository>
 </repositories>
-----
-
-NOTE: If you're using Maven as your build tool, then `client-snarl`,
-`client-http`, and `server` dependencies require that you specify the packaging
-type. For example,
-
-[source, xml]
-----
-<dependency>
-  <groupId>com.complexible.stardog</groupId>
-  <artifactId>client-snarl</artifactId>
-  <version>$VERSION</version>
-  <type>pom</type>
-</dependency>
 ----
 
 === Private Maven Repo
