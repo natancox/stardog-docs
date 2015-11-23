@@ -23,7 +23,7 @@ setting the Stardog configuration option `upgrade.automatic` in the
 
 === Java 8
 
-Java 8 is no required. The public Stardog APIs have been updated to take
+Java 8 is now required. The public Stardog APIs have been updated to take
 advantage of new additions to the JDK. Anywhere we previously accepted a
 `java.io.File` as an argument, we now expect a `java.nio.file.Path`.
 
