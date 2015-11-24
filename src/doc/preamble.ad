@@ -25,7 +25,7 @@ http://www.w3.org/RDF/[RDF graph data model];
 http://www.w3.org/TR/sparql11-overview/[SPARQL] query language;
 https://github.com/tinkerpop/blueprints/wiki/Property-Graph-Model[property graph
 model] and
-http://tinkerpop.incubator.apache.org/docs/3.0.1-incubating/#_on_gremlin_language_variants[Gremlin
+http://tinkerpop.incubator.apache.org/docs/{tp3-version}/#_on_gremlin_language_variants[Gremlin
 graph traversal language]; HTTP and SNARL protocols for remote access and
 control; http://www.w3.org/TR/owl2-overview/[OWL 2] and user-defined rules for
 inference and data analytics; virtual graphs; geospatial query answering; and
