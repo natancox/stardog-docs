@@ -334,7 +334,8 @@ Cluster if Zookeeper cannot write to disk.]
 
 The following twiddly knobs for Stardog Server are available in
 `stardog.properties`:footnote:[For more details about configuring these values,
-see the `examples/stardog.properties` file that is distributed with Stardog.]
+see
+https://github.com/Complexible/stardog-examples/blob/master/config/stardog.properties.]
 
 . `query.all.graphs`: Controls what data Stardog Server evaluates queries
     against; if `true`, it will query over the default graph and the union of
@@ -464,14 +465,13 @@ pass a different value to `--home`.
 
 === Access & Audit Logging
 
-See the `stardog.properties` file (in the distribution) for a complete
-discussion of how access and audit logging work in Stardog Server.
-Basically, audit logging is a superset of the events in access
-logging. Access logging covers the most often required logging events;
-you should consider enabling audit logging if you really need to log
-*every* server event. Logging generally doesn't have much impact on
-performance; but the safest way to insure that impact is negligible is
-to log to a separate disk (or to a centralized logging server, etc.).
+See [`stardog.properties`]https://github.com/Complexible/stardog-examples/blob/master/config/stardog.properties file for a complete discussion of how access and
+audit logging work in Stardog Server. Basically, audit logging is a superset of
+the events in access logging. Access logging covers the most often required
+logging events; you should consider enabling audit logging if you really need to
+log *every* server event. Logging generally doesn't have much impact on
+performance; but the safest way to insure that impact is negligible is to log to
+a separate disk (or to a centralized logging server, etc.).
 
 The important configuration choices are whether logs should be binary
 or plain text (both based on ProtocolBuffer message formats); the type

@@ -159,13 +159,13 @@ the inferences to be explained:
 $ stardog reasoning explain myDB inference_to_explain.ttl
 ----
 
-The output is displayed in a concise syntax designed to be legible;
-but it can be rendered in any one of the supported RDF syntaxes if
-desired. Explanations are also accessible through the <<Network
-Programming, Stardog's extended HTTP protocol>> and <<Java
-Programming, discussion of SNARL>>. See the examples included in the
-distribution for more details about retrieving explanations
-programmatically.
+The output is displayed in a concise syntax designed to be legible; but it can
+be rendered in any one of the supported RDF syntaxes if desired. Explanations
+are also accessible through the <<Network Programming, Stardog's extended HTTP
+protocol>> and <<Java Programming, discussion of SNARL>>. See the examples in
+the [stardog-examples Github
+repo]https://github.com/Complexible/stardog-examples/ for more details about
+retrieving explanations programmatically.
 
 === Proof Trees
 

@@ -137,11 +137,11 @@ made for `ICVOptions` and `SearchOptions`.
 
 `query.all.graphs` can now be set as a database option too. If there is no value
 set for this option in the database metadata, the default value specified in the
-stardog.properties file will be used.
+`stardog.properties` file will be used.
 
 The database connection timeout option is now called `database.connection.timeout`
 and it accepts duration strings such as `1h` or `10m`. This option can be set
-either in stardog.properties or in the database metadata.
+either in `stardog.properties` or in the database metadata.
 
 === Empire
 

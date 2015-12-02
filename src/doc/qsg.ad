@@ -65,7 +65,7 @@ $ ./stardog-admin server start
 +
 [source,bash]
 ----
-$ ./stardog-admin db create -n myDB examples/data/University0_0.owl
+$ ./stardog-admin db create -n myDB data.ttl
 ----
 +
 . Query the database:
@@ -78,7 +78,7 @@ $ ./stardog query myDB "SELECT DISTINCT ?s WHERE { ?s ?p ?o } LIMIT 10"
 You can use the Web Console to search or query the new database you created by
 visiting http://localhost:5820/myDB in your browser.
 
-**Now, go have a drink: you've earned it.**
+**Now go have a drink: you've earned it.**
 
 == Windows
 
@@ -118,11 +118,11 @@ and handles both protocols.]
 This will start the server in the current command prompt, you should leave this
 window open and open a new command prompt window to continue.
 
-Fourth, create a database with an input file:
+Fourth, create a database with some input file:
 
 [source,bash]
 ----
-> stardog-admin.bat db create -n myDB examples/data/University0_0.owl
+> stardog-admin.bat db create -n myDB data.ttl
 ----
 
 Fifth, query the database:

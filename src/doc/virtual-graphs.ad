@@ -161,7 +161,7 @@ follows:
 
 [source,bash]
 ----
-$ stardog-admin virtual import dept.properties dept.ttl
+$ stardog-admin virtual import myDb dept.properties dept.ttl
 ----
 
 This command adds all the mapped triples from the RDBMS into the default graph.
