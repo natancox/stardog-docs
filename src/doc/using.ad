@@ -245,14 +245,24 @@ Commit a new version by adding and removing triples specified in files.
 Different from the `data add/remove` commands, `commit` allows one to add and
 remove triples in one commit and to associate a commit message.
 
-NOTE: Removals are performed before additions.
-
 To commit changes:
 
 [source,bash]
 ----
 $ stardog vcs commit --add add_file1.ttl add_file2.ttl --remove remove_file.ttl -m "This is an example commit" myDb
 ----
+
+It is also possible to run an update query with a commit message:
+
+NOTE: Removals are performed before additions and queries are executed last.
+
+[source,bash]
+----
+$ stardog vcs commit --query update.sparql -m "This is another commit" myDb
+----
+
+If the database is updated through the regular `data add`, `data remove`, or `query` commands when versioning is 
+enabled, a corresponding version will be created but the commit message will be empty.
 
 === Viewing Revisions
 
