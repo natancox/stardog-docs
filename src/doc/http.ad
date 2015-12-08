@@ -73,7 +73,7 @@ JSON-LD, or RDF/XML:
 RDF/XML::   `application/rdf+xml`
 Turtle::   `application/x-turtle` or `text/turtle`
 N-Triples::   `text/plain`
-TriG::   `application/x-trig`
+TriG::   `application/trig`
 TriX::   `application/trix`
 NQuads::   `text/x-nquads`
 JSON-LD::   `application/ld+json`

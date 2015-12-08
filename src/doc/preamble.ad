@@ -31,8 +31,8 @@ control; http://www.w3.org/TR/owl2-overview/[OWL 2] and user-defined rules for
 inference and data analytics; virtual graphs; geospatial query answering; and
 programmatic interaction via several languages and network interfaces.
 
-**Stardog is made with skill, taste, and a point of view in DC, Boston, and
-Germany.**
+Stardog is made with skill, taste, and a point of view in DC, Boston, and
+Germany. 🌟🐶
 
 To learn more about where we've been and where we're headed, consult
 the link:/release-notes/[RELEASE NOTES] and
@@ -77,5 +77,6 @@ docs on Github] if you spot a problem.
 == Roadmap
 [horizontal]
 Stardog 4.1:: Pelorus--a faceted graph browser--integrated with Stardog Web Console
-Stardog 4.2:: Native HDFS disk indexes 
+Stardog 4.x:: SAML, OAuth, etc external authorization/authentication services
+Stardog 4.x:: Native HDFS disk indexes
 Stardog 4.x:: Generalizing R2RML virtual graph support
