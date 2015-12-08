@@ -20,6 +20,9 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
+== 4.0.2 Release
+[none]
+
 == 4.0.1 Release
 [none]
 * image:m.png[Fixed,15,16]&nbsp;&nbsp; Improve the undefined prefix error message for update queries (#2687)
