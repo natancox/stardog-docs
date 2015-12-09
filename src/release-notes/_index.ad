@@ -22,6 +22,23 @@ image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbs
 
 == 4.0.2 Release
 [none]
+*MOD: Include virtual graphs in javadocs (#2702)
+*MOD: SPARQL update queries with a WHERE clause throws exceptions in the cluster (#2701)
+*MOD: Missing option to virtual import command to clear destination graph first (#2700) 
+*MOD: Support virtual graphs in ADD and COPY queries (#2699)
+*MOD: Minimize queries sent to virtual graphs (#2692)
+*MOD: Improve handling of client-side logging (#2688)
+*MOD: More robust way to figure out system db is out of sync with the cluster (#2566)
+*MOD: Reasoning not applied to virtual graphs and SERVICE queries (#2690)
+*FIX: Full version IRIs are not supported in vcs tag command (#2709)
+*FIX: Modify queries using only insert or delete do not work when named graph security is enabled (#2708)
+*FIX: Version ranges are misinterpreted in vcs diff CLI command (#2705)
+*FIX: Deprecated TriG mimetype not supported by HTTP server (#2704)
+*FIX: Caching for Authentication with LDAP (#2698)
+*FIX: Pushing filters into unions is incorrect (#2696)
+*FIX: Errors during rejoins might be ignored (#2660)
+*FIX: Corrupted transaction log causes a database to be deleted at startup (#2659)
+*FIX: Variable inlining does not work with service (#2549)
 
 == 4.0.1 Release
 [none]
