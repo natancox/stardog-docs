@@ -225,6 +225,9 @@ changes between revisions of a Stardog database, add comments and other metadata
 to the revisions, extract diffs between those revisions, tag revisions with
 labels, and query over the revision history of the database using SPARQL.
 
+For a more complete tutorial on using Stardog versioning, see
+https://github.com/Complexible/stardog-examples/blob/master/examples/cli/versioning/README.md[the stardog-examples repo].
+
 Versioning support for a database is disabled by default but can be enabled at
 any time by setting the configuration option `versioning.enabled` to true. For
 example, you can create a database with versioning support as follows:
@@ -261,7 +264,7 @@ NOTE: Removals are performed before additions and queries are executed last.
 $ stardog vcs commit --query update.sparql -m "This is another commit" myDb
 ----
 
-If the database is updated through the regular `data add`, `data remove`, or `query` commands when versioning is 
+If the database is updated through the regular `data add`, `data remove`, or `query` commands when versioning is
 enabled, a corresponding version will be created but the commit message will be empty.
 
 === Viewing Revisions
