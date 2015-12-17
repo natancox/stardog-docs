@@ -23,28 +23,8 @@ specification], which has all the formal details.
 
 == Getting Started with ICV
 
-This log of a CLI session gives a full example of how to validate data using a
-mix of integrity constraints expressed in OWL and SPARQL. It uses data and
-constraints linked below.
-
-[source,bash]
-----
-include::https://gist.githubusercontent.com/evren/5612900/raw/aab0cfaec053a05bf89c07adf67c322fd9d92055/commands.log[]
-----
-
-See the following Gists to follow along at home:
-
-- https://gist.github.com/evren/5612900#file-sota-constraints-ttl[Constraints in OWL]
-- https://gist.github.com/evren/5612900#file-sota-data-ttl[Example Data in Turtle]
-- https://gist.github.com/evren/5612900#file-sota-example-java[Java Example]
-- https://gist.github.com/evren/5612900#file-sota-example-out[Example Output]
-- https://gist.github.com/evren/5612900#file-sota-query-example-java[SPARQL Query Example in Java]
-- https://gist.github.com/evren/5612900#file-sota-query-out[SPARQL Query Output]
-- https://gist.github.com/evren/5612900#file-sota-query-sparql[Constraints in SPARQL]
-
-And, finally, the https://gist.github.com/evren/5612900[full Gist with links to
-everything]. In the rest of this chapter, we explain in more detail about
-programmatic access, as well as give a full slate of examples of ICV in action.
+See the https://github.com/Complexible/stardog-examples/tree/master/examples/cli/icv[extended ICV tutorial]
+in the stardog-examples repo on Github for more details.
 
 == ICV & OWL 2 Reasoning
 
