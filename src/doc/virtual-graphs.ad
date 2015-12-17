@@ -176,25 +176,24 @@ It is also possible to specify a target named graph by using the
 $ stardog-admin virtual import -g http://example.com/targetGraph dept.properties dept.ttl
 ----
 
-This `virtual import` command is equivalent executing the following SPARQL update query:
+This `virtual import` command is equivalent to the following SPARQL update query:
 
 [source,sparql]
 ----
-INSERT {
-   GRAPH <http://example.com/targetGraph> {
-      ?s ?p ?o
-   }
-}
-WHERE
-   GRAPH <virtual://dept> {
-      ?s ?p ?o
-   }
-}
+ADD <virtual://dept> TO <http://example.com/targetGraph>
 ----
 
-If the RDBMS contents change over time, and we need to update the
-materialization results in the future, then we can drop the named graph contents
-and rematerialize again. Query performance over materialized graphs will be
+If the RDBMS contents change over time, and we need to update the materialization results 
+in the future, we can clear the named graph contents and rematerialize again. This
+can be done by using the `--remove-all` option in `virtual import` or with the following
+SPARQL query:
+
+[source,sparql]
+----
+COPY <virtual://dept> TO <http://example.com/targetGraph>
+----
+
+Query performance over materialized graphs will be
 better as the data will be indexed locally by Stardog, but materialization may
 not be practical in cases where frequency of change is very high.
 
