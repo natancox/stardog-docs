@@ -107,7 +107,7 @@ these steps are as follows:
 [source,bash]
 ----
 $ ./stardog-admin db offline --timeout 0 myDb #take the database offline
-$ ./stardog-admin db metadata set icv.enabled=true myDb #enable ICV
+$ ./stardog-admin db metadata set -o icv.enabled=true myDb #enable ICV
 $ ./stardog-admin db online myDb #put the database online
 ----
 
