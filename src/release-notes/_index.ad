@@ -20,6 +20,34 @@
 
 image:a.png[] Added new feature &nbsp; &nbsp; image:m.png[] Modified system &nbsp; &nbsp; image:f.png[] Fixed bug
 
+== 4.0.3 Release
+[none]
+*MOD: Include ICV explanations in guard mode (#2749)
+*MOD: Handle URI templates in language tags of literals (#2747)
+*MOD: Query command missing option to specify a default graph (#2740)
+*MOD: Support SPARQL dateTime functions for date and time datatypes (#2694)
+*FIX: Context iterator should not produce results when there are no contexts (#2750)
+*FIX: CLI query command prints datatype for language literals in table output (#2745)
+*FIX: URI templates used for rdf:type in virtual mappings are handled incorrectly (#2743)
+*FIX: Virtual graph queries with filters in optionals return incorrect answers (#2738)
+*FIX: Stardog mapping syntax does not support Turtle escape sequences in column names (#2737)
+*FIX: Virtual mappings retrieved via HTTP cannot be iterated multiple times (#2736)
+*FIX: Multiple quotes in column names of virtual mappings causes infinite recursion (#2735)
+*FIX: Support RDF 1.1 string literals in virtual graphs (#2734)
+*FIX: Stardog mapping syntax should use default datatypes for literals (#2732)
+*FIX: Construct queries against virtual graphs throw exceptions (#2731)
+*FIX: Optionals in virtual graph queries can cause NPE (#2729)
+*FIX: Line numbers in Turtle parse errors are incorrect in the presence of multline literals (#2728)
+*FIX: Deadlock with serializable isolation level under heavy load (#2727)
+*FIX: ICV explain ignores query constraints (#2723)
+*FIX: Constraint validation leaves connections open (#2722)
+*FIX: False negative query results when using `Contexts.ALL` with named-graph sec in DB (#2721)
+*FIX: ValueExprToExpression missing handler for BNODE (#2720)
+*FIX: Plan cache incorrectly handles complex property paths (#2717)
+*FIX: Avoid re-optimization of path expressions in general property path operators (#2716)
+*FIX: Be more defensive in loading functions from the service loader (#2714)
+*FIX: Query parameters only used in filters are not bound in the results (#2695)
+
 == 4.0.2 Release
 [none]
 *MOD: Include virtual graphs in javadocs (#2702)
